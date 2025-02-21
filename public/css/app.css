@@ -11979,109 +11979,140 @@ textarea.form-control-lg {
   display: flex;
   width: 100%;
   height: 100%;
-  background: #111;
+  background: white;
   border-radius: 0;
   box-shadow: none;
 }
 
+/* Left Section - Watchdogs Branding */
+.login-image-section {
+  flex: 1.4;
+  background: linear-gradient(135deg, #1e2833, #11151b);
+  background: url("/images/watchdogs.svg") center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: gold;
+  text-align: center;
+  padding: 40px;
+}
+
+.login-image-section img {
+  max-width: 70%;
+}
+
+.login-image-section h1, .login-image-section .h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 15px;
+  font-family: "Garamond", serif;
+}
+
+.login-image-section p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* Right Section - Login Form */
 .login-content {
   flex: 1;
-  padding: 60px 100px 60px 100px;
-  color: white;
+  padding: 60px 100px;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: left;
+  margin-left: 70px;
+  margin-top: 40px;
 }
 
 .login-title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #23262F;
+}
+
+label {
+  color: #425466;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .login-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 25px;
+  color: #555;
 }
 
+/* Input Fields */
 .login-input-group,
 .login-password-group {
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   margin-bottom: 20px;
 }
-.login-input-group input,
-.login-password-group input {
+
+input {
   width: 100%;
-  padding: 16px;
-  border: 1px solid #666;
-  background: transparent;
-  color: white;
-  font-size: 18px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  background: white;
+  color: black;
+  font-size: 16px;
   border-radius: 6px;
 }
 
+/* Forgot Password */
 .login-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   font-size: 14px;
-  margin: 10px 0;
+  margin-top: -28px;
+  margin-bottom: 5px;
   align-items: center;
 }
 
-.login-remember-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.login-remember-label input[type=checkbox] {
-  width: 16px;
-  height: 16px;
+.login-forgot-link {
+  color: #777E90;
+  text-decoration: none;
   margin: 0;
+  padding: 0;
 }
-.login-remember-label span {
-  line-height: 1;
-  display: flex;
-  align-items: center;
-}
-
-.login-checkbox {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  vertical-align: middle;
+.login-forgot-link:hover {
+  text-decoration: underline;
 }
 
-.login-remember-label span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
+/* Sign-in Button */
 .login-submit-btn {
   width: 100%;
-  max-width: 500px;
-  padding: 16px;
-  background: red;
+  max-width: 424px;
+  padding: 12px;
+  background: black;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 30px;
   margin-top: 15px;
 }
 .login-submit-btn:hover {
-  background: darkred;
+  background: #2A363B;
 }
 
+/* Sign-up Link */
 .login-signup {
-  margin-top: 15px;
+  color: #777E90;
+  margin-left: 100px;
+  margin-top: 30px;
   font-size: 14px;
 }
 .login-signup .login-signup-link {
-  color: #ff9f00;
+  color: #141416;
   text-decoration: none;
   font-weight: bold;
 }
@@ -12089,24 +12120,70 @@ textarea.form-control-lg {
   text-decoration: underline;
 }
 
-.login-image-section {
-  flex: 1;
-  background: url(/images/vero.svg?6ecbf7a9236b7d3b69996e76775676ae) center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .login-content {
+    padding: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  .login-image-section {
+    padding: 20px;
+  }
+  .login-signup {
+    margin-left: 50px;
+  }
+}
 @media (max-width: 768px) {
   .login-card {
     flex-direction: column;
+    height: auto;
+  }
+  .login-image-section {
+    flex: none;
+    height: 40vh;
+    padding: 20px;
   }
   .login-content {
     padding: 30px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .login-options {
+    justify-content: center;
+  }
+  .login-signup {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+@media (max-width: 480px) {
+  .login-wrapper {
+    align-items: flex-start;
+    height: auto;
+    padding: 20px 10px;
+  }
+  .login-content {
+    padding: 20px;
+    text-align: center;
   }
   .login-image-section {
-    height: 40vh;
+    height: 30vh;
+  }
+  .login-title {
+    font-size: 28px;
+  }
+  .login-subtitle {
+    font-size: 14px;
+  }
+  .login-input-group,
+  .login-password-group,
+  .login-submit-btn {
+    max-width: 100%;
+  }
+  .login-options {
+    flex-direction: column;
+    align-items: center;
   }
 }
 .register-wrapper {
@@ -12115,62 +12192,62 @@ textarea.form-control-lg {
   align-items: center;
   height: 100vh;
   width: 100vw;
-  background-color: #eaf1f8; /* Updated to match login.scss */
+  background-color: #f8f9fc; /* Light gray background */
 }
 
 .register-card {
   display: flex;
-  width: 100vw;
-  height: 100vh;
-  border-radius: 0;
-  overflow: hidden;
-  box-shadow: none;
-}
-
-.register-content {
-  background: #111; /* Updated to match login.scss */
-  padding: 60px;
-  width: 50%;
-  display: flex;
   flex-direction: column;
-  justify-content: center;
-  color: white;
+  align-items: center;
+  width: 500px;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .register-title {
-  color: white;
-  font-size: 24px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #23262F;
+  text-align: left; /* Aligns the text to the left */
   margin-bottom: 20px;
+  width: 100%; /* Ensures it takes full width for alignment */
+}
+
+label {
+  color: #425466;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .register-form-container {
   display: flex;
   flex-direction: column;
-}
-
-.register-row {
-  display: flex;
-  gap: 15px;
+  width: 100%;
 }
 
 input, select {
-  width: 100%;
-  padding: 14px;
-  margin-bottom: 15px;
-  border: 1px solid #666; /* Updated border color */
-  background: transparent;
-  color: white;
+  width: 424px; /* Set a fixed width */
+  padding: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #d1d3e2;
   border-radius: 6px;
+  font-size: 14px;
+  background: #EDF2F7;
 }
 
 select {
-  background-color: #222; /* Updated dropdown background */
-  color: white;
-}
-
-option {
-  background-color: #222; /* Ensures dropdown options are visible */
-  color: white;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-color: #ffffff;
+  color: #111;
 }
 
 .register-password-group {
@@ -12185,53 +12262,177 @@ option {
   cursor: pointer;
 }
 
-.register-dropdowns {
-  display: flex;
-  gap: 15px;
-}
-
 .register-submit-btn {
-  background: red;
+  background: #141416; /* Solid dark color */
   color: white;
-  padding: 14px;
+  padding: 12px;
   border: none;
-  border-radius: 6px;
+  border-radius: 30px; /* Rounded edges */
   cursor: pointer;
-  font-weight: bold;
+  font-weight: none;
+  font-size: 14px;
   transition: 0.3s;
+  text-transform: none;
+  width: 100%;
+  margin-top: 20px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .register-submit-btn:hover {
-  background: darkred;
+  background: #2A363B;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.register-image-section {
-  width: 50%;
-  height: 100vh; /* Matched size to login.scss */
-  background: url(/images/vero.svg?6ecbf7a9236b7d3b69996e76775676ae) center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.register-brand {
-  font-size: 50px;
+.register-back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: #718096;
+  font-size: 14px;
   font-weight: bold;
-  color: white;
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.register-back-btn:hover {
+  color: #718096;
+  text-decoration: underline;
+}
+
+.password-hint {
+  font-size: 12px;
+  color: #718096;
+  margin-top: -10px;
+}
+
+.signin-text {
+  color: #777E90;
+  font-size: 14px;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.signin-text a {
+  color: #141416;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.signin-text a:hover {
+  color: #141416;
+  text-decoration: underline;
 }
 
 @media (max-width: 768px) {
   .register-card {
-    flex-direction: column;
+    width: 90%;
+    padding: 30px;
   }
-  .register-content {
-    width: 100%;
-    padding: 40px;
-  }
-  .register-image-section {
-    width: 100%;
-    height: 40vh;
-  }
+}
+.admin-sidebar {
+  height: 100vh;
+  width: 250px;
+  background-color: #2A363B;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-top: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.logo-img {
+  width: 189px;
+  height: auto;
+}
+
+.admin-menu {
+  list-style: none;
+  padding-left: 0;
+  width: 100%;
+}
+
+.admin-menu li {
+  width: 100%;
+  margin-bottom: -20px;
+}
+
+.admin-menu button {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px; /* Adjusted padding for better spacing */
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px; /* More readable font size */
+  font-weight: 500;
+  transition: background 0.3s ease-in-out;
+}
+
+.admin-menu button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.icon {
+  margin-right: 10px; /* Proper spacing for icons */
+  font-size: 16px; /* Balanced icon size */
+}
+
+.settings {
+  position: relative;
+}
+
+.settings-btn {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease-in-out;
+}
+
+.settings-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrow-icon {
+  margin-left: auto;
+  font-size: 12px;
+}
+
+.settings-dropdown {
+  display: none;
+  flex-direction: column;
+  background-color: #1f2937; /* Adjust the color as needed */
+  padding-left: 10px;
+}
+
+.settings-dropdown li {
+  list-style: none;
+}
+
+.settings .settings-dropdown {
+  display: block;
+}
+
+.settings-dropdown button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 }

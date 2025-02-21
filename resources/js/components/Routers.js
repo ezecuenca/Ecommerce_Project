@@ -1,19 +1,19 @@
+// Routers.js
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Example from "./Example";
 import Login from "./login";
 import Register from "./register";
-
+import AdminDashboard from "./AdminDashboard"; // Import the new component
 
 export default function Routers() {
     return (
         <Router>
             <Routes>
-                {/* Login Page */}
-                <Route path="/" element={<Example />} />
-                <Route path="/login" element={<Login />} />
+                {/* Public Routes */}
+                <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/admin" element={<AdminDashboard />} />
             </Routes>
         </Router>
     );

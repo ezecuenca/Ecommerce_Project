@@ -1,0 +1,107 @@
+.admin-sidebar {
+    height: 100vh;
+    width: 250px;
+    background-color: #2A363B; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding-top: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.admin-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo-img {
+    width: 189px; 
+    height: auto;
+}
+
+.admin-menu {
+    list-style: none;
+    padding-left: 0;
+    width: 100%;
+}
+
+.admin-menu li {
+    width: 100%;
+    margin-bottom: -20px;
+}
+
+.admin-menu button {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px; /* Adjusted padding for better spacing */
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px; /* More readable font size */
+    font-weight: 500;
+    transition: background 0.3s ease-in-out;
+}
+
+.admin-menu button:hover {
+    background-color: rgba(255, 255, 255, 0.1); 
+}
+
+.icon {
+    margin-right: 10px; /* Proper spacing for icons */
+    font-size: 16px; /* Balanced icon size */
+}
+
+.settings {
+    position: relative;
+}
+
+.settings-btn {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out;
+}
+
+.settings-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.arrow-icon {
+    margin-left: auto;
+    font-size: 12px;
+}
+
+.settings-dropdown {
+    display: none;
+    flex-direction: column;
+    background-color: #1f2937; /* Adjust the color as needed */
+    padding-left: 10px;
+}
+
+.settings-dropdown li {
+    list-style: none;
+}
+
+.settings .settings-dropdown {
+    display: block;
+}
+
+
+.settings-dropdown button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}

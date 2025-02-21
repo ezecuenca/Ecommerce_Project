@@ -11,113 +11,145 @@
   display: flex;
   width: 100%;
   height: 100%;
-  background: #111;
+  background: white;
   border-radius: 0;
   box-shadow: none;
 }
 
+/* Left Section - Watchdogs Branding */
+.login-image-section {
+  flex: 1.4;
+  background: linear-gradient(135deg, #1e2833, #11151b);
+  background: url("/images/watchdogs.svg") center/cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: gold;
+  text-align: center;
+  padding: 40px;
+}
+
+.login-image-section img {
+  max-width: 70%;
+}
+
+.login-image-section h1 {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 15px;
+  font-family: "Garamond", serif;
+}
+
+.login-image-section p {
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+/* Right Section - Login Form */
 .login-content {
   flex: 1;
-  padding: 60px 100px 60px 100px; 
-  color: white;
+  padding: 60px 100px;
+  color: black;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  text-align: left; // Align text to the left
+  text-align: left;
+  margin-left: 70px;
+  margin-top: 40px;
 }
 
 .login-title {
-  font-size: 36px; // Slightly larger for better visibility
+  font-size: 32px;
   font-weight: bold;
   margin-bottom: 15px;
+  color: #23262F;
 }
+
+label {
+  color: #425466; 
+  font-weight: bold; 
+  font-size: 14px; 
+  margin-bottom: 5px; 
+}
+
 
 .login-subtitle {
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 25px;
+  color: #555;
 }
 
+/* Input Fields */
 .login-input-group,
 .login-password-group {
   width: 100%;
-  max-width: 500px; // Increase max width for better UI
+  max-width: 400px;
   margin-bottom: 20px;
-
-  input {
-    width: 100%;
-    padding: 16px; // Increase padding for larger textboxes
-    border: 1px solid #666;
-    background: transparent;
-    color: white;
-    font-size: 18px; // Increase font size for readability
-    border-radius: 6px;
-  }
 }
 
+input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  background: white;
+  color: black;
+  font-size: 16px;
+  border-radius: 6px;
+}
+
+
+/* Forgot Password */
 .login-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   width: 100%;
-  max-width: 500px;
+  max-width: 400px;
   font-size: 14px;
-  margin: 10px 0;
+  margin-top: -28px;
+  margin-bottom: 5px;
   align-items: center;
 }
 
-.login-remember-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+.login-forgot-link {
+  color: #777E90;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
 
-  input[type="checkbox"] {
-    width: 16px;
-    height: 16px;
-    margin: 0;
-  }
-
-  span {
-    line-height: 1; // Resets line height to ensure alignment
-    display: flex;
-    align-items: center;
+  &:hover {
+    text-decoration: underline;
   }
 }
 
-.login-checkbox {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.login-remember-label span {
-  display: inline-block;
-  vertical-align: middle;
-  
-}
-
+/* Sign-in Button */
 .login-submit-btn {
   width: 100%;
-  max-width: 500px;
-  padding: 16px; // Increase padding for a bigger button
-  background: red;
+  max-width: 424px;
+  padding: 12px;
+  background: black;
   color: white;
-  font-size: 18px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
-  border-radius: 6px;
+  border-radius: 30px; 
   margin-top: 15px;
 
   &:hover {
-    background: darkred;
+    background: #2A363B;
   }
 }
 
+
+/* Sign-up Link */
 .login-signup {
-  margin-top: 15px;
+  color: #777E90;
+  margin-left: 100px;
+  margin-top: 30px;
   font-size: 14px;
 
   .login-signup-link {
-    color: #ff9f00;
+    color: #141416;
     text-decoration: none;
     font-weight: bold;
 
@@ -127,25 +159,85 @@
   }
 }
 
-.login-image-section {
-  flex: 1;
-  background: url("../imgs/vero.svg") center/cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+  .login-content {
+    padding: 40px;
+    margin-left: 20px;
+    margin-top: 20px;
+  }
+  
+  .login-image-section {
+    padding: 20px;
+  }
+  
+  .login-signup {
+    margin-left: 50px;
+  }
+}
+
 @media (max-width: 768px) {
   .login-card {
     flex-direction: column;
+    height: auto;
+  }
+
+  .login-image-section {
+    flex: none;
+    height: 40vh;
+    padding: 20px;
   }
 
   .login-content {
     padding: 30px;
+    margin-left: 0;
+    margin-top: 20px;
+  }
+
+  .login-options {
+    justify-content: center;
+  }
+
+  .login-signup {
+    margin-left: 0;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-wrapper {
+    align-items: flex-start;
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .login-content {
+    padding: 20px;
+    text-align: center;
   }
 
   .login-image-section {
-    height: 40vh;
+    height: 30vh;
+  }
+
+  .login-title {
+    font-size: 28px;
+  }
+
+  .login-subtitle {
+    font-size: 14px;
+  }
+
+  .login-input-group,
+  .login-password-group,
+  .login-submit-btn {
+    max-width: 100%;
+  }
+
+  .login-options {
+    flex-direction: column;
+    align-items: center;
   }
 }

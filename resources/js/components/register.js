@@ -1,17 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-
 const Register = () => {
   const [formData, setFormData] = useState({
     firstName: "",
-    middleName: "",
     lastName: "",
+    username: "",
     email: "",
     password: "",
-    role: "Seller",
-    gender: "Male",
-    suffix: "Suffix",
   });
 
   const handleChange = (e) => {
@@ -24,75 +20,62 @@ const Register = () => {
   };
 
   return (
-    <div className="register-wrapper">
+    <div className="register-container">
+      <Link to="/login" className="register-back-btn">&larr; Back to Login</Link>
       <div className="register-card">
-        <div className="register-content">
-          <h2 className="register-title">Create New Account</h2>
-          <form onSubmit={handleRegister} className="register-form-container">
-            <div className="register-row">
-              <input
-                type="text"
-                name="firstName"
-                placeholder="First Name"
-                value={formData.firstName}
-                onChange={handleChange}
-                required
-              />
-              <input
-                type="text"
-                name="middleName"
-                placeholder="Middle Name"
-                value={formData.middleName}
-                onChange={handleChange}
-              />
-            </div>
-            <input
-              type="text"
-              name="lastName"
-              placeholder="Last Name"
-              value={formData.lastName}
-              onChange={handleChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-            <div className="register-password-group">
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={formData.password}
-                onChange={handleChange}
-                required
-              />
-              <span className="password-toggle">👁️</span>
-            </div>
-            <div className="register-dropdowns">
-              <select name="role" value={formData.role} onChange={handleChange}>
-                <option>Seller</option>
-                <option>Customer</option>
-              </select>
-              <select name="gender" value={formData.gender} onChange={handleChange}>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-              <select name="suffix" value={formData.suffix} onChange={handleChange}>
-                <option>Suffix</option>
-                <option>Jr.</option>
-                <option>Sr.</option>
-              </select>
-            </div>
-            <button type="submit" className="register-submit-btn">Register</button>
-          </form>
-        </div>
-        <div className="register-image-section">
-        </div>
+        <h2 className="register-title">Create your account</h2>
+        <form onSubmit={handleRegister} className="register-form">
+          <label>First name</label>
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Enter your first name"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+          />
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Enter your last name"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+          />
+          <label>Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Type your username"
+            value={formData.username}
+            onChange={handleChange}
+            required
+          />
+          <label>E-mail</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Type your e-mail"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+          <label>Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Type your password"
+            value={formData.password}
+            onChange={handleChange}
+            required
+          />
+          <p className="password-hint">Must be 8 characters at least</p>
+          <button type="submit" className="register-submit-btn">Create</button>
+        </form>
+        <p className="signin-text">
+          Already have an account? <Link to="/login">Sign In</Link>
+        </p>
       </div>
     </div>
   );
