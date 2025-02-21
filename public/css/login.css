@@ -1,0 +1,129 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%; /* Ensure both html and body are 100% */
+    overflow: hidden; /* Prevent potential scrollbars */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: stretch; /* Use stretch to make body fill height */
+    width: 100vw;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: none;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    height: 100vh; /* Keep 100vh for container */
+}
+
+.left-panel {
+    background: radial-gradient(circle at 20% 70%, #2A363B, #23262F);
+    color: #e0e0e0;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+.logo {
+    text-align: center;
+}
+
+.logo p:first-child {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.logo img {
+    width: 400px;
+    height: auto;
+    margin: 30px auto;
+    display: block;
+}
+
+.logo p:last-child {
+    font-size: 2.5em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.right-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 40px;
+}
+
+.login-form {
+    width: 80%;
+    max-width: 400px;
+}
+
+.login-form h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.login-form p {
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+    color: #333;
+}
+
+.forgot-password {
+    float: right;
+    font-size: 0.9em;
+    text-decoration: none;
+    color: #777E90;
+}
+
+button[type="submit"] {
+    width: 106.5%;
+    padding: 14px;
+    background-color: #343a40;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin-top: 27px;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.signup-link a {
+    text-decoration: none;
+    color: #141416;
+    font-weight: 200px;
+}
