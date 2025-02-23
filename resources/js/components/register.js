@@ -21,7 +21,7 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <Link to="/login" className="register-back-btn">&larr; Back to Login</Link>
+      <Link to="/" className="register-back-btn">&larr; Back to Login</Link>
       <div className="register-card">
         <h2 className="register-title">Create your account</h2>
         <form onSubmit={handleRegister} className="register-form">
@@ -74,7 +74,7 @@ const Register = () => {
           <button type="submit" className="register-submit-btn">Create</button>
         </form>
         <p className="signin-text">
-          Already have an account? <Link to="/login">Sign In</Link>
+          Already have an account? <Link to="/">Sign In</Link>
         </p>
       </div>
     </div>

@@ -1,0 +1,135 @@
+/* src/components/admin/Orders.scss */
+
+/* Container for the orders content */
+.orders-container {
+    padding: 24px; /* 1.5rem = 24px */
+    background-color: white;
+    /* Removed the blue border: border-top: 4px solid #3b82f6; */
+}
+
+/* Title styles */
+.orders-container h2 {
+    font-size: 24px; /* 1.5rem = 24px */
+    font-weight: bold;
+    color: #000000; /* Black text */
+    margin-bottom: 16px; /* 1rem = 16px */
+}
+
+/* Header actions (search bar only) - positioned on the right */
+.header-actions {
+    display: flex;
+    justify-content: flex-end; /* Align to the right overall */
+    align-items: center; /* Vertically center align search */
+    margin-bottom: 16px; /* 1rem = 16px */
+}
+
+/* Search bar - without icon */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 9999px; /* Fully rounded (Tailwind's rounded-full) */
+    padding: 8px 12px; /* 0.5rem vertical, 0.75rem horizontal (32px height total) */
+    width: 100%;
+    max-width: 240px; /* Match screenshot width */
+    font-size: 14px; /* 0.875rem = 14px */
+    height: 32px; /* Explicit height for alignment */
+    outline: none;
+    box-sizing: border-box; /* Ensure padding doesn’t affect height */
+    background-color: #f3f4f6; /* Light gray background to match screenshot */
+    color: #4a5568; /* Gray-700 for text */
+
+    &::placeholder {
+        color: #6b7280; /* Gray-500 for placeholder text */
+    }
+
+    &:focus {
+        border-color: transparent; /* Remove border on focus */
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+        background-color: white; /* White background on focus */
+    }
+}
+
+/* Orders table */
+.orders-table {
+    width: 100%;
+    margin-bottom: 24px; /* 1.5rem = 24px */
+    border-collapse: collapse; /* Ensure borders don’t double up */
+}
+
+.orders-table thead tr {
+    background-color: #e5e7eb; /* Gray-200, matching Dashboard.scss */
+    color: #4a5568; /* Gray-700, matching Dashboard.scss */
+    font-size: 14px; /* 0.875rem = 14px */
+    font-weight: 600;
+}
+
+.orders-table th,
+.orders-table td {
+    padding: 4px; /* 0.25rem = 4px (tighter spacing, matching Dashboard.scss) */
+    text-align: left;
+}
+
+.orders-table tbody tr {
+    border-bottom: 1px solid #e5e7eb; /* Gray-200, matching Dashboard.scss */
+}
+
+.orders-table .text-black {
+    color: #000000; /* Black text for data, matching Dashboard.scss */
+}
+
+.orders-table .product-icon {
+    color: #6b7280; /* Gray-500 for icons, matching Dashboard.scss */
+}
+
+/* Status dropdown - Shortened width */
+.status-dropdown {
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 9999px; /* Fully rounded (Tailwind's rounded-full) */
+    padding: 4px 8px; /* 0.25rem vertical, 0.5rem horizontal */
+    background-color: white;
+    color: #4a5568; /* Gray-700 for text */
+    font-size: 12px; /* Smaller text for dropdown */
+    cursor: pointer;
+    appearance: none; /* Remove default arrow in some browsers */
+    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiM0YTU1NjgiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4='); /* Custom down arrow */
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 12px;
+    max-width: 100px; /* Shortened width to make dropdown narrower */
+    width: 100%; /* Ensure it fills the available space but respects max-width */
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .orders-container {
+        padding: 16px; /* 1rem = 16px (reduce padding on small screens) */
+    }
+
+    .header-actions {
+        flex-direction: column;
+        justify-content: flex-end;
+        gap: 8px; /* Reduce gap on small screens */
+    }
+
+    .search-bar input {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    .orders-table th,
+    .orders-table td {
+        padding: 4px; /* Maintain tighter spacing on small screens, or adjust as needed */
+    }
+
+    .status-dropdown {
+        max-width: 80px; /* Further reduce width on small screens if needed */
+    }
+}

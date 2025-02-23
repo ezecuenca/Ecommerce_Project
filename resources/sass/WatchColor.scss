@@ -1,0 +1,253 @@
+/* src/components/admin/WatchColor.scss */
+
+/* Container for the colors content */
+.colors-container {
+    padding: 24px; /* 1.5rem = 24px */
+    background-color: white;
+}
+
+/* Title styles */
+.colors-container .h2 {
+    font-size: 24px; /* 1.5rem = 24px */
+    font-weight: bold;
+    color: #000000; /* Black text */
+    margin-bottom: 16px; /* 1rem = 16px */
+}
+
+/* Header actions (search on left, buttons on right) - positioned close together */
+.header-actions {
+    display: flex;
+    justify-content: space-between; /* Align search left, buttons right, keeping elements close */
+    align-items: center;
+    margin-bottom: 16px; /* 1rem = 16px */
+    gap: 8px; /* Reduced space between elements for tighter alignment */
+}
+
+/* Search bar - without icon, positioned on the left */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar .search-input {
+    border: 1px solid #d1d5db; /* Gray-300 */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    padding: 8px 12px; /* 0.5rem vertical, 0.75rem horizontal */
+    width: 100%;
+    max-width: 240px; /* Match screenshot width */
+    font-size: 14px; /* 0.875rem = 14px */
+    outline: none;
+    background-color: #f3f4f6; /* Light gray background */
+    color: #4a5568; /* Gray-700 for text */
+
+    &::placeholder {
+        color: #6b7280; /* Gray-500 for placeholder text */
+    }
+
+    &:focus {
+        border-color: transparent; /* Remove border on focus */
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+        background-color: white; /* White background on focus */
+    }
+}
+
+/* Button group (Archive, Add, Delete) - positioned on the right */
+.button-group {
+    display: flex;
+    gap: 8px; /* 0.5rem = 8px */
+}
+
+.button-group .archive-button {
+    background-color: #e5e7eb; /* Gray-200, matching screenshot */
+    color: #4a5568; /* Gray-700 */
+    padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #d1d5db; /* Gray-300 on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+    }
+}
+
+.button-group .add-button {
+    background-color: #3b82f6; /* Blue-500, matching screenshot */
+    color: white;
+    padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #2563eb; /* Blue-600 on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+    }
+}
+
+.button-group .delete-button {
+    background-color: #ef4444; /* Red-500, matching screenshot */
+    color: white;
+    padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #dc2626; /* Red-600 on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+    }
+}
+
+/* Colors table */
+.colors-table {
+    width: 100%;
+    margin-bottom: 24px; /* 1.5rem = 24px */
+    border-collapse: collapse; /* Ensure borders don’t double up */
+}
+
+.colors-table .thead {
+    background-color: #e5e7eb; /* Gray-200, matching screenshot */
+    color: #4a5568; /* Gray-700, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px */
+    font-weight: 600;
+    /* Removed the blue border: border-top: 2px solid #3b82f6; */
+}
+
+.colors-table .th,
+.colors-table .td {
+    padding: 8px; /* 0.5rem = 8px, matching screenshot */
+    text-align: left;
+    vertical-align: middle; /* Ensure all content in table headers and cells is vertically centered */
+    line-height: 16px; /* Match checkbox height for perfect alignment */
+    height: 32px; /* Total height including padding (8px + 16px + 8px), ensuring consistent centering */
+}
+
+.colors-table .tr {
+    border-bottom: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
+}
+
+/* Checkbox column header and cell alignment (only checkbox in header, checkbox and edit in rows) */
+.colors-table .th:first-child {
+    width: 40px; /* Reduced width for checkbox-only column in header to align with screenshot */
+    text-align: center; /* Center-align the checkbox column in header */
+}
+
+.colors-table .td:first-child {
+    width: 80px; /* Fixed width for checkbox and edit column in rows to align properly */
+    text-align: center; /* Center-align the checkbox and edit column in rows */
+    white-space: nowrap; /* Prevent wrapping for side-by-side elements in rows */
+}
+
+/* Select All checkbox (specific styling, not affecting individual checkboxes, with increased specificity) */
+.colors-table .thead .th:first-child .select-all {
+    width: 16px; /* 1rem = 16px */
+    height: 16px; /* 1rem = 16px */
+    border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
+    border-radius: 4px; /* 0.25rem = 4px */
+    cursor: pointer;
+    background-color: white;
+    vertical-align: middle; /* Ensure vertical alignment */
+    margin: 0; /* Reset default margin for precise control */
+    display: inline-block; /* Use inline-block for side-by-side positioning */
+    margin-right: 24px; /* Increase margin-right to 24px, adjust as needed; added more specificity, matching screenshot */
+    position: relative; /* Allow precise positioning if needed */
+}
+
+/* Individual checkboxes (keep their margin unchanged) */
+.colors-table .checkbox {
+    width: 16px; /* 1rem = 16px */
+    height: 16px; /* 1rem = 16px */
+    border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
+    border-radius: 4px; /* 0.25rem = 4px */
+    cursor: pointer;
+    background-color: white;
+    vertical-align: middle; /* Ensure vertical alignment */
+    margin: 0; /* Remove default margin for precise control */
+    display: inline-block; /* Use inline-block for side-by-side positioning */
+    margin-right: 8px; /* Add spacing between checkbox and edit icon, matching screenshot */
+}
+
+/* Edit icon (positioned beside checkbox in rows, not grouped) */
+.edit-icon {
+    color: #6b7280; /* Gray-500, matching the screenshot */
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle; /* Ensure vertical alignment */
+    margin: 0; /* Remove default margin for precise control */
+    display: inline-block; /* Use inline-block for side-by-side positioning */
+
+    &:hover {
+        color: #4a5568; /* Gray-700 on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+    }
+}
+
+/* Color, Created at, Updated at column alignment */
+.colors-table .th:nth-child(2),
+.colors-table .td:nth-child(2),
+.colors-table .th:nth-child(3),
+.colors-table .td:nth-child(3),
+.colors-table .th:nth-child(4),
+.colors-table .td:nth-child(4) {
+    text-align: left; /* Ensure left alignment for text columns, matching screenshot */
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .colors-container {
+        padding: 16px; /* 1rem = 16px (reduce padding on small screens) */
+    }
+
+    .header-actions {
+        flex-direction: column;
+        justify-content: flex-end; /* Align search and buttons to right on small screens, but keep search in place */
+        gap: 8px; /* 0.5rem = 8px */
+    }
+
+    .search-bar .search-input {
+        max-width: 100%; /* Full width on small screens */
+    }
+
+    .button-group {
+        width: 100%; /* Full width on small screens */
+        justify-content: flex-end; /* Align buttons to right on small screens, keeping search left visually */
+    }
+
+    .colors-table .th,
+    .colors-table .td {
+        padding: 6px; /* Slightly reduce padding on small screens for compactness */
+        height: 28px; /* Adjust height for smaller screens (6px + 16px + 6px) */
+        line-height: 16px; /* Maintain checkbox height */
+    }
+
+    .colors-table .th:first-child {
+        width: 40px; /* Reduce width on small screens for checkbox-only header */
+    }
+
+    .colors-table .td:first-child {
+        width: 80px; /* Maintain width on small screens for checkbox and edit in rows */
+    }
+}

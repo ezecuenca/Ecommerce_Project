@@ -1,0 +1,155 @@
+/* src/components/admin/PersonalInfo.scss */
+
+/* Container for the personal info content */
+.personal-info-container {
+    padding: 24px; /* 1.5rem = 24px, matching screenshot */
+    background-color: white;
+    max-width: 800px; /* Adjusted for screenshot width */
+    margin: 0 auto; /* Center the container */
+}
+
+/* Title styles */
+.personal-info-container h1 {
+    font-size: 24px; /* 1.5rem = 24px, matching screenshot */
+    font-weight: bold;
+    color: #000000; /* Black text, matching screenshot */
+    margin-bottom: 16px; /* 1rem = 16px, matching screenshot */
+}
+
+/* Info section heading */
+.info-section h2 {
+    font-size: 16px; /* 1rem = 16px, matching screenshot */
+    color: #6b7280; /* Gray-500, matching screenshot */
+    margin-bottom: 16px; /* 1rem = 16px, matching screenshot */
+}
+
+/* Info grid layout */
+.info-grid {
+    display: grid;
+    gap: 16px; /* 1rem = 16px, matching screenshot */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Two-column grid for larger screens, matching screenshot */
+    max-width: 100%; /* Full width within container */
+}
+
+/* Info item styling */
+.info-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* 0.5rem = 8px, matching screenshot */
+}
+
+.info-item label {
+    font-weight: 600;
+    color: #B1B5C3; /* Gray-700, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px, matching screenshot */
+}
+
+/* Input and select styling */
+.info-input,
+.date-input-wrapper select {
+    padding: 8px; /* 0.5rem = 8px, matching screenshot */
+    border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px, matching screenshot */
+    outline: none;
+    background-color: #f3f4f6; /* Light gray background, matching screenshot */
+    color: #4a5568; /* Gray-700 for text, matching screenshot */
+    width: 100%; /* Full width of the item, matching screenshot */
+
+    &::placeholder {
+        color: #6b7280; /* Gray-500 for placeholder text, matching screenshot */
+    }
+
+    &:focus {
+        border-color: transparent; /* Remove border on focus, matching screenshot */
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), matching screenshot */
+        background-color: white; /* White background on focus, matching screenshot */
+    }
+}
+
+/* Date input wrapper for calendar icon */
+.date-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.date-input {
+    width: 100%;
+    padding-right: 30px; /* Space for icon, matching screenshot */
+}
+
+.calendar-icon {
+    position: absolute;
+    right: 8px; /* 0.5rem = 8px, matching screenshot */
+    color: #6b7280; /* Gray-500, matching screenshot */
+    font-size: 16px; /* 1rem = 16px, matching screenshot */
+    pointer-events: none; /* Prevent icon from interfering with input, matching screenshot */
+}
+
+/* Actions (buttons) */
+.actions {
+    margin-top: 24px; /* 1.5rem = 24px, matching screenshot */
+    display: flex;
+    gap: 16px; /* 1rem = 16px, matching screenshot */
+    align-items: center;
+    justify-content: flex-end; /* Align buttons to the right, matching screenshot */
+}
+
+.update-button {
+    background-color: #000000; /* Black, matching screenshot */
+    color: white;
+    padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal, matching screenshot */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px, matching screenshot */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #333333; /* Darker black on hover, matching screenshot behavior */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), matching screenshot */
+    }
+}
+
+.clear-button {
+    background-color: #e5e7eb; /* Gray-200, matching screenshot */
+    color: #4a5568; /* Gray-700, matching screenshot */
+    padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal, matching screenshot */
+    border-radius: 4px; /* Rounded corners, matching screenshot */
+    font-size: 14px; /* 0.875rem = 14px, matching screenshot */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #d1d5db; /* Gray-300 on hover, matching screenshot behavior */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), matching screenshot */
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 767px) {
+    .personal-info-container {
+        padding: 16px; /* 1rem = 16px (reduce padding on small screens, matching screenshot) */
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr; /* Stack items on small screens, matching screenshot */
+        gap: 12px; /* Reduce gap on small screens, matching screenshot */
+    }
+
+    .actions {
+        flex-direction: column; /* Stack buttons vertically on small screens, matching screenshot */
+        align-items: flex-end; /* Keep alignment right, matching screenshot */
+        gap: 12px; /* Reduce gap on small screens, matching screenshot */
+    }
+}

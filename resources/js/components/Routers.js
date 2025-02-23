@@ -1,10 +1,9 @@
-// Routers.js
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./login";
 import Register from "./register";
-import AdminDashboard from "./AdminDashboard"; // Import the new component
+import AdminDashboard from "./AdminDashboard";
 
 export default function Routers() {
     return (
