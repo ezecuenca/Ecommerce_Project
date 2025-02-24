@@ -20,9 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('status')->default('active'); // You can set a default status
             $table->timestamps(); // created_at and updated_at
-            $table->unsignedBigInteger('role_id')->nullable(); // Foreign key, nullable for now
+            $table->unsignedBigInteger('role_id')->default(1);
 
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('set null'); //foreign key constraint
+            $table->foreign('role_id')->references('id')->on('roles'); //foreign key constraint
         });
     }
 

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios"; // Import axios
 
 const Register = () => {
   const [formData, setFormData] = useState({
@@ -10,13 +11,38 @@ const Register = () => {
     password: "",
   });
 
+  const navigate = useNavigate(); // Initialize useNavigate
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
     e.preventDefault();
-    console.log("Register clicked", formData);
+
+    try {
+      // Send a POST request to your Laravel backend
+      const response = await axios.post("/api/register", formData);
+
+      console.log("Registration successful", response.data);
+
+      // Redirect to login or another page after successful registration
+      navigate("/"); // Redirect to login page
+
+    } catch (error) {
+      console.error("Registration failed", error.response ? error.response.data : error.message);
+      // Handle errors (e.g., display error messages to the user)
+      if (error.response && error.response.data.errors) {
+        // Display validation errors from Laravel
+        Object.values(error.response.data.errors).forEach(messages => {
+          messages.forEach(message => {
+            alert(message); // Or display in a more user-friendly way
+          });
+        });
+      } else {
+        alert("Registration failed. Please try again.");
+      }
+    }
   };
 
   return (
