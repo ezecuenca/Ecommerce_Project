@@ -14,13 +14,15 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
+            $table->id(); // Auto-incrementing primary key
+            $table->string('username');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->string('status')->default('active'); // You can set a default status
+            $table->timestamps(); // created_at and updated_at
+            $table->unsignedBigInteger('role_id')->nullable(); // Foreign key, nullable for now
+
+            $table->foreign('role_id')->references('id')->on('roles')->onDelete('set null'); //foreign key constraint
         });
     }
 
