@@ -1,0 +1,371 @@
+/* resources/js/components/Admin/Orders.scss */
+
+/* Scope all styles to prevent conflicts with other files */
+.Orders {
+    .orders-container {
+        padding: 24px;
+        background-color: white;
+    }
+
+    .orders-container .h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 16px;
+    }
+
+    .table-header-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 0;
+        visibility: visible;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-bar input {
+        border: 1px solid #d1d5db;
+        border-radius: 9999px;
+        padding: 8px 12px;
+        width: 100%;
+        max-width: 240px;
+        font-size: 14px;
+        height: 32px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+
+        &::placeholder {
+            color: #6b7280;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #3b82f6;
+            background-color: white;
+        }
+    }
+
+    .button-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-left: auto;
+        visibility: visible;
+    }
+
+    .view-toggle {
+        display: flex;
+        gap: 4px;
+        margin-top: 4px;
+        visibility: visible;
+    }
+
+    .view-button {
+        background-color: #e5e7eb; /* Gray-200, matching screenshot */
+        color: #4a5568; /* Gray-700 */
+        padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+        border-radius: 4px; /* Rounded corners, matching screenshot */
+        font-size: 14px; /* 0.875rem = 14px */
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        visibility: visible;
+
+        &:hover {
+            background-color: #d1d5db; /* Gray-300 on hover */
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+        }
+
+        &.active {
+            background-color: #4a5568; /* Gray-700 for active state */
+            color: white;
+            border-color: #4a5568;
+        }
+    }
+
+    .table-container {
+        position: relative;
+    }
+
+    .table-header-wrapper {
+        position: relative;
+    }
+
+    .table-actions {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 8px;
+    }
+
+    .orders-recently-sold {
+        width: 100%;
+        margin-bottom: 24px;
+        border-collapse: collapse;
+    }
+
+    .orders-recently-sold thead tr {
+        background-color: #e5e7eb;
+        color: #4a5568;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 8px;
+    }
+
+    .orders-recently-sold th,
+    .orders-recently-sold td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #e5e7eb;
+        font-size: 16px;
+    }
+
+    .orders-recently-sold tbody tr {
+        border-bottom: 1px solid #e5e7eb;
+        min-height: 40px;
+    }
+
+    .orders-recently-sold .text-black {
+        color: #000000;
+    }
+
+    .orders-recently-sold input[type="checkbox"] {
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    .order-id-button {
+        background: none;
+        border: none;
+        color: #000000;
+        font-size: 16px;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
+        transition: color 0.2s, background-color 0.2s;
+
+        &:hover {
+            color: #4a5568;
+            background-color: #f3f4f6;
+        }
+    }
+
+    .status-dropdown {
+        border: 1px solid #d1d5db;
+        border-radius: 9999px;
+        padding: 4px 8px;
+        background-color: white;
+        color: #4a5568;
+        font-size: 12px;
+        cursor: pointer;
+        appearance: none;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJoi2U9IiM0YTU1NjgiIHN0cm9rZS13aWR0aD0iMiIgc3Tyb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJoi2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=');
+        background-repeat: no-repeat;
+        background-position: right 8px center;
+        background-size: 12px;
+        max-width: 100px;
+        width: 100%;
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #e5e7eb;
+            border-color: #e5e7eb;
+        }
+    }
+
+    .orders-status-dropdown {
+        background-color: #e5e7eb !important; /* Grayish background */
+        color: #4a5568 !important; /* Gray text for contrast */
+        border: 1px solid #e5e7eb !important; /* Match background for consistency */
+        padding: 8px 24px 8px 8px !important; /* Increased right padding for arrow space */
+        margin-top: 0 !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        cursor: pointer !important;
+        width: fit-content !important;
+        min-width: 180px !important; /* Increased width to prevent overlap */
+        max-width: none !important;
+        box-sizing: border-box !important;
+        display: inline-block !important;
+        flex-shrink: 1 !important;
+        flex-grow: 0 !important;
+        appearance: none; /* Remove default dropdown arrow */
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJoi2U9IiM0YTU1NjgiIHN0cm9rZS13aWR0aD0iMiIgc3Trb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJoi2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4='); /* Gray arrow to match text */
+        background-repeat: no-repeat;
+        background-position: right 12px center !important; /* Adjusted position for wider dropdown */
+        background-size: 12px;
+        transition: background-color 0.2s, border-color 0.2s !important;
+
+        &:hover:not(:disabled) {
+            background-color: #d1d5db !important; /* Lighter gray on hover */
+            border-color: #d1d5db !important;
+        }
+
+        &:disabled {
+            opacity: 0.5 !important;
+            cursor: not-allowed !important;
+            background-color: #e5e7eb !important; /* Maintain gray when disabled */
+            border-color: #e5e7eb !important;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 16px;
+        gap: 8px;
+    }
+
+    .pagination button {
+        background-color: #e5e7eb;
+        color: #000000;
+        border: 1px solid #e5e7eb;
+        padding: 4px 8px;
+        margin-right: 0;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+    }
+
+    .pagination button:hover:not(:disabled) {
+        background-color: #d1d5db;
+    }
+
+    .pagination button.active {
+        background-color: #4a5568;
+        color: white;
+        border-color: #4a5568;
+    }
+
+    .pagination button:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+@media (max-width: 767px) {
+    .Orders {
+        .orders-container {
+            padding: 16px;
+        }
+
+        .table-header-actions {
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+
+        .search-bar {
+            width: 100%;
+            max-width: 240px;
+        }
+
+        .button-group {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .view-toggle {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .view-button {
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .orders-recently-sold th,
+        .orders-recently-sold td {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .orders-recently-sold thead tr {
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        .orders-recently-sold input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+        }
+
+        .orders-recently-sold tbody tr {
+            min-height: 32px;
+        }
+
+        .table-header-wrapper {
+            position: relative;
+        }
+
+        .table-actions {
+            justify-content: flex-end;
+            margin-top: 8px;
+        }
+
+        .orders-status-dropdown {
+            padding: 6px 24px 6px 6px !important;
+            font-size: 12px !important;
+            border-radius: 6px !important;
+            background-color: #e5e7eb !important;
+            color: #4a5568 !important;
+            border: 1px solid #e5e7eb !important;
+            width: fit-content !important;
+            min-width: 160px !important;
+            max-width: none !important;
+            box-sizing: border-box !important;
+            display: inline-block !important;
+            flex-shrink: 1 !important;
+            flex-grow: 0 !important;
+            cursor: pointer !important;
+            appearance: none !important;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJoi2U9IiM0YTU1NjgiIHN0cm9rZS13aWR0aD0iMiIgc3Trb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJoi2UtbGluZWpvaW49InJvdW5kIj48cG9seWxpbmUgcG9pbnRzPSI2IDkgMTIgMTUgMTggOSI+PC9wb2x5bGluZT48L3N2Zz4=') !important;
+            background-repeat: no-repeat !important;
+            background-position: right 12px center !important;
+            background-size: 12px !important;
+            transition: background-color 0.2s, border-color 0.2s !important;
+
+            &:hover:not(:disabled) {
+                background-color: #d1d5db !important;
+                border-color: #d1d5db !important;
+            }
+
+            &:disabled {
+                opacity: 0.5 !important;
+                cursor: not-allowed !important;
+                background-color: #e5e7eb !important;
+                border-color: #e5e7eb !important;
+            }
+
+            &:focus {
+                outline: none;
+                box-shadow: 0 0 0 2px #3b82f6;
+            }
+        }
+    }
+}

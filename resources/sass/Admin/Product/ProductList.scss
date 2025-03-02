@@ -1,0 +1,483 @@
+/* src/components/admin/ProductList.scss */
+
+/* Container for the products content */
+.products-container {
+    padding: 8px; /* Match Reviews padding, reduced to move content up */
+    background-color: white;
+    position: relative;
+    margin: 0;
+}
+
+/* Title styles (breadcrumbs-like header) */
+.products-header {
+    font-size: 24px; /* Match Reviews header size */
+    font-weight: bold;
+    color: #000000; /* Black text, match Reviews */
+    margin-bottom: 4px; /* Further reduced margin to move table up, match Reviews */
+    margin-top: 0;
+}
+
+/* Table container */
+.table-container {
+    position: relative;
+    min-height: 200px; /* Match Reviews min-height */
+    overflow-x: auto;
+    margin-top: 0; /* Removed margin to move table up, match Reviews */
+    padding-top: 0;
+}
+
+/* Header actions (search on left, buttons on right, view toggle) - positioned close together */
+.table-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Further reduced gap to move content up, match Reviews */
+    margin-bottom: 0;
+}
+
+/* Search bar - without icon, positioned on the left */
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    border: 1px solid #d1d5db; /* Gray-300, match Reviews */
+    border-radius: 9999px; /* Rounded corners, match Reviews */
+    padding: 8px 12px; /* Match Reviews input padding */
+    width: 100%;
+    max-width: 240px; /* Match Reviews search width */
+    font-size: 14px; /* Match Reviews font size */
+    height: 32px; /* Match Reviews input height */
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6; /* Light gray background, match Reviews */
+    color: #4a5568; /* Gray-700 for text, match Reviews */
+
+    &::placeholder {
+        color: #6b7280; /* Gray-500 for placeholder text, match Reviews */
+    }
+
+    &:focus {
+        border-color: transparent; /* Remove border on focus, match Reviews */
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), match Reviews */
+        background-color: white; /* White background on focus, match Reviews */
+    }
+}
+
+/* Button group (Add, Delete, Restore) - positioned on the right, match Reviews */
+.button-group {
+    display: flex;
+    gap: 8px; /* Match Reviews button gap */
+    align-items: center; /* Match Reviews button alignment */
+    margin-left: auto; /* Position to the right, match Reviews */
+}
+
+.button-group .add-button {
+    background-color: #2A363B; /* Blue for Add button, match Reviews */
+    color: white;
+    padding: 8px 16px; /* Match Reviews button padding */
+    border-radius: 4px; /* Match Reviews button border radius */
+    font-size: 14px; /* Match Reviews font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Match Reviews transition */
+
+    &:hover {
+        background-color: #4169e1; /* Darker blue on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+    }
+
+    &:hover:not(:disabled) { /* Match Reviews button hover */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Match Reviews button disabled state */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #4CAF50 !important;
+        border-color: #4CAF50 !important;
+    }
+}
+
+.button-group .delete-button {
+    background-color: #ef4444; /* Red for Delete button, match Reviews */
+    color: white;
+    padding: 8px 16px; /* Match Reviews button padding */
+    border-radius: 4px; /* Match Reviews button border radius */
+    font-size: 14px; /* Match Reviews font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Match Reviews transition */
+
+    &:hover {
+        background-color: #dc2626; /* Darker red on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+    }
+
+    &:hover:not(:disabled) { /* Match Reviews button hover */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Match Reviews button disabled state */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #ffcccc !important; /* Light reddish, match Reviews */
+        border-color: #ffcccc !important;
+    }
+}
+
+.button-group .restore-button {
+    background-color: #1e90ff; /* Blue for Restore button, match Reviews */
+    color: white;
+    padding: 8px 16px; /* Match Reviews button padding */
+    border-radius: 4px; /* Match Reviews button border radius */
+    font-size: 14px; /* Match Reviews font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Match Reviews transition */
+
+    &:hover {
+        background-color: #4169e1; /* Darker blue on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+    }
+
+    &:hover:not(:disabled) { /* Match Reviews button hover */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Match Reviews button disabled state */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #cce5ff !important; /* Light bluish, match Reviews */
+        border-color: #cce5ff !important;
+    }
+}
+
+/* View toggle, match Reviews */
+.view-toggle {
+    display: flex;
+    gap: 4px; /* Further reduced gap to move content up, match Reviews */
+    margin-top: 4px; /* Further reduced margin to move content up, match Reviews */
+}
+
+.view-button {
+    background-color: #e5e7eb; /* Gray-200, match Reviews */
+    color: #4a5568; /* Gray-700, match Reviews */
+    padding: 8px 16px; /* Match Reviews button padding */
+    border-radius: 4px; /* Match Reviews button border radius */
+    font-size: 14px; /* Match Reviews font size */
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Match Reviews transition */
+
+    &:hover {
+        background-color: #d1d5db; /* Gray-300 on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+    }
+
+    &.active {
+        background-color: #4a5568; /* Gray-700, match Reviews */
+        color: white; /* Match Reviews active button color */
+        border-color: #4a5568; /* Match Reviews active border */
+    }
+}
+
+/* Products table */
+.products-table {
+    width: 100%;
+    margin-bottom: 24px; /* Match Reviews margin */
+    border-collapse: collapse; /* Match Reviews table style */
+    table-layout: fixed; /* Ensure fixed layout to prevent overlap */
+    margin-top: 0; /* Match Reviews table margin */
+    padding-top: 0;
+}
+
+/* Table header row */
+.table-header-row {
+    background-color: #e5e7eb; /* Gray-200, match Reviews */
+    color: #4a5568; /* Gray-700, match Reviews */
+    font-size: 16px; /* Match Reviews header font size */
+    font-weight: 600; /* Match Reviews header weight */
+    padding: 8px; /* Match Reviews header padding */
+}
+
+/* Table headers and cells */
+.table-header,
+.table-cell {
+    padding: 12px; /* Match Reviews cell padding */
+    text-align: left; /* Match Reviews alignment */
+    border: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
+    font-size: 16px; /* Match Reviews font size */
+    overflow: hidden; /* Prevent text overflow */
+    text-overflow: ellipsis; /* Show ellipsis for long text */
+    white-space: nowrap; /* Prevent wrapping */
+}
+
+/* Specific column widths to prevent overlapping */
+.table-header:first-child,
+.table-cell:first-child {
+    width: 50px; /* Fixed width for checkbox column, match Reviews */
+    text-align: center; /* Center-align checkbox, match Reviews */
+}
+
+.table-header.products-action-column,
+.table-cell.products-action-column {
+    width: 80px; /* Fixed width for Action column, match Reviews */
+    text-align: center; /* Center-align actions, match Reviews */
+}
+
+.table-header.product-image-column,
+.table-cell.product-image-column {
+    width: 80px; /* Fixed width for image column, match Reviews */
+    text-align: center; /* Center-align images, match Reviews */
+}
+
+.table-header.product-name-column,
+.table-cell.product-name-column {
+    width: 150px; /* Fixed width for Product Name, prevent overlap */
+    text-align: left; /* Match Reviews alignment */
+}
+
+.table-header.product-description-column,
+.table-cell.product-description-column {
+    width: 250px; /* Increased width for Description column to prevent overlap and allow more content */
+    text-align: left; /* Match Reviews alignment */
+}
+
+.table-header.product-stock-column,
+.table-cell.product-stock-column {
+    width: 80px; /* Fixed width for Stocks, prevent overlap */
+    text-align: center; /* Center-align numeric data, match Reviews */
+}
+
+.table-header.product-price-column,
+.table-cell.product-price-column {
+    width: 100px; /* Fixed width for Price, prevent overlap */
+    text-align: right; /* Right-align currency, match Reviews */
+}
+
+.table-header.product-category-column,
+.table-cell.product-category-column {
+    width: 100px; /* Fixed width for Category, prevent overlap */
+    text-align: left; /* Match Reviews alignment */
+}
+
+.table-header.product-color-column,
+.table-cell.product-color-column {
+    width: 100px; /* Fixed width for Color, prevent overlap */
+    text-align: left; /* Match Reviews alignment */
+}
+
+.table-header.product-wrist-column,
+.table-cell.product-wrist-column {
+    width: 120px; /* Fixed width for Wrist Measurement, prevent overlap */
+    text-align: left; /* Match Reviews alignment */
+}
+
+.table-header.product-created-column,
+.table-cell.product-created-column {
+    width: 120px; /* Fixed width for Created At, prevent overlap */
+    text-align: left; /* Match Reviews alignment */
+}
+
+/* Table row */
+.table-row {
+    border-bottom: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
+    min-height: 40px; /* Match Reviews row height */
+}
+
+/* Checkbox column header and cell alignment (only checkbox in header, checkbox and actions in rows) */
+.product-checkbox {
+    width: 20px; /* Match Reviews checkbox size */
+    height: 20px; /* Match Reviews checkbox size */
+    cursor: pointer;
+    margin: 0; /* Match Reviews margin */
+}
+
+/* Action icons (Edit, Delete, Restore), match Reviews */
+.edit-icon {
+    color: #6b7280; /* Gray-500, match Reviews */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Match Reviews transition */
+    vertical-align: middle; /* Match Reviews alignment */
+    display: inline-block; /* Match Reviews display */
+    text-align: center; /* Match Reviews alignment */
+
+    &:hover {
+        color: #4a5568; /* Gray-700 on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+    }
+}
+
+.delete-icon {
+    color: #6b7280; /* Gray-500, match Reviews */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Match Reviews transition */
+    vertical-align: middle; /* Match Reviews alignment */
+    display: inline-block; /* Match Reviews display */
+    text-align: center; /* Match Reviews alignment */
+
+    &:hover {
+        color: #4a5568; /* Gray-700 on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+    }
+}
+
+.restore-icon {
+    color: #6b7280; /* Gray-500, match Reviews */
+    cursor: pointer;
+    transition: color 0.3s ease; /* Match Reviews transition */
+    vertical-align: middle; /* Match Reviews alignment */
+    display: inline-block; /* Match Reviews display */
+    text-align: center; /* Match Reviews alignment */
+
+    &:hover {
+        color: #4a5568; /* Gray-700 on hover, match Reviews */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+    }
+}
+
+.action-buttons {
+    display: flex; /* Match Reviews layout for action buttons */
+    gap: 16px; /* Match Reviews gap between icons */
+    align-items: center; /* Match Reviews alignment */
+    justify-content: center; /* Match Reviews justification */
+}
+
+/* Image column styles */
+.product-image {
+    max-width: 60px; /* Ensure image fits within column, match Reviews icon size */
+    max-height: 60px; /* Ensure image fits within column, match Reviews icon size */
+    vertical-align: middle; /* Center vertically, match Reviews */
+}
+
+/* Empty state for no products */
+.products-table tbody td[colspan="11"] {
+    text-align: center;
+    padding: 20px; /* Match Reviews padding */
+    background-color: #f9f9f9; /* Light gray, match Reviews empty state */
+}
+
+/* Pagination, match Reviews */
+.table-pagination {
+    display: flex;
+    justify-content: flex-start; /* Match Reviews alignment */
+    margin-top: 16px; /* Match Reviews margin */
+    gap: 8px; /* Match Reviews gap */
+}
+
+.table-pagination-button {
+    background-color: #e5e7eb; /* Gray-200, match Reviews */
+    color: #000000; /* Black text, match Reviews */
+    border: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
+    padding: 8px 16px; /* Match Reviews button padding */
+    margin-right: 0; /* Match Reviews margin */
+    border-radius: 4px; /* Match Reviews border radius */
+    font-size: 14px; /* Match Reviews font size */
+    cursor: pointer;
+    transition: background-color 0.2s; /* Match Reviews transition */
+
+    &:hover:not(:disabled) {
+        background-color: #d1d5db; /* Gray-300 on hover, match Reviews */
+    }
+
+    &.active {
+        background-color: #4a5568; /* Gray-700, match Reviews */
+        color: white; /* Match Reviews active button color */
+        border-color: #4a5568; /* Match Reviews active border */
+    }
+
+    &:disabled {
+        opacity: 0.5; /* Match Reviews disabled state */
+        cursor: not-allowed;
+    }
+}
+
+/* Responsive adjustments, match Reviews */
+@media (max-width: 767px) {
+    .products-container {
+        padding: 4px; /* Further reduced padding for mobile, match Reviews */
+    }
+
+    .products-header {
+        margin-bottom: 2px; /* Further reduced margin for mobile, match Reviews */
+    }
+
+    .table-header-actions {
+        flex-direction: column; /* Stack vertically on mobile, match Reviews */
+        gap: 2px; /* Further reduced gap for mobile, match Reviews */
+        align-items: flex-end; /* Align to right, match Reviews */
+    }
+
+    .search-bar .search-input {
+        max-width: 100%; /* Full width on mobile, match Reviews */
+    }
+
+    .button-group {
+        width: 100%; /* Full width on mobile, match Reviews */
+        justify-content: flex-end; /* Align buttons to right on mobile, match Reviews */
+    }
+
+    .products-table .table-header,
+    .products-table .table-cell {
+        padding: 8px; /* Slightly reduce padding on mobile, match Reviews */
+        font-size: 14px; /* Reduce font size on mobile, match Reviews */
+    }
+
+    .table-header-row {
+        font-size: 14px; /* Reduce header font size on mobile, match Reviews */
+        padding: 6px; /* Reduce padding on mobile, match Reviews */
+    }
+
+    .table-row {
+        min-height: 32px; /* Reduce row height on mobile, match Reviews */
+    }
+
+    .product-checkbox {
+        width: 16px; /* Reduce checkbox size on mobile, match Reviews */
+        height: 16px; /* Reduce checkbox size on mobile, match Reviews */
+    }
+
+    .edit-icon,
+    .delete-icon,
+    .restore-icon {
+        size: 16px; /* Reduce icon size on mobile, match Reviews */
+        margin-left: 4px; /* Adjust margin on mobile, match Reviews */
+    }
+
+    .product-image {
+        max-width: 40px; /* Reduce image size on mobile, match Reviews icon size */
+        max-height: 40px; /* Reduce image size on mobile, match Reviews icon size */
+    }
+}

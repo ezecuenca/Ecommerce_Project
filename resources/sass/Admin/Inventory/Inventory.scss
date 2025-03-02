@@ -1,0 +1,393 @@
+.Inventory {
+    .inventory-container {
+        padding: 24px;
+        background-color: white;
+    }
+
+    .inventory-container .h2 {
+        font-size: 24px;
+        font-weight: bold; /* Explicitly set to bold */
+        color: #000000;
+        margin-bottom: 16px;
+    }
+
+    .table-container {
+        position: relative;
+    }
+
+    .inventory-table-header-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        margin-bottom: 0; /* Removed margin to align with other files */
+        visibility: visible;
+    }
+
+    .search-bar {
+        display: flex;
+        align-items: center;
+    }
+
+    .search-bar .search-input {
+        border: 1px solid #d1d5db;
+        border-radius: 9999px;
+        padding: 8px 12px;
+        width: 100%;
+        max-width: 240px;
+        font-size: 14px;
+        height: 32px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+
+        &::placeholder {
+            color: #6b7280;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #3b82f6;
+            background-color: white;
+        }
+    }
+
+    .button-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        margin-left: auto;
+        visibility: visible;
+    }
+
+    .delete-button {
+        background-color: #ef4444; /* Red-500, matching Delete button style */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        visibility: visible;
+
+        &:hover {
+            background-color: #dc2626; /* Red-600 on hover */
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #ffcccc;
+            border-color: #ffcccc;
+        }
+    }
+
+    .restore-button {
+        background-color: #2A363B; /* Blue-500, matching Restore button style */
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        visibility: visible;
+
+        &:hover {
+            background-color: #2563eb; /* Blue-600 on hover */
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #2A363B; /* Blue ring (Tailwind's blue-500) */
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background-color: #cce5ff;
+            border-color: #cce5ff;
+        }
+    }
+
+    .view-toggle {
+        display: flex;
+        gap: 4px;
+        margin-top: 4px; /* Small margin to align with other files */
+        visibility: visible;
+    }
+
+    .view-button {
+        background-color: #e5e7eb;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #d1d5db;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+
+        &.active {
+            background-color: #4a5568;
+            color: white;
+            border-color: #4a5568;
+        }
+    }
+
+    .recently-sold {
+        width: 100%;
+        margin-bottom: 24px;
+        border-collapse: collapse;
+    }
+
+    .recently-sold .thead {
+        background-color: #e5e7eb;
+        color: #4a5568;
+        font-size: 16px;
+        font-weight: 600;
+        padding: 8px;
+    }
+
+    .recently-sold .th,
+    .recently-sold .td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #e5e7eb;
+        font-size: 16px;
+    }
+
+    .recently-sold .tr {
+        border-bottom: 1px solid #e5e7eb;
+        min-height: 40px;
+    }
+
+    .recently-sold .th:first-child,
+    .recently-sold .td:first-child {
+        width: 40px; /* Narrow width for checkbox-only column */
+        text-align: center;
+    }
+
+    .recently-sold .th:nth-child(2),
+    .recently-sold .td:nth-child(2) {
+        width: 80px; /* Fixed width for action column (icons) */
+        text-align: center;
+    }
+
+    .recently-sold .th:nth-child(3),
+    .recently-sold .td:nth-child(3) {
+        width: 200px; /* Product Name column width */
+        text-align: left;
+    }
+
+    .recently-sold .th:nth-child(4),
+    .recently-sold .td:nth-child(4) {
+        width: 100px; /* Status column width */
+        text-align: left;
+    }
+
+    .recently-sold .th:nth-child(5),
+    .recently-sold .td:nth-child(5),
+    .recently-sold .th:nth-child(6),
+    .recently-sold .td:nth-child(6),
+    .recently-sold .th:nth-child(7),
+    .recently-sold .td:nth-child(7),
+    .recently-sold .th:nth-child(8),
+    .recently-sold .td:nth-child(8) {
+        width: 120px; /* Price, Quantity Sold, Total Amount, Profit column widths */
+        text-align: left;
+    }
+
+    .inventory-checkbox {
+        width: 16px; /* 1rem = 16px */
+        height: 16px; /* 1rem = 16px */
+        border: 1px solid #d1d5db; /* Gray-300, matching other files */
+        border-radius: 4px; /* 0.25rem = 4px */
+        cursor: pointer;
+        background-color: white;
+        vertical-align: middle; /* Ensure vertical alignment */
+        margin: 0; /* Remove default margin for precise control */
+        display: inline-block; /* Use inline-block for side-by-side positioning */
+        margin-right: 8px; /* Add spacing between checkbox and action icons, matching other files */
+    }
+
+    .action-buttons {
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+    }
+
+    .edit-icon {
+        color: #6b7280;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #4a5568;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .delete-icon {
+        color: #ef4444;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #dc2626;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .restore-icon {
+        color: #2A363B;
+        cursor: pointer;
+        transition: color 0.3s ease;
+
+        &:hover {
+            color: #2563eb;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .status {
+        font-weight: 600;
+    }
+
+    .in-stock {
+        color: #4CAF50;
+    }
+
+    .out-stock {
+        color: #ef4444;
+    }
+
+    .inventory-quantity-sold,
+    .inventory-total-amount {
+        text-align: right;
+    }
+
+    .inventory-pagination {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 16px;
+        gap: 8px;
+    }
+
+    .inventory-pagination button {
+        background-color: #e5e7eb;
+        color: #000000;
+        border: 1px solid #e5e7eb;
+        padding: 4px 8px;
+        margin-right: 0;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s;
+
+        &:hover:not(:disabled) {
+            background-color: #d1d5db;
+        }
+
+        &.active {
+            background-color: #4a5568;
+            color: white;
+            border-color: #4a5568;
+        }
+
+        &:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .Inventory {
+        .inventory-container {
+            padding: 16px;
+        }
+
+        .inventory-container .h2 {
+            margin-bottom: 8px;
+        }
+
+        .inventory-table-header-actions {
+            flex-direction: column;
+            gap: 2px;
+            align-items: flex-end;
+        }
+
+        .button-group {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .search-bar .search-input {
+            max-width: 100%;
+        }
+
+        .view-toggle {
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .view-button {
+            width: 100%;
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .recently-sold .th,
+        .recently-sold .td {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .recently-sold .thead {
+            font-size: 14px;
+            padding: 6px;
+        }
+
+        .recently-sold .tr {
+            min-height: 32px;
+        }
+
+        .inventory-checkbox {
+            width: 14px; /* Slightly smaller on mobile */
+            height: 14px; /* Slightly smaller on mobile */
+        }
+
+        .edit-icon,
+        .delete-icon,
+        .restore-icon {
+            size: 16px;
+        }
+    }
+}

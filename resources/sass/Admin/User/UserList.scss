@@ -1,0 +1,438 @@
+.users-container {
+    padding: 8px;
+    background-color: white;
+    position: relative;
+    margin: 0;
+    display: block;
+}
+
+.users-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 4px;
+    margin-top: 0;
+}
+
+.table-container {
+    position: relative;
+    min-height: 200px;
+    overflow-x: auto;
+    margin-top: 0;
+    padding-top: 0;
+    display: block;
+}
+
+.table-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 0;
+    visibility: visible;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar .search-input {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 240px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f3f4f6;
+    color: #4a5568;
+    visibility: visible;
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: #d1d5db;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+.button-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-left: auto;
+    visibility: visible;
+}
+
+.button-group .add-button {
+    background-color: #2A363B;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    visibility: visible;
+
+    &:hover {
+        background-color: #4169e1;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: #cce5ff;
+        border-color: #cce5ff;
+    }
+}
+
+.button-group .delete-button {
+    background-color: #ef4444;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    visibility: visible;
+
+    &:hover {
+        background-color: #dc2626;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: #ffcccc;
+        border-color: #ffcccc;
+    }
+}
+
+.button-group .restore-button {
+    background-color: #1e90ff;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    visibility: visible;
+
+    &:hover {
+        background-color: #4169e1;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: #cce5ff;
+        border-color: #cce5ff;
+    }
+}
+
+.view-toggle {
+    display: flex;
+    gap: 4px;
+    margin-top: 4px;
+    visibility: visible;
+}
+
+.view-button {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    visibility: visible;
+
+    &:hover {
+        background-color: #d1d5db;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &.active {
+        background-color: #4a5568;
+        color: white;
+        border-color: #4a5568;
+    }
+}
+
+.users-table {
+    width: 100%;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 0;
+    padding-top: 0;
+    display: table;
+    visibility: visible;
+}
+
+.table-header-row {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px;
+}
+
+.table-header,
+.table-cell {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #e5e7eb;
+    font-size: 16px;
+    visibility: visible;
+}
+
+.table-row {
+    border-bottom: 1px solid #e5e7eb;
+    min-height: 40px;
+    visibility: visible;
+}
+
+.table-header:first-child,
+.table-cell:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+.table-header.users-action-column,
+.table-cell.users-action-column {
+    width: 120px;
+    text-align: left;
+    visibility: visible;
+}
+
+.users-table .table-row[view-type="archived"] .table-header.users-action-column,
+.users-table .table-row[view-type="archived"] .table-cell.users-action-column,
+.users-table .table-row.view-type-archived .users-action-column {
+    width: 120px;
+    visibility: visible;
+}
+
+.table-header:nth-child(3),
+.table-cell:nth-child(3) {
+    width: 200px;
+    text-align: left;
+    visibility: visible;
+}
+
+.table-header:nth-child(4),
+.table-cell:nth-child(4),
+.table-header:nth-child(5),
+.table-cell:nth-child(5),
+.table-header:nth-child(6),
+.table-cell:nth-child(6) {
+    text-align: left;
+    visibility: visible;
+}
+
+.user-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+    visibility: visible;
+}
+
+.edit-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    visibility: visible;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.delete-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    visibility: visible;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.restore-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+    visibility: visible;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+}
+
+.users-table tbody td[colspan="6"] {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    visibility: visible;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+    gap: 8px;
+    visibility: visible;
+}
+
+.table-pagination-button {
+    background-color: #e5e7eb;
+    color: #000000;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px;
+    margin-right: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    visibility: visible;
+
+    &:hover:not(:disabled) {
+        background-color: #d1d5db;
+    }
+
+    &.active {
+        background-color: #4a5568;
+        color: white;
+        border-color: #4a5568;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.table-header:nth-child(5),
+.table-cell:nth-child(5) {
+    width: 100px;
+    text-align: left;
+    visibility: visible;
+}
+
+.status-active {
+    color: #22c55e;
+    font-weight: 500;
+}
+
+.status-inactive {
+    color: #f97316;
+    font-weight: 500;
+}
+
+@media (max-width: 767px) {
+    .users-container {
+        padding: 4px;
+    }
+
+    .users-header {
+        margin-bottom: 2px;
+    }
+
+    .table-header-actions {
+        flex-direction: column;
+        gap: 2px;
+        align-items: flex-end;
+    }
+
+    .button-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .users-table .table-header,
+    .users-table .table-cell {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .table-header-row {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .table-row {
+        min-height: 32px;
+    }
+
+    .user-checkbox {
+        width: 16px;
+        height: 16px;
+    }
+
+    .edit-icon,
+    .delete-icon,
+    .restore-icon {
+        size: 16px;
+        margin-left: 4px;
+    }
+}

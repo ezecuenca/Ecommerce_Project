@@ -1,0 +1,232 @@
+/* ReviewManagement.scss */
+
+/* Edit Modal Overlay and Modal */
+.edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.edit-modal {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-modal-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+.error-message {
+    color: #ef4444; /* Red for errors */
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.edit-form-label {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.rating-input {
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 240px;
+    font-size: 14px;
+    height: 32px;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6;
+    color: #4a5568;
+    cursor: text;
+    pointer-events: auto;
+    user-select: text;
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+.review-input {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+    min-height: 100px;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6;
+    color: #4a5568;
+    cursor: text;
+    pointer-events: auto;
+    user-select: text;
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+/* Delete Modal Overlay and Modal */
+.delete-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.delete-modal {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-modal h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+/* Restore Modal Overlay and Modal */
+.restore-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.restore-modal {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.restore-modal h3 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+/* Button Group (Shared for all modals) */
+.button-group {
+    display: flex;
+    gap: 8px;
+}
+
+.save-button {
+    background-color: #ef4444; /* Red for delete and restore confirmation */
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #dc2626;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.cancel-button {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #d1d5db;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+/* Responsive Design (Shared for all modals) */
+@media (max-width: 767px) {
+    .edit-modal,
+    .delete-modal,
+    .restore-modal {
+        width: 90%;
+        padding: 16px;
+    }
+
+    .edit-modal-header,
+    .delete-modal h3,
+    .restore-modal h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+    }
+
+    .save-button,
+    .cancel-button {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}

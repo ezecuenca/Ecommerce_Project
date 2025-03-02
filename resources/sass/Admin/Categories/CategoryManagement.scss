@@ -1,0 +1,221 @@
+/* src/components/admin/CategoryManagement.scss */
+
+/* Scope all styles to prevent conflicts with CustomerManagement or other files */
+.CategoryManagement {
+    .edit-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+        display: flex !important;
+        justify-content: center !important; /* Center horizontally */
+        align-items: center !important; /* Center vertically */
+        z-index: 1000 !important;
+        isolation: isolate !important;
+        /* Fallback for older browsers or conflicts */
+        -webkit-align-items: center !important;
+        -webkit-justify-content: center !important;
+        /* Prevent parent interference */
+        transform: none !important;
+        will-change: transform, opacity !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .edit-modal {
+        background-color: white !important;
+        padding: 24px !important;
+        border-radius: 8px !important;
+        width: 400px !important;
+        max-width: 90% !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    .edit-modal-header {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        color: #000000 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .error-message {
+        color: #ef4444 !important;
+        margin-bottom: 12px !important;
+        font-size: 14px !important;
+    }
+
+    .edit-form {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 16px !important;
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+    }
+
+    .edit-form-label {
+        font-size: 16px !important;
+        color: #4a5568 !important;
+        margin-bottom: 8px !important;
+        text-align: left !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        padding-left: 4px !important;
+    }
+
+    .category-input {
+        border: 1px solid #d1d5db !important;
+        border-radius: 4px !important;
+        padding: 8px 12px !important;
+        width: 100% !important;
+        max-width: 380px !important;
+        font-size: 14px !important;
+        height: 32px !important;
+        outline: none !important;
+        box-sizing: border-box !important;
+        background-color: #f3f4f6 !important;
+        color: #4a5568 !important;
+        cursor: text !important;
+        pointer-events: auto !important;
+        user-select: text !important;
+        margin: 0 auto !important;
+        display: block !important;
+
+        &::placeholder {
+            color: #6b7280 !important;
+        }
+
+        &:focus {
+            border-color: transparent !important;
+            box-shadow: 0 0 0 2px #3b82f6 !important;
+            background-color: white !important;
+        }
+    }
+
+    .delete-modal-overlay {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+        display: flex !important;
+        justify-content: center !important; /* Center horizontally */
+        align-items: center !important; /* Center vertically */
+        z-index: 1000 !important;
+        isolation: isolate !important;
+        /* Fallback for older browsers or conflicts */
+        -webkit-align-items: center !important;
+        -webkit-justify-content: center !important;
+        /* Prevent parent interference */
+        transform: none !important;
+        will-change: transform, opacity !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    .delete-modal {
+        background-color: white !important;
+        padding: 24px !important;
+        border-radius: 8px !important;
+        width: 400px !important;
+        max-width: 90% !important;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+        text-align: center !important;
+        position: relative !important;
+    }
+
+    .delete-modal h3 {
+        font-size: 20px !important;
+        font-weight: bold !important;
+        color: #000000 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .delete-modal p {
+        font-size: 16px !important;
+        color: #4a5568 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .button-group {
+        display: flex !important;
+        gap: 8px !important;
+        justify-content: center !important;
+    }
+
+    .save-button {
+        background-color: #2A363B !important; /* Blue-500 for "Yes, Delete" */
+        color: white !important;
+        padding: 8px 16px !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: background-color 0.3s ease !important;
+
+        &:hover {
+            background-color: #2563eb !important; /* Blue-600 on hover */
+        }
+
+        &:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+        }
+    }
+
+    .cancel-button {
+        background-color: #e5e7eb !important; /* Gray-200 for "Cancel" */
+        color: #4a5568 !important;
+        padding: 8px 16px !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+        border: none !important;
+        cursor: pointer !important;
+        transition: background-color 0.3s ease !important;
+
+        &:hover {
+            background-color: #d1d5db !important; /* Gray-300 on hover */
+        }
+
+        &:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .CategoryManagement {
+        .edit-modal,
+        .delete-modal {
+            width: 90% !important;
+            padding: 16px !important;
+        }
+
+        .edit-modal-header,
+        .delete-modal h3 {
+            font-size: 18px !important;
+            margin-bottom: 12px !important;
+        }
+
+        .category-input {
+            width: 100% !important;
+            max-width: 340px !important;
+            font-size: 12px !important;
+            padding: 6px 10px !important;
+            height: 28px !important;
+        }
+
+        .save-button,
+        .cancel-button {
+            padding: 6px 12px !important;
+            font-size: 12px !important;
+        }
+    }
+}

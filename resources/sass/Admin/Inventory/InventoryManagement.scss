@@ -1,0 +1,201 @@
+/* resources/js/components/Admin/InventoryManagement.scss */
+
+/* Scope all styles to prevent conflicts with other files */
+.InventoryManagement {
+    .edit-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .edit-modal {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        max-width: 90%;
+        text-align: center;
+        position: relative;
+    }
+
+    .edit-modal h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 16px;
+    }
+
+    .error-message {
+        color: #ef4444;
+        margin-bottom: 12px;
+        font-size: 14px;
+    }
+
+    .edit-form {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .edit-form label {
+        font-size: 16px;
+        color: #4a5568;
+        margin-bottom: 8px;
+        text-align: left;
+    }
+
+    .stock-input {
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        padding: 8px 12px;
+        width: 100%;
+        max-width: 380px;
+        font-size: 14px;
+        height: 32px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+
+        &::placeholder {
+            color: #6b7280;
+        }
+
+        &:focus {
+            border-color: transparent;
+            box-shadow: 0 0 0 2px #3b82f6;
+            background-color: white;
+        }
+    }
+
+    .button-group {
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    .save-button {
+        background-color: #2A363B;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #2563eb;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .cancel-button {
+        background-color: #e5e7eb;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #d1d5db;
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6;
+        }
+    }
+
+    .delete-modal-overlay,
+    .restore-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .delete-modal,
+    .restore-modal {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        width: 400px;
+        max-width: 90%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        position: relative;
+    }
+
+    .delete-modal h3,
+    .restore-modal h3 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 16px;
+    }
+
+    .delete-modal p,
+    .restore-modal p {
+        font-size: 16px;
+        color: #4a5568;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 767px) {
+    .InventoryManagement {
+        .edit-modal,
+        .delete-modal,
+        .restore-modal {
+            width: 90%;
+            padding: 16px;
+        }
+
+        .edit-modal h3,
+        .delete-modal h3,
+        .restore-modal h3 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .error-message {
+            font-size: 12px;
+        }
+
+        .stock-input {
+            width: 100%;
+            max-width: 340px;
+            font-size: 12px;
+            padding: 6px 10px;
+            height: 28px;
+        }
+
+        .save-button,
+        .cancel-button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+    }
+}

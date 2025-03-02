@@ -72707,10 +72707,10 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
-/***/ "./resources/js/components/AdminDashboard.js":
-/*!***************************************************!*\
-  !*** ./resources/js/components/AdminDashboard.js ***!
-  \***************************************************/
+/***/ "./resources/js/components/Admin/AdminDashboard.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/Admin/AdminDashboard.js ***!
+  \*********************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72721,19 +72721,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _AdminNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminNav */ "./resources/js/components/AdminNav.js");
-/* harmony import */ var _Dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard */ "./resources/js/components/Dashboard.js");
-/* harmony import */ var _PersonalIinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./PersonalIinfo */ "./resources/js/components/PersonalIinfo.js");
-/* harmony import */ var _Orders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Orders */ "./resources/js/components/Orders.js");
-/* harmony import */ var _Inventory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Inventory */ "./resources/js/components/Inventory.js");
-/* harmony import */ var _Reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Reviews */ "./resources/js/components/Reviews.js");
-/* harmony import */ var _ProductList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ProductList */ "./resources/js/components/ProductList.js");
-/* harmony import */ var _UserList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./UserList */ "./resources/js/components/UserList.js");
-/* harmony import */ var _CustomerList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./CustomerList */ "./resources/js/components/CustomerList.js");
-/* harmony import */ var _Categories__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Categories */ "./resources/js/components/Categories.js");
-/* harmony import */ var _WatchColor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./WatchColor */ "./resources/js/components/WatchColor.js");
-/* harmony import */ var _WristMeasurement__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./WristMeasurement */ "./resources/js/components/WristMeasurement.js");
-/* harmony import */ var _Roles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Roles */ "./resources/js/components/Roles.js");
+/* harmony import */ var _AdminNav__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AdminNav */ "./resources/js/components/Admin/AdminNav.js");
+/* harmony import */ var _Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Dashboard/Dashboard */ "./resources/js/components/Admin/Dashboard/Dashboard.js");
+/* harmony import */ var _Info_PersonalIinfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Info/PersonalIinfo */ "./resources/js/components/Admin/Info/PersonalIinfo.js");
+/* harmony import */ var _Orders_Orders__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Orders/Orders */ "./resources/js/components/Admin/Orders/Orders.js");
+/* harmony import */ var _Inventory_Inventory__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Inventory/Inventory */ "./resources/js/components/Admin/Inventory/Inventory.js");
+/* harmony import */ var _Reviews_Reviews__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Reviews/Reviews */ "./resources/js/components/Admin/Reviews/Reviews.js");
+/* harmony import */ var _Products_ProductList__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Products/ProductList */ "./resources/js/components/Admin/Products/ProductList.js");
+/* harmony import */ var _User_UserList__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./User/UserList */ "./resources/js/components/Admin/User/UserList.js");
+/* harmony import */ var _Customer_CustomerList__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./Customer/CustomerList */ "./resources/js/components/Admin/Customer/CustomerList.js");
+/* harmony import */ var _Categories_Categories__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./Categories/Categories */ "./resources/js/components/Admin/Categories/Categories.js");
+/* harmony import */ var _Color_WatchColor__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./Color/WatchColor */ "./resources/js/components/Admin/Color/WatchColor.js");
+/* harmony import */ var _Measurement_WristMeasurement__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./Measurement/WristMeasurement */ "./resources/js/components/Admin/Measurement/WristMeasurement.js");
+/* harmony import */ var _Roles_Roles__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./Roles/Roles */ "./resources/js/components/Admin/Roles/Roles.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -72770,31 +72770,31 @@ var AdminDashboard = function AdminDashboard() {
   var renderContent = function renderContent() {
     switch (activeSection) {
       case "dashboard":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {});
       case "personal-info":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_PersonalIinfo__WEBPACK_IMPORTED_MODULE_3__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Info_PersonalIinfo__WEBPACK_IMPORTED_MODULE_3__["default"], {});
       case "orders":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Orders__WEBPACK_IMPORTED_MODULE_4__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Orders_Orders__WEBPACK_IMPORTED_MODULE_4__["default"], {});
       case "inventory":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Inventory__WEBPACK_IMPORTED_MODULE_5__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Inventory_Inventory__WEBPACK_IMPORTED_MODULE_5__["default"], {});
       case "reviews":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Reviews__WEBPACK_IMPORTED_MODULE_6__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Reviews_Reviews__WEBPACK_IMPORTED_MODULE_6__["default"], {});
       case "product-list":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_ProductList__WEBPACK_IMPORTED_MODULE_7__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Products_ProductList__WEBPACK_IMPORTED_MODULE_7__["default"], {});
       case "user-list":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_UserList__WEBPACK_IMPORTED_MODULE_8__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_User_UserList__WEBPACK_IMPORTED_MODULE_8__["default"], {});
       case "customer-list":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_CustomerList__WEBPACK_IMPORTED_MODULE_9__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Customer_CustomerList__WEBPACK_IMPORTED_MODULE_9__["default"], {});
       case "categories":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Categories__WEBPACK_IMPORTED_MODULE_10__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Categories_Categories__WEBPACK_IMPORTED_MODULE_10__["default"], {});
       case "watch-color":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_WatchColor__WEBPACK_IMPORTED_MODULE_11__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Color_WatchColor__WEBPACK_IMPORTED_MODULE_11__["default"], {});
       case "wrist-measurement":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_WristMeasurement__WEBPACK_IMPORTED_MODULE_12__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Measurement_WristMeasurement__WEBPACK_IMPORTED_MODULE_12__["default"], {});
       case "roles":
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Roles__WEBPACK_IMPORTED_MODULE_13__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Roles_Roles__WEBPACK_IMPORTED_MODULE_13__["default"], {});
       default:
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {});
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsx)(_Dashboard_Dashboard__WEBPACK_IMPORTED_MODULE_2__["default"], {});
     }
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_14__.jsxs)("div", {
@@ -72826,10 +72826,10 @@ var AdminDashboard = function AdminDashboard() {
 
 /***/ }),
 
-/***/ "./resources/js/components/AdminNav.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/AdminNav.js ***!
-  \*********************************************/
+/***/ "./resources/js/components/Admin/AdminNav.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Admin/AdminNav.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -72858,7 +72858,7 @@ var AdminNav = function AdminNav(_ref) {
     setSettingsOpen = _useState2[1];
   var handleClick = function handleClick(section, e) {
     var isDropdownItem = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : false;
-    e.preventDefault(); // Prevent default navigation
+    e.preventDefault();
     onNavigate(section);
     if (!isDropdownItem && section !== "settings") {
       setSettingsOpen(false);
@@ -72866,7 +72866,7 @@ var AdminNav = function AdminNav(_ref) {
   };
   var toggleSettings = function toggleSettings(e) {
     e.preventDefault();
-    setSettingsOpen(!settingsOpen); // Toggle settings menu
+    setSettingsOpen(!settingsOpen);
   };
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "admin-sidebar",
@@ -73023,10 +73023,10 @@ var AdminNav = function AdminNav(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/components/Categories.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/Categories.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/Admin/Categories/Categories.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Admin/Categories/Categories.js ***!
+  \****************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -73036,48 +73036,183 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _CategoryManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CategoryManagement */ "./resources/js/components/Admin/Categories/CategoryManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/CategoryList.js
 
- // Kept FaEdit for consistency (no image needed for categories)
+ // Added FaUndo for Restore
+ // Assume a similar CategoryManagement component
 
 var CategoryList = function CategoryList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    checkedRows = _useState2[0],
+    setCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
+    isSelectAll = _useState4[0],
+    setIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    viewType = _useState6[0],
+    setViewType = _useState6[1]; // Categories can now have active/archived views
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    managementModalOpen = _useState8[0],
+    setManagementModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    managementType = _useState10[0],
+    setManagementType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedCategory = _useState12[0],
+    setSelectedCategory = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    name = _useState14[0],
+    setName = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState18 = _slicedToArray(_useState17, 2),
+    forceUpdate = _useState18[0],
+    setForceUpdate = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState20 = _slicedToArray(_useState19, 2),
+    currentPage = _useState20[0],
+    setCurrentPage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    searchQuery = _useState22[0],
+    setSearchQuery = _useState22[1];
+  var itemsPerPage = 5; // Match CustomerList pagination
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      name: "Men",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 2,
+      name: "Women",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 3,
+      name: "Unisex",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    },
+    // Added an archived category for testing
+    {
+      id: 4,
+      name: "Kids",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: true
+    }]),
+    _useState24 = _slicedToArray(_useState23, 2),
+    initialCategories = _useState24[0],
+    setInitialCategories = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialCategories),
+    _useState26 = _slicedToArray(_useState25, 2),
+    categories = _useState26[0],
+    setCategories = _useState26[1];
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedCategories = localStorage.getItem("categories");
+    var updatedCategories = _toConsumableArray(initialCategories);
+    if (savedCategories) {
+      try {
+        updatedCategories = JSON.parse(savedCategories).map(function (category) {
+          return _objectSpread(_objectSpread({}, category), {}, {
+            isArchived: category.isArchived !== undefined ? category.isArchived : false,
+            createdAt: category.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
+            updatedAt: category.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded categories from localStorage:", updatedCategories);
+      } catch (error) {
+        console.error("Error parsing categories from localStorage:", error);
+        updatedCategories = _toConsumableArray(initialCategories);
+        localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      }
+    } else {
+      console.log("Initialized with static categories:", initialCategories);
+      localStorage.setItem("categories", JSON.stringify(initialCategories));
+    }
+    setCategories(updatedCategories);
+    setInitialCategories(updatedCategories);
+    setCheckedRows({});
+    setIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!categories || categories.length === 0) {
+      console.warn("No categories data available, returning empty array.");
+      return [];
+    }
+    var filteredCategories = categories.filter(function (category) {
+      return category.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredCategories = filteredCategories.filter(function (category) {
+        return category.name.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+    }
+    return filteredCategories;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
     var newCheckedRows = {};
     if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
+      currentItems.forEach(function (_, index) {
         newCheckedRows[index] = true;
-        checkbox.checked = true;
       });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = true;
+        });
+      }
     } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
     }
     setCheckedRows(newCheckedRows);
   };
@@ -73086,110 +73221,476 @@ var CategoryList = function CategoryList() {
     setCheckedRows(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
     });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
+    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.category-checkbox')).filter(function (cb) {
+      return cb.checked;
+    }).length : 0);
     setIsSelectAll(allChecked);
   };
+  var handleDelete = function handleDelete() {
+    var categoryToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to delete - viewType:", viewType, "categoryToDelete:", categoryToDelete, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (categoryToDelete) {
+      if (viewType !== "active") {
+        alert("You can only delete from Active Categories.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedCategory([categoryToDelete]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one category to delete.");
+      return;
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Categories.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedCategory(getSelectedCategories());
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var categoryToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to restore - viewType:", viewType, "categoryToRestore:", categoryToRestore, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (categoryToRestore) {
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Categories.");
+        return;
+      }
+      console.log("Opening restore modal for single category:", categoryToRestore);
+      setManagementType("restore");
+      setSelectedCategory([categoryToRestore]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one category to restore.");
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Categories.");
+      return;
+    }
+    console.log("Opening restore modal for multiple categories:", getSelectedCategories());
+    setManagementType("restore");
+    setSelectedCategory(getSelectedCategories());
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    console.log("Current viewType:", viewType, "Opening Add modal");
+    setManagementType("add");
+    setName("");
+    setSelectedCategory(null);
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(category) {
+    console.log("Opening edit for category:", category);
+    setSelectedCategory(category);
+    setName(category.name || "");
+    setManagementType("edit");
+    setManagementModalOpen(true);
+  };
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for category name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setName(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedCategory) {
+    if (managementType === "edit") {
+      if (!selectedCategory) {
+        alert("No category selected for editing.");
+        return;
+      }
+      if (!validateName(newOrUpdatedCategory.name)) {
+        setError("Category name is required.");
+        return;
+      }
+      setError("");
+      var updatedCategories = categories.map(function (c) {
+        return c.id === selectedCategory.id ? _objectSpread(_objectSpread({}, newOrUpdatedCategory), {}, {
+          id: selectedCategory.id,
+          createdAt: selectedCategory.createdAt,
+          isArchived: selectedCategory.isArchived
+        }) : c;
+      });
+      setCategories(updatedCategories);
+      setInitialCategories(updatedCategories);
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      setManagementModalOpen(false);
+      setSelectedCategory(null);
+      setName("");
+      console.log("Edited category, updated categories:", updatedCategories);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+    } else if (managementType === "add") {
+      if (!validateName(newOrUpdatedCategory.name)) {
+        setError("Category name is required.");
+        return;
+      }
+      setError("");
+      var newCategory = {
+        id: Date.now(),
+        name: newOrUpdatedCategory.name.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New categories are active by default
+      };
+      var _updatedCategories = [newCategory].concat(_toConsumableArray(categories));
+      setCategories(_updatedCategories);
+      setInitialCategories(_updatedCategories);
+      localStorage.setItem("categories", JSON.stringify(_updatedCategories));
+      setManagementModalOpen(false);
+      setName("");
+      console.log("Added new category, updated categories:", _updatedCategories);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      setCurrentPage(1);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    console.log("Confirming action - managementType:", managementType, "items:", items);
+    if (managementType === "delete") {
+      var updatedCategories = categories.map(function (category) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === category.id;
+          })) {
+            return _objectSpread(_objectSpread({}, category), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === category.id) {
+            return _objectSpread(_objectSpread({}, category), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return category;
+      });
+      setCategories(updatedCategories);
+      setInitialCategories(updatedCategories);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("categories", JSON.stringify(updatedCategories));
+      console.log("Categories after delete:", updatedCategories);
+    } else if (managementType === "restore") {
+      var _updatedCategories2 = categories.map(function (category) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === category.id;
+          })) {
+            return _objectSpread(_objectSpread({}, category), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === category.id) {
+            return _objectSpread(_objectSpread({}, category), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return category;
+      });
+      setCategories(_updatedCategories2);
+      setInitialCategories(_updatedCategories2);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("categories", JSON.stringify(_updatedCategories2));
+      console.log("Categories after restore:", _updatedCategories2);
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedCategory(null);
+    setName("");
+    setError("");
+  };
+  var getSelectedCategories = function getSelectedCategories() {
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
 
-  // Sample data from the screenshot
-  var categories = [{
-    id: 1,
-    name: "Men",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 2,
-    name: "Women",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 3,
-    name: "Unisex",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "categories-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Category"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "add-button",
-          children: "Add"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
+  // Update checkedCount to count any checked rows (at least 1 enables Delete)
+  var checkedCount = Object.keys(checkedRows).filter(function (index) {
+    return checkedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "CategoryList",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "categories-header",
+      children: viewType === "active" ? "Active Categories" : "Archived Categories"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2 // Enable when at least one checkbox is checked
+              ,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Categories"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Categories"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "categories-table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "category-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header categories-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Category"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (category, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "category-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell categories-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(category);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(category);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(category);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: category.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: category.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: category.updatedAt
+              })]
+            }, category.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "5",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: categories.length === 0 ? "No categories available. Please check your data or refresh the page." : viewType === "active" ? "No active categories match your search." : "No archived categories match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "categories-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Category"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Updated at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: categories.map(function (category, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: category.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: category.createdAt
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: category.updatedAt
-            })]
-          }, category.id);
-        })
-      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CategoryManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      category: managementType === "edit" || managementType === "add" ? selectedCategory : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedCategory) ? selectedCategory : null,
+      selectedCategories: managementType === "restore" || managementType === "delete" ? selectedCategory || getSelectedCategories() : [],
+      name: name,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
     })]
   });
 };
@@ -73197,10 +73698,10 @@ var CategoryList = function CategoryList() {
 
 /***/ }),
 
-/***/ "./resources/js/components/CustomerList.js":
-/*!*************************************************!*\
-  !*** ./resources/js/components/CustomerList.js ***!
-  \*************************************************/
+/***/ "./resources/js/components/Admin/Categories/CategoryManagement.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Admin/Categories/CategoryManagement.js ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -73210,7 +73711,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -73224,182 +73724,1911 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/CustomerList.js
 
- // Kept FaEdit for consistency (no image needed for customers)
 
-var CustomerList = function CustomerList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+var CategoryManagement = function CategoryManagement(_ref) {
+  var type = _ref.type,
+    category = _ref.category,
+    selectedCategories = _ref.selectedCategories,
+    name = _ref.name,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name || ""),
     _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    localName = _useState2[0],
+    setLocalName = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("CategoryManagement rendered with type:", type, "category:", category, "name:", name, "selectedCategories:", selectedCategories);
+    if (type === "edit" && category) {
+      setLocalName(category.name || "");
+      console.log("Initializing edit for category:", category);
+    } else if (type === "add") {
+      setLocalName("");
+      console.log("Initializing add for new category");
+    }
+  }, [type, category, name, selectedCategories]);
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for category name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setLocalName(e.target.value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!category) {
+        alert("No category selected for editing.");
+        return;
+      }
+      if (!validateName(localName)) {
+        setError("Category name is required.");
+        return;
+      }
+      setError("");
+      var updatedCategory = _objectSpread(_objectSpread({}, category), {}, {
+        name: localName.trim(),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
       });
+      console.log("Saving updated category:", updatedCategory);
+      onSave(updatedCategory);
+      onClose();
+    } else if (type === "add") {
+      if (!validateName(localName)) {
+        setError("Category name is required.");
+        return;
+      }
+      setError("");
+      var newCategory = {
+        id: Date.now(),
+        name: localName.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New categories are active by default
+      };
+      console.log("Saving new category:", newCategory);
+      onSave(newCategory);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    console.log("Confirming action - type:", type, "selectedCategories:", selectedCategories);
+    if (type === "delete") {
+      if (!selectedCategories || selectedCategories.length === 0) {
+        alert("Please select at least one category to delete.");
+        return;
+      }
+      console.log("Confirming delete for categories:", selectedCategories);
+      onConfirm(selectedCategories);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedCategories || selectedCategories.length === 0) {
+        alert("Please select at least one category to restore.");
+        return;
+      }
+      console.log("Confirming restore for categories:", selectedCategories);
+      onConfirm(selectedCategories);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Category: ".concat((category === null || category === void 0 ? void 0 : category.name) || "Category") : "Add New Category";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "CategoryManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "edit-modal-header",
+            children: title
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Category Name:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localName,
+              onChange: handleNameChange,
+              className: "category-input",
+              placeholder: "Enter category name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
+          })]
+        })
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedCategories.length, " category(ies)?") : "Are you sure you want to restore ".concat(selectedCategories.length, " category(ies)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      onClick: handleCancel,
+      "data-testid": "".concat(type, "-overlay"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        "data-testid": "".concat(type, "-modal"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CategoryManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Color/WatchColor.js":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/Admin/Color/WatchColor.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _WatchColorManangement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WatchColorManangement */ "./resources/js/components/Admin/Color/WatchColorManangement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // Added FaUndo for Restore
+
+
+var WatchColor = function WatchColor() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    checkedRows = _useState2[0],
+    setCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isSelectAll = _useState4[0],
+    setIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    viewType = _useState6[0],
+    setViewType = _useState6[1]; // Colors can now have active/archived views
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    managementModalOpen = _useState8[0],
+    setManagementModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    managementType = _useState10[0],
+    setManagementType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedColor = _useState12[0],
+    setSelectedColor = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    name = _useState14[0],
+    setName = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState18 = _slicedToArray(_useState17, 2),
+    forceUpdate = _useState18[0],
+    setForceUpdate = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState20 = _slicedToArray(_useState19, 2),
+    currentPage = _useState20[0],
+    setCurrentPage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    searchQuery = _useState22[0],
+    setSearchQuery = _useState22[1];
+  var itemsPerPage = 5; // Match CategoryList pagination
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      name: "Red",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 2,
+      name: "Green",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 3,
+      name: "Blue",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    },
+    // Added an archived color for testing
+    {
+      id: 4,
+      name: "Yellow",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: true
+    }]),
+    _useState24 = _slicedToArray(_useState23, 2),
+    initialColors = _useState24[0],
+    setInitialColors = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialColors),
+    _useState26 = _slicedToArray(_useState25, 2),
+    colors = _useState26[0],
+    setColors = _useState26[1];
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedColors = localStorage.getItem("watchColors");
+    var updatedColors = _toConsumableArray(initialColors);
+    if (savedColors) {
+      try {
+        updatedColors = JSON.parse(savedColors).map(function (color) {
+          return _objectSpread(_objectSpread({}, color), {}, {
+            isArchived: color.isArchived !== undefined ? color.isArchived : false,
+            createdAt: color.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
+            updatedAt: color.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded colors from localStorage:", updatedColors);
+      } catch (error) {
+        console.error("Error parsing colors from localStorage:", error);
+        updatedColors = _toConsumableArray(initialColors);
+        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
+      }
     } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
+      console.log("Initialized with static colors:", initialColors);
+      localStorage.setItem("watchColors", JSON.stringify(initialColors));
+    }
+    setColors(updatedColors);
+    setInitialColors(updatedColors);
+    setCheckedRows({});
+    setIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!colors || colors.length === 0) {
+      console.warn("No colors data available, returning empty array.");
+      return [];
+    }
+    var filteredColors = colors.filter(function (color) {
+      return color.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredColors = filteredColors.filter(function (color) {
+        return color.name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
-    setCheckedRows(newCheckedRows);
+    return filteredColors;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    try {
+      var isChecked = e.target.checked;
+      setIsSelectAll(isChecked);
+      var newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          newCheckedRows[index] = true;
+        });
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setCheckedRows(newCheckedRows);
+    } catch (error) {
+      console.error("Error in handleSelectAll:", error);
+    }
+  };
+  var handleRowCheckbox = function handleRowCheckbox(index, e) {
+    try {
+      var isChecked = e.target.checked;
+      setCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.color-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setIsSelectAll(allChecked);
+    } catch (error) {
+      console.error("Error in handleRowCheckbox:", error);
+    }
+  };
+  var handleDelete = function handleDelete() {
+    var colorToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    try {
+      console.log("Attempting to delete - viewType:", viewType, "colorToDelete:", colorToDelete, "checkedRows:", checkedRows);
+      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+        return checkedRows[index];
+      }).map(function (index) {
+        return parseInt(index, 10);
+      });
+      if (colorToDelete) {
+        if (viewType !== "active") {
+          alert("You can only delete from Active Colors.");
+          return;
+        }
+        setManagementType("delete");
+        setSelectedColor([colorToDelete]);
+        setManagementModalOpen(true);
+        return;
+      }
+      var selectedCount = selectedIndices.length;
+      if (selectedCount < 1) {
+        alert("Please select at least one color to delete.");
+        return;
+      }
+      if (viewType !== "active") {
+        alert("You can only delete from Active Colors.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedColor(getSelectedColors());
+      setManagementModalOpen(true);
+    } catch (error) {
+      console.error("Error in handleDelete:", error);
+    }
+  };
+  var handleRestore = function handleRestore() {
+    var colorToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    try {
+      console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
+      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+        return checkedRows[index];
+      }).map(function (index) {
+        return parseInt(index, 10);
+      });
+      if (colorToRestore) {
+        if (viewType !== "archived") {
+          alert("You can only restore from Archived Colors.");
+          return;
+        }
+        console.log("Opening restore modal for single color:", colorToRestore);
+        setManagementType("restore");
+        setSelectedColor([colorToRestore]);
+        setManagementModalOpen(true);
+        return;
+      }
+      var selectedCount = selectedIndices.length;
+      if (selectedCount < 1) {
+        alert("Please select at least one color to restore.");
+        return;
+      }
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Colors.");
+        return;
+      }
+      console.log("Opening restore modal for multiple colors:", getSelectedColors());
+      setManagementType("restore");
+      setSelectedColor(getSelectedColors());
+      setManagementModalOpen(true);
+    } catch (error) {
+      console.error("Error in handleRestore:", error);
+    }
+  };
+  var handleAdd = function handleAdd() {
+    try {
+      console.log("Current viewType:", viewType, "Opening Add modal");
+      setManagementType("add");
+      setName("");
+      setSelectedColor(null);
+      setManagementModalOpen(true);
+    } catch (error) {
+      console.error("Error in handleAdd:", error);
+    }
+  };
+  var handleEdit = function handleEdit(color) {
+    try {
+      console.log("Opening edit for color:", color);
+      setSelectedColor(color);
+      setName(color.name || "");
+      setManagementType("edit");
+      setManagementModalOpen(true);
+    } catch (error) {
+      console.error("Error in handleEdit:", error);
+    }
+  };
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for color name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setName(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    try {
+      setSearchQuery(e.target.value);
+      setCurrentPage(1);
+    } catch (error) {
+      console.error("Error in handleSearchChange:", error);
+    }
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedColor) {
+    try {
+      if (managementType === "edit") {
+        if (!selectedColor) {
+          alert("No color selected for editing.");
+          return;
+        }
+        if (!validateName(newOrUpdatedColor.name)) {
+          setError("Color name is required.");
+          return;
+        }
+        setError("");
+        var updatedColors = colors.map(function (c) {
+          return c.id === selectedColor.id ? _objectSpread(_objectSpread({}, newOrUpdatedColor), {}, {
+            id: selectedColor.id,
+            createdAt: selectedColor.createdAt,
+            isArchived: selectedColor.isArchived
+          }) : c;
+        });
+        setColors(updatedColors);
+        setInitialColors(updatedColors);
+        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
+        setManagementModalOpen(false);
+        setSelectedColor(null);
+        setName("");
+        console.log("Edited color, updated colors:", updatedColors);
+        setForceUpdate(function (prev) {
+          return prev + 1;
+        });
+      } else if (managementType === "add") {
+        if (!validateName(newOrUpdatedColor.name)) {
+          setError("Color name is required.");
+          return;
+        }
+        setError("");
+        var newColor = {
+          id: Date.now(),
+          name: newOrUpdatedColor.name.trim(),
+          createdAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          isArchived: false // New colors are active by default
+        };
+        var _updatedColors = [newColor].concat(_toConsumableArray(colors));
+        setColors(_updatedColors);
+        setInitialColors(_updatedColors);
+        localStorage.setItem("watchColors", JSON.stringify(_updatedColors));
+        setManagementModalOpen(false);
+        setName("");
+        console.log("Added new color, updated colors:", _updatedColors);
+        setForceUpdate(function (prev) {
+          return prev + 1;
+        });
+        setCurrentPage(1);
+      }
+    } catch (error) {
+      console.error("Error in handleSaveEditOrAdd:", error);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    try {
+      console.log("Confirming action - managementType:", managementType, "items:", items);
+      if (managementType === "delete") {
+        var updatedColors = colors.map(function (color) {
+          if (Array.isArray(items)) {
+            if (items.some(function (item) {
+              return item.id === color.id;
+            })) {
+              return _objectSpread(_objectSpread({}, color), {}, {
+                isArchived: true,
+                updatedAt: new Date().toLocaleDateString('en-US', {
+                  month: '2-digit',
+                  day: '2-digit',
+                  year: '2-digit'
+                })
+              });
+            }
+          } else {
+            if (items.id === color.id) {
+              return _objectSpread(_objectSpread({}, color), {}, {
+                isArchived: true,
+                updatedAt: new Date().toLocaleDateString('en-US', {
+                  month: '2-digit',
+                  day: '2-digit',
+                  year: '2-digit'
+                })
+              });
+            }
+          }
+          return color;
+        });
+        setColors(updatedColors);
+        setInitialColors(updatedColors);
+        setCheckedRows({});
+        setIsSelectAll(false);
+        if (tableRef.current && viewType === "active") {
+          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+        setManagementModalOpen(false);
+        if (currentData.length === 0) {
+          setCurrentPage(1);
+        }
+        setForceUpdate(function (prev) {
+          return prev + 1;
+        });
+        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
+        console.log("Colors after delete:", updatedColors);
+      } else if (managementType === "restore") {
+        var _updatedColors2 = colors.map(function (color) {
+          if (Array.isArray(items)) {
+            if (items.some(function (item) {
+              return item.id === color.id;
+            })) {
+              return _objectSpread(_objectSpread({}, color), {}, {
+                isArchived: false,
+                updatedAt: new Date().toLocaleDateString('en-US', {
+                  month: '2-digit',
+                  day: '2-digit',
+                  year: '2-digit'
+                })
+              });
+            }
+          } else {
+            if (items.id === color.id) {
+              return _objectSpread(_objectSpread({}, color), {}, {
+                isArchived: false,
+                updatedAt: new Date().toLocaleDateString('en-US', {
+                  month: '2-digit',
+                  day: '2-digit',
+                  year: '2-digit'
+                })
+              });
+            }
+          }
+          return color;
+        });
+        setColors(_updatedColors2);
+        setInitialColors(_updatedColors2);
+        setCheckedRows({});
+        setIsSelectAll(false);
+        if (tableRef.current && viewType === "archived") {
+          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+        setManagementModalOpen(false);
+        if (currentData.length === 0) {
+          setCurrentPage(1);
+        }
+        setForceUpdate(function (prev) {
+          return prev + 1;
+        });
+        localStorage.setItem("watchColors", JSON.stringify(_updatedColors2));
+        console.log("Colors after restore:", _updatedColors2);
+      }
+    } catch (error) {
+      console.error("Error in handleConfirmDeleteOrRestore:", error);
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    try {
+      console.log("Closing management modal - managementType:", managementType);
+      setManagementModalOpen(false);
+      setManagementType("");
+      setSelectedColor(null);
+      setName("");
+      setError("");
+    } catch (error) {
+      console.error("Error in handleCloseManagement:", error);
+    }
+  };
+  var getSelectedColors = function getSelectedColors() {
+    try {
+      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+        return checkedRows[index];
+      }).map(function (index) {
+        return parseInt(index, 10);
+      });
+      return selectedIndices.map(function (index) {
+        return currentItems[index];
+      });
+    } catch (error) {
+      console.error("Error in getSelectedColors:", error);
+      return [];
+    }
+  };
+  var checkedCount = Object.keys(checkedRows).filter(function (index) {
+    return checkedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "WatchColor",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "colors-header",
+      children: viewType === "active" ? "Colors" : "Archived Colors"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Colors"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Colors"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "colors-table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "color-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header colors-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Color"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (color, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "color-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell colors-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(color);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(color);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(color);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: color.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: color.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: color.updatedAt
+              })]
+            }, color.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "5",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: colors.length === 0 ? "No colors available. Please check your data or refresh the page." : viewType === "active" ? "No active colors match your search." : "No archived colors match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_WatchColorManangement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      color: managementType === "edit" || managementType === "add" ? selectedColor : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedColor) ? selectedColor : null,
+      selectedColors: managementType === "restore" || managementType === "delete" ? selectedColor || getSelectedColors() : [],
+      name: name,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColor);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Color/WatchColorManangement.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Admin/Color/WatchColorManangement.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var WatchColorManagement = function WatchColorManagement(_ref) {
+  var type = _ref.type,
+    color = _ref.color,
+    selectedColors = _ref.selectedColors,
+    name = _ref.name,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    localName = _useState2[0],
+    setLocalName = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("WatchColorManagement rendered with type:", type, "color:", color, "name:", name, "selectedColors:", selectedColors);
+    if (type === "edit" && color) {
+      setLocalName(color.name || "");
+      console.log("Initializing edit for color:", color);
+    } else if (type === "add") {
+      setLocalName("");
+      console.log("Initializing add for new color");
+    }
+  }, [type, color, name, selectedColors]);
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for color name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setLocalName(e.target.value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!color) {
+        alert("No color selected for editing.");
+        return;
+      }
+      if (!validateName(localName)) {
+        setError("Color name is required.");
+        return;
+      }
+      setError("");
+      var updatedColor = _objectSpread(_objectSpread({}, color), {}, {
+        name: localName.trim(),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      });
+      console.log("Saving updated color:", updatedColor);
+      onSave(updatedColor);
+      onClose();
+    } else if (type === "add") {
+      if (!validateName(localName)) {
+        setError("Color name is required.");
+        return;
+      }
+      setError("");
+      var newColor = {
+        id: Date.now(),
+        name: localName.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New colors are active by default
+      };
+      console.log("Saving new color:", newColor);
+      onSave(newColor);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    console.log("Confirming action - type:", type, "selectedColors:", selectedColors);
+    if (type === "delete") {
+      if (!selectedColors || selectedColors.length === 0) {
+        alert("Please select at least one color to delete.");
+        return;
+      }
+      console.log("Confirming delete for colors:", selectedColors);
+      onConfirm(selectedColors);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedColors || selectedColors.length === 0) {
+        alert("Please select at least one color to restore.");
+        return;
+      }
+      console.log("Confirming restore for colors:", selectedColors);
+      onConfirm(selectedColors);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Color: ".concat((color === null || color === void 0 ? void 0 : color.name) || "Color") : "Add New Color";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "WatchColorManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "edit-modal-header",
+            children: title
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Color Name:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localName,
+              onChange: handleNameChange,
+              className: "color-input",
+              placeholder: "Enter color name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
+          })]
+        })
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedColors.length, " color(s)?") : "Are you sure you want to restore ".concat(selectedColors.length, " color(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      onClick: handleCancel,
+      "data-testid": "".concat(type, "-overlay"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        "data-testid": "".concat(type, "-modal"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColorManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Customer/CustomerList.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Admin/Customer/CustomerList.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var _CustomerManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CustomerManagement */ "./resources/js/components/Admin/Customer/CustomerManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+var CustomerList = function CustomerList() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    activeCheckedRows = _useState2[0],
+    setActiveCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeIsSelectAll = _useState4[0],
+    setActiveIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState6 = _slicedToArray(_useState5, 2),
+    archivedCheckedRows = _useState6[0],
+    setArchivedCheckedRows = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    archivedIsSelectAll = _useState8[0],
+    setArchivedIsSelectAll = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState10 = _slicedToArray(_useState9, 2),
+    viewType = _useState10[0],
+    setViewType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    managementModalOpen = _useState12[0],
+    setManagementModalOpen = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    managementType = _useState14[0],
+    setManagementType = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedCustomer = _useState16[0],
+    setSelectedCustomer = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    name = _useState18[0],
+    setName = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    email = _useState20[0],
+    setEmail = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    address = _useState22[0],
+    setAddress = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState24 = _slicedToArray(_useState23, 2),
+    error = _useState24[0],
+    setError = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState26 = _slicedToArray(_useState25, 2),
+    forceUpdate = _useState26[0],
+    setForceUpdate = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState28 = _slicedToArray(_useState27, 2),
+    currentPage = _useState28[0],
+    setCurrentPage = _useState28[1];
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState30 = _slicedToArray(_useState29, 2),
+    searchQuery = _useState30[0],
+    setSearchQuery = _useState30[1];
+  var itemsPerPage = 5;
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      name: "Customer Name 1",
+      email: "user1@gmail.com",
+      address: "user address 1",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 2,
+      name: "Customer Name 2",
+      email: "user2@gmail.com",
+      address: "user address 2",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 3,
+      name: "Customer Name 3",
+      email: "user3@gmail.com",
+      address: "user address 3",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 4,
+      name: "Customer Name 4",
+      email: "user4@gmail.com",
+      address: "user address 4",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 5,
+      name: "Customer Name 5",
+      email: "user5@gmail.com",
+      address: "user address 5",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }]),
+    _useState32 = _slicedToArray(_useState31, 2),
+    initialCustomers = _useState32[0],
+    setInitialCustomers = _useState32[1];
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialCustomers),
+    _useState34 = _slicedToArray(_useState33, 2),
+    customers = _useState34[0],
+    setCustomers = _useState34[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedCustomers = localStorage.getItem("customers");
+    var updatedCustomers = _toConsumableArray(initialCustomers);
+    if (savedCustomers) {
+      try {
+        updatedCustomers = JSON.parse(savedCustomers).map(function (customer) {
+          return _objectSpread(_objectSpread({}, customer), {}, {
+            isArchived: customer.isArchived !== undefined ? customer.isArchived : false,
+            createdAt: customer.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded customers from localStorage:", updatedCustomers);
+      } catch (error) {
+        console.error("Error parsing customers from localStorage:", error);
+        updatedCustomers = _toConsumableArray(initialCustomers);
+        localStorage.setItem("customers", JSON.stringify(updatedCustomers));
+      }
+    } else {
+      console.log("Initialized with static customers:", initialCustomers);
+      localStorage.setItem("customers", JSON.stringify(initialCustomers));
+    }
+    setCustomers(updatedCustomers);
+    setInitialCustomers(updatedCustomers);
+    setActiveCheckedRows({});
+    setActiveIsSelectAll(false);
+    setArchivedCheckedRows({});
+    setArchivedIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!customers || customers.length === 0) {
+      console.warn("No customers data available, returning empty array.");
+      return [];
+    }
+    var filteredCustomers = customers.filter(function (customer) {
+      return customer.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredCustomers = filteredCustomers.filter(function (customer) {
+        return customer.name.toLowerCase().includes(searchQuery.toLowerCase()) || customer.email.toLowerCase().includes(searchQuery.toLowerCase()) || customer.address.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+    }
+    return filteredCustomers;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveIsSelectAll(isChecked);
+      var newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          newCheckedRows[index] = true;
+        });
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setActiveCheckedRows(newCheckedRows);
+    } else if (viewType === "archived") {
+      setArchivedIsSelectAll(isChecked);
+      var _newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          _newCheckedRows[index] = true;
+        });
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setArchivedCheckedRows(_newCheckedRows);
+    }
   };
   var handleRowCheckbox = function handleRowCheckbox(index, e) {
     var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
+    if (viewType === "active") {
+      setActiveCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.customer-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setActiveIsSelectAll(allChecked);
+    } else if (viewType === "archived") {
+      setArchivedCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var _allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.customer-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setArchivedIsSelectAll(_allChecked);
+    }
   };
-
-  // Sample data from the screenshot
-  var customers = [{
-    id: 1,
-    name: "Customer Name 1",
-    email: "user1@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }, {
-    id: 2,
-    name: "Customer Name 1",
-    email: "user2@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }, {
-    id: 3,
-    name: "Customer Name 1",
-    email: "user3@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }, {
-    id: 4,
-    name: "Customer Name 1",
-    email: "user4@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }, {
-    id: 5,
-    name: "Customer Name 1",
-    email: "user5@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }, {
-    id: 6,
-    name: "Customer Name 1",
-    email: "user6@gmail.com",
-    address: "user address",
-    status: "Active",
-    createdAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "customers-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Customer"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
+  var handleDelete = function handleDelete() {
+    var customerToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (customerToDelete) {
+      if (viewType !== "active") {
+        alert("You can only delete from Active Customers.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedCustomer([customerToDelete]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      return;
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Customers.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedCustomer(getSelectedCustomers());
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var customerToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (customerToRestore) {
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Customers.");
+        return;
+      }
+      setManagementType("restore");
+      setSelectedCustomer([customerToRestore]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Customers.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedCustomer(getSelectedCustomers());
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    if (viewType !== "active") {
+      alert("You can only add customers to Active Customers.");
+      return;
+    }
+    setManagementType("add");
+    setName("");
+    setEmail("");
+    setAddress("");
+    setSelectedCustomer(null);
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(customer) {
+    setSelectedCustomer(customer);
+    setName(customer.name || "");
+    setEmail(customer.email || "");
+    setAddress(customer.address || "");
+    setManagementType("edit");
+    setManagementModalOpen(true);
+    console.log("Opening edit for customer:", customer);
+  };
+  var validateEmail = function validateEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setName(e.target.value);
+  };
+  var handleEmailChange = function handleEmailChange(e) {
+    return setEmail(e.target.value);
+  };
+  var handleAddressChange = function handleAddressChange(e) {
+    return setAddress(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedCustomer) {
+    if (managementType === "edit") {
+      if (!selectedCustomer) {
+        alert("No customer selected for editing.");
+        return;
+      }
+      if (!newOrUpdatedCustomer.name.trim()) {
+        setError("Customer name is required.");
+        return;
+      }
+      if (!validateEmail(newOrUpdatedCustomer.email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!newOrUpdatedCustomer.address.trim()) {
+        setError("Address is required.");
+        return;
+      }
+      setError("");
+      var updatedCustomers = customers.map(function (c) {
+        return c.id === selectedCustomer.id ? _objectSpread(_objectSpread({}, newOrUpdatedCustomer), {}, {
+          id: selectedCustomer.id,
+          isArchived: selectedCustomer.isArchived,
+          createdAt: selectedCustomer.createdAt
+        }) : c;
+      });
+      setCustomers(updatedCustomers);
+      setInitialCustomers(updatedCustomers);
+      localStorage.setItem("customers", JSON.stringify(updatedCustomers));
+      setManagementModalOpen(false);
+      setSelectedCustomer(null);
+      setName("");
+      setEmail("");
+      setAddress("");
+      console.log("Edited customer, updated customers:", updatedCustomers);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+    } else if (managementType === "add") {
+      if (!newOrUpdatedCustomer.name.trim()) {
+        setError("Customer name is required.");
+        return;
+      }
+      if (!validateEmail(newOrUpdatedCustomer.email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!newOrUpdatedCustomer.address.trim()) {
+        setError("Address is required.");
+        return;
+      }
+      setError("");
+      var newCustomer = {
+        id: Date.now(),
+        name: newOrUpdatedCustomer.name.trim(),
+        email: newOrUpdatedCustomer.email,
+        address: newOrUpdatedCustomer.address.trim(),
+        isArchived: false,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
+      };
+      var _updatedCustomers = [newCustomer].concat(_toConsumableArray(customers));
+      setCustomers(_updatedCustomers);
+      setInitialCustomers(_updatedCustomers);
+      localStorage.setItem("customers", JSON.stringify(_updatedCustomers));
+      setManagementModalOpen(false);
+      setName("");
+      setEmail("");
+      setAddress("");
+      console.log("Added new customer, updated customers:", _updatedCustomers);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      setCurrentPage(1);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    if (managementType === "delete") {
+      var updatedCustomers = customers.map(function (customer) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === customer.id;
+          })) {
+            return _objectSpread(_objectSpread({}, customer), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === customer.id) {
+            return _objectSpread(_objectSpread({}, customer), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return customer;
+      });
+      setCustomers(updatedCustomers);
+      setInitialCustomers(updatedCustomers);
+      setActiveCheckedRows({});
+      setActiveIsSelectAll(false);
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("customers", JSON.stringify(updatedCustomers));
+    } else if (managementType === "restore") {
+      var _updatedCustomers2 = customers.map(function (customer) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === customer.id;
+          })) {
+            return _objectSpread(_objectSpread({}, customer), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === customer.id) {
+            return _objectSpread(_objectSpread({}, customer), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return customer;
+      });
+      setCustomers(_updatedCustomers2);
+      setInitialCustomers(_updatedCustomers2);
+      setArchivedCheckedRows({});
+      setArchivedIsSelectAll(false);
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.customer-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("customers", JSON.stringify(_updatedCustomers2));
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedCustomer(null);
+    setName("");
+    setEmail("");
+    setAddress("");
+    setError("");
+  };
+  var getSelectedCustomers = function getSelectedCustomers() {
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+  var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
+  var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+    return activeCheckedRows[index];
+  }).length : Object.keys(archivedCheckedRows).filter(function (index) {
+    return archivedCheckedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "customers-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "customers-header",
+      children: viewType === "active" ? "Customers" : "Archived Customers"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Customers"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Customers"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "customers-table ".concat(viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "customer-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header customers-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Customer Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Address"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Status"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (customer, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row ".concat(viewType === "archived" ? 'view-type="archived"' : ''),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "customer-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox((currentPage - 1) * itemsPerPage + index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell customers-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(customer);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(customer);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(customer);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: customer.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                style: {
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  maxWidth: '100px'
+                },
+                children: customer.email
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                style: {
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                  maxWidth: '250px'
+                },
+                children: customer.address
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell status-".concat(customer.isArchived ? "inactive" : "active"),
+                children: customer.isArchived ? "Inactive" : "Active"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: customer.createdAt
+              })]
+            }, customer.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "7",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: customers.length === 0 ? "No customers available. Please check your data or refresh the page." : viewType === "active" ? "No active customers match your search." : "No archived customers match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "customers-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Customer Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Address"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Status"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: customers.map(function (customer, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: customer.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: customer.email
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: customer.address
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td status",
-              children: customer.status
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: customer.createdAt
-            })]
-          }, customer.id);
-        })
-      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_CustomerManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      customer: managementType === "edit" || managementType === "add" ? selectedCustomer : managementType === "restore" && !Array.isArray(selectedCustomer) ? selectedCustomer : null,
+      selectedCustomers: managementType === "delete" || managementType === "restore" && Array.isArray(selectedCustomer) ? selectedCustomer || getSelectedCustomers() : [],
+      name: name,
+      email: email,
+      address: address,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
     })]
   });
 };
@@ -73407,10 +75636,284 @@ var CustomerList = function CustomerList() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Dashboard.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Dashboard.js ***!
-  \**********************************************/
+/***/ "./resources/js/components/Admin/Customer/CustomerManagement.js":
+/*!**********************************************************************!*\
+  !*** ./resources/js/components/Admin/Customer/CustomerManagement.js ***!
+  \**********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var CustomerManagement = function CustomerManagement(_ref) {
+  var type = _ref.type,
+    customer = _ref.customer,
+    selectedCustomers = _ref.selectedCustomers,
+    name = _ref.name,
+    email = _ref.email,
+    address = _ref.address,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    localName = _useState2[0],
+    setLocalName = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(email || ""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    localEmail = _useState4[0],
+    setLocalEmail = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(address || ""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    localAddress = _useState6[0],
+    setLocalAddress = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    error = _useState8[0],
+    setError = _useState8[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("CustomerManagement rendered with type:", type, "customer:", customer, "name:", name, "email:", email, "address:", address);
+    if (type === "edit" && customer) {
+      setLocalName(customer.name || "");
+      setLocalEmail(customer.email || "");
+      setLocalAddress(customer.address || "");
+      console.log("Initializing edit for customer:", customer);
+    } else if (type === "add") {
+      setLocalName("");
+      setLocalEmail("");
+      setLocalAddress("");
+      console.log("Initializing add for new customer");
+    }
+  }, [type, customer, name, email, address]);
+  var validateEmail = function validateEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setLocalName(e.target.value);
+  };
+  var handleEmailChange = function handleEmailChange(e) {
+    return setLocalEmail(e.target.value);
+  };
+  var handleAddressChange = function handleAddressChange(e) {
+    return setLocalAddress(e.target.value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!customer) {
+        alert("No customer selected for editing.");
+        return;
+      }
+      if (!localName.trim()) {
+        setError("Customer name is required.");
+        return;
+      }
+      if (!validateEmail(localEmail)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!localAddress.trim()) {
+        setError("Address is required.");
+        return;
+      }
+      setError("");
+      var updatedCustomer = _objectSpread(_objectSpread({}, customer), {}, {
+        name: localName.trim(),
+        email: localEmail,
+        address: localAddress.trim(),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      });
+      console.log("Saving updated customer:", updatedCustomer);
+      onSave(updatedCustomer);
+      onClose();
+    } else if (type === "add") {
+      if (!localName.trim()) {
+        setError("Customer name is required.");
+        return;
+      }
+      if (!validateEmail(localEmail)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!localAddress.trim()) {
+        setError("Address is required.");
+        return;
+      }
+      setError("");
+      var newCustomer = {
+        id: Date.now(),
+        name: localName.trim(),
+        email: localEmail,
+        address: localAddress.trim(),
+        isArchived: false,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      };
+      console.log("Saving new customer:", newCustomer);
+      onSave(newCustomer);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    if (type === "delete") {
+      if (!selectedCustomers || selectedCustomers.length === 0) {
+        alert("Please select at least one customer to delete.");
+        return;
+      }
+      console.log("Confirming delete for customers:", selectedCustomers);
+      onConfirm(selectedCustomers);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedCustomers || selectedCustomers.length === 0) {
+        alert("Please select at least one customer to restore.");
+        return;
+      }
+      console.log("Confirming restore for customers:", selectedCustomers);
+      onConfirm(selectedCustomers);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Customer: ".concat((customer === null || customer === void 0 ? void 0 : customer.name) || "Customer") : "Add New Customer";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "CustomerManagement",
+      onClick: handleCancel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "edit-modal-header",
+            children: title
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Customer Name:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localName,
+              onChange: handleNameChange,
+              className: "customer-input",
+              placeholder: "Enter customer name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Email:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "email",
+              value: localEmail,
+              onChange: handleEmailChange,
+              className: "customer-input",
+              placeholder: "Enter email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Address:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localAddress,
+              onChange: handleAddressChange,
+              className: "customer-input",
+              placeholder: "Enter address"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
+          })]
+        })
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(selectedCustomers) ? selectedCustomers.length : 1, " customer(s)?") : "Are you sure you want to restore ".concat(selectedCustomers.length, " customer(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type, "-modal-overlay"),
+      onClick: handleCancel,
+      "data-testid": "".concat(type, "-overlay"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type, "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        "data-testid": "".concat(type, "-modal"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CustomerManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Dashboard/Dashboard.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Admin/Dashboard/Dashboard.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -73422,11 +75925,99 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// src/components/admin/Dashboard.js
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
 var Dashboard = function Dashboard() {
+  var recentlySoldData = [{
+    name: "Product Name 1",
+    qty: "1x",
+    price: "₱ 200.12",
+    date: "10/03/24"
+  }, {
+    name: "Product Name 2",
+    qty: "1x",
+    price: "₱ 143.06",
+    date: "10/03/24"
+  }, {
+    name: "Product Name 3",
+    qty: "2x",
+    price: "₱ 310.22",
+    date: "10/03/24"
+  }, {
+    name: "Product Name 4",
+    qty: "1x",
+    price: "₱ 450.50",
+    date: "10/02/24"
+  }, {
+    name: "Product Name 5",
+    qty: "3x",
+    price: "₱ 89.99",
+    date: "10/01/24"
+  }, {
+    name: "Product Name 6",
+    qty: "1x",
+    price: "₱ 175.30",
+    date: "09/30/24"
+  }, {
+    name: "Product Name 7",
+    qty: "2x",
+    price: "₱ 299.75",
+    date: "09/29/24"
+  }, {
+    name: "Product Name 8",
+    qty: "1x",
+    price: "₱ 250.00",
+    date: "09/28/24"
+  }, {
+    name: "Product Name 9",
+    qty: "2x",
+    price: "₱ 180.50",
+    date: "09/27/24"
+  }, {
+    name: "Product Name 10",
+    qty: "3x",
+    price: "₱ 120.75",
+    date: "09/26/24"
+  }, {
+    name: "Product Name 11",
+    qty: "1x",
+    price: "₱ 220.30",
+    date: "09/25/24"
+  }, {
+    name: "Product Name 12",
+    qty: "2x",
+    price: "₱ 150.45",
+    date: "09/24/24"
+  }, {
+    name: "Product Name 13",
+    qty: "3x",
+    price: "₱ 99.99",
+    date: "09/23/24"
+  }, {
+    name: "Product Name 14",
+    qty: "1x",
+    price: "₱ 300.00",
+    date: "09/22/24"
+  }, {
+    name: "Product Name 15",
+    qty: "2x",
+    price: "₱ 275.60",
+    date: "09/21/24"
+  }];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState2 = _slicedToArray(_useState, 2),
+    currentPage = _useState2[0],
+    setCurrentPage = _useState2[1];
+  var itemsPerPage = 5;
+  var totalPages = Math.ceil(recentlySoldData.length / itemsPerPage);
+  var currentItems = recentlySoldData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     className: "dashboard-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
@@ -73439,7 +76030,7 @@ var Dashboard = function Dashboard() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaBox, {
           className: "text-gray-600",
           size: 20
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "flex items-center mb-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "label",
@@ -73454,7 +76045,7 @@ var Dashboard = function Dashboard() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaDollarSign, {
           className: "text-gray-600",
           size: 20
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "flex items-center mb-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "label",
@@ -73469,7 +76060,7 @@ var Dashboard = function Dashboard() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaWarehouse, {
           className: "text-gray-600",
           size: 20
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "flex items-center mb-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "label",
@@ -73484,7 +76075,7 @@ var Dashboard = function Dashboard() {
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaUsers, {
           className: "text-gray-600",
           size: 20
-        }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
           className: "flex items-center mb-2",
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
             className: "label",
@@ -73498,175 +76089,90 @@ var Dashboard = function Dashboard() {
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
       className: "h2",
       children: "Recently Sold"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "recently-sold",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Qty."
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "1x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 200.12"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/03/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "1x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 143.06"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/03/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "2x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 310.22"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/03/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "1x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 450.50"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/02/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "3x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 89.99"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/01/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "1x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 175.30"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "09/30/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "2x"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 299.75"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "09/29/24"
-          })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+        className: "dashboard-recently-sold",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+            className: "thead",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              className: "th"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              className: "th",
+              children: "Product Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              className: "th",
+              children: "Qty."
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              className: "th",
+              children: "Price"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+              className: "th",
+              children: "Created at"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+          children: currentItems.map(function (item, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+              className: "tr",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                className: "td",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                  src: "/images/watchprod.svg",
+                  alt: "Product Icon",
+                  className: "product-icon",
+                  style: {
+                    width: 36,
+                    height: 36
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                className: "td",
+                children: item.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                className: "td",
+                children: item.qty
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                className: "td",
+                children: item.price
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                className: "td",
+                children: item.date
+              })]
+            }, index);
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "active" : "",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          children: "Next"
         })]
       })]
     })]
@@ -73676,399 +76182,10 @@ var Dashboard = function Dashboard() {
 
 /***/ }),
 
-/***/ "./resources/js/components/Inventory.js":
-/*!**********************************************!*\
-  !*** ./resources/js/components/Inventory.js ***!
-  \**********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/Inventory.js
-
- // Kept FaEdit and FaImage
-
-var Inventory = function Inventory() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
-      });
-    } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
-    }
-    setCheckedRows(newCheckedRows);
-  };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "inventory-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Overview"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "inventory-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Profit"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Status"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: _toConsumableArray(Array(6)).map(function (_, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "product-name-cell",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaImage, {
-                  className: "product-icon",
-                  size: 20,
-                  color: "#6b7280"
-                }), "Product Name"]
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: ["\u20B1 ", index % 3 === 0 ? 200.12 : index % 3 === 1 ? 143.06 : 310.22]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: "\u20B1 2000.12"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td status ".concat(index % 2 === 0 ? "in-stock" : "out-stock"),
-              children: index % 2 === 0 ? "In stock" : "Out of stock"
-            })]
-          }, index);
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Inventory);
-
-/***/ }),
-
-/***/ "./resources/js/components/Orders.js":
-/*!*******************************************!*\
-  !*** ./resources/js/components/Orders.js ***!
-  \*******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-// src/components/admin/Orders.js
-
- // Kept FaRegImage
-
-var Orders = function Orders() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "orders-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Pending Orders"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "header-actions",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      })
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "orders-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Order ID"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Payment Method"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Total Amount"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Status"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created At"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "123456"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Cash on Delivery"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 200.12"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-              className: "status-dropdown",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: "pending",
-                children: "Pending"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/03/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "111209"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Paypal"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 143.06"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-              className: "status-dropdown",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: "processing",
-                children: "Processing"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/02/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "433532"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Card"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 310.22"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-              className: "status-dropdown",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: "on-delivery",
-                children: "On Delivery"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "10/01/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "121212"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Cash on Delivery"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 310.22"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-              className: "status-dropdown",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: "pending",
-                children: "Pending"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "09/30/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-              className: "product-icon",
-              size: 20
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "121212"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Paypal"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "\u20B1 310.22"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("select", {
-              className: "status-dropdown",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                value: "pending",
-                children: "Pending"
-              })
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "09/29/24"
-          })]
-        })]
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Orders);
-
-/***/ }),
-
-/***/ "./resources/js/components/PersonalIinfo.js":
-/*!**************************************************!*\
-  !*** ./resources/js/components/PersonalIinfo.js ***!
-  \**************************************************/
+/***/ "./resources/js/components/Admin/Info/PersonalIinfo.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Admin/Info/PersonalIinfo.js ***!
+  \*************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74348,10 +76465,10 @@ var PersonalInfo = function PersonalInfo() {
 
 /***/ }),
 
-/***/ "./resources/js/components/ProductList.js":
-/*!************************************************!*\
-  !*** ./resources/js/components/ProductList.js ***!
-  \************************************************/
+/***/ "./resources/js/components/Admin/Inventory/Inventory.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Admin/Inventory/Inventory.js ***!
+  \**************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -74361,8 +76478,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _InventoryManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./InventoryManagement */ "./resources/js/components/Admin/Inventory/InventoryManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
@@ -74375,34 +76493,299 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/ProductList.js
 
- // Kept FaEdit and FaImage for consistency
+ // Added FaTrash and FaUndo for Delete and Restore
+ // New import for the modal
 
-var ProductList = function ProductList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+var Inventory = function Inventory() {
+  var initialInventoryData = [{
+    productName: "Product Name 1",
+    stock: 50,
+    price: "₱ 200.12",
+    profit: "₱ 2000.12",
+    quantitySold: 10,
+    totalAmount: "₱ 2001.20",
+    isArchived: false
+  }, {
+    productName: "Product Name 2",
+    stock: 0,
+    price: "₱ 143.06",
+    profit: "₱ 2000.12",
+    quantitySold: 5,
+    totalAmount: "₱ 715.30",
+    isArchived: false
+  }, {
+    productName: "Product Name 3",
+    stock: 30,
+    price: "₱ 310.22",
+    profit: "₱ 2000.12",
+    quantitySold: 15,
+    totalAmount: "₱ 4653.30",
+    isArchived: false
+  }, {
+    productName: "Product Name 4",
+    stock: 0,
+    price: "₱ 200.12",
+    profit: "₱ 2000.12",
+    quantitySold: 8,
+    totalAmount: "₱ 1600.96",
+    isArchived: false
+  }, {
+    productName: "Product Name 5",
+    stock: 20,
+    price: "₱ 143.06",
+    profit: "₱ 2000.12",
+    quantitySold: 12,
+    totalAmount: "₱ 1716.72",
+    isArchived: false
+  }, {
+    productName: "Product Name 6",
+    stock: 0,
+    price: "₱ 310.22",
+    profit: "₱ 2000.12",
+    quantitySold: 7,
+    totalAmount: "₱ 2171.54",
+    isArchived: false
+  }];
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialInventoryData),
     _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    inventoryData = _useState2[0],
+    setInventoryData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
+    viewType = _useState4[0],
+    setViewType = _useState4[1]; // Renamed from viewArchived for consistency with other files
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    managementModalOpen = _useState6[0],
+    setManagementModalOpen = _useState6[1]; // Renamed from editModalOpen for consistency
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    managementType = _useState8[0],
+    setManagementType = _useState8[1]; // Type of management action (edit, delete, restore)
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    selectedItem = _useState10[0],
+    setSelectedItem = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState12 = _slicedToArray(_useState11, 2),
+    stock = _useState12[0],
+    setStock = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState14 = _slicedToArray(_useState13, 2),
+    checkedRows = _useState14[0],
+    setCheckedRows = _useState14[1]; // Track checked items
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    isSelectAll = _useState16[0],
+    setIsSelectAll = _useState16[1]; // Track "Select All" state
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState18 = _slicedToArray(_useState17, 2),
+    currentPage = _useState18[0],
+    setCurrentPage = _useState18[1];
+  var itemsPerPage = 5;
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null); // For managing checkbox states
+
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedInventory = localStorage.getItem("inventoryItems");
+    if (savedInventory) {
+      var parsedInventory = JSON.parse(savedInventory).map(function (item) {
+        return _objectSpread(_objectSpread({}, item), {}, {
+          isArchived: item.isArchived !== undefined ? item.isArchived : false
+        });
+      });
+      setInventoryData(parsedInventory);
+    }
+    setCheckedRows({}); // Reset checked rows when data or view changes
+    setIsSelectAll(false);
+  }, [viewType]);
+  var getCurrentData = function getCurrentData() {
+    if (!inventoryData || inventoryData.length === 0) {
+      return [];
+    }
+    return inventoryData.filter(function (item) {
+      return item.isArchived === (viewType === "archived");
+    });
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var formatStock = function formatStock(stock) {
+    return stock > 0 ? stock : "Out of stock";
+  };
+  var getStockClass = function getStockClass(stock) {
+    return stock > 0 ? "in-stock" : "out-stock";
+  };
+  var handleEdit = function handleEdit(item) {
+    if (viewType !== "active") {
+      alert("You can only edit from Active Inventory.");
+      return;
+    }
+    setManagementType("edit");
+    setSelectedItem(item);
+    setStock(item.stock || 0);
+    setManagementModalOpen(true);
+  };
+  var handleDelete = function handleDelete() {
+    var itemToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (viewType !== "active") {
+      alert("You can only delete from Active Inventory.");
+      return;
+    }
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (itemToDelete) {
+      setManagementType("delete");
+      setSelectedItem(itemToDelete);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one item to delete.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedItem(currentItems.filter(function (_, index) {
+      return selectedIndices.includes(index);
+    }));
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var itemToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Inventory.");
+      return;
+    }
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (itemToRestore) {
+      setManagementType("restore");
+      setSelectedItem(itemToRestore);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one item to restore.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedItem(currentItems.filter(function (_, index) {
+      return selectedIndices.includes(index);
+    }));
+    setManagementModalOpen(true);
+  };
+  var handleStockChange = function handleStockChange(e) {
+    var value = parseInt(e.target.value, 10) || 0;
+    setStock(value);
+  };
+  var handleSaveEdit = function handleSaveEdit(newStock) {
+    if (selectedItem) {
+      var updatedInventory = inventoryData.map(function (item) {
+        return item.productName === selectedItem.productName ? _objectSpread(_objectSpread({}, item), {}, {
+          stock: newStock,
+          isArchived: false
+        }) : item;
+      });
+      setInventoryData(updatedInventory);
+      localStorage.setItem("inventoryItems", JSON.stringify(updatedInventory));
+      setManagementModalOpen(false);
+      setSelectedItem(null);
+      setStock(0);
+      setManagementType("");
+      setCheckedRows({}); // Reset checkboxes after action
+      setIsSelectAll(false);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    if (managementType === "delete") {
+      var updatedInventory = inventoryData.map(function (item) {
+        if (Array.isArray(items)) {
+          if (items.some(function (selected) {
+            return selected.productName === item.productName;
+          })) {
+            return _objectSpread(_objectSpread({}, item), {}, {
+              isArchived: true
+            });
+          }
+        } else {
+          if (items.productName === item.productName) {
+            return _objectSpread(_objectSpread({}, item), {}, {
+              isArchived: true
+            });
+          }
+        }
+        return item;
+      });
+      setInventoryData(updatedInventory);
+      localStorage.setItem("inventoryItems", JSON.stringify(updatedInventory));
+      setManagementModalOpen(false);
+      setSelectedItem(null);
+      setManagementType("");
+      setCheckedRows({}); // Reset checkboxes after action
+      setIsSelectAll(false);
+    } else if (managementType === "restore") {
+      var _updatedInventory = inventoryData.map(function (item) {
+        if (Array.isArray(items)) {
+          if (items.some(function (selected) {
+            return selected.productName === item.productName;
+          })) {
+            return _objectSpread(_objectSpread({}, item), {}, {
+              isArchived: false
+            });
+          }
+        } else {
+          if (items.productName === item.productName) {
+            return _objectSpread(_objectSpread({}, item), {}, {
+              isArchived: false
+            });
+          }
+        }
+        return item;
+      });
+      setInventoryData(_updatedInventory);
+      localStorage.setItem("inventoryItems", JSON.stringify(_updatedInventory));
+      setManagementModalOpen(false);
+      setSelectedItem(null);
+      setManagementType("");
+      setCheckedRows({}); // Reset checkboxes after action
+      setIsSelectAll(false);
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setSelectedItem(null);
+    setStock(0);
+    setManagementType("");
+    setCheckedRows({}); // Reset checkboxes on modal close
+    setIsSelectAll(false);
+  };
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
     var newCheckedRows = {};
     if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
+      currentItems.forEach(function (_, index) {
         newCheckedRows[index] = true;
-        checkbox.checked = true;
       });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.inventory-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = true;
+        });
+      }
     } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.inventory-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
     }
     setCheckedRows(newCheckedRows);
   };
@@ -74411,1015 +76794,221 @@ var ProductList = function ProductList() {
     setCheckedRows(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
     });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
+    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.inventory-checkbox')).filter(function (cb) {
+      return cb.checked;
+    }).length : 0);
     setIsSelectAll(allChecked);
   };
-
-  // Sample data from the screenshot
-  var products = [{
-    id: 1,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱200.12"
-  }, {
-    id: 2,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱143.06"
-  }, {
-    id: 3,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "2x",
-    price: "₱310.22"
-  }, {
-    id: 4,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱176.54"
-  }, {
-    id: 5,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱200.12"
-  }, {
-    id: 6,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱143.06"
-  }, {
-    id: 7,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "2x",
-    price: "₱310.22"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "products-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
+  var checkedCount = Object.keys(checkedRows).filter(function (index) {
+    return checkedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "Inventory",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
       className: "h2",
-      children: "Products"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "add-button",
-          children: "Add"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "products-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Description"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Stocks"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Price"
+      children: viewType === "active" ? "Inventory" : "Archived Inventory"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "inventory-table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "delete-button",
+            onClick: function onClick() {
+              return handleDelete();
+            },
+            disabled: checkedCount < 2,
+            children: "Delete"
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
           })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: products.map(function (product, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Inventory"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Inventory"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "recently-sold",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "thead",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "product-name-cell",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaImage, {
-                  className: "product-icon",
-                  size: 20,
-                  color: "#6b7280"
-                }), product.name]
+                className: "inventory-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: product.description
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: product.stock
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: product.price
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Product Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Status"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Price"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Quantity Sold"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Total Amount"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Profit"
             })]
-          }, product.id);
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductList);
-
-/***/ }),
-
-/***/ "./resources/js/components/Reviews.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Reviews.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/Reviews.js
-
- // Kept FaRegImage and FaEdit
-
-var Reviews = function Reviews() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
-      });
-    } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
-    }
-    setCheckedRows(newCheckedRows);
-  };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    // Check if all individual checkboxes are checked to update "Select All"
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "reviews-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Customer Reviews"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "reviews-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Product Name"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Rating"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Updated at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tbody", {
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(0, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "5"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(1, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "5"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(2, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "4.5"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(3, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "2"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(4, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "1"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(5, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "3"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(6, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "4"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "tr",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-            className: "td",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox",
-              onChange: function onChange(e) {
-                return handleRowCheckbox(7, e);
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-              className: "edit-icon",
-              size: 16,
-              onClick: function onClick() {
-                return alert("Edit clicked!");
-              }
-            }), " "]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "product-name-cell",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRegImage, {
-                className: "product-icon",
-                size: 20
-              }), "Product Name"]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "0"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "Product Review"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-            className: "td",
-            children: "11/21/24"
-          })]
-        })]
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);
-
-/***/ }),
-
-/***/ "./resources/js/components/Roles.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/Roles.js ***!
-  \******************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/Roles.js
-
- // Kept FaEdit for consistency (no image needed for roles)
-
-var Roles = function Roles() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
-      });
-    } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
-    }
-    setCheckedRows(newCheckedRows);
-  };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
-  };
-
-  // Sample data from the screenshot
-  var roles = [{
-    id: 1,
-    name: "Customer",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 2,
-    name: "Admin",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "roles-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Roles"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "add-button",
-          children: "Add"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "roles-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Role"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Updated at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: roles.map(function (role, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (item, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "tr",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "inventory-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(item);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(item);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(item);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: item.productName.replace(/\n/g, ' ')
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td status ".concat(getStockClass(item.stock)),
+                children: formatStock(item.stock)
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: item.price
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td inventory-quantity-sold",
+                children: item.quantitySold
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td inventory-total-amount",
+                children: item.totalAmount
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: item.profit
+              })]
+            }, index);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "8",
               className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: role.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: role.createdAt
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: role.updatedAt
-            })]
-          }, role.id);
-        })
-      })]
-    })]
-  });
-};
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Roles);
-
-/***/ }),
-
-/***/ "./resources/js/components/Routers.js":
-/*!********************************************!*\
-  !*** ./resources/js/components/Routers.js ***!
-  \********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Routers)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
-/* harmony import */ var _login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./login */ "./resources/js/components/login.js");
-/* harmony import */ var _register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./register */ "./resources/js/components/register.js");
-/* harmony import */ var _AdminDashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./AdminDashboard */ "./resources/js/components/AdminDashboard.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-
-
-
-function Routers() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-        path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-        path: "/register",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
-        path: "/admin",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_AdminDashboard__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      })]
-    })
-  });
-}
-if (document.getElementById("root")) {
-  var container = document.getElementById("root");
-  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
-  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Routers, {}));
-}
-
-/***/ }),
-
-/***/ "./resources/js/components/UserList.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/UserList.js ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/UserList.js
-
- // Kept FaEdit for consistency (no image needed for users)
-
-var UserList = function UserList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
-    _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
-      });
-    } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
-    }
-    setCheckedRows(newCheckedRows);
-  };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
-  };
-
-  // Sample data from the screenshot
-  var users = [{
-    id: 1,
-    username: "Username 1",
-    email: "user1@gmail.com",
-    role: "Admin",
-    createdAt: "11/21/24"
-  }, {
-    id: 2,
-    username: "Username 2",
-    email: "user2@gmail.com",
-    role: "Admin",
-    createdAt: "11/21/24"
-  }, {
-    id: 3,
-    username: "Username 3",
-    email: "user3@gmail.com",
-    role: "Customer",
-    createdAt: "11/21/24"
-  }, {
-    id: 4,
-    username: "Username 4",
-    email: "user4@gmail.com",
-    role: "Admin",
-    createdAt: "11/21/24"
-  }, {
-    id: 5,
-    username: "Username 5",
-    email: "user5@gmail.com",
-    role: "Customer",
-    createdAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "users-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Users"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
+              children: "No items available."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "inventory-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "active" : "",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          children: "Next"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "users-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Username"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Email"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Role"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: users.map(function (user, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: user.username
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: user.email
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: user.role
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: user.createdAt
-            })]
-          }, user.id);
-        })
-      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_InventoryManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      item: selectedItem,
+      stock: stock,
+      onClose: handleCloseManagement,
+      onSave: handleSaveEdit,
+      onConfirm: handleConfirmDeleteOrRestore
     })]
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Inventory);
 
 /***/ }),
 
-/***/ "./resources/js/components/WatchColor.js":
-/*!***********************************************!*\
-  !*** ./resources/js/components/WatchColor.js ***!
-  \***********************************************/
+/***/ "./resources/js/components/Admin/Inventory/InventoryManagement.js":
+/*!************************************************************************!*\
+  !*** ./resources/js/components/Admin/Inventory/InventoryManagement.js ***!
+  \************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75429,171 +77018,167 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/WatchColor.js
 
- // Kept FaEdit for consistency (no image needed for colors)
 
-var WatchColor = function WatchColor() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+var InventoryManagement = function InventoryManagement(_ref) {
+  var type = _ref.type,
+    item = _ref.item,
+    stock = _ref.stock,
+    onClose = _ref.onClose,
+    onSave = _ref.onSave,
+    onConfirm = _ref.onConfirm;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(stock || 0),
     _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    localStock = _useState2[0],
+    setLocalStock = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
-  var handleSelectAll = function handleSelectAll(e) {
-    var isChecked = e.target.checked;
-    setIsSelectAll(isChecked);
-    var newCheckedRows = {};
-    if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
-        newCheckedRows[index] = true;
-        checkbox.checked = true;
-      });
-    } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("InventoryManagement rendered with type:", type, "item:", item, "stock:", stock);
+    if (type === "edit" && item) {
+      setLocalStock(item.stock || 0);
+      console.log("Initializing edit for item:", item);
+    } else if (type === "restore" || type === "delete") {
+      console.log("Initializing", type, "for item(s):", item);
     }
-    setCheckedRows(newCheckedRows);
+  }, [type, item, stock]);
+  var validateStock = function validateStock(stock) {
+    return stock >= 0; // Ensure stock is non-negative
   };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-    });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
-    setIsSelectAll(allChecked);
+  var handleStockChange = function handleStockChange(e) {
+    var value = parseInt(e.target.value, 10) || 0;
+    setLocalStock(value);
   };
-
-  // Sample data from the screenshot
-  var colors = [{
-    id: 1,
-    name: "Red",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 2,
-    name: "Green",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 3,
-    name: "Blue",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "colors-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Color"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "add-button",
-          children: "Add"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
-        })]
-      })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "colors-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Color"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Updated at"
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!item) {
+        alert("No item selected for editing.");
+        return;
+      }
+      if (!validateStock(localStock)) {
+        setError("Stock quantity must be 0 or greater.");
+        return;
+      }
+      setError("");
+      onSave(localStock);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    if (type === "delete") {
+      if (!item || Array.isArray(item) && item.length === 0) {
+        alert("No item selected for deletion.");
+        return;
+      }
+      console.log("Confirming delete for item(s):", item);
+      onConfirm(item);
+      onClose();
+    } else if (type === "restore") {
+      if (!item || Array.isArray(item) && item.length === 0) {
+        alert("No item selected for restoration.");
+        return;
+      }
+      console.log("Confirming restore for item(s):", item);
+      onConfirm(item);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit") {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "InventoryManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+            children: ["Edit Stock for ", item === null || item === void 0 ? void 0 : item.productName]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              children: "Stock Quantity:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "number",
+              value: localStock,
+              onChange: handleStockChange,
+              min: "0",
+              className: "stock-input",
+              placeholder: "Enter stock quantity"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
           })]
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: colors.map(function (color, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: color.name
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: color.createdAt
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: color.updatedAt
-            })]
-          }, color.id);
-        })
-      })]
-    })]
-  });
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var title = type === "delete" ? "Confirm Deletion" : "Confirm Restoration";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(item) ? item.length : 1, " item(s)? ") : "Are you sure you want to restore ".concat(Array.isArray(item) ? item.length : 1, " item(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      onClick: handleCancel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColor);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InventoryManagement);
 
 /***/ }),
 
-/***/ "./resources/js/components/WristMeasurement.js":
-/*!*****************************************************!*\
-  !*** ./resources/js/components/WristMeasurement.js ***!
-  \*****************************************************/
+/***/ "./resources/js/components/Admin/Measurement/MeasurementManagement.js":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/Admin/Measurement/MeasurementManagement.js ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75603,7 +77188,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -75617,34 +77201,385 @@ function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) 
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-// src/components/admin/WristMeasurement.js
 
- // Kept FaEdit for consistency (no image needed for measurements)
+
+var MeasurementManagement = function MeasurementManagement(_ref) {
+  var type = _ref.type,
+    measurement = _ref.measurement,
+    selectedMeasurements = _ref.selectedMeasurements,
+    measurementValue = _ref.measurementValue,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(measurementValue || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    localMeasurement = _useState2[0],
+    setLocalMeasurement = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("MeasurementManagement rendered with type:", type, "measurement:", measurement, "measurementValue:", measurementValue, "selectedMeasurements:", selectedMeasurements);
+    if (type === "edit" && measurement) {
+      setLocalMeasurement(measurement.measurement || "");
+      console.log("Initializing edit for measurement:", measurement);
+    } else if (type === "add") {
+      setLocalMeasurement("");
+      console.log("Initializing add for new measurement");
+    }
+  }, [type, measurement, measurementValue, selectedMeasurements]);
+  var validateMeasurement = function validateMeasurement(measurement) {
+    return measurement.trim().length > 0; // Simple validation for measurement
+  };
+  var handleMeasurementChange = function handleMeasurementChange(e) {
+    return setLocalMeasurement(e.target.value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!measurement) {
+        alert("No measurement selected for editing.");
+        return;
+      }
+      if (!validateMeasurement(localMeasurement)) {
+        setError("Measurement is required.");
+        return;
+      }
+      setError("");
+      var updatedMeasurement = _objectSpread(_objectSpread({}, measurement), {}, {
+        measurement: localMeasurement.trim(),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      });
+      console.log("Saving updated measurement:", updatedMeasurement);
+      onSave(updatedMeasurement);
+      onClose();
+    } else if (type === "add") {
+      if (!validateMeasurement(localMeasurement)) {
+        setError("Measurement is required.");
+        return;
+      }
+      setError("");
+      var newMeasurement = {
+        id: Date.now(),
+        measurement: localMeasurement.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New measurements are active by default
+      };
+      console.log("Saving new measurement:", newMeasurement);
+      onSave(newMeasurement);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    console.log("Confirming action - type:", type, "selectedMeasurements:", selectedMeasurements);
+    if (type === "delete") {
+      if (!selectedMeasurements || selectedMeasurements.length === 0) {
+        alert("Please select at least one measurement to delete.");
+        return;
+      }
+      console.log("Confirming delete for measurements:", selectedMeasurements);
+      onConfirm(selectedMeasurements);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedMeasurements || selectedMeasurements.length === 0) {
+        alert("Please select at least one measurement to restore.");
+        return;
+      }
+      console.log("Confirming restore for measurements:", selectedMeasurements);
+      onConfirm(selectedMeasurements);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Wrist Measurement: ".concat((measurement === null || measurement === void 0 ? void 0 : measurement.measurement) || "Measurement") : "Add New Wrist Measurement";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "MeasurementManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "edit-modal-header",
+            children: title
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Wrist Measurement:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localMeasurement,
+              onChange: handleMeasurementChange,
+              className: "measurement-input",
+              placeholder: "Enter wrist measurement (e.g., 6.5 inches)"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
+          })]
+        })
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedMeasurements.length, " measurement(s)?") : "Are you sure you want to restore ".concat(selectedMeasurements.length, " measurement(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      onClick: handleCancel,
+      "data-testid": "".concat(type, "-overlay"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        "data-testid": "".concat(type, "-modal"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MeasurementManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Measurement/WristMeasurement.js":
+/*!***********************************************************************!*\
+  !*** ./resources/js/components/Admin/Measurement/WristMeasurement.js ***!
+  \***********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _MeasurementManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeasurementManagement */ "./resources/js/components/Admin/Measurement/MeasurementManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // Added FaUndo for Restore
+ // Assume a similar MeasurementManagement component
 
 var WristMeasurement = function WristMeasurement() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
-    isSelectAll = _useState2[0],
-    setIsSelectAll = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    checkedRows = _useState2[0],
+    setCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    checkedRows = _useState4[0],
-    setCheckedRows = _useState4[1];
+    isSelectAll = _useState4[0],
+    setIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    viewType = _useState6[0],
+    setViewType = _useState6[1]; // Measurements can now have active/archived views
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    managementModalOpen = _useState8[0],
+    setManagementModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    managementType = _useState10[0],
+    setManagementType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedMeasurement = _useState12[0],
+    setSelectedMeasurement = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    measurement = _useState14[0],
+    setMeasurement = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState18 = _slicedToArray(_useState17, 2),
+    forceUpdate = _useState18[0],
+    setForceUpdate = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState20 = _slicedToArray(_useState19, 2),
+    currentPage = _useState20[0],
+    setCurrentPage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    searchQuery = _useState22[0],
+    setSearchQuery = _useState22[1];
+  var itemsPerPage = 5; // Match CategoryList pagination
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      measurement: "6.5 inches",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 2,
+      measurement: "7.5 inches",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 3,
+      measurement: "8.5 inches",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    },
+    // Added an archived measurement for testing
+    {
+      id: 4,
+      measurement: "9.5 inches",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: true
+    }]),
+    _useState24 = _slicedToArray(_useState23, 2),
+    initialMeasurements = _useState24[0],
+    setInitialMeasurements = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialMeasurements),
+    _useState26 = _slicedToArray(_useState25, 2),
+    measurements = _useState26[0],
+    setMeasurements = _useState26[1];
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedMeasurements = localStorage.getItem("wristMeasurements");
+    var updatedMeasurements = _toConsumableArray(initialMeasurements);
+    if (savedMeasurements) {
+      try {
+        updatedMeasurements = JSON.parse(savedMeasurements).map(function (measurement) {
+          return _objectSpread(_objectSpread({}, measurement), {}, {
+            isArchived: measurement.isArchived !== undefined ? measurement.isArchived : false,
+            createdAt: measurement.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
+            updatedAt: measurement.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded measurements from localStorage:", updatedMeasurements);
+      } catch (error) {
+        console.error("Error parsing measurements from localStorage:", error);
+        updatedMeasurements = _toConsumableArray(initialMeasurements);
+        localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
+      }
+    } else {
+      console.log("Initialized with static measurements:", initialMeasurements);
+      localStorage.setItem("wristMeasurements", JSON.stringify(initialMeasurements));
+    }
+    setMeasurements(updatedMeasurements);
+    setInitialMeasurements(updatedMeasurements);
+    setCheckedRows({});
+    setIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!measurements || measurements.length === 0) {
+      console.warn("No measurements data available, returning empty array.");
+      return [];
+    }
+    var filteredMeasurements = measurements.filter(function (measurement) {
+      return measurement.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredMeasurements = filteredMeasurements.filter(function (measurement) {
+        return measurement.measurement.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+    }
+    return filteredMeasurements;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
     var newCheckedRows = {};
     if (isChecked) {
-      // Check all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox, index) {
+      currentItems.forEach(function (_, index) {
         newCheckedRows[index] = true;
-        checkbox.checked = true;
       });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = true;
+        });
+      }
     } else {
-      // Uncheck all rows
-      document.querySelectorAll('.checkbox').forEach(function (checkbox) {
-        checkbox.checked = false;
-      });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
     }
     setCheckedRows(newCheckedRows);
   };
@@ -75653,110 +77588,473 @@ var WristMeasurement = function WristMeasurement() {
     setCheckedRows(function (prev) {
       return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
     });
-    var allChecked = document.querySelectorAll('.checkbox').length === document.querySelectorAll('.checkbox:checked').length;
+    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.measurement-checkbox')).filter(function (cb) {
+      return cb.checked;
+    }).length : 0);
     setIsSelectAll(allChecked);
   };
-
-  // Sample data from the screenshot
-  var measurements = [{
-    id: 1,
-    measurement: "6.5 inches",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 2,
-    measurement: "7.5 inches",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }, {
-    id: 3,
-    measurement: "8.5 inches",
-    createdAt: "11/21/24",
-    updatedAt: "11/21/24"
-  }];
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    className: "measurements-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h2", {
-      className: "h2",
-      children: "Wrist Measurement"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "header-actions",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "search-bar",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-          type: "text",
-          placeholder: "Search",
-          className: "search-input"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "button-group",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "archive-button",
-          children: "Archive"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "add-button",
-          children: "Add"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          className: "delete-button",
-          children: "Delete"
+  var handleDelete = function handleDelete() {
+    var measurementToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to delete - viewType:", viewType, "measurementToDelete:", measurementToDelete, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (measurementToDelete) {
+      if (viewType !== "active") {
+        alert("You can only delete from Active Wrist Measurements.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedMeasurement([measurementToDelete]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one measurement to delete.");
+      return;
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Wrist Measurements.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedMeasurement(getSelectedMeasurements());
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var measurementToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to restore - viewType:", viewType, "measurementToRestore:", measurementToRestore, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (measurementToRestore) {
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Wrist Measurements.");
+        return;
+      }
+      console.log("Opening restore modal for single measurement:", measurementToRestore);
+      setManagementType("restore");
+      setSelectedMeasurement([measurementToRestore]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one measurement to restore.");
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Wrist Measurements.");
+      return;
+    }
+    console.log("Opening restore modal for multiple measurements:", getSelectedMeasurements());
+    setManagementType("restore");
+    setSelectedMeasurement(getSelectedMeasurements());
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    console.log("Current viewType:", viewType, "Opening Add modal");
+    setManagementType("add");
+    setMeasurement("");
+    setSelectedMeasurement(null);
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(measurement) {
+    console.log("Opening edit for measurement:", measurement);
+    setSelectedMeasurement(measurement);
+    setMeasurement(measurement.measurement || "");
+    setManagementType("edit");
+    setManagementModalOpen(true);
+  };
+  var validateMeasurement = function validateMeasurement(measurement) {
+    return measurement.trim().length > 0; // Simple validation for measurement
+  };
+  var handleMeasurementChange = function handleMeasurementChange(e) {
+    return setMeasurement(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedMeasurement) {
+    if (managementType === "edit") {
+      if (!selectedMeasurement) {
+        alert("No measurement selected for editing.");
+        return;
+      }
+      if (!validateMeasurement(newOrUpdatedMeasurement.measurement)) {
+        setError("Measurement is required.");
+        return;
+      }
+      setError("");
+      var updatedMeasurements = measurements.map(function (m) {
+        return m.id === selectedMeasurement.id ? _objectSpread(_objectSpread({}, newOrUpdatedMeasurement), {}, {
+          id: selectedMeasurement.id,
+          createdAt: selectedMeasurement.createdAt,
+          isArchived: selectedMeasurement.isArchived
+        }) : m;
+      });
+      setMeasurements(updatedMeasurements);
+      setInitialMeasurements(updatedMeasurements);
+      localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
+      setManagementModalOpen(false);
+      setSelectedMeasurement(null);
+      setMeasurement("");
+      console.log("Edited measurement, updated measurements:", updatedMeasurements);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+    } else if (managementType === "add") {
+      if (!validateMeasurement(newOrUpdatedMeasurement.measurement)) {
+        setError("Measurement is required.");
+        return;
+      }
+      setError("");
+      var newMeasurement = {
+        id: Date.now(),
+        measurement: newOrUpdatedMeasurement.measurement.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New measurements are active by default
+      };
+      var _updatedMeasurements = [newMeasurement].concat(_toConsumableArray(measurements));
+      setMeasurements(_updatedMeasurements);
+      setInitialMeasurements(_updatedMeasurements);
+      localStorage.setItem("wristMeasurements", JSON.stringify(_updatedMeasurements));
+      setManagementModalOpen(false);
+      setMeasurement("");
+      console.log("Added new measurement, updated measurements:", _updatedMeasurements);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      setCurrentPage(1);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    console.log("Confirming action - managementType:", managementType, "items:", items);
+    if (managementType === "delete") {
+      var updatedMeasurements = measurements.map(function (measurement) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === measurement.id;
+          })) {
+            return _objectSpread(_objectSpread({}, measurement), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === measurement.id) {
+            return _objectSpread(_objectSpread({}, measurement), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return measurement;
+      });
+      setMeasurements(updatedMeasurements);
+      setInitialMeasurements(updatedMeasurements);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
+      console.log("Measurements after delete:", updatedMeasurements);
+    } else if (managementType === "restore") {
+      var _updatedMeasurements2 = measurements.map(function (measurement) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === measurement.id;
+          })) {
+            return _objectSpread(_objectSpread({}, measurement), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === measurement.id) {
+            return _objectSpread(_objectSpread({}, measurement), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return measurement;
+      });
+      setMeasurements(_updatedMeasurements2);
+      setInitialMeasurements(_updatedMeasurements2);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("wristMeasurements", JSON.stringify(_updatedMeasurements2));
+      console.log("Measurements after restore:", _updatedMeasurements2);
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedMeasurement(null);
+    setMeasurement("");
+    setError("");
+  };
+  var getSelectedMeasurements = function getSelectedMeasurements() {
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+  var checkedCount = Object.keys(checkedRows).filter(function (index) {
+    return checkedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "WristMeasurement",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "measurements-header",
+      children: viewType === "active" ? "Wrist Measurements" : "Archived Wrist Measurements"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Wrist Measurements"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Wrist Measurements"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "measurements-table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "measurement-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header measurements-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Wrist Measurement"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (measurement, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "measurement-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell measurements-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(measurement);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(measurement);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(measurement);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: measurement.measurement
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: measurement.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: measurement.updatedAt
+              })]
+            }, measurement.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "5",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: measurements.length === 0 ? "No wrist measurements available. Please check your data or refresh the page." : viewType === "active" ? "No active wrist measurements match your search." : "No archived wrist measurements match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
         })]
       })]
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
-      className: "measurements-table",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-          className: "thead",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-              type: "checkbox",
-              className: "checkbox select-all",
-              checked: isSelectAll,
-              onChange: handleSelectAll
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Wrist Measurement"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Created at"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
-            className: "th",
-            children: "Updated at"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
-        children: measurements.map(function (measurement, index) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
-            className: "tr",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
-              className: "td",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "checkbox",
-                className: "checkbox",
-                onChange: function onChange(e) {
-                  return handleRowCheckbox(index, e);
-                }
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaEdit, {
-                className: "edit-icon",
-                size: 16,
-                onClick: function onClick() {
-                  return alert("Edit clicked!");
-                }
-              }), " "]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: measurement.measurement
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: measurement.createdAt
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
-              className: "td",
-              children: measurement.updatedAt
-            })]
-          }, measurement.id);
-        })
-      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_MeasurementManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      measurement: managementType === "edit" || managementType === "add" ? selectedMeasurement : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedMeasurement) ? selectedMeasurement : null,
+      selectedMeasurements: managementType === "restore" || managementType === "delete" ? selectedMeasurement || getSelectedMeasurements() : [],
+      measurementValue: measurement,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
     })]
   });
 };
@@ -75764,10 +78062,5120 @@ var WristMeasurement = function WristMeasurement() {
 
 /***/ }),
 
-/***/ "./resources/js/components/login.js":
-/*!******************************************!*\
-  !*** ./resources/js/components/login.js ***!
-  \******************************************/
+/***/ "./resources/js/components/Admin/Orders/Orders.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/Admin/Orders/Orders.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _OrdersManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./OrdersManagement */ "./resources/js/components/Admin/Orders/OrdersManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // New import for the modal
+
+var Orders = function Orders() {
+  var _ordersData$find;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: "123456",
+      paymentMethod: "Cash on Delivery",
+      total: "₱ 200.12",
+      status: "pending",
+      date: "10/03/24",
+      orderDetails: [{
+        productName: "Product Name 1",
+        quantity: "1x",
+        price: "₱ 100.06",
+        image: "/images/watchprod.svg"
+      }, {
+        productName: "Product Name 2",
+        quantity: "1x",
+        price: "₱ 100.06",
+        image: "/images/watchprod.svg"
+      }],
+      isArchived: false // Added isArchived property for active/archived tracking
+    }, {
+      id: "111209",
+      paymentMethod: "Paypal",
+      total: "₱ 143.06",
+      status: "processing",
+      date: "10/02/24",
+      orderDetails: [{
+        productName: "Product Name 3",
+        quantity: "2x",
+        price: "₱ 71.53",
+        image: "/images/watchprod.svg"
+      }],
+      isArchived: false // Added isArchived property for active/archived tracking
+    }, {
+      id: "433532",
+      paymentMethod: "Card",
+      total: "₱ 310.22",
+      status: "on-delivery",
+      date: "10/01/24",
+      orderDetails: [{
+        productName: "Product Name 4",
+        quantity: "1x",
+        price: "₱ 155.11",
+        image: "/images/watchprod.svg"
+      }, {
+        productName: "Product Name 5",
+        quantity: "2x",
+        price: "₱ 155.11",
+        image: "/images/watchprod.svg"
+      }],
+      isArchived: false // Added isArchived property for active/archived tracking
+    }, {
+      id: "121212",
+      paymentMethod: "Cash on Delivery",
+      total: "₱ 310.22",
+      status: "completed",
+      date: "09/30/24",
+      orderDetails: [{
+        productName: "Product Name 6",
+        quantity: "3x",
+        price: "₱ 103.41",
+        image: "/images/watchprod.svg"
+      }],
+      isArchived: true // Initially archived as completed
+    }, {
+      id: "121212",
+      paymentMethod: "Paypal",
+      total: "₱ 310.22",
+      status: "pending",
+      date: "09/29/24",
+      orderDetails: [{
+        productName: "Product Name 7",
+        quantity: "2x",
+        price: "₱ 155.11",
+        image: "/images/watchprod.svg"
+      }],
+      isArchived: false // Added isArchived property for active/archived tracking
+    }]),
+    _useState2 = _slicedToArray(_useState, 2),
+    ordersData = _useState2[0],
+    setOrdersData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState4 = _slicedToArray(_useState3, 2),
+    checkedItems = _useState4[0],
+    setCheckedItems = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    selectAll = _useState6[0],
+    setSelectAll = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState8 = _slicedToArray(_useState7, 2),
+    viewType = _useState8[0],
+    setViewType = _useState8[1]; // New state for Active/Archived toggle
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    managementModalOpen = _useState10[0],
+    setManagementModalOpen = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState12 = _slicedToArray(_useState11, 2),
+    managementType = _useState12[0],
+    setManagementType = _useState12[1]; // New state to track restore type (bulk or individual)
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState14 = _slicedToArray(_useState13, 2),
+    selectedOrderId = _useState14[0],
+    setSelectedOrderId = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedOrders = _useState16[0],
+    setSelectedOrders = _useState16[1]; // For bulk restore
+
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState18 = _slicedToArray(_useState17, 2),
+    currentPage = _useState18[0],
+    setCurrentPage = _useState18[1];
+  var itemsPerPage = 5;
+
+  // Filter orders based on viewType (active or archived)
+  var getCurrentOrders = function getCurrentOrders() {
+    var filteredOrders = ordersData.filter(function (order) {
+      return order.isArchived === (viewType === "archived");
+    });
+    return filteredOrders;
+  };
+  var currentOrders = getCurrentOrders();
+  var totalPages = Math.ceil(currentOrders.length / itemsPerPage);
+  var currentItems = currentOrders.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleCheckboxChange = function handleCheckboxChange(id) {
+    setCheckedItems(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, id, !prev[id]));
+    });
+    if (Object.values(_objectSpread(_objectSpread({}, checkedItems), {}, _defineProperty({}, id, !prev[id]))).every(function (val) {
+      return !val;
+    })) {
+      setSelectAll(false);
+    }
+    console.log("Checked items after change:", checkedItems); // Debug log
+  };
+  var handleSelectAllChange = function handleSelectAllChange() {
+    var newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    var newCheckedItems = currentOrders.reduce(function (acc, item) {
+      return _objectSpread(_objectSpread({}, acc), {}, _defineProperty({}, item.id, newSelectAll));
+    }, {});
+    setCheckedItems(newCheckedItems);
+    console.log("Checked items after Select All:", newCheckedItems); // Debug log
+  };
+  var areAllSelected = currentItems.every(function (item) {
+    return checkedItems[item.id];
+  });
+  var handleStatusChange = function handleStatusChange(event) {
+    var orderId = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
+    var newStatus = event.target.value;
+    if (newStatus === "completed") {
+      var updatedOrders = ordersData.map(function (item) {
+        return (orderId ? item.id === orderId : checkedItems[item.id]) ? _objectSpread(_objectSpread({}, item), {}, {
+          status: newStatus,
+          isArchived: true
+        }) : item;
+      });
+      setOrdersData(updatedOrders);
+      setCheckedItems({});
+      setSelectAll(false);
+    } else if (newStatus && areAllSelected) {
+      var _updatedOrders = ordersData.map(function (item) {
+        return checkedItems[item.id] ? _objectSpread(_objectSpread({}, item), {}, {
+          status: newStatus
+        }) : item;
+      });
+      setOrdersData(_updatedOrders);
+      setCheckedItems({});
+      setSelectAll(false);
+    }
+    console.log("Status change - new status:", newStatus, "orderId:", orderId, "checkedItems:", checkedItems); // Debug log
+  };
+  var handleOrderClick = function handleOrderClick(orderId) {
+    setSelectedOrderId(orderId);
+    setManagementModalOpen(true);
+    console.log("Order clicked - orderId:", orderId); // Debug log
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedOrderId(null);
+    setSelectedOrders([]);
+    console.log("Modal closed"); // Debug log
+  };
+  var handleRestore = function handleRestore() {
+    var orderId = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (!orderId && Object.keys(checkedItems).filter(function (id) {
+      return checkedItems[id];
+    }).length < 1) {
+      alert("Please select at least one order to restore.");
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Orders.");
+      return;
+    }
+    // Open modal for confirmation
+    setManagementType(orderId ? "individual" : "bulk");
+    setSelectedOrderId(orderId ? orderId.toString() : null); // Ensure orderId is a string
+    setSelectedOrders(orderId ? [ordersData.find(function (order) {
+      return order.id === orderId;
+    })] : currentOrders.filter(function (order) {
+      return checkedItems[order.id];
+    }));
+    setManagementModalOpen(true);
+    console.log("Restore triggered - orderId:", orderId, "checkedItems:", checkedItems, "selectedOrders:", selectedOrders); // Debug log
+  };
+  var handleConfirmRestore = function handleConfirmRestore() {
+    var selectedOrdersToRestore = managementType === "individual" ? [ordersData.find(function (order) {
+      return order.id === selectedOrderId;
+    })] : currentOrders.filter(function (order) {
+      return checkedItems[order.id];
+    }); // Use checkedItems to filter currentOrders for bulk
+    console.log("Confirming restore - selectedOrders:", selectedOrdersToRestore, "managementType:", managementType); // Debug log
+    var updatedOrders = ordersData.map(function (order) {
+      return selectedOrdersToRestore.some(function (selected) {
+        return selected.id === order.id;
+      }) ? _objectSpread(_objectSpread({}, order), {}, {
+        isArchived: false
+      }) : order;
+    });
+    setOrdersData(updatedOrders);
+    setCheckedItems({});
+    setSelectAll(false);
+    handleCloseManagement();
+  };
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "Orders",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "h2",
+      children: viewType === "active" ? "Active Orders" : "Archived Orders"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-header-actions",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "search-bar",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          type: "text",
+          placeholder: "Search",
+          className: "search-input"
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "button-group",
+        style: {
+          marginLeft: 'auto'
+        },
+        children: viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+          className: "orders-status-dropdown",
+          onChange: handleStatusChange,
+          disabled: !areAllSelected,
+          value: "",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "",
+            disabled: true,
+            children: "Select Status"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "pending",
+            children: "Pending"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "processing",
+            children: "Processing"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "on-delivery",
+            children: "On Delivery"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+            value: "completed",
+            children: "Completed"
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "view-toggle",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "view-button ".concat(viewType === "active" ? "active" : ""),
+          onClick: function onClick() {
+            return setViewType("active");
+          },
+          children: "Active Orders"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+          onClick: function onClick() {
+            return setViewType("archived");
+          },
+          children: "Archived Orders"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "table-header-wrapper",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+          className: "orders-recently-sold",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "thead",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  checked: selectAll,
+                  onChange: handleSelectAllChange
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: "Order ID"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: "Payment Method"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: "Total Amount"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: "Status"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+                className: "th",
+                children: "Created At"
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+            children: currentItems.length > 0 ? currentItems.map(function (item, index) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+                className: "tr",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                    type: "checkbox",
+                    checked: checkedItems[item.id] || false,
+                    onChange: function onChange() {
+                      return handleCheckboxChange(item.id);
+                    }
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                    className: "order-id-button",
+                    onClick: function onClick() {
+                      return handleOrderClick(item.id);
+                    },
+                    children: item.id
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: item.paymentMethod
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: item.total
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                    className: "status-dropdown",
+                    onChange: function onChange(e) {
+                      return handleStatusChange(e, item.id);
+                    },
+                    value: item.status,
+                    disabled: viewType === "archived" // Disable status changes in Archived view
+                    ,
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: "pending",
+                      children: "Pending"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: "processing",
+                      children: "Processing"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: "on-delivery",
+                      children: "On Delivery"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                      value: "completed",
+                      children: "Completed"
+                    })]
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                  className: "td",
+                  children: item.date
+                })]
+              }, index);
+            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+              className: "tr",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                colSpan: 6,
+                className: "td",
+                style: {
+                  textAlign: "center",
+                  padding: "20px",
+                  backgroundColor: "#f9f9f9"
+                },
+                children: ordersData.length === 0 ? "No orders available. Please check your data or refresh the page." : viewType === "active" ? "No active orders match your search." : "No archived orders match your search."
+              })
+            })
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "active" : "",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_OrdersManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      orderId: selectedOrderId,
+      orderDetails: ((_ordersData$find = ordersData.find(function (order) {
+        return order.id === selectedOrderId;
+      })) === null || _ordersData$find === void 0 ? void 0 : _ordersData$find.orderDetails) || [],
+      selectedOrders: selectedOrders,
+      viewType: viewType // Pass viewType to OrdersManagement for Delete/Restore logic
+      ,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmRestore
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Orders);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Orders/OrdersManagement.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/Admin/Orders/OrdersManagement.js ***!
+  \******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+ // For Restore icon
+
+var OrdersManagement = function OrdersManagement(_ref) {
+  var type = _ref.type,
+    orderId = _ref.orderId,
+    orderDetails = _ref.orderDetails,
+    selectedOrders = _ref.selectedOrders,
+    viewType = _ref.viewType,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm;
+  var handleConfirmRestore = function handleConfirmRestore() {
+    onConfirm(); // Trigger the restore logic in Orders.js
+  };
+  var handleCancel = function handleCancel() {
+    onClose();
+  };
+  if (type === "individual" || type === "bulk") {
+    var _selectedOrders$, _selectedOrders$2;
+    var title = type === "individual" ? "Confirm Restore Order ID: ".concat(orderId || ((_selectedOrders$ = selectedOrders[0]) === null || _selectedOrders$ === void 0 ? void 0 : _selectedOrders$.id) || "Unknown") : "Confirm Restore ".concat(selectedOrders.filter(function (order) {
+      return order;
+    }).length, " Order(s)"); // Ensure only valid orders are counted
+    var message = type === "individual" ? "Are you sure you want to restore Order ID ".concat(orderId || ((_selectedOrders$2 = selectedOrders[0]) === null || _selectedOrders$2 === void 0 ? void 0 : _selectedOrders$2.id) || "Unknown", "?") : "Are you sure you want to restore ".concat(selectedOrders.filter(function (order) {
+      return order;
+    }).length, " order(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "OrdersManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "modal-overlay",
+        onClick: onClose,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "modal-content",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "modal-title",
+            children: title
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "restore-button",
+              onClick: handleConfirmRestore,
+              children: "Restore"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
+          })]
+        })
+      })
+    });
+  } else {
+    // Default to showing order details if not a restore confirmation
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "OrdersManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "modal-overlay",
+        onClick: onClose,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "modal-content",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "modal-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+              className: "modal-title",
+              children: ["Details for Order ID: ", orderId]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "modal-close-button",
+              onClick: onClose,
+              children: "\xD7"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("table", {
+            className: "modal-table",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("thead", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  children: "Product"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  children: "Quantity"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("th", {
+                  children: "Price"
+                })]
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("tbody", {
+              children: orderDetails.map(function (detail, index) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("tr", {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("td", {
+                    className: "modal-product-cell",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                      src: detail.image,
+                      alt: "".concat(detail.productName, " Icon"),
+                      className: "modal-product-icon"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
+                      className: "modal-product-name",
+                      children: detail.productName
+                    })]
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                    className: "modal-quantity",
+                    children: detail.quantity
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("td", {
+                    className: "modal-price",
+                    children: detail.price
+                  })]
+                }, index);
+              })
+            })]
+          }), viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "button-group",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return alert("Order ".concat(orderId, " would be archived. Implement archive logic here."));
+              },
+              children: "Archive"
+            })
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "button-group",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "restore-button",
+              onClick: function onClick() {
+                return handleRestore(orderId);
+              },
+              children: "Restore"
+            })
+          })]
+        })
+      })
+    });
+  }
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (OrdersManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Products/ProductList.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/Admin/Products/ProductList.js ***!
+  \***************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var _ProductManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductManagement */ "./resources/js/components/Admin/Products/ProductManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // Already imported
+
+ // Ensure correct path
+
+var ProductList = function ProductList() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState2 = _slicedToArray(_useState, 2),
+    viewType = _useState2[0],
+    setViewType = _useState2[1]; // "active" or "archived", default to active
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeCheckedRows = _useState4[0],
+    setActiveCheckedRows = _useState4[1]; // Separate state for active table checkboxes
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState6 = _slicedToArray(_useState5, 2),
+    activeIsSelectAll = _useState6[0],
+    setActiveIsSelectAll = _useState6[1]; // Separate state for active table "Select All"
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState8 = _slicedToArray(_useState7, 2),
+    archivedCheckedRows = _useState8[0],
+    setArchivedCheckedRows = _useState8[1]; // Separate state for archived table checkboxes
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    archivedIsSelectAll = _useState10[0],
+    setArchivedIsSelectAll = _useState10[1]; // Separate state for archived table "Select All"
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState12 = _slicedToArray(_useState11, 2),
+    currentPage = _useState12[0],
+    setCurrentPage = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState14 = _slicedToArray(_useState13, 2),
+    managementModalOpen = _useState14[0],
+    setManagementModalOpen = _useState14[1]; // State for the management modal
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    managementType = _useState16[0],
+    setManagementType = _useState16[1]; // "edit", "delete", "restore", or "add"
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState18 = _slicedToArray(_useState17, 2),
+    selectedProduct = _useState18[0],
+    setSelectedProduct = _useState18[1]; // State for the product being edited, deleted, restored, or added
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    searchQuery = _useState20[0],
+    setSearchQuery = _useState20[1]; // State for search/filter
+  var itemsPerPage = 5;
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Updated sample data with Category, Color, and Wrist Measurement
+  var initialProducts = [{
+    id: 1,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "1x",
+    price: "₱200.12",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Men",
+    color: "Black",
+    wristMeasurement: "18cm"
+  }, {
+    id: 2,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "1x",
+    price: "₱143.06",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Women",
+    color: "Silver",
+    wristMeasurement: "16cm"
+  }, {
+    id: 3,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "2x",
+    price: "₱310.22",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Unisex",
+    color: "Gold",
+    wristMeasurement: "20cm"
+  }, {
+    id: 4,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "1x",
+    price: "₱176.54",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Men",
+    color: "Blue",
+    wristMeasurement: "19cm"
+  }, {
+    id: 5,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "1x",
+    price: "₱200.12",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Women",
+    color: "Rose Gold",
+    wristMeasurement: "17cm"
+  }, {
+    id: 6,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "1x",
+    price: "₱143.06",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Unisex",
+    color: "Black",
+    wristMeasurement: "18cm"
+  }, {
+    id: 7,
+    name: "Product Name",
+    description: "Product Description",
+    stock: "2x",
+    price: "₱310.22",
+    isArchived: false,
+    image: "watchprod.svg",
+    createdAt: "03/01/25",
+    category: "Men",
+    color: "Silver",
+    wristMeasurement: "20cm"
+  }];
+
+  // State to manage all products with isArchived, createdAt, category, color, and wristMeasurement
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialProducts),
+    _useState22 = _slicedToArray(_useState21, 2),
+    products = _useState22[0],
+    setProducts = _useState22[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    // Load from localStorage if available, set all as active (isArchived: false) on load
+    var savedProducts = localStorage.getItem("products");
+    if (savedProducts) {
+      var parsedProducts = JSON.parse(savedProducts);
+      // Set all products to isArchived: false on load, ensure createdAt, category, color, wristMeasurement, and image fields exist
+      var activeProducts = parsedProducts.map(function (product) {
+        return _objectSpread(_objectSpread({}, product), {}, {
+          isArchived: false,
+          createdAt: product.createdAt || new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          updatedAt: product.updatedAt || new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          category: product.category || "Unisex",
+          // Default to Unisex if no category
+          color: product.color || "Black",
+          // Default to Black if no color
+          wristMeasurement: product.wristMeasurement || "18cm",
+          // Default to 18cm if no wrist measurement
+          image: product.image || "watchprod.svg" // Default to watchprod.svg if no image
+        });
+      });
+      setProducts(activeProducts);
+      console.log("Loaded and activated products from localStorage:", activeProducts);
+    } else {
+      console.log("Using static products data, all set as active:", initialProducts);
+      setProducts(initialProducts);
+      localStorage.setItem("products", JSON.stringify(initialProducts));
+    }
+    setActiveCheckedRows({}); // Ensure active checkboxes start empty
+    setActiveIsSelectAll(false); // Ensure active "Select All" starts unchecked
+    setArchivedCheckedRows({}); // Ensure archived checkboxes start empty
+    setArchivedIsSelectAll(false); // Ensure archived "Select All" starts unchecked
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    var filteredProducts = products.filter(function (product) {
+      return product.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      var query = searchQuery.toLowerCase();
+      filteredProducts = filteredProducts.filter(function (product) {
+        return product.name.toLowerCase().includes(query) || product.description.toLowerCase().includes(query) || product.stock.toLowerCase().includes(query) || product.price.toLowerCase().includes(query) || product.category.toLowerCase().includes(query) ||
+        // Include new fields in search
+        product.color.toLowerCase().includes(query) || product.wristMeasurement.toLowerCase().includes(query);
+      });
+    }
+    return filteredProducts;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveIsSelectAll(isChecked);
+      var newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          newCheckedRows[index] = true;
+        });
+        // Use ref to target only active table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        // Use ref to target only active table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setActiveCheckedRows(newCheckedRows);
+      console.log("Active checked rows updated:", newCheckedRows);
+    } else if (viewType === "archived") {
+      setArchivedIsSelectAll(isChecked);
+      var _newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          _newCheckedRows[index] = true;
+        });
+        // Use ref to target only archived table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        // Use ref to target only archived table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setArchivedCheckedRows(_newCheckedRows);
+      console.log("Archived checked rows updated:", _newCheckedRows);
+    }
+  };
+  var handleRowCheckbox = function handleRowCheckbox(index, e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setActiveIsSelectAll(allChecked);
+      console.log("Active row checkbox updated, index:", index, "Checked:", isChecked);
+    } else if (viewType === "archived") {
+      setArchivedCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var _allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setArchivedIsSelectAll(_allChecked);
+      console.log("Archived row checkbox updated, index:", index, "Checked:", isChecked);
+    }
+  };
+  var handleDelete = function handleDelete() {
+    var productToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (productToDelete) {
+      // Individual delete via icon
+      if (viewType !== "active") {
+        alert("You can only delete from Active Products.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedProduct([productToDelete]); // Wrap in array for consistency with bulk delete in ProductManagement
+      setManagementModalOpen(true);
+      return;
+    }
+
+    // Bulk delete via button
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      // Require at least 2 manually checked items
+      return; // Do nothing, button is disabled unless 2 or more are selected
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Products.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedProduct(getSelectedProducts()); // Use getSelectedProducts for bulk delete
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var productToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (productToRestore) {
+      // Individual restore via icon
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Products.");
+        return;
+      }
+      setManagementType("restore");
+      setSelectedProduct([productToRestore]); // Wrap in array for consistency with bulk restore in ProductManagement
+      setManagementModalOpen(true);
+      return;
+    }
+
+    // Bulk restore via button
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      // Require at least 2 manually checked items
+      return; // Do nothing, button is disabled unless 2 or more are selected
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Products.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedProduct(getSelectedProducts()); // Use getSelectedProducts for bulk restore
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    if (viewType !== "active") {
+      alert("You can only add products to Active Products.");
+      return;
+    }
+    setManagementType("add");
+    setSelectedProduct(null); // Clear any selected product
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(product) {
+    setSelectedProduct(product);
+    setManagementType("edit");
+    setManagementModalOpen(true);
+    console.log("Opening edit for product:", product);
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    if (managementType === "delete") {
+      var updatedProducts = products.map(function (product) {
+        if (Array.isArray(items)) {
+          // Bulk or individual delete (items is an array)
+          if (items.some(function (item) {
+            return item.id === product.id;
+          })) {
+            return _objectSpread(_objectSpread({}, product), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          // Handle individual delete (items is a single product object, though not expected here)
+          if (items.id === product.id) {
+            return _objectSpread(_objectSpread({}, product), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return product;
+      });
+      setProducts(updatedProducts);
+      // Reset active table checkboxes after deletion
+      setActiveCheckedRows({});
+      setActiveIsSelectAll(false);
+      // Use ref to target only active table checkboxes
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      console.log("Deleted products, updated products:", updatedProducts);
+      localStorage.setItem("products", JSON.stringify(updatedProducts));
+    } else if (managementType === "restore") {
+      var _updatedProducts = products.map(function (product) {
+        if (Array.isArray(items)) {
+          // Bulk restore
+          if (items.some(function (item) {
+            return item.id === product.id;
+          })) {
+            return _objectSpread(_objectSpread({}, product), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          // Individual restore (items is a single product object)
+          if (items.id === product.id) {
+            return _objectSpread(_objectSpread({}, product), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return product;
+      });
+      setProducts(_updatedProducts);
+      // Reset archived table checkboxes after restoration
+      setArchivedCheckedRows({});
+      setArchivedIsSelectAll(false);
+      // Use ref to target only archived table checkboxes
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      console.log("Restored products, updated products:", _updatedProducts);
+      localStorage.setItem("products", JSON.stringify(_updatedProducts));
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedProduct(null);
+    console.log("Closed management modal");
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1); // Reset to first page when searching
+  };
+
+  // Get selected products for delete or restore confirmation
+  var getSelectedProducts = function getSelectedProducts() {
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+
+  // Get the appropriate isSelectAll and checked count state based on viewType
+  var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
+  var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+    return activeCheckedRows[index];
+  }).length : Object.keys(archivedCheckedRows).filter(function (index) {
+    return archivedCheckedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "products-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "products-header",
+      children: viewType === "active" ? "Active Products" : "Archived Products"
+    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2 // Disable unless 2 or more items are checked
+              ,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2 // Disable unless 2 or more items are checked
+            ,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Products"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Products"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "products-table ".concat(viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "product-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header products-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header"
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Product Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Description"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Stocks"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Price"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Category"
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Color"
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Wrist Measurement"
+            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            }), " "]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (product, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row ".concat(viewType === "archived" ? 'view-type="archived"' : ''),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "product-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell products-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
+                      className: "edit-icon",
+                      size: 16,
+                      onClick: function onClick() {
+                        return handleEdit(product);
+                      }
+                    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                      className: "delete-icon",
+                      size: 16,
+                      onClick: function onClick() {
+                        return handleDelete(product);
+                      }
+                    }), " "]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                      className: "restore-icon",
+                      size: 16,
+                      onClick: function onClick() {
+                        return handleRestore(product);
+                      }
+                    }), " "]
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+                className: "table-cell",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                  src: "/images/".concat(product.image || "watchprod.svg"),
+                  alt: "".concat(product.name, " image"),
+                  className: "product-image"
+                }), " "]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+                className: "table-cell",
+                children: [product.name, " "]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.description
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.stock
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.price
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.category
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.color
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.wristMeasurement
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: product.createdAt
+              }), " "]
+            }, product.id);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "11",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: viewType === "active" ? "No products available." : "No archived products available."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ProductManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      product: managementType === "edit" || managementType === "add" ? selectedProduct : managementType === "restore" && !Array.isArray(selectedProduct) ? selectedProduct : null,
+      selectedProducts: managementType === "delete" || managementType === "restore" && Array.isArray(selectedProduct) ? selectedProduct || getSelectedProducts() : [],
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: function onSave(newOrUpdatedProduct) {
+        if (managementType === "edit") {
+          var updatedProducts = products.map(function (p) {
+            return p.id === newOrUpdatedProduct.id ? newOrUpdatedProduct : p;
+          });
+          setProducts(updatedProducts);
+          localStorage.setItem("products", JSON.stringify(updatedProducts));
+        } else if (managementType === "add") {
+          var _updatedProducts2 = [_objectSpread(_objectSpread({}, newOrUpdatedProduct), {}, {
+            createdAt: newOrUpdatedProduct.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
+            category: newOrUpdatedProduct.category || "Unisex",
+            color: newOrUpdatedProduct.color || "Black",
+            wristMeasurement: newOrUpdatedProduct.wristMeasurement || "18cm"
+          })].concat(_toConsumableArray(products.filter(function (p) {
+            return !p.isArchived;
+          })));
+          setProducts(_updatedProducts2);
+          localStorage.setItem("products", JSON.stringify(_updatedProducts2));
+        }
+        setManagementModalOpen(false);
+        setCurrentPage(1); // Reset to page 1 to show new or updated product
+      }
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductList);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Products/ProductManagement.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Admin/Products/ProductManagement.js ***!
+  \*********************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var ProductManagement = function ProductManagement(_ref) {
+  var type = _ref.type,
+    product = _ref.product,
+    selectedProducts = _ref.selectedProducts,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.name) || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    name = _useState2[0],
+    setName = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.description) || ""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    description = _useState4[0],
+    setDescription = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.stock) || ""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    stock = _useState6[0],
+    setStock = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.price) || ""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    price = _useState8[0],
+    setPrice = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.image) || null),
+    _useState10 = _slicedToArray(_useState9, 2),
+    image = _useState10[0],
+    setImage = _useState10[1]; // Store file or base64 URL
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(product !== null && product !== void 0 && product.image ? "File chosen" : "No file chosen"),
+    _useState12 = _slicedToArray(_useState11, 2),
+    fileName = _useState12[0],
+    setFileName = _useState12[1]; // Track file name for display
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.category) || "Unisex"),
+    _useState14 = _slicedToArray(_useState13, 2),
+    category = _useState14[0],
+    setCategory = _useState14[1]; // New state for Category (Men, Women, Unisex)
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.color) || "Black"),
+    _useState16 = _slicedToArray(_useState15, 2),
+    color = _useState16[0],
+    setColor = _useState16[1]; // New state for Color
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.wristMeasurement) || "18cm"),
+    _useState18 = _slicedToArray(_useState17, 2),
+    wristMeasurement = _useState18[0],
+    setWristMeasurement = _useState18[1]; // New state for Wrist Measurement
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    error = _useState20[0],
+    setError = _useState20[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (type === "edit" || type === "add") {
+      setName((product === null || product === void 0 ? void 0 : product.name) || "");
+      setDescription((product === null || product === void 0 ? void 0 : product.description) || "");
+      setStock((product === null || product === void 0 ? void 0 : product.stock) || "");
+      setPrice((product === null || product === void 0 ? void 0 : product.price) || "");
+      setImage((product === null || product === void 0 ? void 0 : product.image) || null); // Reset to null or existing image URL (base64 or path)
+      setFileName(product !== null && product !== void 0 && product.image ? "File chosen" : "No file chosen");
+      setCategory((product === null || product === void 0 ? void 0 : product.category) || "Unisex"); // Set default Category
+      setColor((product === null || product === void 0 ? void 0 : product.color) || "Black"); // Set default Color
+      setWristMeasurement((product === null || product === void 0 ? void 0 : product.wristMeasurement) || "18cm"); // Set default Wrist Measurement
+      setError("");
+    }
+  }, [type, product]);
+  var validateStock = function validateStock(value) {
+    var numValue = parseInt(value) || 0;
+    return numValue >= 0 && !isNaN(numValue); // Stock must be a non-negative integer
+  };
+  var validatePrice = function validatePrice(value) {
+    var numValue = parseFloat(value) || 0;
+    return numValue >= 0 && !isNaN(numValue); // Price must be a non-negative number
+  };
+  var handleNameChange = function handleNameChange(e) {
+    var value = e.target.value;
+    console.log("Product name input changed to:", value);
+    setName(value);
+  };
+  var handleDescriptionChange = function handleDescriptionChange(e) {
+    var value = e.target.value;
+    console.log("Description input changed to:", value);
+    setDescription(value);
+  };
+  var handleStockChange = function handleStockChange(e) {
+    var value = e.target.value;
+    console.log("Stock input changed to:", value);
+    if (value === "") {
+      setStock("");
+      setError("");
+      return;
+    }
+    if (validateStock(value)) {
+      setStock(value);
+      setError("");
+    } else {
+      setError("Stock must be a non-negative integer.");
+    }
+  };
+  var handlePriceChange = function handlePriceChange(e) {
+    var value = e.target.value;
+    console.log("Price input changed to:", value);
+    if (value === "") {
+      setPrice("");
+      setError("");
+      return;
+    }
+    if (validatePrice(value)) {
+      setPrice(value);
+      setError("");
+    } else {
+      setError("Price must be a non-negative number.");
+    }
+  };
+  var handleImageChange = function handleImageChange(e) {
+    var file = e.target.files[0];
+    if (file) {
+      console.log("Image file selected:", file.name);
+      setFileName(file.name.length > 20 ? "".concat(file.name.substring(0, 20), "...") : file.name || "File chosen");
+      // Convert file to base64 for storage/display and preview
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        setImage(reader.result); // Store base64 string for saving and preview
+      };
+      reader.readAsDataURL(file); // Read file as base64
+    } else {
+      setImage(null);
+      setFileName("No file chosen");
+      setError("Please select an image file.");
+    }
+  };
+  var handleCategoryChange = function handleCategoryChange(e) {
+    var value = e.target.value;
+    console.log("Category input changed to:", value);
+    setCategory(value);
+  };
+  var handleColorChange = function handleColorChange(e) {
+    var value = e.target.value;
+    console.log("Color input changed to:", value);
+    setColor(value);
+  };
+  var handleWristMeasurementChange = function handleWristMeasurementChange(e) {
+    var value = e.target.value;
+    console.log("Wrist Measurement input changed to:", value);
+    setWristMeasurement(value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!name.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      if (description.length > 1000) {
+        setError("Description is too long (max 1000 characters).");
+        return;
+      }
+      if (!validateStock(stock)) {
+        setError("Stock must be a non-negative integer.");
+        return;
+      }
+      if (!validatePrice(price)) {
+        setError("Price must be a non-negative number.");
+        return;
+      }
+      if (!image) {
+        setError("Image is required.");
+        return;
+      }
+      setError("");
+      var updatedProduct = {
+        id: product.id,
+        name: name.trim(),
+        description: description,
+        stock: stock,
+        price: price,
+        image: typeof image === "string" ? image : image,
+        // Ensure image is a string (base64)
+        isArchived: product.isArchived,
+        createdAt: product.createdAt,
+        // Preserve original createdAt
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        category: category,
+        // New field
+        color: color,
+        // New field
+        wristMeasurement: wristMeasurement // New field
+      };
+      onSave(updatedProduct);
+      onClose();
+    } else if (type === "add") {
+      if (!name.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      if (description.length > 1000) {
+        setError("Description is too long (max 1000 characters).");
+        return;
+      }
+      if (!validateStock(stock)) {
+        setError("Stock must be a non-negative integer.");
+        return;
+      }
+      if (!validatePrice(price)) {
+        setError("Price must be a non-negative number.");
+        return;
+      }
+      if (!image) {
+        setError("Image is required.");
+        return;
+      }
+      setError("");
+      var newProduct = {
+        id: Date.now(),
+        // Use timestamp as a simple unique ID
+        name: name.trim(),
+        description: description,
+        stock: stock,
+        price: price,
+        image: typeof image === "string" ? image : image,
+        // Ensure image is a string (base64)
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false,
+        category: category,
+        // New field
+        color: color,
+        // New field
+        wristMeasurement: wristMeasurement // New field
+      };
+      onSave(newProduct);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    if (type === "delete" || type === "restore") {
+      if (!selectedProducts || selectedProducts.length === 0) {
+        alert("Please select at least one product to " + (type === "delete" ? "delete" : "restore") + ".");
+        return;
+      }
+      onConfirm(selectedProducts);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    if (type === "edit" || type === "add") {
+      console.log("Canceling ".concat(type, " for product:"), product || "new product");
+    } else if (type === "delete" || type === "restore") {
+      console.log("Canceling ".concat(type, " for selected products:"), selectedProducts);
+    }
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Product for ".concat(product === null || product === void 0 ? void 0 : product.name) : "Add New Product";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "edit-modal-overlay",
+      onClick: handleCancel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "edit-modal",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          className: "edit-modal-header",
+          children: title
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "error-message",
+          children: error
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-form",
+          style: {
+            maxHeight: "70vh",
+            overflowY: "auto"
+          },
+          children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Product Name:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "text",
+                value: name,
+                onChange: handleNameChange,
+                className: "product-input",
+                placeholder: "Enter product name",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                } /* Explicitly ensure full width */
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Stock:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "number",
+                value: stock,
+                onChange: handleStockChange,
+                className: "product-input",
+                placeholder: "Enter stock quantity",
+                min: "0",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                } /* Explicitly ensure full width */
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Description:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
+                value: description,
+                onChange: handleDescriptionChange,
+                className: "product-input description-input",
+                placeholder: "Enter product description",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box",
+                  maxHeight: "100px",
+                  minHeight: "60px"
+                } /* Adjusted height for better fit, allow scrolling within */
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Price:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "number",
+                value: price,
+                onChange: handlePriceChange,
+                className: "product-input",
+                placeholder: "Enter price (\u20B1)",
+                step: "0.01",
+                min: "0",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                } /* Explicitly ensure full width */
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Category:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+                value: category,
+                onChange: handleCategoryChange,
+                className: "product-input",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                  value: "Men",
+                  children: "Men"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                  value: "Women",
+                  children: "Women"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                  value: "Unisex",
+                  children: "Unisex"
+                })]
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Color:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "text",
+                value: color,
+                onChange: handleColorChange,
+                className: "product-input",
+                placeholder: "Enter color (e.g., Black, Silver)",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                } /* Explicitly ensure full width */
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "form-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Wrist Measurement:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                type: "text",
+                value: wristMeasurement,
+                onChange: handleWristMeasurementChange,
+                className: "product-input",
+                placeholder: "Enter wrist measurement (e.g., 18cm)",
+                style: {
+                  cursor: "text",
+                  pointerEvents: "auto",
+                  userSelect: "text",
+                  width: "100%",
+                  boxSizing: "border-box"
+                } /* Explicitly ensure full width */
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "form-column",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                className: "edit-form-label",
+                children: "Image:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+                className: "file-input-wrapper",
+                style: {
+                  width: "100%",
+                  boxSizing: "border-box",
+                  maxWidth: "100%",
+                  overflow: "hidden"
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+                  type: "file",
+                  accept: "image/*",
+                  onChange: handleImageChange,
+                  className: "product-file-input",
+                  id: "image-upload",
+                  style: {
+                    cursor: "pointer",
+                    pointerEvents: "auto",
+                    userSelect: "none"
+                  } /* Ensure file input is clickable and opens file explorer */
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+                  htmlFor: "image-upload",
+                  className: "file-input-label",
+                  style: {
+                    width: "100%",
+                    boxSizing: "border-box",
+                    maxWidth: "100%",
+                    overflow: "hidden",
+                    cursor: "pointer"
+                  },
+                  children: fileName
+                })]
+              }), image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "image-preview",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                  src: image,
+                  alt: "Preview",
+                  className: "preview-image"
+                })
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleSave,
+              children: "Save"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
+          })]
+        })]
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(selectedProducts) ? selectedProducts.length : 1, " product(s)?") : "Are you sure you want to restore ".concat(selectedProducts.length, " product(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type, "-modal-overlay"),
+      onClick: handleCancel,
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type, "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        style: {
+          position: 'relative',
+          margin: 'auto',
+          width: "400px",
+          boxSizing: "border-box",
+          maxHeight: "80vh",
+          overflowY: "auto"
+        },
+        children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ProductManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Reviews/ReviewManagement.js":
+/*!*******************************************************************!*\
+  !*** ./resources/js/components/Admin/Reviews/ReviewManagement.js ***!
+  \*******************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var ReviewManagement = function ReviewManagement(_ref) {
+  var type = _ref.type,
+    review = _ref.review,
+    selectedReviews = _ref.selectedReviews,
+    productName = _ref.productName,
+    rating = _ref.rating,
+    reviewText = _ref.reviewText,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(rating || 0),
+    _useState2 = _slicedToArray(_useState, 2),
+    localRating = _useState2[0],
+    setLocalRating = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(reviewText || ""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    localReviewText = _useState4[0],
+    setLocalReviewText = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(productName || ""),
+    _useState6 = _slicedToArray(_useState5, 2),
+    localProductName = _useState6[0],
+    setLocalProductName = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    error = _useState8[0],
+    setError = _useState8[1];
+
+  // Initialize state with review data for edit or add
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (type === "edit" && review) {
+      setLocalRating(review.rating || 0);
+      setLocalReviewText(review.review || "");
+      setLocalProductName(review.productName || "");
+      console.log("Initializing edit for review:", review);
+    } else if (type === "add") {
+      setLocalRating(0);
+      setLocalReviewText("");
+      setLocalProductName("");
+      console.log("Initializing add for new review");
+    }
+  }, [type, review]);
+  var validateRating = function validateRating(value) {
+    var numValue = parseFloat(value) || 0;
+    if (isNaN(numValue)) return false;
+    if (numValue < 0 || numValue > 5) return false;
+    var decimalPart = numValue % 1;
+    return decimalPart === 0 || decimalPart === 0.5;
+  };
+  var handleRatingChange = function handleRatingChange(e) {
+    var value = e.target.value;
+    console.log("Rating input changed to:", value);
+    if (value === "") {
+      setLocalRating("");
+      setError("");
+      return;
+    }
+    var numValue = parseFloat(value);
+    if (validateRating(numValue)) {
+      setLocalRating(numValue);
+      setError("");
+    } else {
+      setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+    }
+  };
+  var handleReviewChange = function handleReviewChange(e) {
+    var value = e.target.value;
+    console.log("Review input changed to:", value);
+    setLocalReviewText(value);
+  };
+  var handleProductNameChange = function handleProductNameChange(e) {
+    var value = e.target.value;
+    console.log("Product name input changed to:", value);
+    setLocalProductName(value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!review) {
+        alert("No review selected for editing.");
+        return;
+      }
+      if (!validateRating(localRating)) {
+        setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+        return;
+      }
+      if (localReviewText.length > 1000) {
+        setError("Review text is too long (max 1000 characters).");
+        return;
+      }
+      if (!localProductName.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      setError("");
+      var updatedReview = {
+        productName: localProductName.trim(),
+        rating: parseFloat(localRating),
+        review: localReviewText,
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false,
+        createdAt: review.createdAt // Preserve the original createdAt for edits
+      };
+      console.log("Saving updated review:", updatedReview);
+      onSave(updatedReview);
+      onClose();
+    } else if (type === "add") {
+      if (!localProductName.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      if (!validateRating(localRating)) {
+        setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+        return;
+      }
+      if (localReviewText.length > 1000) {
+        setError("Review text is too long (max 1000 characters).");
+        return;
+      }
+      setError("");
+      var newReview = {
+        productName: localProductName.trim(),
+        rating: parseFloat(localRating),
+        review: localReviewText,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false
+      };
+      console.log("Saving new review:", newReview);
+      onSave(newReview); // Pass the new review object directly to onSave
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    if (type === "delete") {
+      if (!selectedReviews || selectedReviews.length === 0) {
+        alert("Please select at least one review to delete.");
+        return;
+      }
+      onConfirm(selectedReviews);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedReviews || selectedReviews.length === 0) {
+        alert("Please select at least one review to restore.");
+        return;
+      }
+      onConfirm(selectedReviews);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    if (type === "edit" || type === "add") {
+      console.log("Canceling ".concat(type, " for review:"), review || "new review");
+    } else if (type === "delete" || type === "restore") {
+      console.log("Canceling ".concat(type, " for selected reviews:"), selectedReviews);
+    }
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Review for ".concat(review === null || review === void 0 ? void 0 : review.productName) : "Add New Review";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "edit-modal-overlay",
+      onClick: handleCancel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "edit-modal",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          className: "edit-modal-header",
+          children: title
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "error-message",
+          children: error
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-form",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Product Name:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "text",
+            value: localProductName,
+            onChange: handleProductNameChange,
+            className: "review-input",
+            placeholder: "Enter product name",
+            style: {
+              cursor: "text",
+              pointerEvents: "auto",
+              userSelect: "text"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Rating (0.0\u20135.0, half steps only):"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "number",
+            step: "0.5",
+            value: localRating === "" ? "" : localRating,
+            onChange: handleRatingChange,
+            className: "rating-input",
+            placeholder: "Enter rating (e.g., 0.0, 0.5, 1.0, ..., 5.0)",
+            min: "0",
+            max: "5",
+            style: {
+              cursor: "text",
+              pointerEvents: "auto",
+              userSelect: "text"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Review:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
+            value: localReviewText,
+            onChange: handleReviewChange,
+            className: "review-input",
+            placeholder: "Enter review text",
+            style: {
+              cursor: "text",
+              pointerEvents: "auto",
+              userSelect: "text"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleSave,
+              children: "Save"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
+          })]
+        })]
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(selectedReviews) ? selectedReviews.length : 1, " review(s)?") : "Are you sure you want to restore ".concat(selectedReviews.length, " review(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type, "-modal-overlay"),
+      onClick: handleCancel,
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type, "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        style: {
+          position: 'relative',
+          margin: 'auto'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (ReviewManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Reviews/Reviews.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/Admin/Reviews/Reviews.js ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var _ReviewManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ReviewManagement */ "./resources/js/components/Admin/Reviews/ReviewManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+ // Already using useRef
+
+
+ // Import the updated component
+
+var Reviews = function Reviews() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    activeCheckedRows = _useState2[0],
+    setActiveCheckedRows = _useState2[1]; // Separate state for active table checkboxes, initialized empty
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeIsSelectAll = _useState4[0],
+    setActiveIsSelectAll = _useState4[1]; // Separate state for active table "Select All"
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState6 = _slicedToArray(_useState5, 2),
+    archivedCheckedRows = _useState6[0],
+    setArchivedCheckedRows = _useState6[1]; // Separate state for archived table checkboxes, initialized empty
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    archivedIsSelectAll = _useState8[0],
+    setArchivedIsSelectAll = _useState8[1]; // Separate state for archived table "Select All"
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState10 = _slicedToArray(_useState9, 2),
+    viewType = _useState10[0],
+    setViewType = _useState10[1]; // "active" or "archived"
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    managementModalOpen = _useState12[0],
+    setManagementModalOpen = _useState12[1]; // State for the management modal (edit, delete, restore, or add)
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    managementType = _useState14[0],
+    setManagementType = _useState14[1]; // "edit", "delete", "restore", or "add"
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedReview = _useState16[0],
+    setSelectedReview = _useState16[1]; // State for the review being edited, deleted, restored, or added
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState18 = _slicedToArray(_useState17, 2),
+    rating = _useState18[0],
+    setRating = _useState18[1]; // Local state for rating (used in save/add)
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    reviewText = _useState20[0],
+    setReviewText = _useState20[1]; // Local state for review text (used in save/add)
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    productName = _useState22[0],
+    setProductName = _useState22[1]; // New state for product name (used in add)
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState24 = _slicedToArray(_useState23, 2),
+    error = _useState24[0],
+    setError = _useState24[1]; // State for validation errors
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState26 = _slicedToArray(_useState25, 2),
+    forceUpdate = _useState26[0],
+    setForceUpdate = _useState26[1]; // New state for forcing re-render
+
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState28 = _slicedToArray(_useState27, 2),
+    currentPage = _useState28[0],
+    setCurrentPage = _useState28[1];
+  var itemsPerPage = 5;
+
+  // Static initial data for reviews as of February 28, 2025 (now mutable state)
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      productName: "Product Name 1",
+      rating: 5.0,
+      review: "Product Review 1",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 2",
+      rating: 5.0,
+      review: "Product Review 2",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 3",
+      rating: 4.5,
+      review: "Product Review 3",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 4",
+      rating: 2.0,
+      review: "Product Review 4",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 5",
+      rating: 1.0,
+      review: "Product Review 5",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 6",
+      rating: 3.0,
+      review: "Product Review 6",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 7",
+      rating: 4.0,
+      review: "Product Review 7",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }, {
+      productName: "Product Name 8",
+      rating: 0.0,
+      review: "Product Review 8",
+      createdAt: "11/21/24",
+      updatedAt: "02/28/25",
+      isArchived: false
+    }]),
+    _useState30 = _slicedToArray(_useState29, 2),
+    initialReviews = _useState30[0],
+    setInitialReviews = _useState30[1];
+
+  // State to manage all reviews with isArchived flag (sync with initialReviews)
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialReviews),
+    _useState32 = _slicedToArray(_useState31, 2),
+    reviews = _useState32[0],
+    setReviews = _useState32[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+
+  // Ref to store the table element for DOM manipulation
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+
+  // Use static data only, load from localStorage if available, sync reviews with initialReviews on mount, and set all reviews as active
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedReviews = localStorage.getItem("reviews");
+    if (savedReviews) {
+      var parsedReviews = JSON.parse(savedReviews);
+      // Set all reviews to isArchived: false on load
+      var activeReviews = parsedReviews.map(function (review) {
+        return _objectSpread(_objectSpread({}, review), {}, {
+          isArchived: false,
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          })
+        });
+      });
+      setInitialReviews(activeReviews);
+      setReviews(activeReviews);
+      console.log("Loaded and activated reviews from localStorage:", activeReviews);
+    } else {
+      console.log("Using static reviews data as of February 28, 2025, all set as active:", initialReviews);
+      setInitialReviews(initialReviews);
+      setReviews(initialReviews);
+      localStorage.setItem("reviews", JSON.stringify(initialReviews));
+    }
+    setActiveCheckedRows({}); // Ensure active checkboxes start empty
+    setActiveIsSelectAll(false); // Ensure active "Select All" starts unchecked
+    setArchivedCheckedRows({}); // Ensure archived checkboxes start empty
+    setArchivedIsSelectAll(false); // Ensure archived "Select All" starts unchecked
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    return reviews.filter(function (review) {
+      return review.isArchived === (viewType === "archived");
+    });
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveIsSelectAll(isChecked);
+      var newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          newCheckedRows[index] = true;
+        });
+        // Use ref to target only active table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        // Use ref to target only active table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setActiveCheckedRows(newCheckedRows);
+      console.log("Active checked rows updated (static data):", newCheckedRows);
+    } else if (viewType === "archived") {
+      setArchivedIsSelectAll(isChecked);
+      var _newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          _newCheckedRows[index] = true;
+        });
+        // Use ref to target only archived table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        // Use ref to target only archived table checkboxes
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setArchivedCheckedRows(_newCheckedRows);
+      console.log("Archived checked rows updated (static data):", _newCheckedRows);
+    }
+  };
+  var handleRowCheckbox = function handleRowCheckbox(index, e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.review-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setActiveIsSelectAll(allChecked);
+      console.log("Active row checkbox updated (static data), index:", index, "Checked:", isChecked);
+    } else if (viewType === "archived") {
+      setArchivedCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var _allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.review-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setArchivedIsSelectAll(_allChecked);
+      console.log("Archived row checkbox updated (static data), index:", index, "Checked:", isChecked);
+    }
+  };
+  var handleDelete = function handleDelete() {
+    var reviewToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (reviewToDelete) {
+      // Individual delete via icon
+      if (viewType !== "active") {
+        alert("You can only delete from Active Reviews.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedReview([reviewToDelete]); // Wrap in array for consistency with bulk delete in ReviewManagement
+      setManagementModalOpen(true);
+      return;
+    }
+
+    // Bulk delete via button
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      // Require at least 2 manually checked items
+      return; // Do nothing, button is disabled unless 2 or more are selected
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Reviews.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedReview(getSelectedReviews()); // Use getSelectedReviews for bulk delete
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var reviewToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (reviewToRestore) {
+      // Individual restore via icon
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Reviews.");
+        return;
+      }
+      setManagementType("restore");
+      setSelectedReview([reviewToRestore]); // Wrap in array for consistency with bulk restore in ReviewManagement
+      setManagementModalOpen(true);
+      return;
+    }
+
+    // Bulk restore via button (including Select All or manual selection)
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      // Require at least 2 manually checked items
+      return; // Do nothing, button is disabled unless 2 or more are selected
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Reviews.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedReview(getSelectedReviews()); // Use getSelectedReviews for bulk restore
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    if (viewType !== "active") {
+      alert("You can only add reviews to Active Reviews.");
+      return;
+    }
+    setManagementType("add");
+    setProductName(""); // Reset product name for new review
+    setRating(0); // Reset rating for new review
+    setReviewText(""); // Reset review text for new review
+    setSelectedReview(null); // Clear any selected review
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(review) {
+    setSelectedReview(review);
+    setRating(review.rating || 0);
+    setReviewText(review.review || "");
+    setProductName(review.productName || ""); // Set product name for editing
+    setManagementType("edit");
+    setManagementModalOpen(true);
+    console.log("Opening edit for review:", review);
+  };
+  var validateRating = function validateRating(value) {
+    var numValue = parseFloat(value) || 0;
+    if (isNaN(numValue)) return false;
+    if (numValue < 0 || numValue > 5) return false;
+    var decimalPart = numValue % 1;
+    return decimalPart === 0 || decimalPart === 0.5;
+  };
+  var handleRatingChange = function handleRatingChange(e) {
+    var value = e.target.value;
+    console.log("Rating input changed to:", value);
+    if (value === "") {
+      setRating("");
+      setError("");
+      return;
+    }
+    var numValue = parseFloat(value);
+    if (validateRating(numValue)) {
+      setRating(numValue);
+      setError("");
+    } else {
+      setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+    }
+  };
+  var handleReviewChange = function handleReviewChange(e) {
+    var value = e.target.value;
+    console.log("Review input changed to:", value);
+    setReviewText(value);
+  };
+  var handleProductNameChange = function handleProductNameChange(e) {
+    var value = e.target.value;
+    console.log("Product name input changed to:", value);
+    setProductName(value);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedReview) {
+    if (managementType === "edit") {
+      if (!selectedReview) {
+        alert("No review selected for editing.");
+        return;
+      }
+      if (!validateRating(rating)) {
+        setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+        return;
+      }
+      if (reviewText.length > 1000) {
+        setError("Review text is too long (max 1000 characters).");
+        return;
+      }
+      if (!productName.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      setError("");
+      var updatedReviews = initialReviews.map(function (item) {
+        return item.productName === selectedReview.productName ? _objectSpread(_objectSpread({}, newOrUpdatedReview), {}, {
+          productName: productName.trim(),
+          rating: parseFloat(rating),
+          review: reviewText,
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          isArchived: false,
+          createdAt: item.createdAt
+        }) : item;
+      });
+      setInitialReviews(updatedReviews); // Update static initialReviews
+      setReviews(updatedReviews); // Sync reviews state with initialReviews
+      setManagementModalOpen(false);
+      setSelectedReview(null);
+      setRating(0);
+      setReviewText("");
+      setProductName("");
+      localStorage.setItem("reviews", JSON.stringify(updatedReviews));
+      console.log("Edited reviews (static data), updated reviews:", updatedReviews);
+      // Force re-render to update the table with the edited review
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      }); // Increment forceUpdate to trigger re-render
+    } else if (managementType === "add") {
+      if (!productName.trim()) {
+        setError("Product name is required.");
+        return;
+      }
+      if (!validateRating(rating)) {
+        setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
+        return;
+      }
+      if (reviewText.length > 1000) {
+        setError("Review text is too long (max 1000 characters).");
+        return;
+      }
+      setError("");
+      var newReview = {
+        productName: productName.trim(),
+        rating: parseFloat(rating),
+        review: reviewText,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false
+      };
+      var _updatedReviews = [newReview].concat(_toConsumableArray(initialReviews.filter(function (r) {
+        return !r.isArchived;
+      }))); // Add to static initialReviews, preserving existing active reviews
+      setInitialReviews(_updatedReviews); // Update static initialReviews
+      setReviews(_updatedReviews); // Sync reviews state with initialReviews
+      setManagementModalOpen(false);
+      setProductName("");
+      setRating(0);
+      setReviewText("");
+      localStorage.setItem("reviews", JSON.stringify(_updatedReviews));
+      console.log("Added new review (static data), updated reviews:", _updatedReviews);
+      // Force re-render to update the table with the new review
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      }); // Increment forceUpdate to trigger re-render
+      setCurrentPage(1); // Reset to page 1 to show the new review at the top
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    if (managementType === "delete") {
+      var updatedReviews = initialReviews.map(function (review) {
+        if (Array.isArray(items)) {
+          // Bulk or individual delete (items is an array)
+          if (items.some(function (item) {
+            return item.productName === review.productName;
+          })) {
+            return _objectSpread(_objectSpread({}, review), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          // Handle individual delete (items is a single review object, though not expected here)
+          if (items.productName === review.productName) {
+            return _objectSpread(_objectSpread({}, review), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return review;
+      });
+      setInitialReviews(updatedReviews); // Update static initialReviews
+      setReviews(updatedReviews); // Sync reviews state with initialReviews
+      // Reset active table checkboxes after deletion
+      setActiveCheckedRows({});
+      setActiveIsSelectAll(false);
+      // Use ref to target only active table checkboxes
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      console.log("Deleted reviews (static data), updated reviews:", updatedReviews);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      }); // Force re-render after deletion
+    } else if (managementType === "restore") {
+      var _updatedReviews2 = initialReviews.map(function (review) {
+        if (Array.isArray(items)) {
+          // Bulk restore
+          if (items.some(function (item) {
+            return item.productName === review.productName;
+          })) {
+            return _objectSpread(_objectSpread({}, review), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          // Individual restore (items is a single review object)
+          if (items.productName === review.productName) {
+            return _objectSpread(_objectSpread({}, review), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return review;
+      });
+      setInitialReviews(_updatedReviews2); // Update static initialReviews
+      setReviews(_updatedReviews2); // Sync reviews state with initialReviews
+      // Reset archived table checkboxes after restoration
+      setArchivedCheckedRows({});
+      setArchivedIsSelectAll(false);
+      // Use ref to target only archived table checkboxes
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.review-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      console.log("Restored reviews (static data), updated reviews:", _updatedReviews2);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      }); // Force re-render after restoration
+    }
+    localStorage.setItem("reviews", JSON.stringify(initialReviews)); // Persist updated static data
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedReview(null);
+    setRating(0);
+    setReviewText("");
+    setProductName("");
+    setError("");
+    console.log("Closed management modal");
+  };
+
+  // Get selected reviews for delete or restore confirmation
+  var getSelectedReviews = function getSelectedReviews() {
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+
+  // Get the appropriate isSelectAll and checked count state based on viewType
+  var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
+  var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+    return activeCheckedRows[index];
+  }).length : Object.keys(archivedCheckedRows).filter(function (index) {
+    return archivedCheckedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "reviews-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "reviews-header",
+      children: viewType === "active" ? "Customer Reviews" : "Archived Reviews"
+    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2 // Disable unless 2 or more items are checked
+              ,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2 // Disable unless 2 or more items are checked
+            ,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Reviews"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Reviews"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "reviews-table ".concat(viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "review-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header reviews-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Product Name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Rating"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Review"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created at"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated at"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (item, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row ".concat(viewType === "archived" ? 'view-type="archived"' : ''),
+              children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "review-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox((currentPage - 1) * itemsPerPage + index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell reviews-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(item);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(item);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                      className: "restore-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleRestore(item);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                      className: "restore-button",
+                      onClick: function onClick() {
+                        return handleRestore();
+                      }
+                    }), " "]
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: item.productName
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: item.rating
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: item.review
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: item.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: item.updatedAt
+              })]
+            }, item.productName + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "7",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: viewType === "active" ? "No reviews available." : "No archived reviews available."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ReviewManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      review: managementType === "edit" || managementType === "add" ? selectedReview : managementType === "restore" && !Array.isArray(selectedReview) ? selectedReview : null,
+      selectedReviews: managementType === "delete" || managementType === "restore" && Array.isArray(selectedReview) ? selectedReview || getSelectedReviews() : [],
+      productName: productName // Pass product name for add/edit
+      ,
+      rating: rating // Pass rating for add/edit
+      ,
+      reviewText: reviewText // Pass review text for add/edit
+      ,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd // Use updated handler for both edit and add
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Reviews);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Roles/Roles.js":
+/*!******************************************************!*\
+  !*** ./resources/js/components/Admin/Roles/Roles.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _RolesManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./RolesManagement */ "./resources/js/components/Admin/Roles/RolesManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+ // Added FaUndo for Restore
+ // Assume a similar RolesManagement component
+
+var Roles = function Roles() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    checkedRows = _useState2[0],
+    setCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    isSelectAll = _useState4[0],
+    setIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    viewType = _useState6[0],
+    setViewType = _useState6[1]; // Roles can now have active/archived views
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    managementModalOpen = _useState8[0],
+    setManagementModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState10 = _slicedToArray(_useState9, 2),
+    managementType = _useState10[0],
+    setManagementType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState12 = _slicedToArray(_useState11, 2),
+    selectedRole = _useState12[0],
+    setSelectedRole = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    name = _useState14[0],
+    setName = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState16 = _slicedToArray(_useState15, 2),
+    error = _useState16[0],
+    setError = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState18 = _slicedToArray(_useState17, 2),
+    forceUpdate = _useState18[0],
+    setForceUpdate = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState20 = _slicedToArray(_useState19, 2),
+    currentPage = _useState20[0],
+    setCurrentPage = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState22 = _slicedToArray(_useState21, 2),
+    searchQuery = _useState22[0],
+    setSearchQuery = _useState22[1];
+  var itemsPerPage = 5; // Match CategoryList pagination
+
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      name: "Customer",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    }, {
+      id: 2,
+      name: "Admin",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: false
+    },
+    // Added an archived role for testing
+    {
+      id: 3,
+      name: "Moderator",
+      createdAt: "11/21/24",
+      updatedAt: "11/21/24",
+      isArchived: true
+    }]),
+    _useState24 = _slicedToArray(_useState23, 2),
+    initialRoles = _useState24[0],
+    setInitialRoles = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialRoles),
+    _useState26 = _slicedToArray(_useState25, 2),
+    roles = _useState26[0],
+    setRoles = _useState26[1];
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedRoles = localStorage.getItem("roles");
+    var updatedRoles = _toConsumableArray(initialRoles);
+    if (savedRoles) {
+      try {
+        updatedRoles = JSON.parse(savedRoles).map(function (role) {
+          return _objectSpread(_objectSpread({}, role), {}, {
+            isArchived: role.isArchived !== undefined ? role.isArchived : false,
+            createdAt: role.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
+            updatedAt: role.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded roles from localStorage:", updatedRoles);
+      } catch (error) {
+        console.error("Error parsing roles from localStorage:", error);
+        updatedRoles = _toConsumableArray(initialRoles);
+        localStorage.setItem("roles", JSON.stringify(updatedRoles));
+      }
+    } else {
+      console.log("Initialized with static roles:", initialRoles);
+      localStorage.setItem("roles", JSON.stringify(initialRoles));
+    }
+    setRoles(updatedRoles);
+    setInitialRoles(updatedRoles);
+    setCheckedRows({});
+    setIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!roles || roles.length === 0) {
+      console.warn("No roles data available, returning empty array.");
+      return [];
+    }
+    var filteredRoles = roles.filter(function (role) {
+      return role.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredRoles = filteredRoles.filter(function (role) {
+        return role.name.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+    }
+    return filteredRoles;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    var isChecked = e.target.checked;
+    setIsSelectAll(isChecked);
+    var newCheckedRows = {};
+    if (isChecked) {
+      currentItems.forEach(function (_, index) {
+        newCheckedRows[index] = true;
+      });
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.role-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = true;
+        });
+      }
+    } else {
+      if (tableRef.current) {
+        tableRef.current.querySelectorAll('.role-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+    }
+    setCheckedRows(newCheckedRows);
+  };
+  var handleRowCheckbox = function handleRowCheckbox(index, e) {
+    var isChecked = e.target.checked;
+    setCheckedRows(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+    });
+    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.role-checkbox')).filter(function (cb) {
+      return cb.checked;
+    }).length : 0);
+    setIsSelectAll(allChecked);
+  };
+  var handleDelete = function handleDelete() {
+    var roleToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to delete - viewType:", viewType, "roleToDelete:", roleToDelete, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (roleToDelete) {
+      if (viewType !== "active") {
+        alert("You can only delete from Active Roles.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedRole([roleToDelete]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one role to delete.");
+      return;
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Roles.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedRole(getSelectedRoles());
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var roleToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to restore - viewType:", viewType, "roleToRestore:", roleToRestore, "checkedRows:", checkedRows);
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    if (roleToRestore) {
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Roles.");
+        return;
+      }
+      console.log("Opening restore modal for single role:", roleToRestore);
+      setManagementType("restore");
+      setSelectedRole([roleToRestore]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 1) {
+      alert("Please select at least one role to restore.");
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Roles.");
+      return;
+    }
+    console.log("Opening restore modal for multiple roles:", getSelectedRoles());
+    setManagementType("restore");
+    setSelectedRole(getSelectedRoles());
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    console.log("Current viewType:", viewType, "Opening Add modal");
+    setManagementType("add");
+    setName("");
+    setSelectedRole(null);
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(role) {
+    console.log("Opening edit for role:", role);
+    setSelectedRole(role);
+    setName(role.name || "");
+    setManagementType("edit");
+    setManagementModalOpen(true);
+  };
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for role name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setName(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedRole) {
+    if (managementType === "edit") {
+      if (!selectedRole) {
+        alert("No role selected for editing.");
+        return;
+      }
+      if (!validateName(newOrUpdatedRole.name)) {
+        setError("Role name is required.");
+        return;
+      }
+      setError("");
+      var updatedRoles = roles.map(function (r) {
+        return r.id === selectedRole.id ? _objectSpread(_objectSpread({}, newOrUpdatedRole), {}, {
+          id: selectedRole.id,
+          createdAt: selectedRole.createdAt,
+          isArchived: selectedRole.isArchived
+        }) : r;
+      });
+      setRoles(updatedRoles);
+      setInitialRoles(updatedRoles);
+      localStorage.setItem("roles", JSON.stringify(updatedRoles));
+      setManagementModalOpen(false);
+      setSelectedRole(null);
+      setName("");
+      console.log("Edited role, updated roles:", updatedRoles);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+    } else if (managementType === "add") {
+      if (!validateName(newOrUpdatedRole.name)) {
+        setError("Role name is required.");
+        return;
+      }
+      setError("");
+      var newRole = {
+        id: Date.now(),
+        name: newOrUpdatedRole.name.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New roles are active by default
+      };
+      var _updatedRoles = [newRole].concat(_toConsumableArray(roles));
+      setRoles(_updatedRoles);
+      setInitialRoles(_updatedRoles);
+      localStorage.setItem("roles", JSON.stringify(_updatedRoles));
+      setManagementModalOpen(false);
+      setName("");
+      console.log("Added new role, updated roles:", _updatedRoles);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      setCurrentPage(1);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    console.log("Confirming action - managementType:", managementType, "items:", items);
+    if (managementType === "delete") {
+      var updatedRoles = roles.map(function (role) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === role.id;
+          })) {
+            return _objectSpread(_objectSpread({}, role), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === role.id) {
+            return _objectSpread(_objectSpread({}, role), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return role;
+      });
+      setRoles(updatedRoles);
+      setInitialRoles(updatedRoles);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.role-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("roles", JSON.stringify(updatedRoles));
+      console.log("Roles after delete:", updatedRoles);
+    } else if (managementType === "restore") {
+      var _updatedRoles2 = roles.map(function (role) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === role.id;
+          })) {
+            return _objectSpread(_objectSpread({}, role), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === role.id) {
+            return _objectSpread(_objectSpread({}, role), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return role;
+      });
+      setRoles(_updatedRoles2);
+      setInitialRoles(_updatedRoles2);
+      setCheckedRows({});
+      setIsSelectAll(false);
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.role-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("roles", JSON.stringify(_updatedRoles2));
+      console.log("Roles after restore:", _updatedRoles2);
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedRole(null);
+    setName("");
+    setError("");
+  };
+  var getSelectedRoles = function getSelectedRoles() {
+    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
+      return checkedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+  var checkedCount = Object.keys(checkedRows).filter(function (index) {
+    return checkedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "Roles",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "roles-header",
+      children: viewType === "active" ? "Active Roles" : "Archived Roles"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Roles"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Roles"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "roles-table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "role-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header roles-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Role"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (role, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "role-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox(index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell roles-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(role);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(role);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(role);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: role.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: role.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: role.updatedAt
+              })]
+            }, role.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "5",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: roles.length === 0 ? "No roles available. Please check your data or refresh the page." : viewType === "active" ? "No active roles match your search." : "No archived roles match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_RolesManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      role: managementType === "edit" || managementType === "add" ? selectedRole : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedRole) ? selectedRole : null,
+      selectedRoles: managementType === "restore" || managementType === "delete" ? selectedRole || getSelectedRoles() : [],
+      name: name,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Roles);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/Roles/RolesManagement.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Admin/Roles/RolesManagement.js ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var RolesManagement = function RolesManagement(_ref) {
+  var type = _ref.type,
+    role = _ref.role,
+    selectedRoles = _ref.selectedRoles,
+    name = _ref.name,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(name || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    localName = _useState2[0],
+    setLocalName = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    error = _useState4[0],
+    setError = _useState4[1];
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("RolesManagement rendered with type:", type, "role:", role, "name:", name, "selectedRoles:", selectedRoles);
+    if (type === "edit" && role) {
+      setLocalName(role.name || "");
+      console.log("Initializing edit for role:", role);
+    } else if (type === "add") {
+      setLocalName("");
+      console.log("Initializing add for new role");
+    }
+  }, [type, role, name, selectedRoles]);
+  var validateName = function validateName(name) {
+    return name.trim().length > 0; // Simple validation for role name
+  };
+  var handleNameChange = function handleNameChange(e) {
+    return setLocalName(e.target.value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!role) {
+        alert("No role selected for editing.");
+        return;
+      }
+      if (!validateName(localName)) {
+        setError("Role name is required.");
+        return;
+      }
+      setError("");
+      var updatedRole = _objectSpread(_objectSpread({}, role), {}, {
+        name: localName.trim(),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      });
+      console.log("Saving updated role:", updatedRole);
+      onSave(updatedRole);
+      onClose();
+    } else if (type === "add") {
+      if (!validateName(localName)) {
+        setError("Role name is required.");
+        return;
+      }
+      setError("");
+      var newRole = {
+        id: Date.now(),
+        name: localName.trim(),
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        isArchived: false // New roles are active by default
+      };
+      console.log("Saving new role:", newRole);
+      onSave(newRole);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    console.log("Confirming action - type:", type, "selectedRoles:", selectedRoles);
+    if (type === "delete") {
+      if (!selectedRoles || selectedRoles.length === 0) {
+        alert("Please select at least one role to delete.");
+        return;
+      }
+      console.log("Confirming delete for roles:", selectedRoles);
+      onConfirm(selectedRoles);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedRoles || selectedRoles.length === 0) {
+        alert("Please select at least one role to restore.");
+        return;
+      }
+      console.log("Confirming restore for roles:", selectedRoles);
+      onConfirm(selectedRoles);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    console.log("Closing modal for type:", type);
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit Role: ".concat((role === null || role === void 0 ? void 0 : role.name) || "Role") : "Add New Role";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "RolesManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+            className: "edit-modal-header",
+            children: title
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "edit-form",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+              className: "edit-form-label",
+              children: "Role Name:"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              type: "text",
+              value: localName,
+              onChange: handleNameChange,
+              className: "role-input",
+              placeholder: "Enter role name"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "button-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "save-button",
+                onClick: handleSave,
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
+              })]
+            })]
+          })]
+        })
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedRoles.length, " role(s)?") : "Are you sure you want to restore ".concat(selectedRoles.length, " role(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      onClick: handleCancel,
+      "data-testid": "".concat(type, "-overlay"),
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        "data-testid": "".concat(type, "-modal"),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (RolesManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/User/UserList.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/Admin/User/UserList.js ***!
+  \********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var _UserManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./UserManagement */ "./resources/js/components/Admin/User/UserManagement.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+
+
+
+var UserList = function UserList() {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    activeCheckedRows = _useState2[0],
+    setActiveCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    activeIsSelectAll = _useState4[0],
+    setActiveIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    _useState6 = _slicedToArray(_useState5, 2),
+    archivedCheckedRows = _useState6[0],
+    setArchivedCheckedRows = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState8 = _slicedToArray(_useState7, 2),
+    archivedIsSelectAll = _useState8[0],
+    setArchivedIsSelectAll = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+    _useState10 = _slicedToArray(_useState9, 2),
+    viewType = _useState10[0],
+    setViewType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    managementModalOpen = _useState12[0],
+    setManagementModalOpen = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState14 = _slicedToArray(_useState13, 2),
+    managementType = _useState14[0],
+    setManagementType = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    _useState16 = _slicedToArray(_useState15, 2),
+    selectedUser = _useState16[0],
+    setSelectedUser = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState18 = _slicedToArray(_useState17, 2),
+    username = _useState18[0],
+    setUsername = _useState18[1];
+  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState20 = _slicedToArray(_useState19, 2),
+    email = _useState20[0],
+    setEmail = _useState20[1];
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("Customer"),
+    _useState22 = _slicedToArray(_useState21, 2),
+    role = _useState22[0],
+    setRole = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState24 = _slicedToArray(_useState23, 2),
+    error = _useState24[0],
+    setError = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
+    _useState26 = _slicedToArray(_useState25, 2),
+    forceUpdate = _useState26[0],
+    setForceUpdate = _useState26[1];
+  var _useState27 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState28 = _slicedToArray(_useState27, 2),
+    currentPage = _useState28[0],
+    setCurrentPage = _useState28[1];
+  var _useState29 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState30 = _slicedToArray(_useState29, 2),
+    searchQuery = _useState30[0],
+    setSearchQuery = _useState30[1];
+  var itemsPerPage = 5;
+  var _useState31 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
+      id: 1,
+      username: "Username 1",
+      email: "user1@gmail.com",
+      role: "Admin",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 2,
+      username: "Username 2",
+      email: "user2@gmail.com",
+      role: "Admin",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 3,
+      username: "Username 3",
+      email: "user3@gmail.com",
+      role: "Customer",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 4,
+      username: "Username 4",
+      email: "user4@gmail.com",
+      role: "Admin",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }, {
+      id: 5,
+      username: "Username 5",
+      email: "user5@gmail.com",
+      role: "Customer",
+      isArchived: false,
+      createdAt: "11/21/24"
+    }]),
+    _useState32 = _slicedToArray(_useState31, 2),
+    initialUsers = _useState32[0],
+    setInitialUsers = _useState32[1];
+  var _useState33 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialUsers),
+    _useState34 = _slicedToArray(_useState33, 2),
+    users = _useState34[0],
+    setUsers = _useState34[1];
+  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var savedUsers = localStorage.getItem("users");
+    var updatedUsers = _toConsumableArray(initialUsers);
+    if (savedUsers) {
+      try {
+        updatedUsers = JSON.parse(savedUsers).map(function (user) {
+          return _objectSpread(_objectSpread({}, user), {}, {
+            isArchived: user.isArchived !== undefined ? user.isArchived : false,
+            createdAt: user.createdAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            })
+          });
+        });
+        console.log("Loaded users from localStorage:", updatedUsers);
+      } catch (error) {
+        console.error("Error parsing users from localStorage:", error);
+        updatedUsers = _toConsumableArray(initialUsers);
+        localStorage.setItem("users", JSON.stringify(updatedUsers));
+      }
+    } else {
+      console.log("Initialized with static users:", initialUsers);
+      localStorage.setItem("users", JSON.stringify(initialUsers));
+    }
+    setUsers(updatedUsers);
+    setInitialUsers(updatedUsers);
+    setActiveCheckedRows({});
+    setActiveIsSelectAll(false);
+    setArchivedCheckedRows({});
+    setArchivedIsSelectAll(false);
+  }, []);
+  var getCurrentData = function getCurrentData() {
+    if (!users || users.length === 0) {
+      console.warn("No users data available, returning empty array.");
+      return [];
+    }
+    var filteredUsers = users.filter(function (user) {
+      return user.isArchived === (viewType === "archived");
+    });
+    if (searchQuery.trim()) {
+      filteredUsers = filteredUsers.filter(function (user) {
+        return user.username.toLowerCase().includes(searchQuery.toLowerCase()) || user.email.toLowerCase().includes(searchQuery.toLowerCase()) || user.role.toLowerCase().includes(searchQuery.toLowerCase());
+      });
+    }
+    return filteredUsers;
+  };
+  var currentData = getCurrentData();
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var handleSelectAll = function handleSelectAll(e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveIsSelectAll(isChecked);
+      var newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          newCheckedRows[index] = true;
+        });
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setActiveCheckedRows(newCheckedRows);
+    } else if (viewType === "archived") {
+      setArchivedIsSelectAll(isChecked);
+      var _newCheckedRows = {};
+      if (isChecked) {
+        currentItems.forEach(function (_, index) {
+          _newCheckedRows[index] = true;
+        });
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = true;
+          });
+        }
+      } else {
+        if (tableRef.current) {
+          tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+            return checkbox.checked = false;
+          });
+        }
+      }
+      setArchivedCheckedRows(_newCheckedRows);
+    }
+  };
+  var handleRowCheckbox = function handleRowCheckbox(index, e) {
+    var isChecked = e.target.checked;
+    if (viewType === "active") {
+      setActiveCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.user-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setActiveIsSelectAll(allChecked);
+    } else if (viewType === "archived") {
+      setArchivedCheckedRows(function (prev) {
+        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      });
+      var _allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.user-checkbox')).filter(function (cb) {
+        return cb.checked;
+      }).length : 0);
+      setArchivedIsSelectAll(_allChecked);
+    }
+  };
+  var handleDelete = function handleDelete() {
+    var userToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (userToDelete) {
+      if (viewType !== "active") {
+        alert("You can only delete from Active Users.");
+        return;
+      }
+      setManagementType("delete");
+      setSelectedUser([userToDelete]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      return;
+    }
+    if (viewType !== "active") {
+      alert("You can only delete from Active Users.");
+      return;
+    }
+    setManagementType("delete");
+    setSelectedUser(getSelectedUsers());
+    setManagementModalOpen(true);
+  };
+  var handleRestore = function handleRestore() {
+    var userToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : [];
+    if (userToRestore) {
+      if (viewType !== "archived") {
+        alert("You can only restore from Archived Users.");
+        return;
+      }
+      setManagementType("restore");
+      setSelectedUser([userToRestore]);
+      setManagementModalOpen(true);
+      return;
+    }
+    var selectedCount = selectedIndices.length;
+    if (selectedCount < 2) {
+      return;
+    }
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Users.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedUser(getSelectedUsers());
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd() {
+    if (viewType !== "active") {
+      alert("You can only add users to Active Users.");
+      return;
+    }
+    setManagementType("add");
+    setUsername("");
+    setEmail("");
+    setRole("Customer");
+    setSelectedUser(null);
+    setManagementModalOpen(true);
+  };
+  var handleEdit = function handleEdit(user) {
+    setSelectedUser(user);
+    setUsername(user.username || "");
+    setEmail(user.email || "");
+    setRole(user.role || "Customer");
+    setManagementType("edit");
+    setManagementModalOpen(true);
+    console.log("Opening edit for user:", user);
+  };
+  var validateEmail = function validateEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  var handleUsernameChange = function handleUsernameChange(e) {
+    return setUsername(e.target.value);
+  };
+  var handleEmailChange = function handleEmailChange(e) {
+    return setEmail(e.target.value);
+  };
+  var handleRoleChange = function handleRoleChange(e) {
+    return setRole(e.target.value);
+  };
+  var handleSearchChange = function handleSearchChange(e) {
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
+  };
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedUser) {
+    if (managementType === "edit") {
+      if (!selectedUser) {
+        alert("No user selected for editing.");
+        return;
+      }
+      if (!newOrUpdatedUser.username.trim()) {
+        setError("Username is required.");
+        return;
+      }
+      if (!validateEmail(newOrUpdatedUser.email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!newOrUpdatedUser.role) {
+        setError("Role is required.");
+        return;
+      }
+      setError("");
+      var updatedUsers = users.map(function (u) {
+        return u.id === selectedUser.id ? _objectSpread(_objectSpread({}, newOrUpdatedUser), {}, {
+          id: selectedUser.id,
+          isArchived: selectedUser.isArchived,
+          createdAt: selectedUser.createdAt
+        }) : u;
+      });
+      setUsers(updatedUsers);
+      setInitialUsers(updatedUsers);
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+      setManagementModalOpen(false);
+      setSelectedUser(null);
+      setUsername("");
+      setEmail("");
+      setRole("Customer");
+      console.log("Edited user, updated users:", updatedUsers);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+    } else if (managementType === "add") {
+      if (!newOrUpdatedUser.username.trim()) {
+        setError("Username is required.");
+        return;
+      }
+      if (!validateEmail(newOrUpdatedUser.email)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!newOrUpdatedUser.role) {
+        setError("Role is required.");
+        return;
+      }
+      setError("");
+      var newUser = {
+        id: Date.now(),
+        username: newOrUpdatedUser.username.trim(),
+        email: newOrUpdatedUser.email,
+        role: newOrUpdatedUser.role,
+        isArchived: false,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      };
+      var _updatedUsers = [newUser].concat(_toConsumableArray(users));
+      setUsers(_updatedUsers);
+      setInitialUsers(_updatedUsers);
+      localStorage.setItem("users", JSON.stringify(_updatedUsers));
+      setManagementModalOpen(false);
+      setUsername("");
+      setEmail("");
+      setRole("Customer");
+      console.log("Added new user, updated users:", _updatedUsers);
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      setCurrentPage(1);
+    }
+  };
+  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
+    if (managementType === "delete") {
+      var updatedUsers = users.map(function (user) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === user.id;
+          })) {
+            return _objectSpread(_objectSpread({}, user), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === user.id) {
+            return _objectSpread(_objectSpread({}, user), {}, {
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return user;
+      });
+      setUsers(updatedUsers);
+      setInitialUsers(updatedUsers);
+      setActiveCheckedRows({});
+      setActiveIsSelectAll(false);
+      if (tableRef.current && viewType === "active") {
+        tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    } else if (managementType === "restore") {
+      var _updatedUsers2 = users.map(function (user) {
+        if (Array.isArray(items)) {
+          if (items.some(function (item) {
+            return item.id === user.id;
+          })) {
+            return _objectSpread(_objectSpread({}, user), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        } else {
+          if (items.id === user.id) {
+            return _objectSpread(_objectSpread({}, user), {}, {
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
+            });
+          }
+        }
+        return user;
+      });
+      setUsers(_updatedUsers2);
+      setInitialUsers(_updatedUsers2);
+      setArchivedCheckedRows({});
+      setArchivedIsSelectAll(false);
+      if (tableRef.current && viewType === "archived") {
+        tableRef.current.querySelectorAll('.user-checkbox').forEach(function (checkbox) {
+          return checkbox.checked = false;
+        });
+      }
+      setManagementModalOpen(false);
+      if (currentData.length === 0) {
+        setCurrentPage(1);
+      }
+      setForceUpdate(function (prev) {
+        return prev + 1;
+      });
+      localStorage.setItem("users", JSON.stringify(_updatedUsers2));
+    }
+  };
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedUser(null);
+    setUsername("");
+    setEmail("");
+    setRole("Customer");
+    setError("");
+  };
+  var getSelectedUsers = function getSelectedUsers() {
+    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+      return activeCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    }) : Object.keys(archivedCheckedRows).filter(function (index) {
+      return archivedCheckedRows[index];
+    }).map(function (index) {
+      return parseInt(index, 10);
+    });
+    return selectedIndices.map(function (index) {
+      return currentItems[index];
+    });
+  };
+  var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
+  var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
+    return activeCheckedRows[index];
+  }).length : Object.keys(archivedCheckedRows).filter(function (index) {
+    return archivedCheckedRows[index];
+  }).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    className: "users-container",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+      className: "users-header",
+      children: viewType === "active" ? "Users" : "Archived Users"
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "table-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-header-actions",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          className: "search-bar",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+            type: "text",
+            value: searchQuery,
+            onChange: handleSearchChange,
+            placeholder: "Search",
+            className: "search-input"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "button-group",
+          style: {
+            marginLeft: 'auto'
+          },
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "add-button",
+              onClick: handleAdd,
+              children: "Add"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "delete-button",
+              onClick: function onClick() {
+                return handleDelete();
+              },
+              disabled: checkedCount < 2,
+              children: "Delete"
+            })]
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "restore-button",
+            onClick: function onClick() {
+              return handleRestore();
+            },
+            disabled: checkedCount < 2,
+            children: "Restore"
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "view-toggle",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "active" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("active");
+            },
+            children: "Active Users"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            className: "view-button ".concat(viewType === "archived" ? "active" : ""),
+            onClick: function onClick() {
+              return setViewType("archived");
+            },
+            children: "Archived Users"
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+        ref: tableRef,
+        className: "users-table ".concat(viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'),
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+            className: "table-header-row",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "checkbox",
+                className: "user-checkbox",
+                checked: isSelectAll,
+                onChange: handleSelectAll
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header users-action-column",
+              children: "Action"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Username"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Email"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Status"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Role"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Created At"
+            })]
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (user, index) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+              className: "table-row ".concat(viewType === "archived" ? 'view-type="archived"' : ''),
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                  type: "checkbox",
+                  className: "user-checkbox",
+                  onChange: function onChange(e) {
+                    return handleRowCheckbox((currentPage - 1) * itemsPerPage + index, e);
+                  }
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell users-action-column",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                  className: "action-buttons",
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
+                      className: "edit-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleEdit(user);
+                      }
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                      className: "delete-icon",
+                      size: 20,
+                      onClick: function onClick() {
+                        return handleDelete(user);
+                      }
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                    className: "restore-icon",
+                    size: 20,
+                    onClick: function onClick() {
+                      return handleRestore(user);
+                    }
+                  })
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: user.username
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: user.email
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell status-".concat(user.isArchived ? "inactive" : "active"),
+                children: user.isArchived ? "Inactive" : "Active"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: user.role
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: user.createdAt
+              })]
+            }, user.id + index + forceUpdate);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            className: "table-row",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              colSpan: "7",
+              className: "table-cell",
+              style: {
+                textAlign: "center",
+                padding: "20px",
+                backgroundColor: "#f9f9f9"
+              },
+              children: users.length === 0 ? "No users available. Please check your data or refresh the page." : viewType === "active" ? "No active users match your search." : "No archived users match your search."
+            })
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        className: "table-pagination",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.max(prev - 1, 1);
+            });
+          },
+          disabled: currentPage === 1,
+          className: "table-pagination-button",
+          children: "Previous"
+        }), Array.from({
+          length: totalPages
+        }, function (_, i) {
+          return i + 1;
+        }).map(function (page) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            onClick: function onClick() {
+              return setCurrentPage(page);
+            },
+            className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
+            children: page
+          }, page);
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          onClick: function onClick() {
+            return setCurrentPage(function (prev) {
+              return Math.min(prev + 1, totalPages);
+            });
+          },
+          disabled: currentPage === totalPages,
+          className: "table-pagination-button",
+          children: "Next"
+        })]
+      })]
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_UserManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      type: managementType,
+      user: managementType === "edit" || managementType === "add" ? selectedUser : managementType === "restore" && !Array.isArray(selectedUser) ? selectedUser : null,
+      selectedUsers: managementType === "delete" || managementType === "restore" && Array.isArray(selectedUser) ? selectedUser || getSelectedUsers() : [],
+      username: username,
+      email: email,
+      role: role,
+      onClose: handleCloseManagement,
+      onConfirm: handleConfirmDeleteOrRestore,
+      onSave: handleSaveEditOrAdd
+    })]
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserList);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/User/UserManagement.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/Admin/User/UserManagement.js ***!
+  \**************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
+
+var UserManagement = function UserManagement(_ref) {
+  var type = _ref.type,
+    user = _ref.user,
+    selectedUsers = _ref.selectedUsers,
+    username = _ref.username,
+    email = _ref.email,
+    role = _ref.role,
+    onClose = _ref.onClose,
+    onConfirm = _ref.onConfirm,
+    onSave = _ref.onSave;
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(username || ""),
+    _useState2 = _slicedToArray(_useState, 2),
+    localUsername = _useState2[0],
+    setLocalUsername = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(email || ""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    localEmail = _useState4[0],
+    setLocalEmail = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(role || "Customer"),
+    _useState6 = _slicedToArray(_useState5, 2),
+    localRole = _useState6[0],
+    setLocalRole = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState8 = _slicedToArray(_useState7, 2),
+    error = _useState8[0],
+    setError = _useState8[1];
+
+  // Initialize state with user data for edit or add
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    if (type === "edit" && user) {
+      setLocalUsername(user.username || "");
+      setLocalEmail(user.email || "");
+      setLocalRole(user.role || "Customer");
+      console.log("Initializing edit for user:", user);
+    } else if (type === "add") {
+      setLocalUsername("");
+      setLocalEmail("");
+      setLocalRole("Customer");
+      console.log("Initializing add for new user");
+    }
+  }, [type, user]);
+  var validateEmail = function validateEmail(email) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+  var handleUsernameChange = function handleUsernameChange(e) {
+    var value = e.target.value;
+    console.log("Username input changed to:", value);
+    setLocalUsername(value);
+  };
+  var handleEmailChange = function handleEmailChange(e) {
+    var value = e.target.value;
+    console.log("Email input changed to:", value);
+    setLocalEmail(value);
+  };
+  var handleRoleChange = function handleRoleChange(e) {
+    var value = e.target.value;
+    console.log("Role input changed to:", value);
+    setLocalRole(value);
+  };
+  var handleSave = function handleSave() {
+    if (type === "edit") {
+      if (!user) {
+        alert("No user selected for editing.");
+        return;
+      }
+      if (!localUsername.trim()) {
+        setError("Username is required.");
+        return;
+      }
+      if (!validateEmail(localEmail)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!localRole) {
+        setError("Role is required.");
+        return;
+      }
+      setError("");
+      var updatedUser = _objectSpread(_objectSpread({}, user), {}, {
+        username: localUsername.trim(),
+        email: localEmail,
+        role: localRole,
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      });
+      console.log("Saving updated user:", updatedUser);
+      onSave(updatedUser);
+      onClose();
+    } else if (type === "add") {
+      if (!localUsername.trim()) {
+        setError("Username is required.");
+        return;
+      }
+      if (!validateEmail(localEmail)) {
+        setError("Please enter a valid email address.");
+        return;
+      }
+      if (!localRole) {
+        setError("Role is required.");
+        return;
+      }
+      setError("");
+      var newUser = {
+        id: Date.now(),
+        username: localUsername.trim(),
+        email: localEmail,
+        role: localRole,
+        isArchived: false,
+        createdAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        }),
+        updatedAt: new Date().toLocaleDateString('en-US', {
+          month: '2-digit',
+          day: '2-digit',
+          year: '2-digit'
+        })
+      };
+      console.log("Saving new user:", newUser);
+      onSave(newUser);
+      onClose();
+    }
+  };
+  var handleConfirm = function handleConfirm() {
+    if (type === "delete") {
+      if (!selectedUsers || selectedUsers.length === 0) {
+        alert("Please select at least one user to delete.");
+        return;
+      }
+      onConfirm(selectedUsers);
+      onClose();
+    } else if (type === "restore") {
+      if (!selectedUsers || selectedUsers.length === 0) {
+        alert("Please select at least one user to restore.");
+        return;
+      }
+      onConfirm(selectedUsers);
+      onClose();
+    }
+  };
+  var handleCancel = function handleCancel() {
+    if (type === "edit" || type === "add") {
+      console.log("Canceling ".concat(type, " for user:"), user || "new user");
+    } else if (type === "delete" || type === "restore") {
+      console.log("Canceling ".concat(type, " for selected users:"), selectedUsers);
+    }
+    onClose();
+  };
+  if (type === "edit" || type === "add") {
+    var title = type === "edit" ? "Edit User: ".concat((user === null || user === void 0 ? void 0 : user.username) || "User") : "Add New User";
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "edit-modal-overlay",
+      onClick: handleCancel,
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "edit-modal",
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          className: "edit-modal-header",
+          children: title
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "error-message",
+          children: error
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "edit-form",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Username:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "text",
+            value: localUsername,
+            onChange: handleUsernameChange,
+            className: "user-input",
+            placeholder: "Enter username",
+            style: {
+              cursor: "text",
+              pointerEvents: "auto",
+              userSelect: "text"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Email:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+            type: "email",
+            value: localEmail,
+            onChange: handleEmailChange,
+            className: "user-input",
+            placeholder: "Enter email",
+            style: {
+              cursor: "text",
+              pointerEvents: "auto",
+              userSelect: "text"
+            }
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
+            className: "edit-form-label",
+            children: "Role:"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
+            value: localRole,
+            onChange: handleRoleChange,
+            className: "user-input",
+            style: {
+              cursor: "pointer",
+              pointerEvents: "auto",
+              userSelect: "text"
+            },
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "Customer",
+              children: "Customer"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              value: "Admin",
+              children: "Admin"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleSave,
+              children: "Save"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
+          })]
+        })]
+      })
+    });
+  } else if (type === "delete" || type === "restore") {
+    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(selectedUsers) ? selectedUsers.length : 1, " user(s)?") : "Are you sure you want to restore ".concat(selectedUsers.length, " user(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "".concat(type, "-modal-overlay"),
+      onClick: handleCancel,
+      style: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center'
+      },
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "".concat(type, "-modal"),
+        onClick: function onClick(e) {
+          return e.stopPropagation();
+        },
+        style: {
+          position: 'relative',
+          margin: 'auto'
+        },
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
+          children: _title
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          children: message
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "button-group",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "save-button",
+            onClick: handleConfirm,
+            children: type === "delete" ? "Delete" : "Restore"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            className: "cancel-button",
+            onClick: handleCancel,
+            children: "Cancel"
+          })]
+        })]
+      })
+    });
+  }
+  return null;
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (UserManagement);
+
+/***/ }),
+
+/***/ "./resources/js/components/Admin/login.js":
+/*!************************************************!*\
+  !*** ./resources/js/components/Admin/login.js ***!
+  \************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75879,10 +83287,10 @@ var Login = function Login() {
 
 /***/ }),
 
-/***/ "./resources/js/components/register.js":
-/*!*********************************************!*\
-  !*** ./resources/js/components/register.js ***!
-  \*********************************************/
+/***/ "./resources/js/components/Admin/register.js":
+/*!***************************************************!*\
+  !*** ./resources/js/components/Admin/register.js ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -76052,6 +83460,56 @@ var Register = function Register() {
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Register);
+
+/***/ }),
+
+/***/ "./resources/js/components/Routers.js":
+/*!********************************************!*\
+  !*** ./resources/js/components/Routers.js ***!
+  \********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Routers)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_dom_client__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom/client */ "./node_modules/react-dom/client.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
+/* harmony import */ var _Admin_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Admin/login */ "./resources/js/components/Admin/login.js");
+/* harmony import */ var _Admin_register__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Admin/register */ "./resources/js/components/Admin/register.js");
+/* harmony import */ var _Admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Admin/AdminDashboard */ "./resources/js/components/Admin/AdminDashboard.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+
+
+
+function Routers() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        path: "/",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Admin_login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        path: "/register",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Admin_register__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Route, {
+        path: "/admin",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_Admin_AdminDashboard__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      })]
+    })
+  });
+}
+if (document.getElementById("root")) {
+  var container = document.getElementById("root");
+  var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_1__.createRoot)(container);
+  root.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(Routers, {}));
+}
 
 /***/ }),
 

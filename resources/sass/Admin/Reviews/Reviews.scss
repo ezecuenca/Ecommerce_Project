@@ -1,0 +1,654 @@
+/* ReviewsStyles.scss */
+.reviews-container {
+    padding: 8px; /* Further reduced padding to move content up */
+    background-color: white;
+    position: relative;
+    margin: 0;
+}
+
+.reviews-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 4px; /* Further reduced margin to move table up */
+    margin-top: 0;
+}
+
+.table-container {
+    position: relative;
+    min-height: 200px;
+    overflow-x: auto;
+    margin-top: 0; /* Removed margin to move table up */
+    padding-top: 0;
+}
+
+.table-header-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 4px; /* Further reduced gap to move content up */
+    margin-bottom: 0;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 240px;
+    font-size: 14px;
+    height: 32px;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6;
+    color: #4a5568;
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+.reviews-container .button-group { /* Scoped to reviews-container to prevent global impact */
+    display: flex;
+    gap: 8px;
+    align-items: center; /* Ensure vertical alignment with filter icon */
+}
+
+.reviews-container .button-group .add-button { /* Scoped to reviews-container */
+    background-color: #2A363B; /* Blue for Add button */
+    color: white;
+    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4169e1; /* Darker blue on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Match Orders.js "Completed" button */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #4CAF50 !important;
+        border-color: #4CAF50 !important;
+    }
+}
+
+.reviews-container .button-group .delete-button { /* Scoped to reviews-container */
+    background-color: #ef4444; /* Red for Delete button */
+    color: white;
+    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #dc2626; /* Darker red on hover */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Updated to light reddish for Delete button */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #ffcccc !important; /* Light reddish color (e.g., pastel red) */
+        border-color: #ffcccc !important;
+    }
+}
+
+.reviews-container .button-group .restore-button { /* Scoped to reviews-container */
+    background-color: #1e90ff; /* Blue for Restore button, matching Add button */
+    color: white;
+    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4169e1; /* Darker blue on hover, matching Add button */
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+        background-color: #45a049 !important;
+        border-color: #45a049 !important;
+    }
+
+    &:disabled { /* Updated to light bluish for Restore button */
+        opacity: 0.5 !important;
+        cursor: not-allowed !important;
+        background-color: #cce5ff !important; /* Light bluish color (e.g., pastel blue) */
+        border-color: #cce5ff !important;
+    }
+}
+
+/* Filter Icon and Dropdown Styling */
+.filter-icon {
+    cursor: pointer;
+    margin-right: 8px; // Space between filter icon and buttons
+    position: relative;
+    color: #6b7280; // Default gray, matching other icons
+    transition: color 0.3s ease; // Smooth color transition
+    border: 1px solid #d1d5db; // Add border matching buttons and inputs
+    border-radius: 4px; // Match button and input border radius
+    padding: 4px; // Add padding to accommodate the border and improve click area
+    display: flex; // Ensure icon and label align properly
+    align-items: center; // Vertically center icon and label
+    background-color: white; // Match button background for consistency
+
+    &:hover {
+        color: #4169e1; // Hover effect to match add-button blue
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6; // Focus ring to match other interactive elements
+    }
+}
+
+.filter-label {
+    margin-left: 8px; // Space between icon and text
+    color: #4a5568; // Match table header color
+    font-size: 14px; // Match button/icon text size
+    vertical-align: middle; // Align with the icon
+}
+
+.filter-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    z-index: 1001; // Above other elements, below modals (z-index: 1000)
+    min-width: 150px;
+
+    button {
+        display: block;
+        width: 100%;
+        padding: 8px 16px;
+        text-align: left;
+        border: none;
+        background: none;
+        font-size: 14px;
+        cursor: pointer;
+        border-bottom: 1px solid #e5e7eb;
+        color: #4a5568; // Match table header color
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: #f3f4f6; // Light gray hover, matching button hover
+        }
+
+        &:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #3b82f6; // Focus ring to match other interactive elements
+        }
+    }
+}
+
+/* Remove or scope any default button styles that could affect Orders.js */
+button { /* Override any global button styles specific to Reviews */
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: default;
+}
+
+/* Ensure buttons within reviews-table or action-buttons are scoped */
+.reviews-table button,
+.action-buttons button {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    cursor: default;
+    text-align: left;
+}
+
+.reviews-table {
+    width: 100%;
+    margin-bottom: 24px;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 0; /* Removed margin to move table up */
+    padding-top: 0;
+}
+
+.table-header-row {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 8px;
+}
+
+.table-header,
+.table-cell {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid #e5e7eb;
+    font-size: 16px;
+}
+
+.table-row {
+    border-bottom: 1px solid #e5e7eb;
+    min-height: 40px;
+}
+
+.table-row .text-black {
+    color: #000000;
+}
+
+.reviews-table tbody td[colspan="7"] {
+    text-align: center;
+    padding: 20px;
+    background-color: #f9f9f9; /* Light gray for empty state */
+}
+
+.review-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: 0;
+}
+
+.edit-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.delete-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.restore-icon {
+    color: #6b7280;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    vertical-align: middle;
+    display: inline-block;
+    text-align: center;
+
+    &:hover {
+        color: #4a5568;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+}
+
+.table-pagination {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.table-pagination-button {
+    background-color: #e5e7eb;
+    color: #000000;
+    border: 1px solid #e5e7eb;
+    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    margin-right: 0;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover:not(:disabled) {
+        background-color: #d1d5db;
+    }
+
+    &.active {
+        background-color: #4a5568;
+        color: white;
+        border-color: #4a5568;
+    }
+
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.view-toggle {
+    display: flex;
+    gap: 4px; /* Further reduced gap to move content up */
+    margin-top: 4px; /* Further reduced margin to move content up */
+}
+
+.view-button {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        background-color: #d1d5db;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &.active {
+        background-color: #4a5568;
+        color: white;
+        border-color: #4a5568;
+    }
+}
+
+/* Set fixed widths for table columns, scoped to Reviews */
+.reviews-table .table-header:first-child,
+.reviews-table .table-cell:first-child {
+    width: 50px;
+    text-align: center;
+}
+
+.reviews-table .table-header.reviews-action-column,
+.reviews-table .table-cell.reviews-action-column {
+    width: 60px; /* Increased width for Action column to fully display "Action" header, scoped to Reviews */
+    text-align: center;
+}
+
+/* Override for archived view to accommodate Restore button, scoped to Reviews */
+.reviews-table .table-row[view-type="archived"] .table-header.reviews-action-column,
+.reviews-table .table-row[view-type="archived"] .table-cell.reviews-action-column,
+.reviews-table .table-row.view-type-archived .reviews-action-column {
+    width: 140px; /* Increased width for Restore button in archived view, matching active view, scoped to Reviews */
+}
+
+.reviews-table .table-header:nth-child(3),
+.reviews-table .table-cell:nth-child(3) {
+    width: 200px; /* Product Name */
+}
+
+.reviews-table .table-header:nth-child(4),
+.reviews-table .table-cell:nth-child(4) {
+    width: 100px; /* Rating */
+}
+
+.reviews-table .table-header:nth-child(5),
+.reviews-table .table-cell:nth-child(5) {
+    width: 200px; /* Review */
+}
+
+.reviews-table .table-header:nth-child(6),
+.reviews-table .table-cell:nth-child(6) {
+    width: 120px; /* Created at */
+}
+
+.reviews-table .table-header:nth-child(7),
+.reviews-table .table-cell:nth-child(7) {
+    width: 120px; /* Updated at */
+}
+
+/* Modal overlay and modal styling for edit */
+.edit-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.edit-modal {
+    background-color: white;
+    padding: 24px;
+    border-radius: 8px;
+    width: 400px;
+    max-width: 90%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.edit-modal-header {
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+    margin-bottom: 16px;
+}
+
+.error-message {
+    color: #ef4444; /* Red for errors */
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.edit-form-label {
+    font-size: 16px;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.rating-input {
+    border: 1px solid #d1d5db;
+    border-radius: 9999px;
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 240px;
+    font-size: 14px;
+    height: 32px;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6;
+    color: #4a5568;
+    cursor: text; /* Ensure cursor indicates editable */
+    pointer-events: auto; /* Ensure inputs are clickable */
+    user-select: text; /* Allow text selection for editing */
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+.review-input {
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 8px 12px;
+    width: 100%;
+    min-height: 100px;
+    font-size: 14px;
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f3f4f6;
+    color: #4a5568;
+    cursor: text; /* Ensure cursor indicates editable */
+    pointer-events: auto; /* Ensure inputs are clickable */
+    user-select: text; /* Allow text selection for editing */
+
+    &::placeholder {
+        color: #6b7280;
+    }
+
+    &:focus {
+        border-color: transparent;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+}
+
+@media (max-width: 767px) {
+    .reviews-container {
+        padding: 4px; /* Further reduced padding for mobile to move content up */
+    }
+
+    .reviews-header {
+        margin-bottom: 2px; /* Further reduced margin for mobile to move table up */
+    }
+
+    .table-header-actions {
+        flex-direction: column;
+        gap: 2px; /* Further reduced gap for mobile to move content up */
+        align-items: flex-end;
+    }
+
+    .search-bar .search-input {
+        max-width: 100%;
+    }
+
+    .button-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .reviews-table .table-header,
+    .reviews-table .table-cell {
+        padding: 8px;
+        font-size: 14px;
+    }
+
+    .table-header-row {
+        font-size: 14px;
+        padding: 6px;
+    }
+
+    .table-row {
+        min-height: 32px;
+    }
+
+    .review-checkbox {
+        width: 16px;
+        height: 16px;
+    }
+
+    .edit-icon {
+        margin-left: 4px;
+        size: 16px;
+    }
+
+    .delete-icon {
+        margin-left: 4px;
+        size: 16px;
+    }
+
+    .restore-icon {
+        margin-left: 4px;
+        size: 16px;
+    }
+
+    .view-toggle {
+        flex-direction: column;
+        gap: 2px; /* Further reduced gap for mobile to move content up */
+    }
+
+    .view-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Adjust Action column widths on mobile, scoped to Reviews */
+    .reviews-table .table-header.reviews-action-column,
+    .reviews-table .table-cell.reviews-action-column {
+        width: 100px; /* Wider on mobile for Action column to fit "Action" header fully, scoped to Reviews */
+    }
+
+    .reviews-table .table-row[view-type="archived"] .table-header.reviews-action-column,
+    .reviews-table .table-row[view-type="archived"] .table-cell.reviews-action-column,
+    .reviews-table .table-row.view-type-archived .reviews-action-column {
+        width: 100px; /* Wider on mobile for Restore button, matching active view, scoped to Reviews */
+    }
+}
