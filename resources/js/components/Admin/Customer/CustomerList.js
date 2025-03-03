@@ -22,11 +22,11 @@ const CustomerList = () => {
     const itemsPerPage = 5;
 
     const [initialCustomers, setInitialCustomers] = useState([
-        { id: 1, name: "Customer Name 1", email: "user1@gmail.com", address: "user address 1", isArchived: false, createdAt: "11/21/24" },
-        { id: 2, name: "Customer Name 2", email: "user2@gmail.com", address: "user address 2", isArchived: false, createdAt: "11/21/24" },
-        { id: 3, name: "Customer Name 3", email: "user3@gmail.com", address: "user address 3", isArchived: false, createdAt: "11/21/24" },
-        { id: 4, name: "Customer Name 4", email: "user4@gmail.com", address: "user address 4", isArchived: false, createdAt: "11/21/24" },
-        { id: 5, name: "Customer Name 5", email: "user5@gmail.com", address: "user address 5", isArchived: false, createdAt: "11/21/24" },
+        { id: 1, name: "Customer Name 1", email: "user1@gmail.com", address: "user address 1", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 2, name: "Customer Name 2", email: "user2@gmail.com", address: "user address 2", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 3, name: "Customer Name 3", email: "user3@gmail.com", address: "user address 3", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 4, name: "Customer Name 4", email: "user4@gmail.com", address: "user address 4", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 5, name: "Customer Name 5", email: "user5@gmail.com", address: "user address 5", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
     ]);
 
     const [customers, setCustomers] = useState(initialCustomers);
@@ -42,15 +42,13 @@ const CustomerList = () => {
                     ...customer,
                     isArchived: customer.isArchived !== undefined ? customer.isArchived : false,
                     createdAt: customer.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
+                    updatedAt: customer.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
                 }));
-                console.log("Loaded customers from localStorage:", updatedCustomers);
             } catch (error) {
-                console.error("Error parsing customers from localStorage:", error);
                 updatedCustomers = [...initialCustomers];
                 localStorage.setItem("customers", JSON.stringify(updatedCustomers));
             }
         } else {
-            console.log("Initialized with static customers:", initialCustomers);
             localStorage.setItem("customers", JSON.stringify(initialCustomers));
         }
         setCustomers(updatedCustomers);
@@ -63,7 +61,6 @@ const CustomerList = () => {
 
     const getCurrentData = () => {
         if (!customers || customers.length === 0) {
-            console.warn("No customers data available, returning empty array.");
             return [];
         }
         let filteredCustomers = customers.filter(customer => customer.isArchived === (viewType === "archived"));
@@ -71,7 +68,9 @@ const CustomerList = () => {
             filteredCustomers = filteredCustomers.filter(customer =>
                 customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 customer.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                customer.address.toLowerCase().includes(searchQuery.toLowerCase())
+                customer.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                customer.createdAt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                customer.updatedAt.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
         return filteredCustomers;
@@ -224,7 +223,6 @@ const CustomerList = () => {
         setAddress(customer.address || "");
         setManagementType("edit");
         setManagementModalOpen(true);
-        console.log("Opening edit for customer:", customer);
     };
 
     const validateEmail = (email) => {
@@ -265,7 +263,7 @@ const CustomerList = () => {
 
             setError("");
             const updatedCustomers = customers.map(c =>
-                c.id === selectedCustomer.id ? { ...newOrUpdatedCustomer, id: selectedCustomer.id, isArchived: selectedCustomer.isArchived, createdAt: selectedCustomer.createdAt } : c
+                c.id === selectedCustomer.id ? { ...newOrUpdatedCustomer, id: selectedCustomer.id, isArchived: selectedCustomer.isArchived, createdAt: selectedCustomer.createdAt, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) } : c
             );
             setCustomers(updatedCustomers);
             setInitialCustomers(updatedCustomers);
@@ -275,7 +273,6 @@ const CustomerList = () => {
             setName("");
             setEmail("");
             setAddress("");
-            console.log("Edited customer, updated customers:", updatedCustomers);
             setForceUpdate(prev => prev + 1);
         } else if (managementType === "add") {
             if (!newOrUpdatedCustomer.name.trim()) {
@@ -311,7 +308,6 @@ const CustomerList = () => {
             setName("");
             setEmail("");
             setAddress("");
-            console.log("Added new customer, updated customers:", updatedCustomers);
             setForceUpdate(prev => prev + 1);
             setCurrentPage(1);
         }
@@ -459,6 +455,7 @@ const CustomerList = () => {
                             <th className="table-header">Address</th>
                             <th className="table-header">Status</th>
                             <th className="table-header">Created At</th>
+                            <th className="table-header">Updated At</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -481,17 +478,18 @@ const CustomerList = () => {
                                         </div>
                                     </td>
                                     <td className="table-cell">{customer.name}</td>
-                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '100px' }}>{customer.email}</td>
-                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '250px' }}>{customer.address}</td>
+                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '190px' }}>{customer.email}</td>
+                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '350px' }}>{customer.address}</td>
                                     <td className={`table-cell status-${customer.isArchived ? "inactive" : "active"}`}>
                                         {customer.isArchived ? "Inactive" : "Active"}
                                     </td>
                                     <td className="table-cell">{customer.createdAt}</td>
+                                    <td className="table-cell">{customer.updatedAt}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr className="table-row">
-                                <td colSpan="7" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                <td colSpan="8" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
                                     {customers.length === 0
                                         ? "No customers available. Please check your data or refresh the page."
                                         : viewType === "active"

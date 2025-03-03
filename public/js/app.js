@@ -72884,9 +72884,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("personal-info", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaUser, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Personal Info"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72894,9 +72894,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("dashboard", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaTachometerAlt, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Dashboard"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72904,9 +72904,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("orders", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaClipboardList, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Orders"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72914,9 +72914,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("inventory", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaBoxOpen, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Inventory"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72924,9 +72924,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("reviews", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaStar, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Reviews"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72934,9 +72934,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("product-list", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaList, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Product List"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72944,9 +72944,9 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("user-list", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaUsers, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " User List"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72954,18 +72954,18 @@ var AdminNav = function AdminNav(_ref) {
           onClick: function onClick(e) {
             return handleClick("customer-list", e);
           },
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaUsers, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Customer List"]
         })
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("li", {
         className: "settings",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("button", {
           onClick: toggleSettings,
-          className: "flex items-center p-4 hover:bg-gray-700 text-white w-full",
+          className: "flex items-center p-3 hover:bg-gray-700 text-white w-full text-base",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaCogs, {
-            className: "icon mr-2"
+            className: "icon mr-3"
           }), " Settings ", settingsOpen ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaAngleUp, {
             className: "arrow-icon ml-2"
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaAngleDown, {
@@ -72978,9 +72978,9 @@ var AdminNav = function AdminNav(_ref) {
               onClick: function onClick(e) {
                 return handleClick("categories", e, true);
               },
-              className: "flex items-center p-4 hover:bg-gray-600 text-white w-full",
+              className: "flex items-center p-3 hover:bg-gray-600 text-white w-full text-base",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaList, {
-                className: "icon mr-2"
+                className: "icon mr-3"
               }), " Categories"]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72988,9 +72988,9 @@ var AdminNav = function AdminNav(_ref) {
               onClick: function onClick(e) {
                 return handleClick("watch-color", e, true);
               },
-              className: "flex items-center p-4 hover:bg-gray-600 text-white w-full",
+              className: "flex items-center p-3 hover:bg-gray-600 text-white w-full text-base",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaPalette, {
-                className: "icon mr-2"
+                className: "icon mr-3"
               }), " Watch Color"]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -72998,9 +72998,9 @@ var AdminNav = function AdminNav(_ref) {
               onClick: function onClick(e) {
                 return handleClick("wrist-measurement", e, true);
               },
-              className: "flex items-center p-4 hover:bg-gray-600 text-white w-full",
+              className: "flex items-center p-3 hover:bg-gray-600 text-white w-full text-base",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaRuler, {
-                className: "icon mr-2"
+                className: "icon mr-3"
               }), " Wrist Measurement"]
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("li", {
@@ -73008,9 +73008,9 @@ var AdminNav = function AdminNav(_ref) {
               onClick: function onClick(e) {
                 return handleClick("roles", e, true);
               },
-              className: "flex items-center p-4 hover:bg-gray-600 text-white w-full",
+              className: "flex items-center p-3 hover:bg-gray-600 text-white w-full text-base",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_2__.FaUsers, {
-                className: "icon mr-2"
+                className: "icon mr-3"
               }), " Roles"]
             })
           })]
@@ -74952,35 +74952,40 @@ var CustomerList = function CustomerList() {
       email: "user1@gmail.com",
       address: "user address 1",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 2,
       name: "Customer Name 2",
       email: "user2@gmail.com",
       address: "user address 2",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 3,
       name: "Customer Name 3",
       email: "user3@gmail.com",
       address: "user address 3",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 4,
       name: "Customer Name 4",
       email: "user4@gmail.com",
       address: "user address 4",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 5,
       name: "Customer Name 5",
       email: "user5@gmail.com",
       address: "user address 5",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }]),
     _useState32 = _slicedToArray(_useState31, 2),
     initialCustomers = _useState32[0],
@@ -75003,17 +75008,19 @@ var CustomerList = function CustomerList() {
               month: '2-digit',
               day: '2-digit',
               year: '2-digit'
+            }),
+            updatedAt: customer.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
             })
           });
         });
-        console.log("Loaded customers from localStorage:", updatedCustomers);
       } catch (error) {
-        console.error("Error parsing customers from localStorage:", error);
         updatedCustomers = _toConsumableArray(initialCustomers);
         localStorage.setItem("customers", JSON.stringify(updatedCustomers));
       }
     } else {
-      console.log("Initialized with static customers:", initialCustomers);
       localStorage.setItem("customers", JSON.stringify(initialCustomers));
     }
     setCustomers(updatedCustomers);
@@ -75025,7 +75032,6 @@ var CustomerList = function CustomerList() {
   }, []);
   var getCurrentData = function getCurrentData() {
     if (!customers || customers.length === 0) {
-      console.warn("No customers data available, returning empty array.");
       return [];
     }
     var filteredCustomers = customers.filter(function (customer) {
@@ -75033,7 +75039,7 @@ var CustomerList = function CustomerList() {
     });
     if (searchQuery.trim()) {
       filteredCustomers = filteredCustomers.filter(function (customer) {
-        return customer.name.toLowerCase().includes(searchQuery.toLowerCase()) || customer.email.toLowerCase().includes(searchQuery.toLowerCase()) || customer.address.toLowerCase().includes(searchQuery.toLowerCase());
+        return customer.name.toLowerCase().includes(searchQuery.toLowerCase()) || customer.email.toLowerCase().includes(searchQuery.toLowerCase()) || customer.address.toLowerCase().includes(searchQuery.toLowerCase()) || customer.createdAt.toLowerCase().includes(searchQuery.toLowerCase()) || customer.updatedAt.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
     return filteredCustomers;
@@ -75182,7 +75188,6 @@ var CustomerList = function CustomerList() {
     setAddress(customer.address || "");
     setManagementType("edit");
     setManagementModalOpen(true);
-    console.log("Opening edit for customer:", customer);
   };
   var validateEmail = function validateEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -75224,7 +75229,12 @@ var CustomerList = function CustomerList() {
         return c.id === selectedCustomer.id ? _objectSpread(_objectSpread({}, newOrUpdatedCustomer), {}, {
           id: selectedCustomer.id,
           isArchived: selectedCustomer.isArchived,
-          createdAt: selectedCustomer.createdAt
+          createdAt: selectedCustomer.createdAt,
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          })
         }) : c;
       });
       setCustomers(updatedCustomers);
@@ -75235,7 +75245,6 @@ var CustomerList = function CustomerList() {
       setName("");
       setEmail("");
       setAddress("");
-      console.log("Edited customer, updated customers:", updatedCustomers);
       setForceUpdate(function (prev) {
         return prev + 1;
       });
@@ -75278,7 +75287,6 @@ var CustomerList = function CustomerList() {
       setName("");
       setEmail("");
       setAddress("");
-      console.log("Added new customer, updated customers:", _updatedCustomers);
       setForceUpdate(function (prev) {
         return prev + 1;
       });
@@ -75501,6 +75509,9 @@ var CustomerList = function CustomerList() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
               className: "table-header",
               children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
@@ -75551,7 +75562,7 @@ var CustomerList = function CustomerList() {
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
-                  maxWidth: '100px'
+                  maxWidth: '190px'
                 },
                 children: customer.email
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
@@ -75560,7 +75571,7 @@ var CustomerList = function CustomerList() {
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
                   whiteSpace: 'nowrap',
-                  maxWidth: '250px'
+                  maxWidth: '350px'
                 },
                 children: customer.address
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
@@ -75569,12 +75580,15 @@ var CustomerList = function CustomerList() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                 className: "table-cell",
                 children: customer.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: customer.updatedAt
               })]
             }, customer.id + index + forceUpdate);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "table-row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              colSpan: "7",
+              colSpan: "8",
               className: "table-cell",
               style: {
                 textAlign: "center",
@@ -76494,8 +76508,8 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Added FaTrash and FaUndo for Delete and Restore
- // New import for the modal
+
+
 
 var Inventory = function Inventory() {
   var initialInventoryData = [{
@@ -76505,7 +76519,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 10,
     totalAmount: "₱ 2001.20",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }, {
     productName: "Product Name 2",
     stock: 0,
@@ -76513,7 +76529,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 5,
     totalAmount: "₱ 715.30",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }, {
     productName: "Product Name 3",
     stock: 30,
@@ -76521,7 +76539,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 15,
     totalAmount: "₱ 4653.30",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }, {
     productName: "Product Name 4",
     stock: 0,
@@ -76529,7 +76549,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 8,
     totalAmount: "₱ 1600.96",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }, {
     productName: "Product Name 5",
     stock: 20,
@@ -76537,7 +76559,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 12,
     totalAmount: "₱ 1716.72",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }, {
     productName: "Product Name 6",
     stock: 0,
@@ -76545,7 +76569,9 @@ var Inventory = function Inventory() {
     profit: "₱ 2000.12",
     quantitySold: 7,
     totalAmount: "₱ 2171.54",
-    isArchived: false
+    isArchived: false,
+    createdAt: "03/01/25",
+    updatedAt: "03/02/25"
   }];
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialInventoryData),
     _useState2 = _slicedToArray(_useState, 2),
@@ -76554,15 +76580,15 @@ var Inventory = function Inventory() {
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState4 = _slicedToArray(_useState3, 2),
     viewType = _useState4[0],
-    setViewType = _useState4[1]; // Renamed from viewArchived for consistency with other files
+    setViewType = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
     managementModalOpen = _useState6[0],
-    setManagementModalOpen = _useState6[1]; // Renamed from editModalOpen for consistency
+    setManagementModalOpen = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState8 = _slicedToArray(_useState7, 2),
     managementType = _useState8[0],
-    setManagementType = _useState8[1]; // Type of management action (edit, delete, restore)
+    setManagementType = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState10 = _slicedToArray(_useState9, 2),
     selectedItem = _useState10[0],
@@ -76574,29 +76600,38 @@ var Inventory = function Inventory() {
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState14 = _slicedToArray(_useState13, 2),
     checkedRows = _useState14[0],
-    setCheckedRows = _useState14[1]; // Track checked items
+    setCheckedRows = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState16 = _slicedToArray(_useState15, 2),
     isSelectAll = _useState16[0],
-    setIsSelectAll = _useState16[1]; // Track "Select All" state
+    setIsSelectAll = _useState16[1];
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState18 = _slicedToArray(_useState17, 2),
     currentPage = _useState18[0],
     setCurrentPage = _useState18[1];
   var itemsPerPage = 5;
-  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null); // For managing checkbox states
-
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var savedInventory = localStorage.getItem("inventoryItems");
     if (savedInventory) {
       var parsedInventory = JSON.parse(savedInventory).map(function (item) {
         return _objectSpread(_objectSpread({}, item), {}, {
-          isArchived: item.isArchived !== undefined ? item.isArchived : false
+          isArchived: item.isArchived !== undefined ? item.isArchived : false,
+          createdAt: item.createdAt || new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          }),
+          updatedAt: item.updatedAt || new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          })
         });
       });
       setInventoryData(parsedInventory);
     }
-    setCheckedRows({}); // Reset checked rows when data or view changes
+    setCheckedRows({});
     setIsSelectAll(false);
   }, [viewType]);
   var getCurrentData = function getCurrentData() {
@@ -76691,7 +76726,12 @@ var Inventory = function Inventory() {
       var updatedInventory = inventoryData.map(function (item) {
         return item.productName === selectedItem.productName ? _objectSpread(_objectSpread({}, item), {}, {
           stock: newStock,
-          isArchived: false
+          isArchived: false,
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          })
         }) : item;
       });
       setInventoryData(updatedInventory);
@@ -76700,7 +76740,7 @@ var Inventory = function Inventory() {
       setSelectedItem(null);
       setStock(0);
       setManagementType("");
-      setCheckedRows({}); // Reset checkboxes after action
+      setCheckedRows({});
       setIsSelectAll(false);
     }
   };
@@ -76712,13 +76752,23 @@ var Inventory = function Inventory() {
             return selected.productName === item.productName;
           })) {
             return _objectSpread(_objectSpread({}, item), {}, {
-              isArchived: true
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
             });
           }
         } else {
           if (items.productName === item.productName) {
             return _objectSpread(_objectSpread({}, item), {}, {
-              isArchived: true
+              isArchived: true,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
             });
           }
         }
@@ -76729,7 +76779,7 @@ var Inventory = function Inventory() {
       setManagementModalOpen(false);
       setSelectedItem(null);
       setManagementType("");
-      setCheckedRows({}); // Reset checkboxes after action
+      setCheckedRows({});
       setIsSelectAll(false);
     } else if (managementType === "restore") {
       var _updatedInventory = inventoryData.map(function (item) {
@@ -76738,13 +76788,23 @@ var Inventory = function Inventory() {
             return selected.productName === item.productName;
           })) {
             return _objectSpread(_objectSpread({}, item), {}, {
-              isArchived: false
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
             });
           }
         } else {
           if (items.productName === item.productName) {
             return _objectSpread(_objectSpread({}, item), {}, {
-              isArchived: false
+              isArchived: false,
+              updatedAt: new Date().toLocaleDateString('en-US', {
+                month: '2-digit',
+                day: '2-digit',
+                year: '2-digit'
+              })
             });
           }
         }
@@ -76755,7 +76815,7 @@ var Inventory = function Inventory() {
       setManagementModalOpen(false);
       setSelectedItem(null);
       setManagementType("");
-      setCheckedRows({}); // Reset checkboxes after action
+      setCheckedRows({});
       setIsSelectAll(false);
     }
   };
@@ -76764,7 +76824,7 @@ var Inventory = function Inventory() {
     setSelectedItem(null);
     setStock(0);
     setManagementType("");
-    setCheckedRows({}); // Reset checkboxes on modal close
+    setCheckedRows({});
     setIsSelectAll(false);
   };
   var handleSelectAll = function handleSelectAll(e) {
@@ -76889,6 +76949,12 @@ var Inventory = function Inventory() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
               className: "th",
               children: "Profit"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "th",
+              children: "Updated At"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
@@ -76948,12 +77014,18 @@ var Inventory = function Inventory() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                 className: "td",
                 children: item.profit
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: item.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "td",
+                children: item.updatedAt
               })]
             }, index);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "tr",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              colSpan: "8",
+              colSpan: "10",
               className: "td",
               children: "No items available."
             })
@@ -78721,31 +78793,31 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Already imported
 
- // Ensure correct path
+
+
 
 var ProductList = function ProductList() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState2 = _slicedToArray(_useState, 2),
     viewType = _useState2[0],
-    setViewType = _useState2[1]; // "active" or "archived", default to active
+    setViewType = _useState2[1];
   var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState4 = _slicedToArray(_useState3, 2),
     activeCheckedRows = _useState4[0],
-    setActiveCheckedRows = _useState4[1]; // Separate state for active table checkboxes
+    setActiveCheckedRows = _useState4[1];
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState6 = _slicedToArray(_useState5, 2),
     activeIsSelectAll = _useState6[0],
-    setActiveIsSelectAll = _useState6[1]; // Separate state for active table "Select All"
+    setActiveIsSelectAll = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState8 = _slicedToArray(_useState7, 2),
     archivedCheckedRows = _useState8[0],
-    setArchivedCheckedRows = _useState8[1]; // Separate state for archived table checkboxes
+    setArchivedCheckedRows = _useState8[1];
   var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState10 = _slicedToArray(_useState9, 2),
     archivedIsSelectAll = _useState10[0],
-    setArchivedIsSelectAll = _useState10[1]; // Separate state for archived table "Select All"
+    setArchivedIsSelectAll = _useState10[1];
   var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState12 = _slicedToArray(_useState11, 2),
     currentPage = _useState12[0],
@@ -78753,24 +78825,22 @@ var ProductList = function ProductList() {
   var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState14 = _slicedToArray(_useState13, 2),
     managementModalOpen = _useState14[0],
-    setManagementModalOpen = _useState14[1]; // State for the management modal
+    setManagementModalOpen = _useState14[1];
   var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState16 = _slicedToArray(_useState15, 2),
     managementType = _useState16[0],
-    setManagementType = _useState16[1]; // "edit", "delete", "restore", or "add"
+    setManagementType = _useState16[1];
   var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState18 = _slicedToArray(_useState17, 2),
     selectedProduct = _useState18[0],
-    setSelectedProduct = _useState18[1]; // State for the product being edited, deleted, restored, or added
+    setSelectedProduct = _useState18[1];
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState20 = _slicedToArray(_useState19, 2),
     searchQuery = _useState20[0],
-    setSearchQuery = _useState20[1]; // State for search/filter
+    setSearchQuery = _useState20[1];
   var itemsPerPage = 5;
   var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
   var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-
-  // Updated sample data with Category, Color, and Wrist Measurement
   var initialProducts = [{
     id: 1,
     name: "Product Name",
@@ -78780,6 +78850,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Men",
     color: "Black",
     wristMeasurement: "18cm"
@@ -78792,6 +78863,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Women",
     color: "Silver",
     wristMeasurement: "16cm"
@@ -78804,6 +78876,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Unisex",
     color: "Gold",
     wristMeasurement: "20cm"
@@ -78816,6 +78889,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Men",
     color: "Blue",
     wristMeasurement: "19cm"
@@ -78828,6 +78902,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Women",
     color: "Rose Gold",
     wristMeasurement: "17cm"
@@ -78840,6 +78915,7 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Unisex",
     color: "Black",
     wristMeasurement: "18cm"
@@ -78852,22 +78928,19 @@ var ProductList = function ProductList() {
     isArchived: false,
     image: "watchprod.svg",
     createdAt: "03/01/25",
+    updatedAt: "03/02/25",
     category: "Men",
     color: "Silver",
     wristMeasurement: "20cm"
   }];
-
-  // State to manage all products with isArchived, createdAt, category, color, and wristMeasurement
   var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialProducts),
     _useState22 = _slicedToArray(_useState21, 2),
     products = _useState22[0],
     setProducts = _useState22[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    // Load from localStorage if available, set all as active (isArchived: false) on load
     var savedProducts = localStorage.getItem("products");
     if (savedProducts) {
       var parsedProducts = JSON.parse(savedProducts);
-      // Set all products to isArchived: false on load, ensure createdAt, category, color, wristMeasurement, and image fields exist
       var activeProducts = parsedProducts.map(function (product) {
         return _objectSpread(_objectSpread({}, product), {}, {
           isArchived: false,
@@ -78882,25 +78955,20 @@ var ProductList = function ProductList() {
             year: '2-digit'
           }),
           category: product.category || "Unisex",
-          // Default to Unisex if no category
           color: product.color || "Black",
-          // Default to Black if no color
           wristMeasurement: product.wristMeasurement || "18cm",
-          // Default to 18cm if no wrist measurement
-          image: product.image || "watchprod.svg" // Default to watchprod.svg if no image
+          image: product.image || "watchprod.svg"
         });
       });
       setProducts(activeProducts);
-      console.log("Loaded and activated products from localStorage:", activeProducts);
     } else {
-      console.log("Using static products data, all set as active:", initialProducts);
       setProducts(initialProducts);
       localStorage.setItem("products", JSON.stringify(initialProducts));
     }
-    setActiveCheckedRows({}); // Ensure active checkboxes start empty
-    setActiveIsSelectAll(false); // Ensure active "Select All" starts unchecked
-    setArchivedCheckedRows({}); // Ensure archived checkboxes start empty
-    setArchivedIsSelectAll(false); // Ensure archived "Select All" starts unchecked
+    setActiveCheckedRows({});
+    setActiveIsSelectAll(false);
+    setArchivedCheckedRows({});
+    setArchivedIsSelectAll(false);
   }, []);
   var getCurrentData = function getCurrentData() {
     var filteredProducts = products.filter(function (product) {
@@ -78909,9 +78977,7 @@ var ProductList = function ProductList() {
     if (searchQuery.trim()) {
       var query = searchQuery.toLowerCase();
       filteredProducts = filteredProducts.filter(function (product) {
-        return product.name.toLowerCase().includes(query) || product.description.toLowerCase().includes(query) || product.stock.toLowerCase().includes(query) || product.price.toLowerCase().includes(query) || product.category.toLowerCase().includes(query) ||
-        // Include new fields in search
-        product.color.toLowerCase().includes(query) || product.wristMeasurement.toLowerCase().includes(query);
+        return product.name.toLowerCase().includes(query) || product.description.toLowerCase().includes(query) || product.stock.toLowerCase().includes(query) || product.price.toLowerCase().includes(query) || product.category.toLowerCase().includes(query) || product.color.toLowerCase().includes(query) || product.wristMeasurement.toLowerCase().includes(query) || product.updatedAt.toLowerCase().includes(query);
       });
     }
     return filteredProducts;
@@ -78928,14 +78994,12 @@ var ProductList = function ProductList() {
         currentItems.forEach(function (_, index) {
           newCheckedRows[index] = true;
         });
-        // Use ref to target only active table checkboxes
         if (tableRef.current) {
           tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
             return checkbox.checked = true;
           });
         }
       } else {
-        // Use ref to target only active table checkboxes
         if (tableRef.current) {
           tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
             return checkbox.checked = false;
@@ -78951,14 +79015,12 @@ var ProductList = function ProductList() {
         currentItems.forEach(function (_, index) {
           _newCheckedRows[index] = true;
         });
-        // Use ref to target only archived table checkboxes
         if (tableRef.current) {
           tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
             return checkbox.checked = true;
           });
         }
       } else {
-        // Use ref to target only archived table checkboxes
         if (tableRef.current) {
           tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
             return checkbox.checked = false;
@@ -78999,29 +79061,25 @@ var ProductList = function ProductList() {
       return parseInt(index, 10);
     }) : [];
     if (productToDelete) {
-      // Individual delete via icon
       if (viewType !== "active") {
         alert("You can only delete from Active Products.");
         return;
       }
       setManagementType("delete");
-      setSelectedProduct([productToDelete]); // Wrap in array for consistency with bulk delete in ProductManagement
+      setSelectedProduct([productToDelete]);
       setManagementModalOpen(true);
       return;
     }
-
-    // Bulk delete via button
     var selectedCount = selectedIndices.length;
     if (selectedCount < 2) {
-      // Require at least 2 manually checked items
-      return; // Do nothing, button is disabled unless 2 or more are selected
+      return;
     }
     if (viewType !== "active") {
       alert("You can only delete from Active Products.");
       return;
     }
     setManagementType("delete");
-    setSelectedProduct(getSelectedProducts()); // Use getSelectedProducts for bulk delete
+    setSelectedProduct(getSelectedProducts());
     setManagementModalOpen(true);
   };
   var handleRestore = function handleRestore() {
@@ -79032,29 +79090,25 @@ var ProductList = function ProductList() {
       return parseInt(index, 10);
     }) : [];
     if (productToRestore) {
-      // Individual restore via icon
       if (viewType !== "archived") {
         alert("You can only restore from Archived Products.");
         return;
       }
       setManagementType("restore");
-      setSelectedProduct([productToRestore]); // Wrap in array for consistency with bulk restore in ProductManagement
+      setSelectedProduct([productToRestore]);
       setManagementModalOpen(true);
       return;
     }
-
-    // Bulk restore via button
     var selectedCount = selectedIndices.length;
     if (selectedCount < 2) {
-      // Require at least 2 manually checked items
-      return; // Do nothing, button is disabled unless 2 or more are selected
+      return;
     }
     if (viewType !== "archived") {
       alert("You can only restore from Archived Products.");
       return;
     }
     setManagementType("restore");
-    setSelectedProduct(getSelectedProducts()); // Use getSelectedProducts for bulk restore
+    setSelectedProduct(getSelectedProducts());
     setManagementModalOpen(true);
   };
   var handleAdd = function handleAdd() {
@@ -79063,7 +79117,7 @@ var ProductList = function ProductList() {
       return;
     }
     setManagementType("add");
-    setSelectedProduct(null); // Clear any selected product
+    setSelectedProduct(null);
     setManagementModalOpen(true);
   };
   var handleEdit = function handleEdit(product) {
@@ -79076,7 +79130,6 @@ var ProductList = function ProductList() {
     if (managementType === "delete") {
       var updatedProducts = products.map(function (product) {
         if (Array.isArray(items)) {
-          // Bulk or individual delete (items is an array)
           if (items.some(function (item) {
             return item.id === product.id;
           })) {
@@ -79090,7 +79143,6 @@ var ProductList = function ProductList() {
             });
           }
         } else {
-          // Handle individual delete (items is a single product object, though not expected here)
           if (items.id === product.id) {
             return _objectSpread(_objectSpread({}, product), {}, {
               isArchived: true,
@@ -79105,10 +79157,8 @@ var ProductList = function ProductList() {
         return product;
       });
       setProducts(updatedProducts);
-      // Reset active table checkboxes after deletion
       setActiveCheckedRows({});
       setActiveIsSelectAll(false);
-      // Use ref to target only active table checkboxes
       if (tableRef.current && viewType === "active") {
         tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
           return checkbox.checked = false;
@@ -79123,7 +79173,6 @@ var ProductList = function ProductList() {
     } else if (managementType === "restore") {
       var _updatedProducts = products.map(function (product) {
         if (Array.isArray(items)) {
-          // Bulk restore
           if (items.some(function (item) {
             return item.id === product.id;
           })) {
@@ -79137,7 +79186,6 @@ var ProductList = function ProductList() {
             });
           }
         } else {
-          // Individual restore (items is a single product object)
           if (items.id === product.id) {
             return _objectSpread(_objectSpread({}, product), {}, {
               isArchived: false,
@@ -79152,10 +79200,8 @@ var ProductList = function ProductList() {
         return product;
       });
       setProducts(_updatedProducts);
-      // Reset archived table checkboxes after restoration
       setArchivedCheckedRows({});
       setArchivedIsSelectAll(false);
-      // Use ref to target only archived table checkboxes
       if (tableRef.current && viewType === "archived") {
         tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
           return checkbox.checked = false;
@@ -79177,10 +79223,8 @@ var ProductList = function ProductList() {
   };
   var handleSearchChange = function handleSearchChange(e) {
     setSearchQuery(e.target.value);
-    setCurrentPage(1); // Reset to first page when searching
+    setCurrentPage(1);
   };
-
-  // Get selected products for delete or restore confirmation
   var getSelectedProducts = function getSelectedProducts() {
     var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
       return activeCheckedRows[index];
@@ -79195,20 +79239,32 @@ var ProductList = function ProductList() {
       return currentItems[index];
     });
   };
-
-  // Get the appropriate isSelectAll and checked count state based on viewType
   var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
   var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
     return activeCheckedRows[index];
   }).length : Object.keys(archivedCheckedRows).filter(function (index) {
     return archivedCheckedRows[index];
   }).length;
+  if (!products || products.length === 0) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      className: "products-container",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+        className: "products-header",
+        children: "Products"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "table-container",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+          children: "No products available. Please check your data or refresh the page."
+        })
+      })]
+    });
+  }
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
     className: "products-container",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
       className: "products-header",
       children: viewType === "active" ? "Active Products" : "Archived Products"
-    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
       className: "table-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
         className: "table-header-actions",
@@ -79236,8 +79292,7 @@ var ProductList = function ProductList() {
               onClick: function onClick() {
                 return handleDelete();
               },
-              disabled: checkedCount < 2 // Disable unless 2 or more items are checked
-              ,
+              disabled: checkedCount < 2,
               children: "Delete"
             })]
           }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
@@ -79245,8 +79300,7 @@ var ProductList = function ProductList() {
             onClick: function onClick() {
               return handleRestore();
             },
-            disabled: checkedCount < 2 // Disable unless 2 or more items are checked
-            ,
+            disabled: checkedCount < 2,
             children: "Restore"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -79284,31 +79338,34 @@ var ProductList = function ProductList() {
               children: "Action"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
               className: "table-header"
-            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header product-name-column",
               children: "Product Name"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
+              className: "table-header product-description-column",
               children: "Description"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
+              className: "table-header product-category-column",
+              children: "Category"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header product-color-column",
+              children: "Color"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header product-wrist-column",
+              children: "Wrist Measurement"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header product-stock-column",
               children: "Stocks"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
+              className: "table-header product-price-column",
               children: "Price"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
-              children: "Category"
-            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
-              children: "Color"
-            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
-              children: "Wrist Measurement"
-            }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header",
+              className: "table-header product-created-column",
               children: "Created At"
-            }), " "]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header product-updated-column",
+              children: "Updated At"
+            })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
           children: currentItems.length > 0 ? currentItems.map(function (product, index) {
@@ -79334,60 +79391,61 @@ var ProductList = function ProductList() {
                       onClick: function onClick() {
                         return handleEdit(product);
                       }
-                    }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
                       className: "delete-icon",
                       size: 16,
                       onClick: function onClick() {
                         return handleDelete(product);
                       }
-                    }), " "]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
-                      className: "restore-icon",
-                      size: 16,
-                      onClick: function onClick() {
-                        return handleRestore(product);
-                      }
-                    }), " "]
+                    })]
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                    className: "restore-icon",
+                    size: 16,
+                    onClick: function onClick() {
+                      return handleRestore(product);
+                    }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                 className: "table-cell",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
                   src: "/images/".concat(product.image || "watchprod.svg"),
                   alt: "".concat(product.name, " image"),
                   className: "product-image"
-                }), " "]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("td", {
-                className: "table-cell",
-                children: [product.name, " "]
+                })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
+                className: "table-cell product-name-column",
+                children: product.name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell product-description-column",
                 children: product.description
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
+                className: "table-cell product-category-column",
+                children: product.category
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell product-color-column",
+                children: product.color
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell product-wrist-column",
+                children: product.wristMeasurement
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell product-stock-column",
                 children: product.stock
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
+                className: "table-cell product-price-column",
                 children: product.price
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
-                children: product.category
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
-                children: product.color
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
-                children: product.wristMeasurement
-              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell",
+                className: "table-cell product-created-column",
                 children: product.createdAt
-              }), " "]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell product-updated-column",
+                children: product.updatedAt
+              })]
             }, product.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "table-row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              colSpan: "11",
+              colSpan: "12",
               className: "table-cell",
               style: {
                 textAlign: "center",
@@ -79452,6 +79510,11 @@ var ProductList = function ProductList() {
               day: '2-digit',
               year: '2-digit'
             }),
+            updatedAt: newOrUpdatedProduct.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
+            }),
             category: newOrUpdatedProduct.category || "Unisex",
             color: newOrUpdatedProduct.color || "Black",
             wristMeasurement: newOrUpdatedProduct.wristMeasurement || "18cm"
@@ -79462,7 +79525,7 @@ var ProductList = function ProductList() {
           localStorage.setItem("products", JSON.stringify(_updatedProducts2));
         }
         setManagementModalOpen(false);
-        setCurrentPage(1); // Reset to page 1 to show new or updated product
+        setCurrentPage(1);
       }
     })]
   });
@@ -82194,35 +82257,40 @@ var UserList = function UserList() {
       email: "user1@gmail.com",
       role: "Admin",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 2,
       username: "Username 2",
       email: "user2@gmail.com",
       role: "Admin",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 3,
       username: "Username 3",
       email: "user3@gmail.com",
       role: "Customer",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 4,
       username: "Username 4",
       email: "user4@gmail.com",
       role: "Admin",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }, {
       id: 5,
       username: "Username 5",
       email: "user5@gmail.com",
       role: "Customer",
       isArchived: false,
-      createdAt: "11/21/24"
+      createdAt: "11/21/24",
+      updatedAt: "11/22/24"
     }]),
     _useState32 = _slicedToArray(_useState31, 2),
     initialUsers = _useState32[0],
@@ -82245,17 +82313,19 @@ var UserList = function UserList() {
               month: '2-digit',
               day: '2-digit',
               year: '2-digit'
+            }),
+            updatedAt: user.updatedAt || new Date().toLocaleDateString('en-US', {
+              month: '2-digit',
+              day: '2-digit',
+              year: '2-digit'
             })
           });
         });
-        console.log("Loaded users from localStorage:", updatedUsers);
       } catch (error) {
-        console.error("Error parsing users from localStorage:", error);
         updatedUsers = _toConsumableArray(initialUsers);
         localStorage.setItem("users", JSON.stringify(updatedUsers));
       }
     } else {
-      console.log("Initialized with static users:", initialUsers);
       localStorage.setItem("users", JSON.stringify(initialUsers));
     }
     setUsers(updatedUsers);
@@ -82267,7 +82337,6 @@ var UserList = function UserList() {
   }, []);
   var getCurrentData = function getCurrentData() {
     if (!users || users.length === 0) {
-      console.warn("No users data available, returning empty array.");
       return [];
     }
     var filteredUsers = users.filter(function (user) {
@@ -82275,7 +82344,7 @@ var UserList = function UserList() {
     });
     if (searchQuery.trim()) {
       filteredUsers = filteredUsers.filter(function (user) {
-        return user.username.toLowerCase().includes(searchQuery.toLowerCase()) || user.email.toLowerCase().includes(searchQuery.toLowerCase()) || user.role.toLowerCase().includes(searchQuery.toLowerCase());
+        return user.username.toLowerCase().includes(searchQuery.toLowerCase()) || user.email.toLowerCase().includes(searchQuery.toLowerCase()) || user.role.toLowerCase().includes(searchQuery.toLowerCase()) || user.createdAt.toLowerCase().includes(searchQuery.toLowerCase()) || user.updatedAt.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
     return filteredUsers;
@@ -82424,7 +82493,6 @@ var UserList = function UserList() {
     setRole(user.role || "Customer");
     setManagementType("edit");
     setManagementModalOpen(true);
-    console.log("Opening edit for user:", user);
   };
   var validateEmail = function validateEmail(email) {
     var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -82466,7 +82534,12 @@ var UserList = function UserList() {
         return u.id === selectedUser.id ? _objectSpread(_objectSpread({}, newOrUpdatedUser), {}, {
           id: selectedUser.id,
           isArchived: selectedUser.isArchived,
-          createdAt: selectedUser.createdAt
+          createdAt: selectedUser.createdAt,
+          updatedAt: new Date().toLocaleDateString('en-US', {
+            month: '2-digit',
+            day: '2-digit',
+            year: '2-digit'
+          })
         }) : u;
       });
       setUsers(updatedUsers);
@@ -82477,7 +82550,6 @@ var UserList = function UserList() {
       setUsername("");
       setEmail("");
       setRole("Customer");
-      console.log("Edited user, updated users:", updatedUsers);
       setForceUpdate(function (prev) {
         return prev + 1;
       });
@@ -82520,7 +82592,6 @@ var UserList = function UserList() {
       setUsername("");
       setEmail("");
       setRole("Customer");
-      console.log("Added new user, updated users:", _updatedUsers);
       setForceUpdate(function (prev) {
         return prev + 1;
       });
@@ -82743,6 +82814,9 @@ var UserList = function UserList() {
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
               className: "table-header",
               children: "Created At"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+              className: "table-header",
+              children: "Updated At"
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
@@ -82799,12 +82873,15 @@ var UserList = function UserList() {
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
                 className: "table-cell",
                 children: user.createdAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                className: "table-cell",
+                children: user.updatedAt
               })]
             }, user.id + index + forceUpdate);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
             className: "table-row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              colSpan: "7",
+              colSpan: "8",
               className: "table-cell",
               style: {
                 textAlign: "center",

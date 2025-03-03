@@ -12337,62 +12337,137 @@ select {
   position: fixed;
   top: 0;
   left: 0;
-  padding-top: 20px;
+  padding-top: 15px;
   color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+@media (max-width: 767px) {
+  .admin-sidebar {
+    width: 200px;
+    padding-top: 10px;
+  }
+}
+@media (max-width: 480px) {
+  .admin-sidebar {
+    width: 180px;
+    padding-top: 8px;
+  }
+}
+@media (max-width: 320px) {
+  .admin-sidebar {
+    width: 160px;
+    padding-top: 6px;
+  }
 }
 
 .admin-logo {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
-
-.logo-img {
-  width: 189px;
+.admin-logo .logo-img {
+  width: 180px;
   height: auto;
+}
+@media (max-width: 767px) {
+  .admin-logo .logo-img {
+    width: 150px;
+  }
+}
+@media (max-width: 480px) {
+  .admin-logo {
+    margin-bottom: 10px;
+  }
+  .admin-logo .logo-img {
+    width: 130px;
+  }
+}
+@media (max-width: 320px) {
+  .admin-logo {
+    margin-bottom: 8px;
+  }
+  .admin-logo .logo-img {
+    width: 120px;
+  }
 }
 
 .admin-menu {
   list-style: none;
   padding-left: 0;
   width: 100%;
+  margin-top: 0;
 }
 
 .admin-menu li {
   width: 100%;
-  margin-bottom: -20px;
+  margin-bottom: 0;
 }
 
 .admin-menu button {
   display: flex;
   align-items: center;
-  padding: 12px 20px; /* Adjusted padding for better spacing */
+  padding: 10px 20px;
   width: 100%;
   background: none;
   border: none;
   color: white;
   cursor: pointer;
   text-align: left;
-  font-size: 14px; /* More readable font size */
+  font-size: 14px;
   font-weight: 500;
   transition: background 0.3s ease-in-out;
+  line-height: 1.2;
 }
-
 .admin-menu button:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
-
 .admin-menu button.active {
-  background-color: rgba(255, 255, 255, 0.2); /* Highlight color */
+  background-color: rgba(255, 255, 255, 0.2);
   font-weight: bold;
+}
+@media (max-width: 767px) {
+  .admin-menu button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .admin-menu button {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 320px) {
+  .admin-menu button {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
 }
 
 .icon {
-  margin-right: 10px; /* Proper spacing for icons */
-  font-size: 16px; /* Balanced icon size */
+  margin-right: 10px;
+  font-size: 16px;
+}
+@media (max-width: 767px) {
+  .icon {
+    font-size: 14px;
+    margin-right: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .icon {
+    font-size: 12px;
+    margin-right: 6px;
+  }
+}
+@media (max-width: 320px) {
+  .icon {
+    font-size: 12px;
+    margin-right: 6px;
+  }
 }
 
 .settings {
@@ -12403,7 +12478,7 @@ select {
   display: flex;
   align-items: center;
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   background: none;
   border: none;
   color: white;
@@ -12413,33 +12488,106 @@ select {
   font-weight: 500;
   transition: background 0.3s ease-in-out;
 }
-
 .settings-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
 }
+@media (max-width: 767px) {
+  .settings-btn {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .settings-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 320px) {
+  .settings-btn {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
 
 .arrow-icon {
-  margin-left: auto;
+  margin-left: 8px;
   font-size: 12px;
+}
+@media (max-width: 767px) {
+  .arrow-icon {
+    font-size: 10px;
+    margin-left: 6px;
+  }
+}
+@media (max-width: 480px) {
+  .arrow-icon {
+    font-size: 8px;
+    margin-left: 4px;
+  }
+}
+@media (max-width: 320px) {
+  .arrow-icon {
+    font-size: 8px;
+    margin-left: 4px;
+  }
 }
 
 .settings-dropdown {
   display: none;
   flex-direction: column;
-  background-color: #1f2937; /* Adjust the color as needed */
+  background-color: #1f2937;
   padding-left: 10px;
-}
-
-.settings-dropdown li {
-  list-style: none;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
 }
 
 .settings .settings-dropdown {
   display: block;
 }
 
+.settings-dropdown li {
+  list-style: none;
+}
+
+.settings-dropdown button {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  width: 100%;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.3s ease-in-out;
+}
 .settings-dropdown button:hover {
   background-color: rgba(255, 255, 255, 0.2);
+}
+@media (max-width: 767px) {
+  .settings-dropdown button {
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .settings-dropdown button {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
+}
+@media (max-width: 320px) {
+  .settings-dropdown button {
+    padding: 6px 12px;
+    font-size: 10px;
+  }
 }
 
 /* Header Styles (scoped to .content header) */
@@ -13579,7 +13727,7 @@ button { /* Override any global button styles specific to Reviews */
 }
 .Inventory .inventory-container .h2 {
   font-size: 24px;
-  font-weight: bold; /* Explicitly set to bold */
+  font-weight: bold;
   color: #000000;
   margin-bottom: 16px;
 }
@@ -13590,7 +13738,7 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 0; /* Removed margin to align with other files */
+  margin-bottom: 0;
   visibility: visible;
 }
 .Inventory .search-bar {
@@ -13629,7 +13777,7 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .Inventory .delete-button {
-  background-color: #ef4444; /* Red-500, matching Delete button style */
+  background-color: #ef4444;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -13640,11 +13788,11 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .Inventory .delete-button:hover {
-  background-color: #dc2626; /* Red-600 on hover */
+  background-color: #dc2626;
 }
 .Inventory .delete-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Inventory .delete-button:disabled {
   opacity: 0.5;
@@ -13653,7 +13801,7 @@ button { /* Override any global button styles specific to Reviews */
   border-color: #ffcccc;
 }
 .Inventory .restore-button {
-  background-color: #2A363B; /* Blue-500, matching Restore button style */
+  background-color: #2A363B;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -13664,11 +13812,11 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .Inventory .restore-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .Inventory .restore-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #2A363B; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #2A363B;
 }
 .Inventory .restore-button:disabled {
   opacity: 0.5;
@@ -13679,7 +13827,7 @@ button { /* Override any global button styles specific to Reviews */
 .Inventory .view-toggle {
   display: flex;
   gap: 4px;
-  margin-top: 4px; /* Small margin to align with other files */
+  margin-top: 4px;
   visibility: visible;
 }
 .Inventory .view-button {
@@ -13708,6 +13856,8 @@ button { /* Override any global button styles specific to Reviews */
   width: 100%;
   margin-bottom: 24px;
   border-collapse: collapse;
+  table-layout: auto;
+  max-width: 100%;
 }
 .Inventory .recently-sold .thead {
   background-color: #e5e7eb;
@@ -13722,6 +13872,9 @@ button { /* Override any global button styles specific to Reviews */
   text-align: left;
   border: 1px solid #e5e7eb;
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .Inventory .recently-sold .tr {
   border-bottom: 1px solid #e5e7eb;
@@ -13729,22 +13882,22 @@ button { /* Override any global button styles specific to Reviews */
 }
 .Inventory .recently-sold .th:first-child,
 .Inventory .recently-sold .td:first-child {
-  width: 40px; /* Narrow width for checkbox-only column */
+  width: 50px;
   text-align: center;
 }
 .Inventory .recently-sold .th:nth-child(2),
 .Inventory .recently-sold .td:nth-child(2) {
-  width: 80px; /* Fixed width for action column (icons) */
+  width: 80px;
   text-align: center;
 }
 .Inventory .recently-sold .th:nth-child(3),
 .Inventory .recently-sold .td:nth-child(3) {
-  width: 200px; /* Product Name column width */
+  width: 200px;
   text-align: left;
 }
 .Inventory .recently-sold .th:nth-child(4),
 .Inventory .recently-sold .td:nth-child(4) {
-  width: 100px; /* Status column width */
+  width: 100px;
   text-align: left;
 }
 .Inventory .recently-sold .th:nth-child(5),
@@ -13755,20 +13908,30 @@ button { /* Override any global button styles specific to Reviews */
 .Inventory .recently-sold .td:nth-child(7),
 .Inventory .recently-sold .th:nth-child(8),
 .Inventory .recently-sold .td:nth-child(8) {
-  width: 120px; /* Price, Quantity Sold, Total Amount, Profit column widths */
+  width: 120px;
+  text-align: left;
+}
+.Inventory .recently-sold .th:nth-child(9),
+.Inventory .recently-sold .td:nth-child(9) {
+  width: 120px;
+  text-align: left;
+}
+.Inventory .recently-sold .th:nth-child(10),
+.Inventory .recently-sold .td:nth-child(10) {
+  width: 120px;
   text-align: left;
 }
 .Inventory .inventory-checkbox {
-  width: 16px; /* 1rem = 16px */
-  height: 16px; /* 1rem = 16px */
-  border: 1px solid #d1d5db; /* Gray-300, matching other files */
-  border-radius: 4px; /* 0.25rem = 4px */
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
-  margin-right: 8px; /* Add spacing between checkbox and action icons, matching other files */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
+  margin-right: 8px;
 }
 .Inventory .action-buttons {
   display: flex;
@@ -13894,9 +14057,39 @@ button { /* Override any global button styles specific to Reviews */
   .Inventory .recently-sold .tr {
     min-height: 32px;
   }
+  .Inventory .recently-sold .th:first-child,
+  .Inventory .recently-sold .td:first-child {
+    width: 40px;
+  }
+  .Inventory .recently-sold .th:nth-child(2),
+  .Inventory .recently-sold .td:nth-child(2) {
+    width: 60px;
+  }
+  .Inventory .recently-sold .th:nth-child(3),
+  .Inventory .recently-sold .td:nth-child(3) {
+    width: 150px;
+  }
+  .Inventory .recently-sold .th:nth-child(4),
+  .Inventory .recently-sold .td:nth-child(4) {
+    width: 80px;
+  }
+  .Inventory .recently-sold .th:nth-child(5),
+  .Inventory .recently-sold .td:nth-child(5),
+  .Inventory .recently-sold .th:nth-child(6),
+  .Inventory .recently-sold .td:nth-child(6),
+  .Inventory .recently-sold .th:nth-child(7),
+  .Inventory .recently-sold .td:nth-child(7),
+  .Inventory .recently-sold .th:nth-child(8),
+  .Inventory .recently-sold .td:nth-child(8),
+  .Inventory .recently-sold .th:nth-child(9),
+  .Inventory .recently-sold .td:nth-child(9),
+  .Inventory .recently-sold .th:nth-child(10),
+  .Inventory .recently-sold .td:nth-child(10) {
+    width: 100px;
+  }
   .Inventory .inventory-checkbox {
-    width: 14px; /* Slightly smaller on mobile */
-    height: 14px; /* Slightly smaller on mobile */
+    width: 14px;
+    height: 14px;
   }
   .Inventory .edit-icon,
   .Inventory .delete-icon,
@@ -14083,102 +14276,99 @@ button { /* Override any global button styles specific to Reviews */
     font-size: 12px;
   }
 }
-/* src/components/admin/ProductList.scss */
-/* Container for the products content */
 .products-container {
-  padding: 8px; /* Match Reviews padding, reduced to move content up */
+  padding: 8px;
   background-color: white;
   position: relative;
   margin: 0;
+  width: 100%;
+  max-width: 100vw;
 }
 
-/* Title styles (breadcrumbs-like header) */
 .products-header {
-  font-size: 24px; /* Match Reviews header size */
+  font-size: 24px;
   font-weight: bold;
-  color: #000000; /* Black text, match Reviews */
-  margin-bottom: 4px; /* Further reduced margin to move table up, match Reviews */
+  color: #000000;
+  margin-bottom: 4px;
   margin-top: 0;
 }
 
-/* Table container */
 .table-container {
   position: relative;
-  min-height: 200px; /* Match Reviews min-height */
-  overflow-x: auto;
-  margin-top: 0; /* Removed margin to move table up, match Reviews */
+  min-height: 200px;
+  overflow-x: hidden;
+  margin-top: 0;
   padding-top: 0;
+  width: 100%;
+  max-width: 100%;
 }
 
-/* Header actions (search on left, buttons on right, view toggle) - positioned close together */
 .table-header-actions {
   display: flex;
   flex-direction: column;
-  gap: 4px; /* Further reduced gap to move content up, match Reviews */
+  gap: 4px;
   margin-bottom: 0;
 }
 
-/* Search bar - without icon, positioned on the left */
 .search-bar {
   display: flex;
   align-items: center;
 }
 
 .search-input {
-  border: 1px solid #d1d5db; /* Gray-300, match Reviews */
-  border-radius: 9999px; /* Rounded corners, match Reviews */
-  padding: 8px 12px; /* Match Reviews input padding */
+  border: 1px solid #d1d5db;
+  border-radius: 9999px;
+  padding: 8px 12px;
   width: 100%;
-  max-width: 240px; /* Match Reviews search width */
-  font-size: 14px; /* Match Reviews font size */
-  height: 32px; /* Match Reviews input height */
+  max-width: 240px;
+  font-size: 14px;
+  height: 32px;
   outline: none;
   box-sizing: border-box;
-  background-color: #f3f4f6; /* Light gray background, match Reviews */
-  color: #4a5568; /* Gray-700 for text, match Reviews */
+  background-color: #f3f4f6;
+  color: #4a5568;
 }
 .search-input::-moz-placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text, match Reviews */
+  color: #6b7280;
 }
 .search-input::placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text, match Reviews */
+  color: #6b7280;
 }
 .search-input:focus {
-  border-color: transparent; /* Remove border on focus, match Reviews */
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), match Reviews */
-  background-color: white; /* White background on focus, match Reviews */
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6;
+  background-color: white;
 }
 
-/* Button group (Add, Delete, Restore) - positioned on the right, match Reviews */
 .button-group {
   display: flex;
-  gap: 8px; /* Match Reviews button gap */
-  align-items: center; /* Match Reviews button alignment */
-  margin-left: auto; /* Position to the right, match Reviews */
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
 }
 
 .button-group .add-button {
-  background-color: #2A363B; /* Blue for Add button, match Reviews */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* Match Reviews button padding */
-  border-radius: 4px; /* Match Reviews button border radius */
-  font-size: 14px; /* Match Reviews font size */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Match Reviews transition */
+  transition: background-color 0.3s ease;
 }
 .button-group .add-button:hover {
-  background-color: #4169e1; /* Darker blue on hover, match Reviews */
+  background-color: #4169e1;
 }
 .button-group .add-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
-.button-group .add-button:hover:not(:disabled) { /* Match Reviews button hover */
+.button-group .add-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.button-group .add-button:disabled { /* Match Reviews button disabled state */
+.button-group .add-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
   background-color: #4CAF50 !important;
@@ -14186,350 +14376,382 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .button-group .delete-button {
-  background-color: #ef4444; /* Red for Delete button, match Reviews */
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* Match Reviews button padding */
-  border-radius: 4px; /* Match Reviews button border radius */
-  font-size: 14px; /* Match Reviews font size */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Match Reviews transition */
+  transition: background-color 0.3s ease;
 }
 .button-group .delete-button:hover {
-  background-color: #dc2626; /* Darker red on hover, match Reviews */
+  background-color: #dc2626;
 }
 .button-group .delete-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
-.button-group .delete-button:hover:not(:disabled) { /* Match Reviews button hover */
+.button-group .delete-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.button-group .delete-button:disabled { /* Match Reviews button disabled state */
+.button-group .delete-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
-  background-color: #ffcccc !important; /* Light reddish, match Reviews */
+  background-color: #ffcccc !important;
   border-color: #ffcccc !important;
 }
 
 .button-group .restore-button {
-  background-color: #1e90ff; /* Blue for Restore button, match Reviews */
+  background-color: #1e90ff;
   color: white;
-  padding: 8px 16px; /* Match Reviews button padding */
-  border-radius: 4px; /* Match Reviews button border radius */
-  font-size: 14px; /* Match Reviews font size */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Match Reviews transition */
+  transition: background-color 0.3s ease;
 }
 .button-group .restore-button:hover {
-  background-color: #4169e1; /* Darker blue on hover, match Reviews */
+  background-color: #4169e1;
 }
 .button-group .restore-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
-.button-group .restore-button:hover:not(:disabled) { /* Match Reviews button hover */
+.button-group .restore-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.button-group .restore-button:disabled { /* Match Reviews button disabled state */
+.button-group .restore-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
-  background-color: #cce5ff !important; /* Light bluish, match Reviews */
+  background-color: #cce5ff !important;
   border-color: #cce5ff !important;
 }
 
-/* View toggle, match Reviews */
 .view-toggle {
   display: flex;
-  gap: 4px; /* Further reduced gap to move content up, match Reviews */
-  margin-top: 4px; /* Further reduced margin to move content up, match Reviews */
+  gap: 4px;
+  margin-top: 4px;
 }
 
 .view-button {
-  background-color: #e5e7eb; /* Gray-200, match Reviews */
-  color: #4a5568; /* Gray-700, match Reviews */
-  padding: 8px 16px; /* Match Reviews button padding */
-  border-radius: 4px; /* Match Reviews button border radius */
-  font-size: 14px; /* Match Reviews font size */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Match Reviews transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 .view-button:hover {
-  background-color: #d1d5db; /* Gray-300 on hover, match Reviews */
+  background-color: #d1d5db;
 }
 .view-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .view-button.active {
-  background-color: #4a5568; /* Gray-700, match Reviews */
-  color: white; /* Match Reviews active button color */
-  border-color: #4a5568; /* Match Reviews active border */
+  background-color: #4a5568;
+  color: white;
+  border-color: #4a5568;
 }
 
-/* Products table */
 .products-table {
   width: 100%;
-  margin-bottom: 24px; /* Match Reviews margin */
-  border-collapse: collapse; /* Match Reviews table style */
-  table-layout: fixed; /* Ensure fixed layout to prevent overlap */
-  margin-top: 0; /* Match Reviews table margin */
+  margin-bottom: 24px;
+  border-collapse: collapse;
+  table-layout: auto;
+  margin-top: 0;
   padding-top: 0;
+  max-width: 100%;
 }
 
-/* Table header row */
 .table-header-row {
-  background-color: #e5e7eb; /* Gray-200, match Reviews */
-  color: #4a5568; /* Gray-700, match Reviews */
-  font-size: 16px; /* Match Reviews header font size */
-  font-weight: 600; /* Match Reviews header weight */
-  padding: 8px; /* Match Reviews header padding */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 8px;
 }
 
-/* Table headers and cells */
 .table-header,
 .table-cell {
-  padding: 12px; /* Match Reviews cell padding */
-  text-align: left; /* Match Reviews alignment */
-  border: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
-  font-size: 16px; /* Match Reviews font size */
-  overflow: hidden; /* Prevent text overflow */
-  text-overflow: ellipsis; /* Show ellipsis for long text */
-  white-space: nowrap; /* Prevent wrapping */
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+  font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-/* Specific column widths to prevent overlapping */
 .table-header:first-child,
 .table-cell:first-child {
-  width: 50px; /* Fixed width for checkbox column, match Reviews */
-  text-align: center; /* Center-align checkbox, match Reviews */
+  width: 50px;
+  text-align: center;
 }
 
 .table-header.products-action-column,
 .table-cell.products-action-column {
-  width: 80px; /* Fixed width for Action column, match Reviews */
-  text-align: center; /* Center-align actions, match Reviews */
+  width: 80px;
+  text-align: center;
 }
 
 .table-header.product-image-column,
 .table-cell.product-image-column {
-  width: 80px; /* Fixed width for image column, match Reviews */
-  text-align: center; /* Center-align images, match Reviews */
+  width: 80px;
+  text-align: center;
 }
 
 .table-header.product-name-column,
 .table-cell.product-name-column {
-  width: 150px; /* Fixed width for Product Name, prevent overlap */
-  text-align: left; /* Match Reviews alignment */
+  width: 150px;
+  text-align: left;
 }
 
 .table-header.product-description-column,
 .table-cell.product-description-column {
-  width: 250px; /* Increased width for Description column to prevent overlap and allow more content */
-  text-align: left; /* Match Reviews alignment */
-}
-
-.table-header.product-stock-column,
-.table-cell.product-stock-column {
-  width: 80px; /* Fixed width for Stocks, prevent overlap */
-  text-align: center; /* Center-align numeric data, match Reviews */
-}
-
-.table-header.product-price-column,
-.table-cell.product-price-column {
-  width: 100px; /* Fixed width for Price, prevent overlap */
-  text-align: right; /* Right-align currency, match Reviews */
+  width: 180px;
+  max-width: 180px;
+  text-align: left;
 }
 
 .table-header.product-category-column,
 .table-cell.product-category-column {
-  width: 100px; /* Fixed width for Category, prevent overlap */
-  text-align: left; /* Match Reviews alignment */
+  width: 100px;
+  text-align: left;
 }
 
 .table-header.product-color-column,
 .table-cell.product-color-column {
-  width: 100px; /* Fixed width for Color, prevent overlap */
-  text-align: left; /* Match Reviews alignment */
+  width: 100px;
+  text-align: left;
 }
 
 .table-header.product-wrist-column,
 .table-cell.product-wrist-column {
-  width: 120px; /* Fixed width for Wrist Measurement, prevent overlap */
-  text-align: left; /* Match Reviews alignment */
+  width: 120px;
+  text-align: left;
+}
+
+.table-header.product-stock-column,
+.table-cell.product-stock-column {
+  width: 80px;
+  text-align: center;
+}
+
+.table-header.product-price-column,
+.table-cell.product-price-column {
+  width: 100px;
+  text-align: left;
 }
 
 .table-header.product-created-column,
 .table-cell.product-created-column {
-  width: 120px; /* Fixed width for Created At, prevent overlap */
-  text-align: left; /* Match Reviews alignment */
+  width: 120px;
+  text-align: left;
 }
 
-/* Table row */
+.table-header.product-updated-column,
+.table-cell.product-updated-column {
+  width: 120px;
+  text-align: left;
+}
+
 .table-row {
-  border-bottom: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
-  min-height: 40px; /* Match Reviews row height */
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 40px;
 }
 
-/* Checkbox column header and cell alignment (only checkbox in header, checkbox and actions in rows) */
 .product-checkbox {
-  width: 20px; /* Match Reviews checkbox size */
-  height: 20px; /* Match Reviews checkbox size */
+  width: 20px;
+  height: 20px;
   cursor: pointer;
-  margin: 0; /* Match Reviews margin */
+  margin: 0;
 }
 
-/* Action icons (Edit, Delete, Restore), match Reviews */
 .edit-icon {
-  color: #6b7280; /* Gray-500, match Reviews */
+  color: #6b7280;
   cursor: pointer;
-  transition: color 0.3s ease; /* Match Reviews transition */
-  vertical-align: middle; /* Match Reviews alignment */
-  display: inline-block; /* Match Reviews display */
-  text-align: center; /* Match Reviews alignment */
+  transition: color 0.3s ease;
+  vertical-align: middle;
+  display: inline-block;
+  text-align: center;
 }
 .edit-icon:hover {
-  color: #4a5568; /* Gray-700 on hover, match Reviews */
+  color: #4a5568;
 }
 .edit-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 
 .delete-icon {
-  color: #6b7280; /* Gray-500, match Reviews */
+  color: #6b7280;
   cursor: pointer;
-  transition: color 0.3s ease; /* Match Reviews transition */
-  vertical-align: middle; /* Match Reviews alignment */
-  display: inline-block; /* Match Reviews display */
-  text-align: center; /* Match Reviews alignment */
+  transition: color 0.3s ease;
+  vertical-align: middle;
+  display: inline-block;
+  text-align: center;
 }
 .delete-icon:hover {
-  color: #4a5568; /* Gray-700 on hover, match Reviews */
+  color: #4a5568;
 }
 .delete-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 
 .restore-icon {
-  color: #6b7280; /* Gray-500, match Reviews */
+  color: #6b7280;
   cursor: pointer;
-  transition: color 0.3s ease; /* Match Reviews transition */
-  vertical-align: middle; /* Match Reviews alignment */
-  display: inline-block; /* Match Reviews display */
-  text-align: center; /* Match Reviews alignment */
+  transition: color 0.3s ease;
+  vertical-align: middle;
+  display: inline-block;
+  text-align: center;
 }
 .restore-icon:hover {
-  color: #4a5568; /* Gray-700 on hover, match Reviews */
+  color: #4a5568;
 }
 .restore-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring, match Reviews */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 
 .action-buttons {
-  display: flex; /* Match Reviews layout for action buttons */
-  gap: 16px; /* Match Reviews gap between icons */
-  align-items: center; /* Match Reviews alignment */
-  justify-content: center; /* Match Reviews justification */
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Image column styles */
 .product-image {
-  max-width: 60px; /* Ensure image fits within column, match Reviews icon size */
-  max-height: 60px; /* Ensure image fits within column, match Reviews icon size */
-  vertical-align: middle; /* Center vertically, match Reviews */
+  max-width: 60px;
+  max-height: 60px;
+  vertical-align: middle;
 }
 
-/* Empty state for no products */
-.products-table tbody td[colspan="11"] {
+.products-table tbody td[colspan="12"] {
   text-align: center;
-  padding: 20px; /* Match Reviews padding */
-  background-color: #f9f9f9; /* Light gray, match Reviews empty state */
+  padding: 20px;
+  background-color: #f9f9f9;
 }
 
-/* Pagination, match Reviews */
 .table-pagination {
   display: flex;
-  justify-content: flex-start; /* Match Reviews alignment */
-  margin-top: 16px; /* Match Reviews margin */
-  gap: 8px; /* Match Reviews gap */
+  justify-content: flex-start;
+  margin-top: 16px;
+  gap: 8px;
 }
 
 .table-pagination-button {
-  background-color: #e5e7eb; /* Gray-200, match Reviews */
-  color: #000000; /* Black text, match Reviews */
-  border: 1px solid #e5e7eb; /* Gray-200 border, match Reviews */
-  padding: 8px 16px; /* Match Reviews button padding */
-  margin-right: 0; /* Match Reviews margin */
-  border-radius: 4px; /* Match Reviews border radius */
-  font-size: 14px; /* Match Reviews font size */
+  background-color: #e5e7eb;
+  color: #000000;
+  border: 1px solid #e5e7eb;
+  padding: 8px 16px;
+  margin-right: 0;
+  border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
-  transition: background-color 0.2s; /* Match Reviews transition */
+  transition: background-color 0.2s;
 }
 .table-pagination-button:hover:not(:disabled) {
-  background-color: #d1d5db; /* Gray-300 on hover, match Reviews */
+  background-color: #d1d5db;
 }
 .table-pagination-button.active {
-  background-color: #4a5568; /* Gray-700, match Reviews */
-  color: white; /* Match Reviews active button color */
-  border-color: #4a5568; /* Match Reviews active border */
+  background-color: #4a5568;
+  color: white;
+  border-color: #4a5568;
 }
 .table-pagination-button:disabled {
-  opacity: 0.5; /* Match Reviews disabled state */
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
-/* Responsive adjustments, match Reviews */
 @media (max-width: 767px) {
   .products-container {
-    padding: 4px; /* Further reduced padding for mobile, match Reviews */
+    padding: 4px;
   }
   .products-header {
-    margin-bottom: 2px; /* Further reduced margin for mobile, match Reviews */
+    margin-bottom: 2px;
   }
   .table-header-actions {
-    flex-direction: column; /* Stack vertically on mobile, match Reviews */
-    gap: 2px; /* Further reduced gap for mobile, match Reviews */
-    align-items: flex-end; /* Align to right, match Reviews */
+    flex-direction: column;
+    gap: 2px;
+    align-items: flex-end;
   }
   .search-bar .search-input {
-    max-width: 100%; /* Full width on mobile, match Reviews */
+    max-width: 100%;
   }
   .button-group {
-    width: 100%; /* Full width on mobile, match Reviews */
-    justify-content: flex-end; /* Align buttons to right on mobile, match Reviews */
+    width: 100%;
+    justify-content: flex-end;
   }
   .products-table .table-header,
   .products-table .table-cell {
-    padding: 8px; /* Slightly reduce padding on mobile, match Reviews */
-    font-size: 14px; /* Reduce font size on mobile, match Reviews */
+    padding: 8px;
+    font-size: 14px;
   }
   .table-header-row {
-    font-size: 14px; /* Reduce header font size on mobile, match Reviews */
-    padding: 6px; /* Reduce padding on mobile, match Reviews */
+    font-size: 14px;
+    padding: 6px;
   }
   .table-row {
-    min-height: 32px; /* Reduce row height on mobile, match Reviews */
+    min-height: 32px;
   }
   .product-checkbox {
-    width: 16px; /* Reduce checkbox size on mobile, match Reviews */
-    height: 16px; /* Reduce checkbox size on mobile, match Reviews */
+    width: 16px;
+    height: 16px;
   }
   .edit-icon,
   .delete-icon,
   .restore-icon {
-    size: 16px; /* Reduce icon size on mobile, match Reviews */
-    margin-left: 4px; /* Adjust margin on mobile, match Reviews */
+    size: 16px;
+    margin-left: 4px;
   }
   .product-image {
-    max-width: 40px; /* Reduce image size on mobile, match Reviews icon size */
-    max-height: 40px; /* Reduce image size on mobile, match Reviews icon size */
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .products-table {
+    table-layout: auto;
+  }
+  .table-header.product-description-column,
+  .table-cell.product-description-column {
+    width: 120px;
+    max-width: 120px;
+  }
+  .table-header.product-stock-column,
+  .table-cell.product-stock-column {
+    width: 60px;
+  }
+  .table-header.product-price-column,
+  .table-cell.product-price-column {
+    width: 80px;
+  }
+  .table-header.product-category-column,
+  .table-cell.product-category-column {
+    width: 80px;
+  }
+  .table-header.product-color-column,
+  .table-cell.product-color-column {
+    width: 80px;
+  }
+  .table-header.product-wrist-column,
+  .table-cell.product-wrist-column {
+    width: 100px;
+  }
+  .table-header.product-created-column,
+  .table-cell.product-created-column {
+    width: 100px;
+  }
+  .table-header.product-updated-column,
+  .table-cell.product-updated-column {
+    width: 100px;
   }
 }
 .users-container {
@@ -14537,7 +14759,8 @@ button { /* Override any global button styles specific to Reviews */
   background-color: white;
   position: relative;
   margin: 0;
-  display: block;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .users-header {
@@ -14551,10 +14774,11 @@ button { /* Override any global button styles specific to Reviews */
 .table-container {
   position: relative;
   min-height: 200px;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-top: 0;
   padding-top: 0;
-  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .table-header-actions {
@@ -14562,7 +14786,6 @@ button { /* Override any global button styles specific to Reviews */
   flex-direction: column;
   gap: 4px;
   margin-bottom: 0;
-  visibility: visible;
 }
 
 .search-bar {
@@ -14580,7 +14803,6 @@ button { /* Override any global button styles specific to Reviews */
   outline: none;
   background-color: #f3f4f6;
   color: #4a5568;
-  visibility: visible;
 }
 .search-bar .search-input::-moz-placeholder {
   color: #6b7280;
@@ -14599,7 +14821,6 @@ button { /* Override any global button styles specific to Reviews */
   gap: 8px;
   align-items: center;
   margin-left: auto;
-  visibility: visible;
 }
 
 .button-group .add-button {
@@ -14611,7 +14832,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .add-button:hover {
   background-color: #4169e1;
@@ -14636,7 +14856,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .delete-button:hover {
   background-color: #dc2626;
@@ -14661,7 +14880,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .restore-button:hover {
   background-color: #4169e1;
@@ -14681,7 +14899,6 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   gap: 4px;
   margin-top: 4px;
-  visibility: visible;
 }
 
 .view-button {
@@ -14693,7 +14910,6 @@ button { /* Override any global button styles specific to Reviews */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-  visibility: visible;
 }
 .view-button:hover {
   background-color: #d1d5db;
@@ -14712,11 +14928,10 @@ button { /* Override any global button styles specific to Reviews */
   width: 100%;
   margin-bottom: 24px;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
   margin-top: 0;
   padding-top: 0;
-  display: table;
-  visibility: visible;
+  max-width: 100%;
 }
 
 .table-header-row {
@@ -14733,13 +14948,9 @@ button { /* Override any global button styles specific to Reviews */
   text-align: left;
   border: 1px solid #e5e7eb;
   font-size: 16px;
-  visibility: visible;
-}
-
-.table-row {
-  border-bottom: 1px solid #e5e7eb;
-  min-height: 40px;
-  visibility: visible;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .table-header:first-child,
@@ -14751,32 +14962,48 @@ button { /* Override any global button styles specific to Reviews */
 .table-header.users-action-column,
 .table-cell.users-action-column {
   width: 120px;
-  text-align: left;
-  visibility: visible;
-}
-
-.users-table .table-row[view-type=archived] .table-header.users-action-column,
-.users-table .table-row[view-type=archived] .table-cell.users-action-column,
-.users-table .table-row.view-type-archived .users-action-column {
-  width: 120px;
-  visibility: visible;
+  text-align: center;
 }
 
 .table-header:nth-child(3),
 .table-cell:nth-child(3) {
   width: 200px;
   text-align: left;
-  visibility: visible;
 }
 
 .table-header:nth-child(4),
-.table-cell:nth-child(4),
+.table-cell:nth-child(4) {
+  width: 250px;
+  text-align: left;
+}
+
 .table-header:nth-child(5),
-.table-cell:nth-child(5),
+.table-cell:nth-child(5) {
+  width: 100px;
+  text-align: left;
+}
+
 .table-header:nth-child(6),
 .table-cell:nth-child(6) {
+  width: 120px;
   text-align: left;
-  visibility: visible;
+}
+
+.table-header:nth-child(7),
+.table-cell:nth-child(7) {
+  width: 120px;
+  text-align: left;
+}
+
+.table-header:nth-child(8),
+.table-cell:nth-child(8) {
+  width: 120px;
+  text-align: left;
+}
+
+.table-row {
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 40px;
 }
 
 .user-checkbox {
@@ -14784,7 +15011,6 @@ button { /* Override any global button styles specific to Reviews */
   height: 20px;
   cursor: pointer;
   margin: 0;
-  visibility: visible;
 }
 
 .edit-icon {
@@ -14794,7 +15020,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .edit-icon:hover {
   color: #4a5568;
@@ -14811,7 +15036,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .delete-icon:hover {
   color: #4a5568;
@@ -14828,7 +15052,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .restore-icon:hover {
   color: #4a5568;
@@ -14843,14 +15066,12 @@ button { /* Override any global button styles specific to Reviews */
   gap: 16px;
   align-items: center;
   justify-content: center;
-  visibility: visible;
 }
 
-.users-table tbody td[colspan="6"] {
+.users-table tbody td[colspan="8"] {
   text-align: center;
   padding: 20px;
   background-color: #f9f9f9;
-  visibility: visible;
 }
 
 .table-pagination {
@@ -14858,7 +15079,6 @@ button { /* Override any global button styles specific to Reviews */
   justify-content: flex-start;
   margin-top: 16px;
   gap: 8px;
-  visibility: visible;
 }
 
 .table-pagination-button {
@@ -14871,7 +15091,6 @@ button { /* Override any global button styles specific to Reviews */
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
-  visibility: visible;
 }
 .table-pagination-button:hover:not(:disabled) {
   background-color: #d1d5db;
@@ -14884,23 +15103,6 @@ button { /* Override any global button styles specific to Reviews */
 .table-pagination-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-}
-
-.table-header:nth-child(5),
-.table-cell:nth-child(5) {
-  width: 100px;
-  text-align: left;
-  visibility: visible;
-}
-
-.status-active {
-  color: #22c55e;
-  font-weight: 500;
-}
-
-.status-inactive {
-  color: #f97316;
-  font-weight: 500;
 }
 
 @media (max-width: 767px) {
@@ -14941,13 +15143,45 @@ button { /* Override any global button styles specific to Reviews */
     size: 16px;
     margin-left: 4px;
   }
+  .users-table {
+    table-layout: auto;
+  }
+  .table-header.users-action-column,
+  .table-cell.users-action-column {
+    width: 80px;
+  }
+  .table-header:nth-child(3),
+  .table-cell:nth-child(3) {
+    width: 150px;
+  }
+  .table-header:nth-child(4),
+  .table-cell:nth-child(4) {
+    width: 180px;
+  }
+  .table-header:nth-child(5),
+  .table-cell:nth-child(5) {
+    width: 80px;
+  }
+  .table-header:nth-child(6),
+  .table-cell:nth-child(6) {
+    width: 100px;
+  }
+  .table-header:nth-child(7),
+  .table-cell:nth-child(7) {
+    width: 100px;
+  }
+  .table-header:nth-child(8),
+  .table-cell:nth-child(8) {
+    width: 100px;
+  }
 }
 .customers-container {
   padding: 8px;
   background-color: white;
   position: relative;
   margin: 0;
-  display: block;
+  width: 100%;
+  max-width: 100vw;
 }
 
 .customers-header {
@@ -14961,10 +15195,11 @@ button { /* Override any global button styles specific to Reviews */
 .table-container {
   position: relative;
   min-height: 200px;
-  overflow-x: auto;
+  overflow-x: hidden;
   margin-top: 0;
   padding-top: 0;
-  display: block;
+  width: 100%;
+  max-width: 100%;
 }
 
 .table-header-actions {
@@ -14972,7 +15207,6 @@ button { /* Override any global button styles specific to Reviews */
   flex-direction: column;
   gap: 4px;
   margin-bottom: 0;
-  visibility: visible;
 }
 
 .search-bar {
@@ -14990,7 +15224,6 @@ button { /* Override any global button styles specific to Reviews */
   outline: none;
   background-color: #f3f4f6;
   color: #4a5568;
-  visibility: visible;
 }
 .search-bar .search-input::-moz-placeholder {
   color: #6b7280;
@@ -15009,7 +15242,6 @@ button { /* Override any global button styles specific to Reviews */
   gap: 8px;
   align-items: center;
   margin-left: auto;
-  visibility: visible;
 }
 
 .button-group .add-button {
@@ -15021,7 +15253,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .add-button:hover {
   background-color: #4169e1;
@@ -15046,7 +15277,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .delete-button:hover {
   background-color: #dc2626;
@@ -15071,7 +15301,6 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  visibility: visible;
 }
 .button-group .restore-button:hover {
   background-color: #4169e1;
@@ -15091,7 +15320,6 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   gap: 4px;
   margin-top: 4px;
-  visibility: visible;
 }
 
 .view-button {
@@ -15103,7 +15331,6 @@ button { /* Override any global button styles specific to Reviews */
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
-  visibility: visible;
 }
 .view-button:hover {
   background-color: #d1d5db;
@@ -15122,11 +15349,10 @@ button { /* Override any global button styles specific to Reviews */
   width: 100%;
   margin-bottom: 24px;
   border-collapse: collapse;
-  table-layout: fixed;
+  table-layout: auto;
   margin-top: 0;
   padding-top: 0;
-  display: table;
-  visibility: visible;
+  max-width: 100%;
 }
 
 .table-header-row {
@@ -15143,13 +15369,9 @@ button { /* Override any global button styles specific to Reviews */
   text-align: left;
   border: 1px solid #e5e7eb;
   font-size: 16px;
-  visibility: visible;
-}
-
-.table-row {
-  border-bottom: 1px solid #e5e7eb;
-  min-height: 40px;
-  visibility: visible;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .table-header:first-child,
@@ -15161,29 +15383,19 @@ button { /* Override any global button styles specific to Reviews */
 .table-header.customers-action-column,
 .table-cell.customers-action-column {
   width: 120px;
-  text-align: left;
-  visibility: visible;
-}
-
-.customers-table .table-row[view-type=archived] .table-header.customers-action-column,
-.customers-table .table-row[view-type=archived] .table-cell.customers-action-column,
-.customers-table .table-row.view-type-archived .customers-action-column {
-  width: 120px;
-  visibility: visible;
+  text-align: center;
 }
 
 .table-header:nth-child(3),
 .table-cell:nth-child(3) {
   width: 200px;
   text-align: left;
-  visibility: visible;
 }
 
 .table-header:nth-child(4),
 .table-cell:nth-child(4) {
   width: 190px;
   text-align: left;
-  visibility: visible;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -15193,7 +15405,6 @@ button { /* Override any global button styles specific to Reviews */
 .table-cell:nth-child(5) {
   width: 350px;
   text-align: left;
-  visibility: visible;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -15203,7 +15414,23 @@ button { /* Override any global button styles specific to Reviews */
 .table-cell:nth-child(6) {
   width: 100px;
   text-align: left;
-  visibility: visible;
+}
+
+.table-header:nth-child(7),
+.table-cell:nth-child(7) {
+  width: 120px;
+  text-align: left;
+}
+
+.table-header:nth-child(8),
+.table-cell:nth-child(8) {
+  width: 120px;
+  text-align: left;
+}
+
+.table-row {
+  border-bottom: 1px solid #e5e7eb;
+  min-height: 40px;
 }
 
 .customer-checkbox {
@@ -15211,7 +15438,6 @@ button { /* Override any global button styles specific to Reviews */
   height: 20px;
   cursor: pointer;
   margin: 0;
-  visibility: visible;
 }
 
 .edit-icon {
@@ -15221,7 +15447,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .edit-icon:hover {
   color: #4a5568;
@@ -15238,7 +15463,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .delete-icon:hover {
   color: #dc2626;
@@ -15255,7 +15479,6 @@ button { /* Override any global button styles specific to Reviews */
   vertical-align: middle;
   display: inline-block;
   text-align: center;
-  visibility: visible;
 }
 .restore-icon:hover {
   color: #4a5568;
@@ -15270,14 +15493,12 @@ button { /* Override any global button styles specific to Reviews */
   gap: 16px;
   align-items: center;
   justify-content: center;
-  visibility: visible;
 }
 
-.customers-table tbody td[colspan="7"] {
+.customers-table tbody td[colspan="8"] {
   text-align: center;
   padding: 20px;
   background-color: #f9f9f9;
-  visibility: visible;
 }
 
 .table-pagination {
@@ -15285,7 +15506,6 @@ button { /* Override any global button styles specific to Reviews */
   justify-content: flex-start;
   margin-top: 16px;
   gap: 8px;
-  visibility: visible;
 }
 
 .table-pagination-button {
@@ -15298,7 +15518,6 @@ button { /* Override any global button styles specific to Reviews */
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
-  visibility: visible;
 }
 .table-pagination-button:hover:not(:disabled) {
   background-color: #d1d5db;
@@ -15360,6 +15579,37 @@ button { /* Override any global button styles specific to Reviews */
   .restore-icon {
     size: 16px;
     margin-left: 4px;
+  }
+  .customers-table {
+    table-layout: auto;
+  }
+  .table-header.customers-action-column,
+  .table-cell.customers-action-column {
+    width: 80px;
+  }
+  .table-header:nth-child(3),
+  .table-cell:nth-child(3) {
+    width: 150px;
+  }
+  .table-header:nth-child(4),
+  .table-cell:nth-child(4) {
+    width: 140px;
+  }
+  .table-header:nth-child(5),
+  .table-cell:nth-child(5) {
+    width: 200px;
+  }
+  .table-header:nth-child(6),
+  .table-cell:nth-child(6) {
+    width: 80px;
+  }
+  .table-header:nth-child(7),
+  .table-cell:nth-child(7) {
+    width: 100px;
+  }
+  .table-header:nth-child(8),
+  .table-cell:nth-child(8) {
+    width: 100px;
   }
 }
 /* src/components/admin/CategoryList.scss */

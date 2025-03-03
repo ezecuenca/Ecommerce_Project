@@ -1,28 +1,28 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaEdit, FaTrash, FaUndo } from "react-icons/fa"; // Added FaTrash and FaUndo for Delete and Restore
-import InventoryManagement from "./InventoryManagement"; // New import for the modal
+import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
+import InventoryManagement from "./InventoryManagement";
 
 const Inventory = () => {
     const initialInventoryData = [
-        { productName: "Product Name 1", stock: 50, price: "₱ 200.12", profit: "₱ 2000.12", quantitySold: 10, totalAmount: "₱ 2001.20", isArchived: false },
-        { productName: "Product Name 2", stock: 0, price: "₱ 143.06", profit: "₱ 2000.12", quantitySold: 5, totalAmount: "₱ 715.30", isArchived: false },
-        { productName: "Product Name 3", stock: 30, price: "₱ 310.22", profit: "₱ 2000.12", quantitySold: 15, totalAmount: "₱ 4653.30", isArchived: false },
-        { productName: "Product Name 4", stock: 0, price: "₱ 200.12", profit: "₱ 2000.12", quantitySold: 8, totalAmount: "₱ 1600.96", isArchived: false },
-        { productName: "Product Name 5", stock: 20, price: "₱ 143.06", profit: "₱ 2000.12", quantitySold: 12, totalAmount: "₱ 1716.72", isArchived: false },
-        { productName: "Product Name 6", stock: 0, price: "₱ 310.22", profit: "₱ 2000.12", quantitySold: 7, totalAmount: "₱ 2171.54", isArchived: false },
+        { productName: "Product Name 1", stock: 50, price: "₱ 200.12", profit: "₱ 2000.12", quantitySold: 10, totalAmount: "₱ 2001.20", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
+        { productName: "Product Name 2", stock: 0, price: "₱ 143.06", profit: "₱ 2000.12", quantitySold: 5, totalAmount: "₱ 715.30", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
+        { productName: "Product Name 3", stock: 30, price: "₱ 310.22", profit: "₱ 2000.12", quantitySold: 15, totalAmount: "₱ 4653.30", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
+        { productName: "Product Name 4", stock: 0, price: "₱ 200.12", profit: "₱ 2000.12", quantitySold: 8, totalAmount: "₱ 1600.96", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
+        { productName: "Product Name 5", stock: 20, price: "₱ 143.06", profit: "₱ 2000.12", quantitySold: 12, totalAmount: "₱ 1716.72", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
+        { productName: "Product Name 6", stock: 0, price: "₱ 310.22", profit: "₱ 2000.12", quantitySold: 7, totalAmount: "₱ 2171.54", isArchived: false, createdAt: "03/01/25", updatedAt: "03/02/25" },
     ];
 
     const [inventoryData, setInventoryData] = useState(initialInventoryData);
-    const [viewType, setViewType] = useState("active"); // Renamed from viewArchived for consistency with other files
-    const [managementModalOpen, setManagementModalOpen] = useState(false); // Renamed from editModalOpen for consistency
-    const [managementType, setManagementType] = useState(""); // Type of management action (edit, delete, restore)
+    const [viewType, setViewType] = useState("active");
+    const [managementModalOpen, setManagementModalOpen] = useState(false);
+    const [managementType, setManagementType] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
     const [stock, setStock] = useState(0);
-    const [checkedRows, setCheckedRows] = useState({}); // Track checked items
-    const [isSelectAll, setIsSelectAll] = useState(false); // Track "Select All" state
+    const [checkedRows, setCheckedRows] = useState({});
+    const [isSelectAll, setIsSelectAll] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
-    const tableRef = useRef(null); // For managing checkbox states
+    const tableRef = useRef(null);
 
     useEffect(() => {
         const savedInventory = localStorage.getItem("inventoryItems");
@@ -30,10 +30,12 @@ const Inventory = () => {
             const parsedInventory = JSON.parse(savedInventory).map(item => ({
                 ...item,
                 isArchived: item.isArchived !== undefined ? item.isArchived : false,
+                createdAt: item.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
+                updatedAt: item.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
             }));
             setInventoryData(parsedInventory);
         }
-        setCheckedRows({}); // Reset checked rows when data or view changes
+        setCheckedRows({});
         setIsSelectAll(false);
     }, [viewType]);
 
@@ -132,7 +134,7 @@ const Inventory = () => {
     const handleSaveEdit = (newStock) => {
         if (selectedItem) {
             const updatedInventory = inventoryData.map(item =>
-                item.productName === selectedItem.productName ? { ...item, stock: newStock, isArchived: false } : item
+                item.productName === selectedItem.productName ? { ...item, stock: newStock, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) } : item
             );
             setInventoryData(updatedInventory);
             localStorage.setItem("inventoryItems", JSON.stringify(updatedInventory));
@@ -140,7 +142,7 @@ const Inventory = () => {
             setSelectedItem(null);
             setStock(0);
             setManagementType("");
-            setCheckedRows({}); // Reset checkboxes after action
+            setCheckedRows({});
             setIsSelectAll(false);
         }
     };
@@ -150,11 +152,11 @@ const Inventory = () => {
             const updatedInventory = inventoryData.map(item => {
                 if (Array.isArray(items)) {
                     if (items.some(selected => selected.productName === item.productName)) {
-                        return { ...item, isArchived: true };
+                        return { ...item, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
                     }
                 } else {
                     if (items.productName === item.productName) {
-                        return { ...item, isArchived: true };
+                        return { ...item, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
                     }
                 }
                 return item;
@@ -164,17 +166,17 @@ const Inventory = () => {
             setManagementModalOpen(false);
             setSelectedItem(null);
             setManagementType("");
-            setCheckedRows({}); // Reset checkboxes after action
+            setCheckedRows({});
             setIsSelectAll(false);
         } else if (managementType === "restore") {
             const updatedInventory = inventoryData.map(item => {
                 if (Array.isArray(items)) {
                     if (items.some(selected => selected.productName === item.productName)) {
-                        return { ...item, isArchived: false };
+                        return { ...item, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
                     }
                 } else {
                     if (items.productName === item.productName) {
-                        return { ...item, isArchived: false };
+                        return { ...item, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
                     }
                 }
                 return item;
@@ -184,7 +186,7 @@ const Inventory = () => {
             setManagementModalOpen(false);
             setSelectedItem(null);
             setManagementType("");
-            setCheckedRows({}); // Reset checkboxes after action
+            setCheckedRows({});
             setIsSelectAll(false);
         }
     };
@@ -194,7 +196,7 @@ const Inventory = () => {
         setSelectedItem(null);
         setStock(0);
         setManagementType("");
-        setCheckedRows({}); // Reset checkboxes on modal close
+        setCheckedRows({});
         setIsSelectAll(false);
     };
 
@@ -287,6 +289,8 @@ const Inventory = () => {
                             <th className="th">Quantity Sold</th>
                             <th className="th">Total Amount</th>
                             <th className="th">Profit</th>
+                            <th className="th">Created At</th>
+                            <th className="th">Updated At</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -328,11 +332,13 @@ const Inventory = () => {
                                     <td className="td inventory-quantity-sold">{item.quantitySold}</td>
                                     <td className="td inventory-total-amount">{item.totalAmount}</td>
                                     <td className="td">{item.profit}</td>
+                                    <td className="td">{item.createdAt}</td>
+                                    <td className="td">{item.updatedAt}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr className="tr">
-                                <td colSpan="8" className="td">No items available.</td>
+                                <td colSpan="10" className="td">No items available.</td>
                             </tr>
                         )}
                     </tbody>

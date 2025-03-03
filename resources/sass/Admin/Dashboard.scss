@@ -1,3 +1,47 @@
+/* Header Styles (scoped to .content header) */
+.content {
+    margin-left: 250px;
+    min-height: 100vh;
+    background-color: #f7fafc;
+    position: relative;
+}
+
+.content header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-end; /* Align icons to the right */
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
+}
+
+.content header .text-gray-500 {
+    color: #777E90; /* Light gray to match your screenshot (Tailwind's gray-500) */
+    transition: color 0.3s ease;
+    cursor: pointer;
+    margin-left: 1rem; /* Space between icons */
+}
+
+.content header .text-gray-500:hover {
+    color: #4a5568; /* Darker gray on hover, matching your theme */
+}
+
+.content .border-b {
+    border-bottom: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
+    width: 100%;
+}
+
+.content > div {
+    padding: 20px;
+}
+
+
+
+
 .dashboard-container {
     padding: 24px;
     background-color: white;

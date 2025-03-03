@@ -1,67 +1,136 @@
-
 .admin-sidebar {
     height: 100vh;
     width: 250px;
-    background-color: #2A363B; 
+    background-color: #2A363B;
     position: fixed;
     top: 0;
     left: 0;
-    padding-top: 20px;
+    padding-top: 15px;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+
+    @media (max-width: 767px) {
+        width: 200px;
+        padding-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+        width: 180px;
+        padding-top: 8px;
+    }
+
+    @media (max-width: 320px) {
+        width: 160px;
+        padding-top: 6px;
+    }
 }
 
 .admin-logo {
     text-align: center;
-    margin-bottom: 20px;
-}
+    margin-bottom: 15px;
 
-.logo-img {
-    width: 189px; 
-    height: auto;
+    .logo-img {
+        width: 180px;
+        height: auto;
+    }
+
+    @media (max-width: 767px) {
+        .logo-img {
+            width: 150px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        margin-bottom: 10px;
+
+        .logo-img {
+            width: 130px;
+        }
+    }
+
+    @media (max-width: 320px) {
+        margin-bottom: 8px;
+
+        .logo-img {
+            width: 120px;
+        }
+    }
 }
 
 .admin-menu {
     list-style: none;
     padding-left: 0;
     width: 100%;
+    margin-top: 0;
 }
 
 .admin-menu li {
     width: 100%;
-    margin-bottom: -20px;
+    margin-bottom: 0;
 }
 
 .admin-menu button {
     display: flex;
     align-items: center;
-    padding: 12px 20px; /* Adjusted padding for better spacing */
+    padding: 10px 20px;
     width: 100%;
     background: none;
     border: none;
     color: white;
     cursor: pointer;
     text-align: left;
-    font-size: 14px; /* More readable font size */
+    font-size: 14px;
     font-weight: 500;
     transition: background 0.3s ease-in-out;
-}
+    line-height: 1.2;
 
-.admin-menu button:hover {
-    background-color: rgba(255, 255, 255, 0.1); 
-}
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
 
-.admin-menu button.active {
-    background-color: rgba(255, 255, 255, 0.2); /* Highlight color */
-    font-weight: bold;
-}  
+    &.active {
+        background-color: rgba(255, 255, 255, 0.2);
+        font-weight: bold;
+    }
+
+    @media (max-width: 767px) {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    @media (max-width: 320px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+}
 
 .icon {
-    margin-right: 10px; /* Proper spacing for icons */
-    font-size: 16px; /* Balanced icon size */
+    margin-right: 10px;
+    font-size: 16px;
+
+    @media (max-width: 767px) {
+        font-size: 14px;
+        margin-right: 8px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+        margin-right: 6px;
+    }
+
+    @media (max-width: 320px) {
+        font-size: 12px;
+        margin-right: 6px;
+    }
 }
 
 .settings {
@@ -72,7 +141,7 @@
     display: flex;
     align-items: center;
     width: 100%;
-    padding: 12px 20px;
+    padding: 10px 20px;
     background: none;
     border: none;
     color: white;
@@ -81,73 +150,98 @@
     font-size: 14px;
     font-weight: 500;
     transition: background 0.3s ease-in-out;
-}
 
-.settings-btn:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 767px) {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    @media (max-width: 320px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
 }
 
 .arrow-icon {
-    margin-left: auto;
+    margin-left: 8px;
     font-size: 12px;
+
+    @media (max-width: 767px) {
+        font-size: 10px;
+        margin-left: 6px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 8px;
+        margin-left: 4px;
+    }
+
+    @media (max-width: 320px) {
+        font-size: 8px;
+        margin-left: 4px;
+    }
 }
 
 .settings-dropdown {
     display: none;
     flex-direction: column;
-    background-color: #1f2937; /* Adjust the color as needed */
+    background-color: #1f2937;
     padding-left: 10px;
-}
-
-.settings-dropdown li {
-    list-style: none;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
 }
 
 .settings .settings-dropdown {
     display: block;
 }
 
-.settings-dropdown button:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+.settings-dropdown li {
+    list-style: none;
 }
 
-/* Header Styles (scoped to .content header) */
-.content {
-    margin-left: 250px;
-    min-height: 100vh;
-    background-color: #f7fafc;
-    position: relative;
-}
-
-.content header {
-    position: sticky;
-    top: 0;
-    z-index: 20;
-    background-color: white;
-    padding: 1rem;
+.settings-dropdown button {
     display: flex;
-    justify-content: flex-end; /* Align icons to the right */
     align-items: center;
+    padding: 10px 20px;
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for depth */
-}
-
-.content header .text-gray-500 {
-    color: #777E90; /* Light gray to match your screenshot (Tailwind's gray-500) */
-    transition: color 0.3s ease;
+    background: none;
+    border: none;
+    color: white;
     cursor: pointer;
-    margin-left: 1rem; /* Space between icons */
-}
+    text-align: left;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.3s ease-in-out;
 
-.content header .text-gray-500:hover {
-    color: #4a5568; /* Darker gray on hover, matching your theme */
-}
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+    }
 
-.content .border-b {
-    border-bottom: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
-    width: 100%;
-}
+    @media (max-width: 767px) {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
 
-.content > div {
-    padding: 20px;
+    @media (max-width: 480px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    @media (max-width: 320px) {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
 }

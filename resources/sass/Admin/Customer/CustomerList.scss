@@ -3,7 +3,8 @@
     background-color: white;
     position: relative;
     margin: 0;
-    display: block;
+    width: 100%;
+    max-width: 100vw;
 }
 
 .customers-header {
@@ -17,10 +18,11 @@
 .table-container {
     position: relative;
     min-height: 200px;
-    overflow-x: auto;
+    overflow-x: hidden;
     margin-top: 0;
     padding-top: 0;
-    display: block;
+    width: 100%;
+    max-width: 100%;
 }
 
 .table-header-actions {
@@ -28,7 +30,6 @@
     flex-direction: column;
     gap: 4px;
     margin-bottom: 0;
-    visibility: visible;
 }
 
 .search-bar {
@@ -46,7 +47,6 @@
     outline: none;
     background-color: #f3f4f6;
     color: #4a5568;
-    visibility: visible;
 
     &::placeholder {
         color: #6b7280;
@@ -64,7 +64,6 @@
     gap: 8px;
     align-items: center;
     margin-left: auto;
-    visibility: visible;
 }
 
 .button-group .add-button {
@@ -76,7 +75,6 @@
     border: 1px solid #d1d5db;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    visibility: visible;
 
     &:hover {
         background-color: #4169e1;
@@ -104,7 +102,6 @@
     border: 1px solid #d1d5db;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    visibility: visible;
 
     &:hover {
         background-color: #dc2626;
@@ -132,7 +129,6 @@
     border: 1px solid #d1d5db;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    visibility: visible;
 
     &:hover {
         background-color: #4169e1;
@@ -155,7 +151,6 @@
     display: flex;
     gap: 4px;
     margin-top: 4px;
-    visibility: visible;
 }
 
 .view-button {
@@ -167,7 +162,6 @@
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
-    visibility: visible;
 
     &:hover {
         background-color: #d1d5db;
@@ -189,11 +183,10 @@
     width: 100%;
     margin-bottom: 24px;
     border-collapse: collapse;
-    table-layout: fixed;
+    table-layout: auto;
     margin-top: 0;
     padding-top: 0;
-    display: table;
-    visibility: visible;
+    max-width: 100%;
 }
 
 .table-header-row {
@@ -210,13 +203,9 @@
     text-align: left;
     border: 1px solid #e5e7eb;
     font-size: 16px;
-    visibility: visible;
-}
-
-.table-row {
-    border-bottom: 1px solid #e5e7eb;
-    min-height: 40px;
-    visibility: visible;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .table-header:first-child,
@@ -228,29 +217,19 @@
 .table-header.customers-action-column,
 .table-cell.customers-action-column {
     width: 120px;
-    text-align: left;
-    visibility: visible;
-}
-
-.customers-table .table-row[view-type="archived"] .table-header.customers-action-column,
-.customers-table .table-row[view-type="archived"] .table-cell.customers-action-column,
-.customers-table .table-row.view-type-archived .customers-action-column {
-    width: 120px;
-    visibility: visible;
+    text-align: center;
 }
 
 .table-header:nth-child(3),
 .table-cell:nth-child(3) {
     width: 200px;
     text-align: left;
-    visibility: visible;
 }
 
 .table-header:nth-child(4),
 .table-cell:nth-child(4) {
-    width: 190px; 
+    width: 190px;
     text-align: left;
-    visibility: visible;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -258,9 +237,8 @@
 
 .table-header:nth-child(5),
 .table-cell:nth-child(5) {
-    width: 350px; 
+    width: 350px;
     text-align: left;
-    visibility: visible;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -270,7 +248,23 @@
 .table-cell:nth-child(6) {
     width: 100px;
     text-align: left;
-    visibility: visible;
+}
+
+.table-header:nth-child(7),
+.table-cell:nth-child(7) {
+    width: 120px;
+    text-align: left;
+}
+
+.table-header:nth-child(8),
+.table-cell:nth-child(8) {
+    width: 120px;
+    text-align: left;
+}
+
+.table-row {
+    border-bottom: 1px solid #e5e7eb;
+    min-height: 40px;
 }
 
 .customer-checkbox {
@@ -278,7 +272,6 @@
     height: 20px;
     cursor: pointer;
     margin: 0;
-    visibility: visible;
 }
 
 .edit-icon {
@@ -288,7 +281,6 @@
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-    visibility: visible;
 
     &:hover {
         color: #4a5568;
@@ -307,7 +299,6 @@
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-    visibility: visible;
 
     &:hover {
         color: #dc2626;
@@ -326,7 +317,6 @@
     vertical-align: middle;
     display: inline-block;
     text-align: center;
-    visibility: visible;
 
     &:hover {
         color: #4a5568;
@@ -343,14 +333,12 @@
     gap: 16px;
     align-items: center;
     justify-content: center;
-    visibility: visible;
 }
 
-.customers-table tbody td[colspan="7"] {
+.customers-table tbody td[colspan="8"] {
     text-align: center;
     padding: 20px;
     background-color: #f9f9f9;
-    visibility: visible;
 }
 
 .table-pagination {
@@ -358,7 +346,6 @@
     justify-content: flex-start;
     margin-top: 16px;
     gap: 8px;
-    visibility: visible;
 }
 
 .table-pagination-button {
@@ -371,7 +358,6 @@
     font-size: 14px;
     cursor: pointer;
     transition: background-color 0.2s;
-    visibility: visible;
 
     &:hover:not(:disabled) {
         background-color: #d1d5db;
@@ -444,5 +430,44 @@
     .restore-icon {
         size: 16px;
         margin-left: 4px;
+    }
+
+    .customers-table {
+        table-layout: auto;
+    }
+
+    .table-header.customers-action-column,
+    .table-cell.customers-action-column {
+        width: 80px;
+    }
+
+    .table-header:nth-child(3),
+    .table-cell:nth-child(3) {
+        width: 150px;
+    }
+
+    .table-header:nth-child(4),
+    .table-cell:nth-child(4) {
+        width: 140px;
+    }
+
+    .table-header:nth-child(5),
+    .table-cell:nth-child(5) {
+        width: 200px;
+    }
+
+    .table-header:nth-child(6),
+    .table-cell:nth-child(6) {
+        width: 80px;
+    }
+
+    .table-header:nth-child(7),
+    .table-cell:nth-child(7) {
+        width: 100px;
+    }
+
+    .table-header:nth-child(8),
+    .table-cell:nth-child(8) {
+        width: 100px;
     }
 }

@@ -30,71 +30,71 @@ const AdminNav = ({ onNavigate }) => {
 
             <ul className="admin-menu">
                 <li>
-                    <button onClick={(e) => handleClick("personal-info", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaUser className="icon mr-2" /> Personal Info
+                    <button onClick={(e) => handleClick("personal-info", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaUser className="icon mr-3" /> Personal Info
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("dashboard", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaTachometerAlt className="icon mr-2" /> Dashboard
+                    <button onClick={(e) => handleClick("dashboard", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaTachometerAlt className="icon mr-3" /> Dashboard
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("orders", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaClipboardList className="icon mr-2" /> Orders
+                    <button onClick={(e) => handleClick("orders", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaClipboardList className="icon mr-3" /> Orders
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("inventory", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaBoxOpen className="icon mr-2" /> Inventory
+                    <button onClick={(e) => handleClick("inventory", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaBoxOpen className="icon mr-3" /> Inventory
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("reviews", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaStar className="icon mr-2" /> Reviews
+                    <button onClick={(e) => handleClick("reviews", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaStar className="icon mr-3" /> Reviews
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("product-list", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaList className="icon mr-2" /> Product List
+                    <button onClick={(e) => handleClick("product-list", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaList className="icon mr-3" /> Product List
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("user-list", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaUsers className="icon mr-2" /> User List
+                    <button onClick={(e) => handleClick("user-list", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaUsers className="icon mr-3" /> User List
                     </button>
                 </li>
                 <li>
-                    <button onClick={(e) => handleClick("customer-list", e)} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaUsers className="icon mr-2" /> Customer List
+                    <button onClick={(e) => handleClick("customer-list", e)} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaUsers className="icon mr-3" /> Customer List
                     </button>
                 </li>
 
                 {/* Settings Dropdown */}
                 <li className="settings">
-                    <button onClick={toggleSettings} className="flex items-center p-4 hover:bg-gray-700 text-white w-full">
-                        <FaCogs className="icon mr-2" /> Settings {settingsOpen ? <FaAngleUp className="arrow-icon ml-2" /> : <FaAngleDown className="arrow-icon ml-2" />}
+                    <button onClick={toggleSettings} className="flex items-center p-3 hover:bg-gray-700 text-white w-full text-base">
+                        <FaCogs className="icon mr-3" /> Settings {settingsOpen ? <FaAngleUp className="arrow-icon ml-2" /> : <FaAngleDown className="arrow-icon ml-2" />}
                     </button>
                     {settingsOpen && (
                         <ul className="settings-dropdown">
                             <li>
-                                <button onClick={(e) => handleClick("categories", e, true)} className="flex items-center p-4 hover:bg-gray-600 text-white w-full">
-                                    <FaList className="icon mr-2" /> Categories
+                                <button onClick={(e) => handleClick("categories", e, true)} className="flex items-center p-3 hover:bg-gray-600 text-white w-full text-base">
+                                    <FaList className="icon mr-3" /> Categories
                                 </button>
                             </li>
                             <li>
-                                <button onClick={(e) => handleClick("watch-color", e, true)} className="flex items-center p-4 hover:bg-gray-600 text-white w-full">
-                                    <FaPalette className="icon mr-2" /> Watch Color
+                                <button onClick={(e) => handleClick("watch-color", e, true)} className="flex items-center p-3 hover:bg-gray-600 text-white w-full text-base">
+                                    <FaPalette className="icon mr-3" /> Watch Color
                                 </button>
                             </li>
                             <li>
-                                <button onClick={(e) => handleClick("wrist-measurement", e, true)} className="flex items-center p-4 hover:bg-gray-600 text-white w-full">
-                                    <FaRuler className="icon mr-2" /> Wrist Measurement
+                                <button onClick={(e) => handleClick("wrist-measurement", e, true)} className="flex items-center p-3 hover:bg-gray-600 text-white w-full text-base">
+                                    <FaRuler className="icon mr-3" /> Wrist Measurement
                                 </button>
                             </li>
                             <li>
-                                <button onClick={(e) => handleClick("roles", e, true)} className="flex items-center p-4 hover:bg-gray-600 text-white w-full">
-                                    <FaUsers className="icon mr-2" /> Roles
+                                <button onClick={(e) => handleClick("roles", e, true)} className="flex items-center p-3 hover:bg-gray-600 text-white w-full text-base">
+                                    <FaUsers className="icon mr-3" /> Roles
                                 </button>
                             </li>
                         </ul>

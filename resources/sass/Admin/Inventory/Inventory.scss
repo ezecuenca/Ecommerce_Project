@@ -6,7 +6,7 @@
 
     .inventory-container .h2 {
         font-size: 24px;
-        font-weight: bold; /* Explicitly set to bold */
+        font-weight: bold;
         color: #000000;
         margin-bottom: 16px;
     }
@@ -19,7 +19,7 @@
         display: flex;
         flex-direction: column;
         gap: 4px;
-        margin-bottom: 0; /* Removed margin to align with other files */
+        margin-bottom: 0;
         visibility: visible;
     }
 
@@ -61,7 +61,7 @@
     }
 
     .delete-button {
-        background-color: #ef4444; /* Red-500, matching Delete button style */
+        background-color: #ef4444;
         color: white;
         padding: 8px 16px;
         border-radius: 4px;
@@ -72,12 +72,12 @@
         visibility: visible;
 
         &:hover {
-            background-color: #dc2626; /* Red-600 on hover */
+            background-color: #dc2626;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6;
         }
 
         &:disabled {
@@ -89,7 +89,7 @@
     }
 
     .restore-button {
-        background-color: #2A363B; /* Blue-500, matching Restore button style */
+        background-color: #2A363B;
         color: white;
         padding: 8px 16px;
         border-radius: 4px;
@@ -100,12 +100,12 @@
         visibility: visible;
 
         &:hover {
-            background-color: #2563eb; /* Blue-600 on hover */
+            background-color: #2563eb;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #2A363B; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #2A363B;
         }
 
         &:disabled {
@@ -119,7 +119,7 @@
     .view-toggle {
         display: flex;
         gap: 4px;
-        margin-top: 4px; /* Small margin to align with other files */
+        margin-top: 4px;
         visibility: visible;
     }
 
@@ -153,6 +153,8 @@
         width: 100%;
         margin-bottom: 24px;
         border-collapse: collapse;
+        table-layout: auto;
+        max-width: 100%;
     }
 
     .recently-sold .thead {
@@ -169,6 +171,9 @@
         text-align: left;
         border: 1px solid #e5e7eb;
         font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .recently-sold .tr {
@@ -178,25 +183,25 @@
 
     .recently-sold .th:first-child,
     .recently-sold .td:first-child {
-        width: 40px; /* Narrow width for checkbox-only column */
+        width: 50px;
         text-align: center;
     }
 
     .recently-sold .th:nth-child(2),
     .recently-sold .td:nth-child(2) {
-        width: 80px; /* Fixed width for action column (icons) */
+        width: 80px;
         text-align: center;
     }
 
     .recently-sold .th:nth-child(3),
     .recently-sold .td:nth-child(3) {
-        width: 200px; /* Product Name column width */
+        width: 200px;
         text-align: left;
     }
 
     .recently-sold .th:nth-child(4),
     .recently-sold .td:nth-child(4) {
-        width: 100px; /* Status column width */
+        width: 100px;
         text-align: left;
     }
 
@@ -208,21 +213,33 @@
     .recently-sold .td:nth-child(7),
     .recently-sold .th:nth-child(8),
     .recently-sold .td:nth-child(8) {
-        width: 120px; /* Price, Quantity Sold, Total Amount, Profit column widths */
+        width: 120px;
+        text-align: left;
+    }
+
+    .recently-sold .th:nth-child(9),
+    .recently-sold .td:nth-child(9) {
+        width: 120px;
+        text-align: left;
+    }
+
+    .recently-sold .th:nth-child(10),
+    .recently-sold .td:nth-child(10) {
+        width: 120px;
         text-align: left;
     }
 
     .inventory-checkbox {
-        width: 16px; /* 1rem = 16px */
-        height: 16px; /* 1rem = 16px */
-        border: 1px solid #d1d5db; /* Gray-300, matching other files */
-        border-radius: 4px; /* 0.25rem = 4px */
+        width: 20px;
+        height: 20px;
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
         cursor: pointer;
         background-color: white;
-        vertical-align: middle; /* Ensure vertical alignment */
-        margin: 0; /* Remove default margin for precise control */
-        display: inline-block; /* Use inline-block for side-by-side positioning */
-        margin-right: 8px; /* Add spacing between checkbox and action icons, matching other files */
+        vertical-align: middle;
+        margin: 0;
+        display: inline-block;
+        margin-right: 8px;
     }
 
     .action-buttons {
@@ -379,9 +396,44 @@
             min-height: 32px;
         }
 
+        .recently-sold .th:first-child,
+        .recently-sold .td:first-child {
+            width: 40px;
+        }
+
+        .recently-sold .th:nth-child(2),
+        .recently-sold .td:nth-child(2) {
+            width: 60px;
+        }
+
+        .recently-sold .th:nth-child(3),
+        .recently-sold .td:nth-child(3) {
+            width: 150px;
+        }
+
+        .recently-sold .th:nth-child(4),
+        .recently-sold .td:nth-child(4) {
+            width: 80px;
+        }
+
+        .recently-sold .th:nth-child(5),
+        .recently-sold .td:nth-child(5),
+        .recently-sold .th:nth-child(6),
+        .recently-sold .td:nth-child(6),
+        .recently-sold .th:nth-child(7),
+        .recently-sold .td:nth-child(7),
+        .recently-sold .th:nth-child(8),
+        .recently-sold .td:nth-child(8),
+        .recently-sold .th:nth-child(9),
+        .recently-sold .td:nth-child(9),
+        .recently-sold .th:nth-child(10),
+        .recently-sold .td:nth-child(10) {
+            width: 100px;
+        }
+
         .inventory-checkbox {
-            width: 14px; /* Slightly smaller on mobile */
-            height: 14px; /* Slightly smaller on mobile */
+            width: 14px;
+            height: 14px;
         }
 
         .edit-icon,

@@ -22,11 +22,11 @@ const UserList = () => {
     const itemsPerPage = 5;
 
     const [initialUsers, setInitialUsers] = useState([
-        { id: 1, username: "Username 1", email: "user1@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24" },
-        { id: 2, username: "Username 2", email: "user2@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24" },
-        { id: 3, username: "Username 3", email: "user3@gmail.com", role: "Customer", isArchived: false, createdAt: "11/21/24" },
-        { id: 4, username: "Username 4", email: "user4@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24" },
-        { id: 5, username: "Username 5", email: "user5@gmail.com", role: "Customer", isArchived: false, createdAt: "11/21/24" },
+        { id: 1, username: "Username 1", email: "user1@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 2, username: "Username 2", email: "user2@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 3, username: "Username 3", email: "user3@gmail.com", role: "Customer", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 4, username: "Username 4", email: "user4@gmail.com", role: "Admin", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
+        { id: 5, username: "Username 5", email: "user5@gmail.com", role: "Customer", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
     ]);
 
     const [users, setUsers] = useState(initialUsers);
@@ -42,15 +42,13 @@ const UserList = () => {
                     ...user,
                     isArchived: user.isArchived !== undefined ? user.isArchived : false,
                     createdAt: user.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
+                    updatedAt: user.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
                 }));
-                console.log("Loaded users from localStorage:", updatedUsers);
             } catch (error) {
-                console.error("Error parsing users from localStorage:", error);
                 updatedUsers = [...initialUsers];
                 localStorage.setItem("users", JSON.stringify(updatedUsers));
             }
         } else {
-            console.log("Initialized with static users:", initialUsers);
             localStorage.setItem("users", JSON.stringify(initialUsers));
         }
         setUsers(updatedUsers);
@@ -63,7 +61,6 @@ const UserList = () => {
 
     const getCurrentData = () => {
         if (!users || users.length === 0) {
-            console.warn("No users data available, returning empty array.");
             return [];
         }
         let filteredUsers = users.filter(user => user.isArchived === (viewType === "archived"));
@@ -71,7 +68,9 @@ const UserList = () => {
             filteredUsers = filteredUsers.filter(user =>
                 user.username.toLowerCase().includes(searchQuery.toLowerCase()) ||
                 user.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                user.role.toLowerCase().includes(searchQuery.toLowerCase())
+                user.role.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.createdAt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                user.updatedAt.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
         return filteredUsers;
@@ -224,7 +223,6 @@ const UserList = () => {
         setRole(user.role || "Customer");
         setManagementType("edit");
         setManagementModalOpen(true);
-        console.log("Opening edit for user:", user);
     };
 
     const validateEmail = (email) => {
@@ -265,7 +263,7 @@ const UserList = () => {
 
             setError("");
             const updatedUsers = users.map(u =>
-                u.id === selectedUser.id ? { ...newOrUpdatedUser, id: selectedUser.id, isArchived: selectedUser.isArchived, createdAt: selectedUser.createdAt } : u
+                u.id === selectedUser.id ? { ...newOrUpdatedUser, id: selectedUser.id, isArchived: selectedUser.isArchived, createdAt: selectedUser.createdAt, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) } : u
             );
             setUsers(updatedUsers);
             setInitialUsers(updatedUsers);
@@ -275,7 +273,6 @@ const UserList = () => {
             setUsername("");
             setEmail("");
             setRole("Customer");
-            console.log("Edited user, updated users:", updatedUsers);
             setForceUpdate(prev => prev + 1);
         } else if (managementType === "add") {
             if (!newOrUpdatedUser.username.trim()) {
@@ -311,7 +308,6 @@ const UserList = () => {
             setUsername("");
             setEmail("");
             setRole("Customer");
-            console.log("Added new user, updated users:", updatedUsers);
             setForceUpdate(prev => prev + 1);
             setCurrentPage(1);
         }
@@ -459,6 +455,7 @@ const UserList = () => {
                             <th className="table-header">Status</th>
                             <th className="table-header">Role</th>
                             <th className="table-header">Created At</th>
+                            <th className="table-header">Updated At</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -487,11 +484,12 @@ const UserList = () => {
                                     </td>
                                     <td className="table-cell">{user.role}</td>
                                     <td className="table-cell">{user.createdAt}</td>
+                                    <td className="table-cell">{user.updatedAt}</td>
                                 </tr>
                             ))
                         ) : (
                             <tr className="table-row">
-                                <td colSpan="7" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                <td colSpan="8" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
                                     {users.length === 0
                                         ? "No users available. Please check your data or refresh the page."
                                         : viewType === "active"
