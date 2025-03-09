@@ -4,6 +4,15 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./Admin/login";
 import Register from "./Admin/register";
 import AdminDashboard from "./Admin/AdminDashboard";
+import CustomerLayout from "./CustomerPage/CustomerLayout";
+import CustomerPage from "./CustomerPage/Homepage/Homepage";
+import ProductInfo from "./CustomerPage/Products/ProductInfo";
+import About from "./CustomerPage/AboutUs/About";
+import Contact from "./CustomerPage/ContactUs/Contact";
+import Products from "./CustomerPage/Products/Products";
+import Team from "./CustomerPage/OurTeam/Team";
+import Faq from "./CustomerPage/FAQ/Faq";
+import Cart from "./CustomerPage/ShoppingCart/Cart";
 
 export default function Routers() {
     return (
@@ -12,6 +21,16 @@ export default function Routers() {
                 <Route path="/" element={<Login />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/admin" element={<AdminDashboard />} />
+                <Route path="/customer" element={<CustomerLayout />}>
+                    <Route index element={<CustomerPage />} />
+                    <Route path="products" element={<Products />} />
+                    <Route path="products/:productId" element={<ProductInfo />} />
+                    <Route path="about" element={<About />} />
+                    <Route path="contact" element={<Contact />} />
+                    <Route path="team" element={<Team />} />
+                    <Route path="faq" element={<Faq />} />
+                    <Route path="cart" element={<Cart />} />
+                </Route>
             </Routes>
         </Router>
     );

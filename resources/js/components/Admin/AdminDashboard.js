@@ -1,4 +1,3 @@
-// src/components/admin/AdminDashboard.js
 import React, { useState } from "react";
 import { FaBell, FaUser } from "react-icons/fa"; 
 import AdminNav from "./AdminNav";
@@ -17,7 +16,7 @@ import Roles from "./Roles/Roles";
 
 
 const AdminDashboard = () => {
-    const [activeSection, setActiveSection] = useState("dashboard"); // Default to Dashboard
+    const [activeSection, setActiveSection] = useState("dashboard"); 
 
     const handleNavigation = (section) => {
         setActiveSection(section);
@@ -56,23 +55,15 @@ const AdminDashboard = () => {
 
     return (
         <div className="flex">
-            {/* Sidebar */}
             <AdminNav onNavigate={handleNavigation} />
-
-            {/* Content Area with Header on the Right */}
             <div className="content">
-                {/* Header - Positioned on the right */}
                 <header>
                     <div className="flex items-center space-x-4">
                         <FaBell className="text-gray-500 cursor-pointer hover:text-gray-700" size={20} />
                         <FaUser className="text-gray-500 cursor-pointer hover:text-gray-700" size={20} />
                     </div>
                 </header>
-
-                {/* Line/Border under the header */}
                 <div className="border-b"></div>
-
-                {/* Content */}
                 <div>
                     {renderContent()}
                 </div>

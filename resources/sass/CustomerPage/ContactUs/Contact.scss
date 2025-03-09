@@ -1,0 +1,113 @@
+.contact-page {
+    padding: 40px 20px;
+    background-color: #ffffff;
+    font-family: 'Helvetica', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    .contact-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        width: 100%;
+        gap: 40px;
+
+        .contact-form {
+            flex: 1;
+            max-width: 50%;
+
+            h2 {
+                font-size: 28px;
+                font-weight: bold;
+                color: #000000;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 16px;
+                color: #666666;
+                margin-bottom: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+
+                .form-group {
+                    display: flex;
+                    flex-direction: column;
+
+                    select,
+                    input,
+                    textarea {
+                        padding: 10px;
+                        border: 1px solid #e5e7eb;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        width: 100%;
+                        box-sizing: border-box;
+
+                        &:focus {
+                            outline: none;
+                            border-color: #000000;
+                        }
+                    }
+
+                    textarea {
+                        height: 100px;
+                        resize: vertical;
+                    }
+                }
+
+                button {
+                    padding: 12px 24px;
+                    background-color: #000000;
+                    color: #ffffff;
+                    border: none;
+                    border-radius: 90px;
+                    font-size: 12px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    width: fit-content;
+                    transition: background-color 0.3s ease;
+
+                    &:hover {
+                        background-color: #333333;
+                    }
+                }
+            }
+        }
+
+        .image-section {
+            flex: 1;
+            max-width: 50%;
+            height: 550px; 
+            background-color: #e5e7eb; 
+            border-radius: 4px;
+            overflow: hidden;
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .contact-page {
+        padding: 20px 10px;
+
+        .contact-section {
+            flex-direction: column;
+            gap: 20px;
+
+            .contact-form,
+            .image-section {
+                max-width: 100%;
+            }
+
+            .image-section {
+                height: 200px; /* Reduced height for mobile */
+            }
+        }
+    }
+}
