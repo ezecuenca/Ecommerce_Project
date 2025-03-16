@@ -1,0 +1,280 @@
+// File path: /CustomerPage/PaymentandDelivery/PaymentConfirmation.scss
+.payment-confirmation {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+
+    .header-wrapper {
+        max-width: 70%;
+        border-bottom: 2px solid #e5e7eb;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #23262F;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    > .header-wrapper > h2 {
+        font-size: 30px;
+        font-weight: bold;
+        color: #23262F;
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+    .payment-layout {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+
+        .payment-left {
+            flex: 1;
+            min-width: 400px;
+        }
+
+        .payment-right {
+            flex: 0 0 300px;
+            min-width: 250px;
+        }
+    }
+
+    .payment-method-section,
+    .delivery-section,
+    .price-details {
+        background-color: #ffffff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+    }
+
+    h2:not(.payment-confirmation > .header-wrapper > h2) {
+        font-size: 18px;
+        color: #000000;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+
+    h3 {
+        font-size: 16px;
+        color: #000000;
+        margin-bottom: 10px;
+        font-weight: bold;
+    }
+
+    .payment-method-section {
+        .payment-method-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            margin-bottom: 0;
+        }
+
+        .payment-options {
+            display: flex;
+            gap: 10px;
+
+            .payment-option {
+                height: 30px;
+                width: 140px;
+                border: 1px solid #d1d5db;
+                border-radius: 42px;
+                background-color: #ffffff;
+                cursor: pointer;
+                font-size: 14px;
+                text-align: center;
+                transition: background-color 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                &.selected {
+                    background-color: #000000;
+                    color: #ffffff;
+                    border-color: #000000;
+                }
+
+                &:hover {
+                    background-color: #f3f4f6;
+                    color: #333333;
+                }
+            }
+        }
+    }
+
+    .credit-card-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .expiry-cvv {
+            display: flex;
+            gap: 10px;
+
+            div {
+                flex: 1;
+            }
+        }
+    }
+
+    .paypal-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .paypal-dob {
+            display: flex;
+            gap: 10px;
+
+            div {
+                flex: 1;
+            }
+        }
+    }
+
+    .price-details {
+        .price-item,
+        .price-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 10px;
+
+            span:first-child {
+                font-weight: normal;
+            }
+
+            span:last-child {
+                font-weight: bold;
+                color: #000000;
+            }
+        }
+
+        .price-total {
+            font-size: 16px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 10px;
+        }
+    }
+
+    .delivery-form {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        label {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        select {
+            appearance: none;
+            background-color: #ffffff;
+            cursor: pointer;
+        }
+    }
+
+    .place-order-btn {
+        display: block;
+        width: 150px;
+        height: 40px;
+        background-color: #000000;
+        color: #ffffff;
+        border: none;
+        border-radius: 42px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin-top: 20px;
+        margin-left: 0;
+        margin-right: auto;
+
+        &:hover {
+            background-color: #333333;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .payment-layout {
+        flex-direction: column;
+
+        .payment-left,
+        .payment-right {
+            flex: 1;
+            width: 100%;
+        }
+    }
+
+    .payment-method-section {
+        .payment-method-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+        }
+    }
+
+    .place-order-btn {
+        margin: 20px auto;
+    }
+
+    .header-wrapper {
+        max-width: 100%;
+    }
+}

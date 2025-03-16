@@ -1,0 +1,132 @@
+.personal-info-content {
+    flex: 1;
+    max-width: 800px;
+    padding: 20px;
+
+    h1 {
+        font-weight: bold;
+        font-size: 36px;
+        color: #23262F;
+        margin-bottom: 55px;
+        text-align: left;
+    }
+
+    h2 {
+        font-size: 18px;
+        color: #23262F;
+        margin-bottom: 20px;
+    }
+}
+
+.info-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    &.single-field {
+        .form-group {
+            flex: 0 0 100%;
+            max-width: 300px;
+        }
+    }
+
+    .form-group {
+        flex: 1;
+        min-width: 200px;
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #B1B5C3;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 16px;
+            color: #23262F;
+            box-sizing: border-box;
+
+            &:focus {
+                outline: none;
+                border-color: #23262F;
+            }
+        }
+    }
+}
+
+.form-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    margin-top: 20px;
+
+    .update-btn {
+        background-color: #2A363B;
+        color: #ffffff;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 42px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        min-width: 120px;
+
+        &:hover {
+            background-color: #333333;
+        }
+    }
+
+    .clear-btn {
+        background-color: transparent;
+        color: #4a5568;
+        padding: 10px 20px;
+        border: 1px solid #e2e8f0;
+        border-radius: 42px;
+        font-size: 14px;
+        font-weight: bold;
+        cursor: pointer;
+        min-width: 120px;
+
+        &:hover {
+            background-color: #f3f4f6;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .personal-info-content {
+        padding: 10px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 10px;
+
+        &.single-field {
+            .form-group {
+                max-width: 100%;
+            }
+        }
+    }
+
+    .form-actions {
+        flex-direction: column;
+        gap: 10px;
+        align-items: stretch;
+
+        .update-btn,
+        .clear-btn {
+            width: 100%;
+        }
+    }
+}

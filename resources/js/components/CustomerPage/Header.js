@@ -1,3 +1,4 @@
+// File path: resources/js/components/CustomerPage/Header.js
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaBell, FaShoppingCart, FaUser } from "react-icons/fa";
@@ -11,7 +12,7 @@ const Header = ({ isHomepage = false }) => {
 
     const handleLogout = () => {
         setIsProfileOpen(false);
-        navigate("/");
+        navigate("/"); // Adjust to your login page route if needed
     };
 
     const handleCartClick = () => {
@@ -67,19 +68,19 @@ const Header = ({ isHomepage = false }) => {
                     <FaUser className="header-icon" size={20} />
                     {isProfileOpen && (
                         <div className="profile-dropdown">
-                            <Link to="/customer/profile" className="dropdown-item">
+                            <Link to="/customer/personal-info" className="dropdown-item">
                                 <FiUser className="dropdown-icon" />
                                 Personal info
                             </Link>
-                            <Link to="/customer/security" className="dropdown-item">
+                            <Link to="/customer/login-security" className="dropdown-item">
                                 <FiLock className="dropdown-icon" />
                                 Login and security
                             </Link>
-                            <Link to="/customer/payments" className="dropdown-item">
+                            <Link to="/customer/my-payments" className="dropdown-item">
                                 <FiCreditCard className="dropdown-icon" />
                                 My payments
                             </Link>
-                            <Link to="/customer/orders" className="dropdown-item">
+                            <Link to="/customer/my-orders" className="dropdown-item">
                                 <FiPackage className="dropdown-icon" />
                                 My orders
                             </Link>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Cart = () => {
     const [cartItems, setCartItems] = useState([
@@ -9,6 +9,7 @@ const Cart = () => {
     ]);
 
     const [selectAll, setSelectAll] = useState(false);
+    const navigate = useNavigate();
 
     const handleIncrease = (id) => {
         setCartItems(
@@ -123,7 +124,12 @@ const Cart = () => {
                 <div className="total-section">
                     <span className="total-price-label">Total Price:</span>{" "}
                     <span className="total-price-value">${totalPrice}</span>
-                    <button className="checkout-btn">Check out</button>
+                    <button
+                        className="checkout-btn"
+                        onClick={() => navigate("/customer/payment-confirmation")} 
+                    >
+                        Check out
+                    </button>
                 </div>
             </div>
         </div>

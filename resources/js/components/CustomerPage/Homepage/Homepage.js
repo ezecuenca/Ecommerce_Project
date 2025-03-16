@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Homepage = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [currentReviewSlide, setCurrentReviewSlide] = useState(0);
     const totalSlides = 3;
     const totalReviewSlides = 1;
+
+    const navigate = useNavigate();
 
     const slides = [
         { 
@@ -22,7 +24,7 @@ const Homepage = () => {
         },
         { 
             id: 3, 
-            image: "/images/placeholder3.jpg", 
+            image: "/images/watch1.jpg", 
             title: "Legacy of Excellence", 
             description: "Admire the timeless appeal of Watchdogs watches." 
         },
@@ -98,9 +100,17 @@ const Homepage = () => {
         setShowImages(!showImages);
     };
 
+    const handleOrderNow = (product, event) => {
+
+        event.preventDefault();
+        event.stopPropagation();
+
+        navigate('/customer/payment-confirmation', { state: { product, quantity: 1 } });
+    };
+
     return (
         <div className="homepage-content">
-            <section className="hero-section" style={{ backgroundImage: "url('/images/watch1.jpg')" }}>
+            <section className="hero-section" style={{ backgroundImage: "url('/images/placeholder.jpg')" }}>
                 <div className="hero-text">
                     <h1>
                         BROWSE OUR <br /> PRODUCTS
@@ -147,7 +157,7 @@ const Homepage = () => {
                 <h3 className="popular-subtitle">Our Exclusive Watch</h3>
                 <div className="popular-products">
                     {popularProducts.map((product) => (
-                        <div key={product.id} className="product-card">
+                        <Link to={product.link} key={product.id} className="product-card">
                             <div className="product-image-wrapper">
                                 {showImages && product.image && (
                                     <img src={product.image} alt={product.name} className="product-image" />
@@ -157,10 +167,13 @@ const Homepage = () => {
                                 <span>{product.name}</span>
                                 <span className="price-box">{product.price}</span>
                             </div>
-                            <Link to={product.link} className="order-button">
+                            <button 
+                                className="order-button" 
+                                onClick={(event) => handleOrderNow(product, event)}
+                            >
                                 Order Now
-                            </Link>
-                        </div>
+                            </button>
+                        </Link>
                     ))}
                 </div>
             </section>

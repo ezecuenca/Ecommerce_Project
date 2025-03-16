@@ -1,0 +1,267 @@
+.my-payments {
+    max-width: 800px;
+    padding: 20px;
+
+    h1 {
+        font-size: 36px;
+        font-weight: bold;
+        color: #23262F;
+        margin-bottom: 55px;
+        text-align: left;
+    }
+
+    .payment-section {
+        margin-bottom: 40px;
+
+        .credit-card-header {
+            font-size: 20px;
+            color: #23262F;
+            margin-bottom: 20px;
+            font-weight: bold; 
+        }
+
+        .add-new-card-header {
+            font-size: 18px;
+            color: #23262F;
+            margin-bottom: 20px;
+            font-weight: normal; 
+        }
+
+        .content-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+
+            .card-info {
+                display: flex;
+                flex-direction: column;
+                gap: 8px;
+
+                .card-number {
+                    font-size: 14px;
+                    color: #23262F;
+                    font-weight: bold;
+                    margin: 0;
+                }
+
+                .card-expiry {
+                    font-size: 14px;
+                    color: #6b7280;
+                    margin: 0;
+                }
+            }
+
+            .button-group {
+                display: flex;
+                gap: 10px;
+
+                .add-btn {
+                    background-color: #2A363B;
+                    color: #ffffff;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 42px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    width: 190px;
+
+                    &:hover {
+                        background-color: #333333;
+                    }
+                }
+            }
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+
+            .form-group {
+                &.card-type {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    label {
+                        font-size: 14px;
+                        color: #6b7280;
+                    }
+
+                    .card-type-selector {
+                        display: flex;
+                        align-items: center;
+                        gap: 10px;
+
+                        .visa-icon {
+                            font-size: 14px;
+                            color: #23262F;
+                            font-weight: bold;
+                        }
+
+                        .card-options {
+                            font-size: 14px;
+                            color: #6b7280;
+                        }
+                    }
+                }
+
+                label {
+                    display: block;
+                    font-size: 14px;
+                    color: #6b7280;
+                    margin-bottom: 5px;
+                }
+
+                .input-with-icon {
+                    position: relative;
+
+                    input {
+                        padding-right: 30px;
+                    }
+
+                    .checkmark-icon {
+                        position: absolute;
+                        right: 10px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        color: #2A363B;
+                        font-size: 16px;
+                    }
+                }
+
+                input {
+                    width: 100%;
+                    padding: 10px;
+                    border: 1px solid #e2e8f0;
+                    border-radius: 4px;
+                    font-size: 16px;
+                    color: #23262F;
+                    box-sizing: border-box;
+
+                    &:focus {
+                        outline: none;
+                        border-color: #23262F;
+                    }
+                }
+            }
+
+            .form-row {
+                display: flex;
+                gap: 20px;
+                flex-wrap: wrap;
+
+                .form-group {
+                    flex: 1;
+                    min-width: 150px;
+                }
+            }
+
+            .form-actions {
+                display: flex;
+                justify-content: flex-end;
+                margin-top: 20px;
+
+                .save-btn {
+                    background-color: #2A363B;
+                    color: #ffffff;
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 42px;
+                    font-size: 14px;
+                    font-weight: bold;
+                    cursor: pointer;
+                    min-width: 120px;
+
+                    &:hover {
+                        background-color: #333333;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .my-payments {
+        padding: 10px;
+    }
+
+    .payment-section {
+        margin-bottom: 30px;
+
+        .credit-card-header,
+        .add-new-card-header {
+            font-size: 16px;
+        }
+
+        .content-row {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 15px;
+
+            .card-info {
+                gap: 5px;
+
+                .card-number,
+                .card-expiry {
+                    font-size: 12px;
+                }
+            }
+
+            .button-group {
+                width: 100%;
+
+                .add-btn {
+                    padding: 8px 16px;
+                    font-size: 12px;
+                    min-width: 100px;
+                    width: 120px;
+                }
+            }
+        }
+
+        form {
+            gap: 15px;
+
+            .form-group {
+                &.card-type {
+                    label {
+                        font-size: 12px;
+                    }
+
+                    .card-type-selector {
+                        .visa-icon,
+                        .card-options {
+                            font-size: 12px;
+                        }
+                    }
+                }
+
+                label {
+                    font-size: 12px;
+                }
+
+                input {
+                    padding: 8px;
+                    font-size: 14px;
+                }
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .form-actions {
+                .save-btn {
+                    padding: 8px 16px;
+                    font-size: 12px;
+                    min-width: 100px;
+                }
+            }
+        }
+    }
+}

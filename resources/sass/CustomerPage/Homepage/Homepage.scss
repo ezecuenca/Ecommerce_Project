@@ -30,9 +30,9 @@
         .hero-text {
             position: relative;
             z-index: 1;
-            display: flex; // Use flex to control the layout
-            flex-direction: column; // Stack children vertically
-            align-items: flex-start; // Align children to the left
+            display: flex; 
+            flex-direction: column; 
+            align-items: flex-start; 
 
             h1 {
                 color: #FCFCFD;
@@ -324,6 +324,26 @@
 
                     &:hover {
                         background-color: #333333;
+                    }
+                }
+            }
+
+            /* Added to remove the blue underline and reset link styles */
+            a.product-card {
+                text-decoration: none; /* Remove the underline */
+                color: inherit; /* Inherit the text color from parent elements */
+
+                &:hover {
+                    text-decoration: none; /* Ensure no underline on hover */
+                }
+
+                .product-info {
+                    span {
+                        color: #141416; /* Ensure the product name and price retain their intended colors */
+                    }
+
+                    .price-box {
+                        color: #141416; /* Ensure the price box retains its color */
                     }
                 }
             }
@@ -637,6 +657,26 @@
 
                         &:hover {
                             background-color: #333333;
+                        }
+                    }
+                }
+
+                /* Added to remove the blue underline in mobile view */
+                a.product-card {
+                    text-decoration: none;
+                    color: inherit;
+
+                    &:hover {
+                        text-decoration: none;
+                    }
+
+                    .product-info {
+                        span {
+                            color: #141416;
+                        }
+
+                        .price-box {
+                            color: #141416;
                         }
                     }
                 }

@@ -52,6 +52,8 @@ const Products = () => {
         UNISEX: false,
     });
 
+    const [selectedCategory, setSelectedCategory] = useState(""); // Default to empty, showing "Filter"
+
     const categories = [
         {
             name: "MEN",
@@ -105,16 +107,13 @@ const Products = () => {
         });
     };
 
+    // Filter products based on selected category
+    const filteredCategories = selectedCategory === "" || selectedCategory === "ALL" 
+        ? categories 
+        : categories.filter(cat => cat.name === selectedCategory);
+
     return (
         <div className="products-content">
-            <div className="search-filter-section">
-                <div className="search-bar-container">
-                    <FaSearch className="search-icon" />
-                    <input type="text" placeholder="Search for anything..." className="search-bar" />
-                </div>
-                <button className="filter-button">Filter</button>
-            </div>
-
             <section className="placeholder-section">
                 <div className="carousel">
                     <div className="carousel-slides">
@@ -146,7 +145,28 @@ const Products = () => {
                 </div>
             </section>
 
-            {categories.map((category) => {
+            <div className="search-filter-section">
+                <div className="search-bar-container">
+                    <FaSearch className="search-icon" />
+                    <input type="text" placeholder="Search for anything..." className="search-bar" />
+                </div>
+                <div className="filter-dropdown">
+                    <select 
+                        className="filter-select" 
+                        value={selectedCategory} 
+                        onChange={(e) => setSelectedCategory(e.target.value)}
+                    >
+                        <option value="" disabled selected>Filter</option>
+                        <option value="ALL">All Categories</option>
+                        <option value="MEN">MEN</option>
+                        <option value="WOMEN">WOMEN</option>
+                        <option value="UNISEX">UNISEX</option>
+                    </select>
+                    <span className="filter-arrow">▼</span>
+                </div>
+            </div>
+
+            {filteredCategories.map((category) => {
                 const totalProducts = category.products.length;
                 const visibleCount = Math.min(visibleProducts[category.name], totalProducts);
 

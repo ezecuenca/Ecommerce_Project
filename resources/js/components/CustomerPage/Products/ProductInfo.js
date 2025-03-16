@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom"; // Added useNavigate
 import { FaStar } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa";
 
 const ProductInfo = () => {
     const { productId } = useParams();
+    const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -136,6 +137,11 @@ const ProductInfo = () => {
         }
     };
 
+    const handleOrderNow = () => {
+       
+        navigate('/customer/payment-confirmation', { state: { product, quantity } });
+    };
+
     const relatedProducts = [
         { id: "SWM-001", name: "Product Name", price: "$20.99", image: "/images/placeholder.svg", rating: 4.5, reviews: 120 },
         { id: "SWM-002", name: "Product Name", price: "$20.99", image: "/images/placeholder.svg", rating: 4.5, reviews: 120 },
@@ -189,7 +195,7 @@ const ProductInfo = () => {
                             ))}
                         </ul>
                         <div className="product-actions">
-                            <button className="order-button">Order Now</button>
+                            <button className="order-button" onClick={handleOrderNow}>Order Now</button> {/* Added onClick handler */}
                             <button className="cart-button">Add to Cart</button>
                         </div>
                     </div>
