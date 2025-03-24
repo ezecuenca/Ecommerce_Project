@@ -23,3 +23,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/categories', [CategoryController::class, 'store']);
+Route::put('/categories/{category}', [CategoryController::class, 'update']);
+Route::put('/categories/restore', [CategoryController::class, 'restore']);
+Route::get('/categories/{category}', [CategoryController::class, 'show']);
+Route::put('/categories/archive', [CategoryController::class, 'archive']);

@@ -74205,10 +74205,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
@@ -74224,9 +74220,9 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Added FaUndo for Restore
- // Assume a similar CategoryManagement component
- // Added axios for API calls
+
+
+
 
 var CategoryList = function CategoryList() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
@@ -74240,7 +74236,7 @@ var CategoryList = function CategoryList() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState6 = _slicedToArray(_useState5, 2),
     viewType = _useState6[0],
-    setViewType = _useState6[1]; // Categories can now have active/archived views
+    setViewType = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
     managementModalOpen = _useState8[0],
@@ -74273,17 +74269,16 @@ var CategoryList = function CategoryList() {
     _useState22 = _slicedToArray(_useState21, 2),
     searchQuery = _useState22[0],
     setSearchQuery = _useState22[1];
-  var itemsPerPage = 5; // Match CustomerList pagination
-
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState24 = _slicedToArray(_useState23, 2),
-    initialCategories = _useState24[0],
-    setInitialCategories = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    categories = _useState24[0],
+    setCategories = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState26 = _slicedToArray(_useState25, 2),
-    categories = _useState26[0],
-    setCategories = _useState26[1];
+    isLoading = _useState26[0],
+    setIsLoading = _useState26[1];
   var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var itemsPerPage = 5;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     var fetchCategories = /*#__PURE__*/function () {
       var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -74304,7 +74299,7 @@ var CategoryList = function CategoryList() {
               _context.prev = 8;
               _context.t0 = _context["catch"](0);
               console.error("Error fetching categories:", _context.t0);
-              alert("Failed to load categories. Please try again.");
+              setError("Failed to load categories. Please try again.");
             case 12:
               _context.prev = 12;
               setIsLoading(false);
@@ -74320,20 +74315,16 @@ var CategoryList = function CategoryList() {
       };
     }();
     fetchCategories();
-    setCheckedRows({});
-    setIsSelectAll(false);
-  }, [viewType, forceUpdate]);
+  }, []); // Fetch once on mount
+
   var getCurrentData = function getCurrentData() {
-    if (!categories || categories.length === 0) {
-      console.warn("No categories data available, returning empty array.");
-      return [];
-    }
+    if (!categories.length) return [];
     var filteredCategories = categories.filter(function (category) {
-      return category.isArchived === (viewType === "archived");
+      return viewType === "active" ? category.status === 1 : category.status === 0;
     });
     if (searchQuery.trim()) {
       filteredCategories = filteredCategories.filter(function (category) {
-        return category.name.toLowerCase().includes(searchQuery.toLowerCase());
+        return category.category_name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
     return filteredCategories;
@@ -74345,109 +74336,70 @@ var CategoryList = function CategoryList() {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
     var newCheckedRows = {};
-    if (isChecked) {
-      currentItems.forEach(function (_, index) {
-        newCheckedRows[index] = true;
-      });
-      if (tableRef.current) {
-        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = true;
-        });
-      }
-    } else {
-      if (tableRef.current) {
-        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-    }
+    currentItems.forEach(function (category) {
+      newCheckedRows[category.id] = isChecked;
+    });
     setCheckedRows(newCheckedRows);
+    if (tableRef.current) {
+      tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+        checkbox.checked = isChecked;
+      });
+    }
   };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
+  var handleRowCheckbox = function handleRowCheckbox(category, e) {
     setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, category.id, e.target.checked));
     });
-    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.category-checkbox')).filter(function (cb) {
-      return cb.checked;
-    }).length : 0);
-    setIsSelectAll(allChecked);
+    setIsSelectAll(currentItems.every(function (cat) {
+      return checkedRows[cat.id] || cat.id === category.id && e.target.checked;
+    }));
   };
-  var handleDelete = function handleDelete() {
-    var categoryToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to delete - viewType:", viewType, "categoryToDelete:", categoryToDelete, "checkedRows:", checkedRows);
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
+  var getSelectedItems = function getSelectedItems() {
+    var singleItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (singleItem) return [singleItem];
+    return currentItems.filter(function (category) {
+      return checkedRows[category.id];
     });
-    if (categoryToDelete) {
-      if (viewType !== "active") {
-        alert("You can only delete from Active Categories.");
-        return;
-      }
-      setManagementType("delete");
-      setSelectedCategory([categoryToDelete]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 1) {
-      alert("Please select at least one category to delete.");
-      return;
-    }
+  };
+  var handleArchive = function handleArchive() {
+    var categoryToArchive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedItems = getSelectedItems(categoryToArchive);
     if (viewType !== "active") {
-      alert("You can only delete from Active Categories.");
+      alert("You can only archive from Active Categories.");
       return;
     }
-    setManagementType("delete");
-    setSelectedCategory(getSelectedCategories());
+    if (!selectedItems.length) {
+      alert("Please select at least one category to archive.");
+      return;
+    }
+    setManagementType("archive");
+    setSelectedCategory(selectedItems);
     setManagementModalOpen(true);
   };
   var handleRestore = function handleRestore() {
     var categoryToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to restore - viewType:", viewType, "categoryToRestore:", categoryToRestore, "checkedRows:", checkedRows);
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    });
-    if (categoryToRestore) {
-      if (viewType !== "archived") {
-        alert("You can only restore from Archived Categories.");
-        return;
-      }
-      console.log("Opening restore modal for single category:", categoryToRestore);
-      setManagementType("restore");
-      setSelectedCategory([categoryToRestore]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 1) {
-      alert("Please select at least one category to restore.");
-      return;
-    }
+    var selectedItems = getSelectedItems(categoryToRestore);
     if (viewType !== "archived") {
       alert("You can only restore from Archived Categories.");
       return;
     }
-    console.log("Opening restore modal for multiple categories:", getSelectedCategories());
+    if (!selectedItems.length) {
+      alert("Please select at least one category to restore.");
+      return;
+    }
     setManagementType("restore");
-    setSelectedCategory(getSelectedCategories());
+    setSelectedCategory(selectedItems);
     setManagementModalOpen(true);
   };
   var handleAdd = function handleAdd() {
-    console.log("Current viewType:", viewType, "Opening Add modal");
     setManagementType("add");
     setName("");
     setSelectedCategory(null);
     setManagementModalOpen(true);
   };
   var handleEdit = function handleEdit(category) {
-    console.log("Opening edit for category:", category);
     setSelectedCategory(category);
-    setName(category.name || "");
+    setName(category.category_name || ""); // Match API field
     setManagementType("edit");
     setManagementModalOpen(true);
   };
@@ -74461,166 +74413,157 @@ var CategoryList = function CategoryList() {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
   };
-  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedCategory) {
-    if (managementType === "edit") {
-      if (!selectedCategory) {
-        alert("No category selected for editing.");
-        return;
-      }
-      if (!validateName(newOrUpdatedCategory.name)) {
-        setError("Category name is required.");
-        return;
-      }
-      setError("");
-      var updatedCategories = categories.map(function (c) {
-        return c.id === selectedCategory.id ? _objectSpread(_objectSpread({}, newOrUpdatedCategory), {}, {
-          id: selectedCategory.id,
-          createdAt: selectedCategory.createdAt,
-          isArchived: selectedCategory.isArchived
-        }) : c;
-      });
-      setCategories(updatedCategories);
-      setInitialCategories(updatedCategories);
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      setManagementModalOpen(false);
-      setSelectedCategory(null);
-      setName("");
-      console.log("Edited category, updated categories:", updatedCategories);
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-    } else if (managementType === "add") {
-      if (!validateName(newOrUpdatedCategory.name)) {
-        setError("Category name is required.");
-        return;
-      }
-      setError("");
-      var newCategory = {
-        id: Date.now(),
-        name: newOrUpdatedCategory.name.trim(),
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false
-      };
-      var _updatedCategories = [newCategory].concat(_toConsumableArray(categories));
-      setCategories(_updatedCategories);
-      setInitialCategories(_updatedCategories);
-      localStorage.setItem("categories", JSON.stringify(_updatedCategories));
-      setManagementModalOpen(false);
-      setName("");
-      console.log("Added new category, updated categories:", _updatedCategories);
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      setCurrentPage(1);
-    }
-  };
-  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
-    console.log("Confirming action - managementType:", managementType, "items:", items);
-    if (managementType === "delete") {
-      var updatedCategories = categories.map(function (category) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === category.id;
-          })) {
-            return _objectSpread(_objectSpread({}, category), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+  var handleSaveEditOrAdd = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newOrUpdatedCategory) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (validateName(newOrUpdatedCategory.category_name)) {
+              _context2.next = 3;
+              break;
+            }
+            // Match API field
+            setError("Category name is required.");
+            return _context2.abrupt("return");
+          case 3:
+            setError("");
+            _context2.prev = 4;
+            if (!(managementType === "edit")) {
+              _context2.next = 12;
+              break;
+            }
+            if (selectedCategory) {
+              _context2.next = 8;
+              break;
+            }
+            throw new Error("No category selected for editing.");
+          case 8:
+            _context2.next = 10;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/categories/".concat(selectedCategory.id), {
+              category_name: newOrUpdatedCategory.category_name,
+              updated_at: new Date().toISOString(),
+              status: 1
             });
-          }
-        } else {
-          if (items.id === category.id) {
-            return _objectSpread(_objectSpread({}, category), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+          case 10:
+            _context2.next = 15;
+            break;
+          case 12:
+            if (!(managementType === "add")) {
+              _context2.next = 15;
+              break;
+            }
+            _context2.next = 15;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/categories', {
+              category_name: newOrUpdatedCategory.category_name,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+              status: 1
             });
-          }
+          case 15:
+            _context2.next = 17;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/categories');
+          case 17:
+            response = _context2.sent;
+            setCategories(response.data);
+            setManagementModalOpen(false);
+            setSelectedCategory(null);
+            setName("");
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            setCurrentPage(1);
+            _context2.next = 30;
+            break;
+          case 26:
+            _context2.prev = 26;
+            _context2.t0 = _context2["catch"](4);
+            console.error("Error ".concat(managementType, "ing category:"), _context2.t0);
+            setError("Failed to ".concat(managementType, " category. Please try again."));
+          case 30:
+          case "end":
+            return _context2.stop();
         }
-        return category;
-      });
-      setCategories(updatedCategories);
-      setInitialCategories(updatedCategories);
-      setCheckedRows({});
-      setIsSelectAll(false);
-      if (tableRef.current && viewType === "active") {
-        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      localStorage.setItem("categories", JSON.stringify(updatedCategories));
-      console.log("Categories after delete:", updatedCategories);
-    } else if (managementType === "restore") {
-      var _updatedCategories2 = categories.map(function (category) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === category.id;
-          })) {
-            return _objectSpread(_objectSpread({}, category), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+      }, _callee2, null, [[4, 26]]);
+    }));
+    return function handleSaveEditOrAdd(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleConfirmDeleteOrRestore = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(items) {
+      var categoryIds, response;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            if (items !== null && items !== void 0 && items.length) {
+              _context3.next = 3;
+              break;
+            }
+            alert("Please select at least one category to ".concat(managementType, "."));
+            return _context3.abrupt("return");
+          case 3:
+            _context3.prev = 3;
+            categoryIds = items.map(function (item) {
+              return item.id;
             });
-          }
-        } else {
-          if (items.id === category.id) {
-            return _objectSpread(_objectSpread({}, category), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+            if (!(managementType === "archive")) {
+              _context3.next = 10;
+              break;
+            }
+            _context3.next = 8;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/categories/archive', {
+              data: {
+                ids: categoryIds
+              }
             });
-          }
+          case 8:
+            _context3.next = 13;
+            break;
+          case 10:
+            if (!(managementType === "restore")) {
+              _context3.next = 13;
+              break;
+            }
+            _context3.next = 13;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/categories/restore', {
+              ids: categoryIds
+            });
+          case 13:
+            _context3.next = 15;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/categories');
+          case 15:
+            response = _context3.sent;
+            setCategories(response.data);
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+              tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
+                return checkbox.checked = false;
+              });
+            }
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            _context3.next = 29;
+            break;
+          case 25:
+            _context3.prev = 25;
+            _context3.t0 = _context3["catch"](3);
+            console.error("Error ".concat(managementType, "ing categories:"), _context3.t0);
+            setError("Failed to ".concat(managementType, " categories. Please try again."));
+          case 29:
+          case "end":
+            return _context3.stop();
         }
-        return category;
-      });
-      setCategories(_updatedCategories2);
-      setInitialCategories(_updatedCategories2);
-      setCheckedRows({});
-      setIsSelectAll(false);
-      if (tableRef.current && viewType === "archived") {
-        tableRef.current.querySelectorAll('.category-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      localStorage.setItem("categories", JSON.stringify(_updatedCategories2));
-      console.log("Categories after restore:", _updatedCategories2);
-    }
-  };
+      }, _callee3, null, [[3, 25]]);
+    }));
+    return function handleConfirmDeleteOrRestore(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   var handleCloseManagement = function handleCloseManagement() {
     setManagementModalOpen(false);
     setManagementType("");
@@ -74628,27 +74571,18 @@ var CategoryList = function CategoryList() {
     setName("");
     setError("");
   };
-  var getSelectedCategories = function getSelectedCategories() {
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    });
-    return selectedIndices.map(function (index) {
-      return currentItems[index];
-    });
-  };
-
-  // Update checkedCount to count any checked rows (at least 1 enables Delete)
-  var checkedCount = Object.keys(checkedRows).filter(function (index) {
-    return checkedRows[index];
-  }).length;
+  var checkedCount = Object.values(checkedRows).filter(Boolean).length;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "CategoryList",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "categories-header",
       children: viewType === "active" ? "Active Categories" : "Archived Categories"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "error-message",
+      children: error
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      children: "Loading categories..."
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "table-container",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-header-actions",
@@ -74672,20 +74606,19 @@ var CategoryList = function CategoryList() {
               onClick: handleAdd,
               children: "Add"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "delete-button",
+              className: "archive-button",
               onClick: function onClick() {
-                return handleDelete();
+                return handleArchive();
               },
-              disabled: checkedCount < 2 // Enable when at least one checkbox is checked
-              ,
-              children: "Delete"
+              disabled: checkedCount < 1,
+              children: "Archive"
             })]
           }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
             onClick: function onClick() {
               return handleRestore();
             },
-            disabled: checkedCount < 2,
+            disabled: checkedCount < 1,
             children: "Restore"
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
@@ -74733,7 +74666,7 @@ var CategoryList = function CategoryList() {
             })]
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
-          children: currentItems.length > 0 ? currentItems.map(function (category, index) {
+          children: currentItems.length > 0 ? currentItems.map(function (category) {
             return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               className: "table-row",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
@@ -74741,8 +74674,9 @@ var CategoryList = function CategoryList() {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "checkbox",
                   className: "category-checkbox",
+                  checked: !!checkedRows[category.id],
                   onChange: function onChange(e) {
-                    return handleRowCheckbox(index, e);
+                    return handleRowCheckbox(category, e);
                   }
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
@@ -74757,10 +74691,10 @@ var CategoryList = function CategoryList() {
                         return handleEdit(category);
                       }
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
-                      className: "delete-icon",
+                      className: "archive-icon",
                       size: 20,
                       onClick: function onClick() {
-                        return handleDelete(category);
+                        return handleArchive(category);
                       }
                     })]
                   }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
@@ -74773,15 +74707,15 @@ var CategoryList = function CategoryList() {
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: category.category_namename
+                children: category.category_name
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: category.createdAt
+                children: category.created_at
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: category.updatedAt
+                children: category.updated_at
               })]
-            }, category.id + index + forceUpdate);
+            }, category.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
             className: "table-row",
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
@@ -74792,7 +74726,7 @@ var CategoryList = function CategoryList() {
                 padding: "20px",
                 backgroundColor: "#f9f9f9"
               },
-              children: categories.length === 0 ? "No categories available. Please check your data or refresh the page." : viewType === "active" ? "No active categories match your search." : "No archived categories match your search."
+              children: categories.length === 0 ? "No categories available." : viewType === "active" ? "No active categories match your search." : "No archived categories match your search."
             })
           })
         })]
@@ -74832,8 +74766,8 @@ var CategoryList = function CategoryList() {
       })]
     }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_CategoryManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
       type: managementType,
-      category: managementType === "edit" || managementType === "add" ? selectedCategory : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedCategory) ? selectedCategory : null,
-      selectedCategories: managementType === "restore" || managementType === "delete" ? selectedCategory || getSelectedCategories() : [],
+      category: managementType === "edit" || managementType === "add" ? selectedCategory : null,
+      selectedCategories: managementType === "restore" || managementType === "archive" ? selectedCategory : [],
       name: name,
       onClose: handleCloseManagement,
       onConfirm: handleConfirmDeleteOrRestore,
@@ -74859,12 +74793,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -74890,95 +74818,46 @@ var CategoryManagement = function CategoryManagement(_ref) {
     error = _useState4[0],
     setError = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log("CategoryManagement rendered with type:", type, "category:", category, "name:", name, "selectedCategories:", selectedCategories);
     if (type === "edit" && category) {
-      setLocalName(category.name || "");
-      console.log("Initializing edit for category:", category);
+      setLocalName(category.category_name || "");
     } else if (type === "add") {
       setLocalName("");
-      console.log("Initializing add for new category");
     }
-  }, [type, category, name, selectedCategories]);
-  var validateName = function validateName(name) {
-    return name.trim().length > 0; // Simple validation for category name
-  };
+  }, [type, category, name]);
   var handleNameChange = function handleNameChange(e) {
     return setLocalName(e.target.value);
   };
   var handleSave = function handleSave() {
-    if (type === "edit") {
-      if (!category) {
-        alert("No category selected for editing.");
-        return;
-      }
-      if (!validateName(localName)) {
-        setError("Category name is required.");
-        return;
-      }
-      setError("");
-      var updatedCategory = _objectSpread(_objectSpread({}, category), {}, {
-        name: localName.trim(),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        })
-      });
-      console.log("Saving updated category:", updatedCategory);
-      onSave(updatedCategory);
-      onClose();
-    } else if (type === "add") {
-      if (!validateName(localName)) {
-        setError("Category name is required.");
-        return;
-      }
-      setError("");
-      var newCategory = {
-        id: Date.now(),
-        name: localName.trim(),
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false
-      };
-      console.log("Saving new category:", newCategory);
-      onSave(newCategory);
-      onClose();
+    var trimmedName = localName.trim();
+    if (!trimmedName) {
+      setError("Category name is required.");
+      return;
     }
-  };
-  var handleConfirm = function handleConfirm() {
-    console.log("Confirming action - type:", type, "selectedCategories:", selectedCategories);
-    if (type === "delete") {
-      if (!selectedCategories || selectedCategories.length === 0) {
-        alert("Please select at least one category to delete.");
-        return;
-      }
-      console.log("Confirming delete for categories:", selectedCategories);
-      onConfirm(selectedCategories);
-      onClose();
-    } else if (type === "restore") {
-      if (!selectedCategories || selectedCategories.length === 0) {
-        alert("Please select at least one category to restore.");
-        return;
-      }
-      console.log("Confirming restore for categories:", selectedCategories);
-      onConfirm(selectedCategories);
-      onClose();
+    setError("");
+    if (type === "edit" && !category) {
+      setError("No category selected for editing.");
+      return;
     }
-  };
-  var handleCancel = function handleCancel() {
-    console.log("Closing modal for type:", type);
+    var categoryData = {
+      category_name: trimmedName
+    };
+    onSave(categoryData);
     onClose();
   };
+  var handleConfirm = function handleConfirm() {
+    if (!(selectedCategories !== null && selectedCategories !== void 0 && selectedCategories.length)) {
+      setError("Please select at least one category to ".concat(type, "."));
+      return;
+    }
+    setError("");
+    onConfirm(selectedCategories);
+    onClose();
+  };
+  var handleCancel = function handleCancel() {
+    return onClose();
+  };
   if (type === "edit" || type === "add") {
-    var title = type === "edit" ? "Edit Category: ".concat((category === null || category === void 0 ? void 0 : category.name) || "Category") : "Add New Category";
+    var title = type === "edit" ? "Edit Category: ".concat((category === null || category === void 0 ? void 0 : category.category_name) || "Category") : "Add New Category";
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "CategoryManagement",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -75022,21 +74901,24 @@ var CategoryManagement = function CategoryManagement(_ref) {
         })
       })
     });
-  } else if (type === "delete" || type === "restore") {
-    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedCategories.length, " category(ies)?") : "Are you sure you want to restore ".concat(selectedCategories.length, " category(ies)?");
+  } else if (type === "archive" || type === "restore") {
+    var action = type === "archive" ? "Archive" : "Restore";
+    var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedCategories.length, " category(ies)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      className: "".concat(type, "-modal-overlay"),
       onClick: handleCancel,
       "data-testid": "".concat(type, "-overlay"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        className: "".concat(type, "-modal"),
         onClick: function onClick(e) {
           return e.stopPropagation();
         },
         "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          children: _title
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+          children: ["Confirm ", action]
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "error-message",
+          children: error
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
           children: message
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -75044,7 +74926,7 @@ var CategoryManagement = function CategoryManagement(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             className: "save-button",
             onClick: handleConfirm,
-            children: type === "delete" ? "Delete" : "Restore"
+            children: action
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             className: "cancel-button",
             onClick: handleCancel,

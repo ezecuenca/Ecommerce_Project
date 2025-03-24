@@ -5,91 +5,47 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
     const [error, setError] = useState("");
 
     useEffect(() => {
-        console.log("CategoryManagement rendered with type:", type, "category:", category, "name:", name, "selectedCategories:", selectedCategories);
         if (type === "edit" && category) {
-            setLocalName(category.name || "");
-            console.log("Initializing edit for category:", category);
+            setLocalName(category.category_name || "");
         } else if (type === "add") {
             setLocalName("");
-            console.log("Initializing add for new category");
         }
-    }, [type, category, name, selectedCategories]);
-
-    const validateName = (name) => {
-        return name.trim().length > 0; // Simple validation for category name
-    };
+    }, [type, category, name]);
 
     const handleNameChange = (e) => setLocalName(e.target.value);
 
     const handleSave = () => {
-        if (type === "edit") {
-            if (!category) {
-                alert("No category selected for editing.");
-                return;
-            }
-
-            if (!validateName(localName)) {
-                setError("Category name is required.");
-                return;
-            }
-
-            setError("");
-            const updatedCategory = {
-                ...category,
-                name: localName.trim(),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-            };
-            console.log("Saving updated category:", updatedCategory);
-            onSave(updatedCategory);
-            onClose();
-        } else if (type === "add") {
-            if (!validateName(localName)) {
-                setError("Category name is required.");
-                return;
-            }
-
-            setError("");
-            const newCategory = {
-                id: Date.now(),
-                name: localName.trim(),
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false,
-            };
-            console.log("Saving new category:", newCategory);
-            onSave(newCategory);
-            onClose();
+        const trimmedName = localName.trim();
+        if (!trimmedName) {
+            setError("Category name is required.");
+            return;
         }
-    };
+        setError("");
 
-    const handleConfirm = () => {
-        console.log("Confirming action - type:", type, "selectedCategories:", selectedCategories);
-        if (type === "delete") {
-            if (!selectedCategories || selectedCategories.length === 0) {
-                alert("Please select at least one category to delete.");
-                return;
-            }
-            console.log("Confirming delete for categories:", selectedCategories);
-            onConfirm(selectedCategories);
-            onClose();
-        } else if (type === "restore") {
-            if (!selectedCategories || selectedCategories.length === 0) {
-                alert("Please select at least one category to restore.");
-                return;
-            }
-            console.log("Confirming restore for categories:", selectedCategories);
-            onConfirm(selectedCategories);
-            onClose();
+        if (type === "edit" && !category) {
+            setError("No category selected for editing.");
+            return;
         }
-    };
 
-    const handleCancel = () => {
-        console.log("Closing modal for type:", type);
+        const categoryData = { category_name: trimmedName };
+        onSave(categoryData);
         onClose();
     };
 
+    const handleConfirm = () => {
+        if (!selectedCategories?.length) {
+            setError(`Please select at least one category to ${type}.`);
+            return;
+        }
+        setError("");
+        onConfirm(selectedCategories);
+        onClose();
+    };
+
+    const handleCancel = () => onClose();
+
     if (type === "edit" || type === "add") {
-        const title = type === "edit" ? `Edit Category: ${category?.name || "Category"}` : "Add New Category";
+        const title = type === "edit" ? `Edit Category: ${category?.category_name || "Category"}` : "Add New Category";
         return (
             <div className="CategoryManagement">
                 <div className="edit-modal-overlay" onClick={handleCancel}>
@@ -114,21 +70,18 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
                 </div>
             </div>
         );
-    } else if (type === "delete" || type === "restore") {
-        const title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-        const message = type === "delete"
-            ? `Are you sure you want to delete ${selectedCategories.length} category(ies)?`
-            : `Are you sure you want to restore ${selectedCategories.length} category(ies)?`;
+    } else if (type === "archive" || type === "restore") {
+        const action = type === "archive" ? "Archive" : "Restore";
+        const message = `Are you sure you want to ${action.toLowerCase()} ${selectedCategories.length} category(ies)?`;
 
         return (
-            <div className={`${type === "delete" ? "delete" : "restore"}-modal-overlay`} onClick={handleCancel} data-testid={`${type}-overlay`}>
-                <div className={`${type === "delete" ? "delete" : "restore"}-modal`} onClick={e => e.stopPropagation()} data-testid={`${type}-modal`}>
-                    <h3>{title}</h3>
+            <div className={`${type}-modal-overlay`} onClick={handleCancel} data-testid={`${type}-overlay`}>
+                <div className={`${type}-modal`} onClick={e => e.stopPropagation()} data-testid={`${type}-modal`}>
+                    <h3>Confirm {action}</h3>
+                    {error && <p className="error-message">{error}</p>}
                     <p>{message}</p>
                     <div className="button-group">
-                        <button className="save-button" onClick={handleConfirm}>
-                            {type === "delete" ? "Delete" : "Restore"}
-                        </button>
+                        <button className="save-button" onClick={handleConfirm}>{action}</button>
                         <button className="cancel-button" onClick={handleCancel}>Cancel</button>
                     </div>
                 </div>
