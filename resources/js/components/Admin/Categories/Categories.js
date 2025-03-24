@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaEdit, FaTrash, FaUndo } from "react-icons/fa"; // Added FaUndo for Restore
 import CategoryManagement from "./CategoryManagement"; // Assume a similar CategoryManagement component
+import axios from 'axios'; // Added axios for API calls
 
 const CategoryList = () => {
     const [checkedRows, setCheckedRows] = useState({});
@@ -16,43 +17,28 @@ const CategoryList = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const itemsPerPage = 5; // Match CustomerList pagination
 
-    const [initialCategories, setInitialCategories] = useState([
-        { id: 1, name: "Men", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        { id: 2, name: "Women", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        { id: 3, name: "Unisex", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        // Added an archived category for testing
-        { id: 4, name: "Kids", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: true },
-    ]);
-
-    const [categories, setCategories] = useState(initialCategories);
+    const [initialCategories, setInitialCategories] = useState([]);
+    const [categories, setCategories] = useState([]);
     const tableRef = useRef(null);
 
     useEffect(() => {
-        const savedCategories = localStorage.getItem("categories");
-        let updatedCategories = [...initialCategories];
-        if (savedCategories) {
+        const fetchCategories = async () => {
             try {
-                updatedCategories = JSON.parse(savedCategories).map(category => ({
-                    ...category,
-                    isArchived: category.isArchived !== undefined ? category.isArchived : false,
-                    createdAt: category.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    updatedAt: category.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                }));
-                console.log("Loaded categories from localStorage:", updatedCategories);
+                const response = await axios.get('/api/categories');
+                console.log("API Response:", response.data);
+                setCategories(response.data);
             } catch (error) {
-                console.error("Error parsing categories from localStorage:", error);
-                updatedCategories = [...initialCategories];
-                localStorage.setItem("categories", JSON.stringify(updatedCategories));
+                console.error("Error fetching categories:", error);
+                alert("Failed to load categories. Please try again.");
+            } finally {
+                setIsLoading(false);
             }
-        } else {
-            console.log("Initialized with static categories:", initialCategories);
-            localStorage.setItem("categories", JSON.stringify(initialCategories));
-        }
-        setCategories(updatedCategories);
-        setInitialCategories(updatedCategories);
+        };
+
+        fetchCategories();
         setCheckedRows({});
         setIsSelectAll(false);
-    }, []);
+    }, [viewType, forceUpdate]);
 
     const getCurrentData = () => {
         if (!categories || categories.length === 0) {
@@ -190,7 +176,7 @@ const CategoryList = () => {
     };
 
     const validateName = (name) => {
-        return name.trim().length > 0; // Simple validation for category name
+        return name.trim().length > 0;
     };
 
     const handleNameChange = (e) => setName(e.target.value);
@@ -236,7 +222,7 @@ const CategoryList = () => {
                 name: newOrUpdatedCategory.name.trim(),
                 createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
                 updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false, // New categories are active by default
+                isArchived: false,
             };
             const updatedCategories = [newCategory, ...categories];
             setCategories(updatedCategories);
@@ -410,7 +396,7 @@ const CategoryList = () => {
                                             )}
                                         </div>
                                     </td>
-                                    <td className="table-cell">{category.name}</td>
+                                    <td className="table-cell">{category.category_namename}</td>
                                     <td className="table-cell">{category.createdAt}</td>
                                     <td className="table-cell">{category.updatedAt}</td>
                                 </tr>

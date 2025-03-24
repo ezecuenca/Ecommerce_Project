@@ -54,7 +54,7 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
                 name: localName.trim(),
                 createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
                 updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false, // New categories are active by default
+                isArchived: false,
             };
             console.log("Saving new category:", newCategory);
             onSave(newCategory);
