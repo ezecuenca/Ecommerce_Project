@@ -74315,8 +74315,7 @@ var CategoryList = function CategoryList() {
       };
     }();
     fetchCategories();
-  }, []); // Fetch once on mount
-
+  }, []);
   var getCurrentData = function getCurrentData() {
     if (!categories.length) return [];
     var filteredCategories = categories.filter(function (category) {
@@ -74399,7 +74398,7 @@ var CategoryList = function CategoryList() {
   };
   var handleEdit = function handleEdit(category) {
     setSelectedCategory(category);
-    setName(category.category_name || ""); // Match API field
+    setName(category.category_name || "");
     setManagementType("edit");
     setManagementModalOpen(true);
   };
@@ -74423,7 +74422,6 @@ var CategoryList = function CategoryList() {
               _context2.next = 3;
               break;
             }
-            // Match API field
             setError("Category name is required.");
             return _context2.abrupt("return");
           case 3:
@@ -74955,19 +74953,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var _WatchColorManangement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WatchColorManangement */ "./resources/js/components/Admin/Color/WatchColorManangement.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var _WatchColorManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./WatchColorManagement */ "./resources/js/components/Admin/Color/WatchColorManagement.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -74975,10 +74974,11 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Added FaUndo for Restore
 
 
-var WatchColor = function WatchColor() {
+
+
+var WatchColorList = function WatchColorList() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
     checkedRows = _useState2[0],
@@ -74990,7 +74990,7 @@ var WatchColor = function WatchColor() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState6 = _slicedToArray(_useState5, 2),
     viewType = _useState6[0],
-    setViewType = _useState6[1]; // Colors can now have active/archived views
+    setViewType = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
     managementModalOpen = _useState8[0],
@@ -75023,495 +75023,397 @@ var WatchColor = function WatchColor() {
     _useState22 = _slicedToArray(_useState21, 2),
     searchQuery = _useState22[0],
     setSearchQuery = _useState22[1];
-  var itemsPerPage = 5; // Match CategoryList pagination
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-      id: 1,
-      name: "Red",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    }, {
-      id: 2,
-      name: "Green",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    }, {
-      id: 3,
-      name: "Blue",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    },
-    // Added an archived color for testing
-    {
-      id: 4,
-      name: "Yellow",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: true
-    }]),
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState24 = _slicedToArray(_useState23, 2),
-    initialColors = _useState24[0],
-    setInitialColors = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialColors),
+    colors = _useState24[0],
+    setColors = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState26 = _slicedToArray(_useState25, 2),
-    colors = _useState26[0],
-    setColors = _useState26[1];
+    isLoading = _useState26[0],
+    setIsLoading = _useState26[1];
   var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var itemsPerPage = 5;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var savedColors = localStorage.getItem("watchColors");
-    var updatedColors = _toConsumableArray(initialColors);
-    if (savedColors) {
-      try {
-        updatedColors = JSON.parse(savedColors).map(function (color) {
-          return _objectSpread(_objectSpread({}, color), {}, {
-            isArchived: color.isArchived !== undefined ? color.isArchived : false,
-            createdAt: color.createdAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            }),
-            updatedAt: color.updatedAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            })
-          });
-        });
-        console.log("Loaded colors from localStorage:", updatedColors);
-      } catch (error) {
-        console.error("Error parsing colors from localStorage:", error);
-        updatedColors = _toConsumableArray(initialColors);
-        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-      }
-    } else {
-      console.log("Initialized with static colors:", initialColors);
-      localStorage.setItem("watchColors", JSON.stringify(initialColors));
-    }
-    setColors(updatedColors);
-    setInitialColors(updatedColors);
-    setCheckedRows({});
-    setIsSelectAll(false);
+    var fetchColors = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
+            case 3:
+              response = _context.sent;
+              console.log("API Response:", response.data);
+              setColors(response.data);
+              _context.next = 12;
+              break;
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching colors:", _context.t0);
+              setError("Failed to load colors. Please try again.");
+            case 12:
+              _context.prev = 12;
+              setIsLoading(false);
+              return _context.finish(12);
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 8, 12, 15]]);
+      }));
+      return function fetchColors() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchColors();
   }, []);
   var getCurrentData = function getCurrentData() {
+    console.log("colors:", colors);
+    console.log("viewType:", viewType);
+    console.log("searchQuery:", searchQuery);
     if (!colors || colors.length === 0) {
       console.warn("No colors data available, returning empty array.");
       return [];
     }
     var filteredColors = colors.filter(function (color) {
-      return color.isArchived === (viewType === "archived");
+      if (viewType === "active") {
+        return color.status === 1;
+      } else {
+        return color.status === 0;
+      }
     });
     if (searchQuery.trim()) {
       filteredColors = filteredColors.filter(function (color) {
-        return color.name.toLowerCase().includes(searchQuery.toLowerCase());
+        return color.color_name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
+    console.log("filteredColors:", filteredColors);
     return filteredColors;
   };
   var currentData = getCurrentData();
-  var totalPages = Math.ceil(currentData.length / itemsPerPage);
-  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
+  var start = (currentPage - 1) * itemsPerPage;
+  var end = currentPage * itemsPerPage;
+  console.log("start:", start, "end:", end);
+  var currentItems = currentData.slice(start, end);
+  console.log("currentItems:", currentItems);
+  var totalPages = Math.ceil((currentData === null || currentData === void 0 ? void 0 : currentData.length) / itemsPerPage);
   var handleSelectAll = function handleSelectAll(e) {
-    try {
-      var isChecked = e.target.checked;
-      setIsSelectAll(isChecked);
-      var newCheckedRows = {};
-      if (isChecked) {
-        currentItems.forEach(function (_, index) {
-          newCheckedRows[index] = true;
-        });
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = true;
-          });
-        }
-      } else {
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = false;
-          });
-        }
-      }
-      setCheckedRows(newCheckedRows);
-    } catch (error) {
-      console.error("Error in handleSelectAll:", error);
+    var isChecked = e.target.checked;
+    setIsSelectAll(isChecked);
+    var newCheckedRows = {};
+    currentItems.forEach(function (color) {
+      newCheckedRows[color.id] = isChecked;
+    });
+    setCheckedRows(newCheckedRows);
+    if (tableRef.current) {
+      tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+        checkbox.checked = isChecked;
+      });
     }
   };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    try {
-      var isChecked = e.target.checked;
-      setCheckedRows(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-      });
-      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.color-checkbox')).filter(function (cb) {
-        return cb.checked;
-      }).length : 0);
-      setIsSelectAll(allChecked);
-    } catch (error) {
-      console.error("Error in handleRowCheckbox:", error);
-    }
+  var handleRowCheckbox = function handleRowCheckbox(color, e) {
+    setCheckedRows(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, color.id, e.target.checked));
+    });
+    setIsSelectAll(currentItems.every(function (cat) {
+      return checkedRows[cat.id] || cat.id === color.id && e.target.checked;
+    }));
   };
-  var handleDelete = function handleDelete() {
-    var colorToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    try {
-      console.log("Attempting to delete - viewType:", viewType, "colorToDelete:", colorToDelete, "checkedRows:", checkedRows);
-      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-        return checkedRows[index];
-      }).map(function (index) {
-        return parseInt(index, 10);
-      });
-      if (colorToDelete) {
-        if (viewType !== "active") {
-          alert("You can only delete from Active Colors.");
-          return;
-        }
-        setManagementType("delete");
-        setSelectedColor([colorToDelete]);
-        setManagementModalOpen(true);
-        return;
-      }
-      var selectedCount = selectedIndices.length;
-      if (selectedCount < 1) {
-        alert("Please select at least one color to delete.");
-        return;
-      }
-      if (viewType !== "active") {
-        alert("You can only delete from Active Colors.");
-        return;
-      }
-      setManagementType("delete");
-      setSelectedColor(getSelectedColors());
-      setManagementModalOpen(true);
-    } catch (error) {
-      console.error("Error in handleDelete:", error);
+  var getSelectedItems = function getSelectedItems() {
+    var singleItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (singleItem) return [singleItem];
+    return currentItems.filter(function (color) {
+      return checkedRows[color.id];
+    });
+  };
+  var handleArchive = function handleArchive() {
+    var colorToArchive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to archive - viewType:", viewType, "colorToArchive:", colorToArchive, "checkedRows:", checkedRows);
+    var selectedItems = getSelectedItems(colorToArchive);
+    if (viewType !== "active") {
+      alert("You can only archive from Active Colors.");
+      return;
     }
+    if (!selectedItems.length) {
+      alert("Please select at least one color to archive.");
+      return;
+    }
+    setManagementType("archive");
+    setSelectedColor(selectedItems);
+    setManagementModalOpen(true);
   };
   var handleRestore = function handleRestore() {
     var colorToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    try {
-      console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
-      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-        return checkedRows[index];
-      }).map(function (index) {
-        return parseInt(index, 10);
-      });
-      if (colorToRestore) {
-        if (viewType !== "archived") {
-          alert("You can only restore from Archived Colors.");
-          return;
-        }
-        console.log("Opening restore modal for single color:", colorToRestore);
-        setManagementType("restore");
-        setSelectedColor([colorToRestore]);
-        setManagementModalOpen(true);
-        return;
-      }
-      var selectedCount = selectedIndices.length;
-      if (selectedCount < 1) {
-        alert("Please select at least one color to restore.");
-        return;
-      }
-      if (viewType !== "archived") {
-        alert("You can only restore from Archived Colors.");
-        return;
-      }
-      console.log("Opening restore modal for multiple colors:", getSelectedColors());
-      setManagementType("restore");
-      setSelectedColor(getSelectedColors());
-      setManagementModalOpen(true);
-    } catch (error) {
-      console.error("Error in handleRestore:", error);
+    console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
+    var selectedItems = getSelectedItems(colorToRestore);
+    if (viewType !== "archived") {
+      alert("You can only restore from Archived Colors.");
+      return;
     }
+    if (!selectedItems.length) {
+      alert("Please select at least one color to restore.");
+      return;
+    }
+    setManagementType("restore");
+    setSelectedColor(selectedItems);
+    setManagementModalOpen(true);
   };
   var handleAdd = function handleAdd() {
-    try {
-      console.log("Current viewType:", viewType, "Opening Add modal");
-      setManagementType("add");
-      setName("");
-      setSelectedColor(null);
-      setManagementModalOpen(true);
-    } catch (error) {
-      console.error("Error in handleAdd:", error);
-    }
+    console.log("Current viewType:", viewType, "Opening Add modal");
+    setManagementType("add");
+    setName("");
+    setSelectedColor(null);
+    setManagementModalOpen(true);
   };
   var handleEdit = function handleEdit(color) {
-    try {
-      console.log("Opening edit for color:", color);
-      setSelectedColor(color);
-      setName(color.name || "");
-      setManagementType("edit");
-      setManagementModalOpen(true);
-    } catch (error) {
-      console.error("Error in handleEdit:", error);
-    }
+    console.log("Opening edit for color:", color);
+    setSelectedColor(color);
+    setName(color.color_name || "");
+    setManagementType("edit");
+    setManagementModalOpen(true);
   };
   var validateName = function validateName(name) {
-    return name.trim().length > 0; // Simple validation for color name
+    return name.trim().length > 0;
   };
   var handleNameChange = function handleNameChange(e) {
     return setName(e.target.value);
   };
   var handleSearchChange = function handleSearchChange(e) {
-    try {
-      setSearchQuery(e.target.value);
-      setCurrentPage(1);
-    } catch (error) {
-      console.error("Error in handleSearchChange:", error);
-    }
+    setSearchQuery(e.target.value);
+    setCurrentPage(1);
   };
-  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedColor) {
-    try {
-      if (managementType === "edit") {
-        if (!selectedColor) {
-          alert("No color selected for editing.");
-          return;
+  var handleSaveEditOrAdd = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newOrUpdatedColor) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (validateName(newOrUpdatedColor.color_name)) {
+              _context2.next = 3;
+              break;
+            }
+            setError("Color name is required.");
+            return _context2.abrupt("return");
+          case 3:
+            setError("");
+            _context2.prev = 4;
+            if (!(managementType === "edit")) {
+              _context2.next = 12;
+              break;
+            }
+            if (selectedColor) {
+              _context2.next = 8;
+              break;
+            }
+            throw new Error("No color selected for editing.");
+          case 8:
+            _context2.next = 10;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/watch_colors/".concat(selectedColor.id), {
+              color_name: newOrUpdatedColor.color_name,
+              updated_at: new Date().toISOString(),
+              status: 1
+            });
+          case 10:
+            _context2.next = 15;
+            break;
+          case 12:
+            if (!(managementType === "add")) {
+              _context2.next = 15;
+              break;
+            }
+            _context2.next = 15;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/watch_colors', {
+              color_name: newOrUpdatedColor.color_name,
+              created_at: new Date().toISOString(),
+              updated_at: new Date().toISOString(),
+              status: 1
+            });
+          case 15:
+            _context2.next = 17;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
+          case 17:
+            response = _context2.sent;
+            setColors(response.data);
+            setManagementModalOpen(false);
+            setSelectedColor(null);
+            setName("");
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            setCurrentPage(1);
+            _context2.next = 30;
+            break;
+          case 26:
+            _context2.prev = 26;
+            _context2.t0 = _context2["catch"](4);
+            console.error("Error ".concat(managementType, "ing color:"), _context2.t0);
+            setError("Failed to ".concat(managementType, " color. Please try again."));
+          case 30:
+          case "end":
+            return _context2.stop();
         }
-        if (!validateName(newOrUpdatedColor.name)) {
-          setError("Color name is required.");
-          return;
-        }
-        setError("");
-        var updatedColors = colors.map(function (c) {
-          return c.id === selectedColor.id ? _objectSpread(_objectSpread({}, newOrUpdatedColor), {}, {
-            id: selectedColor.id,
-            createdAt: selectedColor.createdAt,
-            isArchived: selectedColor.isArchived
-          }) : c;
-        });
-        setColors(updatedColors);
-        setInitialColors(updatedColors);
-        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-        setManagementModalOpen(false);
-        setSelectedColor(null);
-        setName("");
-        console.log("Edited color, updated colors:", updatedColors);
-        setForceUpdate(function (prev) {
-          return prev + 1;
-        });
-      } else if (managementType === "add") {
-        if (!validateName(newOrUpdatedColor.name)) {
-          setError("Color name is required.");
-          return;
-        }
-        setError("");
-        var newColor = {
-          id: Date.now(),
-          name: newOrUpdatedColor.name.trim(),
-          createdAt: new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: '2-digit'
-          }),
-          updatedAt: new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: '2-digit'
-          }),
-          isArchived: false // New colors are active by default
-        };
-        var _updatedColors = [newColor].concat(_toConsumableArray(colors));
-        setColors(_updatedColors);
-        setInitialColors(_updatedColors);
-        localStorage.setItem("watchColors", JSON.stringify(_updatedColors));
-        setManagementModalOpen(false);
-        setName("");
-        console.log("Added new color, updated colors:", _updatedColors);
-        setForceUpdate(function (prev) {
-          return prev + 1;
-        });
-        setCurrentPage(1);
-      }
-    } catch (error) {
-      console.error("Error in handleSaveEditOrAdd:", error);
-    }
-  };
-  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
-    try {
-      console.log("Confirming action - managementType:", managementType, "items:", items);
-      if (managementType === "delete") {
-        var updatedColors = colors.map(function (color) {
-          if (Array.isArray(items)) {
-            if (items.some(function (item) {
-              return item.id === color.id;
-            })) {
-              return _objectSpread(_objectSpread({}, color), {}, {
-                isArchived: true,
-                updatedAt: new Date().toLocaleDateString('en-US', {
-                  month: '2-digit',
-                  day: '2-digit',
-                  year: '2-digit'
-                })
+      }, _callee2, null, [[4, 26]]);
+    }));
+    return function handleSaveEditOrAdd(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleConfirmDeleteOrRestore = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(items) {
+      var colorIds, _response, _response2, response, _error$response, _error$response2;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            console.log("Confirming action - managementType:", managementType, "items:", items);
+            if (items !== null && items !== void 0 && items.length) {
+              _context3.next = 4;
+              break;
+            }
+            alert("Please select at least one color to ".concat(managementType, "."));
+            return _context3.abrupt("return");
+          case 4:
+            _context3.prev = 4;
+            colorIds = items.map(function (item) {
+              return item.id;
+            });
+            console.log("".concat(managementType, " payload:"), managementType === "archive" ? {
+              data: {
+                ids: colorIds
+              }
+            } : {
+              ids: colorIds
+            });
+            if (!(managementType === "archive")) {
+              _context3.next = 14;
+              break;
+            }
+            _context3.next = 10;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/archive', {
+              data: {
+                ids: colorIds
+              }
+            });
+          case 10:
+            _response = _context3.sent;
+            console.log("Archive response:", _response.data);
+            _context3.next = 19;
+            break;
+          case 14:
+            if (!(managementType === "restore")) {
+              _context3.next = 19;
+              break;
+            }
+            _context3.next = 17;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/restore', {
+              ids: colorIds
+            });
+          case 17:
+            _response2 = _context3.sent;
+            console.log("Restore response:", _response2.data);
+          case 19:
+            _context3.next = 21;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
+          case 21:
+            response = _context3.sent;
+            setColors(response.data);
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+              tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
+                return checkbox.checked = false;
               });
             }
-          } else {
-            if (items.id === color.id) {
-              return _objectSpread(_objectSpread({}, color), {}, {
-                isArchived: true,
-                updatedAt: new Date().toLocaleDateString('en-US', {
-                  month: '2-digit',
-                  day: '2-digit',
-                  year: '2-digit'
-                })
-              });
-            }
-          }
-          return color;
-        });
-        setColors(updatedColors);
-        setInitialColors(updatedColors);
-        setCheckedRows({});
-        setIsSelectAll(false);
-        if (tableRef.current && viewType === "active") {
-          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = false;
-          });
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            _context3.next = 35;
+            break;
+          case 31:
+            _context3.prev = 31;
+            _context3.t0 = _context3["catch"](4);
+            console.error("Error ".concat(managementType, "ing colors:"), ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
+            setError("Failed to ".concat(managementType, " colors: ").concat((_error$response2 = _context3.t0.response) !== null && _error$response2 !== void 0 && (_error$response2 = _error$response2.data) !== null && _error$response2 !== void 0 && _error$response2.errors ? JSON.stringify(_context3.t0.response.data.errors) : _context3.t0.message));
+          case 35:
+          case "end":
+            return _context3.stop();
         }
-        setManagementModalOpen(false);
-        if (currentData.length === 0) {
-          setCurrentPage(1);
-        }
-        setForceUpdate(function (prev) {
-          return prev + 1;
-        });
-        localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-        console.log("Colors after delete:", updatedColors);
-      } else if (managementType === "restore") {
-        var _updatedColors2 = colors.map(function (color) {
-          if (Array.isArray(items)) {
-            if (items.some(function (item) {
-              return item.id === color.id;
-            })) {
-              return _objectSpread(_objectSpread({}, color), {}, {
-                isArchived: false,
-                updatedAt: new Date().toLocaleDateString('en-US', {
-                  month: '2-digit',
-                  day: '2-digit',
-                  year: '2-digit'
-                })
-              });
-            }
-          } else {
-            if (items.id === color.id) {
-              return _objectSpread(_objectSpread({}, color), {}, {
-                isArchived: false,
-                updatedAt: new Date().toLocaleDateString('en-US', {
-                  month: '2-digit',
-                  day: '2-digit',
-                  year: '2-digit'
-                })
-              });
-            }
-          }
-          return color;
-        });
-        setColors(_updatedColors2);
-        setInitialColors(_updatedColors2);
-        setCheckedRows({});
-        setIsSelectAll(false);
-        if (tableRef.current && viewType === "archived") {
-          tableRef.current.querySelectorAll('.color-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = false;
-          });
-        }
-        setManagementModalOpen(false);
-        if (currentData.length === 0) {
-          setCurrentPage(1);
-        }
-        setForceUpdate(function (prev) {
-          return prev + 1;
-        });
-        localStorage.setItem("watchColors", JSON.stringify(_updatedColors2));
-        console.log("Colors after restore:", _updatedColors2);
-      }
-    } catch (error) {
-      console.error("Error in handleConfirmDeleteOrRestore:", error);
-    }
-  };
+      }, _callee3, null, [[4, 31]]);
+    }));
+    return function handleConfirmDeleteOrRestore(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   var handleCloseManagement = function handleCloseManagement() {
-    try {
-      console.log("Closing management modal - managementType:", managementType);
-      setManagementModalOpen(false);
-      setManagementType("");
-      setSelectedColor(null);
-      setName("");
-      setError("");
-    } catch (error) {
-      console.error("Error in handleCloseManagement:", error);
-    }
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedColor(null);
+    setName("");
+    setError("");
   };
-  var getSelectedColors = function getSelectedColors() {
-    try {
-      var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-        return checkedRows[index];
-      }).map(function (index) {
-        return parseInt(index, 10);
-      });
-      return selectedIndices.map(function (index) {
-        return currentItems[index];
-      });
-    } catch (error) {
-      console.error("Error in getSelectedColors:", error);
-      return [];
-    }
-  };
-  var checkedCount = Object.keys(checkedRows).filter(function (index) {
-    return checkedRows[index];
-  }).length;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "WatchColor",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+  var checkedCount = Object.values(checkedRows).filter(Boolean).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "WatchColorList",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "colors-header",
-      children: viewType === "active" ? "Colors" : "Archived Colors"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: viewType === "active" ? "Active Colors" : "Archived Colors"
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "error-message",
+      children: error
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      children: "Loading colors..."
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "table-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-header-actions",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "search-bar",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
             value: searchQuery,
             onChange: handleSearchChange,
             placeholder: "Search",
             className: "search-input"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "button-group",
           style: {
             marginLeft: 'auto'
           },
-          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "add-button",
               onClick: handleAdd,
               children: "Add"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
-              className: "delete-button",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              className: "archive-button",
               onClick: function onClick() {
-                return handleDelete();
+                return handleArchive();
               },
-              disabled: checkedCount < 2,
-              children: "Delete"
+              disabled: checkedCount < 1,
+              children: "Archive"
             })]
-          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
             onClick: function onClick() {
               return handleRestore();
             },
-            disabled: checkedCount < 2,
+            disabled: checkedCount < 1,
             children: "Restore"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "view-toggle",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "active" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("active");
             },
             children: "Active Colors"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "archived" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("archived");
@@ -75519,66 +75421,67 @@ var WatchColor = function WatchColor() {
             children: "Archived Colors"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
         ref: tableRef,
         className: "colors-table",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
             className: "table-header-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "checkbox",
                 className: "color-checkbox",
                 checked: isSelectAll,
                 onChange: handleSelectAll
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header colors-action-column",
               children: "Action"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Color"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Created At"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Updated At"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-          children: currentItems.length > 0 ? currentItems.map(function (color, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (color) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               className: "table-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "checkbox",
                   className: "color-checkbox",
+                  checked: !!checkedRows[color.id],
                   onChange: function onChange(e) {
-                    return handleRowCheckbox(index, e);
+                    return handleRowCheckbox(color, e);
                   }
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell colors-action-column",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "action-buttons",
-                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
                       className: "edit-icon",
                       size: 20,
                       onClick: function onClick() {
                         return handleEdit(color);
                       }
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
-                      className: "delete-icon",
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                      className: "archive-icon",
                       size: 20,
                       onClick: function onClick() {
-                        return handleDelete(color);
+                        return handleArchive(color);
                       }
                     })]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
                     className: "restore-icon",
                     size: 20,
                     onClick: function onClick() {
@@ -75586,20 +75489,20 @@ var WatchColor = function WatchColor() {
                     }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: color.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: color.color_name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: color.createdAt
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: color.created_at
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: color.updatedAt
+                children: color.updated_at
               })]
-            }, color.id + index + forceUpdate);
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            }, color.id);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
             className: "table-row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
               colSpan: "5",
               className: "table-cell",
               style: {
@@ -75607,13 +75510,13 @@ var WatchColor = function WatchColor() {
                 padding: "20px",
                 backgroundColor: "#f9f9f9"
               },
-              children: colors.length === 0 ? "No colors available. Please check your data or refresh the page." : viewType === "active" ? "No active colors match your search." : "No archived colors match your search."
+              children: colors.length === 0 ? "No colors available." : viewType === "active" ? "No active colors match your search." : "No archived colors match your search."
             })
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-pagination",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.max(prev - 1, 1);
@@ -75627,14 +75530,14 @@ var WatchColor = function WatchColor() {
         }, function (_, i) {
           return i + 1;
         }).map(function (page) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: function onClick() {
               return setCurrentPage(page);
             },
             className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
             children: page
           }, page);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.min(prev + 1, totalPages);
@@ -75645,10 +75548,10 @@ var WatchColor = function WatchColor() {
           children: "Next"
         })]
       })]
-    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_WatchColorManangement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_WatchColorManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
       type: managementType,
-      color: managementType === "edit" || managementType === "add" ? selectedColor : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedColor) ? selectedColor : null,
-      selectedColors: managementType === "restore" || managementType === "delete" ? selectedColor || getSelectedColors() : [],
+      color: managementType === "edit" || managementType === "add" ? selectedColor : null,
+      selectedColors: managementType === "restore" || managementType === "archive" ? selectedColor : [],
       name: name,
       onClose: handleCloseManagement,
       onConfirm: handleConfirmDeleteOrRestore,
@@ -75656,14 +75559,14 @@ var WatchColor = function WatchColor() {
     })]
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColor);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColorList);
 
 /***/ }),
 
-/***/ "./resources/js/components/Admin/Color/WatchColorManangement.js":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/Admin/Color/WatchColorManangement.js ***!
-  \**********************************************************************/
+/***/ "./resources/js/components/Admin/Color/WatchColorManagement.js":
+/*!*********************************************************************!*\
+  !*** ./resources/js/components/Admin/Color/WatchColorManagement.js ***!
+  \*********************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -75674,12 +75577,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -75705,95 +75602,46 @@ var WatchColorManagement = function WatchColorManagement(_ref) {
     error = _useState4[0],
     setError = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log("WatchColorManagement rendered with type:", type, "color:", color, "name:", name, "selectedColors:", selectedColors);
     if (type === "edit" && color) {
-      setLocalName(color.name || "");
-      console.log("Initializing edit for color:", color);
+      setLocalName(color.color_name || "");
     } else if (type === "add") {
       setLocalName("");
-      console.log("Initializing add for new color");
     }
-  }, [type, color, name, selectedColors]);
-  var validateName = function validateName(name) {
-    return name.trim().length > 0; // Simple validation for color name
-  };
+  }, [type, color, name]);
   var handleNameChange = function handleNameChange(e) {
     return setLocalName(e.target.value);
   };
   var handleSave = function handleSave() {
-    if (type === "edit") {
-      if (!color) {
-        alert("No color selected for editing.");
-        return;
-      }
-      if (!validateName(localName)) {
-        setError("Color name is required.");
-        return;
-      }
-      setError("");
-      var updatedColor = _objectSpread(_objectSpread({}, color), {}, {
-        name: localName.trim(),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        })
-      });
-      console.log("Saving updated color:", updatedColor);
-      onSave(updatedColor);
-      onClose();
-    } else if (type === "add") {
-      if (!validateName(localName)) {
-        setError("Color name is required.");
-        return;
-      }
-      setError("");
-      var newColor = {
-        id: Date.now(),
-        name: localName.trim(),
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false // New colors are active by default
-      };
-      console.log("Saving new color:", newColor);
-      onSave(newColor);
-      onClose();
+    var trimmedName = localName.trim();
+    if (!trimmedName) {
+      setError("Color name is required.");
+      return;
     }
-  };
-  var handleConfirm = function handleConfirm() {
-    console.log("Confirming action - type:", type, "selectedColors:", selectedColors);
-    if (type === "delete") {
-      if (!selectedColors || selectedColors.length === 0) {
-        alert("Please select at least one color to delete.");
-        return;
-      }
-      console.log("Confirming delete for colors:", selectedColors);
-      onConfirm(selectedColors);
-      onClose();
-    } else if (type === "restore") {
-      if (!selectedColors || selectedColors.length === 0) {
-        alert("Please select at least one color to restore.");
-        return;
-      }
-      console.log("Confirming restore for colors:", selectedColors);
-      onConfirm(selectedColors);
-      onClose();
+    setError("");
+    if (type === "edit" && !color) {
+      setError("No color selected for editing.");
+      return;
     }
-  };
-  var handleCancel = function handleCancel() {
-    console.log("Closing modal for type:", type);
+    var colorData = {
+      color_name: trimmedName
+    };
+    onSave(colorData);
     onClose();
   };
+  var handleConfirm = function handleConfirm() {
+    if (!(selectedColors !== null && selectedColors !== void 0 && selectedColors.length)) {
+      setError("Please select at least one color to ".concat(type, "."));
+      return;
+    }
+    setError("");
+    onConfirm(selectedColors);
+    onClose();
+  };
+  var handleCancel = function handleCancel() {
+    return onClose();
+  };
   if (type === "edit" || type === "add") {
-    var title = type === "edit" ? "Edit Color: ".concat((color === null || color === void 0 ? void 0 : color.name) || "Color") : "Add New Color";
+    var title = type === "edit" ? "Edit Color: ".concat((color === null || color === void 0 ? void 0 : color.color_name) || "Color") : "Add New Color";
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
       className: "WatchColorManagement",
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
@@ -75837,21 +75685,24 @@ var WatchColorManagement = function WatchColorManagement(_ref) {
         })
       })
     });
-  } else if (type === "delete" || type === "restore") {
-    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedColors.length, " color(s)?") : "Are you sure you want to restore ".concat(selectedColors.length, " color(s)?");
+  } else if (type === "archive" || type === "restore") {
+    var action = type === "archive" ? "Archive" : "Restore";
+    var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedColors.length, " color(s)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
+      className: "".concat(type, "-modal-overlay"),
       onClick: handleCancel,
       "data-testid": "".concat(type, "-overlay"),
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
+        className: "".concat(type, "-modal"),
         onClick: function onClick(e) {
           return e.stopPropagation();
         },
         "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          children: _title
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+          children: ["Confirm ", action]
+        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+          className: "error-message",
+          children: error
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
           children: message
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -75859,7 +75710,7 @@ var WatchColorManagement = function WatchColorManagement(_ref) {
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             className: "save-button",
             onClick: handleConfirm,
-            children: type === "delete" ? "Delete" : "Restore"
+            children: action
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
             className: "cancel-button",
             onClick: handleCancel,

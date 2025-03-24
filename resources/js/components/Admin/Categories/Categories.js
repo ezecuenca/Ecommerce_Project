@@ -34,7 +34,7 @@ const CategoryList = () => {
             }
         };
         fetchCategories();
-    }, []); // Fetch once on mount
+    }, []);
 
     const getCurrentData = () => {
         if (!categories.length) return [];
@@ -123,7 +123,7 @@ const CategoryList = () => {
 
     const handleEdit = (category) => {
         setSelectedCategory(category);
-        setName(category.category_name || ""); // Match API field
+        setName(category.category_name || "");
         setManagementType("edit");
         setManagementModalOpen(true);
     };
@@ -138,7 +138,7 @@ const CategoryList = () => {
     };
 
     const handleSaveEditOrAdd = async (newOrUpdatedCategory) => {
-        if (!validateName(newOrUpdatedCategory.category_name)) { // Match API field
+        if (!validateName(newOrUpdatedCategory.category_name)) {
             setError("Category name is required.");
             return;
         }
@@ -182,7 +182,7 @@ const CategoryList = () => {
             if (managementType === "archive") {
                 await Axios.put('/api/categories/archive', { data: { ids: categoryIds } });
             } else if (managementType === "restore") {
-                await Axios.put('/api/categories/restore', { ids: categoryIds }); // Match backend expectation
+                await Axios.put('/api/categories/restore', { ids: categoryIds });
             }
             const response = await Axios.get('/api/categories');
             setCategories(response.data);

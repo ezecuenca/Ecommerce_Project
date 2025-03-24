@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaEdit, FaTrash, FaUndo } from "react-icons/fa"; // Added FaUndo for Restore
-import WatchColorManagement from "./WatchColorManangement";
+import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
+import WatchColorManagement from "./WatchColorManagement";
+import Axios from 'axios';
 
-const WatchColor = () => {
+const WatchColorList = () => {
     const [checkedRows, setCheckedRows] = useState({});
     const [isSelectAll, setIsSelectAll] = useState(false);
-    const [viewType, setViewType] = useState("active"); // Colors can now have active/archived views
+    const [viewType, setViewType] = useState("active");
     const [managementModalOpen, setManagementModalOpen] = useState(false);
     const [managementType, setManagementType] = useState("");
     const [selectedColor, setSelectedColor] = useState(null);
@@ -14,496 +15,373 @@ const WatchColor = () => {
     const [forceUpdate, setForceUpdate] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const itemsPerPage = 5; // Match CategoryList pagination
-
-    const [initialColors, setInitialColors] = useState([
-        { id: 1, name: "Red", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        { id: 2, name: "Green", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        { id: 3, name: "Blue", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        // Added an archived color for testing
-        { id: 4, name: "Yellow", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: true },
-    ]);
-
-    const [colors, setColors] = useState(initialColors);
+    const [colors, setColors] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const tableRef = useRef(null);
+    const itemsPerPage = 5;
 
     useEffect(() => {
-        const savedColors = localStorage.getItem("watchColors");
-        let updatedColors = [...initialColors];
-        if (savedColors) {
+        const fetchColors = async () => {
             try {
-                updatedColors = JSON.parse(savedColors).map(color => ({
-                    ...color,
-                    isArchived: color.isArchived !== undefined ? color.isArchived : false,
-                    createdAt: color.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    updatedAt: color.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                }));
-                console.log("Loaded colors from localStorage:", updatedColors);
+                const response = await Axios.get('/api/watch_colors');
+                console.log("API Response:", response.data);
+                setColors(response.data);
             } catch (error) {
-                console.error("Error parsing colors from localStorage:", error);
-                updatedColors = [...initialColors];
-                localStorage.setItem("watchColors", JSON.stringify(updatedColors));
+                console.error("Error fetching colors:", error);
+                setError("Failed to load colors. Please try again.");
+            } finally {
+                setIsLoading(false);
             }
-        } else {
-            console.log("Initialized with static colors:", initialColors);
-            localStorage.setItem("watchColors", JSON.stringify(initialColors));
-        }
-        setColors(updatedColors);
-        setInitialColors(updatedColors);
-        setCheckedRows({});
-        setIsSelectAll(false);
+        };
+        fetchColors();
     }, []);
 
     const getCurrentData = () => {
+        console.log("colors:", colors);
+        console.log("viewType:", viewType);
+        console.log("searchQuery:", searchQuery);
+    
         if (!colors || colors.length === 0) {
             console.warn("No colors data available, returning empty array.");
             return [];
         }
-        let filteredColors = colors.filter(color => color.isArchived === (viewType === "archived"));
+    
+        let filteredColors = colors.filter(color => {
+            if (viewType === "active") {
+                return color.status === 1;
+            } else {
+                return color.status === 0;
+            }
+        });
+    
         if (searchQuery.trim()) {
             filteredColors = filteredColors.filter(color =>
-                color.name.toLowerCase().includes(searchQuery.toLowerCase())
+                color.color_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
+    
+        console.log("filteredColors:", filteredColors);
         return filteredColors;
     };
 
     const currentData = getCurrentData();
-    const totalPages = Math.ceil(currentData.length / itemsPerPage);
+
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = currentPage * itemsPerPage;
+    console.log("start:", start, "end:", end);
+
     const currentItems = currentData.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
+        start,
+        end
     );
+    console.log("currentItems:", currentItems);
+
+    const totalPages = Math.ceil(currentData?.length / itemsPerPage);
 
     const handleSelectAll = (e) => {
-        try {
-            const isChecked = e.target.checked;
-            setIsSelectAll(isChecked);
-            const newCheckedRows = {};
-            if (isChecked) {
-                currentItems.forEach((_, index) => {
-                    newCheckedRows[index] = true;
-                });
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = true);
-                }
-            } else {
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-            }
-            setCheckedRows(newCheckedRows);
-        } catch (error) {
-            console.error("Error in handleSelectAll:", error);
+        const isChecked = e.target.checked;
+        setIsSelectAll(isChecked);
+        const newCheckedRows = {};
+        currentItems.forEach(color => {
+            newCheckedRows[color.id] = isChecked;
+        });
+        setCheckedRows(newCheckedRows);
+        if (tableRef.current) {
+            tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
         }
     };
 
-    const handleRowCheckbox = (index, e) => {
-        try {
-            const isChecked = e.target.checked;
-            setCheckedRows((prev) => ({
-                ...prev,
-                [index]: isChecked,
-            }));
-            const allChecked = currentItems.length ===
-                (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.color-checkbox')).filter(cb => cb.checked).length : 0);
-            setIsSelectAll(allChecked);
-        } catch (error) {
-            console.error("Error in handleRowCheckbox:", error);
-        }
+    const handleRowCheckbox = (color, e) => {
+        setCheckedRows(prev => ({
+            ...prev,
+            [color.id]: e.target.checked
+        }));
+        setIsSelectAll(currentItems.every(cat => checkedRows[cat.id] || (cat.id === color.id && e.target.checked)));
     };
 
-    const handleDelete = (colorToDelete = null) => {
-        try {
-            console.log("Attempting to delete - viewType:", viewType, "colorToDelete:", colorToDelete, "checkedRows:", checkedRows);
-            const selectedIndices = Object.keys(checkedRows)
-                .filter(index => checkedRows[index])
-                .map(index => parseInt(index, 10));
+    const getSelectedItems = (singleItem = null) => {
+        if (singleItem) return [singleItem];
+        return currentItems.filter(color => checkedRows[color.id]);
+    };
 
-            if (colorToDelete) {
-                if (viewType !== "active") {
-                    alert("You can only delete from Active Colors.");
-                    return;
-                }
-                setManagementType("delete");
-                setSelectedColor([colorToDelete]);
-                setManagementModalOpen(true);
-                return;
-            }
-
-            const selectedCount = selectedIndices.length;
-            if (selectedCount < 1) {
-                alert("Please select at least one color to delete.");
-                return;
-            }
-
-            if (viewType !== "active") {
-                alert("You can only delete from Active Colors.");
-                return;
-            }
-
-            setManagementType("delete");
-            setSelectedColor(getSelectedColors());
-            setManagementModalOpen(true);
-        } catch (error) {
-            console.error("Error in handleDelete:", error);
+    const handleArchive = (colorToArchive = null) => {
+        console.log("Attempting to archive - viewType:", viewType, "colorToArchive:", colorToArchive, "checkedRows:", checkedRows);
+        const selectedItems = getSelectedItems(colorToArchive);
+        if (viewType !== "active") {
+            alert("You can only archive from Active Colors.");
+            return;
         }
+        if (!selectedItems.length) {
+            alert("Please select at least one color to archive.");
+            return;
+        }
+        setManagementType("archive");
+        setSelectedColor(selectedItems);
+        setManagementModalOpen(true);
     };
 
     const handleRestore = (colorToRestore = null) => {
-        try {
-            console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
-            const selectedIndices = Object.keys(checkedRows)
-                .filter(index => checkedRows[index])
-                .map(index => parseInt(index, 10));
-
-            if (colorToRestore) {
-                if (viewType !== "archived") {
-                    alert("You can only restore from Archived Colors.");
-                    return;
-                }
-                console.log("Opening restore modal for single color:", colorToRestore);
-                setManagementType("restore");
-                setSelectedColor([colorToRestore]);
-                setManagementModalOpen(true);
-                return;
-            }
-
-            const selectedCount = selectedIndices.length;
-            if (selectedCount < 1) {
-                alert("Please select at least one color to restore.");
-                return;
-            }
-
-            if (viewType !== "archived") {
-                alert("You can only restore from Archived Colors.");
-                return;
-            }
-
-            console.log("Opening restore modal for multiple colors:", getSelectedColors());
-            setManagementType("restore");
-            setSelectedColor(getSelectedColors());
-            setManagementModalOpen(true);
-        } catch (error) {
-            console.error("Error in handleRestore:", error);
+        console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
+        const selectedItems = getSelectedItems(colorToRestore);
+        if (viewType !== "archived") {
+            alert("You can only restore from Archived Colors.");
+            return;
         }
+        if (!selectedItems.length) {
+            alert("Please select at least one color to restore.");
+            return;
+        }
+        setManagementType("restore");
+        setSelectedColor(selectedItems);
+        setManagementModalOpen(true);
     };
 
     const handleAdd = () => {
-        try {
-            console.log("Current viewType:", viewType, "Opening Add modal");
-            setManagementType("add");
-            setName("");
-            setSelectedColor(null);
-            setManagementModalOpen(true);
-        } catch (error) {
-            console.error("Error in handleAdd:", error);
-        }
+        console.log("Current viewType:", viewType, "Opening Add modal");
+        setManagementType("add");
+        setName("");
+        setSelectedColor(null);
+        setManagementModalOpen(true);
     };
 
     const handleEdit = (color) => {
-        try {
-            console.log("Opening edit for color:", color);
-            setSelectedColor(color);
-            setName(color.name || "");
-            setManagementType("edit");
-            setManagementModalOpen(true);
-        } catch (error) {
-            console.error("Error in handleEdit:", error);
-        }
+        console.log("Opening edit for color:", color);
+        setSelectedColor(color);
+        setName(color.color_name || "");
+        setManagementType("edit");
+        setManagementModalOpen(true);
     };
 
-    const validateName = (name) => {
-        return name.trim().length > 0; // Simple validation for color name
-    };
+    const validateName = (name) => name.trim().length > 0;
 
     const handleNameChange = (e) => setName(e.target.value);
 
     const handleSearchChange = (e) => {
-        try {
-            setSearchQuery(e.target.value);
-            setCurrentPage(1);
-        } catch (error) {
-            console.error("Error in handleSearchChange:", error);
-        }
+        setSearchQuery(e.target.value);
+        setCurrentPage(1);
     };
 
-    const handleSaveEditOrAdd = (newOrUpdatedColor) => {
+    const handleSaveEditOrAdd = async (newOrUpdatedColor) => {
+        if (!validateName(newOrUpdatedColor.color_name)) {
+            setError("Color name is required.");
+            return;
+        }
+        setError("");
         try {
             if (managementType === "edit") {
-                if (!selectedColor) {
-                    alert("No color selected for editing.");
-                    return;
-                }
-
-                if (!validateName(newOrUpdatedColor.name)) {
-                    setError("Color name is required.");
-                    return;
-                }
-
-                setError("");
-                const updatedColors = colors.map(c =>
-                    c.id === selectedColor.id ? { ...newOrUpdatedColor, id: selectedColor.id, createdAt: selectedColor.createdAt, isArchived: selectedColor.isArchived } : c
-                );
-                setColors(updatedColors);
-                setInitialColors(updatedColors);
-                localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-                setManagementModalOpen(false);
-                setSelectedColor(null);
-                setName("");
-                console.log("Edited color, updated colors:", updatedColors);
-                setForceUpdate(prev => prev + 1);
+                if (!selectedColor) throw new Error("No color selected for editing.");
+                await Axios.put(`/api/watch_colors/${selectedColor.id}`, {
+                    color_name: newOrUpdatedColor.color_name,
+                    updated_at: new Date().toISOString(),
+                    status: 1
+                });
             } else if (managementType === "add") {
-                if (!validateName(newOrUpdatedColor.name)) {
-                    setError("Color name is required.");
-                    return;
-                }
-
-                setError("");
-                const newColor = {
-                    id: Date.now(),
-                    name: newOrUpdatedColor.name.trim(),
-                    createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    isArchived: false, // New colors are active by default
-                };
-                const updatedColors = [newColor, ...colors];
-                setColors(updatedColors);
-                setInitialColors(updatedColors);
-                localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-                setManagementModalOpen(false);
-                setName("");
-                console.log("Added new color, updated colors:", updatedColors);
-                setForceUpdate(prev => prev + 1);
-                setCurrentPage(1);
+                await Axios.post('/api/watch_colors', {
+                    color_name: newOrUpdatedColor.color_name,
+                    created_at: new Date().toISOString(),
+                    updated_at: new Date().toISOString(),
+                    status: 1
+                });
             }
+            const response = await Axios.get('/api/watch_colors');
+            setColors(response.data);
+            setManagementModalOpen(false);
+            setSelectedColor(null);
+            setName("");
+            setForceUpdate(prev => prev + 1);
+            setCurrentPage(1);
         } catch (error) {
-            console.error("Error in handleSaveEditOrAdd:", error);
+            console.error(`Error ${managementType}ing color:`, error);
+            setError(`Failed to ${managementType} color. Please try again.`);
         }
     };
 
-    const handleConfirmDeleteOrRestore = (items) => {
+    const handleConfirmDeleteOrRestore = async (items) => {
+        console.log("Confirming action - managementType:", managementType, "items:", items);
+        if (!items?.length) {
+            alert(`Please select at least one color to ${managementType}.`);
+            return;
+        }
         try {
-            console.log("Confirming action - managementType:", managementType, "items:", items);
-            if (managementType === "delete") {
-                const updatedColors = colors.map(color => {
-                    if (Array.isArray(items)) {
-                        if (items.some(item => item.id === color.id)) {
-                            return { ...color, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                        }
-                    } else {
-                        if (items.id === color.id) {
-                            return { ...color, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                        }
-                    }
-                    return color;
-                });
-                setColors(updatedColors);
-                setInitialColors(updatedColors);
-                setCheckedRows({});
-                setIsSelectAll(false);
-                if (tableRef.current && viewType === "active") {
-                    tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-                setManagementModalOpen(false);
-                if (currentData.length === 0) {
-                    setCurrentPage(1);
-                }
-                setForceUpdate(prev => prev + 1);
-                localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-                console.log("Colors after delete:", updatedColors);
+            const colorIds = items.map(item => item.id);
+            console.log(`${managementType} payload:`, managementType === "archive" ? { data: { ids: colorIds } } : { ids: colorIds });
+            if (managementType === "archive") {
+                const response = await Axios.put('/api/watch_colors/archive', { data: { ids: colorIds } });
+                console.log("Archive response:", response.data);
             } else if (managementType === "restore") {
-                const updatedColors = colors.map(color => {
-                    if (Array.isArray(items)) {
-                        if (items.some(item => item.id === color.id)) {
-                            return { ...color, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                        }
-                    } else {
-                        if (items.id === color.id) {
-                            return { ...color, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                        }
-                    }
-                    return color;
-                });
-                setColors(updatedColors);
-                setInitialColors(updatedColors);
-                setCheckedRows({});
-                setIsSelectAll(false);
-                if (tableRef.current && viewType === "archived") {
-                    tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-                setManagementModalOpen(false);
-                if (currentData.length === 0) {
-                    setCurrentPage(1);
-                }
-                setForceUpdate(prev => prev + 1);
-                localStorage.setItem("watchColors", JSON.stringify(updatedColors));
-                console.log("Colors after restore:", updatedColors);
+                const response = await Axios.put('/api/watch_colors/restore', { ids: colorIds });
+                console.log("Restore response:", response.data);
             }
+            const response = await Axios.get('/api/watch_colors');
+            setColors(response.data);
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+                tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = false);
+            }
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+            setForceUpdate(prev => prev + 1);
         } catch (error) {
-            console.error("Error in handleConfirmDeleteOrRestore:", error);
+            console.error(`Error ${managementType}ing colors:`, error.response?.data || error.message);
+            setError(`Failed to ${managementType} colors: ${error.response?.data?.errors ? JSON.stringify(error.response.data.errors) : error.message}`);
         }
     };
 
     const handleCloseManagement = () => {
-        try {
-            console.log("Closing management modal - managementType:", managementType);
-            setManagementModalOpen(false);
-            setManagementType("");
-            setSelectedColor(null);
-            setName("");
-            setError("");
-        } catch (error) {
-            console.error("Error in handleCloseManagement:", error);
-        }
+        setManagementModalOpen(false);
+        setManagementType("");
+        setSelectedColor(null);
+        setName("");
+        setError("");
     };
 
-    const getSelectedColors = () => {
-        try {
-            const selectedIndices = Object.keys(checkedRows)
-                .filter(index => checkedRows[index])
-                .map(index => parseInt(index, 10));
-            return selectedIndices.map(index => currentItems[index]);
-        } catch (error) {
-            console.error("Error in getSelectedColors:", error);
-            return [];
-        }
-    };
-
-    const checkedCount = Object.keys(checkedRows).filter(index => checkedRows[index]).length;
+    const checkedCount = Object.values(checkedRows).filter(Boolean).length;
 
     return (
-        <div className="WatchColor">
-            <h2 className="colors-header">{viewType === "active" ? "Colors" : "Archived Colors"}</h2>
-            <div className="table-container">
-                <div className="table-header-actions">
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            placeholder="Search"
-                            className="search-input"
-                        />
-                    </div>
-                    <div className="button-group" style={{ marginLeft: 'auto' }}>
-                        {viewType === "active" && (
-                            <>
-                                <button className="add-button" onClick={handleAdd}>Add</button>
+        <div className="WatchColorList">
+            <h2 className="colors-header">{viewType === "active" ? "Active Colors" : "Archived Colors"}</h2>
+            {error && <p className="error-message">{error}</p>}
+            {isLoading ? (
+                <p>Loading colors...</p>
+            ) : (
+                <div className="table-container">
+                    <div className="table-header-actions">
+                        <div className="search-bar">
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                                placeholder="Search"
+                                className="search-input"
+                            />
+                        </div>
+                        <div className="button-group" style={{ marginLeft: 'auto' }}>
+                            {viewType === "active" && (
+                                <>
+                                    <button className="add-button" onClick={handleAdd}>Add</button>
+                                    <button
+                                        className="archive-button"
+                                        onClick={() => handleArchive()}
+                                        disabled={checkedCount < 1}
+                                    >
+                                        Archive
+                                    </button>
+                                </>
+                            )}
+                            {viewType === "archived" && (
                                 <button
-                                    className="delete-button"
-                                    onClick={() => handleDelete()}
-                                    disabled={checkedCount < 2}
+                                    className="restore-button"
+                                    onClick={() => handleRestore()}
+                                    disabled={checkedCount < 1}
                                 >
-                                    Delete
+                                    Restore
                                 </button>
-                            </>
-                        )}
-                        {viewType === "archived" && (
+                            )}
+                        </div>
+                        <div className="view-toggle">
                             <button
-                                className="restore-button"
-                                onClick={() => handleRestore()}
-                                disabled={checkedCount < 2}
+                                className={`view-button ${viewType === "active" ? "active" : ""}`}
+                                onClick={() => setViewType("active")}
                             >
-                                Restore
+                                Active Colors
                             </button>
-                        )}
+                            <button
+                                className={`view-button ${viewType === "archived" ? "active" : ""}`}
+                                onClick={() => setViewType("archived")}
+                            >
+                                Archived Colors
+                            </button>
+                        </div>
                     </div>
-                    <div className="view-toggle">
-                        <button
-                            className={`view-button ${viewType === "active" ? "active" : ""}`}
-                            onClick={() => setViewType("active")}
-                        >
-                            Active Colors
-                        </button>
-                        <button
-                            className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                            onClick={() => setViewType("archived")}
-                        >
-                            Archived Colors
-                        </button>
-                    </div>
-                </div>
-                <table ref={tableRef} className="colors-table">
-                    <thead>
-                        <tr className="table-header-row">
-                            <th className="table-header">
-                                <input type="checkbox" className="color-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
-                            </th>
-                            <th className="table-header colors-action-column">Action</th>
-                            <th className="table-header">Color</th>
-                            <th className="table-header">Created At</th>
-                            <th className="table-header">Updated At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentItems.length > 0 ? (
-                            currentItems.map((color, index) => (
-                                <tr className="table-row" key={color.id + index + forceUpdate}>
-                                    <td className="table-cell">
-                                        <input type="checkbox" className="color-checkbox" onChange={(e) => handleRowCheckbox(index, e)} />
-                                    </td>
-                                    <td className="table-cell colors-action-column">
-                                        <div className="action-buttons">
-                                            {viewType === "active" ? (
-                                                <>
-                                                    <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(color)} />
-                                                    <FaTrash className="delete-icon" size={20} onClick={() => handleDelete(color)} />
-                                                </>
-                                            ) : (
-                                                <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(color)} />
-                                            )}
-                                        </div>
-                                    </td>
-                                    <td className="table-cell">{color.name}</td>
-                                    <td className="table-cell">{color.createdAt}</td>
-                                    <td className="table-cell">{color.updatedAt}</td>
-                                </tr>
-                            ))
-                        ) : (
-                            <tr className="table-row">
-                                <td colSpan="5" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                    {colors.length === 0
-                                        ? "No colors available. Please check your data or refresh the page."
-                                        : viewType === "active"
-                                        ? "No active colors match your search."
-                                        : "No archived colors match your search."}
-                                </td>
+                    <table ref={tableRef} className="colors-table">
+                        <thead>
+                            <tr className="table-header-row">
+                                <th className="table-header">
+                                    <input type="checkbox" className="color-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
+                                </th>
+                                <th className="table-header colors-action-column">Action</th>
+                                <th className="table-header">Color</th>
+                                <th className="table-header">Created At</th>
+                                <th className="table-header">Updated At</th>
                             </tr>
-                        )}
-                    </tbody>
-                </table>
-                <div className="table-pagination">
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="table-pagination-button"
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                        </thead>
+                        <tbody>
+                            {currentItems.length > 0 ? (
+                                currentItems.map(color => (
+                                    <tr className="table-row" key={color.id}>
+                                        <td className="table-cell">
+                                            <input
+                                                type="checkbox"
+                                                className="color-checkbox"
+                                                checked={!!checkedRows[color.id]}
+                                                onChange={e => handleRowCheckbox(color, e)}
+                                            />
+                                        </td>
+                                        <td className="table-cell colors-action-column">
+                                            <div className="action-buttons">
+                                                {viewType === "active" ? (
+                                                    <>
+                                                        <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(color)} />
+                                                        <FaTrash className="archive-icon" size={20} onClick={() => handleArchive(color)} />
+                                                    </>
+                                                ) : (
+                                                    <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(color)} />
+                                                )}
+                                            </div>
+                                        </td>
+                                        <td className="table-cell">{color.color_name}</td>
+                                        <td className="table-cell">{color.created_at}</td>
+                                        <td className="table-cell">{color.updated_at}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr className="table-row">
+                                    <td colSpan="5" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                        {colors.length === 0
+                                            ? "No colors available."
+                                            : viewType === "active"
+                                            ? "No active colors match your search."
+                                            : "No archived colors match your search."}
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    <div className="table-pagination">
                         <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
+                            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                            className="table-pagination-button"
                         >
-                            {page}
+                            Previous
                         </button>
-                    ))}
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="table-pagination-button"
-                    >
-                        Next
-                    </button>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                            <button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
+                            >
+                                {page}
+                            </button>
+                        ))}
+                        <button
+                            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                            className="table-pagination-button"
+                        >
+                            Next
+                        </button>
+                    </div>
                 </div>
-            </div>
+            )}
             {managementModalOpen && (
                 <WatchColorManagement
                     type={managementType}
-                    color={managementType === "edit" || managementType === "add" ? selectedColor : (managementType === "restore" || managementType === "delete" && !Array.isArray(selectedColor) ? selectedColor : null)}
-                    selectedColors={managementType === "restore" || managementType === "delete" ? (selectedColor || getSelectedColors()) : []}
+                    color={managementType === "edit" || managementType === "add" ? selectedColor : null}
+                    selectedColors={managementType === "restore" || managementType === "archive" ? selectedColor : []}
                     name={name}
                     onClose={handleCloseManagement}
                     onConfirm={handleConfirmDeleteOrRestore}
@@ -514,4 +392,4 @@ const WatchColor = () => {
     );
 };
 
-export default WatchColor;
+export default WatchColorList;

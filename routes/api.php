@@ -22,9 +22,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/register', [AuthController::class, 'register']);
 
+// Categories API
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::post('/categories', [CategoryController::class, 'store']);
 Route::put('/categories/archive', [CategoryController::class, 'archive']);
 Route::put('/categories/restore', [CategoryController::class, 'restore']);
 Route::put('/categories/{category}', [CategoryController::class, 'update']);
 Route::get('/categories/{category}', [CategoryController::class, 'show']);
+
+// Colors API
+Route::get('/watch_colors', [ColorController::class, 'index']);
+Route::post('/watch_colors', [ColorController::class, 'store']);
+Route::put('/watch_colors/archive', [ColorController::class, 'archive']);
+Route::put('/watch_colors/restore', [ColorController::class, 'restore']);
+Route::put('/watch_colors/{watchcolor}', [ColorController::class, 'update']);
+Route::get('/watch_colors/{watchcolor}', [ColorController::class, 'show']);
