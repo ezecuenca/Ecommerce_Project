@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
-const MeasurementManagement = ({ type, measurement, selectedMeasurements, measurementValue, onClose, onConfirm, onSave }) => {
-    const [localMeasurement, setLocalMeasurement] = useState(measurementValue || "");
+const MeasurementManagement = ({ type, measurement, selectedMeasurements, onClose, onConfirm, onSave }) => {
+    const [localMeasurement, setLocalMeasurement] = useState("");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        console.log("MeasurementManagement rendered with type:", type, "measurement:", measurement, "measurementValue:", measurementValue, "selectedMeasurements:", selectedMeasurements);
         if (type === "edit" && measurement) {
             setLocalMeasurement(measurement.measurement || "");
-            console.log("Initializing edit for measurement:", measurement);
         } else if (type === "add") {
             setLocalMeasurement("");
-            console.log("Initializing add for new measurement");
         }
-    }, [type, measurement, measurementValue, selectedMeasurements]);
+    }, [type, measurement, selectedMeasurements]);
 
     const validateMeasurement = (measurement) => {
-        return measurement.trim().length > 0; // Simple validation for measurement
+        return measurement.trim().length > 0;
     };
 
     const handleMeasurementChange = (e) => setLocalMeasurement(e.target.value);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (type === "edit") {
             if (!measurement) {
                 alert("No measurement selected for editing.");
@@ -29,47 +27,71 @@ const MeasurementManagement = ({ type, measurement, selectedMeasurements, measur
             }
 
             if (!validateMeasurement(localMeasurement)) {
-                setError("Measurement is required.");
+                setError("Wrist measurement is required.");
                 return;
             }
 
-            setError("");
-            const updatedMeasurement = {
-                ...measurement,
-                measurement: localMeasurement.trim(),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-            };
-            console.log("Saving updated measurement:", updatedMeasurement);
-            onSave(updatedMeasurement);
-            onClose();
+            try {
+                await Axios.put(`http://localhost:8000/api/wrist-measurements/${measurement.id}`, {
+                    measurement: localMeasurement.trim(),
+                });
+                onSave(); // Trigger refresh in parent
+                onClose();
+            } catch (error) {
+                console.error("Error updating wrist measurement:", error);
+                if (error.response) {
+                    console.log("Response data:", error.response.data);
+                    console.log("Response status:", error.response.status);
+                    const errorMessage = error.response.data.errors
+                        ? Object.values(error.response.data.errors).flat().join(" ")
+                        : "Failed to update wrist measurement.";
+                    setError(errorMessage);
+                } else if (error.request) {
+                    console.log("No response received:", error.request);
+                    setError("No response from server while updating wrist measurement. Please try again.");
+                } else {
+                    console.log("Error message:", error.message);
+                    setError(`Error updating wrist measurement: ${error.message}`);
+                }
+            }
         } else if (type === "add") {
             if (!validateMeasurement(localMeasurement)) {
-                setError("Measurement is required.");
+                setError("Wrist measurement is required.");
                 return;
             }
 
-            setError("");
-            const newMeasurement = {
-                id: Date.now(),
-                measurement: localMeasurement.trim(),
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false, // New measurements are active by default
-            };
-            console.log("Saving new measurement:", newMeasurement);
-            onSave(newMeasurement);
-            onClose();
+            try {
+                await Axios.post("http://localhost:8000/api/wrist-measurements", {
+                    measurement: localMeasurement.trim(),
+                });
+                onSave(); // Trigger refresh in parent
+                onClose();
+            } catch (error) {
+                console.error("Error adding wrist measurement:", error);
+                if (error.response) {
+                    console.log("Response data:", error.response.data);
+                    console.log("Response status:", error.response.status);
+                    const errorMessage = error.response.data.errors
+                        ? Object.values(error.response.data.errors).flat().join(" ")
+                        : "Failed to add wrist measurement.";
+                    setError(errorMessage);
+                } else if (error.request) {
+                    console.log("No response received:", error.request);
+                    setError("No response from server while adding wrist measurement. Please try again.");
+                } else {
+                    console.log("Error message:", error.message);
+                    setError(`Error adding wrist measurement: ${error.message}`);
+                }
+            }
         }
     };
 
     const handleConfirm = () => {
-        console.log("Confirming action - type:", type, "selectedMeasurements:", selectedMeasurements);
         if (type === "delete") {
             if (!selectedMeasurements || selectedMeasurements.length === 0) {
-                alert("Please select at least one measurement to delete.");
+                alert("Please select at least one measurement to archive.");
                 return;
             }
-            console.log("Confirming delete for measurements:", selectedMeasurements);
             onConfirm(selectedMeasurements);
             onClose();
         } else if (type === "restore") {
@@ -77,14 +99,12 @@ const MeasurementManagement = ({ type, measurement, selectedMeasurements, measur
                 alert("Please select at least one measurement to restore.");
                 return;
             }
-            console.log("Confirming restore for measurements:", selectedMeasurements);
             onConfirm(selectedMeasurements);
             onClose();
         }
     };
 
     const handleCancel = () => {
-        console.log("Closing modal for type:", type);
         onClose();
     };
 
@@ -115,9 +135,9 @@ const MeasurementManagement = ({ type, measurement, selectedMeasurements, measur
             </div>
         );
     } else if (type === "delete" || type === "restore") {
-        const title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+        const title = type === "delete" ? "Confirm Archive" : "Confirm Restore";
         const message = type === "delete"
-            ? `Are you sure you want to delete ${selectedMeasurements.length} measurement(s)?`
+            ? `Are you sure you want to archive ${selectedMeasurements.length} measurement(s)?`
             : `Are you sure you want to restore ${selectedMeasurements.length} measurement(s)?`;
 
         return (
@@ -127,7 +147,7 @@ const MeasurementManagement = ({ type, measurement, selectedMeasurements, measur
                     <p>{message}</p>
                     <div className="button-group">
                         <button className="save-button" onClick={handleConfirm}>
-                            {type === "delete" ? "Delete" : "Restore"}
+                            {type === "delete" ? "Archive" : "Restore"}
                         </button>
                         <button className="cancel-button" onClick={handleCancel}>Cancel</button>
                     </div>

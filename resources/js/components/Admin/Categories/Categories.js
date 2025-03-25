@@ -23,18 +23,32 @@ const CategoryList = () => {
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                const response = await Axios.get('/api/categories');
+                console.log("Fetching categories...");
+                const response = await Axios.get('http://localhost:8000/api/categories');
                 console.log("API Response:", response.data);
                 setCategories(response.data);
             } catch (error) {
                 console.error("Error fetching categories:", error);
+                if (error.response) {
+                    console.log("Response data:", error.response.data);
+                    console.log("Response status:", error.response.status);
+                } else if (error.request) {
+                    console.log("No response received:", error.request);
+                } else {
+                    console.log("Error message:", error.message);
+                }
                 setError("Failed to load categories. Please try again.");
             } finally {
                 setIsLoading(false);
             }
         };
         fetchCategories();
-    }, []); // Fetch once on mount
+    }, [forceUpdate]);
+
+    const formatDate = (dateString) => {
+        const date = new Date(dateString);
+        return date.toLocaleString();
+    };
 
     const getCurrentData = () => {
         if (!categories.length) return [];
@@ -87,11 +101,11 @@ const CategoryList = () => {
     const handleArchive = (categoryToArchive = null) => {
         const selectedItems = getSelectedItems(categoryToArchive);
         if (viewType !== "active") {
-            alert("You can only archive from Active Categories.");
+            alert("You can only delete from Active Categories.");
             return;
         }
         if (!selectedItems.length) {
-            alert("Please select at least one category to archive.");
+            alert("Please select at least one category to delete.");
             return;
         }
         setManagementType("archive");
@@ -123,7 +137,7 @@ const CategoryList = () => {
 
     const handleEdit = (category) => {
         setSelectedCategory(category);
-        setName(category.category_name || ""); // Match API field
+        setName(category.category_name || "");
         setManagementType("edit");
         setManagementModalOpen(true);
     };
@@ -138,7 +152,7 @@ const CategoryList = () => {
     };
 
     const handleSaveEditOrAdd = async (newOrUpdatedCategory) => {
-        if (!validateName(newOrUpdatedCategory.category_name)) { // Match API field
+        if (!validateName(newOrUpdatedCategory.category_name)) {
             setError("Category name is required.");
             return;
         }
@@ -146,46 +160,59 @@ const CategoryList = () => {
         try {
             if (managementType === "edit") {
                 if (!selectedCategory) throw new Error("No category selected for editing.");
-                await Axios.put(`/api/categories/${selectedCategory.id}`, {
+                console.log("Editing category:", selectedCategory.id, newOrUpdatedCategory);
+                await Axios.put(`http://localhost:8000/api/categories/${selectedCategory.id}`, {
                     category_name: newOrUpdatedCategory.category_name,
                     updated_at: new Date().toISOString(),
                     status: 1
                 });
             } else if (managementType === "add") {
-                await Axios.post('/api/categories', {
+                console.log("Adding new category:", newOrUpdatedCategory);
+                const response = await Axios.post('http://localhost:8000/api/categories', {
                     category_name: newOrUpdatedCategory.category_name,
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),
                     status: 1
                 });
+                console.log("Add response:", response.data);
             }
-            const response = await Axios.get('/api/categories');
-            setCategories(response.data);
+            console.log("Triggering re-fetch after add/edit");
+            setIsLoading(true);
+            setForceUpdate(prev => prev + 1);
             setManagementModalOpen(false);
             setSelectedCategory(null);
             setName("");
-            setForceUpdate(prev => prev + 1);
             setCurrentPage(1);
         } catch (error) {
             console.error(`Error ${managementType}ing category:`, error);
+            if (error.response) {
+                console.log("Response data:", error.response.data);
+                console.log("Response status:", error.response.status);
+            }
             setError(`Failed to ${managementType} category. Please try again.`);
+            setIsLoading(false);
         }
     };
 
     const handleConfirmDeleteOrRestore = async (items) => {
         if (!items?.length) {
-            alert(`Please select at least one category to ${managementType}.`);
+            alert(`Please select at least one category to ${managementType === "archive" ? "delete" : "restore"}.`);
             return;
         }
         try {
             const categoryIds = items.map(item => item.id);
+            console.log(`Category IDs to ${managementType}:`, categoryIds);
             if (managementType === "archive") {
-                await Axios.put('/api/categories/archive', { data: { ids: categoryIds } });
+                console.log("Sending archive request with data:", { data: { ids: categoryIds } });
+                await Axios.put('http://localhost:8000/api/categories/archive', { data: { ids: categoryIds } });
             } else if (managementType === "restore") {
-                await Axios.put('/api/categories/restore', { ids: categoryIds }); // Match backend expectation
+                console.log("Sending restore request with data:", { data: { ids: categoryIds } });
+                await Axios.put('http://localhost:8000/api/categories/restore', { data: { ids: categoryIds } });
             }
-            const response = await Axios.get('/api/categories');
-            setCategories(response.data);
+            console.log(`Successfully ${managementType === "archive" ? "deleted" : "restored"} categories. Triggering re-fetch...`);
+            setCategories([]);
+            setIsLoading(true);
+            setForceUpdate(prev => prev + 1);
             setCheckedRows({});
             setIsSelectAll(false);
             if (tableRef.current) {
@@ -193,10 +220,23 @@ const CategoryList = () => {
             }
             setManagementModalOpen(false);
             if (currentData.length <= itemsPerPage) setCurrentPage(1);
-            setForceUpdate(prev => prev + 1);
         } catch (error) {
-            console.error(`Error ${managementType}ing categories:`, error);
-            setError(`Failed to ${managementType} categories. Please try again.`);
+            console.error(`Error ${managementType === "archive" ? "deleting" : "restoring"} categories:`, error);
+            if (error.response) {
+                console.log("Response data:", error.response.data);
+                console.log("Response status:", error.response.status);
+                const errorMessage = error.response.data.errors
+                    ? Object.values(error.response.data.errors).flat().join(" ")
+                    : `Failed to ${managementType === "archive" ? "delete" : "restore"} categories.`;
+                setError(errorMessage);
+            } else if (error.request) {
+                console.log("No response received:", error.request);
+                setError(`No response from server while ${managementType === "archive" ? "deleting" : "restoring"} categories. Please try again.`);
+            } else {
+                console.log("Error message:", error.message);
+                setError(`Error ${managementType === "archive" ? "deleting" : "restoring"} categories: ${error.message}`);
+            }
+            setIsLoading(false);
         }
     };
 
@@ -235,9 +275,9 @@ const CategoryList = () => {
                                     <button
                                         className="archive-button"
                                         onClick={() => handleArchive()}
-                                        disabled={checkedCount < 1}
+                                        disabled={checkedCount < 2 && !isSelectAll}
                                     >
-                                        Archive
+                                        Delete
                                     </button>
                                 </>
                             )}
@@ -245,7 +285,7 @@ const CategoryList = () => {
                                 <button
                                     className="restore-button"
                                     onClick={() => handleRestore()}
-                                    disabled={checkedCount < 1}
+                                    disabled={checkedCount < 2 && !isSelectAll}
                                 >
                                     Restore
                                 </button>
@@ -303,8 +343,8 @@ const CategoryList = () => {
                                             </div>
                                         </td>
                                         <td className="table-cell">{category.category_name}</td>
-                                        <td className="table-cell">{category.created_at}</td>
-                                        <td className="table-cell">{category.updated_at}</td>
+                                        <td className="table-cell">{formatDate(category.created_at)}</td>
+                                        <td className="table-cell">{formatDate(category.updated_at)}</td>
                                     </tr>
                                 ))
                             ) : (

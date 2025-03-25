@@ -154,7 +154,7 @@
     }
 
     .save-button {
-        background-color: #2A363B !important; /* Blue-500 for "Delete" and "Restore" */
+        background-color: #2A363B !important; 
         color: white !important;
         padding: 8px 16px !important;
         border-radius: 4px !important;
@@ -164,7 +164,7 @@
         transition: background-color 0.3s ease !important;
 
         &:hover {
-            background-color: #2563eb !important; /* Blue-600 on hover */
+            background-color: #2563eb !important; 
         }
 
         &:focus {

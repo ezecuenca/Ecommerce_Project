@@ -4,31 +4,49 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Category;
-use Illuminate\Support\Facades\Validator;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return Category::all();
+        try {
+            return Category::all();
+        } catch (\Exception $e) {
+            \Log::error('Error fetching categories:', ['error' => $e->getMessage()]);
+            return response()->json(['message' => 'Failed to fetch categories'], 500);
+        }
+    }
+
+    public function show($id)
+    {
+        try {
+            $category = Category::find($id);
+            if (!$category) {
+                return response()->json(['message' => 'Category not found'], 404);
+            }
+            return response()->json($category, 200);
+        } catch (\Exception $e) {
+            \Log::error('Error fetching category:', ['error' => $e->getMessage()]);
+            return response()->json(['message' => 'Failed to fetch category'], 500);
+        }
     }
 
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'category_name' => 'required|string|max:255|unique:categories',
-            'status' => 'nullable|integer',
-        ]);
+        \Log::info('Store request data:', $request->all());
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+        $request->validate([
+            'category_name' => 'required|string|max:255|unique:categories',
+            'status' => 'nullable|integer|in:0,1',
+            'created_at' => 'nullable|date',
+            'updated_at' => 'nullable|date',
+        ]);
 
         $category = Category::create([
             'category_name' => $request->category_name,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'status' => $request->input('status', 1),1
+            'created_at' => $request->input('created_at', now()),
+            'updated_at' => $request->input('updated_at', now()),
+            'status' => $request->input('status', 1),
         ]);
 
         return response()->json(['message' => 'Category created successfully', 'data' => $category], 201);
@@ -36,14 +54,13 @@ class CategoryController extends Controller
 
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), [
-            'category_name' => 'required|string|max:255|unique:categories,category_name,' . $id,
-            'status' => 'nullable|integer',
-        ]);
+        \Log::info('Update request data:', $request->all());
 
-        if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
-        }
+        $request->validate([
+            'category_name' => 'required|string|max:255|unique:categories,category_name,' . $id,
+            'status' => 'nullable|integer|in:0,1',
+            'updated_at' => 'nullable|date',
+        ]);
 
         $category = Category::find($id);
         if (!$category) {
@@ -51,47 +68,46 @@ class CategoryController extends Controller
         }
 
         $category->category_name = $request->category_name;
-        $category->updated_at = now();
+        $category->updated_at = $request->input('updated_at', now());
         $category->status = $request->input('status', $category->status);
         $category->save();
 
-        return response()->json(['message' => 'Category updated successfully', 'data' => $category]);
+        return response()->json(['message' => 'Category updated successfully', 'data' => $category], 200);
     }
 
     public function archive(Request $request)
     {
-        try {
-            // Validate the request data
-            $validator = Validator::make($request->all(), [
-                'data.ids' => 'required|array', // Ensure 'data.ids' is present and an array
-                'data.ids.*' => 'integer', // Ensure each ID is an integer
-            ]);
+        \Log::info('Archive request data:', $request->all());
 
-            if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422); // Return validation errors
-            }
+        $request->validate([
+            'data.ids' => 'required|array',
+            'data.ids.*' => 'integer|exists:categories,id',
+        ]);
 
-            $ids = $request->input('data.ids');
+        $ids = $request->input('data.ids');
+        Category::whereIn('id', $ids)->update([
+            'status' => 0,
+            'updated_at' => now(),
+        ]);
 
-            // Update the status of the categories to 0 (archived)
-            Category::whereIn('id', $ids)->update(['status' => 0]);
-
-            return response()->json(['message' => 'Categories archived successfully'], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'Failed to archive categories', 'error' => $e->getMessage()], 500);
-        }
+        return response()->json(['message' => 'Categories archived successfully'], 200);
     }
 
     public function restore(Request $request)
     {
+        \Log::info('Restore request data:', $request->all());
+
         $request->validate([
-            'ids' => 'required|array',
-            'ids.*' => 'integer|exists:categories,id',
+            'data.ids' => 'required|array',
+            'data.ids.*' => 'integer|exists:categories,id',
         ]);
 
-        $ids = $request->input('ids');
-        Category::whereIn('id', $ids)->update(['status' => 1]);
+        $ids = $request->input('data.ids');
+        Category::whereIn('id', $ids)->update([
+            'status' => 1,
+            'updated_at' => now(),
+        ]);
 
-        return response()->json(['message' => 'Categories restored successfully']);
+        return response()->json(['message' => 'Categories restored successfully'], 200);
     }
 }

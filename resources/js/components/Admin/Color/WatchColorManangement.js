@@ -1,27 +1,25 @@
 import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 const WatchColorManagement = ({ type, color, selectedColors, name, onClose, onConfirm, onSave }) => {
     const [localName, setLocalName] = useState(name || "");
     const [error, setError] = useState("");
 
     useEffect(() => {
-        console.log("WatchColorManagement rendered with type:", type, "color:", color, "name:", name, "selectedColors:", selectedColors);
         if (type === "edit" && color) {
             setLocalName(color.name || "");
-            console.log("Initializing edit for color:", color);
         } else if (type === "add") {
             setLocalName("");
-            console.log("Initializing add for new color");
         }
     }, [type, color, name, selectedColors]);
 
     const validateName = (name) => {
-        return name.trim().length > 0; // Simple validation for color name
+        return name.trim().length > 0;
     };
 
     const handleNameChange = (e) => setLocalName(e.target.value);
 
-    const handleSave = () => {
+    const handleSave = async () => {
         if (type === "edit") {
             if (!color) {
                 alert("No color selected for editing.");
@@ -33,43 +31,67 @@ const WatchColorManagement = ({ type, color, selectedColors, name, onClose, onCo
                 return;
             }
 
-            setError("");
-            const updatedColor = {
-                ...color,
-                name: localName.trim(),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-            };
-            console.log("Saving updated color:", updatedColor);
-            onSave(updatedColor);
-            onClose();
+            try {
+                await Axios.put(`http://localhost:8000/api/watch-colors/${color.id}`, {
+                    color_name: localName.trim(),
+                });
+                onSave(); // Trigger refresh in parent
+                onClose();
+            } catch (error) {
+                console.error("Error updating watch color:", error);
+                if (error.response) {
+                    console.log("Response data:", error.response.data);
+                    console.log("Response status:", error.response.status);
+                    const errorMessage = error.response.data.errors
+                        ? Object.values(error.response.data.errors).flat().join(" ")
+                        : "Failed to update watch color.";
+                    setError(errorMessage);
+                } else if (error.request) {
+                    console.log("No response received:", error.request);
+                    setError("No response from server while updating watch color. Please try again.");
+                } else {
+                    console.log("Error message:", error.message);
+                    setError(`Error updating watch color: ${error.message}`);
+                }
+            }
         } else if (type === "add") {
             if (!validateName(localName)) {
                 setError("Color name is required.");
                 return;
             }
 
-            setError("");
-            const newColor = {
-                id: Date.now(),
-                name: localName.trim(),
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false, // New colors are active by default
-            };
-            console.log("Saving new color:", newColor);
-            onSave(newColor);
-            onClose();
+            try {
+                await Axios.post("http://localhost:8000/api/watch-colors", {
+                    color_name: localName.trim(),
+                });
+                onSave(); // Trigger refresh in parent
+                onClose();
+            } catch (error) {
+                console.error("Error adding watch color:", error);
+                if (error.response) {
+                    console.log("Response data:", error.response.data);
+                    console.log("Response status:", error.response.status);
+                    const errorMessage = error.response.data.errors
+                        ? Object.values(error.response.data.errors).flat().join(" ")
+                        : "Failed to add watch color.";
+                    setError(errorMessage);
+                } else if (error.request) {
+                    console.log("No response received:", error.request);
+                    setError("No response from server while adding watch color. Please try again.");
+                } else {
+                    console.log("Error message:", error.message);
+                    setError(`Error adding watch color: ${error.message}`);
+                }
+            }
         }
     };
 
     const handleConfirm = () => {
-        console.log("Confirming action - type:", type, "selectedColors:", selectedColors);
         if (type === "delete") {
             if (!selectedColors || selectedColors.length === 0) {
-                alert("Please select at least one color to delete.");
+                alert("Please select at least one color to archive.");
                 return;
             }
-            console.log("Confirming delete for colors:", selectedColors);
             onConfirm(selectedColors);
             onClose();
         } else if (type === "restore") {
@@ -77,14 +99,12 @@ const WatchColorManagement = ({ type, color, selectedColors, name, onClose, onCo
                 alert("Please select at least one color to restore.");
                 return;
             }
-            console.log("Confirming restore for colors:", selectedColors);
             onConfirm(selectedColors);
             onClose();
         }
     };
 
     const handleCancel = () => {
-        console.log("Closing modal for type:", type);
         onClose();
     };
 
@@ -115,7 +135,7 @@ const WatchColorManagement = ({ type, color, selectedColors, name, onClose, onCo
             </div>
         );
     } else if (type === "delete" || type === "restore") {
-        const title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
+        const title = type === "delete" ? "Confirm Archive" : "Confirm Restore";
         const message = type === "delete"
             ? `Are you sure you want to delete ${selectedColors.length} color(s)?`
             : `Are you sure you want to restore ${selectedColors.length} color(s)?`;

@@ -1,6 +1,3 @@
-/* src/components/admin/CategoryManagement.scss */
-
-/* Scope all styles to prevent conflicts with CustomerManagement or other files */
 .CategoryManagement {
     .edit-modal-overlay {
         position: fixed !important;
@@ -8,16 +5,14 @@
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
-        background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+        background-color: rgba(0, 0, 0, 0.5) !important;
         display: flex !important;
-        justify-content: center !important; /* Center horizontally */
-        align-items: center !important; /* Center vertically */
+        justify-content: center !important;
+        align-items: center !important;
         z-index: 1000 !important;
         isolation: isolate !important;
-        /* Fallback for older browsers or conflicts */
         -webkit-align-items: center !important;
         -webkit-justify-content: center !important;
-        /* Prevent parent interference */
         transform: none !important;
         will-change: transform, opacity !important;
         margin: 0 !important;
@@ -97,60 +92,59 @@
         }
     }
 
-    .delete-modal-overlay {
+    .confirm-modal-overlay {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
-        background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+        background-color: rgba(0, 0, 0, 0.5) !important;
         display: flex !important;
-        justify-content: center !important; /* Center horizontally */
-        align-items: center !important; /* Center vertically */
+        justify-content: center !important;
+        align-items: center !important;
         z-index: 1000 !important;
         isolation: isolate !important;
-        /* Fallback for older browsers or conflicts */
         -webkit-align-items: center !important;
         -webkit-justify-content: center !important;
-        /* Prevent parent interference */
         transform: none !important;
         will-change: transform, opacity !important;
         margin: 0 !important;
         padding: 0 !important;
     }
 
-    .delete-modal {
+    .confirm-modal {
         background-color: white !important;
         padding: 24px !important;
         border-radius: 8px !important;
         width: 400px !important;
         max-width: 90% !important;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
-        text-align: center !important;
         position: relative !important;
     }
 
-    .delete-modal h3 {
+    .confirm-modal h3 {
         font-size: 20px !important;
         font-weight: bold !important;
         color: #000000 !important;
         margin-bottom: 16px !important;
+        text-align: left !important;
     }
 
-    .delete-modal p {
+    .confirm-modal p {
         font-size: 16px !important;
         color: #4a5568 !important;
         margin-bottom: 16px !important;
+        text-align: left !important;
     }
 
     .button-group {
         display: flex !important;
         gap: 8px !important;
-        justify-content: center !important;
+        justify-content: flex-end !important;
     }
 
     .save-button {
-        background-color: #2A363B !important; /* Blue-500 for "Yes, Delete" */
+        background-color: #2A363B !important;
         color: white !important;
         padding: 8px 16px !important;
         border-radius: 4px !important;
@@ -160,17 +154,17 @@
         transition: background-color 0.3s ease !important;
 
         &:hover {
-            background-color: #2563eb !important; /* Blue-600 on hover */
+            background-color: #2563eb !important;
         }
 
         &:focus {
             outline: none !important;
-            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #2563eb !important;
         }
     }
 
     .cancel-button {
-        background-color: #e5e7eb !important; /* Gray-200 for "Cancel" */
+        background-color: #e5e7eb !important;
         color: #4a5568 !important;
         padding: 8px 16px !important;
         border-radius: 4px !important;
@@ -180,12 +174,12 @@
         transition: background-color 0.3s ease !important;
 
         &:hover {
-            background-color: #d1d5db !important; /* Gray-300 on hover */
+            background-color: #d1d5db !important;
         }
 
         &:focus {
             outline: none !important;
-            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6 !important;
         }
     }
 }
@@ -193,13 +187,13 @@
 @media (max-width: 767px) {
     .CategoryManagement {
         .edit-modal,
-        .delete-modal {
+        .confirm-modal {
             width: 90% !important;
             padding: 16px !important;
         }
 
         .edit-modal-header,
-        .delete-modal h3 {
+        .confirm-modal h3 {
             font-size: 18px !important;
             margin-bottom: 12px !important;
         }

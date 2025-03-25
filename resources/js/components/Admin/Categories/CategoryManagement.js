@@ -71,18 +71,22 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
             </div>
         );
     } else if (type === "archive" || type === "restore") {
-        const action = type === "archive" ? "Archive" : "Restore";
-        const message = `Are you sure you want to ${action.toLowerCase()} ${selectedCategories.length} category(ies)?`;
+        const action = type === "archive" ? "Delete" : "Restore";
+        const message = type === "archive"
+            ? `Are you sure you want to delete ${selectedCategories.length} category(ies)?`
+            : `Are you sure you want to ${action.toLowerCase()} ${selectedCategories.length} category(ies)?`;
 
         return (
-            <div className={`${type}-modal-overlay`} onClick={handleCancel} data-testid={`${type}-overlay`}>
-                <div className={`${type}-modal`} onClick={e => e.stopPropagation()} data-testid={`${type}-modal`}>
-                    <h3>Confirm {action}</h3>
-                    {error && <p className="error-message">{error}</p>}
-                    <p>{message}</p>
-                    <div className="button-group">
-                        <button className="save-button" onClick={handleConfirm}>{action}</button>
-                        <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+            <div className="CategoryManagement">
+                <div className="confirm-modal-overlay" onClick={handleCancel} data-testid="confirm-overlay">
+                    <div className="confirm-modal" onClick={e => e.stopPropagation()} data-testid="confirm-modal">
+                        <h3>Confirm {action}</h3>
+                        {error && <p className="error-message">{error}</p>}
+                        <p>{message}</p>
+                        <div className="button-group">
+                            <button className="save-button" onClick={handleConfirm}>{action}</button>
+                            <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
