@@ -74689,7 +74689,7 @@ var CategoryList = function CategoryList() {
                         return handleEdit(category);
                       }
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
-                      className: "archive-icon",
+                      className: "delete-icon",
                       size: 20,
                       onClick: function onClick() {
                         return handleArchive(category);
@@ -75357,7 +75357,7 @@ var WatchColorList = function WatchColorList() {
   };
   var checkedCount = Object.values(checkedRows).filter(Boolean).length;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-    className: "WatchColorList",
+    className: "WatchColor",
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "colors-header",
       children: viewType === "active" ? "Active Colors" : "Archived Colors"
@@ -75390,7 +75390,7 @@ var WatchColorList = function WatchColorList() {
               onClick: handleAdd,
               children: "Add"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "archive-button",
+              className: "delete-button",
               onClick: function onClick() {
                 return handleArchive();
               },
@@ -75475,7 +75475,7 @@ var WatchColorList = function WatchColorList() {
                         return handleEdit(color);
                       }
                     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
-                      className: "archive-icon",
+                      className: "delete-icon",
                       size: 20,
                       onClick: function onClick() {
                         return handleArchive(color);

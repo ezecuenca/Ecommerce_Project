@@ -241,7 +241,7 @@ const WatchColorList = () => {
     const checkedCount = Object.values(checkedRows).filter(Boolean).length;
 
     return (
-        <div className="WatchColorList">
+        <div className="WatchColor">
             <h2 className="colors-header">{viewType === "active" ? "Active Colors" : "Archived Colors"}</h2>
             {error && <p className="error-message">{error}</p>}
             {isLoading ? (
@@ -263,7 +263,7 @@ const WatchColorList = () => {
                                 <>
                                     <button className="add-button" onClick={handleAdd}>Add</button>
                                     <button
-                                        className="archive-button"
+                                        className="delete-button"
                                         onClick={() => handleArchive()}
                                         disabled={checkedCount < 1}
                                     >
@@ -325,7 +325,7 @@ const WatchColorList = () => {
                                                 {viewType === "active" ? (
                                                     <>
                                                         <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(color)} />
-                                                        <FaTrash className="archive-icon" size={20} onClick={() => handleArchive(color)} />
+                                                        <FaTrash className="delete-icon" size={20} onClick={() => handleArchive(color)} />
                                                     </>
                                                 ) : (
                                                     <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(color)} />

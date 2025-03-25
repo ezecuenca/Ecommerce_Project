@@ -295,7 +295,7 @@ const CategoryList = () => {
                                                 {viewType === "active" ? (
                                                     <>
                                                         <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(category)} />
-                                                        <FaTrash className="archive-icon" size={20} onClick={() => handleArchive(category)} />
+                                                        <FaTrash className="delete-icon" size={20} onClick={() => handleArchive(category)} />
                                                     </>
                                                 ) : (
                                                     <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(category)} />
