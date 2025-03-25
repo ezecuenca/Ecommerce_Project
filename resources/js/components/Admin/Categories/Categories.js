@@ -233,11 +233,11 @@ const CategoryList = () => {
                                 <>
                                     <button className="add-button" onClick={handleAdd}>Add</button>
                                     <button
-                                        className="archive-button"
+                                        className="delete-button"
                                         onClick={() => handleArchive()}
                                         disabled={checkedCount < 1}
                                     >
-                                        Archive
+                                        Delete
                                     </button>
                                 </>
                             )}

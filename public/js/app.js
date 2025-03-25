@@ -74604,12 +74604,12 @@ var CategoryList = function CategoryList() {
               onClick: handleAdd,
               children: "Add"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-              className: "archive-button",
+              className: "delete-button",
               onClick: function onClick() {
                 return handleArchive();
               },
               disabled: checkedCount < 1,
-              children: "Archive"
+              children: "Delete"
             })]
           }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
