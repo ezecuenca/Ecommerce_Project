@@ -97,8 +97,7 @@
         }
     }
 
-    .delete-modal-overlay,
-    .restore-modal-overlay {
+    .action-modal-overlay {
         position: fixed !important;
         top: 0 !important;
         left: 0 !important;
@@ -120,8 +119,7 @@
         padding: 0 !important;
     }
 
-    .delete-modal,
-    .restore-modal {
+    .action-modal {
         background-color: white !important;
         padding: 24px !important;
         border-radius: 8px !important;
@@ -132,16 +130,14 @@
         position: relative !important;
     }
 
-    .delete-modal h3,
-    .restore-modal h3 {
+    .action-modal h3 {
         font-size: 20px !important;
         font-weight: bold !important;
         color: #000000 !important;
         margin-bottom: 16px !important;
     }
 
-    .delete-modal p,
-    .restore-modal p {
+    .action-modal p {
         font-size: 16px !important;
         color: #4a5568 !important;
         margin-bottom: 16px !important;
@@ -197,15 +193,13 @@
 @media (max-width: 767px) {
     .WatchColorManagement {
         .edit-modal,
-        .delete-modal,
-        .restore-modal {
+        .action-modal {
             width: 90% !important;
             padding: 16px !important;
         }
 
         .edit-modal-header,
-        .delete-modal h3,
-        .restore-modal h3 {
+        .action-modal h3 {
             font-size: 18px !important;
             margin-bottom: 12px !important;
         }

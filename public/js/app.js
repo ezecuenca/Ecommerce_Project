@@ -74455,7 +74455,6 @@ var CategoryList = function CategoryList() {
             return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/categories', {
               category_name: newOrUpdatedCategory.category_name,
               created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
               status: 1
             });
           case 15:
@@ -74903,34 +74902,37 @@ var CategoryManagement = function CategoryManagement(_ref) {
     var action = type === "archive" ? "Archive" : "Restore";
     var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedCategories.length, " category(ies)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type, "-modal-overlay"),
-      onClick: handleCancel,
-      "data-testid": "".concat(type, "-overlay"),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type, "-modal"),
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
-          children: ["Confirm ", action]
-        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "error-message",
-          children: error
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "button-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "save-button",
-            onClick: handleConfirm,
-            children: action
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "cancel-button",
-            onClick: handleCancel,
-            children: "Cancel"
+      className: "CategoryManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "action-modal-overlay",
+        onClick: handleCancel,
+        "data-testid": "".concat(type, "-overlay"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "action-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          "data-testid": "".concat(type, "-modal"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+            children: ["Confirm ", action]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleConfirm,
+              children: action
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
           })]
-        })]
+        })
       })
     });
   }
@@ -74978,7 +74980,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 
-var WatchColorList = function WatchColorList() {
+var WatchColor = function WatchColor() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
     checkedRows = _useState2[0],
@@ -75071,35 +75073,20 @@ var WatchColorList = function WatchColorList() {
     fetchColors();
   }, []);
   var getCurrentData = function getCurrentData() {
-    console.log("colors:", colors);
-    console.log("viewType:", viewType);
-    console.log("searchQuery:", searchQuery);
-    if (!colors || colors.length === 0) {
-      console.warn("No colors data available, returning empty array.");
-      return [];
-    }
+    if (!colors.length) return [];
     var filteredColors = colors.filter(function (color) {
-      if (viewType === "active") {
-        return color.status === 1;
-      } else {
-        return color.status === 0;
-      }
+      return viewType === "active" ? color.status === 1 : color.status === 0;
     });
     if (searchQuery.trim()) {
       filteredColors = filteredColors.filter(function (color) {
         return color.color_name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
-    console.log("filteredColors:", filteredColors);
     return filteredColors;
   };
   var currentData = getCurrentData();
-  var start = (currentPage - 1) * itemsPerPage;
-  var end = currentPage * itemsPerPage;
-  console.log("start:", start, "end:", end);
-  var currentItems = currentData.slice(start, end);
-  console.log("currentItems:", currentItems);
-  var totalPages = Math.ceil((currentData === null || currentData === void 0 ? void 0 : currentData.length) / itemsPerPage);
+  var totalPages = Math.ceil(currentData.length / itemsPerPage);
+  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
@@ -75131,7 +75118,6 @@ var WatchColorList = function WatchColorList() {
   };
   var handleArchive = function handleArchive() {
     var colorToArchive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to archive - viewType:", viewType, "colorToArchive:", colorToArchive, "checkedRows:", checkedRows);
     var selectedItems = getSelectedItems(colorToArchive);
     if (viewType !== "active") {
       alert("You can only archive from Active Colors.");
@@ -75147,7 +75133,6 @@ var WatchColorList = function WatchColorList() {
   };
   var handleRestore = function handleRestore() {
     var colorToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
     var selectedItems = getSelectedItems(colorToRestore);
     if (viewType !== "archived") {
       alert("You can only restore from Archived Colors.");
@@ -75162,14 +75147,12 @@ var WatchColorList = function WatchColorList() {
     setManagementModalOpen(true);
   };
   var handleAdd = function handleAdd() {
-    console.log("Current viewType:", viewType, "Opening Add modal");
     setManagementType("add");
     setName("");
     setSelectedColor(null);
     setManagementModalOpen(true);
   };
   var handleEdit = function handleEdit(color) {
-    console.log("Opening edit for color:", color);
     setSelectedColor(color);
     setName(color.color_name || "");
     setManagementType("edit");
@@ -75228,7 +75211,6 @@ var WatchColorList = function WatchColorList() {
             return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/watch_colors', {
               color_name: newOrUpdatedColor.color_name,
               created_at: new Date().toISOString(),
-              updated_at: new Date().toISOString(),
               status: 1
             });
           case 15:
@@ -75267,15 +75249,14 @@ var WatchColorList = function WatchColorList() {
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
-            console.log("Confirming action - managementType:", managementType, "items:", items);
             if (items !== null && items !== void 0 && items.length) {
-              _context3.next = 4;
+              _context3.next = 3;
               break;
             }
             alert("Please select at least one color to ".concat(managementType, "."));
             return _context3.abrupt("return");
-          case 4:
-            _context3.prev = 4;
+          case 3:
+            _context3.prev = 3;
             colorIds = items.map(function (item) {
               return item.id;
             });
@@ -75287,36 +75268,36 @@ var WatchColorList = function WatchColorList() {
               ids: colorIds
             });
             if (!(managementType === "archive")) {
-              _context3.next = 14;
+              _context3.next = 13;
               break;
             }
-            _context3.next = 10;
+            _context3.next = 9;
             return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/archive', {
               data: {
                 ids: colorIds
               }
             });
-          case 10:
+          case 9:
             _response = _context3.sent;
             console.log("Archive response:", _response.data);
-            _context3.next = 19;
+            _context3.next = 18;
             break;
-          case 14:
+          case 13:
             if (!(managementType === "restore")) {
-              _context3.next = 19;
+              _context3.next = 18;
               break;
             }
-            _context3.next = 17;
+            _context3.next = 16;
             return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/restore', {
               ids: colorIds
             });
-          case 17:
+          case 16:
             _response2 = _context3.sent;
             console.log("Restore response:", _response2.data);
-          case 19:
-            _context3.next = 21;
+          case 18:
+            _context3.next = 20;
             return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
-          case 21:
+          case 20:
             response = _context3.sent;
             setColors(response.data);
             setCheckedRows({});
@@ -75331,18 +75312,18 @@ var WatchColorList = function WatchColorList() {
             setForceUpdate(function (prev) {
               return prev + 1;
             });
-            _context3.next = 35;
+            _context3.next = 34;
             break;
-          case 31:
-            _context3.prev = 31;
-            _context3.t0 = _context3["catch"](4);
+          case 30:
+            _context3.prev = 30;
+            _context3.t0 = _context3["catch"](3);
             console.error("Error ".concat(managementType, "ing colors:"), ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
             setError("Failed to ".concat(managementType, " colors: ").concat((_error$response2 = _context3.t0.response) !== null && _error$response2 !== void 0 && (_error$response2 = _error$response2.data) !== null && _error$response2 !== void 0 && _error$response2.errors ? JSON.stringify(_context3.t0.response.data.errors) : _context3.t0.message));
-          case 35:
+          case 34:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[4, 31]]);
+      }, _callee3, null, [[3, 30]]);
     }));
     return function handleConfirmDeleteOrRestore(_x2) {
       return _ref3.apply(this, arguments);
@@ -75395,7 +75376,7 @@ var WatchColorList = function WatchColorList() {
                 return handleArchive();
               },
               disabled: checkedCount < 1,
-              children: "Archive"
+              children: "Delete"
             })]
           }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
@@ -75559,7 +75540,7 @@ var WatchColorList = function WatchColorList() {
     })]
   });
 };
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColorList);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (WatchColor);
 
 /***/ }),
 
@@ -75689,34 +75670,37 @@ var WatchColorManagement = function WatchColorManagement(_ref) {
     var action = type === "archive" ? "Archive" : "Restore";
     var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedColors.length, " color(s)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type, "-modal-overlay"),
-      onClick: handleCancel,
-      "data-testid": "".concat(type, "-overlay"),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type, "-modal"),
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
-          children: ["Confirm ", action]
-        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "error-message",
-          children: error
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "button-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "save-button",
-            onClick: handleConfirm,
-            children: action
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "cancel-button",
-            onClick: handleCancel,
-            children: "Cancel"
+      className: "WatchColorManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "action-modal-overlay",
+        onClick: handleCancel,
+        "data-testid": "".concat(type, "-overlay"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "action-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          "data-testid": "".concat(type, "-modal"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+            children: ["Confirm ", action]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleConfirm,
+              children: action
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
           })]
-        })]
+        })
       })
     });
   }

@@ -27,8 +27,7 @@ class CategoryController extends Controller
         $category = Category::create([
             'category_name' => $request->category_name,
             'created_at' => now(),
-            'updated_at' => now(),
-            'status' => $request->input('status', 1),1
+            'status' => $request->input('status', 1)
         ]);
 
         return response()->json(['message' => 'Category created successfully', 'data' => $category], 201);
@@ -61,19 +60,17 @@ class CategoryController extends Controller
     public function archive(Request $request)
     {
         try {
-            // Validate the request data
             $validator = Validator::make($request->all(), [
-                'data.ids' => 'required|array', // Ensure 'data.ids' is present and an array
-                'data.ids.*' => 'integer', // Ensure each ID is an integer
+                'data.ids' => 'required|array',
+                'data.ids.*' => 'integer',
             ]);
 
             if ($validator->fails()) {
-                return response()->json(['errors' => $validator->errors()], 422); // Return validation errors
+                return response()->json(['errors' => $validator->errors()], 422);
             }
 
             $ids = $request->input('data.ids');
 
-            // Update the status of the categories to 0 (archived)
             Category::whereIn('id', $ids)->update(['status' => 0]);
 
             return response()->json(['message' => 'Categories archived successfully'], 200);

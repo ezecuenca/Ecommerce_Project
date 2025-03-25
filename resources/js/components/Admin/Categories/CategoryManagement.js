@@ -75,14 +75,16 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
         const message = `Are you sure you want to ${action.toLowerCase()} ${selectedCategories.length} category(ies)?`;
 
         return (
-            <div className={`${type}-modal-overlay`} onClick={handleCancel} data-testid={`${type}-overlay`}>
-                <div className={`${type}-modal`} onClick={e => e.stopPropagation()} data-testid={`${type}-modal`}>
-                    <h3>Confirm {action}</h3>
-                    {error && <p className="error-message">{error}</p>}
-                    <p>{message}</p>
-                    <div className="button-group">
-                        <button className="save-button" onClick={handleConfirm}>{action}</button>
-                        <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+            <div className="CategoryManagement">
+                <div className={`action-modal-overlay`} onClick={handleCancel} data-testid={`${type}-overlay`}>
+                    <div className={`action-modal`} onClick={e => e.stopPropagation()} data-testid={`${type}-modal`}>
+                        <h3>Confirm {action}</h3>
+                        {error && <p className="error-message">{error}</p>}
+                        <p>{message}</p>
+                        <div className="button-group">
+                            <button className="save-button" onClick={handleConfirm}>{action}</button>
+                            <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>

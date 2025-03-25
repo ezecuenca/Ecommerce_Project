@@ -18201,7 +18201,7 @@ button { /* Override any global button styles specific to Reviews */
   box-shadow: 0 0 0 2px #3b82f6 !important;
   background-color: white !important;
 }
-.CategoryManagement .delete-modal-overlay {
+.CategoryManagement .action-modal-overlay {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -18220,7 +18220,7 @@ button { /* Override any global button styles specific to Reviews */
   margin: 0 !important;
   padding: 0 !important;
 }
-.CategoryManagement .delete-modal {
+.CategoryManagement .action-modal {
   background-color: white !important;
   padding: 24px !important;
   border-radius: 8px !important;
@@ -18230,13 +18230,13 @@ button { /* Override any global button styles specific to Reviews */
   text-align: center !important;
   position: relative !important;
 }
-.CategoryManagement .delete-modal h3, .CategoryManagement .delete-modal .h3 {
+.CategoryManagement .action-modal h3, .CategoryManagement .action-modal .h3 {
   font-size: 20px !important;
   font-weight: bold !important;
   color: #000000 !important;
   margin-bottom: 16px !important;
 }
-.CategoryManagement .delete-modal p {
+.CategoryManagement .action-modal p {
   font-size: 16px !important;
   color: #4a5568 !important;
   margin-bottom: 16px !important;
@@ -18283,13 +18283,13 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .CategoryManagement .edit-modal,
-  .CategoryManagement .delete-modal {
+  .CategoryManagement .action-modal {
     width: 90% !important;
     padding: 16px !important;
   }
   .CategoryManagement .edit-modal-header,
-  .CategoryManagement .delete-modal h3,
-  .CategoryManagement .delete-modal .h3 {
+  .CategoryManagement .action-modal h3,
+  .CategoryManagement .action-modal .h3 {
     font-size: 18px !important;
     margin-bottom: 12px !important;
   }
@@ -18399,8 +18399,7 @@ button { /* Override any global button styles specific to Reviews */
   box-shadow: 0 0 0 2px #3b82f6 !important;
   background-color: white !important;
 }
-.WatchColorManagement .delete-modal-overlay,
-.WatchColorManagement .restore-modal-overlay {
+.WatchColorManagement .action-modal-overlay {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -18421,8 +18420,7 @@ button { /* Override any global button styles specific to Reviews */
   margin: 0 !important;
   padding: 0 !important;
 }
-.WatchColorManagement .delete-modal,
-.WatchColorManagement .restore-modal {
+.WatchColorManagement .action-modal {
   background-color: white !important;
   padding: 24px !important;
   border-radius: 8px !important;
@@ -18432,16 +18430,13 @@ button { /* Override any global button styles specific to Reviews */
   text-align: center !important;
   position: relative !important;
 }
-.WatchColorManagement .delete-modal h3, .WatchColorManagement .delete-modal .h3,
-.WatchColorManagement .restore-modal h3,
-.WatchColorManagement .restore-modal .h3 {
+.WatchColorManagement .action-modal h3, .WatchColorManagement .action-modal .h3 {
   font-size: 20px !important;
   font-weight: bold !important;
   color: #000000 !important;
   margin-bottom: 16px !important;
 }
-.WatchColorManagement .delete-modal p,
-.WatchColorManagement .restore-modal p {
+.WatchColorManagement .action-modal p {
   font-size: 16px !important;
   color: #4a5568 !important;
   margin-bottom: 16px !important;
@@ -18488,16 +18483,13 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .WatchColorManagement .edit-modal,
-  .WatchColorManagement .delete-modal,
-  .WatchColorManagement .restore-modal {
+  .WatchColorManagement .action-modal {
     width: 90% !important;
     padding: 16px !important;
   }
   .WatchColorManagement .edit-modal-header,
-  .WatchColorManagement .delete-modal h3,
-  .WatchColorManagement .delete-modal .h3,
-  .WatchColorManagement .restore-modal h3,
-  .WatchColorManagement .restore-modal .h3 {
+  .WatchColorManagement .action-modal h3,
+  .WatchColorManagement .action-modal .h3 {
     font-size: 18px !important;
     margin-bottom: 12px !important;
   }
