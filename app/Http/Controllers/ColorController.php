@@ -27,7 +27,6 @@ class ColorController extends Controller
         $color = Color::create([
             'color_name' => $request->color_name,
             'created_at' => now(),
-            'updated_at' => now(),
             'status' => $request->input('status', 1)
         ]);
 

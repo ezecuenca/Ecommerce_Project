@@ -155,7 +155,6 @@ const CategoryList = () => {
                 await Axios.post('/api/categories', {
                     category_name: newOrUpdatedCategory.category_name,
                     created_at: new Date().toISOString(),
-                    updated_at: new Date().toISOString(),
                     status: 1
                 });
             }

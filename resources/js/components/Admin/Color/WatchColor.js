@@ -3,7 +3,7 @@ import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
 import WatchColorManagement from "./WatchColorManagement";
 import Axios from 'axios';
 
-const WatchColorList = () => {
+const WatchColor = () => {
     const [checkedRows, setCheckedRows] = useState({});
     const [isSelectAll, setIsSelectAll] = useState(false);
     const [viewType, setViewType] = useState("active");
@@ -37,46 +37,24 @@ const WatchColorList = () => {
     }, []);
 
     const getCurrentData = () => {
-        console.log("colors:", colors);
-        console.log("viewType:", viewType);
-        console.log("searchQuery:", searchQuery);
-    
-        if (!colors || colors.length === 0) {
-            console.warn("No colors data available, returning empty array.");
-            return [];
-        }
-    
-        let filteredColors = colors.filter(color => {
-            if (viewType === "active") {
-                return color.status === 1;
-            } else {
-                return color.status === 0;
-            }
-        });
-    
+        if (!colors.length) return [];
+        let filteredColors = colors.filter(color => 
+            viewType === "active" ? color.status === 1 : color.status === 0
+        );
         if (searchQuery.trim()) {
             filteredColors = filteredColors.filter(color =>
                 color.color_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
-    
-        console.log("filteredColors:", filteredColors);
         return filteredColors;
     };
 
     const currentData = getCurrentData();
-
-    const start = (currentPage - 1) * itemsPerPage;
-    const end = currentPage * itemsPerPage;
-    console.log("start:", start, "end:", end);
-
+    const totalPages = Math.ceil(currentData.length / itemsPerPage);
     const currentItems = currentData.slice(
-        start,
-        end
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage
     );
-    console.log("currentItems:", currentItems);
-
-    const totalPages = Math.ceil(currentData?.length / itemsPerPage);
 
     const handleSelectAll = (e) => {
         const isChecked = e.target.checked;
@@ -107,7 +85,6 @@ const WatchColorList = () => {
     };
 
     const handleArchive = (colorToArchive = null) => {
-        console.log("Attempting to archive - viewType:", viewType, "colorToArchive:", colorToArchive, "checkedRows:", checkedRows);
         const selectedItems = getSelectedItems(colorToArchive);
         if (viewType !== "active") {
             alert("You can only archive from Active Colors.");
@@ -123,7 +100,6 @@ const WatchColorList = () => {
     };
 
     const handleRestore = (colorToRestore = null) => {
-        console.log("Attempting to restore - viewType:", viewType, "colorToRestore:", colorToRestore, "checkedRows:", checkedRows);
         const selectedItems = getSelectedItems(colorToRestore);
         if (viewType !== "archived") {
             alert("You can only restore from Archived Colors.");
@@ -139,7 +115,6 @@ const WatchColorList = () => {
     };
 
     const handleAdd = () => {
-        console.log("Current viewType:", viewType, "Opening Add modal");
         setManagementType("add");
         setName("");
         setSelectedColor(null);
@@ -147,7 +122,6 @@ const WatchColorList = () => {
     };
 
     const handleEdit = (color) => {
-        console.log("Opening edit for color:", color);
         setSelectedColor(color);
         setName(color.color_name || "");
         setManagementType("edit");
@@ -181,7 +155,6 @@ const WatchColorList = () => {
                 await Axios.post('/api/watch_colors', {
                     color_name: newOrUpdatedColor.color_name,
                     created_at: new Date().toISOString(),
-                    updated_at: new Date().toISOString(),
                     status: 1
                 });
             }
@@ -199,7 +172,6 @@ const WatchColorList = () => {
     };
 
     const handleConfirmDeleteOrRestore = async (items) => {
-        console.log("Confirming action - managementType:", managementType, "items:", items);
         if (!items?.length) {
             alert(`Please select at least one color to ${managementType}.`);
             return;
@@ -267,7 +239,7 @@ const WatchColorList = () => {
                                         onClick={() => handleArchive()}
                                         disabled={checkedCount < 1}
                                     >
-                                        Archive
+                                        Delete
                                     </button>
                                 </>
                             )}
@@ -392,4 +364,4 @@ const WatchColorList = () => {
     );
 };
 
-export default WatchColorList;
+export default WatchColor;
