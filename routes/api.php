@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\WristMeasurementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,11 @@ Route::put('/watch_colors/archive', [ColorController::class, 'archive']);
 Route::put('/watch_colors/restore', [ColorController::class, 'restore']);
 Route::put('/watch_colors/{watchcolor}', [ColorController::class, 'update']);
 Route::get('/watch_colors/{watchcolor}', [ColorController::class, 'show']);
+
+// Wrist Measurements API
+Route::get('/wrist_measurements', [WristMeasurementController::class, 'index']);
+Route::post('/wrist_measurements', [WristMeasurementController::class, 'store']);
+Route::put('/wrist_measurements/archive', [WristMeasurementController::class, 'archive']);
+Route::put('/wrist_measurements/restore', [WristMeasurementController::class, 'restore']);
+Route::put('/wrist_measurements/{wristmeasurement}', [WristMeasurementController::class, 'update']);
+Route::get('/wrist_measurements/{wristmeasurement}', [WristMeasurementController::class, 'show']);

@@ -78125,12 +78125,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -78156,92 +78150,43 @@ var MeasurementManagement = function MeasurementManagement(_ref) {
     error = _useState4[0],
     setError = _useState4[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    console.log("MeasurementManagement rendered with type:", type, "measurement:", measurement, "measurementValue:", measurementValue, "selectedMeasurements:", selectedMeasurements);
     if (type === "edit" && measurement) {
       setLocalMeasurement(measurement.measurement || "");
-      console.log("Initializing edit for measurement:", measurement);
     } else if (type === "add") {
       setLocalMeasurement("");
-      console.log("Initializing add for new measurement");
     }
-  }, [type, measurement, measurementValue, selectedMeasurements]);
-  var validateMeasurement = function validateMeasurement(measurement) {
-    return measurement.trim().length > 0; // Simple validation for measurement
-  };
+  }, [type, measurement, measurementValue]);
   var handleMeasurementChange = function handleMeasurementChange(e) {
     return setLocalMeasurement(e.target.value);
   };
   var handleSave = function handleSave() {
-    if (type === "edit") {
-      if (!measurement) {
-        alert("No measurement selected for editing.");
-        return;
-      }
-      if (!validateMeasurement(localMeasurement)) {
-        setError("Measurement is required.");
-        return;
-      }
-      setError("");
-      var updatedMeasurement = _objectSpread(_objectSpread({}, measurement), {}, {
-        measurement: localMeasurement.trim(),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        })
-      });
-      console.log("Saving updated measurement:", updatedMeasurement);
-      onSave(updatedMeasurement);
-      onClose();
-    } else if (type === "add") {
-      if (!validateMeasurement(localMeasurement)) {
-        setError("Measurement is required.");
-        return;
-      }
-      setError("");
-      var newMeasurement = {
-        id: Date.now(),
-        measurement: localMeasurement.trim(),
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false // New measurements are active by default
-      };
-      console.log("Saving new measurement:", newMeasurement);
-      onSave(newMeasurement);
-      onClose();
+    var trimmedMeasurement = localMeasurement.trim();
+    if (!trimmedMeasurement) {
+      setError("Wrist measurement is required.");
+      return;
     }
+    setError("");
+    if (type === "edit" && !measurement) {
+      setError("No wrist measurement selected for editing.");
+      return;
+    }
+    var measurementData = {
+      measurement: trimmedMeasurement
+    };
+    onSave(measurementData);
+    onClose();
   };
   var handleConfirm = function handleConfirm() {
-    console.log("Confirming action - type:", type, "selectedMeasurements:", selectedMeasurements);
-    if (type === "delete") {
-      if (!selectedMeasurements || selectedMeasurements.length === 0) {
-        alert("Please select at least one measurement to delete.");
-        return;
-      }
-      console.log("Confirming delete for measurements:", selectedMeasurements);
-      onConfirm(selectedMeasurements);
-      onClose();
-    } else if (type === "restore") {
-      if (!selectedMeasurements || selectedMeasurements.length === 0) {
-        alert("Please select at least one measurement to restore.");
-        return;
-      }
-      console.log("Confirming restore for measurements:", selectedMeasurements);
-      onConfirm(selectedMeasurements);
-      onClose();
+    if (!(selectedMeasurements !== null && selectedMeasurements !== void 0 && selectedMeasurements.length)) {
+      setError("Please select at least one wrist measurement to ".concat(type, "."));
+      return;
     }
+    setError("");
+    onConfirm(selectedMeasurements);
+    onClose();
   };
   var handleCancel = function handleCancel() {
-    console.log("Closing modal for type:", type);
-    onClose();
+    return onClose();
   };
   if (type === "edit" || type === "add") {
     var title = type === "edit" ? "Edit Wrist Measurement: ".concat((measurement === null || measurement === void 0 ? void 0 : measurement.measurement) || "Measurement") : "Add New Wrist Measurement";
@@ -78271,7 +78216,7 @@ var MeasurementManagement = function MeasurementManagement(_ref) {
               value: localMeasurement,
               onChange: handleMeasurementChange,
               className: "measurement-input",
-              placeholder: "Enter wrist measurement (e.g., 6.5 inches)"
+              placeholder: "Enter wrist measurement"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
               className: "button-group",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
@@ -78288,35 +78233,41 @@ var MeasurementManagement = function MeasurementManagement(_ref) {
         })
       })
     });
-  } else if (type === "delete" || type === "restore") {
-    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-    var message = type === "delete" ? "Are you sure you want to delete ".concat(selectedMeasurements.length, " measurement(s)?") : "Are you sure you want to restore ".concat(selectedMeasurements.length, " measurement(s)?");
+  } else if (type === "archive" || type === "restore") {
+    var action = type === "archive" ? "Archive" : "Restore";
+    var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedMeasurements.length, " wrist measurement(s)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type === "delete" ? "delete" : "restore", "-modal-overlay"),
-      onClick: handleCancel,
-      "data-testid": "".concat(type, "-overlay"),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type === "delete" ? "delete" : "restore", "-modal"),
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          children: _title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "button-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "save-button",
-            onClick: handleConfirm,
-            children: type === "delete" ? "Delete" : "Restore"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "cancel-button",
-            onClick: handleCancel,
-            children: "Cancel"
+      className: "MeasurementManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "action-modal-overlay",
+        onClick: handleCancel,
+        "data-testid": "".concat(type, "-overlay"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "action-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          "data-testid": "".concat(type, "-modal"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+            children: ["Confirm ", action]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleConfirm,
+              children: action
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
           })]
-        })]
+        })
       })
     });
   }
@@ -78339,19 +78290,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
+/* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
 /* harmony import */ var _MeasurementManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MeasurementManagement */ "./resources/js/components/Admin/Measurement/MeasurementManagement.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -78359,8 +78311,9 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
- // Added FaUndo for Restore
- // Assume a similar MeasurementManagement component
+
+
+
 
 var WristMeasurement = function WristMeasurement() {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
@@ -78374,7 +78327,7 @@ var WristMeasurement = function WristMeasurement() {
   var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState6 = _slicedToArray(_useState5, 2),
     viewType = _useState6[0],
-    setViewType = _useState6[1]; // Measurements can now have active/archived views
+    setViewType = _useState6[1];
   var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
     managementModalOpen = _useState8[0],
@@ -78407,85 +78360,57 @@ var WristMeasurement = function WristMeasurement() {
     _useState22 = _slicedToArray(_useState21, 2),
     searchQuery = _useState22[0],
     setSearchQuery = _useState22[1];
-  var itemsPerPage = 5; // Match CategoryList pagination
-
-  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
-      id: 1,
-      measurement: "6.5 inches",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    }, {
-      id: 2,
-      measurement: "7.5 inches",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    }, {
-      id: 3,
-      measurement: "8.5 inches",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: false
-    },
-    // Added an archived measurement for testing
-    {
-      id: 4,
-      measurement: "9.5 inches",
-      createdAt: "11/21/24",
-      updatedAt: "11/21/24",
-      isArchived: true
-    }]),
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState24 = _slicedToArray(_useState23, 2),
-    initialMeasurements = _useState24[0],
-    setInitialMeasurements = _useState24[1];
-  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialMeasurements),
+    measurements = _useState24[0],
+    setMeasurements = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
     _useState26 = _slicedToArray(_useState25, 2),
-    measurements = _useState26[0],
-    setMeasurements = _useState26[1];
+    isLoading = _useState26[0],
+    setIsLoading = _useState26[1];
   var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var itemsPerPage = 5;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var savedMeasurements = localStorage.getItem("wristMeasurements");
-    var updatedMeasurements = _toConsumableArray(initialMeasurements);
-    if (savedMeasurements) {
-      try {
-        updatedMeasurements = JSON.parse(savedMeasurements).map(function (measurement) {
-          return _objectSpread(_objectSpread({}, measurement), {}, {
-            isArchived: measurement.isArchived !== undefined ? measurement.isArchived : false,
-            createdAt: measurement.createdAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            }),
-            updatedAt: measurement.updatedAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            })
-          });
-        });
-        console.log("Loaded measurements from localStorage:", updatedMeasurements);
-      } catch (error) {
-        console.error("Error parsing measurements from localStorage:", error);
-        updatedMeasurements = _toConsumableArray(initialMeasurements);
-        localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
-      }
-    } else {
-      console.log("Initialized with static measurements:", initialMeasurements);
-      localStorage.setItem("wristMeasurements", JSON.stringify(initialMeasurements));
-    }
-    setMeasurements(updatedMeasurements);
-    setInitialMeasurements(updatedMeasurements);
-    setCheckedRows({});
-    setIsSelectAll(false);
+    var fetchMeasurements = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              _context.next = 3;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/wrist_measurements');
+            case 3:
+              response = _context.sent;
+              console.log("API Response:", response.data);
+              setMeasurements(response.data);
+              _context.next = 12;
+              break;
+            case 8:
+              _context.prev = 8;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching wrist measurements:", _context.t0);
+              setError("Failed to load wrist measurements. Please try again.");
+            case 12:
+              _context.prev = 12;
+              setIsLoading(false);
+              return _context.finish(12);
+            case 15:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 8, 12, 15]]);
+      }));
+      return function fetchMeasurements() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchMeasurements();
   }, []);
   var getCurrentData = function getCurrentData() {
-    if (!measurements || measurements.length === 0) {
-      console.warn("No measurements data available, returning empty array.");
-      return [];
-    }
+    if (!measurements.length) return [];
     var filteredMeasurements = measurements.filter(function (measurement) {
-      return measurement.isArchived === (viewType === "archived");
+      return viewType === "active" ? measurement.status === 1 : measurement.status === 0;
     });
     if (searchQuery.trim()) {
       filteredMeasurements = filteredMeasurements.filter(function (measurement) {
@@ -78501,114 +78426,75 @@ var WristMeasurement = function WristMeasurement() {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
     var newCheckedRows = {};
-    if (isChecked) {
-      currentItems.forEach(function (_, index) {
-        newCheckedRows[index] = true;
-      });
-      if (tableRef.current) {
-        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = true;
-        });
-      }
-    } else {
-      if (tableRef.current) {
-        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-    }
+    currentItems.forEach(function (measurement) {
+      newCheckedRows[measurement.id] = isChecked;
+    });
     setCheckedRows(newCheckedRows);
+    if (tableRef.current) {
+      tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+        checkbox.checked = isChecked;
+      });
+    }
   };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
+  var handleRowCheckbox = function handleRowCheckbox(measurement, e) {
     setCheckedRows(function (prev) {
-      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, measurement.id, e.target.checked));
     });
-    var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.measurement-checkbox')).filter(function (cb) {
-      return cb.checked;
-    }).length : 0);
-    setIsSelectAll(allChecked);
+    setIsSelectAll(currentItems.every(function (item) {
+      return checkedRows[item.id] || item.id === measurement.id && e.target.checked;
+    }));
   };
-  var handleDelete = function handleDelete() {
-    var measurementToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to delete - viewType:", viewType, "measurementToDelete:", measurementToDelete, "checkedRows:", checkedRows);
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
+  var getSelectedItems = function getSelectedItems() {
+    var singleItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (singleItem) return [singleItem];
+    return currentItems.filter(function (measurement) {
+      return checkedRows[measurement.id];
     });
-    if (measurementToDelete) {
-      if (viewType !== "active") {
-        alert("You can only delete from Active Wrist Measurements.");
-        return;
-      }
-      setManagementType("delete");
-      setSelectedMeasurement([measurementToDelete]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 1) {
-      alert("Please select at least one measurement to delete.");
-      return;
-    }
+  };
+  var handleArchive = function handleArchive() {
+    var measurementToArchive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    var selectedItems = getSelectedItems(measurementToArchive);
     if (viewType !== "active") {
-      alert("You can only delete from Active Wrist Measurements.");
+      alert("You can only archive from Active Wrist Measurements.");
       return;
     }
-    setManagementType("delete");
-    setSelectedMeasurement(getSelectedMeasurements());
+    if (!selectedItems.length) {
+      alert("Please select at least one wrist measurement to archive.");
+      return;
+    }
+    setManagementType("archive");
+    setSelectedMeasurement(selectedItems);
     setManagementModalOpen(true);
   };
   var handleRestore = function handleRestore() {
     var measurementToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    console.log("Attempting to restore - viewType:", viewType, "measurementToRestore:", measurementToRestore, "checkedRows:", checkedRows);
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    });
-    if (measurementToRestore) {
-      if (viewType !== "archived") {
-        alert("You can only restore from Archived Wrist Measurements.");
-        return;
-      }
-      console.log("Opening restore modal for single measurement:", measurementToRestore);
-      setManagementType("restore");
-      setSelectedMeasurement([measurementToRestore]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 1) {
-      alert("Please select at least one measurement to restore.");
-      return;
-    }
+    var selectedItems = getSelectedItems(measurementToRestore);
     if (viewType !== "archived") {
       alert("You can only restore from Archived Wrist Measurements.");
       return;
     }
-    console.log("Opening restore modal for multiple measurements:", getSelectedMeasurements());
+    if (!selectedItems.length) {
+      alert("Please select at least one wrist measurement to restore.");
+      return;
+    }
     setManagementType("restore");
-    setSelectedMeasurement(getSelectedMeasurements());
+    setSelectedMeasurement(selectedItems);
     setManagementModalOpen(true);
   };
   var handleAdd = function handleAdd() {
-    console.log("Current viewType:", viewType, "Opening Add modal");
     setManagementType("add");
     setMeasurement("");
     setSelectedMeasurement(null);
     setManagementModalOpen(true);
   };
   var handleEdit = function handleEdit(measurement) {
-    console.log("Opening edit for measurement:", measurement);
     setSelectedMeasurement(measurement);
     setMeasurement(measurement.measurement || "");
     setManagementType("edit");
     setManagementModalOpen(true);
   };
   var validateMeasurement = function validateMeasurement(measurement) {
-    return measurement.trim().length > 0; // Simple validation for measurement
+    return measurement.trim().length > 0;
   };
   var handleMeasurementChange = function handleMeasurementChange(e) {
     return setMeasurement(e.target.value);
@@ -78617,166 +78503,167 @@ var WristMeasurement = function WristMeasurement() {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
   };
-  var handleSaveEditOrAdd = function handleSaveEditOrAdd(newOrUpdatedMeasurement) {
-    if (managementType === "edit") {
-      if (!selectedMeasurement) {
-        alert("No measurement selected for editing.");
-        return;
-      }
-      if (!validateMeasurement(newOrUpdatedMeasurement.measurement)) {
-        setError("Measurement is required.");
-        return;
-      }
-      setError("");
-      var updatedMeasurements = measurements.map(function (m) {
-        return m.id === selectedMeasurement.id ? _objectSpread(_objectSpread({}, newOrUpdatedMeasurement), {}, {
-          id: selectedMeasurement.id,
-          createdAt: selectedMeasurement.createdAt,
-          isArchived: selectedMeasurement.isArchived
-        }) : m;
-      });
-      setMeasurements(updatedMeasurements);
-      setInitialMeasurements(updatedMeasurements);
-      localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
-      setManagementModalOpen(false);
-      setSelectedMeasurement(null);
-      setMeasurement("");
-      console.log("Edited measurement, updated measurements:", updatedMeasurements);
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-    } else if (managementType === "add") {
-      if (!validateMeasurement(newOrUpdatedMeasurement.measurement)) {
-        setError("Measurement is required.");
-        return;
-      }
-      setError("");
-      var newMeasurement = {
-        id: Date.now(),
-        measurement: newOrUpdatedMeasurement.measurement.trim(),
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false // New measurements are active by default
-      };
-      var _updatedMeasurements = [newMeasurement].concat(_toConsumableArray(measurements));
-      setMeasurements(_updatedMeasurements);
-      setInitialMeasurements(_updatedMeasurements);
-      localStorage.setItem("wristMeasurements", JSON.stringify(_updatedMeasurements));
-      setManagementModalOpen(false);
-      setMeasurement("");
-      console.log("Added new measurement, updated measurements:", _updatedMeasurements);
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      setCurrentPage(1);
-    }
-  };
-  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
-    console.log("Confirming action - managementType:", managementType, "items:", items);
-    if (managementType === "delete") {
-      var updatedMeasurements = measurements.map(function (measurement) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === measurement.id;
-          })) {
-            return _objectSpread(_objectSpread({}, measurement), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+  var handleSaveEditOrAdd = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newOrUpdatedMeasurement) {
+      var response;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            if (validateMeasurement(newOrUpdatedMeasurement.measurement)) {
+              _context2.next = 3;
+              break;
+            }
+            setError("Wrist measurement is required.");
+            return _context2.abrupt("return");
+          case 3:
+            setError("");
+            _context2.prev = 4;
+            if (!(managementType === "edit")) {
+              _context2.next = 12;
+              break;
+            }
+            if (selectedMeasurement) {
+              _context2.next = 8;
+              break;
+            }
+            throw new Error("No wrist measurement selected for editing.");
+          case 8:
+            _context2.next = 10;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/wrist_measurements/".concat(selectedMeasurement.id), {
+              measurement: newOrUpdatedMeasurement.measurement,
+              updated_at: new Date().toISOString(),
+              status: 1
             });
-          }
-        } else {
-          if (items.id === measurement.id) {
-            return _objectSpread(_objectSpread({}, measurement), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+          case 10:
+            _context2.next = 15;
+            break;
+          case 12:
+            if (!(managementType === "add")) {
+              _context2.next = 15;
+              break;
+            }
+            _context2.next = 15;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/wrist_measurements', {
+              measurement: newOrUpdatedMeasurement.measurement,
+              created_at: new Date().toISOString(),
+              status: 1
             });
-          }
+          case 15:
+            _context2.next = 17;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/wrist_measurements');
+          case 17:
+            response = _context2.sent;
+            setMeasurements(response.data);
+            setManagementModalOpen(false);
+            setSelectedMeasurement(null);
+            setMeasurement("");
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            setCurrentPage(1);
+            _context2.next = 30;
+            break;
+          case 26:
+            _context2.prev = 26;
+            _context2.t0 = _context2["catch"](4);
+            console.error("Error ".concat(managementType, "ing wrist measurement:"), _context2.t0);
+            setError("Failed to ".concat(managementType, " wrist measurement. Please try again."));
+          case 30:
+          case "end":
+            return _context2.stop();
         }
-        return measurement;
-      });
-      setMeasurements(updatedMeasurements);
-      setInitialMeasurements(updatedMeasurements);
-      setCheckedRows({});
-      setIsSelectAll(false);
-      if (tableRef.current && viewType === "active") {
-        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      localStorage.setItem("wristMeasurements", JSON.stringify(updatedMeasurements));
-      console.log("Measurements after delete:", updatedMeasurements);
-    } else if (managementType === "restore") {
-      var _updatedMeasurements2 = measurements.map(function (measurement) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === measurement.id;
-          })) {
-            return _objectSpread(_objectSpread({}, measurement), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+      }, _callee2, null, [[4, 26]]);
+    }));
+    return function handleSaveEditOrAdd(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleConfirmDeleteOrRestore = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(items) {
+      var measurementIds, _response, _response2, response, _error$response, _error$response2;
+      return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+        while (1) switch (_context3.prev = _context3.next) {
+          case 0:
+            if (items !== null && items !== void 0 && items.length) {
+              _context3.next = 3;
+              break;
+            }
+            alert("Please select at least one wrist measurement to ".concat(managementType, "."));
+            return _context3.abrupt("return");
+          case 3:
+            _context3.prev = 3;
+            measurementIds = items.map(function (item) {
+              return item.id;
             });
-          }
-        } else {
-          if (items.id === measurement.id) {
-            return _objectSpread(_objectSpread({}, measurement), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
+            console.log("".concat(managementType, " payload:"), managementType === "archive" ? {
+              data: {
+                ids: measurementIds
+              }
+            } : {
+              ids: measurementIds
             });
-          }
+            if (!(managementType === "archive")) {
+              _context3.next = 13;
+              break;
+            }
+            _context3.next = 9;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/wrist_measurements/archive', {
+              data: {
+                ids: measurementIds
+              }
+            });
+          case 9:
+            _response = _context3.sent;
+            console.log("Archive response:", _response.data);
+            _context3.next = 18;
+            break;
+          case 13:
+            if (!(managementType === "restore")) {
+              _context3.next = 18;
+              break;
+            }
+            _context3.next = 16;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/wrist_measurements/restore', {
+              ids: measurementIds
+            });
+          case 16:
+            _response2 = _context3.sent;
+            console.log("Restore response:", _response2.data);
+          case 18:
+            _context3.next = 20;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/wrist_measurements');
+          case 20:
+            response = _context3.sent;
+            setMeasurements(response.data);
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+              tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
+                return checkbox.checked = false;
+              });
+            }
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            _context3.next = 34;
+            break;
+          case 30:
+            _context3.prev = 30;
+            _context3.t0 = _context3["catch"](3);
+            console.error("Error ".concat(managementType, "ing wrist measurements:"), ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
+            setError("Failed to ".concat(managementType, " wrist measurements: ").concat((_error$response2 = _context3.t0.response) !== null && _error$response2 !== void 0 && (_error$response2 = _error$response2.data) !== null && _error$response2 !== void 0 && _error$response2.errors ? JSON.stringify(_context3.t0.response.data.errors) : _context3.t0.message));
+          case 34:
+          case "end":
+            return _context3.stop();
         }
-        return measurement;
-      });
-      setMeasurements(_updatedMeasurements2);
-      setInitialMeasurements(_updatedMeasurements2);
-      setCheckedRows({});
-      setIsSelectAll(false);
-      if (tableRef.current && viewType === "archived") {
-        tableRef.current.querySelectorAll('.measurement-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      setForceUpdate(function (prev) {
-        return prev + 1;
-      });
-      localStorage.setItem("wristMeasurements", JSON.stringify(_updatedMeasurements2));
-      console.log("Measurements after restore:", _updatedMeasurements2);
-    }
-  };
+      }, _callee3, null, [[3, 30]]);
+    }));
+    return function handleConfirmDeleteOrRestore(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   var handleCloseManagement = function handleCloseManagement() {
     setManagementModalOpen(false);
     setManagementType("");
@@ -78784,72 +78671,65 @@ var WristMeasurement = function WristMeasurement() {
     setMeasurement("");
     setError("");
   };
-  var getSelectedMeasurements = function getSelectedMeasurements() {
-    var selectedIndices = Object.keys(checkedRows).filter(function (index) {
-      return checkedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    });
-    return selectedIndices.map(function (index) {
-      return currentItems[index];
-    });
-  };
-  var checkedCount = Object.keys(checkedRows).filter(function (index) {
-    return checkedRows[index];
-  }).length;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+  var checkedCount = Object.values(checkedRows).filter(Boolean).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
     className: "WristMeasurement",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "measurements-header",
-      children: viewType === "active" ? "Wrist Measurements" : "Archived Wrist Measurements"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: viewType === "active" ? "Active Wrist Measurements" : "Archived Wrist Measurements"
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "error-message",
+      children: error
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      children: "Loading wrist measurements..."
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "table-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-header-actions",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "search-bar",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
             value: searchQuery,
             onChange: handleSearchChange,
             placeholder: "Search",
             className: "search-input"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "button-group",
           style: {
             marginLeft: 'auto'
           },
-          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "add-button",
               onClick: handleAdd,
               children: "Add"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "delete-button",
               onClick: function onClick() {
-                return handleDelete();
+                return handleArchive();
               },
-              disabled: checkedCount < 2,
+              disabled: checkedCount < 1,
               children: "Delete"
             })]
-          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
             onClick: function onClick() {
               return handleRestore();
             },
-            disabled: checkedCount < 2,
+            disabled: checkedCount < 1,
             children: "Restore"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "view-toggle",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "active" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("active");
             },
             children: "Active Wrist Measurements"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "archived" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("archived");
@@ -78857,66 +78737,67 @@ var WristMeasurement = function WristMeasurement() {
             children: "Archived Wrist Measurements"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
         ref: tableRef,
         className: "measurements-table",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
             className: "table-header-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "checkbox",
                 className: "measurement-checkbox",
                 checked: isSelectAll,
                 onChange: handleSelectAll
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header measurements-action-column",
               children: "Action"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Wrist Measurement"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Created At"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
               children: "Updated At"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-          children: currentItems.length > 0 ? currentItems.map(function (measurement, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
+          children: currentItems.length > 0 ? currentItems.map(function (measurement) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
               className: "table-row",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "checkbox",
                   className: "measurement-checkbox",
+                  checked: !!checkedRows[measurement.id],
                   onChange: function onChange(e) {
-                    return handleRowCheckbox(index, e);
+                    return handleRowCheckbox(measurement, e);
                   }
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell measurements-action-column",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "action-buttons",
-                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaEdit, {
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
                       className: "edit-icon",
                       size: 20,
                       onClick: function onClick() {
                         return handleEdit(measurement);
                       }
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaTrash, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
                       className: "delete-icon",
                       size: 20,
                       onClick: function onClick() {
-                        return handleDelete(measurement);
+                        return handleArchive(measurement);
                       }
                     })]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_3__.FaUndo, {
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
                     className: "restore-icon",
                     size: 20,
                     onClick: function onClick() {
@@ -78924,20 +78805,20 @@ var WristMeasurement = function WristMeasurement() {
                     }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
                 children: measurement.measurement
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: measurement.createdAt
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+                children: measurement.created_at
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: measurement.updatedAt
+                children: measurement.updated_at
               })]
-            }, measurement.id + index + forceUpdate);
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+            }, measurement.id);
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
             className: "table-row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
               colSpan: "5",
               className: "table-cell",
               style: {
@@ -78945,13 +78826,13 @@ var WristMeasurement = function WristMeasurement() {
                 padding: "20px",
                 backgroundColor: "#f9f9f9"
               },
-              children: measurements.length === 0 ? "No wrist measurements available. Please check your data or refresh the page." : viewType === "active" ? "No active wrist measurements match your search." : "No archived wrist measurements match your search."
+              children: measurements.length === 0 ? "No wrist measurements available." : viewType === "active" ? "No active wrist measurements match your search." : "No archived wrist measurements match your search."
             })
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-pagination",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.max(prev - 1, 1);
@@ -78965,14 +78846,14 @@ var WristMeasurement = function WristMeasurement() {
         }, function (_, i) {
           return i + 1;
         }).map(function (page) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: function onClick() {
               return setCurrentPage(page);
             },
             className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
             children: page
           }, page);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.min(prev + 1, totalPages);
@@ -78983,10 +78864,10 @@ var WristMeasurement = function WristMeasurement() {
           children: "Next"
         })]
       })]
-    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_MeasurementManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_MeasurementManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
       type: managementType,
-      measurement: managementType === "edit" || managementType === "add" ? selectedMeasurement : managementType === "restore" || managementType === "delete" && !Array.isArray(selectedMeasurement) ? selectedMeasurement : null,
-      selectedMeasurements: managementType === "restore" || managementType === "delete" ? selectedMeasurement || getSelectedMeasurements() : [],
+      measurement: managementType === "edit" || managementType === "add" ? selectedMeasurement : null,
+      selectedMeasurements: managementType === "restore" || managementType === "archive" ? selectedMeasurement : [],
       measurementValue: measurement,
       onClose: handleCloseManagement,
       onConfirm: handleConfirmDeleteOrRestore,

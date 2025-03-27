@@ -18599,8 +18599,7 @@ button { /* Override any global button styles specific to Reviews */
   box-shadow: 0 0 0 2px #3b82f6 !important;
   background-color: white !important;
 }
-.MeasurementManagement .delete-modal-overlay,
-.MeasurementManagement .restore-modal-overlay {
+.MeasurementManagement .action-modal-overlay {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
@@ -18621,8 +18620,7 @@ button { /* Override any global button styles specific to Reviews */
   margin: 0 !important;
   padding: 0 !important;
 }
-.MeasurementManagement .delete-modal,
-.MeasurementManagement .restore-modal {
+.MeasurementManagement .action-modal {
   background-color: white !important;
   padding: 24px !important;
   border-radius: 8px !important;
@@ -18632,16 +18630,13 @@ button { /* Override any global button styles specific to Reviews */
   text-align: center !important;
   position: relative !important;
 }
-.MeasurementManagement .delete-modal h3, .MeasurementManagement .delete-modal .h3,
-.MeasurementManagement .restore-modal h3,
-.MeasurementManagement .restore-modal .h3 {
+.MeasurementManagement .action-modal h3, .MeasurementManagement .action-modal .h3 {
   font-size: 20px !important;
   font-weight: bold !important;
   color: #000000 !important;
   margin-bottom: 16px !important;
 }
-.MeasurementManagement .delete-modal p,
-.MeasurementManagement .restore-modal p {
+.MeasurementManagement .action-modal p {
   font-size: 16px !important;
   color: #4a5568 !important;
   margin-bottom: 16px !important;
@@ -18688,16 +18683,13 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .MeasurementManagement .edit-modal,
-  .MeasurementManagement .delete-modal,
-  .MeasurementManagement .restore-modal {
+  .MeasurementManagement .action-modal {
     width: 90% !important;
     padding: 16px !important;
   }
   .MeasurementManagement .edit-modal-header,
-  .MeasurementManagement .delete-modal h3,
-  .MeasurementManagement .delete-modal .h3,
-  .MeasurementManagement .restore-modal h3,
-  .MeasurementManagement .restore-modal .h3 {
+  .MeasurementManagement .action-modal h3,
+  .MeasurementManagement .action-modal .h3 {
     font-size: 18px !important;
     margin-bottom: 12px !important;
   }
