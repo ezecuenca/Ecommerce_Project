@@ -1,359 +1,368 @@
-/* src/components/admin/ProductManagement.scss */
-
-/* Modal overlay and modal styling for product management */
-.edit-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000; /* Above other elements, below modals (z-index: 1000) */
-}
-
-.edit-modal {
-    background-color: white;
-    padding: 24px;
-    border-radius: 8px;
-    width: 400px; /* Enforce modal width to match image, but allow flexibility */
-    max-width: 90%; /* Ensure it fits on smaller screens */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    max-height: 80vh; /* Limit height to 80% of viewport height */
-    overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-.edit-modal-header {
-    font-size: 20px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 16px; /* Increased margin to match image spacing */
-}
-
-.error-message {
-    color: #ef4444; /* Red for errors, match Reviews */
-    margin-bottom: 8px; /* Reduced margin to match image spacing */
-    font-size: 14px;
-}
-
-.edit-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; /* Increased gap to match image spacing */
-    width: 100%; /* Ensure form fits modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    overflow: hidden; /* Prevent any overflow beyond form */
-    padding-right: 8px; /* Small padding for scroll bar if needed */
-}
-
-.form-row {
-    display: flex;
-    gap: 16px; /* Match image spacing between columns */
-    width: 100%; /* Ensure row fits modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-
-    @media (max-width: 480px) { /* Stack columns on mobile, match image */
-        flex-direction: column;
-        gap: 8px; /* Reduce gap on mobile */
-    }
-}
-
-.form-column {
-    flex: 1; /* Equal width for columns, match image */
-    width: 100%; /* Ensure full width in each column */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-}
-
-.edit-form-label {
-    font-size: 16px;
-    color: #4a5568; /* Gray-700, match Reviews and image */
-    margin-bottom: 4px; /* Reduced margin to match image spacing */
-    width: 100%; /* Ensure labels fit modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-}
-
-.product-input {
-    border: 1px solid #d1d5db; /* Gray-300, match Reviews and image */
-    border-radius: 4px; /* Square corners, match image */
-    padding: 8px 12px;
-    width: 100%; /* Full width to fit modal */
-    font-size: 14px; /* Match Reviews font size, match image */
-    height: 40px; /* Match image height */
-    outline: none;
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    background-color: #f3f4f6; /* Light gray background, match Reviews and image */
-    color: #4a5568; /* Gray-700 for text, match Reviews and image */
-    cursor: text; /* Ensure cursor indicates editable */
-    pointer-events: auto; /* Ensure inputs are clickable */
-    user-select: text; /* Allow text selection for editing */
-    overflow: hidden; /* Prevent overflow within input */
-
-    &::placeholder {
-        color: #6b7280; /* Gray-500 for placeholder text, match Reviews and image */
+.ProductManagement {
+    .edit-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
     }
 
-    &:focus {
-        border-color: #d1d5db; /* Keep border on focus, match image */
-        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), match Reviews */
-        background-color: white; /* White background on focus, match Reviews and image */
-    }
-}
-
-.description-input {
-    border: 1px solid #d1d5db; /* Gray-300, match Reviews and image */
-    border-radius: 4px; /* Square corners, match image */
-    padding: 8px 12px;
-    width: 100%; /* Full width to fit modal */
-    min-height: 60px; /* Reduced height for better fit, match image */
-    max-height: 100px; /* Limit maximum height to prevent excessive growth */
-    font-size: 14px; /* Match Reviews font size, match image */
-    resize: vertical; /* Allow vertical resizing, match Reviews */
-    outline: none;
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    background-color: #f3f4f6; /* Light gray background, match Reviews and image */
-    color: #4a5568; /* Gray-700 for text, match Reviews and image */
-    cursor: text; /* Ensure cursor indicates editable */
-    pointer-events: auto; /* Ensure inputs are clickable */
-    user-select: text; /* Allow text selection for editing */
-    overflow-y: auto; /* Allow scrolling within textarea if content exceeds max-height */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-
-    &::placeholder {
-        color: #6b7280; /* Gray-500 for placeholder text, match Reviews and image */
-    }
-
-    &:focus {
-        border-color: #d1d5db; /* Keep border on focus, match image */
-        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), match Reviews */
-        background-color: white; /* White background on focus, match Reviews and image */
-    }
-}
-
-.file-input-wrapper {
-    position: relative;
-    width: 100%; /* Full width to fit modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    max-width: 100%; /* Prevent overflow */
-    overflow: hidden; /* Ensure no overflow beyond modal */
-    display: flex; /* Ensure proper layout */
-    margin-bottom: 8px; /* Add space before image preview, match image */
-}
-
-.product-file-input {
-    display: none; /* Hide the default file input, but ensure it’s functional via label */
-}
-
-.file-input-label {
-    border: 1px solid #d1d5db; /* Gray-300, match Reviews and image */
-    border-radius: 4px; /* Square corners, match image */
-    padding: 8px 12px;
-    width: 100%; /* Full width to fit modal */
-    font-size: 14px; /* Match Reviews font size, match image */
-    height: 40px; /* Match other inputs' height, match image */
-    outline: none;
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    background-color: #f3f4f6; /* Light gray background, match Reviews and image */
-    color: #4a5568; /* Gray-700 for text, match Reviews and image */
-    cursor: pointer; /* Indicate clickable, match image */
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 100%; /* Prevent overflow */
-    overflow: hidden; /* Ensure no overflow beyond modal */
-    white-space: nowrap; /* Prevent text wrapping */
-    text-overflow: ellipsis; /* Show ellipsis for long file names */
-
-    &:hover {
-        background-color: #e5e7eb; /* Light gray on hover, match Reviews */
-    }
-
-    &:focus {
-        border-color: #d1d5db; /* Keep border on focus, match image */
-        box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500), match Reviews */
-        background-color: white; /* White background on focus, match Reviews and image */
-    }
-
-    &::after {
-        content: "Choose File";
-        background-color: #e5e7eb; /* Gray-200, match Reviews */
-        color: #4a5568; /* Gray-700, match Reviews */
-        padding: 8px 16px;
-        border-radius: 4px; /* Square corners, match image */
-        margin-left: 8px; /* Reduced margin to match image spacing */
-        cursor: pointer;
-        transition: background-color 0.3s ease; /* Match Reviews transition */
-        white-space: nowrap; /* Prevent text wrapping */
-        overflow: hidden; /* Ensure no overflow beyond modal */
-        text-overflow: ellipsis; /* Show ellipsis for long text */
-        max-width: 120px; /* Limit "Choose File" button width to prevent overlap, match image */
-        box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    }
-}
-
-.image-preview {
-    margin-top: 8px; /* Space above preview, match image */
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-
-    .preview-image {
-        max-width: 100%; /* Fit within modal, match image */
-        max-height: 200px; /* Limit height to prevent excessive growth, match image */
-        border-radius: 4px; /* Match modal corner radius, match image */
-        border: 1px solid #d1d5db; /* Gray-300 border, match Reviews and image */
-        object-fit: cover; /* Ensure image scales proportionally, match image */
-    }
-}
-
-.modal-actions {
-    display: flex;
-    gap: 8px; /* Reduced gap to match image spacing */
-    margin-top: 16px; /* Increased margin to match image spacing */
-    justify-content: flex-end;
-    width: 100%; /* Ensure buttons fit modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-}
-
-.cancel-button {
-    background-color: #e5e7eb; /* Gray-200, match Reviews and image */
-    color: #4a5568; /* Gray-700, match Reviews and image */
-    padding: 8px 16px; /* Match Reviews button padding, match image */
-    border-radius: 4px; /* Square corners, match image */
-    font-size: 14px; /* Match Reviews font size, match image */
-    border: 1px solid #d1d5db; /* Add border to match image */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Match Reviews transition */
-
-    &:hover {
-        background-color: #d1d5db; /* Gray-300 on hover, match Reviews */
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
-    }
-}
-
-.save-button,
-.confirm-button {
-    background-color: #ef4444; /* Red, match image */
-    color: white;
-    padding: 8px 16px; /* Match Reviews button padding, match image */
-    border-radius: 4px; /* Square corners, match image */
-    font-size: 14px; /* Match Reviews font size, match image */
-    border: 1px solid #d1d5db; /* Add border to match image */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Match Reviews transition */
-
-    &:hover {
-        background-color: #dc2626; /* Darker red on hover, match Reviews */
-    }
-
-    &:focus {
-        outline: none;
-        box-shadow: 0 0 0 2px #3b82f6; /* Blue focus ring, match Reviews */
-    }
-}
-
-.confirm-form {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    width: 100%; /* Ensure form fits modal */
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-
-    p {
-        font-size: 16px;
-        color: #4a5568; /* Gray-700, match Reviews */
-        margin-bottom: 8px; /* Reduced margin to match image spacing */
-    }
-}
-
-.delete-modal-overlay,
-.restore-modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.delete-modal,
-.restore-modal {
-    background-color: white;
-    padding: 24px;
-    border-radius: 8px;
-    width: 400px; /* Enforce modal width to match image, but allow flexibility */
-    max-width: 90%; /* Ensure it fits on smaller screens */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box; /* Ensure padding doesn’t exceed width */
-    max-height: 80vh; /* Limit height to 80% of viewport height */
-    overflow-y: auto; /* Allow vertical scrolling if content exceeds height */
-    overflow-x: hidden; /* Prevent horizontal scrolling */
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 480px) {
     .edit-modal {
-        padding: 16px; /* Reduce padding on mobile, match image */
-        width: 100%; /* Full width on mobile, match image */
-        max-width: 100%; /* Ensure it fits on very small screens */
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        width: 400px;
+        max-width: 90%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+        max-height: 80vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
-    .edit-modal-header {
-        font-size: 18px; /* Reduce header size on mobile, match image */
-        margin-bottom: 12px; /* Adjust margin on mobile, match image */
+    h2 {
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 16px;
     }
 
-    .edit-form {
-        gap: 12px; /* Reduce gap on mobile, match image */
-        padding-right: 4px; /* Reduce padding for scroll bar on mobile */
+    .error-message {
+        color: #ef4444;
+        margin-bottom: 8px;
+        font-size: 14px;
     }
 
-    .form-row {
-        flex-direction: column; /* Stack columns on mobile, match image */
-        gap: 8px; /* Reduce gap on mobile, match image */
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 24px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
-    .form-column {
-        width: 100%; /* Full width on mobile */
+    .form-group label {
+        font-size: 16px;
+        color: #4a5568;
+        margin-bottom: 4px;
     }
 
-    .product-input,
-    .description-input,
-    .file-input-label {
-        height: 36px; /* Reduce input height on mobile, match image */
-        font-size: 12px; /* Reduce font size on mobile, match image */
-        padding: 6px 10px; /* Reduce padding on mobile, match image */
+    .form-group input,
+    .form-group select {
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        padding: 8px 12px;
+        width: 100%;
+        font-size: 14px;
+        height: 40px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+        cursor: text;
+        pointer-events: auto;
+        user-select: text;
+        overflow: hidden;
     }
 
-    .description-input {
-        min-height: 50px; /* Reduce min-height on mobile, match image */
-        max-height: 80px; /* Reduce max-height on mobile, match image */
+    .form-group input::placeholder,
+    .form-group select::placeholder {
+        color: #6b7280;
     }
 
-    .modal-actions {
-        margin-top: 12px; /* Reduce margin on mobile, match image */
-        gap: 6px; /* Reduce gap on mobile, match image */
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #d1d5db;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
     }
 
-    .cancel-button,
+    .form-group textarea {
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        padding: 8px 12px;
+        width: 100%;
+        font-size: 14px;
+        height: 60px;
+        min-height: 60px;
+        max-height: 60px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+        cursor: text;
+        pointer-events: auto;
+        user-select: text;
+        resize: none;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .form-group textarea::placeholder {
+        color: #6b7280;
+    }
+
+    .form-group textarea:focus {
+        border-color: #d1d5db;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+
+    .form-group .file-input-wrapper {
+        position: relative;
+        width: 100%;
+        box-sizing: border-box;
+        max-width: 100%;
+        overflow: hidden;
+        display: flex;
+        margin-bottom: 8px;
+    }
+
+    .form-group .product-file-input {
+        display: none;
+    }
+
+    .form-group .file-input-label {
+        border: 1px solid #d1d5db;
+        border-radius: 4px;
+        padding: 8px 12px;
+        width: 100%;
+        font-size: 14px;
+        height: 40px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        max-width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    .form-group .file-input-label:hover {
+        background-color: #e5e7eb;
+    }
+
+    .form-group .file-input-label:focus {
+        border-color: #d1d5db;
+        box-shadow: 0 0 0 2px #3b82f6;
+        background-color: white;
+    }
+
+    .form-group .file-input-label::after {
+        content: "Choose File";
+        background-color: #e5e7eb;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 4px;
+        margin-left: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 120px;
+        box-sizing: border-box;
+    }
+
+    .form-group .image-preview {
+        margin-top: 8px;
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .form-group .image-preview .preview-image {
+        max-width: 100%;
+        max-height: 200px;
+        border-radius: 4px;
+        border: 1px solid #d1d5db;
+        object-fit: cover;
+    }
+
+    .form-actions {
+        display: flex;
+        gap: 8px;
+        margin-top: 16px;
+        justify-content: flex-end;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .cancel-button {
+        background-color: #e5e7eb;
+        color: #4a5568;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .cancel-button:hover {
+        background-color: #d1d5db;
+    }
+
+    .cancel-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
     .save-button,
     .confirm-button {
-        padding: 6px 12px; /* Reduce padding on mobile, match image */
-        font-size: 12px; /* Reduce font size on mobile, match image */
+        background-color: #3b82f6;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 4px;
+        font-size: 14px;
+        border: 1px solid #d1d5db;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
     }
 
-    .image-preview .preview-image {
-        max-height: 150px; /* Reduce preview height on mobile, match image */
+    .save-button:hover,
+    .confirm-button:hover {
+        background-color: #2563eb;
+    }
+
+    .save-button:focus,
+    .confirm-button:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    .archive-modal-overlay,
+    .restore-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .archive-modal,
+    .restore-modal {
+        background-color: white;
+        padding: 24px;
+        border-radius: 8px;
+        width: 350px;
+        max-width: 90%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: left;
+        position: relative;
+    }
+
+    .archive-modal h3,
+    .restore-modal h3 {
+        font-size: 18px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 12px;
+    }
+
+    .archive-modal p,
+    .restore-modal p {
+        font-size: 16px;
+        color: #6b7280;
+        margin-bottom: 12px;
+    }
+
+    .button-group {
+        display: flex;
+        gap: 8px;
+        justify-content: flex-end;
+    }
+
+    .archive-modal .confirm-button {
+        background-color: #3b82f6;
+    }
+
+    .archive-modal .confirm-button:hover {
+        background-color: #2563eb;
+    }
+}
+
+@media (max-width: 480px) {
+    .ProductManagement {
+        .edit-modal {
+            padding: 16px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
+            gap: 6px;
+            margin-bottom: 16px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea,
+        .form-group .file-input-label {
+            height: 36px;
+            font-size: 12px;
+            padding: 6px 10px;
+        }
+
+        .form-group textarea {
+            height: 50px;
+            min-height: 50px;
+            max-height: 50px;
+        }
+
+        .form-actions {
+            margin-top: 12px;
+            gap: 6px;
+        }
+
+        .cancel-button,
+        .save-button,
+        .confirm-button {
+            padding: 6px 12px;
+            font-size: 12px;
+        }
+
+        .form-group .image-preview .preview-image {
+            max-height: 150px;
+        }
+
+        .archive-modal,
+        .restore-modal {
+            width: 90%;
+            padding: 20px;
+        }
+
+        .archive-modal h3,
+        .restore-modal h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .archive-modal p,
+        .restore-modal p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
     }
 }

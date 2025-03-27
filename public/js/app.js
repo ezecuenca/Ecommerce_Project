@@ -74958,12 +74958,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
@@ -75041,35 +75041,77 @@ var WatchColorList = function WatchColorList() {
           while (1) switch (_context.prev = _context.next) {
             case 0:
               _context.prev = 0;
-              _context.next = 3;
-              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
-            case 3:
+              console.log("Fetching colors from /api/watch_colors...");
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('http://localhost:8000/api/watch_colors', {
+                headers: {
+                  'Accept': 'application/json'
+                }
+              });
+            case 4:
               response = _context.sent;
               console.log("API Response:", response.data);
+              console.log("Response Status:", response.status);
+              console.log("Response Headers:", response.headers);
+              if (Array.isArray(response.data)) {
+                _context.next = 13;
+                break;
+              }
+              console.error("API response is not an array:", response.data);
+              setError("Invalid data format received from server.");
+              setColors([]);
+              return _context.abrupt("return");
+            case 13:
               setColors(response.data);
-              _context.next = 12;
+              console.log("Colors state set to:", response.data);
+              _context.next = 22;
               break;
-            case 8:
-              _context.prev = 8;
+            case 17:
+              _context.prev = 17;
               _context.t0 = _context["catch"](0);
               console.error("Error fetching colors:", _context.t0);
-              setError("Failed to load colors. Please try again.");
-            case 12:
-              _context.prev = 12;
+              if (_context.t0.response) {
+                console.error("Error response data:", _context.t0.response.data);
+                console.error("Error response status:", _context.t0.response.status);
+                setError("Failed to load colors: ".concat(_context.t0.response.data.message || _context.t0.response.statusText));
+              } else if (_context.t0.request) {
+                console.error("No response received:", _context.t0.request);
+                setError("Failed to load colors: No response from server. Check if the server is running.");
+              } else {
+                console.error("Error message:", _context.t0.message);
+                setError("Failed to load colors: ".concat(_context.t0.message));
+              }
+              setColors([]);
+            case 22:
+              _context.prev = 22;
               setIsLoading(false);
-              return _context.finish(12);
-            case 15:
+              return _context.finish(22);
+            case 25:
             case "end":
               return _context.stop();
           }
-        }, _callee, null, [[0, 8, 12, 15]]);
+        }, _callee, null, [[0, 17, 22, 25]]);
       }));
       return function fetchColors() {
         return _ref.apply(this, arguments);
       };
     }();
     fetchColors();
-  }, []);
+  }, [forceUpdate]);
+
+  // Function to format timestamps from Zulu time to local time
+  var formatDateTime = function formatDateTime(dateString) {
+    if (!dateString) return "N/A"; // Handle null or undefined values
+    var date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
+  };
   var getCurrentData = function getCurrentData() {
     console.log("colors:", colors);
     console.log("viewType:", viewType);
@@ -75079,10 +75121,14 @@ var WatchColorList = function WatchColorList() {
       return [];
     }
     var filteredColors = colors.filter(function (color) {
+      console.log("Color object:", color);
+      console.log("Raw status field:", color.status, "Type:", _typeof(color.status));
+      var statusValue = color.status !== undefined ? typeof color.status === 'string' ? parseInt(color.status, 10) : Number(color.status) : 1;
+      console.log("Converted statusValue:", statusValue);
       if (viewType === "active") {
-        return color.status === 1;
+        return statusValue === 1;
       } else {
-        return color.status === 0;
+        return statusValue === 0;
       }
     });
     if (searchQuery.trim()) {
@@ -75100,6 +75146,9 @@ var WatchColorList = function WatchColorList() {
   var currentItems = currentData.slice(start, end);
   console.log("currentItems:", currentItems);
   var totalPages = Math.ceil((currentData === null || currentData === void 0 ? void 0 : currentData.length) / itemsPerPage);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("currentItems updated:", currentItems);
+  }, [currentItems]);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
     setIsSelectAll(isChecked);
@@ -75187,7 +75236,6 @@ var WatchColorList = function WatchColorList() {
   };
   var handleSaveEditOrAdd = /*#__PURE__*/function () {
     var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(newOrUpdatedColor) {
-      var response;
       return _regeneratorRuntime().wrap(function _callee2$(_context2) {
         while (1) switch (_context2.prev = _context2.next) {
           case 0:
@@ -75211,7 +75259,7 @@ var WatchColorList = function WatchColorList() {
             throw new Error("No color selected for editing.");
           case 8:
             _context2.next = 10;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/watch_colors/".concat(selectedColor.id), {
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("http://localhost:8000/api/watch_colors/".concat(selectedColor.id), {
               color_name: newOrUpdatedColor.color_name,
               updated_at: new Date().toISOString(),
               status: 1
@@ -75225,37 +75273,32 @@ var WatchColorList = function WatchColorList() {
               break;
             }
             _context2.next = 15;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('/api/watch_colors', {
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post('http://localhost:8000/api/watch_colors', {
               color_name: newOrUpdatedColor.color_name,
               created_at: new Date().toISOString(),
               updated_at: new Date().toISOString(),
               status: 1
             });
           case 15:
-            _context2.next = 17;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
-          case 17:
-            response = _context2.sent;
-            setColors(response.data);
-            setManagementModalOpen(false);
-            setSelectedColor(null);
-            setName("");
             setForceUpdate(function (prev) {
               return prev + 1;
             });
+            setManagementModalOpen(false);
+            setSelectedColor(null);
+            setName("");
             setCurrentPage(1);
-            _context2.next = 30;
+            _context2.next = 26;
             break;
-          case 26:
-            _context2.prev = 26;
+          case 22:
+            _context2.prev = 22;
             _context2.t0 = _context2["catch"](4);
             console.error("Error ".concat(managementType, "ing color:"), _context2.t0);
             setError("Failed to ".concat(managementType, " color. Please try again."));
-          case 30:
+          case 26:
           case "end":
             return _context2.stop();
         }
-      }, _callee2, null, [[4, 26]]);
+      }, _callee2, null, [[4, 22]]);
     }));
     return function handleSaveEditOrAdd(_x) {
       return _ref2.apply(this, arguments);
@@ -75263,7 +75306,7 @@ var WatchColorList = function WatchColorList() {
   }();
   var handleConfirmDeleteOrRestore = /*#__PURE__*/function () {
     var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(items) {
-      var colorIds, _response, _response2, response, _error$response, _error$response2;
+      var colorIds, response, _response, _error$response, _error$response2, _error$response3;
       return _regeneratorRuntime().wrap(function _callee3$(_context3) {
         while (1) switch (_context3.prev = _context3.next) {
           case 0:
@@ -75272,53 +75315,55 @@ var WatchColorList = function WatchColorList() {
               _context3.next = 4;
               break;
             }
-            alert("Please select at least one color to ".concat(managementType, "."));
+            setError("Please select at least one color to ".concat(managementType, "."));
             return _context3.abrupt("return");
           case 4:
             _context3.prev = 4;
             colorIds = items.map(function (item) {
-              return item.id;
+              return parseInt(item.id, 10);
             });
-            console.log("".concat(managementType, " payload:"), managementType === "archive" ? {
-              data: {
-                ids: colorIds
-              }
-            } : {
+            console.log("colorIds after mapping:", colorIds);
+            console.log("".concat(managementType, " payload:"), {
               ids: colorIds
             });
             if (!(managementType === "archive")) {
-              _context3.next = 14;
+              _context3.next = 15;
               break;
             }
-            _context3.next = 10;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/archive', {
-              data: {
-                ids: colorIds
+            _context3.next = 11;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('http://localhost:8000/api/watch_colors/archive', {
+              ids: colorIds
+            }, {
+              headers: {
+                'Content-Type': 'application/json'
               }
             });
-          case 10:
-            _response = _context3.sent;
-            console.log("Archive response:", _response.data);
-            _context3.next = 19;
+          case 11:
+            response = _context3.sent;
+            console.log("Archive response:", response.data);
+            _context3.next = 21;
             break;
-          case 14:
+          case 15:
             if (!(managementType === "restore")) {
-              _context3.next = 19;
+              _context3.next = 21;
               break;
             }
-            _context3.next = 17;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/watch_colors/restore', {
+            _context3.next = 18;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('http://localhost:8000/api/watch_colors/restore', {
               ids: colorIds
+            }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
             });
-          case 17:
-            _response2 = _context3.sent;
-            console.log("Restore response:", _response2.data);
-          case 19:
-            _context3.next = 21;
-            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/watch_colors');
+          case 18:
+            _response = _context3.sent;
+            console.log("Restore response:", _response.data);
+            setViewType("active");
           case 21:
-            response = _context3.sent;
-            setColors(response.data);
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
             setCheckedRows({});
             setIsSelectAll(false);
             if (tableRef.current) {
@@ -75327,22 +75372,21 @@ var WatchColorList = function WatchColorList() {
               });
             }
             setManagementModalOpen(false);
-            if (currentData.length <= itemsPerPage) setCurrentPage(1);
-            setForceUpdate(function (prev) {
-              return prev + 1;
-            });
+            setCurrentPage(1);
             _context3.next = 35;
             break;
-          case 31:
-            _context3.prev = 31;
+          case 29:
+            _context3.prev = 29;
             _context3.t0 = _context3["catch"](4);
-            console.error("Error ".concat(managementType, "ing colors:"), ((_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data) || _context3.t0.message);
-            setError("Failed to ".concat(managementType, " colors: ").concat((_error$response2 = _context3.t0.response) !== null && _error$response2 !== void 0 && (_error$response2 = _error$response2.data) !== null && _error$response2 !== void 0 && _error$response2.errors ? JSON.stringify(_context3.t0.response.data.errors) : _context3.t0.message));
+            console.error("Error ".concat(managementType, "ing colors:"), _context3.t0);
+            console.error("Error response data:", (_error$response = _context3.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data);
+            console.error("Error status:", (_error$response2 = _context3.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status);
+            setError("Failed to ".concat(managementType, " colors: ").concat(JSON.stringify((_error$response3 = _context3.t0.response) === null || _error$response3 === void 0 ? void 0 : _error$response3.data) || _context3.t0.message));
           case 35:
           case "end":
             return _context3.stop();
         }
-      }, _callee3, null, [[4, 31]]);
+      }, _callee3, null, [[4, 29]]);
     }));
     return function handleConfirmDeleteOrRestore(_x2) {
       return _ref3.apply(this, arguments);
@@ -75395,7 +75439,7 @@ var WatchColorList = function WatchColorList() {
                 return handleArchive();
               },
               disabled: checkedCount < 1,
-              children: "Archive"
+              children: "Delete"
             })]
           }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
@@ -75494,10 +75538,10 @@ var WatchColorList = function WatchColorList() {
                 children: color.color_name
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: color.created_at
+                children: formatDateTime(color.created_at)
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: color.updated_at
+                children: formatDateTime(color.updated_at)
               })]
             }, color.id);
           }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
@@ -75686,37 +75730,40 @@ var WatchColorManagement = function WatchColorManagement(_ref) {
       })
     });
   } else if (type === "archive" || type === "restore") {
-    var action = type === "archive" ? "Archive" : "Restore";
+    var action = type === "archive" ? "Delete" : "Restore";
     var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedColors.length, " color(s)?");
     return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type, "-modal-overlay"),
-      onClick: handleCancel,
-      "data-testid": "".concat(type, "-overlay"),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type, "-modal"),
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        "data-testid": "".concat(type, "-modal"),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
-          children: ["Confirm ", action]
-        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "error-message",
-          children: error
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "button-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "save-button",
-            onClick: handleConfirm,
-            children: action
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "cancel-button",
-            onClick: handleCancel,
-            children: "Cancel"
+      className: "WatchColorManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "".concat(type, "-modal-overlay"),
+        onClick: handleCancel,
+        "data-testid": "".concat(type, "-overlay"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "".concat(type, "-modal"),
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          "data-testid": "".concat(type, "-modal"),
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h3", {
+            children: ["Confirm ", action]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "button-group",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "save-button",
+              onClick: handleConfirm,
+              children: action
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+              className: "cancel-button",
+              onClick: handleCancel,
+              children: "Cancel"
+            })]
           })]
-        })]
+        })
       })
     });
   }
@@ -78423,8 +78470,7 @@ var WristMeasurement = function WristMeasurement() {
     _useState22 = _slicedToArray(_useState21, 2),
     searchQuery = _useState22[0],
     setSearchQuery = _useState22[1];
-  var itemsPerPage = 5; // Match CategoryList pagination
-
+  var itemsPerPage = 5;
   var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([{
       id: 1,
       measurement: "6.5 inches",
@@ -78443,9 +78489,7 @@ var WristMeasurement = function WristMeasurement() {
       createdAt: "11/21/24",
       updatedAt: "11/21/24",
       isArchived: false
-    },
-    // Added an archived measurement for testing
-    {
+    }, {
       id: 4,
       measurement: "9.5 inches",
       createdAt: "11/21/24",
@@ -79653,19 +79697,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.mjs");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/development/chunk-HA7DTUK3.mjs");
 /* harmony import */ var _ProductManagement__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ProductManagement */ "./resources/js/components/Admin/Products/ProductManagement.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
 function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
 function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
 function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
 function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
@@ -79678,520 +79722,386 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 
 
 var ProductList = function ProductList() {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
     _useState2 = _slicedToArray(_useState, 2),
-    viewType = _useState2[0],
-    setViewType = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    checkedRows = _useState2[0],
+    setCheckedRows = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState4 = _slicedToArray(_useState3, 2),
-    activeCheckedRows = _useState4[0],
-    setActiveCheckedRows = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    isSelectAll = _useState4[0],
+    setIsSelectAll = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)("active"),
     _useState6 = _slicedToArray(_useState5, 2),
-    activeIsSelectAll = _useState6[0],
-    setActiveIsSelectAll = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
+    viewType = _useState6[0],
+    setViewType = _useState6[1];
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    archivedCheckedRows = _useState8[0],
-    setArchivedCheckedRows = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    managementModalOpen = _useState8[0],
+    setManagementModalOpen = _useState8[1];
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState10 = _slicedToArray(_useState9, 2),
-    archivedIsSelectAll = _useState10[0],
-    setArchivedIsSelectAll = _useState10[1];
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    managementType = _useState10[0],
+    setManagementType = _useState10[1];
+  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
     _useState12 = _slicedToArray(_useState11, 2),
-    currentPage = _useState12[0],
-    setCurrentPage = _useState12[1];
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(false),
+    selectedProduct = _useState12[0],
+    setSelectedProduct = _useState12[1];
+  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState14 = _slicedToArray(_useState13, 2),
-    managementModalOpen = _useState14[0],
-    setManagementModalOpen = _useState14[1];
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    error = _useState14[0],
+    setError = _useState14[1];
+  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(0),
     _useState16 = _slicedToArray(_useState15, 2),
-    managementType = _useState16[0],
-    setManagementType = _useState16[1];
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(null),
+    forceUpdate = _useState16[0],
+    setForceUpdate = _useState16[1];
+  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
     _useState18 = _slicedToArray(_useState17, 2),
-    selectedProduct = _useState18[0],
-    setSelectedProduct = _useState18[1];
+    currentPage = _useState18[0],
+    setCurrentPage = _useState18[1];
   var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
     _useState20 = _slicedToArray(_useState19, 2),
     searchQuery = _useState20[0],
     setSearchQuery = _useState20[1];
-  var itemsPerPage = 5;
-  var navigate = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_3__.useNavigate)();
-  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var initialProducts = [{
-    id: 1,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱200.12",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Men",
-    color: "Black",
-    wristMeasurement: "18cm"
-  }, {
-    id: 2,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱143.06",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Women",
-    color: "Silver",
-    wristMeasurement: "16cm"
-  }, {
-    id: 3,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "2x",
-    price: "₱310.22",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Unisex",
-    color: "Gold",
-    wristMeasurement: "20cm"
-  }, {
-    id: 4,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱176.54",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Men",
-    color: "Blue",
-    wristMeasurement: "19cm"
-  }, {
-    id: 5,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱200.12",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Women",
-    color: "Rose Gold",
-    wristMeasurement: "17cm"
-  }, {
-    id: 6,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "1x",
-    price: "₱143.06",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Unisex",
-    color: "Black",
-    wristMeasurement: "18cm"
-  }, {
-    id: 7,
-    name: "Product Name",
-    description: "Product Description",
-    stock: "2x",
-    price: "₱310.22",
-    isArchived: false,
-    image: "watchprod.svg",
-    createdAt: "03/01/25",
-    updatedAt: "03/02/25",
-    category: "Men",
-    color: "Silver",
-    wristMeasurement: "20cm"
-  }];
-  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(initialProducts),
+  var _useState21 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState22 = _slicedToArray(_useState21, 2),
     products = _useState22[0],
     setProducts = _useState22[1];
+  var _useState23 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(1),
+    _useState24 = _slicedToArray(_useState23, 2),
+    totalPages = _useState24[0],
+    setTotalPages = _useState24[1];
+  var _useState25 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(true),
+    _useState26 = _slicedToArray(_useState25, 2),
+    isLoading = _useState26[0],
+    setIsLoading = _useState26[1];
+  var tableRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
+  var itemsPerPage = 5;
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var savedProducts = localStorage.getItem("products");
-    if (savedProducts) {
-      var parsedProducts = JSON.parse(savedProducts);
-      var activeProducts = parsedProducts.map(function (product) {
-        return _objectSpread(_objectSpread({}, product), {}, {
-          isArchived: false,
-          createdAt: product.createdAt || new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: '2-digit'
-          }),
-          updatedAt: product.updatedAt || new Date().toLocaleDateString('en-US', {
-            month: '2-digit',
-            day: '2-digit',
-            year: '2-digit'
-          }),
-          category: product.category || "Unisex",
-          color: product.color || "Black",
-          wristMeasurement: product.wristMeasurement || "18cm",
-          image: product.image || "watchprod.svg"
-        });
-      });
-      setProducts(activeProducts);
-    } else {
-      setProducts(initialProducts);
-      localStorage.setItem("products", JSON.stringify(initialProducts));
-    }
-    setActiveCheckedRows({});
-    setActiveIsSelectAll(false);
-    setArchivedCheckedRows({});
-    setArchivedIsSelectAll(false);
+    console.log("ProductList component mounted");
   }, []);
-  var getCurrentData = function getCurrentData() {
-    var filteredProducts = products.filter(function (product) {
-      return product.isArchived === (viewType === "archived");
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("State changed:", {
+      managementModalOpen: managementModalOpen,
+      managementType: managementType,
+      selectedProduct: selectedProduct
     });
+  }, [managementModalOpen, managementType, selectedProduct]);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchProducts = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, _error$response, _error$response2, _error$response3;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              console.log("Fetching products from /api/products...", {
+                page: currentPage,
+                per_page: itemsPerPage,
+                status: viewType
+              });
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/products', {
+                params: {
+                  page: currentPage,
+                  per_page: itemsPerPage,
+                  status: viewType
+                }
+              });
+            case 4:
+              response = _context.sent;
+              console.log("API Response:", response.data);
+              console.log("Setting products:", response.data.data || []);
+              setProducts(response.data.data || []);
+              setTotalPages(response.data.last_page || 1);
+              _context.next = 18;
+              break;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching products:", _context.t0);
+              console.error("Error response:", (_error$response = _context.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data);
+              console.error("Error status:", (_error$response2 = _context.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status);
+              setError("Failed to load products: ".concat(((_error$response3 = _context.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.message) || _context.t0.message));
+              setProducts([]);
+            case 18:
+              _context.prev = 18;
+              setIsLoading(false);
+              return _context.finish(18);
+            case 21:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 11, 18, 21]]);
+      }));
+      return function fetchProducts() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+    fetchProducts();
+  }, [viewType, currentPage, forceUpdate]);
+  var getCurrentData = function getCurrentData() {
+    console.log("products:", products);
+    console.log("viewType:", viewType);
+    console.log("searchQuery:", searchQuery);
+    if (!products || products.length === 0) {
+      console.warn("No products data available, returning empty array.");
+      return [];
+    }
+    var filteredProducts = products;
     if (searchQuery.trim()) {
-      var query = searchQuery.toLowerCase();
       filteredProducts = filteredProducts.filter(function (product) {
-        return product.name.toLowerCase().includes(query) || product.description.toLowerCase().includes(query) || product.stock.toLowerCase().includes(query) || product.price.toLowerCase().includes(query) || product.category.toLowerCase().includes(query) || product.color.toLowerCase().includes(query) || product.wristMeasurement.toLowerCase().includes(query) || product.updatedAt.toLowerCase().includes(query);
+        return product.product_name.toLowerCase().includes(searchQuery.toLowerCase());
       });
     }
+    console.log("filteredProducts:", filteredProducts);
     return filteredProducts;
   };
   var currentData = getCurrentData();
-  var totalPages = Math.ceil(currentData.length / itemsPerPage);
-  var currentItems = currentData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
   var handleSelectAll = function handleSelectAll(e) {
     var isChecked = e.target.checked;
-    if (viewType === "active") {
-      setActiveIsSelectAll(isChecked);
-      var newCheckedRows = {};
-      if (isChecked) {
-        currentItems.forEach(function (_, index) {
-          newCheckedRows[index] = true;
-        });
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = true;
-          });
-        }
-      } else {
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = false;
-          });
-        }
-      }
-      setActiveCheckedRows(newCheckedRows);
-      console.log("Active checked rows updated:", newCheckedRows);
-    } else if (viewType === "archived") {
-      setArchivedIsSelectAll(isChecked);
-      var _newCheckedRows = {};
-      if (isChecked) {
-        currentItems.forEach(function (_, index) {
-          _newCheckedRows[index] = true;
-        });
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = true;
-          });
-        }
-      } else {
-        if (tableRef.current) {
-          tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-            return checkbox.checked = false;
-          });
-        }
-      }
-      setArchivedCheckedRows(_newCheckedRows);
-      console.log("Archived checked rows updated:", _newCheckedRows);
+    setIsSelectAll(isChecked);
+    var newCheckedRows = {};
+    currentData.forEach(function (product) {
+      newCheckedRows[product.id] = isChecked;
+    });
+    setCheckedRows(newCheckedRows);
+    if (tableRef.current) {
+      tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+        checkbox.checked = isChecked;
+      });
     }
   };
-  var handleRowCheckbox = function handleRowCheckbox(index, e) {
-    var isChecked = e.target.checked;
-    if (viewType === "active") {
-      setActiveCheckedRows(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-      });
-      var allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(function (cb) {
-        return cb.checked;
-      }).length : 0);
-      setActiveIsSelectAll(allChecked);
-      console.log("Active row checkbox updated, index:", index, "Checked:", isChecked);
-    } else if (viewType === "archived") {
-      setArchivedCheckedRows(function (prev) {
-        return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, index, isChecked));
-      });
-      var _allChecked = currentItems.length === (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(function (cb) {
-        return cb.checked;
-      }).length : 0);
-      setArchivedIsSelectAll(_allChecked);
-      console.log("Archived row checkbox updated, index:", index, "Checked:", isChecked);
-    }
+  var handleRowCheckbox = function handleRowCheckbox(product, e) {
+    setCheckedRows(function (prev) {
+      return _objectSpread(_objectSpread({}, prev), {}, _defineProperty({}, product.id, e.target.checked));
+    });
+    setIsSelectAll(currentData.every(function (item) {
+      return checkedRows[item.id] || item.id === product.id && e.target.checked;
+    }));
   };
-  var handleDelete = function handleDelete() {
-    var productToDelete = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
-      return activeCheckedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    }) : [];
-    if (productToDelete) {
-      if (viewType !== "active") {
-        alert("You can only delete from Active Products.");
-        return;
-      }
-      setManagementType("delete");
-      setSelectedProduct([productToDelete]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 2) {
-      return;
-    }
+  var getSelectedItems = function getSelectedItems() {
+    var singleItem = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    if (singleItem) return [singleItem];
+    return currentData.filter(function (product) {
+      return checkedRows[product.id];
+    });
+  };
+  var handleArchive = function handleArchive() {
+    var productToArchive = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+    console.log("Attempting to archive - viewType:", viewType, "productToArchive:", productToArchive, "checkedRows:", checkedRows);
+    var selectedItems = getSelectedItems(productToArchive);
     if (viewType !== "active") {
-      alert("You can only delete from Active Products.");
+      alert("You can only archive from Active Products.");
       return;
     }
-    setManagementType("delete");
-    setSelectedProduct(getSelectedProducts());
+    if (!selectedItems.length) {
+      alert("Please select at least one product to archive.");
+      return;
+    }
+    setManagementType("archive");
+    setSelectedProduct(selectedItems);
     setManagementModalOpen(true);
   };
   var handleRestore = function handleRestore() {
     var productToRestore = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
-    var selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows).filter(function (index) {
-      return archivedCheckedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    }) : [];
-    if (productToRestore) {
-      if (viewType !== "archived") {
-        alert("You can only restore from Archived Products.");
-        return;
-      }
-      setManagementType("restore");
-      setSelectedProduct([productToRestore]);
-      setManagementModalOpen(true);
-      return;
-    }
-    var selectedCount = selectedIndices.length;
-    if (selectedCount < 2) {
-      return;
-    }
+    console.log("Attempting to restore - viewType:", viewType, "productToRestore:", productToRestore, "checkedRows:", checkedRows);
+    var selectedItems = getSelectedItems(productToRestore);
     if (viewType !== "archived") {
       alert("You can only restore from Archived Products.");
       return;
     }
-    setManagementType("restore");
-    setSelectedProduct(getSelectedProducts());
-    setManagementModalOpen(true);
-  };
-  var handleAdd = function handleAdd() {
-    if (viewType !== "active") {
-      alert("You can only add products to Active Products.");
+    if (!selectedItems.length) {
+      alert("Please select at least one product to restore.");
       return;
     }
+    setManagementType("restore");
+    setSelectedProduct(selectedItems);
+    setManagementModalOpen(true);
+  };
+  var handleAdd = function handleAdd(e) {
+    e.stopPropagation(); // Prevent event bubbling
+    console.log("Add button clicked!");
+    console.log("Current viewType:", viewType, "Opening Add modal");
     setManagementType("add");
     setSelectedProduct(null);
     setManagementModalOpen(true);
+    console.log("State updated:", {
+      managementType: "add",
+      selectedProduct: null,
+      managementModalOpen: true
+    });
   };
   var handleEdit = function handleEdit(product) {
+    console.log("Opening edit for product:", product);
     setSelectedProduct(product);
     setManagementType("edit");
     setManagementModalOpen(true);
-    console.log("Opening edit for product:", product);
-  };
-  var handleConfirmDeleteOrRestore = function handleConfirmDeleteOrRestore(items) {
-    if (managementType === "delete") {
-      var updatedProducts = products.map(function (product) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === product.id;
-          })) {
-            return _objectSpread(_objectSpread({}, product), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
-            });
-          }
-        } else {
-          if (items.id === product.id) {
-            return _objectSpread(_objectSpread({}, product), {}, {
-              isArchived: true,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
-            });
-          }
-        }
-        return product;
-      });
-      setProducts(updatedProducts);
-      setActiveCheckedRows({});
-      setActiveIsSelectAll(false);
-      if (tableRef.current && viewType === "active") {
-        tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      console.log("Deleted products, updated products:", updatedProducts);
-      localStorage.setItem("products", JSON.stringify(updatedProducts));
-    } else if (managementType === "restore") {
-      var _updatedProducts = products.map(function (product) {
-        if (Array.isArray(items)) {
-          if (items.some(function (item) {
-            return item.id === product.id;
-          })) {
-            return _objectSpread(_objectSpread({}, product), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
-            });
-          }
-        } else {
-          if (items.id === product.id) {
-            return _objectSpread(_objectSpread({}, product), {}, {
-              isArchived: false,
-              updatedAt: new Date().toLocaleDateString('en-US', {
-                month: '2-digit',
-                day: '2-digit',
-                year: '2-digit'
-              })
-            });
-          }
-        }
-        return product;
-      });
-      setProducts(_updatedProducts);
-      setArchivedCheckedRows({});
-      setArchivedIsSelectAll(false);
-      if (tableRef.current && viewType === "archived") {
-        tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
-          return checkbox.checked = false;
-        });
-      }
-      setManagementModalOpen(false);
-      if (currentData.length === 0) {
-        setCurrentPage(1);
-      }
-      console.log("Restored products, updated products:", _updatedProducts);
-      localStorage.setItem("products", JSON.stringify(_updatedProducts));
-    }
-  };
-  var handleCloseManagement = function handleCloseManagement() {
-    setManagementModalOpen(false);
-    setManagementType("");
-    setSelectedProduct(null);
-    console.log("Closed management modal");
   };
   var handleSearchChange = function handleSearchChange(e) {
     setSearchQuery(e.target.value);
     setCurrentPage(1);
   };
-  var getSelectedProducts = function getSelectedProducts() {
-    var selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
-      return activeCheckedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    }) : Object.keys(archivedCheckedRows).filter(function (index) {
-      return archivedCheckedRows[index];
-    }).map(function (index) {
-      return parseInt(index, 10);
-    });
-    return selectedIndices.map(function (index) {
-      return currentItems[index];
-    });
+  var handleConfirmDeleteOrRestore = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(items) {
+      var productIds, response, _response, _error$response4, _error$response5, _error$response6;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            console.log("Confirming action - managementType:", managementType, "items:", items);
+            if (items !== null && items !== void 0 && items.length) {
+              _context2.next = 4;
+              break;
+            }
+            setError("Please select at least one product to ".concat(managementType, "."));
+            return _context2.abrupt("return");
+          case 4:
+            _context2.prev = 4;
+            productIds = items.map(function (item) {
+              return parseInt(item.id, 10);
+            });
+            console.log("productIds after mapping:", productIds);
+            console.log("".concat(managementType, " payload:"), {
+              ids: productIds
+            });
+            if (!(managementType === "archive")) {
+              _context2.next = 15;
+              break;
+            }
+            _context2.next = 11;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/products/archive', {
+              ids: productIds
+            }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+          case 11:
+            response = _context2.sent;
+            console.log("Archive response:", response.data);
+            _context2.next = 20;
+            break;
+          case 15:
+            if (!(managementType === "restore")) {
+              _context2.next = 20;
+              break;
+            }
+            _context2.next = 18;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put('/api/products/restore', {
+              ids: productIds
+            }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+          case 18:
+            _response = _context2.sent;
+            console.log("Restore response:", _response.data);
+          case 20:
+            setForceUpdate(function (prev) {
+              return prev + 1;
+            });
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+              tableRef.current.querySelectorAll('.product-checkbox').forEach(function (checkbox) {
+                return checkbox.checked = false;
+              });
+            }
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+            _context2.next = 34;
+            break;
+          case 28:
+            _context2.prev = 28;
+            _context2.t0 = _context2["catch"](4);
+            console.error("Error ".concat(managementType, "ing products:"), _context2.t0);
+            console.error("Error response data:", (_error$response4 = _context2.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data);
+            console.error("Error status:", (_error$response5 = _context2.t0.response) === null || _error$response5 === void 0 ? void 0 : _error$response5.status);
+            setError("Failed to ".concat(managementType, " products: ").concat(JSON.stringify((_error$response6 = _context2.t0.response) === null || _error$response6 === void 0 ? void 0 : _error$response6.data) || _context2.t0.message));
+          case 34:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[4, 28]]);
+    }));
+    return function handleConfirmDeleteOrRestore(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+  var handleCloseManagement = function handleCloseManagement() {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedProduct(null);
+    setError("");
   };
-  var isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
-  var checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(function (index) {
-    return activeCheckedRows[index];
-  }).length : Object.keys(archivedCheckedRows).filter(function (index) {
-    return archivedCheckedRows[index];
-  }).length;
-  if (!products || products.length === 0) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-      className: "products-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
-        className: "products-header",
-        children: "Products"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
-        className: "table-container",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
-          children: "No products available. Please check your data or refresh the page."
-        })
-      })]
+  var handleSaveEditOrAdd = function handleSaveEditOrAdd() {
+    console.log("Saving product, re-fetching products...");
+    setForceUpdate(function (prev) {
+      return prev + 1;
     });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
-    className: "products-container",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+    setManagementModalOpen(false);
+    setManagementType("");
+    setSelectedProduct(null);
+  };
+  var checkedCount = Object.values(checkedRows).filter(Boolean).length;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+    className: "ProductList",
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
       className: "products-header",
       children: viewType === "active" ? "Active Products" : "Archived Products"
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      className: "error-message",
+      children: error
+    }), isLoading ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+      children: "Loading products..."
+    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
       className: "table-container",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-header-actions",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
           className: "search-bar",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
             type: "text",
             value: searchQuery,
             onChange: handleSearchChange,
             placeholder: "Search",
             className: "search-input"
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "button-group",
           style: {
             marginLeft: 'auto'
           },
-          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [viewType === "active" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "add-button",
               onClick: handleAdd,
               children: "Add"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
               className: "delete-button",
               onClick: function onClick() {
-                return handleDelete();
+                return handleArchive();
               },
-              disabled: checkedCount < 2,
+              disabled: checkedCount < 1,
               children: "Delete"
             })]
-          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), viewType === "archived" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "restore-button",
             onClick: function onClick() {
               return handleRestore();
             },
-            disabled: checkedCount < 2,
+            disabled: checkedCount < 1,
             children: "Restore"
           })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "view-toggle",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "active" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("active");
             },
             children: "Active Products"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             className: "view-button ".concat(viewType === "archived" ? "active" : ""),
             onClick: function onClick() {
               return setViewType("archived");
@@ -80199,146 +80109,138 @@ var ProductList = function ProductList() {
             children: "Archived Products"
           })]
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("table", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("table", {
         ref: tableRef,
-        className: "products-table ".concat(viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'),
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("thead", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
+        className: "products-table",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("thead", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
             className: "table-header-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header",
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                 type: "checkbox",
                 className: "product-checkbox",
                 checked: isSelectAll,
                 onChange: handleSelectAll
               })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
               className: "table-header products-action-column",
               children: "Action"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-name-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Product Name"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-description-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Description"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-category-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Category"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-color-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Color"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-wrist-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Wrist Measurement"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-stock-column",
-              children: "Stocks"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-price-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
+              children: "Stock"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Price"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-created-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Created At"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("th", {
-              className: "table-header product-updated-column",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("th", {
+              className: "table-header",
               children: "Updated At"
             })]
           })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tbody", {
-          children: currentItems.length > 0 ? currentItems.map(function (product, index) {
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("tr", {
-              className: "table-row ".concat(viewType === "archived" ? 'view-type="archived"' : ''),
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tbody", {
+          children: currentData.length > 0 ? currentData.map(function (product) {
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("tr", {
+              className: "table-row",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
                   type: "checkbox",
                   className: "product-checkbox",
+                  checked: !!checkedRows[product.id],
                   onChange: function onChange(e) {
-                    return handleRowCheckbox(index, e);
+                    return handleRowCheckbox(product, e);
                   }
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell products-action-column",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                   className: "action-buttons",
-                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
+                  children: viewType === "active" ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaEdit, {
                       className: "edit-icon",
-                      size: 16,
+                      size: 20,
                       onClick: function onClick() {
                         return handleEdit(product);
                       }
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaTrash, {
                       className: "delete-icon",
-                      size: 16,
+                      size: 20,
                       onClick: function onClick() {
-                        return handleDelete(product);
+                        return handleArchive(product);
                       }
                     })]
-                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
+                  }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(react_icons_fa__WEBPACK_IMPORTED_MODULE_4__.FaUndo, {
                     className: "restore-icon",
-                    size: 16,
+                    size: 20,
                     onClick: function onClick() {
                       return handleRestore(product);
                     }
                   })
                 })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
                 className: "table-cell",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("img", {
-                  src: "/images/".concat(product.image || "watchprod.svg"),
-                  alt: "".concat(product.name, " image"),
-                  className: "product-image"
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-name-column",
-                children: product.name
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-description-column",
-                children: product.description
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-category-column",
-                children: product.category
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-color-column",
-                children: product.color
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-wrist-column",
-                children: product.wristMeasurement
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-stock-column",
+                children: product.product_name
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.description || '-'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.category || '-'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.color || '-'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.wrist_measurement || '-'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
                 children: product.stock
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-price-column",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
                 children: product.price
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-created-column",
-                children: product.createdAt
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-                className: "table-cell product-updated-column",
-                children: product.updatedAt
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.created_at
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+                className: "table-cell",
+                children: product.updated_at
               })]
             }, product.id);
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("tr", {
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("tr", {
             className: "table-row",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("td", {
-              colSpan: "12",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("td", {
+              colSpan: "11",
               className: "table-cell",
               style: {
                 textAlign: "center",
                 padding: "20px",
                 backgroundColor: "#f9f9f9"
               },
-              children: viewType === "active" ? "No products available." : "No archived products available."
+              children: products.length === 0 ? "No products available." : viewType === "active" ? "No active products match your search." : "No archived products match your search."
             })
           })
         })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
         className: "table-pagination",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.max(prev - 1, 1);
@@ -80352,14 +80254,14 @@ var ProductList = function ProductList() {
         }, function (_, i) {
           return i + 1;
         }).map(function (page) {
-          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
             onClick: function onClick() {
               return setCurrentPage(page);
             },
             className: currentPage === page ? "table-pagination-button active" : "table-pagination-button",
             children: page
           }, page);
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
           onClick: function onClick() {
             return setCurrentPage(function (prev) {
               return Math.min(prev + 1, totalPages);
@@ -80370,43 +80272,15 @@ var ProductList = function ProductList() {
           children: "Next"
         })]
       })]
-    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_ProductManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
-      type: managementType,
-      product: managementType === "edit" || managementType === "add" ? selectedProduct : managementType === "restore" && !Array.isArray(selectedProduct) ? selectedProduct : null,
-      selectedProducts: managementType === "delete" || managementType === "restore" && Array.isArray(selectedProduct) ? selectedProduct || getSelectedProducts() : [],
-      onClose: handleCloseManagement,
-      onConfirm: handleConfirmDeleteOrRestore,
-      onSave: function onSave(newOrUpdatedProduct) {
-        if (managementType === "edit") {
-          var updatedProducts = products.map(function (p) {
-            return p.id === newOrUpdatedProduct.id ? newOrUpdatedProduct : p;
-          });
-          setProducts(updatedProducts);
-          localStorage.setItem("products", JSON.stringify(updatedProducts));
-        } else if (managementType === "add") {
-          var _updatedProducts2 = [_objectSpread(_objectSpread({}, newOrUpdatedProduct), {}, {
-            createdAt: newOrUpdatedProduct.createdAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            }),
-            updatedAt: newOrUpdatedProduct.updatedAt || new Date().toLocaleDateString('en-US', {
-              month: '2-digit',
-              day: '2-digit',
-              year: '2-digit'
-            }),
-            category: newOrUpdatedProduct.category || "Unisex",
-            color: newOrUpdatedProduct.color || "Black",
-            wristMeasurement: newOrUpdatedProduct.wristMeasurement || "18cm"
-          })].concat(_toConsumableArray(products.filter(function (p) {
-            return !p.isArchived;
-          })));
-          setProducts(_updatedProducts2);
-          localStorage.setItem("products", JSON.stringify(_updatedProducts2));
-        }
-        setManagementModalOpen(false);
-        setCurrentPage(1);
-      }
+    }), managementModalOpen && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+      children: [console.log("Rendering ProductManagement modal with type:", managementType), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_ProductManagement__WEBPACK_IMPORTED_MODULE_1__["default"], {
+        type: managementType,
+        product: managementType === "edit" || managementType === "add" ? selectedProduct : null,
+        selectedProducts: managementType === "restore" || managementType === "archive" ? selectedProduct : [],
+        onClose: handleCloseManagement,
+        onConfirm: handleConfirmDeleteOrRestore,
+        onSave: handleSaveEditOrAdd
+      })]
     })]
   });
 };
@@ -80427,13 +80301,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator["return"] && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, "catch": function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+
 
 
 var ProductManagement = function ProductManagement(_ref) {
@@ -80443,535 +80329,367 @@ var ProductManagement = function ProductManagement(_ref) {
     onClose = _ref.onClose,
     onConfirm = _ref.onConfirm,
     onSave = _ref.onSave;
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.name) || ""),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({
+      product_name: '',
+      description: '',
+      price: '',
+      category: 'Men',
+      color_id: '',
+      wrist_measurement: '',
+      image: null
+    }),
     _useState2 = _slicedToArray(_useState, 2),
-    name = _useState2[0],
-    setName = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.description) || ""),
+    formData = _useState2[0],
+    setFormData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState4 = _slicedToArray(_useState3, 2),
-    description = _useState4[0],
-    setDescription = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.stock) || ""),
+    colors = _useState4[0],
+    setColors = _useState4[1];
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(''),
     _useState6 = _slicedToArray(_useState5, 2),
-    stock = _useState6[0],
-    setStock = _useState6[1];
-  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.price) || ""),
-    _useState8 = _slicedToArray(_useState7, 2),
-    price = _useState8[0],
-    setPrice = _useState8[1];
-  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.image) || null),
-    _useState10 = _slicedToArray(_useState9, 2),
-    image = _useState10[0],
-    setImage = _useState10[1]; // Store file or base64 URL
-  var _useState11 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(product !== null && product !== void 0 && product.image ? "File chosen" : "No file chosen"),
-    _useState12 = _slicedToArray(_useState11, 2),
-    fileName = _useState12[0],
-    setFileName = _useState12[1]; // Track file name for display
-  var _useState13 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.category) || "Unisex"),
-    _useState14 = _slicedToArray(_useState13, 2),
-    category = _useState14[0],
-    setCategory = _useState14[1]; // New state for Category (Men, Women, Unisex)
-  var _useState15 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.color) || "Black"),
-    _useState16 = _slicedToArray(_useState15, 2),
-    color = _useState16[0],
-    setColor = _useState16[1]; // New state for Color
-  var _useState17 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)((product === null || product === void 0 ? void 0 : product.wristMeasurement) || "18cm"),
-    _useState18 = _slicedToArray(_useState17, 2),
-    wristMeasurement = _useState18[0],
-    setWristMeasurement = _useState18[1]; // New state for Wrist Measurement
-  var _useState19 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState20 = _slicedToArray(_useState19, 2),
-    error = _useState20[0],
-    setError = _useState20[1];
+    error = _useState6[0],
+    setError = _useState6[1];
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (type === "edit" || type === "add") {
-      setName((product === null || product === void 0 ? void 0 : product.name) || "");
-      setDescription((product === null || product === void 0 ? void 0 : product.description) || "");
-      setStock((product === null || product === void 0 ? void 0 : product.stock) || "");
-      setPrice((product === null || product === void 0 ? void 0 : product.price) || "");
-      setImage((product === null || product === void 0 ? void 0 : product.image) || null); // Reset to null or existing image URL (base64 or path)
-      setFileName(product !== null && product !== void 0 && product.image ? "File chosen" : "No file chosen");
-      setCategory((product === null || product === void 0 ? void 0 : product.category) || "Unisex"); // Set default Category
-      setColor((product === null || product === void 0 ? void 0 : product.color) || "Black"); // Set default Color
-      setWristMeasurement((product === null || product === void 0 ? void 0 : product.wristMeasurement) || "18cm"); // Set default Wrist Measurement
-      setError("");
+    console.log("ProductManagement component mounted with props:", {
+      type: type,
+      product: product,
+      selectedProducts: selectedProducts
+    });
+    if (type === 'edit' && product) {
+      console.log("Populating form with product data:", product);
+      setFormData({
+        product_name: product.product_name || '',
+        description: product.description || '',
+        price: product.price || '',
+        category: product.category === 'Women' ? 'Women' : 'Men',
+        color_id: product.color_id || '',
+        wrist_measurement: product.wrist_measurement || '',
+        image: null
+      });
     }
   }, [type, product]);
-  var validateStock = function validateStock(value) {
-    var numValue = parseInt(value) || 0;
-    return numValue >= 0 && !isNaN(numValue); // Stock must be a non-negative integer
-  };
-  var validatePrice = function validatePrice(value) {
-    var numValue = parseFloat(value) || 0;
-    return numValue >= 0 && !isNaN(numValue); // Price must be a non-negative number
-  };
-  var handleNameChange = function handleNameChange(e) {
-    var value = e.target.value;
-    console.log("Product name input changed to:", value);
-    setName(value);
-  };
-  var handleDescriptionChange = function handleDescriptionChange(e) {
-    var value = e.target.value;
-    console.log("Description input changed to:", value);
-    setDescription(value);
-  };
-  var handleStockChange = function handleStockChange(e) {
-    var value = e.target.value;
-    console.log("Stock input changed to:", value);
-    if (value === "") {
-      setStock("");
-      setError("");
-      return;
-    }
-    if (validateStock(value)) {
-      setStock(value);
-      setError("");
-    } else {
-      setError("Stock must be a non-negative integer.");
-    }
-  };
-  var handlePriceChange = function handlePriceChange(e) {
-    var value = e.target.value;
-    console.log("Price input changed to:", value);
-    if (value === "") {
-      setPrice("");
-      setError("");
-      return;
-    }
-    if (validatePrice(value)) {
-      setPrice(value);
-      setError("");
-    } else {
-      setError("Price must be a non-negative number.");
-    }
-  };
-  var handleImageChange = function handleImageChange(e) {
-    var file = e.target.files[0];
-    if (file) {
-      console.log("Image file selected:", file.name);
-      setFileName(file.name.length > 20 ? "".concat(file.name.substring(0, 20), "...") : file.name || "File chosen");
-      // Convert file to base64 for storage/display and preview
-      var reader = new FileReader();
-      reader.onloadend = function () {
-        setImage(reader.result); // Store base64 string for saving and preview
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    var fetchColors = /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+        var response, activeColors, _error$response, _error$response2, _error$response3;
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.prev = 0;
+              console.log("Fetching all colors from /api/watch_colors...");
+              _context.next = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_1___default().get('http://localhost:8000/api/watch_colors');
+            case 4:
+              response = _context.sent;
+              console.log("Raw Colors Response:", response.data);
+              activeColors = Array.isArray(response.data) ? response.data.filter(function (color) {
+                console.log("Color:", color);
+                return color.status === 1 || color.status === '1' || color.status === 'active';
+              }) : [];
+              console.log("Active colors after filtering:", activeColors);
+              setColors(activeColors);
+              _context.next = 18;
+              break;
+            case 11:
+              _context.prev = 11;
+              _context.t0 = _context["catch"](0);
+              console.error("Error fetching colors:", _context.t0);
+              console.error("Error response:", (_error$response = _context.t0.response) === null || _error$response === void 0 ? void 0 : _error$response.data);
+              console.error("Error status:", (_error$response2 = _context.t0.response) === null || _error$response2 === void 0 ? void 0 : _error$response2.status);
+              setError("Failed to load colors: ".concat(((_error$response3 = _context.t0.response) === null || _error$response3 === void 0 || (_error$response3 = _error$response3.data) === null || _error$response3 === void 0 ? void 0 : _error$response3.message) || _context.t0.message));
+              setColors([]);
+            case 18:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee, null, [[0, 11]]);
+      }));
+      return function fetchColors() {
+        return _ref2.apply(this, arguments);
       };
-      reader.readAsDataURL(file); // Read file as base64
-    } else {
-      setImage(null);
-      setFileName("No file chosen");
-      setError("Please select an image file.");
-    }
+    }();
+    fetchColors();
+  }, []);
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    console.log("Current colors state:", colors);
+  }, [colors]);
+  var handleInputChange = function handleInputChange(e) {
+    var _e$target = e.target,
+      name = _e$target.name,
+      value = _e$target.value;
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, _defineProperty({}, name, value)));
   };
-  var handleCategoryChange = function handleCategoryChange(e) {
-    var value = e.target.value;
-    console.log("Category input changed to:", value);
-    setCategory(value);
+  var handleFileChange = function handleFileChange(e) {
+    setFormData(_objectSpread(_objectSpread({}, formData), {}, {
+      image: e.target.files[0]
+    }));
   };
-  var handleColorChange = function handleColorChange(e) {
-    var value = e.target.value;
-    console.log("Color input changed to:", value);
-    setColor(value);
-  };
-  var handleWristMeasurementChange = function handleWristMeasurementChange(e) {
-    var value = e.target.value;
-    console.log("Wrist Measurement input changed to:", value);
-    setWristMeasurement(value);
-  };
-  var handleSave = function handleSave() {
-    if (type === "edit") {
-      if (!name.trim()) {
-        setError("Product name is required.");
-        return;
-      }
-      if (description.length > 1000) {
-        setError("Description is too long (max 1000 characters).");
-        return;
-      }
-      if (!validateStock(stock)) {
-        setError("Stock must be a non-negative integer.");
-        return;
-      }
-      if (!validatePrice(price)) {
-        setError("Price must be a non-negative number.");
-        return;
-      }
-      if (!image) {
-        setError("Image is required.");
-        return;
-      }
-      setError("");
-      var updatedProduct = {
-        id: product.id,
-        name: name.trim(),
-        description: description,
-        stock: stock,
-        price: price,
-        image: typeof image === "string" ? image : image,
-        // Ensure image is a string (base64)
-        isArchived: product.isArchived,
-        createdAt: product.createdAt,
-        // Preserve original createdAt
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        category: category,
-        // New field
-        color: color,
-        // New field
-        wristMeasurement: wristMeasurement // New field
-      };
-      onSave(updatedProduct);
-      onClose();
-    } else if (type === "add") {
-      if (!name.trim()) {
-        setError("Product name is required.");
-        return;
-      }
-      if (description.length > 1000) {
-        setError("Description is too long (max 1000 characters).");
-        return;
-      }
-      if (!validateStock(stock)) {
-        setError("Stock must be a non-negative integer.");
-        return;
-      }
-      if (!validatePrice(price)) {
-        setError("Price must be a non-negative number.");
-        return;
-      }
-      if (!image) {
-        setError("Image is required.");
-        return;
-      }
-      setError("");
-      var newProduct = {
-        id: Date.now(),
-        // Use timestamp as a simple unique ID
-        name: name.trim(),
-        description: description,
-        stock: stock,
-        price: price,
-        image: typeof image === "string" ? image : image,
-        // Ensure image is a string (base64)
-        createdAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        updatedAt: new Date().toLocaleDateString('en-US', {
-          month: '2-digit',
-          day: '2-digit',
-          year: '2-digit'
-        }),
-        isArchived: false,
-        category: category,
-        // New field
-        color: color,
-        // New field
-        wristMeasurement: wristMeasurement // New field
-      };
-      onSave(newProduct);
-      onClose();
-    }
-  };
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(e) {
+      var data, response, _error$response4, _error$response5;
+      return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+        while (1) switch (_context2.prev = _context2.next) {
+          case 0:
+            e.preventDefault();
+            console.log("Form submitted with data:", formData);
+            if (formData.color_id) {
+              _context2.next = 5;
+              break;
+            }
+            setError("Please select a color.");
+            return _context2.abrupt("return");
+          case 5:
+            _context2.prev = 5;
+            data = new FormData();
+            data.append('product_name', formData.product_name);
+            data.append('description', formData.description);
+            data.append('price', formData.price);
+            data.append('category_id', formData.category === 'Men' ? 1 : 2);
+            data.append('color_id', formData.color_id);
+            data.append('wrist_measurement', formData.wrist_measurement);
+            if (formData.image) {
+              data.append('image', formData.image);
+            }
+            console.log("Submitting form data:", Object.fromEntries(data));
+            if (!(type === 'add')) {
+              _context2.next = 21;
+              break;
+            }
+            _context2.next = 18;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().post('http://localhost:8000/api/products', data, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+          case 18:
+            response = _context2.sent;
+            _context2.next = 25;
+            break;
+          case 21:
+            if (!(type === 'edit')) {
+              _context2.next = 25;
+              break;
+            }
+            _context2.next = 24;
+            return axios__WEBPACK_IMPORTED_MODULE_1___default().put("http://localhost:8000/api/products/".concat(product.id), {
+              product_name: formData.product_name,
+              description: formData.description,
+              price: formData.price,
+              image_url: product.image_url,
+              color_id: formData.color_id,
+              category_id: formData.category === 'Men' ? 1 : 2,
+              wrist_measurement_id: product.wrist_measurement_id,
+              stock: product.stock
+            }, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+          case 24:
+            response = _context2.sent;
+          case 25:
+            console.log("".concat(type === 'add' ? 'Product created' : 'Product updated', ":"), response.data);
+            if (onSave) {
+              console.log("Calling onSave to refresh product list");
+              onSave();
+            }
+            onClose();
+            _context2.next = 35;
+            break;
+          case 30:
+            _context2.prev = 30;
+            _context2.t0 = _context2["catch"](5);
+            console.error("Error ".concat(type === 'add' ? 'creating' : 'updating', " product:"), _context2.t0);
+            console.error("Error response:", (_error$response4 = _context2.t0.response) === null || _error$response4 === void 0 ? void 0 : _error$response4.data);
+            setError("Failed to ".concat(type === 'add' ? 'create' : 'update', " product: ").concat(((_error$response5 = _context2.t0.response) === null || _error$response5 === void 0 || (_error$response5 = _error$response5.data) === null || _error$response5 === void 0 ? void 0 : _error$response5.message) || _context2.t0.message));
+          case 35:
+          case "end":
+            return _context2.stop();
+        }
+      }, _callee2, null, [[5, 30]]);
+    }));
+    return function handleSubmit(_x) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
   var handleConfirm = function handleConfirm() {
-    if (type === "delete" || type === "restore") {
-      if (!selectedProducts || selectedProducts.length === 0) {
-        alert("Please select at least one product to " + (type === "delete" ? "delete" : "restore") + ".");
-        return;
-      }
-      onConfirm(selectedProducts);
-      onClose();
-    }
-  };
-  var handleCancel = function handleCancel() {
-    if (type === "edit" || type === "add") {
-      console.log("Canceling ".concat(type, " for product:"), product || "new product");
-    } else if (type === "delete" || type === "restore") {
-      console.log("Canceling ".concat(type, " for selected products:"), selectedProducts);
-    }
+    console.log("Confirming action for type:", type, "with selectedProducts:", selectedProducts);
+    onConfirm(selectedProducts);
     onClose();
   };
-  if (type === "edit" || type === "add") {
-    var title = type === "edit" ? "Edit Product for ".concat(product === null || product === void 0 ? void 0 : product.name) : "Add New Product";
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "edit-modal-overlay",
-      onClick: handleCancel,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "edit-modal",
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          className: "edit-modal-header",
-          children: title
-        }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          className: "error-message",
-          children: error
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "edit-form",
-          style: {
-            maxHeight: "70vh",
-            overflowY: "auto"
+  var handleCancel = function handleCancel() {
+    console.log("Cancel button clicked, closing modal");
+    onClose();
+  };
+  if (type === 'add' || type === 'edit') {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "ProductManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "edit-modal-overlay",
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "edit-modal",
+          onClick: function onClick(e) {
+            return e.stopPropagation();
           },
-          children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("h2", {
+            children: type === 'add' ? 'Add New Product' : 'Edit Product'
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("form", {
+            className: "edit-form",
+            onSubmit: handleSubmit,
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Product Name:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "text",
-                value: name,
-                onChange: handleNameChange,
-                className: "product-input",
+                name: "product_name",
+                value: formData.product_name,
+                onChange: handleInputChange,
                 placeholder: "Enter product name",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                } /* Explicitly ensure full width */
+                required: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
-                children: "Stock:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "number",
-                value: stock,
-                onChange: handleStockChange,
-                className: "product-input",
-                placeholder: "Enter stock quantity",
-                min: "0",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                } /* Explicitly ensure full width */
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Description:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("textarea", {
-                value: description,
-                onChange: handleDescriptionChange,
-                className: "product-input description-input",
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("textarea", {
+                name: "description",
+                value: formData.description,
+                onChange: handleInputChange,
                 placeholder: "Enter product description",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box",
-                  maxHeight: "100px",
-                  minHeight: "60px"
-                } /* Adjusted height for better fit, allow scrolling within */
+                rows: "3",
+                required: true
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Price:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
                 type: "number",
-                value: price,
-                onChange: handlePriceChange,
-                className: "product-input",
+                name: "price",
+                value: formData.price,
+                onChange: handleInputChange,
                 placeholder: "Enter price (\u20B1)",
-                step: "0.01",
-                min: "0",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                } /* Explicitly ensure full width */
+                required: true
               })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Category:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("select", {
-                value: category,
-                onChange: handleCategoryChange,
-                className: "product-input",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                name: "category",
+                value: formData.category,
+                onChange: handleInputChange,
+                required: true,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Men",
                   children: "Men"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
                   value: "Women",
                   children: "Women"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("option", {
-                  value: "Unisex",
-                  children: "Unisex"
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
                 children: "Color:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "text",
-                value: color,
-                onChange: handleColorChange,
-                className: "product-input",
-                placeholder: "Enter color (e.g., Black, Silver)",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                } /* Explicitly ensure full width */
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-            className: "form-row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
-                children: "Wrist Measurement:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                type: "text",
-                value: wristMeasurement,
-                onChange: handleWristMeasurementChange,
-                className: "product-input",
-                placeholder: "Enter wrist measurement (e.g., 18cm)",
-                style: {
-                  cursor: "text",
-                  pointerEvents: "auto",
-                  userSelect: "text",
-                  width: "100%",
-                  boxSizing: "border-box"
-                } /* Explicitly ensure full width */
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-              className: "form-column",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                className: "edit-form-label",
-                children: "Image:"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-                className: "file-input-wrapper",
-                style: {
-                  width: "100%",
-                  boxSizing: "border-box",
-                  maxWidth: "100%",
-                  overflow: "hidden"
-                },
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("input", {
-                  type: "file",
-                  accept: "image/*",
-                  onChange: handleImageChange,
-                  className: "product-file-input",
-                  id: "image-upload",
-                  style: {
-                    cursor: "pointer",
-                    pointerEvents: "auto",
-                    userSelect: "none"
-                  } /* Ensure file input is clickable and opens file explorer */
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("label", {
-                  htmlFor: "image-upload",
-                  className: "file-input-label",
-                  style: {
-                    width: "100%",
-                    boxSizing: "border-box",
-                    maxWidth: "100%",
-                    overflow: "hidden",
-                    cursor: "pointer"
-                  },
-                  children: fileName
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("select", {
+                name: "color_id",
+                value: formData.color_id,
+                onChange: handleInputChange,
+                required: true,
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "",
+                  children: "Select a color"
+                }), colors.length > 0 ? colors.map(function (color) {
+                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                    value: color.id,
+                    children: color.color_name
+                  }, color.id);
+                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("option", {
+                  value: "",
+                  disabled: true,
+                  children: "No active colors available."
                 })]
-              }), image && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-                className: "image-preview",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
-                  src: image,
-                  alt: "Preview",
-                  className: "preview-image"
-                })
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                children: "Wrist Measurement:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "text",
+                name: "wrist_measurement",
+                value: formData.wrist_measurement,
+                onChange: handleInputChange,
+                placeholder: "Enter wrist measurement (e.g., 18cm)",
+                required: true
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-group",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("label", {
+                children: "Image:"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("input", {
+                type: "file",
+                name: "image",
+                onChange: handleFileChange,
+                accept: "image/*"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+                children: formData.image ? formData.image.name : 'No file chosen'
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+              className: "form-actions",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                type: "submit",
+                className: "save-button",
+                children: "Save"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+                type: "button",
+                className: "cancel-button",
+                onClick: handleCancel,
+                children: "Cancel"
               })]
             })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          })]
+        })
+      })
+    });
+  } else if (type === 'archive' || type === 'restore') {
+    var action = type === 'archive' ? 'Archive' : 'Restore';
+    var message = "Are you sure you want to ".concat(action.toLowerCase(), " ").concat(selectedProducts.length, " product(s)?");
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      className: "ProductManagement",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+        className: "".concat(type, "-modal-overlay"),
+        onClick: handleCancel,
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+          className: "".concat(type, "-modal"),
+          onClick: function onClick(e) {
+            return e.stopPropagation();
+          },
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("h3", {
+            children: ["Confirm ", action]
+          }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            className: "error-message",
+            children: error
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+            children: message
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
             className: "button-group",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-              className: "save-button",
-              onClick: handleSave,
-              children: "Save"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
+              className: "confirm-button",
+              onClick: handleConfirm,
+              children: action
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("button", {
               className: "cancel-button",
               onClick: handleCancel,
               children: "Cancel"
             })]
           })]
-        })]
-      })
-    });
-  } else if (type === "delete" || type === "restore") {
-    var _title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-    var message = type === "delete" ? "Are you sure you want to delete ".concat(Array.isArray(selectedProducts) ? selectedProducts.length : 1, " product(s)?") : "Are you sure you want to restore ".concat(selectedProducts.length, " product(s)?");
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "".concat(type, "-modal-overlay"),
-      onClick: handleCancel,
-      style: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      },
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "".concat(type, "-modal"),
-        onClick: function onClick(e) {
-          return e.stopPropagation();
-        },
-        style: {
-          position: 'relative',
-          margin: 'auto',
-          width: "400px",
-          boxSizing: "border-box",
-          maxHeight: "80vh",
-          overflowY: "auto"
-        },
-        children: [" ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h3", {
-          children: _title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-          children: message
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "button-group",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "save-button",
-            onClick: handleConfirm,
-            children: type === "delete" ? "Delete" : "Restore"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-            className: "cancel-button",
-            onClick: handleCancel,
-            children: "Cancel"
-          })]
-        })]
+        })
       })
     });
   }

@@ -14,13 +14,12 @@ const WristMeasurement = () => {
     const [forceUpdate, setForceUpdate] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const itemsPerPage = 5; // Match CategoryList pagination
+    const itemsPerPage = 5; 
 
     const [initialMeasurements, setInitialMeasurements] = useState([
         { id: 1, measurement: "6.5 inches", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
         { id: 2, measurement: "7.5 inches", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
         { id: 3, measurement: "8.5 inches", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        // Added an archived measurement for testing
         { id: 4, measurement: "9.5 inches", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: true },
     ]);
 

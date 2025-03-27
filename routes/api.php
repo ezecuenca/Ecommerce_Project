@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ColorController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,3 +39,14 @@ Route::put('/watch_colors/archive', [ColorController::class, 'archive']);
 Route::put('/watch_colors/restore', [ColorController::class, 'restore']);
 Route::put('/watch_colors/{watchcolor}', [ColorController::class, 'update']);
 Route::get('/watch_colors/{watchcolor}', [ColorController::class, 'show']);
+
+// Products API
+Route::get('/products', [ProductController::class, 'index']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::put('/products/archive', [ProductController::class, 'archive']);
+Route::put('/products/restore', [ProductController::class, 'restore']);
+Route::put('/products/{product}', [ProductController::class, 'update']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::get('/products/search', [ProductController::class, 'search']);
+
+Route::get('/colors', [ProductController::class, 'colors']);

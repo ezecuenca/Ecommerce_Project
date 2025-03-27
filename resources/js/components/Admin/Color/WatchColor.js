@@ -23,43 +23,88 @@ const WatchColorList = () => {
     useEffect(() => {
         const fetchColors = async () => {
             try {
-                const response = await Axios.get('/api/watch_colors');
+                console.log("Fetching colors from /api/watch_colors...");
+                const response = await Axios.get('http://localhost:8000/api/watch_colors', {
+                    headers: {
+                        'Accept': 'application/json',
+                    },
+                });
                 console.log("API Response:", response.data);
+                console.log("Response Status:", response.status);
+                console.log("Response Headers:", response.headers);
+                if (!Array.isArray(response.data)) {
+                    console.error("API response is not an array:", response.data);
+                    setError("Invalid data format received from server.");
+                    setColors([]);
+                    return;
+                }
                 setColors(response.data);
+                console.log("Colors state set to:", response.data);
             } catch (error) {
                 console.error("Error fetching colors:", error);
-                setError("Failed to load colors. Please try again.");
+                if (error.response) {
+                    console.error("Error response data:", error.response.data);
+                    console.error("Error response status:", error.response.status);
+                    setError(`Failed to load colors: ${error.response.data.message || error.response.statusText}`);
+                } else if (error.request) {
+                    console.error("No response received:", error.request);
+                    setError("Failed to load colors: No response from server. Check if the server is running.");
+                } else {
+                    console.error("Error message:", error.message);
+                    setError(`Failed to load colors: ${error.message}`);
+                }
+                setColors([]);
             } finally {
                 setIsLoading(false);
             }
         };
         fetchColors();
-    }, []);
+    }, [forceUpdate]);
+
+    // Function to format timestamps from Zulu time to local time
+    const formatDateTime = (dateString) => {
+        if (!dateString) return "N/A"; // Handle null or undefined values
+        const date = new Date(dateString);
+        return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    };
 
     const getCurrentData = () => {
         console.log("colors:", colors);
         console.log("viewType:", viewType);
         console.log("searchQuery:", searchQuery);
-    
+
         if (!colors || colors.length === 0) {
             console.warn("No colors data available, returning empty array.");
             return [];
         }
-    
+
         let filteredColors = colors.filter(color => {
+            console.log("Color object:", color);
+            console.log("Raw status field:", color.status, "Type:", typeof color.status);
+            const statusValue = color.status !== undefined 
+                ? (typeof color.status === 'string' ? parseInt(color.status, 10) : Number(color.status))
+                : 1;
+            console.log("Converted statusValue:", statusValue);
             if (viewType === "active") {
-                return color.status === 1;
+                return statusValue === 1;
             } else {
-                return color.status === 0;
+                return statusValue === 0;
             }
         });
-    
+
         if (searchQuery.trim()) {
             filteredColors = filteredColors.filter(color =>
                 color.color_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
-    
+
         console.log("filteredColors:", filteredColors);
         return filteredColors;
     };
@@ -70,13 +115,14 @@ const WatchColorList = () => {
     const end = currentPage * itemsPerPage;
     console.log("start:", start, "end:", end);
 
-    const currentItems = currentData.slice(
-        start,
-        end
-    );
+    const currentItems = currentData.slice(start, end);
     console.log("currentItems:", currentItems);
 
     const totalPages = Math.ceil(currentData?.length / itemsPerPage);
+
+    useEffect(() => {
+        console.log("currentItems updated:", currentItems);
+    }, [currentItems]);
 
     const handleSelectAll = (e) => {
         const isChecked = e.target.checked;
@@ -172,25 +218,23 @@ const WatchColorList = () => {
         try {
             if (managementType === "edit") {
                 if (!selectedColor) throw new Error("No color selected for editing.");
-                await Axios.put(`/api/watch_colors/${selectedColor.id}`, {
+                await Axios.put(`http://localhost:8000/api/watch_colors/${selectedColor.id}`, {
                     color_name: newOrUpdatedColor.color_name,
                     updated_at: new Date().toISOString(),
                     status: 1
                 });
             } else if (managementType === "add") {
-                await Axios.post('/api/watch_colors', {
+                await Axios.post('http://localhost:8000/api/watch_colors', {
                     color_name: newOrUpdatedColor.color_name,
                     created_at: new Date().toISOString(),
                     updated_at: new Date().toISOString(),
                     status: 1
                 });
             }
-            const response = await Axios.get('/api/watch_colors');
-            setColors(response.data);
+            setForceUpdate(prev => prev + 1);
             setManagementModalOpen(false);
             setSelectedColor(null);
             setName("");
-            setForceUpdate(prev => prev + 1);
             setCurrentPage(1);
         } catch (error) {
             console.error(`Error ${managementType}ing color:`, error);
@@ -201,32 +245,43 @@ const WatchColorList = () => {
     const handleConfirmDeleteOrRestore = async (items) => {
         console.log("Confirming action - managementType:", managementType, "items:", items);
         if (!items?.length) {
-            alert(`Please select at least one color to ${managementType}.`);
+            setError(`Please select at least one color to ${managementType}.`);
             return;
         }
         try {
-            const colorIds = items.map(item => item.id);
-            console.log(`${managementType} payload:`, managementType === "archive" ? { data: { ids: colorIds } } : { ids: colorIds });
+            const colorIds = items.map(item => parseInt(item.id, 10));
+            console.log("colorIds after mapping:", colorIds);
+            console.log(`${managementType} payload:`, { ids: colorIds });
+
             if (managementType === "archive") {
-                const response = await Axios.put('/api/watch_colors/archive', { data: { ids: colorIds } });
+                const response = await Axios.put('http://localhost:8000/api/watch_colors/archive', { ids: colorIds }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
                 console.log("Archive response:", response.data);
             } else if (managementType === "restore") {
-                const response = await Axios.put('/api/watch_colors/restore', { ids: colorIds });
+                const response = await Axios.put('http://localhost:8000/api/watch_colors/restore', { ids: colorIds }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
                 console.log("Restore response:", response.data);
+                setViewType("active");
             }
-            const response = await Axios.get('/api/watch_colors');
-            setColors(response.data);
+            setForceUpdate(prev => prev + 1);
             setCheckedRows({});
             setIsSelectAll(false);
             if (tableRef.current) {
                 tableRef.current.querySelectorAll('.color-checkbox').forEach(checkbox => checkbox.checked = false);
             }
             setManagementModalOpen(false);
-            if (currentData.length <= itemsPerPage) setCurrentPage(1);
-            setForceUpdate(prev => prev + 1);
+            setCurrentPage(1);
         } catch (error) {
-            console.error(`Error ${managementType}ing colors:`, error.response?.data || error.message);
-            setError(`Failed to ${managementType} colors: ${error.response?.data?.errors ? JSON.stringify(error.response.data.errors) : error.message}`);
+            console.error(`Error ${managementType}ing colors:`, error);
+            console.error("Error response data:", error.response?.data);
+            console.error("Error status:", error.response?.status);
+            setError(`Failed to ${managementType} colors: ${JSON.stringify(error.response?.data) || error.message}`);
         }
     };
 
@@ -267,7 +322,7 @@ const WatchColorList = () => {
                                         onClick={() => handleArchive()}
                                         disabled={checkedCount < 1}
                                     >
-                                        Archive
+                                        Delete
                                     </button>
                                 </>
                             )}
@@ -333,8 +388,8 @@ const WatchColorList = () => {
                                             </div>
                                         </td>
                                         <td className="table-cell">{color.color_name}</td>
-                                        <td className="table-cell">{color.created_at}</td>
-                                        <td className="table-cell">{color.updated_at}</td>
+                                        <td className="table-cell">{formatDateTime(color.created_at)}</td>
+                                        <td className="table-cell">{formatDateTime(color.updated_at)}</td>
                                     </tr>
                                 ))
                             ) : (

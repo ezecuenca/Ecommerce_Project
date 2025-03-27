@@ -17,4 +17,9 @@ class Color extends Model
         'updated_at',
         'status',
     ];
+
+    public function products()
+    {
+        return $this->hasMany(Product::class, 'color_id');
+    }
 }

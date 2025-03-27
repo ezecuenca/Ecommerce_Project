@@ -1,286 +1,172 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
 import ProductManagement from "./ProductManagement";
+import Axios from 'axios';
 
 const ProductList = () => {
+    const [checkedRows, setCheckedRows] = useState({});
+    const [isSelectAll, setIsSelectAll] = useState(false);
     const [viewType, setViewType] = useState("active");
-    const [activeCheckedRows, setActiveCheckedRows] = useState({});
-    const [activeIsSelectAll, setActiveIsSelectAll] = useState(false);
-    const [archivedCheckedRows, setArchivedCheckedRows] = useState({});
-    const [archivedIsSelectAll, setArchivedIsSelectAll] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
     const [managementModalOpen, setManagementModalOpen] = useState(false);
     const [managementType, setManagementType] = useState("");
     const [selectedProduct, setSelectedProduct] = useState(null);
+    const [error, setError] = useState("");
+    const [forceUpdate, setForceUpdate] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
+    const [products, setProducts] = useState([]);
+    const [totalPages, setTotalPages] = useState(1);
+    const [isLoading, setIsLoading] = useState(true);
+    const tableRef = useRef(null);
     const itemsPerPage = 5;
 
-    const navigate = useNavigate();
-    const tableRef = useRef(null);
-
-    const initialProducts = [
-        { id: 1, name: "Product Name", description: "Product Description", stock: "1x", price: "₱200.12", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Men", color: "Black", wristMeasurement: "18cm" },
-        { id: 2, name: "Product Name", description: "Product Description", stock: "1x", price: "₱143.06", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Women", color: "Silver", wristMeasurement: "16cm" },
-        { id: 3, name: "Product Name", description: "Product Description", stock: "2x", price: "₱310.22", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Unisex", color: "Gold", wristMeasurement: "20cm" },
-        { id: 4, name: "Product Name", description: "Product Description", stock: "1x", price: "₱176.54", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Men", color: "Blue", wristMeasurement: "19cm" },
-        { id: 5, name: "Product Name", description: "Product Description", stock: "1x", price: "₱200.12", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Women", color: "Rose Gold", wristMeasurement: "17cm" },
-        { id: 6, name: "Product Name", description: "Product Description", stock: "1x", price: "₱143.06", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Unisex", color: "Black", wristMeasurement: "18cm" },
-        { id: 7, name: "Product Name", description: "Product Description", stock: "2x", price: "₱310.22", isArchived: false, image: "watchprod.svg", createdAt: "03/01/25", updatedAt: "03/02/25", category: "Men", color: "Silver", wristMeasurement: "20cm" },
-    ];
-
-    const [products, setProducts] = useState(initialProducts);
-
     useEffect(() => {
-        const savedProducts = localStorage.getItem("products");
-        if (savedProducts) {
-            const parsedProducts = JSON.parse(savedProducts);
-            const activeProducts = parsedProducts.map(product => ({
-                ...product,
-                isArchived: false,
-                createdAt: product.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: product.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                category: product.category || "Unisex",
-                color: product.color || "Black",
-                wristMeasurement: product.wristMeasurement || "18cm",
-                image: product.image || "watchprod.svg"
-            }));
-            setProducts(activeProducts);
-        } else {
-            setProducts(initialProducts);
-            localStorage.setItem("products", JSON.stringify(initialProducts));
-        }
-        setActiveCheckedRows({});
-        setActiveIsSelectAll(false);
-        setArchivedCheckedRows({});
-        setArchivedIsSelectAll(false);
+        console.log("ProductList component mounted");
     }, []);
 
+    useEffect(() => {
+        console.log("State changed:", {
+            managementModalOpen,
+            managementType,
+            selectedProduct,
+        });
+    }, [managementModalOpen, managementType, selectedProduct]);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                console.log("Fetching products from /api/products...", {
+                    page: currentPage,
+                    per_page: itemsPerPage,
+                    status: viewType,
+                });
+                const response = await Axios.get('/api/products', {
+                    params: {
+                        page: currentPage,
+                        per_page: itemsPerPage,
+                        status: viewType,
+                    },
+                });
+                console.log("API Response:", response.data);
+                console.log("Setting products:", response.data.data || []);
+                setProducts(response.data.data || []);
+                setTotalPages(response.data.last_page || 1);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+                console.error("Error response:", error.response?.data);
+                console.error("Error status:", error.response?.status);
+                setError(`Failed to load products: ${error.response?.data?.message || error.message}`);
+                setProducts([]);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+        fetchProducts();
+    }, [viewType, currentPage, forceUpdate]);
+
     const getCurrentData = () => {
-        let filteredProducts = products.filter(product => product.isArchived === (viewType === "archived"));
+        console.log("products:", products);
+        console.log("viewType:", viewType);
+        console.log("searchQuery:", searchQuery);
+
+        if (!products || products.length === 0) {
+            console.warn("No products data available, returning empty array.");
+            return [];
+        }
+
+        let filteredProducts = products;
+
         if (searchQuery.trim()) {
-            const query = searchQuery.toLowerCase();
             filteredProducts = filteredProducts.filter(product =>
-                product.name.toLowerCase().includes(query) ||
-                product.description.toLowerCase().includes(query) ||
-                product.stock.toLowerCase().includes(query) ||
-                product.price.toLowerCase().includes(query) ||
-                product.category.toLowerCase().includes(query) ||
-                product.color.toLowerCase().includes(query) ||
-                product.wristMeasurement.toLowerCase().includes(query) ||
-                product.updatedAt.toLowerCase().includes(query)
+                product.product_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
+
+        console.log("filteredProducts:", filteredProducts);
         return filteredProducts;
     };
 
     const currentData = getCurrentData();
-    const totalPages = Math.ceil(currentData.length / itemsPerPage);
-    const currentItems = currentData.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
 
     const handleSelectAll = (e) => {
         const isChecked = e.target.checked;
-        if (viewType === "active") {
-            setActiveIsSelectAll(isChecked);
-            const newCheckedRows = {};
-            if (isChecked) {
-                currentItems.forEach((_, index) => {
-                    newCheckedRows[index] = true;
-                });
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = true);
-                }
-            } else {
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-            }
-            setActiveCheckedRows(newCheckedRows);
-            console.log("Active checked rows updated:", newCheckedRows);
-        } else if (viewType === "archived") {
-            setArchivedIsSelectAll(isChecked);
-            const newCheckedRows = {};
-            if (isChecked) {
-                currentItems.forEach((_, index) => {
-                    newCheckedRows[index] = true;
-                });
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = true);
-                }
-            } else {
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-            }
-            setArchivedCheckedRows(newCheckedRows);
-            console.log("Archived checked rows updated:", newCheckedRows);
+        setIsSelectAll(isChecked);
+        const newCheckedRows = {};
+        currentData.forEach(product => {
+            newCheckedRows[product.id] = isChecked;
+        });
+        setCheckedRows(newCheckedRows);
+        if (tableRef.current) {
+            tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => {
+                checkbox.checked = isChecked;
+            });
         }
     };
 
-    const handleRowCheckbox = (index, e) => {
-        const isChecked = e.target.checked;
-        if (viewType === "active") {
-            setActiveCheckedRows((prev) => ({
-                ...prev,
-                [index]: isChecked,
-            }));
-            const allChecked = currentItems.length === 
-                (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(cb => cb.checked).length : 0);
-            setActiveIsSelectAll(allChecked);
-            console.log("Active row checkbox updated, index:", index, "Checked:", isChecked);
-        } else if (viewType === "archived") {
-            setArchivedCheckedRows((prev) => ({
-                ...prev,
-                [index]: isChecked,
-            }));
-            const allChecked = currentItems.length === 
-                (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.product-checkbox')).filter(cb => cb.checked).length : 0);
-            setArchivedIsSelectAll(allChecked);
-            console.log("Archived row checkbox updated, index:", index, "Checked:", isChecked);
-        }
+    const handleRowCheckbox = (product, e) => {
+        setCheckedRows(prev => ({
+            ...prev,
+            [product.id]: e.target.checked
+        }));
+        setIsSelectAll(currentData.every(item => checkedRows[item.id] || (item.id === product.id && e.target.checked)));
     };
 
-    const handleDelete = (productToDelete = null) => {
-        const selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows)
-            .filter(index => activeCheckedRows[index])
-            .map(index => parseInt(index, 10)) : [];
+    const getSelectedItems = (singleItem = null) => {
+        if (singleItem) return [singleItem];
+        return currentData.filter(product => checkedRows[product.id]);
+    };
 
-        if (productToDelete) {
-            if (viewType !== "active") {
-                alert("You can only delete from Active Products.");
-                return;
-            }
-            setManagementType("delete");
-            setSelectedProduct([productToDelete]);
-            setManagementModalOpen(true);
-            return;
-        }
-
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 2) {
-            return;
-        }
-
+    const handleArchive = (productToArchive = null) => {
+        console.log("Attempting to archive - viewType:", viewType, "productToArchive:", productToArchive, "checkedRows:", checkedRows);
+        const selectedItems = getSelectedItems(productToArchive);
         if (viewType !== "active") {
-            alert("You can only delete from Active Products.");
+            alert("You can only archive from Active Products.");
             return;
         }
-
-        setManagementType("delete");
-        setSelectedProduct(getSelectedProducts());
+        if (!selectedItems.length) {
+            alert("Please select at least one product to archive.");
+            return;
+        }
+        setManagementType("archive");
+        setSelectedProduct(selectedItems);
         setManagementModalOpen(true);
     };
 
     const handleRestore = (productToRestore = null) => {
-        const selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows)
-            .filter(index => archivedCheckedRows[index])
-            .map(index => parseInt(index, 10)) : [];
-
-        if (productToRestore) {
-            if (viewType !== "archived") {
-                alert("You can only restore from Archived Products.");
-                return;
-            }
-            setManagementType("restore");
-            setSelectedProduct([productToRestore]);
-            setManagementModalOpen(true);
-            return;
-        }
-
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 2) {
-            return;
-        }
-
+        console.log("Attempting to restore - viewType:", viewType, "productToRestore:", productToRestore, "checkedRows:", checkedRows);
+        const selectedItems = getSelectedItems(productToRestore);
         if (viewType !== "archived") {
             alert("You can only restore from Archived Products.");
             return;
         }
-
+        if (!selectedItems.length) {
+            alert("Please select at least one product to restore.");
+            return;
+        }
         setManagementType("restore");
-        setSelectedProduct(getSelectedProducts());
+        setSelectedProduct(selectedItems);
         setManagementModalOpen(true);
     };
 
-    const handleAdd = () => {
-        if (viewType !== "active") {
-            alert("You can only add products to Active Products.");
-            return;
-        }
+    const handleAdd = (e) => {
+        e.stopPropagation(); // Prevent event bubbling
+        console.log("Add button clicked!");
+        console.log("Current viewType:", viewType, "Opening Add modal");
         setManagementType("add");
         setSelectedProduct(null);
         setManagementModalOpen(true);
+        console.log("State updated:", {
+            managementType: "add",
+            selectedProduct: null,
+            managementModalOpen: true,
+        });
     };
 
     const handleEdit = (product) => {
+        console.log("Opening edit for product:", product);
         setSelectedProduct(product);
         setManagementType("edit");
         setManagementModalOpen(true);
-        console.log("Opening edit for product:", product);
-    };
-
-    const handleConfirmDeleteOrRestore = (items) => {
-        if (managementType === "delete") {
-            const updatedProducts = products.map(product => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === product.id)) {
-                        return { ...product, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === product.id) {
-                        return { ...product, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return product;
-            });
-            setProducts(updatedProducts);
-            setActiveCheckedRows({});
-            setActiveIsSelectAll(false);
-            if (tableRef.current && viewType === "active") {
-                tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            console.log("Deleted products, updated products:", updatedProducts);
-            localStorage.setItem("products", JSON.stringify(updatedProducts));
-        } else if (managementType === "restore") {
-            const updatedProducts = products.map(product => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === product.id)) {
-                        return { ...product, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === product.id) {
-                        return { ...product, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return product;
-            });
-            setProducts(updatedProducts);
-            setArchivedCheckedRows({});
-            setArchivedIsSelectAll(false);
-            if (tableRef.current && viewType === "archived") {
-                tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            console.log("Restored products, updated products:", updatedProducts);
-            localStorage.setItem("products", JSON.stringify(updatedProducts));
-        }
-    };
-
-    const handleCloseManagement = () => {
-        setManagementModalOpen(false);
-        setManagementType("");
-        setSelectedProduct(null);
-        console.log("Closed management modal");
     };
 
     const handleSearchChange = (e) => {
@@ -288,189 +174,226 @@ const ProductList = () => {
         setCurrentPage(1);
     };
 
-    const getSelectedProducts = () => {
-        const selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows)
-            .filter(index => activeCheckedRows[index])
-            .map(index => parseInt(index, 10)) : Object.keys(archivedCheckedRows)
-            .filter(index => archivedCheckedRows[index])
-            .map(index => parseInt(index, 10));
-        return selectedIndices.map(index => currentItems[index]);
+    const handleConfirmDeleteOrRestore = async (items) => {
+        console.log("Confirming action - managementType:", managementType, "items:", items);
+        if (!items?.length) {
+            setError(`Please select at least one product to ${managementType}.`);
+            return;
+        }
+        try {
+            const productIds = items.map(item => parseInt(item.id, 10));
+            console.log("productIds after mapping:", productIds);
+            console.log(`${managementType} payload:`, { ids: productIds });
+
+            if (managementType === "archive") {
+                const response = await Axios.put('/api/products/archive', { ids: productIds }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                console.log("Archive response:", response.data);
+            } else if (managementType === "restore") {
+                const response = await Axios.put('/api/products/restore', { ids: productIds }, {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                console.log("Restore response:", response.data);
+            }
+            setForceUpdate(prev => prev + 1);
+            setCheckedRows({});
+            setIsSelectAll(false);
+            if (tableRef.current) {
+                tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
+            }
+            setManagementModalOpen(false);
+            if (currentData.length <= itemsPerPage) setCurrentPage(1);
+        } catch (error) {
+            console.error(`Error ${managementType}ing products:`, error);
+            console.error("Error response data:", error.response?.data);
+            console.error("Error status:", error.response?.status);
+            setError(`Failed to ${managementType} products: ${JSON.stringify(error.response?.data) || error.message}`);
+        }
     };
 
-    const isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
-    const checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(index => activeCheckedRows[index]).length : Object.keys(archivedCheckedRows).filter(index => archivedCheckedRows[index]).length;
+    const handleCloseManagement = () => {
+        setManagementModalOpen(false);
+        setManagementType("");
+        setSelectedProduct(null);
+        setError("");
+    };
 
-    if (!products || products.length === 0) {
-        return (
-            <div className="products-container">
-                <h2 className="products-header">Products</h2>
-                <div className="table-container">
-                    <p>No products available. Please check your data or refresh the page.</p>
-                </div>
-            </div>
-        );
-    }
+    const handleSaveEditOrAdd = () => {
+        console.log("Saving product, re-fetching products...");
+        setForceUpdate(prev => prev + 1);
+        setManagementModalOpen(false);
+        setManagementType("");
+        setSelectedProduct(null);
+    };
+
+    const checkedCount = Object.values(checkedRows).filter(Boolean).length;
 
     return (
-        <div className="products-container">
+        <div className="ProductList">
             <h2 className="products-header">{viewType === "active" ? "Active Products" : "Archived Products"}</h2>
-
-            <div className="table-container">
-                <div className="table-header-actions">
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            placeholder="Search"
-                            className="search-input"
-                        />
-                    </div>
-                    <div className="button-group" style={{ marginLeft: 'auto' }}>
-                        {viewType === "active" && (
-                            <>
-                                <button className="add-button" onClick={handleAdd}>Add</button>
-                                <button 
-                                    className="delete-button" 
-                                    onClick={() => handleDelete()}
-                                    disabled={checkedCount < 2}
+            {error && <p className="error-message">{error}</p>}
+            {isLoading ? (
+                <p>Loading products...</p>
+            ) : (
+                <div className="table-container">
+                    <div className="table-header-actions">
+                        <div className="search-bar">
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                                placeholder="Search"
+                                className="search-input"
+                            />
+                        </div>
+                        <div className="button-group" style={{ marginLeft: 'auto' }}>
+                            {viewType === "active" && (
+                                <>
+                                    <button className="add-button" onClick={handleAdd}>Add</button>
+                                    <button
+                                        className="delete-button"
+                                        onClick={() => handleArchive()}
+                                        disabled={checkedCount < 1}
+                                    >
+                                        Delete
+                                    </button>
+                                </>
+                            )}
+                            {viewType === "archived" && (
+                                <button
+                                    className="restore-button"
+                                    onClick={() => handleRestore()}
+                                    disabled={checkedCount < 1}
                                 >
-                                    Delete
+                                    Restore
                                 </button>
-                            </>
-                        )}
-                        {viewType === "archived" && (
-                            <button 
-                                className="restore-button" 
-                                onClick={() => handleRestore()}
-                                disabled={checkedCount < 2}
+                            )}
+                        </div>
+                        <div className="view-toggle">
+                            <button
+                                className={`view-button ${viewType === "active" ? "active" : ""}`}
+                                onClick={() => setViewType("active")}
                             >
-                                Restore
+                                Active Products
                             </button>
-                        )}
+                            <button
+                                className={`view-button ${viewType === "archived" ? "active" : ""}`}
+                                onClick={() => setViewType("archived")}
+                            >
+                                Archived Products
+                            </button>
+                        </div>
                     </div>
-                    <div className="view-toggle">
+                    <table ref={tableRef} className="products-table">
+                        <thead>
+                            <tr className="table-header-row">
+                                <th className="table-header">
+                                    <input type="checkbox" className="product-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
+                                </th>
+                                <th className="table-header products-action-column">Action</th>
+                                <th className="table-header">Product Name</th>
+                                <th className="table-header">Description</th>
+                                <th className="table-header">Category</th>
+                                <th className="table-header">Color</th>
+                                <th className="table-header">Wrist Measurement</th>
+                                <th className="table-header">Stock</th>
+                                <th className="table-header">Price</th>
+                                <th className="table-header">Created At</th>
+                                <th className="table-header">Updated At</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {currentData.length > 0 ? (
+                                currentData.map(product => (
+                                    <tr className="table-row" key={product.id}>
+                                        <td className="table-cell">
+                                            <input
+                                                type="checkbox"
+                                                className="product-checkbox"
+                                                checked={!!checkedRows[product.id]}
+                                                onChange={e => handleRowCheckbox(product, e)}
+                                            />
+                                        </td>
+                                        <td className="table-cell products-action-column">
+                                            <div className="action-buttons">
+                                                {viewType === "active" ? (
+                                                    <>
+                                                        <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(product)} />
+                                                        <FaTrash className="delete-icon" size={20} onClick={() => handleArchive(product)} />
+                                                    </>
+                                                ) : (
+                                                    <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(product)} />
+                                                )}
+                                            </div>
+                                        </td>
+                                        <td className="table-cell">{product.product_name}</td>
+                                        <td className="table-cell">{product.description || '-'}</td>
+                                        <td className="table-cell">{product.category || '-'}</td>
+                                        <td className="table-cell">{product.color || '-'}</td>
+                                        <td className="table-cell">{product.wrist_measurement || '-'}</td>
+                                        <td className="table-cell">{product.stock}</td>
+                                        <td className="table-cell">{product.price}</td>
+                                        <td className="table-cell">{product.created_at}</td>
+                                        <td className="table-cell">{product.updated_at}</td>
+                                    </tr>
+                                ))
+                            ) : (
+                                <tr className="table-row">
+                                    <td colSpan="11" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                        {products.length === 0
+                                            ? "No products available."
+                                            : viewType === "active"
+                                            ? "No active products match your search."
+                                            : "No archived products match your search."}
+                                    </td>
+                                </tr>
+                            )}
+                        </tbody>
+                    </table>
+                    <div className="table-pagination">
                         <button
-                            className={`view-button ${viewType === "active" ? "active" : ""}`}
-                            onClick={() => setViewType("active")}
+                            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
+                            disabled={currentPage === 1}
+                            className="table-pagination-button"
                         >
-                            Active Products
+                            Previous
                         </button>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                            <button
+                                key={page}
+                                onClick={() => setCurrentPage(page)}
+                                className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
+                            >
+                                {page}
+                            </button>
+                        ))}
                         <button
-                            className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                            onClick={() => setViewType("archived")}
+                            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
+                            disabled={currentPage === totalPages}
+                            className="table-pagination-button"
                         >
-                            Archived Products
+                            Next
                         </button>
                     </div>
                 </div>
-                <table ref={tableRef} className={`products-table ${viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'}`}>
-                    <thead>
-                        <tr className="table-header-row">
-                            <th className="table-header">
-                                <input type="checkbox" className="product-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
-                            </th>
-                            <th className="table-header products-action-column">Action</th>
-                            <th className="table-header"></th>
-                            <th className="table-header product-name-column">Product Name</th>
-                            <th className="table-header product-description-column">Description</th>
-                            <th className="table-header product-category-column">Category</th>
-                            <th className="table-header product-color-column">Color</th>
-                            <th className="table-header product-wrist-column">Wrist Measurement</th>
-                            <th className="table-header product-stock-column">Stocks</th>
-                            <th className="table-header product-price-column">Price</th>
-                            <th className="table-header product-created-column">Created At</th>
-                            <th className="table-header product-updated-column">Updated At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentItems.length > 0 ? currentItems.map((product, index) => (
-                            <tr className={`table-row ${viewType === "archived" ? 'view-type="archived"' : ''}`} key={product.id}>
-                                <td className="table-cell">
-                                    <input type="checkbox" className="product-checkbox" onChange={(e) => handleRowCheckbox(index, e)} />
-                                </td>
-                                <td className="table-cell products-action-column">
-                                    <div className="action-buttons">
-                                        {viewType === "active" ? (
-                                            <>
-                                                <FaEdit className="edit-icon" size={16} onClick={() => handleEdit(product)} />
-                                                <FaTrash className="delete-icon" size={16} onClick={() => handleDelete(product)} />
-                                            </>
-                                        ) : (
-                                            <FaUndo className="restore-icon" size={16} onClick={() => handleRestore(product)} />
-                                        )}
-                                    </div>
-                                </td>
-                                <td className="table-cell">
-                                    <img src={`/images/${product.image || "watchprod.svg"}`} alt={`${product.name} image`} className="product-image" />
-                                </td>
-                                <td className="table-cell product-name-column">{product.name}</td>
-                                <td className="table-cell product-description-column">{product.description}</td>
-                                <td className="table-cell product-category-column">{product.category}</td>
-                                <td className="table-cell product-color-column">{product.color}</td>
-                                <td className="table-cell product-wrist-column">{product.wristMeasurement}</td>
-                                <td className="table-cell product-stock-column">{product.stock}</td>
-                                <td className="table-cell product-price-column">{product.price}</td>
-                                <td className="table-cell product-created-column">{product.createdAt}</td>
-                                <td className="table-cell product-updated-column">{product.updatedAt}</td>
-                            </tr>
-                        )) : (
-                            <tr className="table-row">
-                                <td colSpan="12" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                    {viewType === "active" ? "No products available." : "No archived products available."}
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                <div className="table-pagination">
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="table-pagination-button"
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
-                        >
-                            {page}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="table-pagination-button"
-                    >
-                        Next
-                    </button>
-                </div>
-            </div>
-
+            )}
             {managementModalOpen && (
-                <ProductManagement
-                    type={managementType}
-                    product={managementType === "edit" || managementType === "add" ? selectedProduct : (managementType === "restore" && !Array.isArray(selectedProduct) ? selectedProduct : null)}
-                    selectedProducts={managementType === "delete" || (managementType === "restore" && Array.isArray(selectedProduct)) ? (selectedProduct || getSelectedProducts()) : []}
-                    onClose={handleCloseManagement}
-                    onConfirm={handleConfirmDeleteOrRestore}
-                    onSave={(newOrUpdatedProduct) => {
-                        if (managementType === "edit") {
-                            const updatedProducts = products.map(p => p.id === newOrUpdatedProduct.id ? newOrUpdatedProduct : p);
-                            setProducts(updatedProducts);
-                            localStorage.setItem("products", JSON.stringify(updatedProducts));
-                        } else if (managementType === "add") {
-                            const updatedProducts = [{ ...newOrUpdatedProduct, createdAt: newOrUpdatedProduct.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }), updatedAt: newOrUpdatedProduct.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }), category: newOrUpdatedProduct.category || "Unisex", color: newOrUpdatedProduct.color || "Black", wristMeasurement: newOrUpdatedProduct.wristMeasurement || "18cm" }, ...products.filter(p => !p.isArchived)];
-                            setProducts(updatedProducts);
-                            localStorage.setItem("products", JSON.stringify(updatedProducts));
-                        }
-                        setManagementModalOpen(false);
-                        setCurrentPage(1);
-                    }}
-                />
+                <div>
+                    {console.log("Rendering ProductManagement modal with type:", managementType)}
+                    <ProductManagement
+                        type={managementType}
+                        product={managementType === "edit" || managementType === "add" ? selectedProduct : null}
+                        selectedProducts={managementType === "restore" || managementType === "archive" ? selectedProduct : []}
+                        onClose={handleCloseManagement}
+                        onConfirm={handleConfirmDeleteOrRestore}
+                        onSave={handleSaveEditOrAdd}
+                    />
+                </div>
             )}
         </div>
     );
