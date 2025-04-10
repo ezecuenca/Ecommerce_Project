@@ -1,216 +1,164 @@
 import React, { useState, useEffect } from "react";
 
-const ReviewManagement = ({ type, review, selectedReviews, productName, rating, reviewText, onClose, onConfirm, onSave }) => {
-    const [localRating, setLocalRating] = useState(rating || 0);
-    const [localReviewText, setLocalReviewText] = useState(reviewText || "");
-    const [localProductName, setLocalProductName] = useState(productName || "");
+const ReviewManagement = ({ type, reviewData, existingProducts = [], onClose, onSave, onConfirmDelete, externalError }) => {
+    const [localRating, setLocalRating] = useState(0);
+    const [localReviewText, setLocalReviewText] = useState("");
+    const [localProductId, setLocalProductId] = useState('');
     const [error, setError] = useState("");
 
-    // Initialize state with review data for edit or add
+     const uniqueProducts = Array.isArray(existingProducts) ? Array.from(new Map(existingProducts.map(item => [item.id, item])).values()) : [];
+
+
     useEffect(() => {
-        if (type === "edit" && review) {
-            setLocalRating(review.rating || 0);
-            setLocalReviewText(review.review || "");
-            setLocalProductName(review.productName || "");
-            console.log("Initializing edit for review:", review);
+        setError(externalError || "");
+    }, [externalError]);
+
+    useEffect(() => {
+        if (type === "edit" && reviewData) {
+            setLocalRating(reviewData.rating || 0);
+            setLocalReviewText(reviewData.review_text || "");
+            setLocalProductId(reviewData.product_id || '');
+            setError("");
         } else if (type === "add") {
             setLocalRating(0);
             setLocalReviewText("");
-            setLocalProductName("");
-            console.log("Initializing add for new review");
+            setLocalProductId('');
+            setError("");
+        } else {
+            setLocalRating(0);
+            setLocalReviewText("");
+            setLocalProductId('');
+            setError("");
         }
-    }, [type, review]);
+    }, [type, reviewData]);
+
 
     const validateRating = (value) => {
-        const numValue = parseFloat(value) || 0;
-        if (isNaN(numValue)) return false;
+        const numValue = parseFloat(value);
+        if (isNaN(numValue) || value === null || value === undefined || value === '') return false;
         if (numValue < 0 || numValue > 5) return false;
-        const decimalPart = numValue % 1;
+        const decimalPart = Math.abs(numValue % 1);
         return decimalPart === 0 || decimalPart === 0.5;
     };
 
     const handleRatingChange = (e) => {
         const value = e.target.value;
-        console.log("Rating input changed to:", value);
-        if (value === "") {
-            setLocalRating("");
-            setError("");
-            return;
-        }
-        const numValue = parseFloat(value);
-        if (validateRating(numValue)) {
-            setLocalRating(numValue);
-            setError("");
-        } else {
-            setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
-        }
+         setLocalRating(value);
+         if (value === "" || validateRating(value)) {
+             setError("");
+         } else {
+             setError("Rating must be a number from 0.0 to 5.0 in 0.5 increments.");
+         }
     };
 
     const handleReviewChange = (e) => {
         const value = e.target.value;
-        console.log("Review input changed to:", value);
         setLocalReviewText(value);
-    };
-
-    const handleProductNameChange = (e) => {
-        const value = e.target.value;
-        console.log("Product name input changed to:", value);
-        setLocalProductName(value);
-    };
-
-    const handleSave = () => {
-        if (type === "edit") {
-            if (!review) {
-                alert("No review selected for editing.");
-                return;
-            }
-
-            if (!validateRating(localRating)) {
-                setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
-                return;
-            }
-
-            if (localReviewText.length > 1000) {
-                setError("Review text is too long (max 1000 characters).");
-                return;
-            }
-
-            if (!localProductName.trim()) {
-                setError("Product name is required.");
-                return;
-            }
-
-            setError("");
-            const updatedReview = { 
-                productName: localProductName.trim(), 
-                rating: parseFloat(localRating), 
-                review: localReviewText, 
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false,
-                createdAt: review.createdAt // Preserve the original createdAt for edits
-            };
-            console.log("Saving updated review:", updatedReview);
-            onSave(updatedReview);
-            onClose();
-        } else if (type === "add") {
-            if (!localProductName.trim()) {
-                setError("Product name is required.");
-                return;
-            }
-
-            if (!validateRating(localRating)) {
-                setError("Rating must be a whole number or half number (e.g., 0.0, 0.5, 1.0, ..., 5.0).");
-                return;
-            }
-
-            if (localReviewText.length > 1000) {
-                setError("Review text is too long (max 1000 characters).");
-                return;
-            }
-
-            setError("");
-            const newReview = {
-                productName: localProductName.trim(),
-                rating: parseFloat(localRating),
-                review: localReviewText,
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false
-            };
-            console.log("Saving new review:", newReview);
-            onSave(newReview); // Pass the new review object directly to onSave
-            onClose();
+        if (value.length <= 1000) {
+             setError(prev => prev.includes("Review text") ? "" : prev);
+        } else {
+             setError("Review text cannot exceed 1000 characters.");
         }
     };
 
-    const handleConfirm = () => {
-        if (type === "delete") {
-            if (!selectedReviews || selectedReviews.length === 0) {
-                alert("Please select at least one review to delete.");
-                return;
-            }
-            onConfirm(selectedReviews);
-            onClose();
-        } else if (type === "restore") {
-            if (!selectedReviews || selectedReviews.length === 0) {
-                alert("Please select at least one review to restore.");
-                return;
-            }
-            onConfirm(selectedReviews);
-            onClose();
+     const handleProductChange = (e) => {
+         setLocalProductId(e.target.value);
+         if(e.target.value) {
+             setError(prev => prev.includes("Product") ? "" : prev);
+         }
+     };
+
+
+    const handleInternalSave = () => {
+        setError("");
+        let currentError = "";
+
+        if (type === 'add' && !localProductId) {
+             currentError = "Please select a product. ";
         }
+        // Use localRating directly here as it holds the input value
+        if (!validateRating(localRating)) {
+            currentError += "Rating must be a number from 0.0 to 5.0 in 0.5 increments. ";
+        }
+        if (!localReviewText.trim()) {
+            currentError += "Review text cannot be empty. ";
+        } else if (localReviewText.length > 1000) {
+            currentError += "Review text cannot exceed 1000 characters. ";
+        }
+
+        if (currentError) {
+            setError(currentError.trim());
+            return;
+        }
+
+        const dataToSave = {
+            rating: parseFloat(localRating), // Ensure it's a float before sending
+            reviewText: localReviewText.trim(),
+            productId: localProductId,
+        };
+        onSave(dataToSave);
     };
 
-    const handleCancel = () => {
-        if (type === "edit" || type === "add") {
-            console.log(`Canceling ${type} for review:`, review || "new review");
-        } else if (type === "delete" || type === "restore") {
-            console.log(`Canceling ${type} for selected reviews:`, selectedReviews);
-        }
-        onClose();
+    const handleInternalConfirm = () => {
+        onConfirmDelete(reviewData);
     };
+
 
     if (type === "edit" || type === "add") {
-        const title = type === "edit" ? `Edit Review for ${review?.productName}` : "Add New Review";
+        const title = type === "edit" ? `Edit Review for ${reviewData?.productName || 'Product'}` : "Add New Review";
         return (
-            <div className="edit-modal-overlay" onClick={handleCancel}>
+            <div className="edit-modal-overlay" onClick={onClose}>
                 <div className="edit-modal" onClick={e => e.stopPropagation()}>
                     <h3 className="edit-modal-header">{title}</h3>
                     {error && <p className="error-message">{error}</p>}
                     <div className="edit-form">
-                        <label className="edit-form-label">Product Name:</label>
-                        <input
-                            type="text"
-                            value={localProductName}
-                            onChange={handleProductNameChange}
-                            className="review-input"
-                            placeholder="Enter product name"
-                            style={{ cursor: "text", pointerEvents: "auto", userSelect: "text" }}
-                        />
-                        <label className="edit-form-label">Rating (0.0–5.0, half steps only):</label>
-                        <input
-                            type="number"
-                            step="0.5"
-                            value={localRating === "" ? "" : localRating}
-                            onChange={handleRatingChange}
-                            className="rating-input"
-                            placeholder="Enter rating (e.g., 0.0, 0.5, 1.0, ..., 5.0)"
-                            min="0"
-                            max="5"
-                            style={{ cursor: "text", pointerEvents: "auto", userSelect: "text" }}
-                        />
+                        {type === 'add' && (
+                            <>
+                                <label className="edit-form-label">Product:</label>
+                                <select value={localProductId} onChange={handleProductChange} className="review-input">
+                                     <option value="" disabled>-- Select Product --</option>
+                                     {uniqueProducts.map(product => (<option key={product.id} value={product.id}>{product.name} (ID: {product.id})</option>))}
+                                </select>
+                            </>
+                        )}
+                         {type === 'edit' && (
+                             <>
+                                 <label className="edit-form-label">Product:</label>
+                                 <input type="text" value={reviewData?.productName || ''} className="review-input" readOnly disabled/>
+                             </>
+                         )}
+                        <label className="edit-form-label">Rating (0.0–5.0):</label>
+                        <input type="number" step="0.5" min="0" max="5" value={localRating} onChange={handleRatingChange} className="review-input" placeholder="e.g., 4.5"/>
                         <label className="edit-form-label">Review:</label>
-                        <textarea
-                            value={localReviewText}
-                            onChange={handleReviewChange}
-                            className="review-input"
-                            placeholder="Enter review text"
-                            style={{ cursor: "text", pointerEvents: "auto", userSelect: "text" }}
-                        />
+                        <textarea value={localReviewText} onChange={handleReviewChange} className="review-input" placeholder="Enter review text" rows="4" maxLength="1000"/>
                         <div className="button-group">
-                            <button className="save-button" onClick={handleSave}>Save</button>
-                            <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                            <button className="save-button" onClick={handleInternalSave}>Save</button>
+                            <button className="cancel-button" onClick={onClose}>Cancel</button>
                         </div>
                     </div>
                 </div>
             </div>
         );
-    } else if (type === "delete" || type === "restore") {
-        const title = type === "delete" ? "Confirm Delete" : "Confirm Restore";
-        const message = type === "delete" 
-            ? `Are you sure you want to delete ${Array.isArray(selectedReviews) ? selectedReviews.length : 1} review(s)?`
-            : `Are you sure you want to restore ${selectedReviews.length} review(s)?`;
+    } else if (type === "delete") {
+        const itemsArray = Array.isArray(reviewData) ? reviewData : [reviewData].filter(Boolean); // Ensure array and filter null/undefined
+        const count = itemsArray.length;
+        const title = `Confirm Delete`;
+        const message = `Are you sure you want to delete ${count} review(s)? This action cannot be undone.`;
 
         return (
-            <div className={`${type}-modal-overlay`} onClick={handleCancel} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className={`${type}-modal`} onClick={e => e.stopPropagation()} style={{ position: 'relative', margin: 'auto' }}>
+            <div className="delete-modal-overlay" onClick={onClose}>
+                <div className="delete-modal" onClick={e => e.stopPropagation()}>
                     <h3>{title}</h3>
+                    {error && <p className="error-message">{error}</p>}
                     <p>{message}</p>
+                     {count > 0 && count <= 5 && (
+                        <ul>
+                             {itemsArray.map(item => item ? <li key={item.id}>{item.review_text?.substring(0, 50)}... (Product: {item.productName})</li> : null)}
+                        </ul>
+                     )}
                     <div className="button-group">
-                        <button className="save-button" onClick={handleConfirm}>
-                            {type === "delete" ? "Delete" : "Restore"}
-                        </button>
-                        <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                        <button className="save-button confirm-delete-button" onClick={handleInternalConfirm}>Delete</button>
+                        <button className="cancel-button" onClick={onClose}>Cancel</button>
                     </div>
                 </div>
             </div>

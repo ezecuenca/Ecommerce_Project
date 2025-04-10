@@ -1,47 +1,90 @@
 /* Header Styles (scoped to .content header) */
 .content {
-    margin-left: 250px;
+    margin-left: 250px; // Adjust if your AdminNav width changes
     min-height: 100vh;
     background-color: #f7fafc;
-    position: relative;
+    position: relative; // Needed for potential absolute positioned elements inside
 }
 
 .content header {
     position: sticky;
     top: 0;
-    z-index: 20;
+    z-index: 20; // Keep header above content but below dropdown
     background-color: white;
     padding: 1rem;
     display: flex;
-    justify-content: flex-end; 
+    justify-content: flex-end; // Pushes icon container to the right
     align-items: center;
     width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.content header .text-gray-500 {
-    color: #777E90; /* Light gray to match your screenshot (Tailwind's gray-500) */
-    transition: color 0.3s ease;
+// Container specifically for the user icon and its dropdown
+.user-icon-container {
+    position: relative; // Crucial for absolute positioning of dropdown
+    display: inline-block; // Or 'flex' depending on inner content alignment needed
+
+    .text-gray-500 { // Styling for the user icon itself within the container
+        color: #777E90;
+        transition: color 0.3s ease;
+        cursor: pointer;
+        &:hover {
+            color: #4a5568;
+        }
+    }
+}
+
+// Dropdown menu styles
+.dropdown-menu {
+    position: absolute;
+    top: 120%; // Position below the container
+    right: 0; // Align to the right edge of the container
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    min-width: 130px;
+    z-index: 1001; // Ensure it's above header and other content
+    list-style: none;
+    padding: 5px 0;
+    margin: 0;
+    // display: none; // Controlled by JS
+}
+
+// Style for items (buttons) within the dropdown
+button.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background-color: transparent;
+    text-align: left;
     cursor: pointer;
-    margin-left: 1rem; /* Space between icons */
+    font-size: 14px;
+    color: #333;
+    transition: background-color 0.15s ease-in-out;
+
+    &:hover {
+        background-color: #f0f0f0; // Hover effect
+    }
+
+    // --- EMPTY .dropdown-icon RULESET REMOVED ---
 }
 
-.content header .text-gray-500:hover {
-    color: #4a5568; /* Darker gray on hover, matching your theme */
-}
 
 .content .border-b {
     border-bottom: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
     width: 100%;
 }
 
-.content > div {
+.content > div { // Padding for the main content area below the header
     padding: 20px;
 }
 
-
-
-
+/* Existing Dashboard Styles */
 .dashboard-container {
     padding: 24px;
     background-color: white;
@@ -78,7 +121,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.analytics-card .text-gray-600 {
+.analytics-card .text-gray-600 { // Icon color
+    color: #4b5563;
     margin-bottom: 8px;
 }
 
@@ -106,7 +150,6 @@
     color: #4a5568;
     font-size: 16px;
     font-weight: 600;
-    padding: 8px;
 }
 
 .dashboard-recently-sold th,
@@ -115,22 +158,23 @@
     text-align: left;
     border: 1px solid #e5e7eb;
     font-size: 16px;
+    vertical-align: middle;
 }
 
 .dashboard-recently-sold tbody tr {
     border-bottom: 1px solid #e5e7eb;
     min-height: 40px;
-}
-
-.dashboard-recently-sold .text-black {
-    color: #000000;
+    &:hover {
+        background-color: #f9fafb;
+    }
 }
 
 .dashboard-recently-sold .product-icon {
-    color: #6b7280;
     width: 36px;
     height: 36px;
-    object-fit: contain;
+    object-fit: cover;
+    vertical-align: middle;
+    border-radius: 4px;
 }
 
 @media (max-width: 767px) {
@@ -150,7 +194,6 @@
 
     .dashboard-recently-sold thead tr {
         font-size: 14px;
-        padding: 6px;
     }
 
     .dashboard-recently-sold tbody tr {

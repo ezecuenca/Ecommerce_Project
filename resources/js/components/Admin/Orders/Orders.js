@@ -1,288 +1,335 @@
-import React, { useState } from "react";
-import OrdersManagement from "./OrdersManagement"; // New import for the modal
+import React, { useState, useEffect, useCallback } from "react";
+import OrdersManagement from "./OrdersManagement";
+import axios from 'axios';
 
 const Orders = () => {
-    const [ordersData, setOrdersData] = useState([
-        { 
-            id: "123456", 
-            paymentMethod: "Cash on Delivery", 
-            total: "₱ 200.12", 
-            status: "pending", 
-            date: "10/03/24",
-            orderDetails: [
-                { productName: "Product Name 1", quantity: "1x", price: "₱ 100.06", image: "/images/watchprod.svg" },
-                { productName: "Product Name 2", quantity: "1x", price: "₱ 100.06", image: "/images/watchprod.svg" },
-            ],
-            isArchived: false // Added isArchived property for active/archived tracking
-        },
-        { 
-            id: "111209", 
-            paymentMethod: "Paypal", 
-            total: "₱ 143.06", 
-            status: "processing", 
-            date: "10/02/24",
-            orderDetails: [
-                { productName: "Product Name 3", quantity: "2x", price: "₱ 71.53", image: "/images/watchprod.svg" },
-            ],
-            isArchived: false // Added isArchived property for active/archived tracking
-        },
-        { 
-            id: "433532", 
-            paymentMethod: "Card", 
-            total: "₱ 310.22", 
-            status: "on-delivery", 
-            date: "10/01/24",
-            orderDetails: [
-                { productName: "Product Name 4", quantity: "1x", price: "₱ 155.11", image: "/images/watchprod.svg" },
-                { productName: "Product Name 5", quantity: "2x", price: "₱ 155.11", image: "/images/watchprod.svg" },
-            ],
-            isArchived: false // Added isArchived property for active/archived tracking
-        },
-        { 
-            id: "121212", 
-            paymentMethod: "Cash on Delivery", 
-            total: "₱ 310.22", 
-            status: "completed", 
-            date: "09/30/24",
-            orderDetails: [
-                { productName: "Product Name 6", quantity: "3x", price: "₱ 103.41", image: "/images/watchprod.svg" },
-            ],
-            isArchived: true // Initially archived as completed
-        },
-        { 
-            id: "121212", 
-            paymentMethod: "Paypal", 
-            total: "₱ 310.22", 
-            status: "pending", 
-            date: "09/29/24",
-            orderDetails: [
-                { productName: "Product Name 7", quantity: "2x", price: "₱ 155.11", image: "/images/watchprod.svg" },
-            ],
-            isArchived: false // Added isArchived property for active/archived tracking
-        },
-    ]);
-
+    const [ordersData, setOrdersData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const [checkedItems, setCheckedItems] = useState({});
     const [selectAll, setSelectAll] = useState(false);
-
-    const [viewType, setViewType] = useState("active"); // New state for Active/Archived toggle
+    const [viewType, setViewType] = useState("active");
     const [managementModalOpen, setManagementModalOpen] = useState(false);
-    const [managementType, setManagementType] = useState(""); // New state to track restore type (bulk or individual)
+    // managementType is now only for 'details' or potentially other non-restore actions
+    const [managementType, setManagementType] = useState("");
     const [selectedOrderId, setSelectedOrderId] = useState(null);
-    const [selectedOrders, setSelectedOrders] = useState([]); // For bulk restore
+    // selectedOrders only needed if viewing details of multiple? For now, just one detail view.
+    // const [selectedOrders, setSelectedOrders] = useState([]); // Might remove if only single view
+    const [selectedOrderDetails, setSelectedOrderDetails] = useState({}); // For modal details
 
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 5;
 
-    // Filter orders based on viewType (active or archived)
+    const API_BASE_URL = 'http://127.0.0.1:8000/api';
+
+    const mapApiOrderToFrontendOrder = (apiOrder) => {
+        const getFrontendStatus = (apiStatus) => {
+            if (!apiStatus) return 'pending';
+            const lowerCaseStatus = apiStatus.toLowerCase();
+            switch(lowerCaseStatus) {
+                case 'pending': return 'pending';
+                case 'processing': return 'processing';
+                case 'shipped': return 'on-delivery';
+                case 'delivered': return 'completed';
+                case 'completed': return 'completed';
+                case 'cancelled': return 'cancelled';
+                case 'return_requested': return 'return_requested';
+                default: return lowerCaseStatus;
+            }
+        };
+
+        const getShippingStatus = (orderStatus, shippingApiStatus) => {
+            const lowerCaseOrderStatus = orderStatus?.toLowerCase();
+            const lowerCaseShippingStatus = shippingApiStatus?.toLowerCase();
+            if (lowerCaseOrderStatus === 'completed') return 'Delivered & Confirmed';
+            if (lowerCaseOrderStatus === 'cancelled') return 'Cancelled';
+            if (lowerCaseOrderStatus === 'return_requested') return 'Return Requested';
+            if (lowerCaseShippingStatus === 'delivered') return 'Delivered';
+            if (lowerCaseShippingStatus === 'shipped') return 'Shipped';
+            if (lowerCaseOrderStatus === 'processing') return 'Preparing Shipment';
+            return "Not Shipped";
+        };
+
+        const formatDate = (dateString) => {
+            if (!dateString) return "-";
+            try {
+                const date = new Date(dateString);
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                const year = String(date.getFullYear()).slice(-2);
+                return `${month}/${day}/${year}`;
+            } catch (e) { return "-"; }
+        };
+
+        const formatPrice = (amount) => {
+           const number = parseFloat(amount);
+           return `₱ ${isNaN(number) ? '0.00' : number.toFixed(2)}`;
+        };
+
+        const backendStatus = apiOrder.status?.toLowerCase();
+        const frontendStatus = getFrontendStatus(backendStatus);
+        const isArchived = backendStatus === 'completed' || backendStatus === 'cancelled' || backendStatus === 'return_requested';
+
+        return {
+            id: String(apiOrder.id),
+            paymentMethod: apiOrder.payment?.payment_method?.method_name || "N/A",
+            total: formatPrice(apiOrder.total_amount),
+            status: frontendStatus,
+            backendStatus: backendStatus,
+            date: formatDate(apiOrder.order_date),
+            orderDetails: apiOrder.order_details?.map(detail => ({
+                productName: detail.product?.product_name || `Product ID: ${detail.product_id}`,
+                quantity: `${detail.quantity}x`,
+                price: formatPrice(detail.price),
+                image: detail.product?.image_url || "/images/default-product.svg"
+            })) || [],
+            shippingStatus: getShippingStatus(apiOrder.status, apiOrder.shipping?.shipping_status),
+            trackingNumber: apiOrder.shipping?.tracking_number || "-",
+            shippingAddress: apiOrder.shipping?.shipping_address || "N/A",
+            shippingMethod: apiOrder.shipping?.shipping_method || "N/A",
+            shippingDate: formatDate(apiOrder.shipping?.shipping_date),
+            isArchived: isArchived,
+        };
+    };
+
+    const fetchOrders = useCallback(async () => {
+        setLoading(true);
+        setError(null);
+        try {
+            const response = await axios.get(`${API_BASE_URL}/orders?context=admin`, {
+                headers: { 'Accept': 'application/json' },
+            });
+            const rawOrders = response.data.data || response.data;
+            if (Array.isArray(rawOrders)) {
+                const mappedOrders = rawOrders.map(mapApiOrderToFrontendOrder);
+                setOrdersData(mappedOrders);
+            } else {
+                 setError("Received invalid data format from server.");
+                 setOrdersData([]);
+            }
+        } catch (err) {
+            const errorMessage = err.response?.data?.message || err.message || 'Failed to fetch orders.';
+            setError(errorMessage);
+            setOrdersData([]);
+        } finally {
+            setLoading(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchOrders();
+    }, [fetchOrders]);
+
     const getCurrentOrders = () => {
-        let filteredOrders = ordersData.filter(order => order.isArchived === (viewType === "archived"));
-        return filteredOrders;
+        return ordersData.filter(order => order.isArchived === (viewType === "archived"));
     };
 
     const currentOrders = getCurrentOrders();
     const totalPages = Math.ceil(currentOrders.length / itemsPerPage);
-    const currentItems = currentOrders.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
+    const currentItems = currentOrders.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
     const handleCheckboxChange = (id) => {
-        setCheckedItems((prev) => ({
-            ...prev,
-            [id]: !prev[id],
-        }));
-        if (Object.values({ ...checkedItems, [id]: !prev[id] }).every((val) => !val)) {
-            setSelectAll(false);
-        }
-        console.log("Checked items after change:", checkedItems); // Debug log
+        setCheckedItems((prev) => {
+            const newCheckedItems = { ...prev, [id]: !prev[id] };
+            const allVisibleSelected = currentItems.every(item => newCheckedItems[item.id]);
+            setSelectAll(allVisibleSelected && currentItems.length > 0);
+            return newCheckedItems;
+        });
     };
 
     const handleSelectAllChange = () => {
         const newSelectAll = !selectAll;
         setSelectAll(newSelectAll);
-        const newCheckedItems = currentOrders.reduce((acc, item) => ({
+        const newCheckedItems = currentItems.reduce((acc, item) => ({
             ...acc,
             [item.id]: newSelectAll,
-        }), {});
+        }), { ...checkedItems });
+        if (!newSelectAll) {
+            currentItems.forEach(item => { delete newCheckedItems[item.id]; });
+        }
         setCheckedItems(newCheckedItems);
-        console.log("Checked items after Select All:", newCheckedItems); // Debug log
     };
 
-    const areAllSelected = currentItems.every((item) => checkedItems[item.id]);
+    useEffect(() => {
+        const allVisibleSelected = currentItems.length > 0 && currentItems.every(item => checkedItems[item.id]);
+        setSelectAll(allVisibleSelected);
+    }, [currentItems, checkedItems]);
 
-    const handleStatusChange = (event, orderId = null) => {
-        const newStatus = event.target.value;
-        if (newStatus === "completed") {
-            const updatedOrders = ordersData.map((item) => 
-                (orderId ? item.id === orderId : checkedItems[item.id]) 
-                    ? { ...item, status: newStatus, isArchived: true } 
-                    : item
-            );
-            setOrdersData(updatedOrders);
-            setCheckedItems({});
-            setSelectAll(false);
-        } else if (newStatus && areAllSelected) {
-            const updatedOrders = ordersData.map((item) =>
-                checkedItems[item.id] ? { ...item, status: newStatus } : item
-            );
-            setOrdersData(updatedOrders);
-            setCheckedItems({});
-            setSelectAll(false);
+    const handleStatusChange = async (event, orderId = null) => {
+        const newFrontendStatus = event.target.value;
+        const selectedIds = orderId ? [orderId] : Object.keys(checkedItems).filter(id => checkedItems[id]);
+
+        if (selectedIds.length === 0 || !newFrontendStatus) return;
+
+        let backendStatusToSend;
+        switch (newFrontendStatus) {
+            case 'pending': backendStatusToSend = 'pending'; break;
+            case 'processing': backendStatusToSend = 'processing'; break;
+            case 'on-delivery': backendStatusToSend = 'shipped'; break;
+            case 'completed': backendStatusToSend = 'delivered'; break;
+            case 'cancelled': backendStatusToSend = 'cancelled'; break;
+            default: return;
         }
-        console.log("Status change - new status:", newStatus, "orderId:", orderId, "checkedItems:", checkedItems); // Debug log
+
+        if (backendStatusToSend === 'cancelled') {
+            if (!window.confirm(`Are you sure you want to cancel ${selectedIds.length} order(s)?`)) {
+                if (orderId && event.target) event.target.value = ordersData.find(o => o.id === orderId)?.status || '';
+                return;
+            }
+            setLoading(true);
+            try {
+                await Promise.all(selectedIds.map(id =>
+                    axios.put(`${API_BASE_URL}/orders/${id}/cancel`, {}, { headers: { 'Accept': 'application/json' } })
+                ));
+                alert('Order(s) cancelled successfully!');
+                await fetchOrders();
+            } catch (err) {
+                alert(err.response?.data?.message || 'Failed to cancel order(s).');
+                if (orderId && event.target) event.target.value = ordersData.find(o => o.id === orderId)?.status || '';
+            } finally {
+                setCheckedItems({});
+                setSelectAll(false);
+                setLoading(false);
+            }
+            return;
+        }
+
+        setLoading(true);
+        try {
+            await Promise.all(selectedIds.map(id =>
+                axios.put(`${API_BASE_URL}/orders/${id}/status`,
+                { status: backendStatusToSend },
+                { headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' } }
+                )
+            ));
+            alert(`Order status(es) updated to "${backendStatusToSend}" successfully!`);
+            await fetchOrders();
+        } catch (err) {
+            alert(err.response?.data?.message || `Failed to update status to "${backendStatusToSend}".`);
+             if (orderId && event.target) {
+                  const originalFrontendStatus = ordersData.find(o => o.id === orderId)?.status;
+                  if (originalFrontendStatus) event.target.value = originalFrontendStatus;
+             }
+        } finally {
+            setCheckedItems({});
+            setSelectAll(false);
+            setLoading(false);
+        }
     };
 
     const handleOrderClick = (orderId) => {
-        setSelectedOrderId(orderId);
-        setManagementModalOpen(true);
-        console.log("Order clicked - orderId:", orderId); // Debug log
+        const order = ordersData.find(o => o.id === orderId);
+        if (order) {
+             setSelectedOrderId(orderId);
+             // setSelectedOrders([order]); // Store the whole order object for the modal
+             setSelectedOrderDetails(order); // Use a dedicated state for modal details
+             setManagementModalOpen(true);
+             setManagementType("details");
+        } else {
+             alert("Could not find order details.");
+        }
     };
 
     const handleCloseManagement = () => {
         setManagementModalOpen(false);
         setManagementType("");
         setSelectedOrderId(null);
-        setSelectedOrders([]);
-        console.log("Modal closed"); // Debug log
+        setSelectedOrderDetails({}); // Clear details state
     };
 
-    const handleRestore = (orderId = null) => {
-        if (!orderId && Object.keys(checkedItems).filter(id => checkedItems[id]).length < 1) {
-            alert("Please select at least one order to restore.");
-            return;
-        }
-        if (viewType !== "archived") {
-            alert("You can only restore from Archived Orders.");
-            return;
-        }
-        // Open modal for confirmation
-        setManagementType(orderId ? "individual" : "bulk");
-        setSelectedOrderId(orderId ? orderId.toString() : null); // Ensure orderId is a string
-        setSelectedOrders(orderId ? [ordersData.find(order => order.id === orderId)] : currentOrders.filter(order => checkedItems[order.id]));
-        setManagementModalOpen(true);
-        console.log("Restore triggered - orderId:", orderId, "checkedItems:", checkedItems, "selectedOrders:", selectedOrders); // Debug log
-    };
+    // REMOVED handleRestore and handleConfirmRestore functions
 
-    const handleConfirmRestore = () => {
-        const selectedOrdersToRestore = managementType === "individual" 
-            ? [ordersData.find(order => order.id === selectedOrderId)] 
-            : currentOrders.filter(order => checkedItems[order.id]); // Use checkedItems to filter currentOrders for bulk
-        console.log("Confirming restore - selectedOrders:", selectedOrdersToRestore, "managementType:", managementType); // Debug log
-        const updatedOrders = ordersData.map(order =>
-            selectedOrdersToRestore.some(selected => selected.id === order.id) ? { ...order, isArchived: false } : order
-        );
-        setOrdersData(updatedOrders);
-        setCheckedItems({});
-        setSelectAll(false);
-        handleCloseManagement();
-    };
+    if (loading && ordersData.length === 0) {
+         return <div>Loading orders...</div>;
+    }
+
+    if (error) {
+        return <div style={{ color: 'red' }}>Error: {error} <button onClick={fetchOrders}>Retry</button></div>;
+    }
 
     return (
         <div className="Orders">
             <h2 className="h2">{viewType === "active" ? "Active Orders" : "Archived Orders"}</h2>
-
             <div className="table-header-actions">
                 <div className="search-bar">
-                    <input
-                        type="text"
-                        placeholder="Search"
-                        className="search-input"
-                    />
+                    <input type="text" placeholder="Search (Not Implemented)" className="search-input" disabled/>
                 </div>
                 <div className="button-group" style={{ marginLeft: 'auto' }}>
-                    {viewType === "active" && (
-                        <select
-                            className="orders-status-dropdown"
-                            onChange={handleStatusChange}
-                            disabled={!areAllSelected}
-                            value=""
-                        >
-                            <option value="" disabled>Select Status</option>
-                            <option value="pending">Pending</option>
-                            <option value="processing">Processing</option>
-                            <option value="on-delivery">On Delivery</option>
-                            <option value="completed">Completed</option>
-                        </select>
-                    )}
-                </div>
+                     {viewType === "active" && (
+                         <select
+                             className="orders-status-dropdown"
+                             onChange={(e) => handleStatusChange(e)}
+                             disabled={loading || Object.keys(checkedItems).filter(id => checkedItems[id]).length === 0}
+                             value=""
+                         >
+                             <option value="" disabled>Bulk Update Status</option>
+                             <option value="pending">Pending</option>
+                             <option value="processing">Processing</option>
+                             <option value="on-delivery">On Delivery</option>
+                             <option value="completed">Completed</option>
+                             <option value="cancelled">Cancel Selected</option>
+                         </select>
+                     )}
+                     {/* REMOVED Restore button */}
+                 </div>
                 <div className="view-toggle">
                     <button
                         className={`view-button ${viewType === "active" ? "active" : ""}`}
-                        onClick={() => setViewType("active")}
-                    >
-                        Active Orders
-                    </button>
+                        onClick={() => { setViewType("active"); setCurrentPage(1); setCheckedItems({}); setSelectAll(false); }}
+                        disabled={loading} > Active Orders </button>
                     <button
                         className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                        onClick={() => setViewType("archived")}
-                    >
-                        Archived Orders
-                    </button>
+                        onClick={() => { setViewType("archived"); setCurrentPage(1); setCheckedItems({}); setSelectAll(false); }}
+                        disabled={loading} > Archived Orders </button>
                 </div>
             </div>
-
+            {loading && <div>Processing...</div>}
             <div className="table-container">
                 <div className="table-header-wrapper">
                     <table className="orders-recently-sold">
                         <thead>
                             <tr className="thead">
-                                <th className="th">
-                                    <input
-                                        type="checkbox"
-                                        checked={selectAll}
-                                        onChange={handleSelectAllChange}
-                                    />
-                                </th>
+                                <th className="th"> <input type="checkbox" checked={selectAll} onChange={handleSelectAllChange} disabled={loading || currentItems.length === 0}/> </th>
                                 <th className="th">Order ID</th>
                                 <th className="th">Payment Method</th>
                                 <th className="th">Total Amount</th>
                                 <th className="th">Status</th>
+                                <th className="th">Shipping Status</th>
+                                <th className="th">Tracking Number</th>
                                 <th className="th">Created At</th>
                             </tr>
                         </thead>
                         <tbody>
                             {currentItems.length > 0 ? (
-                                currentItems.map((item, index) => (
-                                    <tr key={index} className="tr">
-                                        <td className="td">
-                                            <input
-                                                type="checkbox"
-                                                checked={checkedItems[item.id] || false}
-                                                onChange={() => handleCheckboxChange(item.id)}
-                                            />
-                                        </td>
-                                        <td className="td">
-                                            <button className="order-id-button" onClick={() => handleOrderClick(item.id)}>
-                                                {item.id}
-                                            </button>
-                                        </td>
+                                currentItems.map((item) => (
+                                    <tr key={item.id} className="tr">
+                                        <td className="td"> <input type="checkbox" checked={checkedItems[item.id] || false} onChange={() => handleCheckboxChange(item.id)} disabled={loading}/> </td>
+                                        <td className="td"> <button className="order-id-button" onClick={() => handleOrderClick(item.id)} disabled={loading}> {item.id} </button> </td>
                                         <td className="td">{item.paymentMethod}</td>
                                         <td className="td">{item.total}</td>
                                         <td className="td">
-                                            <select 
-                                                className="status-dropdown" 
-                                                onChange={(e) => handleStatusChange(e, item.id)}
-                                                value={item.status}
-                                                disabled={viewType === "archived"} // Disable status changes in Archived view
-                                            >
-                                                <option value="pending">Pending</option>
-                                                <option value="processing">Processing</option>
-                                                <option value="on-delivery">On Delivery</option>
-                                                <option value="completed">Completed</option>
-                                            </select>
-                                        </td>
+                                             <select
+                                                 className="status-dropdown"
+                                                 onChange={(e) => handleStatusChange(e, item.id)}
+                                                 value={item.status}
+                                                 disabled={loading || viewType === "archived" || ['cancelled', 'completed', 'return_requested'].includes(item.backendStatus)}
+                                             >
+                                                 <option value="pending">Pending</option>
+                                                 <option value="processing">Processing</option>
+                                                 <option value="on-delivery">On Delivery</option>
+                                                 <option value="completed">Completed</option>
+                                                 <option value="cancelled">Cancel</option>
+                                             </select>
+                                         </td>
+                                        <td className="td">{item.shippingStatus}</td>
+                                        <td className="td">{item.trackingNumber}</td>
                                         <td className="td">{item.date}</td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr className="tr">
-                                    <td colSpan={6} className="td" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                        {ordersData.length === 0
-                                            ? "No orders available. Please check your data or refresh the page."
-                                            : viewType === "active"
-                                            ? "No active orders match your search."
-                                            : "No archived orders match your search."}
+                                    <td colSpan={8} className="td" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                        {loading ? "Loading..." : (ordersData.length === 0 && !error ? "No orders found." : `No ${viewType} orders match.`)}
                                     </td>
                                 </tr>
                             )}
@@ -290,41 +337,26 @@ const Orders = () => {
                     </table>
                 </div>
                 <div className="pagination">
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "active" : ""}
-                        >
-                            {page}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                    >
-                        Next
-                    </button>
-                </div>
+                     <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={loading || currentPage === 1}> Previous </button>
+                     {totalPages > 0 && Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                         <button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? "active" : ""} disabled={loading}> {page} </button>
+                     ))}
+                     <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={loading || currentPage === totalPages || totalPages === 0} > Next </button>
+                 </div>
             </div>
-
-            {managementModalOpen && (
-                <OrdersManagement
-                    type={managementType}
-                    orderId={selectedOrderId}
-                    orderDetails={ordersData.find(order => order.id === selectedOrderId)?.orderDetails || []}
-                    selectedOrders={selectedOrders}
-                    viewType={viewType} // Pass viewType to OrdersManagement for Delete/Restore logic
-                    onClose={handleCloseManagement}
-                    onConfirm={handleConfirmRestore}
-                />
-            )}
+             {managementModalOpen && (
+                 <OrdersManagement
+                     type={managementType} // Now only 'details'
+                     orderId={selectedOrderId}
+                     // Pass necessary details directly from the selectedOrderDetails state
+                     orderDetails={selectedOrderDetails?.orderDetails || []}
+                     shippingDetails={selectedOrderDetails || {}}
+                    // selectedOrders={selectedOrders} // Likely not needed anymore
+                     viewType={viewType}
+                     onClose={handleCloseManagement}
+                     // onConfirm prop removed
+                 />
+             )}
         </div>
     );
 };

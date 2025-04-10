@@ -17,6 +17,8 @@ class Profile extends Model
         'age',
         'gender',
         'contact_no',
+        'created_at',
+        'updated_at',
         'user_id',
     ];
 

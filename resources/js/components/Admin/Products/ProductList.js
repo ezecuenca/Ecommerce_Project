@@ -20,6 +20,36 @@ const ProductList = () => {
     const tableRef = useRef(null);
     const itemsPerPage = 5;
 
+    const formatDate = (dateString) => {
+        if (!dateString) return "N/A";
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleDateString("en-US", {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+            });
+        } catch (e) {
+            console.error("Error formatting date:", dateString, e);
+            return "Invalid Date";
+        }
+    };
+
+    const formatTime = (dateString) => {
+        if (!dateString) return "N/A";
+        try {
+            const date = new Date(dateString);
+            return date.toLocaleTimeString("en-US", {
+                hour: 'numeric',
+                minute: 'numeric',
+                hour12: true,
+            });
+        } catch (e) {
+            console.error("Error formatting time:", dateString, e);
+            return "Invalid Time";
+        }
+    };
+
     useEffect(() => {
         console.log("ProductList component mounted");
     }, []);
@@ -48,8 +78,17 @@ const ProductList = () => {
                     },
                 });
                 console.log("API Response:", response.data);
-                console.log("Setting products:", response.data.data || []);
-                setProducts(response.data.data || []);
+
+                const formattedProducts = (response.data.data || []).map(product => ({
+                    ...product,
+                    createdAtDate: formatDate(product.created_at),
+                    createdAtTime: formatTime(product.created_at),
+                    updatedAtDate: formatDate(product.updated_at),
+                    updatedAtTime: formatTime(product.updated_at),
+                }));
+
+                console.log("Setting products:", formattedProducts);
+                setProducts(formattedProducts);
                 setTotalPages(response.data.last_page || 1);
             } catch (error) {
                 console.error("Error fetching products:", error);
@@ -149,7 +188,7 @@ const ProductList = () => {
     };
 
     const handleAdd = (e) => {
-        e.stopPropagation(); // Prevent event bubbling
+        e.stopPropagation();
         console.log("Add button clicked!");
         console.log("Current viewType:", viewType, "Opening Add modal");
         setManagementType("add");
@@ -296,15 +335,15 @@ const ProductList = () => {
                                     <input type="checkbox" className="product-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
                                 </th>
                                 <th className="table-header products-action-column">Action</th>
-                                <th className="table-header">Product Name</th>
-                                <th className="table-header">Description</th>
-                                <th className="table-header">Category</th>
-                                <th className="table-header">Color</th>
-                                <th className="table-header">Wrist Measurement</th>
-                                <th className="table-header">Stock</th>
-                                <th className="table-header">Price</th>
-                                <th className="table-header">Created At</th>
-                                <th className="table-header">Updated At</th>
+                                <th className="table-header product-image-column">Image</th>
+                                <th className="table-header product-name-column">Product Name</th>
+                                <th className="table-header description-column">Description</th>
+                                <th className="table-header product-price-column">Price</th>
+                                <th className="table-header product-category-column">Category</th>
+                                <th className="table-header product-color-column">Color</th>
+                                <th className="table-header product-wrist-column">Wrist Measurement</th>
+                                <th className="table-header product-created-column">Created At</th>
+                                <th className="table-header product-updated-column">Updated At</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -331,15 +370,33 @@ const ProductList = () => {
                                                 )}
                                             </div>
                                         </td>
-                                        <td className="table-cell">{product.product_name}</td>
-                                        <td className="table-cell">{product.description || '-'}</td>
-                                        <td className="table-cell">{product.category || '-'}</td>
-                                        <td className="table-cell">{product.color || '-'}</td>
-                                        <td className="table-cell">{product.wrist_measurement || '-'}</td>
-                                        <td className="table-cell">{product.stock}</td>
-                                        <td className="table-cell">{product.price}</td>
-                                        <td className="table-cell">{product.created_at}</td>
-                                        <td className="table-cell">{product.updated_at}</td>
+                                        <td className="table-cell product-image-column">
+                                            {product.image_url ? (
+                                                <img
+                                                    src={product.image_url}
+                                                    alt={product.product_name}
+                                                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
+                                                    onError={(e) => (e.target.src = '/path/to/fallback-image.jpg')}
+                                                />
+                                            ) : (
+                                                '-'
+                                            )}
+                                        </td>
+                                        <td className="table-cell product-name-column">{product.product_name}</td>
+                                        <td className="table-cell description-column">{product.description || '-'}</td>
+                                        {/*  the below line is where i will place the Peso Sign*/}
+                                        <td className="table-cell product-price-column">₱ {product.price}</td>
+                                        <td className="table-cell product-category-column">{product.category || '-'}</td>
+                                        <td className="table-cell product-color-column">{product.color || '-'}</td>
+                                        <td className="table-cell product-wrist-column">{product.wrist_measurement || '-'}</td>
+                                        <td className="table-cell product-created-column">
+                                           {product.createdAtDate}<br />
+                                          at {product.createdAtTime}
+                                        </td>
+                                        <td className="table-cell product-updated-column">
+                                            {product.updatedAtDate}<br />
+                                            at {product.updatedAtTime}
+                                        </td>
                                     </tr>
                                 ))
                             ) : (

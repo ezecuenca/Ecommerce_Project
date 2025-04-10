@@ -61,9 +61,8 @@ const WatchColorList = () => {
         fetchColors();
     }, [forceUpdate]);
 
-    // Function to format timestamps from Zulu time to local time
     const formatDateTime = (dateString) => {
-        if (!dateString) return "N/A"; // Handle null or undefined values
+        if (!dateString) return "N/A"; 
         const date = new Date(dateString);
         return date.toLocaleString('en-US', {
             year: 'numeric',

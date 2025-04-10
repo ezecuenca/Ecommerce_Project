@@ -14,13 +14,13 @@
 
     .edit-modal {
         background-color: white;
-        padding: 24px;
+        padding: 20px;
         border-radius: 8px;
-        width: 400px;
-        max-width: 90%;
+        width: 100%;
+        max-width: 360px; /* Reduced width to fit smaller screens */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
-        max-height: 80vh;
+        max-height: 90vh; /* Increased to allow more content */
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -30,25 +30,27 @@
         font-weight: bold;
         color: #000000;
         margin-bottom: 16px;
+        text-align: center; /* Center the title */
     }
 
     .error-message {
         color: #ef4444;
         margin-bottom: 8px;
         font-size: 14px;
+        text-align: center;
     }
 
     .form-group {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 24px;
+        margin-bottom: 16px; /* Reduced margin for better spacing */
         width: 100%;
         box-sizing: border-box;
     }
 
     .form-group label {
-        font-size: 16px;
+        font-size: 14px; /* Slightly smaller for better fit */
         color: #4a5568;
         margin-bottom: 4px;
     }
@@ -57,10 +59,10 @@
     .form-group select {
         border: 1px solid #d1d5db;
         border-radius: 4px;
-        padding: 8px 12px;
+        padding: 8px 10px;
         width: 100%;
         font-size: 14px;
-        height: 40px;
+        height: 38px; /* Slightly smaller height */
         outline: none;
         box-sizing: border-box;
         background-color: #f3f4f6;
@@ -78,20 +80,20 @@
 
     .form-group input:focus,
     .form-group select:focus {
-        border-color: #d1d5db;
-        box-shadow: 0 0 0 2px #3b82f6;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
         background-color: white;
     }
 
     .form-group textarea {
         border: 1px solid #d1d5db;
         border-radius: 4px;
-        padding: 8px 12px;
+        padding: 8px 10px;
         width: 100%;
         font-size: 14px;
-        height: 60px;
-        min-height: 60px;
-        max-height: 60px;
+        height: 80px; /* Increased height for better usability */
+        min-height: 80px;
+        max-height: 120px; /* Allow some resizing */
         outline: none;
         box-sizing: border-box;
         background-color: #f3f4f6;
@@ -99,7 +101,7 @@
         cursor: text;
         pointer-events: auto;
         user-select: text;
-        resize: none;
+        resize: vertical; /* Allow vertical resizing */
         overflow-y: auto;
         overflow-x: hidden;
     }
@@ -109,8 +111,8 @@
     }
 
     .form-group textarea:focus {
-        border-color: #d1d5db;
-        box-shadow: 0 0 0 2px #3b82f6;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
         background-color: white;
     }
 
@@ -131,10 +133,10 @@
     .form-group .file-input-label {
         border: 1px solid #d1d5db;
         border-radius: 4px;
-        padding: 8px 12px;
+        padding: 8px 10px;
         width: 100%;
         font-size: 14px;
-        height: 40px;
+        height: 38px;
         outline: none;
         box-sizing: border-box;
         background-color: #f3f4f6;
@@ -154,8 +156,8 @@
     }
 
     .form-group .file-input-label:focus {
-        border-color: #d1d5db;
-        box-shadow: 0 0 0 2px #3b82f6;
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
         background-color: white;
     }
 
@@ -163,7 +165,7 @@
         content: "Choose File";
         background-color: #e5e7eb;
         color: #4a5568;
-        padding: 8px 16px;
+        padding: 6px 12px;
         border-radius: 4px;
         margin-left: 8px;
         cursor: pointer;
@@ -171,7 +173,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        max-width: 120px;
+        max-width: 100px; /* Reduced width to fit better */
         box-sizing: border-box;
     }
 
@@ -184,7 +186,7 @@
 
     .form-group .image-preview .preview-image {
         max-width: 100%;
-        max-height: 200px;
+        max-height: 150px; /* Reduced height to fit better */
         border-radius: 4px;
         border: 1px solid #d1d5db;
         object-fit: cover;
@@ -259,9 +261,9 @@
     .archive-modal,
     .restore-modal {
         background-color: white;
-        padding: 24px;
+        padding: 20px;
         border-radius: 8px;
-        width: 350px;
+        width: 320px; /* Reduced width to fit smaller screens */
         max-width: 90%;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         text-align: left;
@@ -274,13 +276,15 @@
         font-weight: bold;
         color: #000000;
         margin-bottom: 12px;
+        text-align: center;
     }
 
     .archive-modal p,
     .restore-modal p {
-        font-size: 16px;
+        font-size: 14px;
         color: #6b7280;
         margin-bottom: 12px;
+        text-align: center;
     }
 
     .button-group {
@@ -302,8 +306,8 @@
     .ProductManagement {
         .edit-modal {
             padding: 16px;
-            width: 100%;
             max-width: 100%;
+            margin: 0 10px; /* Add small margin on sides */
         }
 
         h2 {
@@ -313,7 +317,11 @@
 
         .form-group {
             gap: 6px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            font-size: 13px;
         }
 
         .form-group input,
@@ -321,14 +329,14 @@
         .form-group textarea,
         .form-group .file-input-label {
             height: 36px;
-            font-size: 12px;
-            padding: 6px 10px;
+            font-size: 13px;
+            padding: 6px 8px;
         }
 
         .form-group textarea {
-            height: 50px;
-            min-height: 50px;
-            max-height: 50px;
+            height: 70px;
+            min-height: 70px;
+            max-height: 100px;
         }
 
         .form-actions {
@@ -340,17 +348,22 @@
         .save-button,
         .confirm-button {
             padding: 6px 12px;
-            font-size: 12px;
+            font-size: 13px;
+        }
+
+        .form-group .file-input-label::after {
+            padding: 4px 8px;
+            max-width: 80px;
         }
 
         .form-group .image-preview .preview-image {
-            max-height: 150px;
+            max-height: 120px;
         }
 
         .archive-modal,
         .restore-modal {
             width: 90%;
-            padding: 20px;
+            padding: 16px;
         }
 
         .archive-modal h3,
@@ -361,7 +374,7 @@
 
         .archive-modal p,
         .restore-modal p {
-            font-size: 14px;
+            font-size: 13px;
             margin-bottom: 10px;
         }
     }

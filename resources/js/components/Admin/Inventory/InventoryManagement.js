@@ -19,8 +19,14 @@ const InventoryManagement = ({ type, item, stock, onClose, onSave, onConfirm }) 
     };
 
     const handleStockChange = (e) => {
-        const value = parseInt(e.target.value, 10) || 0;
-        setLocalStock(value);
+        const value = e.target.value;
+        // Validate that the input is a non-negative integer
+        if (/^\d*$/.test(value)) {
+            setLocalStock(value);
+        }
+        else{
+            return
+        }
     };
 
     const handleSave = () => {
@@ -70,22 +76,25 @@ const InventoryManagement = ({ type, item, stock, onClose, onSave, onConfirm }) 
         return (
             <div className="InventoryManagement">
                 <div className="edit-modal-overlay" onClick={handleCancel}>
-                    <div className="edit-modal" onClick={e => e.stopPropagation()}>
-                        <h3>Edit Stock for {item?.productName}</h3>
+                    <div className="edit-modal" onClick={(e) => e.stopPropagation()}>
+                        <h3>Edit Stocks for {item?.productName}</h3>
                         {error && <p className="error-message">{error}</p>}
                         <div className="edit-form">
-                            <label>Stock Quantity:</label>
+                            <label>Stocks:</label>
                             <input
-                                type="number"
+                                type="text"
                                 value={localStock}
                                 onChange={handleStockChange}
-                                min="0"
                                 className="stock-input"
                                 placeholder="Enter stock quantity"
                             />
                             <div className="button-group">
-                                <button className="save-button" onClick={handleSave}>Save</button>
-                                <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                                <button className="save-button" onClick={handleSave}>
+                                    Save
+                                </button>
+                                <button className="cancel-button" onClick={handleCancel}>
+                                    Cancel
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -94,20 +103,33 @@ const InventoryManagement = ({ type, item, stock, onClose, onSave, onConfirm }) 
         );
     } else if (type === "delete" || type === "restore") {
         const title = type === "delete" ? "Confirm Deletion" : "Confirm Restoration";
-        const message = type === "delete"
-            ? `Are you sure you want to delete ${Array.isArray(item) ? item.length : 1} item(s)? `
-            : `Are you sure you want to restore ${Array.isArray(item) ? item.length : 1} item(s)?`;
+        const message =
+            type === "delete"
+                ? `Are you sure you want to delete ${
+                      Array.isArray(item) ? item.length : 1
+                  } item(s)? `
+                : `Are you sure you want to restore ${
+                      Array.isArray(item) ? item.length : 1
+                  } item(s)?`;
 
         return (
-            <div className={`${type === "delete" ? "delete" : "restore"}-modal-overlay`} onClick={handleCancel}>
-                <div className={`${type === "delete" ? "delete" : "restore"}-modal`} onClick={e => e.stopPropagation()}>
+            <div
+                className={`${type === "delete" ? "delete" : "restore"}-modal-overlay`}
+                onClick={handleCancel}
+            >
+                <div
+                    className={`${type === "delete" ? "delete" : "restore"}-modal`}
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <h3>{title}</h3>
                     <p>{message}</p>
                     <div className="button-group">
                         <button className="save-button" onClick={handleConfirm}>
                             {type === "delete" ? "Delete" : "Restore"}
                         </button>
-                        <button className="cancel-button" onClick={handleCancel}>Cancel</button>
+                        <button className="cancel-button" onClick={handleCancel}>
+                            Cancel
+                        </button>
                     </div>
                 </div>
             </div>

@@ -24,13 +24,6 @@ const ProfileSidebar = () => {
                     Login and security
                 </Link>
                 <Link
-                    to="/customer/my-payments"
-                    className={`sidebar-item ${location === "/customer/my-payments" ? "active" : ""}`}
-                >
-                    <FiCreditCard className="sidebar-icon" />
-                    My payments
-                </Link>
-                <Link
                     to="/customer/my-orders"
                     className={`sidebar-item ${location === "/customer/my-orders" ? "active" : ""}`}
                 >

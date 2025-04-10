@@ -18,11 +18,12 @@ import PaymentConfirmation from "./CustomerPage/PaymentandDelivery/PaymentConfir
 import OrderComplete from "./CustomerPage/PaymentandDelivery/OrderComplete";
 import PersonalInfo from "./CustomerPage/ProfileSidebar/Personalnfo";
 import LoginSecurity from "./CustomerPage/ProfileSidebar/LoginSecurity";
-import MyPayments from "./CustomerPage/ProfileSidebar/MyPayments";
 import MyOrders from "./CustomerPage/ProfileSidebar/MyOrders";
+import { CartProvider } from "./CustomerPage/ShoppingCart/CartContext";
 
 export default function Routers() {
     return (
+        <CartProvider>
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
@@ -41,11 +42,11 @@ export default function Routers() {
                         <Route path="order-complete" element={<OrderComplete />} />
                         <Route path="personal-info" element={<PersonalInfo />} />
                         <Route path="login-security" element={<LoginSecurity />} />
-                        <Route path="my-payments" element={<MyPayments />} />
                         <Route path="my-orders" element={<MyOrders />} />
                     </Route>
                 </Routes>
             </Router>
+        </CartProvider>
     );
 }
 

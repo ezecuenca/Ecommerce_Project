@@ -1,67 +1,98 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaEdit, FaTrash, FaUndo } from "react-icons/fa"; // Added FaUndo for Restore
-import RolesManagement from "./RolesManagement"; // Assume a similar RolesManagement component
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
+import axios from 'axios';
+import RolesManagement from "./RolesManagement";
 
 const Roles = () => {
+    const [roles, setRoles] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [fetchError, setFetchError] = useState(null);
     const [checkedRows, setCheckedRows] = useState({});
     const [isSelectAll, setIsSelectAll] = useState(false);
-    const [viewType, setViewType] = useState("active"); // Roles can now have active/archived views
     const [managementModalOpen, setManagementModalOpen] = useState(false);
     const [managementType, setManagementType] = useState("");
     const [selectedRole, setSelectedRole] = useState(null);
     const [name, setName] = useState("");
-    const [error, setError] = useState("");
-    const [forceUpdate, setForceUpdate] = useState(0);
+    const [modalError, setModalError] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
-    const itemsPerPage = 5; // Match CategoryList pagination
-
-    const [initialRoles, setInitialRoles] = useState([
-        { id: 1, name: "Customer", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        { id: 2, name: "Admin", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: false },
-        // Added an archived role for testing
-        { id: 3, name: "Moderator", createdAt: "11/21/24", updatedAt: "11/21/24", isArchived: true },
-    ]);
-
-    const [roles, setRoles] = useState(initialRoles);
+    const [viewType, setViewType] = useState("active");
+    const itemsPerPage = 5;
     const tableRef = useRef(null);
 
-    useEffect(() => {
-        const savedRoles = localStorage.getItem("roles");
-        let updatedRoles = [...initialRoles];
-        if (savedRoles) {
-            try {
-                updatedRoles = JSON.parse(savedRoles).map(role => ({
-                    ...role,
-                    isArchived: role.isArchived !== undefined ? role.isArchived : false,
-                    createdAt: role.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    updatedAt: role.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                }));
-                console.log("Loaded roles from localStorage:", updatedRoles);
-            } catch (error) {
-                console.error("Error parsing roles from localStorage:", error);
-                updatedRoles = [...initialRoles];
-                localStorage.setItem("roles", JSON.stringify(updatedRoles));
-            }
-        } else {
-            console.log("Initialized with static roles:", initialRoles);
-            localStorage.setItem("roles", JSON.stringify(initialRoles));
-        }
-        setRoles(updatedRoles);
-        setInitialRoles(updatedRoles);
+    const dateTimeOptions = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric', 
+        minute: 'numeric', 
+        hour12: true 
+    };
+
+    const fetchRoles = useCallback(async () => {
+        setLoading(true);
+        setFetchError(null);
         setCheckedRows({});
         setIsSelectAll(false);
+        setCurrentPage(1);
+
+        try {
+            const response = await axios.get('/api/roles');
+            console.log("API Response (All Roles):", response.data);
+
+            let fetchedRoles = [];
+            if (Array.isArray(response.data)) {
+                fetchedRoles = response.data;
+            } else if (response.data && Array.isArray(response.data.data)) {
+                fetchedRoles = response.data.data;
+            } else {
+                 console.error("Received data is not in expected array format:", response.data);
+                 throw new Error("Unexpected data format received from server.");
+            }
+
+             const formattedRoles = fetchedRoles.map(role => ({
+                ...role,
+                isArchived: role.status === 0,
+                // Use toLocaleString() with options for specific date AND time format
+                created_at_formatted: role.created_at ? new Date(role.created_at).toLocaleString(undefined, dateTimeOptions) : 'N/A',
+                updated_at_formatted: role.updated_at ? new Date(role.updated_at).toLocaleString(undefined, dateTimeOptions) : 'N/A'
+             }));
+
+            setRoles(formattedRoles);
+
+        } catch (err) {
+            console.error(`Error fetching roles:`, err);
+             let errorMessage = `Failed to load roles. Please try again.`;
+             if (err.response && err.response.status === 404) {
+                 errorMessage = `Error: API endpoint /api/roles not found (404).`;
+             } else if (err.message) {
+                 errorMessage = err.message;
+             }
+            setFetchError(errorMessage);
+            setRoles([]);
+        } finally {
+            setLoading(false);
+        }
     }, []);
+
+
+    useEffect(() => {
+        fetchRoles();
+    }, [fetchRoles]);
+
 
     const getCurrentData = () => {
         if (!roles || roles.length === 0) {
-            console.warn("No roles data available, returning empty array.");
             return [];
         }
-        let filteredRoles = roles.filter(role => role.isArchived === (viewType === "archived"));
+
+         let filteredRoles = roles.filter(role => {
+              return viewType === 'active' ? role.status === 1 : role.status === 0;
+          });
+
         if (searchQuery.trim()) {
             filteredRoles = filteredRoles.filter(role =>
-                role.name.toLowerCase().includes(searchQuery.toLowerCase())
+                role.role_name && role.role_name.toLowerCase().includes(searchQuery.toLowerCase())
             );
         }
         return filteredRoles;
@@ -79,101 +110,81 @@ const Roles = () => {
         setIsSelectAll(isChecked);
         const newCheckedRows = {};
         if (isChecked) {
-            currentItems.forEach((_, index) => {
-                newCheckedRows[index] = true;
+            currentItems.forEach((item) => {
+                newCheckedRows[item.id] = true;
             });
-            if (tableRef.current) {
-                tableRef.current.querySelectorAll('.role-checkbox').forEach(checkbox => checkbox.checked = true);
-            }
-        } else {
-            if (tableRef.current) {
-                tableRef.current.querySelectorAll('.role-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
         }
+
+        if (tableRef.current) {
+             tableRef.current.querySelectorAll('.role-checkbox').forEach(checkbox => {
+                 checkbox.checked = isChecked;
+             });
+         }
+
         setCheckedRows(newCheckedRows);
     };
 
-    const handleRowCheckbox = (index, e) => {
-        const isChecked = e.target.checked;
-        setCheckedRows((prev) => ({
-            ...prev,
-            [index]: isChecked,
-        }));
-        const allChecked = currentItems.length ===
-            (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.role-checkbox')).filter(cb => cb.checked).length : 0);
-        setIsSelectAll(allChecked);
-    };
 
-    const handleDelete = (roleToDelete = null) => {
-        console.log("Attempting to delete - viewType:", viewType, "roleToDelete:", roleToDelete, "checkedRows:", checkedRows);
-        const selectedIndices = Object.keys(checkedRows)
-            .filter(index => checkedRows[index])
-            .map(index => parseInt(index, 10));
+    const handleRowCheckbox = (roleId, e) => {
+         const isChecked = e.target.checked;
+         setCheckedRows((prev) => {
+             const updated = { ...prev };
+             if (isChecked) {
+                 updated[roleId] = true;
+             } else {
+                 delete updated[roleId];
+             }
+             return updated;
+         });
 
-        if (roleToDelete) {
-            if (viewType !== "active") {
-                alert("You can only delete from Active Roles.");
-                return;
-            }
-            setManagementType("delete");
-            setSelectedRole([roleToDelete]);
-            setManagementModalOpen(true);
-            return;
-        }
+          const allCurrentIds = currentItems.map(item => item.id);
+          const currentlyCheckedIds = Object.keys(checkedRows).filter(id => checkedRows[id]).map(id => parseInt(id, 10));
+          if(isChecked && !currentlyCheckedIds.includes(roleId)) currentlyCheckedIds.push(roleId);
+          if(!isChecked) { const index = currentlyCheckedIds.indexOf(roleId); if (index > -1) currentlyCheckedIds.splice(index, 1); }
 
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 1) {
-            alert("Please select at least one role to delete.");
-            return;
-        }
+          const allVisibleChecked = allCurrentIds.length > 0 && allCurrentIds.every(id => currentlyCheckedIds.includes(id));
+          setIsSelectAll(allVisibleChecked);
+      };
 
-        if (viewType !== "active") {
-            alert("You can only delete from Active Roles.");
-            return;
-        }
+     const handleDelete = (roleToArchive = null) => {
+         if (viewType !== 'active') {
+             alert("Roles can only be archived from the Active view.");
+             return;
+         }
 
-        setManagementType("delete");
-        setSelectedRole(getSelectedRoles());
-        setManagementModalOpen(true);
-    };
+         const rolesToArchive = roleToArchive ? [roleToArchive] : getSelectedRoles();
+         if (rolesToArchive.length === 0) {
+             alert("Please select at least one role to archive.");
+             return;
+         }
+         console.log("Attempting to archive roles:", rolesToArchive);
+         setSelectedRole(rolesToArchive);
+         setManagementType("archive");
+         setManagementModalOpen(true);
+     };
 
     const handleRestore = (roleToRestore = null) => {
-        console.log("Attempting to restore - viewType:", viewType, "roleToRestore:", roleToRestore, "checkedRows:", checkedRows);
-        const selectedIndices = Object.keys(checkedRows)
-            .filter(index => checkedRows[index])
-            .map(index => parseInt(index, 10));
-
-        if (roleToRestore) {
-            if (viewType !== "archived") {
-                alert("You can only restore from Archived Roles.");
-                return;
-            }
-            console.log("Opening restore modal for single role:", roleToRestore);
-            setManagementType("restore");
-            setSelectedRole([roleToRestore]);
-            setManagementModalOpen(true);
-            return;
-        }
-
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 1) {
-            alert("Please select at least one role to restore.");
-            return;
-        }
-
-        if (viewType !== "archived") {
-            alert("You can only restore from Archived Roles.");
-            return;
-        }
-
-        console.log("Opening restore modal for multiple roles:", getSelectedRoles());
-        setManagementType("restore");
-        setSelectedRole(getSelectedRoles());
-        setManagementModalOpen(true);
-    };
+         if (viewType !== 'archived') {
+             alert("Roles can only be restored from the Archived view.");
+             return;
+         }
+         const rolesToRestore = roleToRestore ? [roleToRestore] : getSelectedRoles();
+          if (rolesToRestore.length === 0) {
+              alert("Please select at least one role to restore.");
+              return;
+          }
+         console.log("Attempting to restore roles:", rolesToRestore);
+         setSelectedRole(rolesToRestore);
+         setManagementType("restore");
+         setManagementModalOpen(true);
+      };
 
     const handleAdd = () => {
-        console.log("Current viewType:", viewType, "Opening Add modal");
+        if (viewType !== 'active') {
+             alert("New roles can only be added in the Active view.");
+             setViewType('active');
+             return;
+         }
         setManagementType("add");
         setName("");
         setSelectedRole(null);
@@ -181,15 +192,18 @@ const Roles = () => {
     };
 
     const handleEdit = (role) => {
-        console.log("Opening edit for role:", role);
+         if (viewType !== 'active' || role.status !== 1) {
+             alert("Only active roles can be edited.");
+             return;
+         }
         setSelectedRole(role);
-        setName(role.name || "");
+        setName(role.role_name || "");
         setManagementType("edit");
         setManagementModalOpen(true);
     };
 
-    const validateName = (name) => {
-        return name.trim().length > 0; // Simple validation for role name
+    const validateName = (nameToValidate) => {
+        return nameToValidate.trim().length > 0;
     };
 
     const handleNameChange = (e) => setName(e.target.value);
@@ -199,131 +213,101 @@ const Roles = () => {
         setCurrentPage(1);
     };
 
-    const handleSaveEditOrAdd = (newOrUpdatedRole) => {
-        if (managementType === "edit") {
-            if (!selectedRole) {
-                alert("No role selected for editing.");
-                return;
-            }
+    const handleSaveEditOrAdd = async (newOrUpdatedRoleData) => {
+        setModalError("");
+        if (!validateName(newOrUpdatedRoleData.role_name)) {
+             setModalError("Role name is required.");
+             return;
+         }
+        setLoading(true);
 
-            if (!validateName(newOrUpdatedRole.name)) {
-                setError("Role name is required.");
-                return;
+        if (managementType === 'add') {
+            try {
+                 const response = await axios.post('/api/roles', { role_name: newOrUpdatedRoleData.role_name, status: 1 });
+                 console.log("Add Role Response:", response.data);
+                 handleCloseManagement();
+                 await fetchRoles();
+            } catch (err) {
+                 console.error("Error adding role:", err);
+                 setModalError(err.response?.data?.message || 'Failed to add role.');
+                 setLoading(false);
             }
-
-            setError("");
-            const updatedRoles = roles.map(r =>
-                r.id === selectedRole.id ? { ...newOrUpdatedRole, id: selectedRole.id, createdAt: selectedRole.createdAt, isArchived: selectedRole.isArchived } : r
-            );
-            setRoles(updatedRoles);
-            setInitialRoles(updatedRoles);
-            localStorage.setItem("roles", JSON.stringify(updatedRoles));
-            setManagementModalOpen(false);
-            setSelectedRole(null);
-            setName("");
-            console.log("Edited role, updated roles:", updatedRoles);
-            setForceUpdate(prev => prev + 1);
-        } else if (managementType === "add") {
-            if (!validateName(newOrUpdatedRole.name)) {
-                setError("Role name is required.");
-                return;
-            }
-
-            setError("");
-            const newRole = {
-                id: Date.now(),
-                name: newOrUpdatedRole.name.trim(),
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                isArchived: false, // New roles are active by default
-            };
-            const updatedRoles = [newRole, ...roles];
-            setRoles(updatedRoles);
-            setInitialRoles(updatedRoles);
-            localStorage.setItem("roles", JSON.stringify(updatedRoles));
-            setManagementModalOpen(false);
-            setName("");
-            console.log("Added new role, updated roles:", updatedRoles);
-            setForceUpdate(prev => prev + 1);
-            setCurrentPage(1);
+        } else if (managementType === 'edit') {
+             if (!selectedRole || !selectedRole.id) {
+                 setModalError("Cannot edit role: ID missing.");
+                 setLoading(false);
+                 return;
+             }
+             try {
+                  const response = await axios.put(`/api/roles/${selectedRole.id}`, { role_name: newOrUpdatedRoleData.role_name });
+                  console.log("Edit Role Response:", response.data);
+                  handleCloseManagement();
+                  await fetchRoles();
+             } catch (err) {
+                  console.error("Error editing role:", err);
+                  setModalError(err.response?.data?.message || 'Failed to update role.');
+                  setLoading(false);
+             }
         }
     };
 
-    const handleConfirmDeleteOrRestore = (items) => {
-        console.log("Confirming action - managementType:", managementType, "items:", items);
-        if (managementType === "delete") {
-            const updatedRoles = roles.map(role => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === role.id)) {
-                        return { ...role, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === role.id) {
-                        return { ...role, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return role;
-            });
-            setRoles(updatedRoles);
-            setInitialRoles(updatedRoles);
-            setCheckedRows({});
-            setIsSelectAll(false);
-            if (tableRef.current && viewType === "active") {
-                tableRef.current.querySelectorAll('.role-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            setForceUpdate(prev => prev + 1);
-            localStorage.setItem("roles", JSON.stringify(updatedRoles));
-            console.log("Roles after delete:", updatedRoles);
-        } else if (managementType === "restore") {
-            const updatedRoles = roles.map(role => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === role.id)) {
-                        return { ...role, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === role.id) {
-                        return { ...role, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return role;
-            });
-            setRoles(updatedRoles);
-            setInitialRoles(updatedRoles);
-            setCheckedRows({});
-            setIsSelectAll(false);
-            if (tableRef.current && viewType === "archived") {
-                tableRef.current.querySelectorAll('.role-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            setForceUpdate(prev => prev + 1);
-            localStorage.setItem("roles", JSON.stringify(updatedRoles));
-            console.log("Roles after restore:", updatedRoles);
-        }
-    };
+     const handleConfirmAction = async (items) => {
+         setLoading(true);
+         const rolesToAction = Array.isArray(items) ? items : [items];
+         const idsToAction = rolesToAction.map(item => item.id);
+         const isArchiving = managementType === 'archive';
+         const newStatus = isArchiving ? 0 : 1;
+
+         if (idsToAction.length === 0) {
+             alert("No valid IDs found for action.");
+             setLoading(false);
+             return;
+         }
+
+         console.log(`${isArchiving ? 'Archiving' : 'Restoring'} role IDs:`, idsToAction, `to status: ${newStatus}`);
+
+         const updatePromises = idsToAction.map(id =>
+             axios.put(`/api/roles/${id}`, { status: newStatus })
+         );
+
+         try {
+             await Promise.all(updatePromises);
+             console.log(`Roles successfully ${isArchiving ? 'archived' : 'restored'}.`);
+             handleCloseManagement();
+             await fetchRoles();
+         } catch (err) {
+             console.error(`Error ${isArchiving ? 'archiving' : 'restoring'} role(s):`, err);
+             alert(`Failed to ${isArchiving ? 'archive' : 'restore'} one or more roles. Please check console for details.`);
+             setLoading(false);
+         }
+     };
 
     const handleCloseManagement = () => {
         setManagementModalOpen(false);
         setManagementType("");
         setSelectedRole(null);
         setName("");
-        setError("");
+        setModalError("");
     };
 
-    const getSelectedRoles = () => {
-        const selectedIndices = Object.keys(checkedRows)
-            .filter(index => checkedRows[index])
-            .map(index => parseInt(index, 10));
-        return selectedIndices.map(index => currentItems[index]);
-    };
+     const getSelectedRoles = () => {
+         const selectedIds = Object.keys(checkedRows)
+             .filter(id => checkedRows[id])
+             .map(id => parseInt(id, 10));
+         return roles.filter(role => selectedIds.includes(role.id));
+     };
 
-    const checkedCount = Object.keys(checkedRows).filter(index => checkedRows[index]).length;
+     const checkedCount = Object.keys(checkedRows).filter(id => checkedRows[id]).length;
+
+    const changeViewType = (newType) => {
+        if (viewType !== newType) {
+             setViewType(newType);
+             setCurrentPage(1);
+             setSearchQuery('');
+             setCheckedRows({});
+             setIsSelectAll(false);
+         }
+    };
 
     return (
         <div className="Roles">
@@ -335,131 +319,151 @@ const Roles = () => {
                             type="text"
                             value={searchQuery}
                             onChange={handleSearchChange}
-                            placeholder="Search"
+                            placeholder="Search Roles"
                             className="search-input"
                         />
                     </div>
                     <div className="button-group" style={{ marginLeft: 'auto' }}>
-                        {viewType === "active" && (
-                            <>
-                                <button className="add-button" onClick={handleAdd}>Add</button>
-                                <button
-                                    className="delete-button"
-                                    onClick={() => handleDelete()}
-                                    disabled={checkedCount < 2}
-                                >
-                                    Delete
-                                </button>
-                            </>
-                        )}
-                        {viewType === "archived" && (
-                            <button
-                                className="restore-button"
-                                onClick={() => handleRestore()}
-                                disabled={checkedCount < 2}
-                            >
-                                Restore
-                            </button>
-                        )}
+                         {viewType === "active" ? (
+                             <>
+                                 <button className="add-button" onClick={handleAdd} disabled={loading}>Add</button>
+                                 <button
+                                     className="delete-button"
+                                     onClick={() => handleDelete()}
+                                     disabled={checkedCount === 0 || loading}
+                                     title="Archive selected roles"
+                                 >
+                                     Delete {checkedCount > 0 ? `(${checkedCount})` : ''}
+                                 </button>
+                             </>
+                         ) : (
+                             <button
+                                 className="restore-button"
+                                 onClick={() => handleRestore()}
+                                 disabled={checkedCount === 0 || loading}
+                             >
+                                 Restore {checkedCount > 0 ? `(${checkedCount})` : ''}
+                             </button>
+                         )}
                     </div>
                     <div className="view-toggle">
-                        <button
-                            className={`view-button ${viewType === "active" ? "active" : ""}`}
-                            onClick={() => setViewType("active")}
-                        >
-                            Active Roles
-                        </button>
-                        <button
-                            className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                            onClick={() => setViewType("archived")}
-                        >
-                            Archived Roles
-                        </button>
-                    </div>
+                         <button
+                             className={`view-button ${viewType === "active" ? "active" : ""}`}
+                             onClick={() => changeViewType("active")}
+                             disabled={loading}
+                         >
+                             Active Roles
+                         </button>
+                         <button
+                             className={`view-button ${viewType === "archived" ? "active" : ""}`}
+                             onClick={() => changeViewType("archived")}
+                             disabled={loading}
+                         >
+                             Archived Roles
+                         </button>
+                     </div>
                 </div>
-                <table ref={tableRef} className="roles-table">
-                    <thead>
-                        <tr className="table-header-row">
-                            <th className="table-header">
-                                <input type="checkbox" className="role-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
-                            </th>
-                            <th className="table-header roles-action-column">Action</th>
-                            <th className="table-header">Role</th>
-                            <th className="table-header">Created At</th>
-                            <th className="table-header">Updated At</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {currentItems.length > 0 ? (
-                            currentItems.map((role, index) => (
-                                <tr className="table-row" key={role.id + index + forceUpdate}>
-                                    <td className="table-cell">
-                                        <input type="checkbox" className="role-checkbox" onChange={(e) => handleRowCheckbox(index, e)} />
-                                    </td>
-                                    <td className="table-cell roles-action-column">
-                                        <div className="action-buttons">
-                                            {viewType === "active" ? (
-                                                <>
-                                                    <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(role)} />
-                                                    <FaTrash className="delete-icon" size={20} onClick={() => handleDelete(role)} />
-                                                </>
-                                            ) : (
-                                                <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(role)} />
-                                            )}
-                                        </div>
-                                    </td>
-                                    <td className="table-cell">{role.name}</td>
-                                    <td className="table-cell">{role.createdAt}</td>
-                                    <td className="table-cell">{role.updatedAt}</td>
+
+                 {loading && <p>Loading roles...</p>}
+                 {fetchError && <p style={{ color: 'red' }}>Error: {fetchError}</p>}
+
+                {!loading && !fetchError && (
+                    <>
+                        <table ref={tableRef} className="roles-table">
+                            <thead>
+                                <tr className="table-header-row">
+                                    <th className="table-header">
+                                        <input
+                                            type="checkbox"
+                                            className="role-checkbox"
+                                            checked={isSelectAll && currentItems.length > 0}
+                                            onChange={handleSelectAll}
+                                            disabled={currentItems.length === 0}
+                                         />
+                                    </th>
+                                    <th className="table-header roles-action-column">Action</th>
+                                    <th className="table-header">Role</th>
+                                    <th className="table-header">Created At</th>
+                                    <th className="table-header">Updated At</th>
                                 </tr>
-                            ))
-                        ) : (
-                            <tr className="table-row">
-                                <td colSpan="5" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                    {roles.length === 0
-                                        ? "No roles available. Please check your data or refresh the page."
-                                        : viewType === "active"
-                                        ? "No active roles match your search."
-                                        : "No archived roles match your search."}
-                                </td>
-                            </tr>
-                        )}
-                    </tbody>
-                </table>
-                <div className="table-pagination">
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="table-pagination-button"
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
-                        >
-                            {page}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="table-pagination-button"
-                    >
-                        Next
-                    </button>
-                </div>
+                            </thead>
+                            <tbody>
+                                {currentItems.length > 0 ? (
+                                    currentItems.map((role) => (
+                                        <tr className="table-row" key={role.id}>
+                                            <td className="table-cell">
+                                                <input
+                                                    type="checkbox"
+                                                    className="role-checkbox"
+                                                    checked={!!checkedRows[role.id]}
+                                                    onChange={(e) => handleRowCheckbox(role.id, e)}
+                                                 />
+                                            </td>
+                                            <td className="table-cell roles-action-column">
+                                                <div className="action-buttons">
+                                                     {role.status === 1 ? (
+                                                         <>
+                                                             <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(role)} title="Edit Role"/>
+                                                             <FaTrash className="delete-icon" size={20} onClick={() => handleDelete(role)} title="Archive Role"/>
+                                                         </>
+                                                     ) : (
+                                                         <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(role)} title="Restore Role"/>
+                                                     )}
+                                                </div>
+                                            </td>
+                                            <td className="table-cell">{role.role_name}</td>
+                                            <td className="table-cell">{role.created_at_formatted}</td>
+                                            <td className="table-cell">{role.updated_at_formatted}</td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr className="table-row">
+                                        <td colSpan="5" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
+                                             {searchQuery
+                                                 ? `No ${viewType} roles match your search.`
+                                                 : `No ${viewType} roles found.`}
+                                         </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                        <div className="table-pagination">
+                            <button
+                                onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                disabled={currentPage === 1 || totalPages === 0}
+                                className="table-pagination-button"
+                            >
+                                Previous
+                            </button>
+                            {totalPages > 0 && Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                                <button
+                                    key={page}
+                                    onClick={() => setCurrentPage(page)}
+                                    className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
+                                >
+                                    {page}
+                                </button>
+                            ))}
+                            <button
+                                onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                disabled={currentPage === totalPages || totalPages === 0}
+                                className="table-pagination-button"
+                            >
+                                Next
+                            </button>
+                        </div>
+                    </>
+                 )}
             </div>
             {managementModalOpen && (
                 <RolesManagement
                     type={managementType}
-                    role={managementType === "edit" || managementType === "add" ? selectedRole : (managementType === "restore" || managementType === "delete" && !Array.isArray(selectedRole) ? selectedRole : null)}
-                    selectedRoles={managementType === "restore" || managementType === "delete" ? (selectedRole || getSelectedRoles()) : []}
+                    role={managementType === "edit" ? selectedRole : null}
+                    selectedRoles={managementType === "archive" || managementType === "restore" ? (Array.isArray(selectedRole) ? selectedRole : [selectedRole]) : []}
                     name={name}
+                    error={modalError}
                     onClose={handleCloseManagement}
-                    onConfirm={handleConfirmDeleteOrRestore}
+                    onConfirm={handleConfirmAction}
                     onSave={handleSaveEditOrAdd}
                 />
             )}

@@ -12,7 +12,6 @@ class Product extends Model
     protected $fillable = [
         'product_name',
         'description',
-        'stock',
         'price',
         'image_url',
         'status',
@@ -23,7 +22,6 @@ class Product extends Model
         'updated_at',
     ];
 
-    // Relationships
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -37,5 +35,16 @@ class Product extends Model
     public function wristMeasurement()
     {
         return $this->belongsTo(WristMeasurement::class, 'wrist_measurement_id');
+    }
+
+  
+    public function inventory()
+    {
+        return $this->hasOne(Inventory::class, 'product_id');
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

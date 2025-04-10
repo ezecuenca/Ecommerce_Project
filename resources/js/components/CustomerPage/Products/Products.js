@@ -1,244 +1,161 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { FaStar, FaArrowLeft, FaArrowRight, FaSearch } from "react-icons/fa";
+import { FaStar, FaArrowLeft, FaArrowRight, FaSearch } from 'react-icons/fa';
+import Axios from 'axios';
+import { useCart } from "../ShoppingCart/CartContext";
+
+const getCurrentUserId = () => {
+    return 1;
+};
+
+const Notification = ({ message, type, onClose }) => {
+    if (!message) return null;
+    const baseStyle = { position: 'fixed', bottom: '20px', left: '50%', transform: 'translateX(-50%)', padding: '10px 20px', borderRadius: '5px', color: 'white', zIndex: 1000, boxShadow: '0 2px 10px rgba(0,0,0,0.2)', };
+    const typeStyle = type === 'success' ? { backgroundColor: '#4CAF50' } : { backgroundColor: '#f44336' };
+    return (<div style={{ ...baseStyle, ...typeStyle }}>{message}</div>);
+};
 
 const Products = () => {
-    console.log("Products component rendered");
-
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [visibleProducts, setVisibleProducts] = useState({});
+    const [isExpanded, setIsExpanded] = useState({});
+    const [searchQuery, setSearchQuery] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState("");
+    const [addingToCart, setAddingToCart] = useState(null);
+    const [notification, setNotification] = useState({ message: '', type: '' });
+    const notificationTimeoutRef = useRef(null);
     const [placeholderSlide, setPlaceholderSlide] = useState(0);
     const totalPlaceholderSlides = 3;
+    const { fetchCartCount } = useCart(); 
 
     const placeholderSlides = [
-        { 
-            id: 1, 
-            image: "/images/placeholder1.jpg", 
-            title: "Timeless Elegance", 
-            description: "Explore the refined beauty of Watchdogs’ finest timepieces." 
-        },
-        { 
-            id: 2, 
-            image: "/images/placeholder2.jpg", 
-            title: "Precision in Style", 
-            description: "Unveil the sophistication of the iconic Watchdogs collection." 
-        },
-        { 
-            id: 3, 
-            image: "/images/placeholder3.jpg", 
-            title: "Legacy of Excellence", 
-            description: "Admire the timeless appeal of Watchdogs watches." 
-        },
+        { id: 1, image: "/images/placeholder1.jpg", title: "Timeless Elegance", description: "Explore the refined beauty of Watchdogs’ finest timepieces." },
+        { id: 2, image: "/images/placeholder2.jpg", title: "Precision in Style", description: "Unveil the sophistication of the iconic Watchdogs collection." },
+        { id: 3, image: "/images/placeholder3.jpg", title: "Legacy of Excellence", description: "Admire the timeless appeal of Watchdogs watches." },
     ];
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setPlaceholderSlide((prevSlide) => (prevSlide + 1) % totalPlaceholderSlides);
-        }, 5000);
+        const interval = setInterval(() => { setPlaceholderSlide((prev) => (prev + 1) % totalPlaceholderSlides); }, 5000);
         return () => clearInterval(interval);
     }, [totalPlaceholderSlides]);
 
-    const goToPlaceholderSlide = (index) => {
-        setPlaceholderSlide(index);
-    };
+    const goToPlaceholderSlide = (index) => { setPlaceholderSlide(index); };
 
-    const [visibleProducts, setVisibleProducts] = useState({
-        MEN: 4, 
-        WOMEN: 4,
-        UNISEX: 4,
-    });
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                setLoading(true); setError(null);
+                const response = await Axios.get('http://localhost:8000/api/products');
+                if (response.data && Array.isArray(response.data.data)) {
+                    const initialVisible = {}; const initialExpanded = {};
+                    const allCategories = [...new Set(response.data.data.map(p => p.category).filter(Boolean))];
+                    allCategories.forEach(cat => { initialVisible[cat] = 4; initialExpanded[cat] = false; });
+                    setVisibleProducts(initialVisible); setIsExpanded(initialExpanded); setProducts(response.data.data);
+                } else {
+                    console.error("Invalid API response format:", response.data); setError("Failed to load products: Invalid API response format."); setProducts([]);
+                }
+            } catch (err) {
+                console.error("Error fetching products:", err); setError(`Failed to load products: ${err.message}`); setProducts([]);
+            } finally { setLoading(false); }
+        };
+        fetchProducts();
+    }, []);
 
-    const [isExpanded, setIsExpanded] = useState({
-        MEN: false,
-        WOMEN: false,
-        UNISEX: false,
-    });
-
-    const [selectedCategory, setSelectedCategory] = useState(""); // Default to empty, showing "Filter"
-
-    const categories = [
-        {
-            name: "MEN",
-            products: [
-                { id: 1, productId: "SWM-001", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch1.jpg", rating: 5, reviews: 120 },
-                { id: 2, productId: "SWM-002", name: "Product Name", price: "$20.99", image: "/images/watch2.jpg", rating: 5, reviews: 120 },
-                { id: 3, productId: "SWM-003", name: "Product Name", price: "$20.99", image: "/images/watch3.jpg", rating: 5, reviews: 120 },
-                { id: 4, productId: "SWM-004", name: "Product Name", price: "$20.99", image: "/images/watch4.jpg", rating: 5, reviews: 120 },
-                { id: 5, productId: "SWM-005", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch5.jpg", rating: 5, reviews: 120 },
-                { id: 6, productId: "SWM-006", name: "Product Name", price: "$20.99", image: "/images/watch6.jpg", rating: 5, reviews: 120 },
-            ],
-        },
-        {
-            name: "WOMEN",
-            products: [
-                { id: 7, productId: "SWM-007", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch7.jpg", rating: 5, reviews: 120 },
-                { id: 8, productId: "SWM-008", name: "Product Name", price: "$20.99", image: "/images/watch8.jpg", rating: 5, reviews: 120 },
-                { id: 9, productId: "SWM-009", name: "Product Name", price: "$20.99", image: "/images/watch9.jpg", rating: 5, reviews: 120 },
-                { id: 10, productId: "SWM-010", name: "Product Name", price: "$20.99", image: "/images/watch10.jpg", rating: 5, reviews: 120 },
-                { id: 11, productId: "SWM-011", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch11.jpg", rating: 5, reviews: 120 },
-                { id: 12, productId: "SWM-012", name: "Product Name", price: "$20.99", image: "/images/watch12.jpg", rating: 5, reviews: 120 },
-            ],
-        },
-        {
-            name: "UNISEX",
-            products: [
-                { id: 13, productId: "SWM-013", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch13.jpg", rating: 5, reviews: 120 },
-                { id: 14, productId: "SWM-014", name: "Product Name", price: "$20.99", image: "/images/watch14.jpg", rating: 5, reviews: 120 },
-                { id: 15, productId: "SWM-015", name: "Product Name", price: "$20.99", image: "/images/watch15.jpg", rating: 5, reviews: 120 },
-                { id: 16, productId: "SWM-016", name: "Product Name", price: "$20.99", image: "/images/watch16.jpg", rating: 5, reviews: 120 },
-                { id: 17, productId: "SWM-017", name: "Leather-Band Watch - SIM6603", price: "$20.99", image: "/images/watch17.jpg", rating: 5, reviews: 120 },
-                { id: 18, productId: "SWM-018", name: "Product Name", price: "$20.99", image: "/images/watch18.jpg", rating: 5, reviews: 120 },
-            ],
-        },
-    ];
+    useEffect(() => { return () => { if (notificationTimeoutRef.current) clearTimeout(notificationTimeoutRef.current); }; }, []);
 
     const handleToggleView = (categoryName) => {
-        setIsExpanded((prev) => {
-            const newExpanded = !prev[categoryName];
-            setVisibleProducts((prevVisible) => {
-                const category = categories.find(cat => cat.name === categoryName);
-                return {
-                    ...prevVisible,
-                    [categoryName]: newExpanded ? category.products.length : 4,
-                };
-            });
-            return {
-                ...prev,
-                [categoryName]: newExpanded,
-            };
-        });
+        setIsExpanded((prev) => ({ ...prev, [categoryName]: !prev[categoryName] }));
+        setVisibleProducts((prev) => ({ ...prev, [categoryName]: !isExpanded[categoryName] ? products.filter(p => p.category === categoryName).length : 4 }));
     };
 
-    // Filter products based on selected category
-    const filteredCategories = selectedCategory === "" || selectedCategory === "ALL" 
-        ? categories 
-        : categories.filter(cat => cat.name === selectedCategory);
+    const handleSearchChange = (e) => { setSearchQuery(e.target.value); };
+
+    const showNotification = (message, type = 'success', duration = 3000) => {
+        if (notificationTimeoutRef.current) clearTimeout(notificationTimeoutRef.current);
+        setNotification({ message, type });
+        notificationTimeoutRef.current = setTimeout(() => { setNotification({ message: '', type: '' }); notificationTimeoutRef.current = null; }, duration);
+    };
+
+    const handleAddToCart = async (event, productId, productName) => {
+        event.preventDefault(); event.stopPropagation();
+        if (addingToCart === productId) return;
+        setAddingToCart(productId);
+        try {
+            const profileId = getCurrentUserId();
+            if (!profileId) throw new Error("User not logged in.");
+            await Axios.post('http://localhost:8000/api/cart', { productId, quantity: 1, profileId });
+            showNotification(`Added ${productName} to cart!`, 'success');
+            fetchCartCount(); 
+        } catch (err) {
+            console.error("Error adding product to cart:", err);
+            const errorMsg = `Failed to add item. ${err.response?.data?.message || err.message}`;
+            showNotification(errorMsg, 'error', 4000);
+        } finally { setAddingToCart(null); }
+    };
+
+    const groupedProducts = products.reduce((acc, product) => {
+        const category = product.category || "Uncategorized";
+        if (!acc[category]) acc[category] = [];
+        acc[category].push(product);
+        return acc;
+    }, {});
+
+    const filteredCategories = Object.keys(groupedProducts)
+        .filter(category => !selectedCategory || selectedCategory === "ALL" || category === selectedCategory)
+        .reduce((obj, key) => {
+            if (Array.isArray(groupedProducts[key])) {
+                 obj[key] = groupedProducts[key].filter(p => p.product_name && p.product_name.toLowerCase().includes(searchQuery.toLowerCase()));
+             } else { obj[key] = []; }
+            return obj;
+        }, {});
 
     return (
         <div className="products-content">
+            <Notification message={notification.message} type={notification.type} onClose={() => setNotification({ message: '', type: '' })} />
             <section className="placeholder-section">
-                <div className="carousel">
+                 <div className="carousel">
                     <div className="carousel-slides">
-                        {placeholderSlides.map((slide, index) => (
-                            <div
-                                key={slide.id}
-                                className={`carousel-slide ${index === placeholderSlide ? "active" : ""}`}
-                                style={{ transform: `translateX(-${placeholderSlide * 100}%)` }}
-                            >
-                                <div 
-                                    className="placeholder-card" 
-                                    style={{ backgroundImage: `url(${slide.image})` }}
-                                >
-                                    <h2>{slide.title}</h2>
-                                    <p>{slide.description}</p>
-                                </div>
-                            </div>
-                        ))}
+                        {placeholderSlides.map((slide, index) => (<div key={slide.id} className={`carousel-slide ${index === placeholderSlide ? "active" : ""}`} style={{ transform: `translateX(-${placeholderSlide * 100}%)` }}><div className="placeholder-card" style={{ backgroundImage: `url(${slide.image})` }}><h2>{slide.title}</h2><p>{slide.description}</p></div></div>))}
                     </div>
                 </div>
-                <div className="carousel-dots">
-                    {placeholderSlides.map((_, index) => (
-                        <span
-                            key={index}
-                            className={`dot ${index === placeholderSlide ? "active" : ""}`}
-                            onClick={() => goToPlaceholderSlide(index)}
-                        ></span>
-                    ))}
-                </div>
+                <div className="carousel-dots">{placeholderSlides.map((_, index) => (<span key={index} className={`dot ${index === placeholderSlide ? "active" : ""}`} onClick={() => goToPlaceholderSlide(index)}></span>))}</div>
             </section>
-
             <div className="search-filter-section">
-                <div className="search-bar-container">
-                    <FaSearch className="search-icon" />
-                    <input type="text" placeholder="Search for anything..." className="search-bar" />
-                </div>
-                <div className="filter-dropdown">
-                    <select 
-                        className="filter-select" 
-                        value={selectedCategory} 
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                    >
-                        <option value="" disabled selected>Filter</option>
-                        <option value="ALL">All Categories</option>
-                        <option value="MEN">MEN</option>
-                        <option value="WOMEN">WOMEN</option>
-                        <option value="UNISEX">UNISEX</option>
-                    </select>
-                    <span className="filter-arrow">▼</span>
-                </div>
+                 <div className="search-bar-container"><FaSearch className="search-icon" /><input type="text" placeholder="Search for anything..." className="search-bar" value={searchQuery} onChange={handleSearchChange} /></div>
+                <div className="filter-dropdown"><select className="filter-select" value={selectedCategory} onChange={(e) => setSelectedCategory(e.target.value)}><option value="" disabled>Filter</option><option value="ALL">All Categories</option>{Object.keys(groupedProducts).map(category => (<option key={category} value={category}>{category}</option>))}</select><span className="filter-arrow">▼</span></div>
             </div>
-
-            {filteredCategories.map((category) => {
-                const totalProducts = category.products.length;
-                const visibleCount = Math.min(visibleProducts[category.name], totalProducts);
-
+            {loading && <p>Loading products...</p>}
+            {error && !loading && <p className="error-message" style={{ color: 'red' }}>{error}</p>}
+            {!loading && !error && Object.keys(filteredCategories).map((categoryName) => {
+                const productsInCategory = filteredCategories[categoryName];
+                const isCatExpanded = isExpanded[categoryName] ?? false;
+                const visibleCount = Math.min(isCatExpanded ? productsInCategory.length : (visibleProducts[categoryName] || 4), productsInCategory.length);
+                if (productsInCategory.length === 0) return null;
                 return (
-                    <section key={category.name} className="category-section">
-                        <div className="carousel-controls">
-                            <h2>{category.name}</h2>
-                            <div className="arrow-buttons">
-                                <button 
-                                    className="carousel-prev" 
-                                    disabled={true}
-                                >
-                                    <FaArrowLeft />
-                                </button>
-                                <button 
-                                    className="carousel-next" 
-                                    disabled={true}
-                                >
-                                    <FaArrowRight />
-                                </button>
-                            </div>
-                        </div>
+                    <section key={categoryName} className="category-section">
+                        <div className="carousel-controls"><h2>{categoryName}</h2><div className="arrow-buttons"><button className="carousel-prev" disabled={true}><FaArrowLeft /></button><button className="carousel-next" disabled={true}><FaArrowRight /></button></div></div>
                         <div className="product-grid">
-                            {category.products.map((product, index) => (
-                                <Link 
-                                    to={`/customer/products/${product.productId}`} 
-                                    key={product.id} 
-                                    className="product-link"
-                                >
-                                    <div 
-                                        className={`product-card ${index < visibleCount ? '' : 'hidden'}`}
-                                    >
-                                        <div className="product-image-wrapper">
-                                        </div>
-                                        <div className="product-info">
-                                            <span>{product.name}</span>
-                                            <span className="price-box">{product.price}</span>
-                                        </div>
+                            {productsInCategory.slice(0, visibleCount).map(product => (
+                                <Link to={`/customer/products/${product.id}`} key={product.id} className="product-link">
+                                    <div className="product-card">
+                                        <div className="product-image-wrapper">{product.image_url ? (<img src={product.image_url} alt={product.product_name} className="product-image"/>) : (<div className="product-image placeholder">No Image</div>)}</div>
+                                        <div className="product-info"><span>{product.product_name}</span><span className="price-box">₱{product.price}</span></div>
                                         <div className="product-reviews">
-                                            <div className="product-rating">
-                                                {Array.from({ length: 5 }, (_, i) => (
-                                                    <FaStar
-                                                        key={i}
-                                                        className={i < product.rating ? "star-filled" : "star-empty"}
-                                                        size={14}
-                                                    />
-                                                ))}
-                                                <span>({product.reviews})</span>
-                                            </div>
-                                            <button className="add-to-cart">
-                                                <span className="cart-icon">🛒</span>
-                                            </button>
+                                            <div className="product-rating">{Array.from({ length: 5 }, (_, i) => (<FaStar key={i} className="star-empty" size={14}/>))}<span>({product.reviews || 0})</span></div>
+                                            <button className="add-to-cart" onClick={(e) => handleAddToCart(e, product.id, product.product_name)} disabled={addingToCart === product.id}><span className="cart-icon">{addingToCart === product.id ? '...' : '🛒'}</span></button>
                                         </div>
                                     </div>
                                 </Link>
                             ))}
                         </div>
-                        {totalProducts > 4 && (
-                            <div className="view-more-container">
-                                <button 
-                                    className="view-more-button" 
-                                    onClick={() => handleToggleView(category.name)}
-                                >
-                                    {isExpanded[category.name] ? "View Less" : "View More"}
-                                </button>
-                            </div>
-                        )}
+                        {productsInCategory.length > 4 && (<div className="view-more-container"><button className="view-more-button" onClick={() => handleToggleView(categoryName)}>{isCatExpanded ? "View Less" : "View More"}</button></div>)}
                     </section>
                 );
             })}
+             {!loading && !error && Object.keys(filteredCategories).every(cat => filteredCategories[cat].length === 0) && (<p style={{ textAlign: 'center', marginTop: '20px' }}>No products found matching your criteria.</p>)}
         </div>
     );
 };
-
 export default Products;

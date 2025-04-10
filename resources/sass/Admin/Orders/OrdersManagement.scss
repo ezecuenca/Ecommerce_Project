@@ -1,6 +1,3 @@
-/* resources/js/components/Admin/OrdersManagement.scss */
-
-/* Scope all styles to prevent conflicts with other files */
 .OrdersManagement {
     .modal-overlay {
         position: fixed;
@@ -124,6 +121,33 @@
         }
     }
 
+    .shipping-details {
+        margin-top: 16px;
+        padding: 12px;
+        background-color: #f9f9f9;
+        border-radius: 4px;
+    }
+
+    .shipping-details-header {
+        font-size: 16px;
+        font-weight: 600;
+        color: #4a5568;
+        background-color: #e5e7eb;
+        padding: 12px;
+        border-radius: 4px 4px 0 0;
+        margin: -12px -12px 8px -12px;
+    }
+
+    .shipping-details p {
+        font-size: 14px;
+        color: #000000;
+        margin: 4px 0;
+    }
+
+    .shipping-details p strong {
+        color: #4a5568;
+    }
+
     .restore-modal-overlay,
     .delete-modal-overlay {
         position: fixed;
@@ -131,16 +155,14 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5); /* Grayish overlay background */
+        background-color: rgba(0, 0, 0, 0.5);
         display: flex;
-        justify-content: center; /* Center horizontally */
-        align-items: center; /* Center vertically */
+        justify-content: center;
+        align-items: center;
         z-index: 1000;
         isolation: isolate;
-        /* Fallback for older browsers or conflicts */
         -webkit-align-items: center;
         -webkit-justify-content: center;
-        /* Prevent parent interference */
         transform: none;
         will-change: transform, opacity;
         margin: 0;
@@ -175,7 +197,7 @@
     }
 
     .restore-button {
-        background-color: #2A363B; /* Blue-500 for "Restore" */
+        background-color: #2A363B;
         color: white;
         padding: 8px 16px;
         border-radius: 4px;
@@ -185,12 +207,12 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: #2563eb; /* Blue-600 on hover */
+            background-color: #2563eb;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6;
         }
 
         &:disabled {
@@ -202,7 +224,7 @@
     }
 
     .delete-button {
-        background-color: #ef4444; /* Red-500, matching Orders.scss */
+        background-color: #ef4444;
         color: white;
         padding: 8px 16px;
         border-radius: 4px;
@@ -212,12 +234,12 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: #dc2626; /* Red-600 on hover */
+            background-color: #dc2626;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6;
         }
 
         &:disabled {
@@ -229,7 +251,7 @@
     }
 
     .cancel-button {
-        background-color: #e5e7eb; /* Gray-200 for "Cancel" */
+        background-color: #e5e7eb;
         color: #4a5568;
         padding: 8px 16px;
         border-radius: 4px;
@@ -239,12 +261,12 @@
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: #d1d5db; /* Gray-300 on hover */
+            background-color: #d1d5db;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6;
         }
     }
 }
@@ -316,6 +338,21 @@
         .cancel-button {
             padding: 6px 12px;
             font-size: 12px;
+        }
+
+        .shipping-details {
+            padding: 8px;
+        }
+
+        .shipping-details-header {
+            font-size: 14px;
+            margin: -8px -8px 6px -8px;
+            padding: 8px;
+        }
+
+        .shipping-details p {
+            font-size: 12px;
+            margin: 2px 0;
         }
     }
 }

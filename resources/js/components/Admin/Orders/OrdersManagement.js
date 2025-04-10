@@ -1,63 +1,35 @@
 import React from "react";
-import { FaUndo } from "react-icons/fa"; // For Restore icon
 
-const OrdersManagement = ({ type, orderId, orderDetails, selectedOrders, viewType, onClose, onConfirm }) => {
-    const handleConfirmRestore = () => {
-        onConfirm(); // Trigger the restore logic in Orders.js
-    };
+const OrdersManagement = ({ type, orderId, orderDetails, viewType, onClose, shippingDetails }) => { // Removed onConfirm and selectedOrders props
 
     const handleCancel = () => {
         onClose();
     };
 
-    if (type === "individual" || type === "bulk") {
-        const title = type === "individual" 
-            ? `Confirm Restore Order ID: ${orderId || selectedOrders[0]?.id || "Unknown"}` 
-            : `Confirm Restore ${selectedOrders.filter(order => order).length} Order(s)`; // Ensure only valid orders are counted
-        const message = type === "individual"
-            ? `Are you sure you want to restore Order ID ${orderId || selectedOrders[0]?.id || "Unknown"}?`
-            : `Are you sure you want to restore ${selectedOrders.filter(order => order).length} order(s)?`;
+    // REMOVED Restore Confirmation Modal Logic block
 
-        return (
-            <div className="OrdersManagement">
-                <div className="modal-overlay" onClick={onClose}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()}>
-                        <h3 className="modal-title">{title}</h3>
-                        <p>{message}</p>
-                        <div className="button-group">
-                            <button className="restore-button" onClick={handleConfirmRestore}>
-                                Restore
-                            </button>
-                            <button className="cancel-button" onClick={handleCancel}>
-                                Cancel
-                            </button>
-                        </div>
+    // Order Details Modal Logic (this is now the only view)
+    return (
+        <div className="OrdersManagement">
+            <div className="modal-overlay" onClick={onClose}>
+                <div className="modal-content" onClick={e => e.stopPropagation()}>
+                    <div className="modal-header">
+                        <h3 className="modal-title">Details for Order ID: {shippingDetails.id || orderId || "N/A"}</h3>
+                        <button className="modal-close-button" onClick={onClose}>
+                            ×
+                        </button>
                     </div>
-                </div>
-            </div>
-        );
-    } else {
-        // Default to showing order details if not a restore confirmation
-        return (
-            <div className="OrdersManagement">
-                <div className="modal-overlay" onClick={onClose}>
-                    <div className="modal-content" onClick={e => e.stopPropagation()}>
-                        <div className="modal-header">
-                            <h3 className="modal-title">Details for Order ID: {orderId}</h3>
-                            <button className="modal-close-button" onClick={onClose}>
-                                ×
-                            </button>
-                        </div>
-                        <table className="modal-table">
-                            <thead>
-                                <tr>
-                                    <th>Product</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {orderDetails.map((detail, index) => (
+                    <table className="modal-table">
+                        <thead>
+                            <tr>
+                                <th>Product</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {orderDetails && orderDetails.length > 0 ? (
+                                orderDetails.map((detail, index) => (
                                     <tr key={index}>
                                         <td className="modal-product-cell">
                                             <img src={detail.image} alt={`${detail.productName} Icon`} className="modal-product-icon" />
@@ -66,28 +38,32 @@ const OrdersManagement = ({ type, orderId, orderDetails, selectedOrders, viewTyp
                                         <td className="modal-quantity">{detail.quantity}</td>
                                         <td className="modal-price">{detail.price}</td>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                        {/* Add Archive/Restore buttons based on viewType */}
-                        {viewType === "active" ? (
-                            <div className="button-group">
-                                <button className="delete-button" onClick={() => alert(`Order ${orderId} would be archived. Implement archive logic here.`)}>
-                                    Archive
-                                </button>
-                            </div>
-                        ) : (
-                            <div className="button-group">
-                                <button className="restore-button" onClick={() => handleRestore(orderId)}>
-                                    Restore
-                                </button>
-                            </div>
-                        )}
+                                ))
+                             ) : (
+                                 <tr><td colSpan="3">No item details available.</td></tr>
+                             )}
+                        </tbody>
+                    </table>
+                    <div className="shipping-details">
+                        <h4 className="shipping-details-header">Shipping Details</h4>
+                        <p><strong>Address:</strong> {shippingDetails.shippingAddress || "N/A"}</p>
+                        <p><strong>Method:</strong> {shippingDetails.shippingMethod || "N/A"}</p>
+                        <p><strong>Shipping Date:</strong> {shippingDetails.shippingDate || "N/A"}</p>
+                         <p><strong>Tracking:</strong> {shippingDetails.trackingNumber || "N/A"}</p>
+                         <p><strong>Shipping Status:</strong> {shippingDetails.shippingStatus || "N/A"}</p>
                     </div>
+
+                     {/* Action buttons within the details modal */}
+                     <div className="button-group">
+                        {/* --- MODIFICATION: Removed Restore button entirely --- */}
+                        {/* No buttons needed here anymore besides Close */}
+                         <button className="cancel-button" onClick={onClose}>Close</button>
+                      </div>
+
                 </div>
             </div>
-        );
-    }
+        </div>
+    );
 };
 
 export default OrdersManagement;

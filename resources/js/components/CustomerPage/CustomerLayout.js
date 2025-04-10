@@ -9,7 +9,6 @@ const CustomerLayout = () => {
     const isProfilePage = [
         "/customer/personal-info",
         "/customer/login-security",
-        "/customer/my-payments",
         "/customer/my-orders",
     ].includes(location.pathname);
 

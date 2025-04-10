@@ -14,14 +14,13 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing primary key
+            $table->id(); 
             $table->string('product_name');
-            $table->text('description')->nullable(); // Descriptions can be long and optional
-            $table->integer('stock')->default(0); // Default stock to 0
-            $table->decimal('price', 10, 2); // 10 total digits, 2 decimal places
-            $table->string('image_url')->nullable(); // Image URL may be optional
-            $table->string('status')->default('available'); // Default status
-            $table->timestamps(); // created_at and updated_at
+            $table->text('description')->nullable(); 
+            $table->decimal('price', 10, 2); 
+            $table->string('image_url')->nullable();
+            $table->string('status')->default('available'); 
+            $table->timestamps(); 
             $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('color_id')->nullable();
             $table->unsignedBigInteger('wrist_measurement_id')->nullable();

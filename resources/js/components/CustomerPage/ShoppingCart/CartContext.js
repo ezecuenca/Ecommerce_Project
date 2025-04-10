@@ -1,25 +1,52 @@
-// File path: resources/js/components/CustomerPage/ShoppingCart/CartContext.js
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useCallback, useEffect, useContext } from 'react';
+import Axios from 'axios';
 
-// Create the Cart Context
-const CartContext = createContext();
-
-// Create a provider component
-export const CartProvider = ({ children }) => {
-    const [cartItemCount, setCartItemCount] = useState(0); // Track the number of items
-
-    const addToCart = () => {
-        setCartItemCount((prev) => prev + 1); // Increment the item count
-    };
-
-    return (
-        <CartContext.Provider value={{ cartItemCount, addToCart, setCartItemCount }}>
-            {children}
-        </CartContext.Provider>
-    );
+const getCurrentUserId = () => {
+    return 1;
 };
 
-// Custom hook to use the Cart Context
+const CartContext = createContext();
+
+export const CartProvider = ({ children }) => {
+    const [cartItemCount, setCartItemCount] = useState(0);
+    const [isLoadingCount, setIsLoadingCount] = useState(true);
+
+    const fetchCartCount = useCallback(async () => {
+        setIsLoadingCount(true);
+        try {
+            const profileId = getCurrentUserId();
+            if (!profileId) {
+                setCartItemCount(0);
+                return;
+            }
+            const response = await Axios.get(`http://localhost:8000/api/cart/${profileId}`);
+            if (Array.isArray(response.data)) {
+                setCartItemCount(response.data.length);
+            } else {
+                console.error("Invalid cart data received in CartContext:", response.data);
+                setCartItemCount(0);
+            }
+        } catch (error) {
+            console.error("Error fetching cart count in CartContext:", error);
+            setCartItemCount(0);
+        } finally {
+            setIsLoadingCount(false);
+        }
+    }, []);
+
+    useEffect(() => {
+        fetchCartCount();
+    }, [fetchCartCount]);
+
+    const value = {
+        cartItemCount,
+        fetchCartCount,
+        isLoadingCount,
+    };
+
+    return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
+};
+
 export const useCart = () => {
     return useContext(CartContext);
 };
