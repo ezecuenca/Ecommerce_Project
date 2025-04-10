@@ -36,6 +36,19 @@ const CategoryList = () => {
         fetchCategories();
     }, []);
 
+    const formatDateTime = (dateString) => {
+        if (!dateString) return "N/A"; 
+        const date = new Date(dateString);
+        return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    };
+
     const getCurrentData = () => {
         if (!categories.length) return [];
         let filteredCategories = categories.filter(category => 
@@ -302,8 +315,8 @@ const CategoryList = () => {
                                             </div>
                                         </td>
                                         <td className="table-cell">{category.category_name}</td>
-                                        <td className="table-cell">{category.created_at}</td>
-                                        <td className="table-cell">{category.updated_at}</td>
+                                        <td className="table-cell">{formatDateTime(category.created_at)}</td>
+                                        <td className="table-cell">{formatDateTime(category.updated_at)}</td>
                                     </tr>
                                 ))
                             ) : (

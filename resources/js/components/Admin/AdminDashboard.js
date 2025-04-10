@@ -1,75 +1,125 @@
-import React, { useState } from "react";
-import { FaBell, FaUser } from "react-icons/fa"; 
-import AdminNav from "./AdminNav";
-import Dashboard from "./Dashboard/Dashboard";
-import PersonalInfo from "./Info/PersonalIinfo";
-import Orders from "./Orders/Orders";
-import Inventory from "./Inventory/Inventory";
-import Reviews from "./Reviews/Reviews";
-import ProductList from "./Products/ProductList";
-import UserList from "./User/UserList";
-import CustomerList from "./Customer/CustomerList";
-import Categories from "./Categories/Categories";
-import WatchColor from "./Color/WatchColor";
-import WristMeasurement from "./Measurement/WristMeasurement";
-import Roles from "./Roles/Roles";
-
+import React, { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../AuthContext";
+import axios from "axios";
 
 const AdminDashboard = () => {
-    const [activeSection, setActiveSection] = useState("dashboard"); 
+  const { user, loading, logout } = useContext(AuthContext); // Use AuthContext to get user and logout
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const navigate = useNavigate();
 
-    const handleNavigation = (section) => {
-        setActiveSection(section);
-    };
+  // Handle logout
+  const handleLogout = async () => {
+    try {
+      await logout(); // Call the logout function from AuthContext
+      navigate("/"); // Redirect to login page
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+  };
 
-    const renderContent = () => {
-        switch (activeSection) {
-            case "dashboard":
-                return <Dashboard />;
-            case "personal-info":
-                return <PersonalInfo />;
-            case "orders":
-                return <Orders />;
-            case "inventory":
-                return <Inventory />;
-            case "reviews":
-                return <Reviews />;
-            case "product-list":
-                return <ProductList />;
-            case "user-list":
-                return <UserList />;
-            case "customer-list":
-                return <CustomerList />;
-            case "categories":
-                return <Categories />;
-            case "watch-color":
-                return <WatchColor />;
-            case "wrist-measurement":
-                return <WristMeasurement />;
-            case "roles":
-                return <Roles />;
-            default:
-                return <Dashboard />;
-        }
-    };
+  // Open/close modal
+  const toggleModal = () => {
+    setIsModalOpen(!isModalOpen);
+  };
 
-    return (
-        <div className="flex">
-            <AdminNav onNavigate={handleNavigation} />
-            <div className="content">
-                <header>
-                    <div className="flex items-center space-x-4">
-                        <FaBell className="text-gray-500 cursor-pointer hover:text-gray-700" size={20} />
-                        <FaUser className="text-gray-500 cursor-pointer hover:text-gray-700" size={20} />
-                    </div>
-                </header>
-                <div className="border-b"></div>
-                <div>
-                    {renderContent()}
-                </div>
-            </div>
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user) {
+    return <div>Please log in to access the admin dashboard.</div>;
+  }
+
+  return (
+    <div className="admin-dashboard">
+      {/* Header Section */}
+      <div className="dashboard-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "1rem" }}>
+        <h2>Admin Dashboard</h2>
+        <div className="user-actions" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          {/* Profile Icon */}
+          <div className="profile-icon" onClick={toggleModal} style={{ cursor: "pointer" }}>
+            <span style={{ fontSize: "1.5rem" }}>👤</span> {/* Placeholder icon (you can replace with an actual image/icon) */}
+            <span style={{ marginLeft: "0.5rem" }}>{user.username}</span>
+          </div>
+          {/* Logout Button */}
+          <button
+            onClick={handleLogout}
+            style={{
+              padding: "0.5rem 1rem",
+              backgroundColor: "#ff4d4f",
+              color: "white",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            Logout
+          </button>
         </div>
-    );
+      </div>
+
+      {/* Dashboard Content */}
+      <div className="dashboard-content" style={{ padding: "1rem" }}>
+        <p>Welcome, {user.username}!</p>
+        <p>Email: {user.email}</p>
+        <p>Role: {user.role_id === 1 ? "Customer" : user.role_id === 2 ? "Admin" : "Unknown"}</p>
+        <h3>Profile</h3>
+        <p>First Name: {user.profile?.first_name || "N/A"}</p>
+        <p>Last Name: {user.profile?.last_name || "N/A"}</p>
+        {/* Add other admin dashboard content here */}
+      </div>
+
+      {/* Settings Modal */}
+      {isModalOpen && (
+        <div
+          className="modal-overlay"
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 1000,
+          }}
+        >
+          <div
+            className="modal-content"
+            style={{
+              backgroundColor: "white",
+              padding: "2rem",
+              borderRadius: "8px",
+              width: "400px",
+              maxWidth: "90%",
+              position: "relative",
+            }}
+          >
+            <button
+              onClick={toggleModal}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                background: "none",
+                border: "none",
+                fontSize: "1.2rem",
+                cursor: "pointer",
+              }}
+            >
+              ✕
+            </button>
+            <h3>Settings</h3>
+            <p>Settings options will be added here.</p>
+            {/* Add settings form or options here in the future */}
+          </div>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default AdminDashboard;

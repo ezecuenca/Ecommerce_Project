@@ -36,6 +36,19 @@ const WatchColor = () => {
         fetchColors();
     }, []);
 
+    const formatDateTime = (dateString) => {
+        if (!dateString) return "N/A"; 
+        const date = new Date(dateString);
+        return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    };
+
     const getCurrentData = () => {
         if (!colors.length) return [];
         let filteredColors = colors.filter(color => 
@@ -305,8 +318,8 @@ const WatchColor = () => {
                                             </div>
                                         </td>
                                         <td className="table-cell">{color.color_name}</td>
-                                        <td className="table-cell">{color.created_at}</td>
-                                        <td className="table-cell">{color.updated_at}</td>
+                                        <td className="table-cell">{formatDateTime(color.created_at)}</td>
+                                        <td className="table-cell">{formatDateTime(color.updated_at)}</td>
                                     </tr>
                                 ))
                             ) : (

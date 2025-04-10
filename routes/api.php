@@ -22,7 +22,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// Register & Login API
 Route::post('/register', [AuthController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::middleware('auth:api')->post('/logout', [AuthController::class, 'logout']);
+Route::middleware('auth:api')->get('/me', [AuthController::class, 'me']);
+Route::get('/admin', function () {return view('AdminDashboard');})->middleware('auth');
 
 // Categories API
 Route::get('/categories', [CategoryController::class, 'index']);

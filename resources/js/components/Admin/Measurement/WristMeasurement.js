@@ -36,6 +36,19 @@ const WristMeasurement = () => {
         fetchMeasurements();
     }, []);
 
+    const formatDateTime = (dateString) => {
+        if (!dateString) return "N/A"; 
+        const date = new Date(dateString);
+        return date.toLocaleString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: 'numeric',
+            minute: 'numeric',
+            hour12: true,
+        });
+    };
+
     const getCurrentData = () => {
         if (!measurements.length) return [];
         let filteredMeasurements = measurements.filter(measurement => 
@@ -305,8 +318,8 @@ const WristMeasurement = () => {
                                             </div>
                                         </td>
                                         <td className="table-cell">{measurement.measurement}</td>
-                                        <td className="table-cell">{measurement.created_at}</td>
-                                        <td className="table-cell">{measurement.updated_at}</td>
+                                        <td className="table-cell">{formatDateTime(measurement.created_at)}</td>
+                                        <td className="table-cell">{formatDateTime(measurement.updated_at)}</td>
                                     </tr>
                                 ))
                             ) : (

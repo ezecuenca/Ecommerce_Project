@@ -147,13 +147,13 @@ const ProductManagement = ({ type, product, selectedProducts, onClose, onConfirm
                 description: description,
                 stock: stock,
                 price: price,
-                image: typeof image === "string" ? image : image, // Ensure image is a string (base64)
+                image: typeof image === "string" ? image : image,
                 isArchived: product.isArchived,
-                createdAt: product.createdAt, // Preserve original createdAt
+                createdAt: product.createdAt,
                 updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                category: category, // New field
-                color: color, // New field
-                wristMeasurement: wristMeasurement // New field
+                category: category,
+                color: color,
+                wristMeasurement: wristMeasurement
             };
             onSave(updatedProduct);
             onClose();

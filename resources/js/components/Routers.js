@@ -1,7 +1,8 @@
-// File path: resources/js/Routers.js
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./AuthContext";
+import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Admin/login";
 import Register from "./Admin/register";
 import AdminDashboard from "./Admin/AdminDashboard";
@@ -23,12 +24,13 @@ import MyOrders from "./CustomerPage/ProfileSidebar/MyOrders";
 
 export default function Routers() {
     return (
+        <AuthProvider>
             <Router>
                 <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/customer" element={<CustomerLayout />}>
+                    <Route path="/admin" element={<ProtectedRoute requiredRole={2}> <AdminDashboard /> </ProtectedRoute>} />
+                    <Route path="/customer" element={<ProtectedRoute requiredRole={1}> <CustomerLayout /> </ProtectedRoute>}>
                         <Route index element={<CustomerPage />} />
                         <Route path="products" element={<Products />} />
                         <Route path="products/:productId" element={<ProductInfo />} />
@@ -46,6 +48,7 @@ export default function Routers() {
                     </Route>
                 </Routes>
             </Router>
+        </AuthProvider>
     );
 }
 
