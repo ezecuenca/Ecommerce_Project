@@ -76,7 +76,6 @@ const ReviewManagement = ({ type, reviewData, existingProducts = [], onClose, on
         if (type === 'add' && !localProductId) {
              currentError = "Please select a product. ";
         }
-        // Use localRating directly here as it holds the input value
         if (!validateRating(localRating)) {
             currentError += "Rating must be a number from 0.0 to 5.0 in 0.5 increments. ";
         }
@@ -92,7 +91,7 @@ const ReviewManagement = ({ type, reviewData, existingProducts = [], onClose, on
         }
 
         const dataToSave = {
-            rating: parseFloat(localRating), // Ensure it's a float before sending
+            rating: parseFloat(localRating), 
             reviewText: localReviewText.trim(),
             productId: localProductId,
         };

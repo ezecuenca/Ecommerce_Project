@@ -1,7 +1,8 @@
-// File path: resources/js/Routers.js
 import React from "react";
 import { createRoot } from "react-dom/client";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider } from "./AuthContext";
+import ProtectedRoute from "./ProtectedRoutes";
 import Login from "./Admin/login";
 import Register from "./Admin/register";
 import AdminDashboard from "./Admin/AdminDashboard";
@@ -23,30 +24,57 @@ import { CartProvider } from "./CustomerPage/ShoppingCart/CartContext";
 
 export default function Routers() {
     return (
-        <CartProvider>
-            <Router>
-                <Routes>
-                    <Route path="/" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/admin" element={<AdminDashboard />} />
-                    <Route path="/customer" element={<CustomerLayout />}>
-                        <Route index element={<CustomerPage />} />
-                        <Route path="products" element={<Products />} />
-                        <Route path="products/:productId" element={<ProductInfo />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="contact" element={<Contact />} />
-                        <Route path="team" element={<Team />} />
-                        <Route path="faq" element={<Faq />} />
-                        <Route path="cart" element={<Cart />} />
-                        <Route path="payment-confirmation" element={<PaymentConfirmation />} />
-                        <Route path="order-complete" element={<OrderComplete />} />
-                        <Route path="personal-info" element={<PersonalInfo />} />
-                        <Route path="login-security" element={<LoginSecurity />} />
-                        <Route path="my-orders" element={<MyOrders />} />
-                    </Route>
-                </Routes>
-            </Router>
-        </CartProvider>
+        <AuthProvider>
+            <CartProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/" element={<Navigate replace to="/login" />} />
+
+                        <Route
+                            path="/admin"
+                            element={
+                                <ProtectedRoute requiredRole={1}>
+                                    <AdminDashboard />
+                                </ProtectedRoute>
+                            }
+                        />
+
+                        <Route
+                            path="/customer"
+                            element={
+                                <ProtectedRoute requiredRole={2}>
+                                    <CustomerLayout />
+                                </ProtectedRoute>
+                            }
+                        >
+                            <Route index element={<CustomerPage />} />
+                            <Route path="products" element={<Products />} />
+                            <Route path="products/:productId" element={<ProductInfo />} />
+                            <Route path="about" element={<About />} />
+                            <Route path="contact" element={<Contact />} />
+                            <Route path="team" element={<Team />} />
+                            <Route path="faq" element={<Faq />} />
+                            <Route path="cart" element={<Cart />} />
+                            <Route path="payment-confirmation" element={<PaymentConfirmation />} />
+                            <Route path="order-complete" element={<OrderComplete />} />
+                            <Route path="my-orders" element={<MyOrders />} />
+                            <Route path="login-security" element={<LoginSecurity />} />
+
+                            <Route path="personal-info" element={<PersonalInfo />} />
+
+                            <Route path="profile">
+                                <Route index element={<Navigate replace to="/customer/personal-info" />} />
+                                <Route path="*" element={<Navigate replace to="/customer/personal-info" />} />
+                            </Route>
+
+                        </Route>
+
+                    </Routes>
+                </Router>
+            </CartProvider>
+        </AuthProvider>
     );
 }
 

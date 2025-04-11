@@ -17,7 +17,6 @@ import WatchColor from "./Color/WatchColor";
 import WristMeasurement from "./Measurement/WristMeasurement";
 import Roles from "./Roles/Roles";
 
-
 const AdminDashboard = () => {
     const [activeSection, setActiveSection] = useState("dashboard");
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -41,7 +40,7 @@ const AdminDashboard = () => {
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-                 const userIcon = dropdownRef.current.querySelector('.user-profile-icon'); // Find icon inside ref
+                 const userIcon = dropdownRef.current.querySelector('.user-profile-icon');
                  if (userIcon && userIcon.contains(event.target)) {
                      return;
                  }
@@ -71,28 +70,22 @@ const AdminDashboard = () => {
         }
     };
 
-    // Inline styles removed
-
     return (
         <div className="flex">
             <AdminNav onNavigate={handleNavigation} />
             <div className="content">
                 <header>
-                    {/* Removed inline style */}
                     <div className="flex items-center justify-end space-x-4">
-                         {/* Added class user-icon-container */}
                          <div className="user-icon-container" ref={dropdownRef}>
                              <FaUser
-                                 className="text-gray-500 cursor-pointer hover:text-gray-700 user-profile-icon" // Added class for easier selection
+                                 className="text-gray-500 cursor-pointer hover:text-gray-700 user-profile-icon"
                                  size={24}
                                  onClick={toggleDropdown}
                                  aria-haspopup="true"
                                  aria-expanded={isDropdownOpen}
                              />
-                             {/* Added class dropdown-menu and conditional show/hide */}
-                             <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}> {/* Toggle display via class potentially */}
+                             <ul className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                                  <li>
-                                     {/* Added class dropdown-item */}
                                      <button onClick={handleLogout} className="dropdown-item logout">
                                          <FiLogOut className="dropdown-icon" /> Log Out
                                      </button>

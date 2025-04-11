@@ -19147,15 +19147,13 @@ button { /* Override any global button styles specific to Reviews */
   color: #FCFCFD;
   font-size: 36px;
   margin: 0 0 15px;
-  opacity: 0;
-  animation: fadeInOut 0.5s forwards;
+  opacity: 1;
 }
 .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card p {
   color: #FCFCFD;
   font-size: 20px;
   margin: 0;
-  opacity: 0;
-  animation: fadeInOut 0.5s forwards;
+  opacity: 1;
 }
 .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card::before {
   content: "";
@@ -19171,15 +19169,6 @@ button { /* Override any global button styles specific to Reviews */
 .homepage-content .placeholder-section .carousel-slides .carousel-slide h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide .h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide p {
   position: relative;
   z-index: 2;
-}
-.homepage-content .placeholder-section .carousel-slides .carousel-slide.active .placeholder-card h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide.active .placeholder-card .h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide.active .placeholder-card p {
-  animation: fadeIn 0.5s forwards 0.2s;
-}
-.homepage-content .placeholder-section .carousel-slides .carousel-slide:not(.active) .placeholder-card h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide:not(.active) .placeholder-card .h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide:not(.active) .placeholder-card p {
-  animation: fadeOut 0.5s forwards;
-}
-.homepage-content .placeholder-section .carousel-slides .carousel-slide.active {
-  display: block;
 }
 .homepage-content .placeholder-section .carousel-dots {
   position: absolute;

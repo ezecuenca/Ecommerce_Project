@@ -6,152 +6,139 @@ use Illuminate\Http\Request;
 use App\Models\Color;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 
 class ColorController extends Controller
 {
-    /**
-     * Display a listing of all colors (active and archived).
-     */
-    public function index()
+    public function index(Request $request)
     {
         try {
-            Log::info('Fetching colors from watch_colors table');
+            Log::info('Fetching watch colors request', ['query_params' => $request->query()]);
+            $page = $request->query('page', 1);
+            $perPage = $request->query('per_page', 5);
+            $statusParam = $request->query('status', 'active');
+            $searchQuery = $request->query('search');
 
-            // Remove the status filter to fetch all colors
             $query = Color::query();
-            Log::info('Raw query for colors', ['query' => $query->toSql(), 'bindings' => $query->getBindings()]);
 
-            // Include all necessary fields for the frontend
-            $colors = $query->get(['id', 'color_name', 'status', 'created_at', 'updated_at']);
-
-            Log::info('Colors fetched successfully', ['colors' => $colors]);
-
-            if ($colors->isEmpty()) {
-                Log::warning('No colors found in watch_colors table');
+            if ($statusParam === 'active') {
+                $query->where('status', 1);
+            } elseif ($statusParam === 'archived') {
+                $query->where('status', 0);
+            } else {
+                $query->where('status', 1);
             }
 
-            return response()->json($colors);
+            if ($searchQuery) {
+                $query->where('color_name', 'LIKE', "%{$searchQuery}%");
+            }
+
+            $colorsPaginator = $query->orderBy('created_at', 'desc')
+                                     ->paginate($perPage, ['*'], 'page', $page);
+
+            Log::info('Watch colors fetched successfully', [
+                'total' => $colorsPaginator->total(),
+                'current_page' => $colorsPaginator->currentPage(),
+                'per_page' => $colorsPaginator->perPage(),
+                'last_page' => $colorsPaginator->lastPage(),
+                'status_applied' => $statusParam
+            ]);
+
+            return response()->json($colorsPaginator);
+
         } catch (\Exception $e) {
-            Log::error('Error fetching colors', [
+            Log::error('Error fetching watch colors', [
                 'error' => $e->getMessage(),
                 'trace' => $e->getTraceAsString(),
             ]);
-            return response()->json(['message' => 'Failed to fetch colors', 'error' => $e->getMessage()], 500);
+            return response()->json(['message' => 'Failed to fetch watch colors', 'error' => $e->getMessage()], 500);
         }
     }
 
-    /**
-     * Store a newly created color in the database.
-     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'color_name' => 'required|string|max:255|unique:watch_colors',
-            'status' => 'nullable|integer|in:0,1',
+            'color_name' => 'required|string|max:255|unique:watch_colors,color_name',
+            'status' => 'nullable|boolean',
         ]);
 
         if ($validator->fails()) {
             return response()->json(['errors' => $validator->errors()], 422);
         }
 
-        $color = Color::create([
-            'color_name' => $request->color_name,
-            'created_at' => now(),
-            'updated_at' => now(),
-            'status' => $request->input('status', 1)
-        ]);
-
-        return response()->json(['message' => 'Color created successfully', 'data' => $color], 201);
+        try {
+             $color = Color::create([
+                'color_name' => $request->color_name,
+                'status' => $request->input('status', 1)
+            ]);
+            Log::info('Color stored successfully', ['id' => $color->id]);
+            return response()->json(['message' => 'Color created successfully', 'data' => $color], 201);
+        } catch (\Exception $e) {
+             Log::error('Error storing color', ['error' => $e->getMessage()]);
+             return response()->json(['message' => 'Failed to store color', 'error' => $e->getMessage()], 500);
+        }
     }
 
-    /**
-     * Display the specified color.
-     */
     public function show($id)
     {
         $color = Color::find($id);
-
-        if (!$color) {
-            return response()->json(['message' => 'Color not found'], 404);
-        }
-
+        if (!$color) { return response()->json(['message' => 'Color not found'], 404); }
         return response()->json($color);
     }
 
-    /**
-     * Update the specified color in the database.
-     */
     public function update(Request $request, $id)
     {
+        $color = Color::find($id);
+        if (!$color) { return response()->json(['message' => 'Color not found'], 404); }
+
         $validator = Validator::make($request->all(), [
-            'color_name' => 'required|string|max:255|unique:watch_colors,color_name,' . $id,
-            'status' => 'nullable|integer|in:0,1',
+            'color_name' => ['required','string','max:255', Rule::unique('watch_colors')->ignore($color->id)],
+            'status' => 'sometimes|boolean',
+        ]);
+
+        if ($validator->fails()) { return response()->json(['errors' => $validator->errors()], 422); }
+
+        try {
+            $updateData = ['color_name' => $request->color_name];
+            if ($request->has('status')) { $updateData['status'] = $request->boolean('status'); }
+            $color->update($updateData);
+            Log::info('Color updated successfully', ['id' => $color->id]);
+            return response()->json(['message' => 'Color updated successfully', 'data' => $color]);
+        } catch (\Exception $e) {
+            Log::error('Error updating color', ['id' => $id, 'error' => $e->getMessage()]);
+            return response()->json(['message' => 'Failed to update color', 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function archive(Request $request)
+    {
+        Log::info('Archive request received', ['payload' => $request->all()]);
+
+        $validator = Validator::make($request->all(), [
+            'data' => 'required|array',
+            'data.ids' => 'required|array',
+            'data.ids.*' => 'integer|exists:watch_colors,id',
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 422);
+            $errors = $validator->errors()->toArray();
+            Log::error('Validation failed (archive)', ['errors' => $errors, 'received_payload' => $request->all()]);
+            return response()->json(['errors' => $errors], 422);
         }
 
-        $color = Color::find($id);
-        if (!$color) {
-            return response()->json(['message' => 'Color not found'], 404);
+        $ids = $request->input('data.ids');
+        Log::info('IDs to archive', ['ids' => $ids]);
+
+        if (empty($ids)) {
+            Log::warning('No IDs provided to archive (inside data key)');
+            return response()->json(['message' => 'No IDs provided to archive.'], 200);
         }
 
-        $color->color_name = $request->color_name;
-        $color->updated_at = now();
-        $color->status = $request->input('status', $color->status);
-        $color->save();
-
-        return response()->json(['message' => 'Color updated successfully', 'data' => $color]);
-    }
-
-    /**
-     * Archive colors (bulk action).
-     */
-    public function archive(Request $request)
-    {
         try {
-            Log::info('Archive request received', [
-                'body' => $request->getContent(),
-                'headers' => $request->headers->all(),
-            ]);
-
-            $data = $request->json()->all();
-            Log::info('Parsed request data', ['data' => $data]);
-
-            if (empty($data)) {
-                Log::error('Request body is empty or not valid JSON');
-                return response()->json(['errors' => ['body' => 'Request body is empty or not valid JSON']], 422);
-            }
-
-            if (!array_key_exists('ids', $data)) {
-                Log::error('The ids field is missing in the request body');
-                return response()->json(['errors' => ['ids' => 'The ids field is required.']], 422);
-            }
-
-            $validator = Validator::make($data, [
-                'ids' => 'required|array',
-                'ids.*' => 'integer|exists:watch_colors,id',
-            ]);
-
-            if ($validator->fails()) {
-                $errors = $validator->errors()->toArray();
-                Log::error('Validation failed', ['errors' => $errors]);
-                return response()->json(['errors' => $errors], 422);
-            }
-
-            $ids = $data['ids'];
-            Log::info('IDs to archive', ['ids' => $ids]);
-
-            if (empty($ids)) {
-                Log::error('No IDs provided to archive');
-                return response()->json(['errors' => ['ids' => 'No IDs provided to archive']], 400);
-            }
-
-            $updatedCount = Color::whereIn('id', $ids)->update(['status' => 0]);
-
-            Log::info('Colors archived', ['updated_count' => $updatedCount]);
-
+            $updatedCount = Color::whereIn('id', $ids)
+                                ->where('status', 1)
+                                ->update(['status' => 0]);
+            Log::info('Colors archive attempt finished', ['updated_count' => $updatedCount]);
             return response()->json(['message' => 'Colors archived successfully', 'updated_count' => $updatedCount], 200);
         } catch (\Exception $e) {
             Log::error('Error archiving colors', ['error' => $e->getMessage(), 'trace' => $e->getTraceAsString()]);
@@ -159,45 +146,35 @@ class ColorController extends Controller
         }
     }
 
-    /**
-     * Restore archived colors (bulk action).
-     */
     public function restore(Request $request)
     {
+         Log::info('Restore request received', ['payload' => $request->all()]);
+
+         $validator = Validator::make($request->all(), [
+            'data' => 'required|array',
+            'data.ids' => 'required|array',
+            'data.ids.*' => 'integer|exists:watch_colors,id',
+        ]);
+
+         if ($validator->fails()) {
+            $errors = $validator->errors()->toArray();
+            Log::error('Validation failed (restore)', ['errors' => $errors, 'received_payload' => $request->all()]);
+            return response()->json(['errors' => $errors], 422);
+        }
+
+        $ids = $request->input('data.ids');
+        Log::info('IDs to restore', ['ids' => $ids]);
+
+        if (empty($ids)) {
+             Log::warning('No IDs provided to restore (inside data key)');
+             return response()->json(['message' => 'No IDs provided to restore.'], 200);
+        }
+
         try {
-            Log::info('Restore request received', [
-                'body' => $request->getContent(),
-                'headers' => $request->headers->all(),
-            ]);
-
-            $data = $request->json()->all();
-            Log::info('Parsed request data', ['data' => $data]);
-
-            if (empty($data)) {
-                Log::error('Request body is empty or not valid JSON');
-                return response()->json(['errors' => ['body' => 'Request body is empty or not valid JSON']], 422);
-            }
-
-            $validator = Validator::make($data, [
-                'ids' => 'required|array',
-                'ids.*' => 'integer|exists:watch_colors,id',
-            ]);
-
-            if ($validator->fails()) {
-                $errors = $validator->errors()->toArray();
-                Log::error('Validation failed', ['errors' => $errors]);
-                return response()->json(['errors' => $errors], 422);
-            }
-
-            $ids = $data['ids'];
-            Log::info('IDs to restore', ['ids' => $ids]);
-
-            if (empty($ids)) {
-                return response()->json(['errors' => ['ids' => 'No IDs provided to restore']], 400);
-            }
-
-            $updatedCount = Color::whereIn('id', $ids)->update(['status' => 1]);
-
+            $updatedCount = Color::whereIn('id', $ids)
+                                 ->where('status', 0)
+                                 ->update(['status' => 1]);
+            Log::info('Colors restore attempt finished', ['updated_count' => $updatedCount]);
             return response()->json(['message' => 'Colors restored successfully', 'updated_count' => $updatedCount]);
         } catch (\Exception $e) {
             Log::error('Error restoring colors', ['error' => $e->getMessage()]);

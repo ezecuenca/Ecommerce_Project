@@ -1,47 +1,87 @@
-import React, { useState, useEffect, useCallback } from "react";
-import MyOrdersModal from "./MyOrdersModal";
+// MyOrders.js (Corrected with Authentication)
+import React, { useState, useEffect, useCallback, useContext } from "react"; // Added useContext
+import MyOrdersModal from "./MyOrdersModal"; // Assuming path is correct
 import Axios from 'axios';
 import moment from 'moment';
-// Added FaCheck, FaUndo, FaThumbsUp
-import { FaSpinner, FaClock, FaCheckCircle, FaTimesCircle, FaTruck, FaEye, FaBoxOpen, FaShippingFast, FaUndo, FaThumbsUp, FaCheck } from "react-icons/fa";
+import { FaSpinner, FaClock, FaCheckCircle, FaTimesCircle, FaShippingFast, FaEye, FaUndo, FaThumbsUp, FaCheck } from "react-icons/fa";
+import { AuthContext } from "../../AuthContext"; // <<<< IMPORT AuthContext (Adjust path)
 
-// Updated getStatusInfo to handle new user-driven statuses
-const getStatusInfo = (status) => { // Now only needs status string
+// --- Loading Component (Example) ---
+const LoadingIndicator = ({ message = "Loading..." }) => (
+    <div className="my-orders" style={{ padding: '20px', textAlign: 'center', minHeight: '200px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <p>{message} <FaSpinner className="spinner" /></p>
+    </div>
+);
+
+// Updated getStatusInfo (remains the same)
+const getStatusInfo = (status) => {
     const lowerCaseStatus = status?.toLowerCase();
     switch (lowerCaseStatus) {
         case 'pending': return { text: 'Pending', className: 'pending', icon: <FaClock /> };
         case 'processing': return { text: 'Processing', className: 'processing', icon: <FaSpinner className="spinner"/> };
         case 'shipped': return { text: 'Shipped', className: 'on-delivery', icon: <FaShippingFast /> };
-        case 'delivered': return { text: 'Delivered', className: 'delivered-action', icon: <FaThumbsUp /> }; // Special style/icon
+        case 'delivered': return { text: 'Delivered', className: 'delivered-action', icon: <FaThumbsUp /> };
         case 'completed': return { text: 'Completed', className: 'completed', icon: <FaCheckCircle /> };
         case 'cancelled': return { text: 'Cancelled', className: 'canceled', icon: <FaTimesCircle /> };
-        case 'return_requested': return { text: 'Return Requested', className: 'processing', icon: <FaUndo /> }; // Use processing style?
+        case 'return_requested': return { text: 'Return Requested', className: 'processing', icon: <FaUndo /> };
         default: return { text: status || 'Unknown', className: 'unknown', icon: <FaClock /> };
     }
 };
 
 const MyOrders = () => {
+    // --- State ---
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [modalType, setModalType] = useState('');
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [orders, setOrders] = useState([]);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); // Loading state for fetching orders
     const [error, setError] = useState(null);
     const [actionLoading, setActionLoading] = useState(null); // Store ID of order being actioned
 
+    // --- Context ---
+    const { user, loading: authLoading } = useContext(AuthContext); // Get user/auth state
+
     const API_BASE_URL = 'http://localhost:8000/api';
 
+    // --- Fetch Orders (Authenticated) ---
     const fetchOrders = useCallback(async () => {
+        // Guard: Wait for auth, ensure user logged in
+        if (authLoading || !user) {
+            setLoading(false);
+            if (!authLoading && !user) setOrders([]); // Clear if known logged out
+            return;
+        }
+
         setLoading(true); setError(null);
+        console.log("[MyOrders] Fetching orders..."); // DEBUG
         try {
-            const response = await Axios.get(`${API_BASE_URL}/orders`, { withCredentials: true });
+            const token = localStorage.getItem("access_token");
+            if (!token) throw new Error("Auth token not found.");
+
+            // Call API with Auth Header
+            const response = await Axios.get(`${API_BASE_URL}/orders`, {
+                 headers: {
+                     'Authorization': `Bearer ${token}`,
+                     'Accept': 'application/json',
+                 }
+                 // Removed withCredentials: true - typically not needed with Bearer tokens
+            });
+            console.log("[MyOrders] API response:", response.data); // DEBUG
+
+             // Handle both paginated and direct array responses
              let rawOrders = [];
-             if (response.data && Array.isArray(response.data.data)) { rawOrders = response.data.data; }
-             else if (Array.isArray(response.data)){ rawOrders = response.data; }
-             else { throw new Error("Invalid data format received"); }
+             if (response.data && Array.isArray(response.data.data)) { // Paginated?
+                 rawOrders = response.data.data;
+             } else if (Array.isArray(response.data)){ // Direct array?
+                 rawOrders = response.data;
+             } else {
+                 console.error("[MyOrders] Invalid data format received:", response.data);
+                 throw new Error("Invalid data format received");
+             }
              setOrders(rawOrders);
+
         } catch (err) {
-            console.error("Error fetching orders:", err);
+            console.error("[MyOrders] Error fetching orders:", err.response || err.message || err);
             let errMsg = "Failed to load your orders.";
             if (err.response?.status === 401) { errMsg = "Please log in to view your orders."; }
             else if (err.response?.data?.message) { errMsg = err.response.data.message; }
@@ -51,11 +91,27 @@ const MyOrders = () => {
         } finally {
             setLoading(false);
         }
-    }, []);
+    }, [user, authLoading]); // Depend on auth state
 
+    // Trigger fetch on mount and when auth state changes
     useEffect(() => { fetchOrders(); }, [fetchOrders]);
 
-    // --- Action Handlers ---
+
+    // --- Action Handlers (Now Authenticated) ---
+
+    // Function to get token for actions
+    const getAuthHeaders = () => {
+        const token = localStorage.getItem("access_token");
+        if (!token) {
+            setError("Authentication error. Please log in again.");
+            throw new Error("Auth token not found."); // Stop action
+        }
+        return {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/json',
+        };
+    };
+
     const handleCancelClick = (order) => {
         if (order.status?.toLowerCase() !== 'pending' && order.status?.toLowerCase() !== 'processing') {
             alert(`Cannot cancel order with status: ${order.status}`); return;
@@ -69,86 +125,61 @@ const MyOrders = () => {
 
     const handleConfirmCancel = async () => {
         if (!selectedOrder) return;
-        setActionLoading(selectedOrder.id); setError(null); // Indicate loading for this order
+        setActionLoading(selectedOrder.id); setError(null);
         try {
-            await Axios.put(`${API_BASE_URL}/orders/${selectedOrder.id}/cancel`, {}, { withCredentials: true });
-            // Update state optimistically or re-fetch
-             setOrders(prevOrders => prevOrders.map(o =>
-                 o.id === selectedOrder.id ? { ...o, status: 'cancelled' } : o
-             ));
+            const headers = getAuthHeaders(); // Get token/headers
+            await Axios.put(`${API_BASE_URL}/orders/${selectedOrder.id}/cancel`, {}, { headers }); // Pass headers
+            setOrders(prevOrders => prevOrders.map(o => o.id === selectedOrder.id ? { ...o, status: 'cancelled' } : o ));
             setIsModalOpen(false); setSelectedOrder(null); setModalType('');
         } catch (err) {
-            console.error(`Error cancelling order ${selectedOrder.id}:`, err);
+            console.error(`Error cancelling order ${selectedOrder.id}:`, err.response || err.message || err);
             setError(`Failed to cancel order. ${err.response?.data?.message || err.message}`);
-        } finally {
-            setActionLoading(null); // Clear loading indicator
-        }
+        } finally { setActionLoading(null); }
     };
 
-    // --- NEW Handler for User Marking as Completed ---
     const handleMarkReceivedClick = async (order) => {
-        setActionLoading(order.id); setError(null); // Indicate loading for this order
+        setActionLoading(order.id); setError(null);
         try {
-             await Axios.put(`${API_BASE_URL}/orders/${order.id}/mark-completed`, {}, { withCredentials: true });
-             // Update state optimistically
-              setOrders(prevOrders => prevOrders.map(o =>
-                  o.id === order.id ? { ...o, status: 'completed' } : o
-              ));
-             // Optionally show a success message
-             // alert("Order marked as received!");
+            const headers = getAuthHeaders(); // Get token/headers
+             await Axios.put(`${API_BASE_URL}/orders/${order.id}/mark-completed`, {}, { headers }); // Pass headers
+             setOrders(prevOrders => prevOrders.map(o => o.id === order.id ? { ...o, status: 'completed' } : o ));
         } catch (err) {
-             console.error(`Error marking order ${order.id} as completed:`, err);
+             console.error(`Error marking order ${order.id} as completed:`, err.response || err.message || err);
              setError(`Failed mark as received. ${err.response?.data?.message || err.message}`);
-        } finally {
-             setActionLoading(null); // Clear loading indicator
-        }
+        } finally { setActionLoading(null); }
     };
 
-    // --- NEW Handler for User Requesting Return ---
     const handleReturnRequestClick = async (order) => {
         if (!window.confirm("Are you sure you want to request a return/refund for this order?")) { return; }
-        setActionLoading(order.id); setError(null); // Indicate loading for this order
+        setActionLoading(order.id); setError(null);
         try {
-             await Axios.put(`${API_BASE_URL}/orders/${order.id}/request-return`, {}, { withCredentials: true });
-             // Update state optimistically
-              setOrders(prevOrders => prevOrders.map(o =>
-                  o.id === order.id ? { ...o, status: 'return_requested' } : o
-              ));
+            const headers = getAuthHeaders(); // Get token/headers
+             await Axios.put(`${API_BASE_URL}/orders/${order.id}/request-return`, {}, { headers }); // Pass headers
+             setOrders(prevOrders => prevOrders.map(o => o.id === order.id ? { ...o, status: 'return_requested' } : o ));
         } catch (err) {
-             console.error(`Error requesting return for order ${order.id}:`, err);
+             console.error(`Error requesting return for order ${order.id}:`, err.response || err.message || err);
              setError(`Failed request return. ${err.response?.data?.message || err.message}`);
-        } finally {
-             setActionLoading(null); // Clear loading indicator
-        }
+        } finally { setActionLoading(null); }
      };
 
     const handleCloseModal = () => { setIsModalOpen(false); setSelectedOrder(null); setModalType(''); setError(null); };
 
-    // --- Filtering Logic Updated ---
-    const upcomingOrders = Array.isArray(orders) ? orders.filter(order => {
-        const status = order.status?.toLowerCase();
-        // Stays upcoming if pending, processing, shipped, OR delivered
-        return ['pending', 'processing', 'shipped', 'delivered'].includes(status);
-    }) : [];
+    // --- Filtering Logic (remains the same) ---
+    const upcomingOrders = Array.isArray(orders) ? orders.filter(order => { const status = order.status?.toLowerCase(); return ['pending', 'processing', 'shipped', 'delivered'].includes(status); }) : [];
+    const previousOrders = Array.isArray(orders) ? orders.filter(order => { const status = order.status?.toLowerCase(); return ['completed', 'cancelled', 'return_requested'].includes(status); }) : [];
 
-    const previousOrders = Array.isArray(orders) ? orders.filter(order => {
-        const status = order.status?.toLowerCase();
-         // Moves to previous if completed by user, cancelled, or return requested
-        return ['completed', 'cancelled', 'return_requested'].includes(status);
-    }) : [];
-
+    // --- Render Order Card (remains the same structure) ---
     const renderOrderCard = (order) => {
-        const statusInfo = getStatusInfo(order.status); // Pass only the status string
+        const statusInfo = getStatusInfo(order.status);
         const isDelivered = order.status?.toLowerCase() === 'delivered';
         const canCancel = order.status?.toLowerCase() === 'pending' || order.status?.toLowerCase() === 'processing';
-        const isLoadingAction = actionLoading === order.id; // Check if action is loading for THIS card
+        const isLoadingAction = actionLoading === order.id;
 
         return (
              <div className="order-card" key={order.id}>
                 <div className="order-header"> <span className="order-number">Order #{order.id}</span> </div>
                 <div className="order-details">
                      <div className="status-container">
-                         {/* Show date/time unless it's delivered awaiting action? Maybe show always */}
                          <div className="date-time-previous">
                               <span className="order-date">{moment(order.order_date || order.created_at).format('MMMM DD, YYYY')}</span>
                               <span className="order-time">{moment(order.order_date || order.created_at).format('hh:mm A')}</span>
@@ -165,50 +196,61 @@ const MyOrders = () => {
                  </div>
                  <div className="order-card-actions">
                       <button className="view-details-btn" onClick={() => handleViewDetailsClick(order)} disabled={isLoadingAction}> <FaEye style={{ marginRight: '5px'}} /> View </button>
-                     {/* Conditional Buttons */}
-                     {canCancel && (
-                         <button className="cancel-btn" onClick={() => handleCancelClick(order)} disabled={isLoadingAction}>Cancel Order</button>
-                      )}
+                     {canCancel && ( <button className="cancel-btn" onClick={() => handleCancelClick(order)} disabled={isLoadingAction}>Cancel Order</button> )}
                      {isDelivered && (
                          <>
-                             <button className="confirm-received-btn" onClick={() => handleMarkReceivedClick(order)} disabled={isLoadingAction}>
-                                  {isLoadingAction ? <FaSpinner className="spinner"/> : <><FaCheck style={{ marginRight: '5px'}} /> Received</>}
-                             </button>
-                             <button className="return-refund-btn" onClick={() => handleReturnRequestClick(order)} disabled={isLoadingAction}>
-                                 {isLoadingAction ? <FaSpinner className="spinner"/> : <><FaUndo style={{ marginRight: '5px'}} /> Return/Refund</>}
-                              </button>
+                             <button className="confirm-received-btn" onClick={() => handleMarkReceivedClick(order)} disabled={isLoadingAction}> {isLoadingAction ? <FaSpinner className="spinner"/> : <><FaCheck style={{ marginRight: '5px'}} /> Received</>} </button>
+                             <button className="return-refund-btn" onClick={() => handleReturnRequestClick(order)} disabled={isLoadingAction}> {isLoadingAction ? <FaSpinner className="spinner"/> : <><FaUndo style={{ marginRight: '5px'}} /> Return/Refund</>} </button>
                          </>
                      )}
-                     {/* No buttons shown for completed, cancelled, return_requested besides View */}
                  </div>
             </div>
          );
      };
 
+     // --- Render Logic ---
+
+    // Handle initial auth loading
+    if (authLoading) return <LoadingIndicator message="Loading user information..." />;
+
+    // Handle not logged in (after auth check)
+     if (!user) return (
+          <div className="my-orders">
+              <p style={{textAlign: 'center', padding: '20px'}}>Please <Link to="/login">log in</Link> to view your orders.</p>
+          </div>
+     );
+
+     // Handle loading orders state
+     if (loading) return <LoadingIndicator message="Loading your orders..." />;
+
+
+    // Render main content
     return (
         <div className="my-orders">
              {error && <div className="error-message" style={{color: 'red', marginBottom: '15px', textAlign: 'center'}}>{error} <button onClick={fetchOrders} disabled={loading || !!actionLoading}>Retry</button></div>}
-             {/* Removed global action loading - handled per card */}
+
             <div className="order-section">
                 <h1 className="upcoming-orders-header">My Orders</h1>
-                {loading ? ( <p>Loading orders... <FaSpinner className="spinner" /></p> )
-                 : upcomingOrders.length > 0 ? ( <div className="order-list">{upcomingOrders.map(order => renderOrderCard(order))}</div> )
-                 : ( !error && <p className="no-orders-message">No active orders found.</p> )}
-            </div>
-            <div className="order-section">
-                <h2 className="previous-orders-header">Order History</h2>
-                 {loading ? ( <p>Loading orders...</p> )
-                 : previousOrders.length > 0 ? ( <div className="order-list">{previousOrders.map(order => renderOrderCard(order))}</div> )
-                 : ( !error && <p className="no-orders-message">No previous orders found.</p> )}
+                 {/* Check loading state *before* checking upcomingOrders length */}
+                 {!loading && upcomingOrders.length === 0 && !error && <p className="no-orders-message">No active orders found.</p>}
+                 {!loading && upcomingOrders.length > 0 && <div className="order-list">{upcomingOrders.map(renderOrderCard)}</div>}
             </div>
 
+            <div className="order-section">
+                <h2 className="previous-orders-header">Order History</h2>
+                {/* Check loading state *before* checking previousOrders length */}
+                 {!loading && previousOrders.length === 0 && !error && <p className="no-orders-message">No previous orders found.</p>}
+                 {!loading && previousOrders.length > 0 && <div className="order-list">{previousOrders.map(renderOrderCard)}</div>}
+            </div>
+
+            {/* Modal (remains the same) */}
             {isModalOpen && (
                 <MyOrdersModal
                     type={modalType}
                     order={selectedOrder}
                     onConfirm={modalType === 'cancel' ? handleConfirmCancel : null}
                     onClose={handleCloseModal}
-                    isLoading={actionLoading === selectedOrder?.id && modalType === 'cancel'} // Show loading in modal only if cancelling this specific order
+                    isLoading={actionLoading === selectedOrder?.id && modalType === 'cancel'}
                 />
             )}
         </div>

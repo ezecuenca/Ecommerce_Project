@@ -21,6 +21,25 @@ const formatDate = (dateString) => {
     } catch (e) { return "Invalid Date"; }
 };
 
+const fetchApiData = async (url, config = {}) => {
+    const token = localStorage.getItem("access_token");
+    console.log("fetchApiData: Attempting to fetch. Token found:", token ? 'Yes' : 'No');
+
+    if (!token) {
+        console.error("fetchApiData: No token found in localStorage.");
+        throw new Error("Unauthenticated: No token found.");
+    }
+
+    const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        ...(config.headers || {}),
+    };
+    console.log("fetchApiData: Sending request with headers:", headers);
+
+    return axios.get(url, { ...config, headers });
+};
+
 const Dashboard = () => {
     const [analyticsData, setAnalyticsData] = useState({
         products_sold: 0,
@@ -32,7 +51,7 @@ const Dashboard = () => {
     const [analyticsError, setAnalyticsError] = useState("");
 
     const [recentlySoldData, setRecentlySoldData] = useState([]);
-    const [recentLoading, setRecentLoading] = useState(true); // Still used for initial load and button disabling
+    const [recentLoading, setRecentLoading] = useState(true);
     const [recentError, setRecentError] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
@@ -43,7 +62,9 @@ const Dashboard = () => {
             setAnalyticsLoading(true);
             setAnalyticsError("");
             try {
-                const response = await axios.get(`${API_BASE_URL}/dashboard/inventory-analytics`);
+                console.log("Dashboard: Fetching analytics...");
+                const response = await fetchApiData(`${API_BASE_URL}/dashboard/inventory-analytics`);
+                console.log("Dashboard: Analytics response received", response.data);
                 setAnalyticsData({
                     products_sold: response.data?.total_quantity_sold ?? 0,
                     gross_sales: response.data?.total_gross_revenue ?? 0,
@@ -52,7 +73,7 @@ const Dashboard = () => {
                 });
             } catch (error) {
                 console.error("Error fetching analytics:", error);
-                setAnalyticsError(`Failed to load analytics: ${error.response?.data?.message || error.message}`);
+                setAnalyticsError(error.message.startsWith("Unauthenticated") ? "Unauthenticated." : `Failed to load analytics: ${error.response?.data?.message || error.message}`);
                 setAnalyticsData({ products_sold: 0, gross_sales: 0, total_stock: 0, total_users: 0 });
             } finally {
                 setAnalyticsLoading(false);
@@ -63,15 +84,15 @@ const Dashboard = () => {
 
     useEffect(() => {
         const fetchRecentlySold = async () => {
-            // Only show full table loading on initial load (when data is empty)
-            if (recentlySoldData.length === 0) {
-                 setRecentLoading(true);
-            }
+            if (recentlySoldData.length === 0) { setRecentLoading(true); }
             setRecentError("");
             try {
-                const response = await axios.get(`${API_BASE_URL}/dashboard/recently-sold`, {
+                console.log(`Dashboard: Fetching recent sales - Page ${currentPage}...`);
+                const response = await fetchApiData(`${API_BASE_URL}/dashboard/recently-sold`, {
                     params: { page: currentPage, per_page: itemsPerPage }
                 });
+                 console.log("Dashboard: Recent sales response received", response.data);
+
                 if (response.data && response.data.data) {
                     setRecentlySoldData(response.data.data);
                     setTotalPages(response.data.last_page || 1);
@@ -84,15 +105,14 @@ const Dashboard = () => {
                 }
             } catch (error) {
                 console.error("Error fetching recently sold:", error);
-                setRecentError(`Failed to load recent sales: ${error.response?.data?.message || error.message}`);
+                setRecentError(error.message.startsWith("Unauthenticated") ? "Unauthenticated." : `Failed to load recent sales: ${error.response?.data?.message || error.message}`);
                 setRecentlySoldData([]); setTotalPages(1);
             } finally {
-                // Always set loading false after fetch attempt completes
                 setRecentLoading(false);
             }
         };
         fetchRecentlySold();
-    }, [currentPage]); // Keep currentPage as the dependency
+    }, [currentPage]);
 
     return (
         <div className="dashboard-container">
@@ -136,7 +156,6 @@ const Dashboard = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {/* Show loading message ONLY if it's the initial load and data is empty */}
                         {recentLoading && recentlySoldData.length === 0 ? (
                              <tr><td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>Loading...</td></tr>
                          ) : recentlySoldData.length > 0 ? (
@@ -151,15 +170,12 @@ const Dashboard = () => {
                                     <td className="td">{formatDate(item.order_date || item.created_at)}</td>
                                 </tr>
                             ))
-                        // Show "No data" only if NOT loading and data is empty
                         ) : !recentLoading && recentlySoldData.length === 0 ? (
                              <tr><td colSpan="5" style={{ textAlign: 'center', padding: '20px' }}>No recent sales data found.</td></tr>
-                        // Render nothing in tbody while loading subsequent pages (avoids flicker)
                         ) : null}
                     </tbody>
                 </table>
-                {/* Buttons are disabled based on recentLoading state */}
-                {!recentLoading && recentlySoldData.length === 0 && totalPages <= 1 ? null : ( // Hide pagination if loading or no data/pages
+                {!recentLoading && recentlySoldData.length === 0 && totalPages <= 1 ? null : (
                      <div className="pagination">
                         <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1 || recentLoading}> Previous </button>
                         {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => ( <button key={page} onClick={() => setCurrentPage(page)} className={ currentPage === page ? "active" : "" } disabled={recentLoading}> {page} </button> ))}

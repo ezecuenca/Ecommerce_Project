@@ -1,236 +1,153 @@
 import React, { useState, useEffect } from "react";
 import Axios from 'axios';
 
-const ProductManagement = ({ type, product, selectedProducts, onClose, onConfirm, onSave }) => {
-    const [formData, setFormData] = useState({
-        product_name: '',
-        description: '',
-        price: '',
-        category_id: '',
-        color_id: '',
-        wrist_measurement_id: '',
-        image: null,
-    });
+const API_BASE_URL = "http://localhost:8000/api";
 
+const ProductManagement = ({
+    type,
+    product,
+    selectedProducts,
+    onClose,
+    onConfirm,
+    onSave,
+    makeAuthenticatedRequest,
+    apiBaseUrl = API_BASE_URL,
+    externalError
+}) => {
+    const [formData, setFormData] = useState({
+        product_name: '', description: '', price: '', category_id: '', color_id: '', wrist_measurement_id: '', image: null,
+    });
     const [categories, setCategories] = useState([]);
     const [colors, setColors] = useState([]);
     const [wristMeasurements, setWristMeasurements] = useState([]);
     const [error, setError] = useState('');
     const [validationErrors, setValidationErrors] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
+    const [isDataReadyForEdit, setIsDataReadyForEdit] = useState(false);
 
     useEffect(() => {
-        console.log("ProductManagement component mounted with props:", { type, product, selectedProducts });
-        if (type === 'edit' && product) {
-            console.log("Populating form with product data:", product);
-            const category = categories.find(cat => cat.category_name === product.category);
-            const color = colors.find(col => col.color_name === product.color);
-            const wristMeasurement = wristMeasurements.find(wm => 
-                (wm.measurement || wm.wrist_size) === product.wrist_measurement
-            );
+        let isMounted = true;
+        const fetchDropdownData = async (url, setter, name) => {
+            try {
+                const response = await Axios.get(url);
+                if (!isMounted) return;
+                const items = Array.isArray(response.data) ? response.data : (response.data?.data || []);
+                const activeItems = items.filter(item => item.status === 1 || String(item.status) === '1');
+                setter(activeItems);
+            } catch (fetchError) {
+                if (!isMounted) return;
+                console.error(`Error fetching ${name}:`, fetchError);
+                setError(prev => `${prev} Failed to load ${name}.`.trim());
+                setter([]);
+            }
+        };
+        setIsDataReadyForEdit(false);
+        Promise.all([
+            fetchDropdownData(`${apiBaseUrl}/categories`, setCategories, 'categories'),
+            fetchDropdownData(`${apiBaseUrl}/watch_colors`, setColors, 'colors'),
+            fetchDropdownData(`${apiBaseUrl}/wrist_measurements`, setWristMeasurements, 'wrist measurements')
+        ]).then(() => {
+            if (isMounted) setIsDataReadyForEdit(true);
+        });
+        return () => { isMounted = false; };
+    }, [apiBaseUrl]);
 
-            setFormData({
-                product_name: product.product_name || '',
-                description: product.description || '',
-                price: product.price || '',
-                category_id: category ? category.id : '',
-                color_id: color ? color.id : '',
-                wrist_measurement_id: wristMeasurement ? wristMeasurement.id : '',
-                image: null,
-            });
+    useEffect(() => {
+        setError(''); setValidationErrors({});
+        if (type === 'edit' && product && isDataReadyForEdit) {
+             const category = categories.find(cat => cat.category_name && product.category && cat.category_name === product.category);
+             const color = colors.find(col => col.color_name && product.color && col.color_name === product.color);
+             const wristMeasurement = wristMeasurements.find(wm => product.wrist_measurement && ((wm.measurement && wm.measurement === product.wrist_measurement) || (wm.wrist_size && wm.wrist_size === product.wrist_measurement)));
+             const newFormData = {
+                product_name: product.product_name || '', description: product.description || '', price: String(product.price) || '',
+                category_id: category ? String(category.id) : '', color_id: color ? String(color.id) : '', wrist_measurement_id: wristMeasurement ? String(wristMeasurement.id) : '', image: null,
+             };
+            setFormData(newFormData);
+            console.log("FormData state SET for edit:", newFormData);
+        } else if (type === 'add') {
+             setFormData({ product_name: '', description: '', price: '', category_id: '', color_id: '', wrist_measurement_id: '', image: null });
+        } else if (type === 'edit' && (!product || !isDataReadyForEdit)) {
+             console.log("Edit mode, but waiting...");
+             setFormData({ product_name: '', description: '', price: '', category_id: '', color_id: '', wrist_measurement_id: '', image: null });
         }
-    }, [type, product, categories, colors, wristMeasurements]);
-
-    useEffect(() => {
-        const fetchCategories = async () => {
-            try {
-                console.log("Fetching all categories from /api/categories...");
-                const response = await Axios.get('http://localhost:8000/api/categories');
-                console.log("Raw Categories Response:", response.data);
-                const activeCategories = Array.isArray(response.data)
-                    ? response.data.filter(category => category.status === 1 || category.status === '1' || category.status === 'active')
-                    : [];
-                console.log("Active categories after filtering:", activeCategories);
-                if (activeCategories.length === 0) {
-                    console.warn("No active categories found!");
-                }
-                setCategories(activeCategories);
-            } catch (error) {
-                console.error("Error fetching categories:", error);
-                console.error("Error response:", error.response?.data);
-                console.error("Error status:", error.response?.status);
-                setError(`Failed to load categories: ${error.response?.data?.message || error.message}`);
-                setCategories([]);
-            }
-        };
-
-        const fetchColors = async () => {
-            try {
-                console.log("Fetching all colors from /api/watch_colors...");
-                const response = await Axios.get('http://localhost:8000/api/watch_colors');
-                console.log("Raw Colors Response:", response.data);
-                const activeColors = Array.isArray(response.data)
-                    ? response.data.filter(color => color.status === 1 || color.status === '1' || color.status === 'active')
-                    : [];
-                console.log("Active colors after filtering:", activeColors);
-                if (activeColors.length === 0) {
-                    console.warn("No active colors found!");
-                }
-                setColors(activeColors);
-            } catch (error) {
-                console.error("Error fetching colors:", error);
-                console.error("Error response:", error.response?.data);
-                console.error("Error status:", error.response?.status);
-                setError(`Failed to load colors: ${error.response?.data?.message || error.message}`);
-                setColors([]);
-            }
-        };
-
-        const fetchWristMeasurements = async () => {
-            try {
-                console.log("Fetching all wrist measurements from /api/wrist_measurements...");
-                const response = await Axios.get('http://localhost:8000/api/wrist_measurements');
-                console.log("Raw Wrist Measurements Response:", response.data);
-                const activeWristMeasurements = Array.isArray(response.data)
-                    ? response.data.filter(wm => wm.status === 1 || wm.status === '1' || wm.status === 'active')
-                    : [];
-                console.log("Active wrist measurements after filtering:", activeWristMeasurements);
-                if (activeWristMeasurements.length === 0) {
-                    console.warn("No active wrist measurements found!");
-                }
-                setWristMeasurements(activeWristMeasurements);
-            } catch (error) {
-                console.error("Error fetching wrist measurements:", error);
-                console.error("Error response:", error.response?.data);
-                console.error("Error status:", error.response?.status);
-                setError(`Failed to load wrist measurements: ${error.response?.data?.message || error.message}`);
-                setWristMeasurements([]);
-            }
-        };
-
-        fetchCategories();
-        fetchColors();
-        fetchWristMeasurements();
-    }, []);
-
-    useEffect(() => {
-        console.log("Current categories state:", categories);
-        console.log("Current colors state:", colors);
-        console.log("Current wrist measurements state:", wristMeasurements);
-    }, [categories, colors, wristMeasurements]);
+    }, [type, product, isDataReadyForEdit, categories, colors, wristMeasurements]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        // Only allow numbers and one decimal point
-        if (name === 'price' && !/^\d*\.?\d{0,2}$/.test(value)) {
-            return; // Ignore the input if it doesn't match the pattern
-        }
-        setFormData({ ...formData, [name]: value });
-        setValidationErrors(prev => ({ ...prev, [name]: '' }));
+        if (name === 'price' && value && !/^\d*\.?\d{0,2}$/.test(value)) return;
+        setFormData(prev => ({ ...prev, [name]: value }));
+        if (validationErrors[name]) setValidationErrors(prev => ({ ...prev, [name]: '' }));
     };
-
     const handleFileChange = (e) => {
-        setFormData({ ...formData, image: e.target.files[0] });
+        const file = e.target.files[0];
+        setFormData(prev => ({ ...prev, image: file || null }));
+        if (validationErrors.image) setValidationErrors(prev => ({ ...prev, image: '' }));
     };
 
     const validateForm = () => {
+        console.log("Validating form data:", JSON.stringify(formData));
         const errors = {};
-        if (!formData.product_name.trim()) {
-            errors.product_name = "Product name is required.";
-        }
-        if (!formData.description.trim()) {
-            errors.description = "Description is required.";
-        }
-        if (!formData.price || isNaN(formData.price) || Number(formData.price) <= 0) {
-            errors.price = "Price must be a positive number.";
-        }
-        if (!formData.category_id) {
-            errors.category_id = "Please select a category.";
-        }
-        if (!formData.color_id) {
-            errors.color_id = "Please select a color.";
-        }
-        if (!formData.wrist_measurement_id) {
-            errors.wrist_measurement_id = "Please select a wrist measurement.";
-        }
-        return errors;
+        if (!formData.product_name?.trim()) errors.product_name = "Product name is required.";
+        if (!formData.description?.trim()) errors.description = "Description is required.";
+        if (!formData.price || isNaN(Number(formData.price)) || Number(formData.price) <= 0) errors.price = "Price must be a valid positive number.";
+        if (!formData.category_id) errors.category_id = "Please select a category.";
+        if (!formData.color_id) errors.color_id = "Please select a color.";
+        if (!formData.wrist_measurement_id) errors.wrist_measurement_id = "Please select a wrist measurement.";
+        setValidationErrors(errors);
+        console.log("Validation result (errors):", errors);
+        return Object.keys(errors).length === 0;
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted with data:", formData);
-
-        const errors = validateForm();
-        if (Object.keys(errors).length > 0) {
-            setValidationErrors(errors);
-            setError("Please fix the errors in the form.");
-            return;
-        }
-
+        setError(''); setValidationErrors({});
+        if (!validateForm()) { setError("Please fix the errors highlighted below."); return; }
+        if (typeof makeAuthenticatedRequest !== 'function') { setError("Configuration error."); return; }
+        setIsLoading(true);
         try {
             const data = new FormData();
-            data.append('product_name', formData.product_name);
-            data.append('description', formData.description);
-            data.append('price', formData.price);
-            data.append('category_id', formData.category_id);
-            data.append('color_id', formData.color_id);
-            data.append('wrist_measurement_id', formData.wrist_measurement_id);
-            if (type === 'edit') {
-                data.append('stock', product.stock || 0);
-                data.append('_method', 'PUT'); // Ensure the backend recognizes this as a PUT request
-            }
-            if (formData.image) {
-                data.append('image', formData.image);
-            }
-
-            console.log("Submitting form data:", Object.fromEntries(data));
-
-            let response;
+            Object.keys(formData).forEach(key => {
+                if (key === 'image' && formData[key]) { data.append(key, formData[key]); }
+                else if (key !== 'image' && formData[key] !== null && formData[key] !== undefined && formData[key] !== '') { data.append(key, formData[key]); }
+            });
+            let url, method;
             if (type === 'add') {
-                response = await Axios.post('http://localhost:8000/api/products', data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-            } else if (type === 'edit') {
-                response = await Axios.post(`http://localhost:8000/api/products/${product.id}`, data, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data',
-                    },
-                });
-            }
+                method = 'post';
+                url = `${apiBaseUrl}/products`;
+            } else if (type === 'edit' && product) {
+                method = 'post'; 
+                url = `${apiBaseUrl}/products/${product.id}`;
+                data.append('_method', 'PATCH'); 
+            } else { throw new Error("Invalid operation type or missing product data."); }
 
-            console.log(`${type === 'add' ? 'Product created' : 'Product updated'}:`, response.data);
-
-            if (onSave) {
-                console.log("Calling onSave to refresh product list");
-                onSave();
-            }
-            onClose();
-        } catch (error) {
-            console.error(`Error ${type === 'add' ? 'creating' : 'updating'} product:`, error);
-            console.error("Full error response:", JSON.stringify(error.response?.data, null, 2));
-            if (error.response?.status === 422) {
-                const backendErrors = error.response.data.errors || {};
-                console.log("Backend validation errors:", backendErrors);
-                setValidationErrors(backendErrors);
-                const errorMessages = Object.values(backendErrors).flat().join(' ');
-                setError(`Validation failed: ${errorMessages || 'Please check the form.'}`);
-            } else {
-                setError(`Failed to ${type === 'add' ? 'create' : 'update'} product: ${error.response?.data?.message || error.message}`);
-            }
-        }
+            console.log(`Submitting (${type}) to ${url} via ${method}${type==='edit' ? ' (spoofing PUT)' : ''}...`);
+            const response = await makeAuthenticatedRequest(method, url, data);
+            console.log(`Response (${type}):`, response.data);
+            alert(`Product ${type === 'add' ? 'created' : 'updated'} successfully!`);
+            if (onSave && response.data.product) { onSave(response.data.product); }
+            else if (onSave) { onSave(); }
+        } catch (submitError) {
+            console.error(`Error ${type === 'add' ? 'creating' : 'updating'} product:`, submitError);
+            if (submitError.response) {
+                 console.error("Error response data:", submitError.response.data);
+                 console.error("Error response status:", submitError.response.status);
+                 if (submitError.response.status === 401) {setError("Unauthenticated.");}
+                 else if (submitError.response.status === 422) { const backendErrors = submitError.response.data.errors || {}; setValidationErrors(backendErrors); const errorMessages = Object.values(backendErrors).flat().join(' '); setError(`Validation failed: ${errorMessages || 'Check fields.'}`);}
+                 else if (submitError.response.status === 405) {setError(`Operation not allowed (Method Not Allowed).`);} // This error message matches screenshot
+                 else {setError(`Server error: ${submitError.response.data?.message || `Status ${submitError.response.status}`}`);}
+            } else if (submitError.message?.startsWith("Unauthenticated")) {setError(submitError.message);}
+            else if (submitError.request) {console.error("Error request:", submitError.request); setError("Network error.");}
+            else {console.error('Generic error:', submitError.message); setError(`Unexpected error: ${submitError.message}`);}
+        } finally { setIsLoading(false); }
     };
 
     const handleConfirm = () => {
-        console.log("Confirming action for type:", type, "with selectedProducts:", selectedProducts);
-        onConfirm(selectedProducts);
-        onClose();
+        if (typeof onConfirm === 'function') { onConfirm(selectedProducts); }
+        else { console.error("onConfirm prop is not a function!"); }
     };
 
-    const handleCancel = () => {
-        console.log("Cancel button clicked, closing modal");
-        onClose();
-    };
+    const handleCancel = () => { onClose(); };
+
 
     if (type === 'add' || type === 'edit') {
         return (
@@ -238,147 +155,29 @@ const ProductManagement = ({ type, product, selectedProducts, onClose, onConfirm
                 <div className="edit-modal-overlay" onClick={handleCancel}>
                     <div className="edit-modal" onClick={e => e.stopPropagation()}>
                         <h2>{type === 'add' ? 'Add New Product' : 'Edit Product'}</h2>
+                        {externalError && <p className="error-message" style={{color: 'orange'}}>{externalError}</p>}
                         {error && <p className="error-message">{error}</p>}
-                        <form className="edit-form" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label>Product Name:</label>
-                                <input
-                                    type="text"
-                                    name="product_name"
-                                    value={formData.product_name}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter product name"
-                                    required
-                                />
-                                {validationErrors.product_name && <p className="error-message">{validationErrors.product_name}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Description:</label>
-                                <textarea
-                                    name="description"
-                                    value={formData.description}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter product description"
-                                    rows="3"
-                                    required
-                                />
-                                {validationErrors.description && <p className="error-message">{validationErrors.description}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Price:</label>
-                                <input
-                                    type="text"
-                                    name="price"
-                                    value={formData.price}
-                                    onChange={handleInputChange}
-                                    placeholder="Enter price (₱)"
-                                    required
-                                />
-                                {validationErrors.price && <p className="error-message">{validationErrors.price}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Category:</label>
-                                <select
-                                    name="category_id"
-                                    value={formData.category_id}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="">Select a category</option>
-                                    {categories.length > 0 ? (
-                                        categories.map(category => (
-                                            <option key={category.id} value={category.id}>
-                                                {category.category_name}
-                                            </option>
-                                        ))
-                                    ) : (
-                                        <option value="" disabled>No active categories available.</option>
-                                    )}
-                                </select>
-                                {validationErrors.category_id && <p className="error-message">{validationErrors.category_id}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Color:</label>
-                                <select
-                                    name="color_id"
-                                    value={formData.color_id}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="">Select a color</option>
-                                    {colors.length > 0 ? (
-                                        colors.map(color => (
-                                            <option key={color.id} value={color.id}>
-                                                {color.color_name}
-                                            </option>
-                                        ))
-                                    ) : (
-                                        <option value="" disabled>No active colors available.</option>
-                                    )}
-                                </select>
-                                {validationErrors.color_id && <p className="error-message">{validationErrors.color_id}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Wrist Measurement:</label>
-                                <select
-                                    name="wrist_measurement_id"
-                                    value={formData.wrist_measurement_id}
-                                    onChange={handleInputChange}
-                                    required
-                                >
-                                    <option value="">Select a wrist measurement</option>
-                                    {wristMeasurements.length > 0 ? (
-                                        wristMeasurements.map(wm => (
-                                            <option key={wm.id} value={wm.id}>
-                                                {wm.measurement || wm.wrist_size || 'Unknown'}
-                                            </option>
-                                        ))
-                                    ) : (
-                                        <option value="" disabled>No active wrist measurements available.</option>
-                                    )}
-                                </select>
-                                {validationErrors.wrist_measurement_id && <p className="error-message">{validationErrors.wrist_measurement_id}</p>}
-                            </div>
-                            <div className="form-group">
-                                <label>Image:</label>
-                                <input
-                                    type="file"
-                                    name="image"
-                                    onChange={handleFileChange}
-                                    accept="image/*"
-                                />
-                                <p>{formData.image ? formData.image.name : 'No file chosen'}</p>
-                            </div>
-                            <div className="form-actions">
-                                <button type="submit" className="save-button">Save</button>
-                                <button type="button" className="cancel-button" onClick={handleCancel}>Cancel</button>
-                            </div>
+                        <form className="edit-form" onSubmit={handleSubmit} noValidate>
+                           <div className="form-group"> <label htmlFor="product_name">Product Name:</label> <input id="product_name" type="text" name="product_name" value={formData.product_name} onChange={handleInputChange} placeholder="Enter product name" required className={validationErrors.product_name ? 'input-error' : ''}/> {validationErrors.product_name && <p className="validation-error">{typeof validationErrors.product_name === 'string' ? validationErrors.product_name : validationErrors.product_name[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="description">Description:</label> <textarea id="description" name="description" value={formData.description} onChange={handleInputChange} placeholder="Enter product description" rows="3" required className={validationErrors.description ? 'input-error' : ''}/> {validationErrors.description && <p className="validation-error">{typeof validationErrors.description === 'string' ? validationErrors.description : validationErrors.description[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="price">Price (₱):</label> <input id="price" type="text" name="price" value={formData.price} onChange={handleInputChange} placeholder="e.g., 2500.00" required className={validationErrors.price ? 'input-error' : ''}/> {validationErrors.price && <p className="validation-error">{typeof validationErrors.price === 'string' ? validationErrors.price : validationErrors.price[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="category_id">Category:</label> <select id="category_id" name="category_id" value={formData.category_id} onChange={handleInputChange} required className={validationErrors.category_id ? 'input-error' : ''}> <option value="">Select a category</option> {categories.map(category => (<option key={category.id} value={category.id}>{category.category_name}</option>))} </select> {validationErrors.category_id && <p className="validation-error">{typeof validationErrors.category_id === 'string' ? validationErrors.category_id : validationErrors.category_id[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="color_id">Color:</label> <select id="color_id" name="color_id" value={formData.color_id} onChange={handleInputChange} required className={validationErrors.color_id ? 'input-error' : ''}> <option value="">Select a color</option> {colors.map(color => (<option key={color.id} value={color.id}>{color.color_name}</option>))} </select> {validationErrors.color_id && <p className="validation-error">{typeof validationErrors.color_id === 'string' ? validationErrors.color_id : validationErrors.color_id[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="wrist_measurement_id">Wrist Measurement:</label> <select id="wrist_measurement_id" name="wrist_measurement_id" value={formData.wrist_measurement_id} onChange={handleInputChange} required className={validationErrors.wrist_measurement_id ? 'input-error' : ''}> <option value="">Select a measurement</option> {wristMeasurements.map(wm => (<option key={wm.id} value={wm.id}>{wm.measurement || wm.wrist_size || `ID: ${wm.id}`}</option>))} </select> {validationErrors.wrist_measurement_id && <p className="validation-error">{typeof validationErrors.wrist_measurement_id === 'string' ? validationErrors.wrist_measurement_id : validationErrors.wrist_measurement_id[0]}</p>} </div>
+                           <div className="form-group"> <label htmlFor="image">Image:</label> <input id="image" type="file" name="image" onChange={handleFileChange} accept="image/png, image/jpeg, image/jpg" className={validationErrors.image ? 'input-error' : ''}/> <p className="file-info">{formData.image ? formData.image.name : (type === 'edit' && product?.image_url ? 'Current image exists' : 'No file chosen')}</p> {validationErrors.image && <p className="validation-error">{typeof validationErrors.image === 'string' ? validationErrors.image : validationErrors.image[0]}</p>} </div>
+                           <div className="form-actions"> <button type="submit" className="save-button" disabled={isLoading}>{isLoading ? 'Saving...' : 'Save'}</button> <button type="button" className="cancel-button" onClick={handleCancel} disabled={isLoading}>Cancel</button> </div>
                         </form>
                     </div>
                 </div>
             </div>
         );
-    } else if (type === 'archive' || type === 'restore') {
-        const action = type === 'archive' ? 'Archive' : 'Restore';
-        const message = `Are you sure you want to ${action.toLowerCase()} ${selectedProducts.length} product(s)?`;
-
-        return (
-            <div className="ProductManagement">
-                <div className={`${type}-modal-overlay`} onClick={handleCancel}>
-                    <div className={`${type}-modal`} onClick={e => e.stopPropagation()}>
-                        <h3>Confirm {action}</h3>
-                        {error && <p className="error-message">{error}</p>}
-                        <p>{message}</p>
-                        <div className="button-group">
-                            <button className="confirm-button" onClick={handleConfirm}>{action}</button>
-                            <button className="cancel-button" onClick={handleCancel}>Cancel</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
     }
-
+    else if (type === 'archive' || type === 'restore') {
+         const action = type === 'archive' ? 'Archive' : 'Restore';
+         const productsToAction = Array.isArray(selectedProducts) ? selectedProducts : [];
+         const message = `Are you sure you want to ${action.toLowerCase()} ${productsToAction.length} product(s)?`;
+         return ( <div className="ProductManagement"><div className={`${type}-modal-overlay`} onClick={handleCancel}><div className={`${type}-modal`} onClick={e => e.stopPropagation()}><h3>Confirm {action}</h3>{externalError && <p className="error-message" style={{color: 'orange'}}>{externalError}</p>}{error && <p className="error-message">{error}</p>}<p>{message}</p><div className="button-group"><button className="confirm-button" onClick={handleConfirm} disabled={isLoading}>{isLoading ? 'Processing...' : action}</button><button className="cancel-button" onClick={handleCancel} disabled={isLoading}>Cancel</button></div></div></div></div> );
+    }
     return null;
 };
 

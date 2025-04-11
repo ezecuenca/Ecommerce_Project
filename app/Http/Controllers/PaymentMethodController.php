@@ -11,8 +11,6 @@ class PaymentMethodController extends Controller
     public function index()
     {
         try {
-            // Fetch methods, select necessary columns
-            // REMOVED ->where('status', 1) assuming no status column
             $methods = PaymentMethod::select('id', 'method_name')
                                     ->get();
 

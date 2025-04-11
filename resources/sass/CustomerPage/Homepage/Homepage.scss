@@ -121,16 +121,14 @@
                         color: #FCFCFD;
                         font-size: 36px;
                         margin: 0 0 15px;
-                        opacity: 0;
-                        animation: fadeInOut 0.5s forwards;
+                        opacity: 1;
                     }
 
                     p {
                         color: #FCFCFD;
                         font-size: 20px;
                         margin: 0;
-                        opacity: 0;
-                        animation: fadeInOut 0.5s forwards;
+                        opacity: 1;
                     }
                 }
 
@@ -150,20 +148,6 @@
                     position: relative;
                     z-index: 2;
                 }
-
-                &.active .placeholder-card h2,
-                &.active .placeholder-card p {
-                    animation: fadeIn 0.5s forwards 0.2s;
-                }
-
-                &:not(.active) .placeholder-card h2,
-                &:not(.active) .placeholder-card p {
-                    animation: fadeOut 0.5s forwards;
-                }
-            }
-
-            .carousel-slide.active {
-                display: block;
             }
         }
 

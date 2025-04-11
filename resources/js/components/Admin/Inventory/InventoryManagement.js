@@ -15,12 +15,11 @@ const InventoryManagement = ({ type, item, stock, onClose, onSave, onConfirm }) 
     }, [type, item, stock]);
 
     const validateStock = (stock) => {
-        return stock >= 0; // Ensure stock is non-negative
+        return stock >= 0;
     };
 
     const handleStockChange = (e) => {
         const value = e.target.value;
-        // Validate that the input is a non-negative integer
         if (/^\d*$/.test(value)) {
             setLocalStock(value);
         }

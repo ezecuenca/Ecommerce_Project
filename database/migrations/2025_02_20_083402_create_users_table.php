@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('username');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('status')->default('active'); // You can set a default status
+            $table->boolean('status')->default(1); 
             $table->timestamps(); // created_at and updated_at
             $table->unsignedBigInteger('role_id')->default(1);
 

@@ -13,7 +13,6 @@ class Inventory extends Model
         'product_id',
         'quantity_sold',
         'total_amount',
-        'profit',
         'status',
         'stocks',
         'created_at',

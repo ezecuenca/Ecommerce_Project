@@ -7,31 +7,40 @@ use App\Models\Cart;
 use App\Models\Product;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CartController extends Controller
 {
-    public function index($profileId)
+    public function index(Request $request)
     {
-        $validator = Validator::make(['profileId' => $profileId], [
-            'profileId' => 'required|integer|exists:profiles,id' // Adjust validation if profile table is different
-        ]);
+        try {
+            $user = $request->user();
+            if (!$user) {
+                 return response()->json(['message' => 'User not authenticated.'], 401);
+            }
+             $profileId = $user->profile->id ?? null;
 
-        if ($validator->fails()) {
-            return response()->json($validator->errors(), 400);
+             if (!$profileId) {
+                 Log::error("Could not determine profile ID for authenticated user.", ['user_id' => $user->id]);
+                 return response()->json(['message' => 'User profile not found.'], 404);
+             }
+
+            $cartItems = Cart::with('product:id,product_name,price,image_url')
+                             ->where('profile_id', $profileId)
+                             ->get();
+
+            return response()->json($cartItems);
+
+        } catch (\Exception $e) {
+             Log::error("Error fetching cart for profile ID: {$profileId}", ['error' => $e->getMessage()]);
+             return response()->json(['message' => 'Error fetching cart items.'], 500);
         }
-
-        // Eager load the product details along with the cart items
-        $cartItems = Cart::with('product')
-                         ->where('profile_id', $profileId)
-                         ->get();
-
-        return response()->json($cartItems);
     }
 
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'profileId' => 'required|integer|exists:profiles,id', // Adjust validation
             'productId' => 'required|integer|exists:products,id',
             'quantity' => 'required|integer|min:1',
         ]);
@@ -40,40 +49,45 @@ class CartController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $profileId = $request->input('profileId');
-        $productId = $request->input('productId');
-        $quantity = $request->input('quantity');
-
         try {
+            $user = $request->user();
+             if (!$user) { return response()->json(['message' => 'User not authenticated.'], 401); }
+             $profileId = $user->profile->id ?? null;
+             if (!$profileId) { return response()->json(['message' => 'User profile not found.'], 404); }
+
+            $productId = $request->input('productId');
+            $quantity = $request->input('quantity');
+
             $product = Product::findOrFail($productId);
             $productPrice = $product->price;
 
-            // Check if item already exists in cart for this user
-            $cartItem = Cart::where('profile_id', $profileId)
-                            ->where('product_id', $productId)
-                            ->first();
+             $cartItem = DB::transaction(function () use ($profileId, $productId, $quantity, $productPrice) {
+                 $item = Cart::where('profile_id', $profileId)
+                                 ->where('product_id', $productId)
+                                 ->lockForUpdate()
+                                 ->first();
 
-            if ($cartItem) {
-                // Update existing item
-                $cartItem->quantity += $quantity;
-                $cartItem->total_price = $cartItem->quantity * $productPrice;
-                $cartItem->save();
-            } else {
-                // Create new cart item
-                $cartItem = Cart::create([
-                    'profile_id' => $profileId,
-                    'product_id' => $productId,
-                    'quantity' => $quantity,
-                    'total_price' => $quantity * $productPrice,
-                ]);
-            }
+                 if ($item) {
+                     $item->quantity += $quantity;
+                     $item->total_price = $item->quantity * $productPrice;
+                     $item->save();
+                     return $item;
+                 } else {
+                      return Cart::create([
+                          'profile_id' => $profileId,
+                          'product_id' => $productId,
+                          'quantity' => $quantity,
+                          'total_price' => $quantity * $productPrice,
+                      ]);
+                 }
+             });
 
-             // Eager load product details for the response
-            $cartItem->load('product');
+            $cartItem->load('product:id,product_name,price,image_url');
 
-            return response()->json($cartItem, 201); // 201 Created or 200 OK if updated
+            return response()->json($cartItem, 201);
 
         } catch (\Exception $e) {
+             Log::error("Error adding item to cart for profile ID: {$profileId}", ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Error processing cart operation', 'error' => $e->getMessage()], 500);
         }
     }
@@ -89,36 +103,55 @@ class CartController extends Controller
         }
 
         try {
-            $cartItem = Cart::findOrFail($cartItemId);
-            $product = Product::findOrFail($cartItem->product_id); // Find related product for price
+            $user = $request->user();
+             if (!$user) { return response()->json(['message' => 'User not authenticated.'], 401); }
+             $profileId = $user->profile->id ?? null;
+            if (!$profileId) { return response()->json(['message' => 'User profile not found.'], 404); }
 
-            $cartItem->quantity = $request->input('quantity');
-            $cartItem->total_price = $cartItem->quantity * $product->price;
+            $cartItem = Cart::where('id', $cartItemId)
+                            ->where('profile_id', $profileId)
+                            ->firstOrFail();
+
+            $product = Product::findOrFail($cartItem->product_id);
+
+            $newQuantity = $request->input('quantity');
+
+            $cartItem->quantity = $newQuantity;
+            $cartItem->total_price = $newQuantity * $product->price;
             $cartItem->save();
 
-            // Eager load product details for the response
-            $cartItem->load('product');
+            $cartItem->load('product:id,product_name,price,image_url');
 
             return response()->json($cartItem);
 
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return response()->json(['message' => 'Cart item not found'], 404);
+            return response()->json(['message' => 'Cart item not found or not accessible.'], 404);
         } catch (\Exception $e) {
+            Log::error("Error updating cart item ID: {$cartItemId} for profile ID: {$profileId}", ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Error updating cart item', 'error' => $e->getMessage()], 500);
         }
     }
 
-    public function destroy($cartItemId)
+    public function destroy(Request $request, $cartItemId)
     {
         try {
-            $cartItem = Cart::findOrFail($cartItemId);
+            $user = $request->user();
+             if (!$user) { return response()->json(['message' => 'User not authenticated.'], 401); }
+             $profileId = $user->profile->id ?? null;
+            if (!$profileId) { return response()->json(['message' => 'User profile not found.'], 404); }
+
+            $cartItem = Cart::where('id', $cartItemId)
+                            ->where('profile_id', $profileId)
+                            ->firstOrFail();
+
             $cartItem->delete();
 
-            return response()->json(null, 204); // 204 No Content on successful deletion
+            return response()->json(null, 204);
 
         } catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e) {
-            return response()->json(['message' => 'Cart item not found'], 404);
+            return response()->json(['message' => 'Cart item not found or not accessible.'], 404);
         } catch (\Exception $e) {
+            Log::error("Error deleting cart item ID: {$cartItemId} for profile ID: {$profileId}", ['error' => $e->getMessage()]);
             return response()->json(['message' => 'Error deleting cart item', 'error' => $e->getMessage()], 500);
         }
     }

@@ -34,10 +34,6 @@ const Header = ({ isHomepage = false }) => {
                 </nav>
             </div>
             <div className="header-right">
-                <div className="notification-icon" onClick={() => setIsNotificationOpen(!isNotificationOpen)}>
-                    <FaBell className="header-icon" size={20} />
-                    {isNotificationOpen && (<div className="notification-dropdown"><p className="no-notifications">You have no new notifications.</p></div>)}
-                </div>
                 <div className="cart-icon-container" onClick={handleCartClick} style={{ position: 'relative', cursor: 'pointer' }}>
                     <FaShoppingCart className="header-icon" size={20} />
                     {cartItemCount > 0 && (

@@ -8,21 +8,15 @@ use Illuminate\Support\Facades\Log;
 
 class InventoryController extends Controller
 {
-    /**
-     * Fetch inventory records with related product details.
-     * Only fetches inventory records for active products (status = 1 in both inventories and products tables).
-     */
     public function index(Request $request)
     {
         try {
             $perPage = $request->query('per_page', 5);
             $page = $request->query('page', 1);
-            $status = $request->query('status', 'active'); // 'active' or 'archived'
+            $status = $request->query('status', 'active');
 
-            // Map status to the corresponding value in the database
             $statusValue = $status === 'active' ? 1 : 0;
 
-            // Log the query parameters
             Log::info('Fetching inventories', [
                 'status' => $status,
                 'statusValue' => $statusValue,
@@ -30,32 +24,27 @@ class InventoryController extends Controller
                 'page' => $page,
             ]);
 
-            // Fetch inventories with specific product fields, ensuring the product is active
             $inventories = Inventory::where('inventories.status', $statusValue)
                 ->join('products', 'inventories.product_id', '=', 'products.id')
-                ->where('products.status', 1) // Only include inventory records for active products
-                ->select('inventories.*') // Select all inventory fields
+                ->where('products.status', 1)
+                ->select('inventories.*')
                 ->with(['product' => function ($query) {
-                    $query->select('id', 'product_name', 'price', 'image_url'); // ADDED image_url
+                    $query->select('id', 'product_name', 'price', 'image_url');
                 }])
                 ->paginate($perPage, ['*'], 'page', $page);
 
-            // Log the raw inventory data
             Log::info('Raw inventory data', [
                 'inventories' => $inventories->toArray(),
             ]);
 
-            // Check if any inventories were found
             if ($inventories->isEmpty()) {
                 Log::warning('No inventories found with the given status and active products', [
                     'statusValue' => $statusValue,
                 ]);
-                return response()->json($inventories); // Returning an empty array if no data is found
+                return response()->json($inventories);
             }
 
-            // Transform the data to include product details in a consistent format
             $inventories->getCollection()->transform(function ($inventory) {
-                // Log each inventory record and its related product
                 Log::info('Transforming inventory record', [
                     'inventory_id' => $inventory->id,
                     'product_id' => $inventory->product_id,
@@ -76,10 +65,8 @@ class InventoryController extends Controller
                     'created_at' => $inventory->created_at->format('Y-m-d H:i:s'), 
                     'updated_at' => $inventory->updated_at->format('Y-m-d H:i:s'), 
                     'product' => $inventory->product, 
-
                 ];
             });
-
 
             Log::info('Final inventory response', [
                 'response' => $inventories->toArray(),
@@ -102,19 +89,15 @@ class InventoryController extends Controller
     public function updateStocks(Request $request, $id)
     {
         try {
-            // Validate the request
             $request->validate([
                 'stocks' => 'required|integer|min:0',
             ]);
 
-            // Find the inventory record
             $inventory = Inventory::findOrFail($id);
 
-            // Update the stocks
             $inventory->stocks = $request->input('stocks');
             $inventory->save();
 
-            // Log the update
             Log::info('Stocks updated', [
                 'inventory_id' => $inventory->id,
                 'new_stocks' => $inventory->stocks,
@@ -137,13 +120,9 @@ class InventoryController extends Controller
         }
     }
 
-    /**
-     * Archive (soft delete) multiple inventory records.
-     */
     public function archive(Request $request)
     {
         try {
-            // Validate the request
             $request->validate([
                 'ids' => 'required|array',
                 'ids.*' => 'integer|exists:inventories,id',
@@ -151,10 +130,8 @@ class InventoryController extends Controller
 
             $ids = $request->input('ids');
 
-            // Update the status to 0 (archived)
             Inventory::whereIn('id', $ids)->update(['status' => 0]);
 
-            // Log the archiving
             Log::info('Inventories archived', [
                 'ids' => $ids,
             ]);
@@ -178,7 +155,6 @@ class InventoryController extends Controller
     public function restore(Request $request)
     {
         try {
-
             $request->validate([
                 'ids' => 'required|array',
                 'ids.*' => 'integer|exists:inventories,id',
@@ -186,9 +162,7 @@ class InventoryController extends Controller
 
             $ids = $request->input('ids');
 
-
             Inventory::whereIn('id', $ids)->update(['status' => 1]);
-
 
             Log::info('Inventories restored', [
                 'ids' => $ids,

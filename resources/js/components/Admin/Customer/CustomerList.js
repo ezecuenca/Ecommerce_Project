@@ -1,542 +1,187 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { FaTrash, FaUndo, FaSpinner } from "react-icons/fa";
 import CustomerManagement from "./CustomerManagement";
+import Axios from 'axios';
+import moment from 'moment';
+
+const API_BASE_URL = "http://localhost:8000/api";
+const CUSTOMER_ROLE_ID = 2;
+
+const makeAuthenticatedRequest = async (method, url, data = null, config = {}) => {
+    const token = localStorage.getItem("access_token");
+    if (!token) { console.error("Auth token not found."); throw new Error("Unauthenticated: No token found."); }
+    const headers = { 'Authorization': `Bearer ${token}`, 'Accept': 'application/json', ...(!(data instanceof FormData) && data ? { 'Content-Type': 'application/json' } : {}), ...(config.headers || {}), };
+    if (data instanceof FormData) { delete headers['Content-Type']; }
+    const fullConfig = { ...config, headers };
+    try {
+        switch (method.toLowerCase()) {
+            case 'get': return await Axios.get(url, fullConfig);
+            case 'post': return await Axios.post(url, data, fullConfig);
+            case 'put': return await Axios.put(url, data, fullConfig);
+            case 'delete': return await Axios.delete(url, fullConfig);
+            default: throw new Error(`Unsupported Axios method: ${method}`);
+        }
+    } catch (error) { console.error(`Axios Error: ${method.toUpperCase()} ${url}`, error.response?.data || error.message); throw error; }
+};
+
+const formatDate = (dateString) => { if (!dateString) return "N/A"; return moment(dateString).isValid() ? moment(dateString).format('MMMM D, YYYY') : "Invalid Date"; };
+const formatTime = (dateString) => { if (!dateString) return "N/A"; return moment(dateString).isValid() ? moment(dateString).format('h:mm A') : "Invalid Time"; };
 
 const CustomerList = () => {
-    const [activeCheckedRows, setActiveCheckedRows] = useState({});
-    const [activeIsSelectAll, setActiveIsSelectAll] = useState(false);
-    const [archivedCheckedRows, setArchivedCheckedRows] = useState({});
-    const [archivedIsSelectAll, setArchivedIsSelectAll] = useState(false);
+    const [customers, setCustomers] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [fetchError, setFetchError] = useState("");
+    const [actionError, setActionError] = useState("");
+    const [checkedRows, setCheckedRows] = useState({});
+    const [isSelectAll, setIsSelectAll] = useState(false);
     const [viewType, setViewType] = useState("active");
     const [managementModalOpen, setManagementModalOpen] = useState(false);
     const [managementType, setManagementType] = useState("");
-    const [selectedCustomer, setSelectedCustomer] = useState(null);
-    const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
-    const [address, setAddress] = useState("");
-    const [error, setError] = useState("");
+    const [selectedCustomers, setSelectedCustomers] = useState([]);
     const [forceUpdate, setForceUpdate] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
     const itemsPerPage = 5;
-
-    const [initialCustomers, setInitialCustomers] = useState([
-        { id: 1, name: "Customer Name 1", email: "user1@gmail.com", address: "user address 1", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
-        { id: 2, name: "Customer Name 2", email: "user2@gmail.com", address: "user address 2", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
-        { id: 3, name: "Customer Name 3", email: "user3@gmail.com", address: "user address 3", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
-        { id: 4, name: "Customer Name 4", email: "user4@gmail.com", address: "user address 4", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
-        { id: 5, name: "Customer Name 5", email: "user5@gmail.com", address: "user address 5", isArchived: false, createdAt: "11/21/24", updatedAt: "11/22/24" },
-    ]);
-
-    const [customers, setCustomers] = useState(initialCustomers);
-    const navigate = useNavigate();
     const tableRef = useRef(null);
 
-    useEffect(() => {
-        const savedCustomers = localStorage.getItem("customers");
-        let updatedCustomers = [...initialCustomers];
-        if (savedCustomers) {
-            try {
-                updatedCustomers = JSON.parse(savedCustomers).map(customer => ({
-                    ...customer,
-                    isArchived: customer.isArchived !== undefined ? customer.isArchived : false,
-                    createdAt: customer.createdAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                    updatedAt: customer.updatedAt || new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
+    const fetchCustomers = useCallback(async () => {
+        setIsLoading(true); setFetchError(""); setCheckedRows({}); setIsSelectAll(false);
+        console.log(`Fetching customers: page=${currentPage}, status=${viewType}, search=${searchQuery}`);
+        try {
+            const response = await makeAuthenticatedRequest('get', `${API_BASE_URL}/users`, null, {
+                params: {
+                    page: currentPage,
+                    per_page: itemsPerPage,
+                    status: viewType,
+                    search: searchQuery || undefined,
+                    role_id: CUSTOMER_ROLE_ID
+                }
+            });
+            console.log("Customers API Response:", response.data);
+
+            if (response.data?.data && typeof response.data.last_page !== 'undefined') {
+                const formattedCustomers = response.data.data.map(user => ({
+                    id: user.id,
+                    name: user.username,
+                    email: user.email,
+                    address: user.profile?.address || user.address || 'N/A',
+                    status: user.status,
+                    isArchived: user.status === 0,
+                    createdAtDate: formatDate(user.created_at),
+                    createdAtTime: formatTime(user.created_at),
+                    updatedAtDate: formatDate(user.updated_at),
+                    updatedAtTime: formatTime(user.updated_at),
                 }));
-            } catch (error) {
-                updatedCustomers = [...initialCustomers];
-                localStorage.setItem("customers", JSON.stringify(updatedCustomers));
-            }
-        } else {
-            localStorage.setItem("customers", JSON.stringify(initialCustomers));
-        }
-        setCustomers(updatedCustomers);
-        setInitialCustomers(updatedCustomers);
-        setActiveCheckedRows({});
-        setActiveIsSelectAll(false);
-        setArchivedCheckedRows({});
-        setArchivedIsSelectAll(false);
-    }, []);
-
-    const getCurrentData = () => {
-        if (!customers || customers.length === 0) {
-            return [];
-        }
-        let filteredCustomers = customers.filter(customer => customer.isArchived === (viewType === "archived"));
-        if (searchQuery.trim()) {
-            filteredCustomers = filteredCustomers.filter(customer =>
-                customer.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                customer.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                customer.address.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                customer.createdAt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                customer.updatedAt.toLowerCase().includes(searchQuery.toLowerCase())
-            );
-        }
-        return filteredCustomers;
-    };
-
-    const currentData = getCurrentData();
-    const totalPages = Math.ceil(currentData.length / itemsPerPage);
-    const currentItems = currentData.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage
-    );
-
-    const handleSelectAll = (e) => {
-        const isChecked = e.target.checked;
-        if (viewType === "active") {
-            setActiveIsSelectAll(isChecked);
-            const newCheckedRows = {};
-            if (isChecked) {
-                currentItems.forEach((_, index) => {
-                    newCheckedRows[index] = true;
-                });
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = true);
-                }
+                setCustomers(formattedCustomers);
+                setTotalPages(response.data.last_page || 1);
+                 if (response.data.current_page > response.data.last_page && response.data.last_page > 0) { setCurrentPage(response.data.last_page); }
+                 else if (response.data.total === 0 && currentPage > 1) { setCurrentPage(1); }
             } else {
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
+                console.warn("Invalid data structure from /users endpoint for customers:", response.data);
+                setFetchError("Received invalid customer data format."); setCustomers([]); setTotalPages(1);
             }
-            setActiveCheckedRows(newCheckedRows);
-        } else if (viewType === "archived") {
-            setArchivedIsSelectAll(isChecked);
-            const newCheckedRows = {};
-            if (isChecked) {
-                currentItems.forEach((_, index) => {
-                    newCheckedRows[index] = true;
-                });
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = true);
-                }
-            } else {
-                if (tableRef.current) {
-                    tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = false);
-                }
-            }
-            setArchivedCheckedRows(newCheckedRows);
+        } catch (err) {
+            console.error("Error fetching customers:", err);
+            const message = err.message?.startsWith("Unauth") ? "Unauth." : (err.response?.data?.message || err.message || 'Failed.');
+            setFetchError(message); setCustomers([]); setTotalPages(1);
+        } finally { setIsLoading(false); }
+    }, [currentPage, itemsPerPage, viewType, searchQuery]);
+
+    useEffect(() => { fetchCustomers(); }, [fetchCustomers, forceUpdate]);
+
+    const handleSelectAll = (e) => { const iC = e.target.checked; setIsSelectAll(iC); const nR = {}; if (iC) customers.forEach(c => { nR[c.id] = true; }); setCheckedRows(nR); };
+    const handleRowCheckbox = (customerId, e) => { const iC = e.target.checked; setCheckedRows(p => { const u = { ...p, [customerId]: iC }; const aC = customers.length>0 && customers.every(c=>u[c.id]); setIsSelectAll(aC); return u; }); };
+    const getSelectedCustomerIds = () => Object.keys(checkedRows).filter(id=>checkedRows[id]).map(id=>parseInt(id, 10));
+    const getSelectedCustomers = (singleCustomer = null) => { if (singleCustomer) return [singleCustomer]; const sIds = getSelectedCustomerIds(); return customers.filter(c => sIds.includes(c.id)); };
+
+    const handleArchiveAction = (customerToArchive = null) => {
+        const selectedItems = getSelectedCustomers(customerToArchive);
+        if (viewType !== "active") { alert("Can only archive active customers."); return; }
+        if (selectedItems.length === 0) { alert("Select customer(s) to archive."); return; }
+        setManagementType("archive"); setSelectedCustomers(selectedItems); setActionError(""); setManagementModalOpen(true);
+    };
+    const handleRestoreAction = (customerToRestore = null) => {
+        const selectedItems = getSelectedCustomers(customerToRestore);
+        if (viewType !== "archived") { alert("Can only restore archived customers."); return; }
+        if (selectedItems.length === 0) { alert("Select customer(s) to restore."); return; }
+        setManagementType("restore"); setSelectedCustomers(selectedItems); setActionError(""); setManagementModalOpen(true);
+    };
+    const handleSearchChange = (e) => { setSearchQuery(e.target.value); setCurrentPage(1); };
+    const handleCloseManagement = () => { setManagementModalOpen(false); setManagementType(""); setSelectedCustomers([]); setActionError(""); };
+
+    const handleConfirmArchiveOrRestore = async (items) => {
+        setActionError(""); if (!items || items.length === 0) { setActionError("No customers selected."); return; }
+        const customerIds = items.map(item => item.id);
+        const action = managementType === "archive" ? "archive" : "restore";
+        const url = `${API_BASE_URL}/users/${action}`;
+        try {
+            console.log(`Attempting to ${action} customers (users):`, customerIds);
+            await makeAuthenticatedRequest('put', url, { ids: customerIds });
+            alert(`Customers ${action}d successfully.`); handleCloseManagement(); setForceUpdate(prev => prev + 1);
+        } catch (err) {
+            console.error(`Error ${action}ing customers:`, err);
+            const message = err.message?.startsWith("Unauth")?"Unauth.":(err.response?.data?.message||err.message||`Failed.`);
+            setActionError(message);
+        } finally {
         }
     };
 
-    const handleRowCheckbox = (index, e) => {
-        const isChecked = e.target.checked;
-        if (viewType === "active") {
-            setActiveCheckedRows((prev) => ({
-                ...prev,
-                [index]: isChecked,
-            }));
-            const allChecked = currentItems.length ===
-                (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.customer-checkbox')).filter(cb => cb.checked).length : 0);
-            setActiveIsSelectAll(allChecked);
-        } else if (viewType === "archived") {
-            setArchivedCheckedRows((prev) => ({
-                ...prev,
-                [index]: isChecked,
-            }));
-            const allChecked = currentItems.length ===
-                (tableRef.current ? Array.from(tableRef.current.querySelectorAll('.customer-checkbox')).filter(cb => cb.checked).length : 0);
-            setArchivedIsSelectAll(allChecked);
-        }
-    };
-
-    const handleDelete = (customerToDelete = null) => {
-        const selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows)
-            .filter(index => activeCheckedRows[index])
-            .map(index => parseInt(index, 10)) : [];
-
-        if (customerToDelete) {
-            if (viewType !== "active") {
-                alert("You can only delete from Active Customers.");
-                return;
-            }
-            setManagementType("delete");
-            setSelectedCustomer([customerToDelete]);
-            setManagementModalOpen(true);
-            return;
-        }
-
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 2) {
-            return;
-        }
-
-        if (viewType !== "active") {
-            alert("You can only delete from Active Customers.");
-            return;
-        }
-
-        setManagementType("delete");
-        setSelectedCustomer(getSelectedCustomers());
-        setManagementModalOpen(true);
-    };
-
-    const handleRestore = (customerToRestore = null) => {
-        const selectedIndices = viewType === "archived" ? Object.keys(archivedCheckedRows)
-            .filter(index => archivedCheckedRows[index])
-            .map(index => parseInt(index, 10)) : [];
-
-        if (customerToRestore) {
-            if (viewType !== "archived") {
-                alert("You can only restore from Archived Customers.");
-                return;
-            }
-            setManagementType("restore");
-            setSelectedCustomer([customerToRestore]);
-            setManagementModalOpen(true);
-            return;
-        }
-
-        const selectedCount = selectedIndices.length;
-        if (selectedCount < 2) {
-            return;
-        }
-
-        if (viewType !== "archived") {
-            alert("You can only restore from Archived Customers.");
-            return;
-        }
-
-        setManagementType("restore");
-        setSelectedCustomer(getSelectedCustomers());
-        setManagementModalOpen(true);
-    };
-
-    const handleAdd = () => {
-        if (viewType !== "active") {
-            alert("You can only add customers to Active Customers.");
-            return;
-        }
-        setManagementType("add");
-        setName("");
-        setEmail("");
-        setAddress("");
-        setSelectedCustomer(null);
-        setManagementModalOpen(true);
-    };
-
-    const handleEdit = (customer) => {
-        setSelectedCustomer(customer);
-        setName(customer.name || "");
-        setEmail(customer.email || "");
-        setAddress(customer.address || "");
-        setManagementType("edit");
-        setManagementModalOpen(true);
-    };
-
-    const validateEmail = (email) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
-
-    const handleNameChange = (e) => setName(e.target.value);
-    const handleEmailChange = (e) => setEmail(e.target.value);
-    const handleAddressChange = (e) => setAddress(e.target.value);
-
-    const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-        setCurrentPage(1);
-    };
-
-    const handleSaveEditOrAdd = (newOrUpdatedCustomer) => {
-        if (managementType === "edit") {
-            if (!selectedCustomer) {
-                alert("No customer selected for editing.");
-                return;
-            }
-
-            if (!newOrUpdatedCustomer.name.trim()) {
-                setError("Customer name is required.");
-                return;
-            }
-
-            if (!validateEmail(newOrUpdatedCustomer.email)) {
-                setError("Please enter a valid email address.");
-                return;
-            }
-
-            if (!newOrUpdatedCustomer.address.trim()) {
-                setError("Address is required.");
-                return;
-            }
-
-            setError("");
-            const updatedCustomers = customers.map(c =>
-                c.id === selectedCustomer.id ? { ...newOrUpdatedCustomer, id: selectedCustomer.id, isArchived: selectedCustomer.isArchived, createdAt: selectedCustomer.createdAt, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) } : c
-            );
-            setCustomers(updatedCustomers);
-            setInitialCustomers(updatedCustomers);
-            localStorage.setItem("customers", JSON.stringify(updatedCustomers));
-            setManagementModalOpen(false);
-            setSelectedCustomer(null);
-            setName("");
-            setEmail("");
-            setAddress("");
-            setForceUpdate(prev => prev + 1);
-        } else if (managementType === "add") {
-            if (!newOrUpdatedCustomer.name.trim()) {
-                setError("Customer name is required.");
-                return;
-            }
-
-            if (!validateEmail(newOrUpdatedCustomer.email)) {
-                setError("Please enter a valid email address.");
-                return;
-            }
-
-            if (!newOrUpdatedCustomer.address.trim()) {
-                setError("Address is required.");
-                return;
-            }
-
-            setError("");
-            const newCustomer = {
-                id: Date.now(),
-                name: newOrUpdatedCustomer.name.trim(),
-                email: newOrUpdatedCustomer.email,
-                address: newOrUpdatedCustomer.address.trim(),
-                isArchived: false,
-                createdAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-                updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }),
-            };
-            const updatedCustomers = [newCustomer, ...customers];
-            setCustomers(updatedCustomers);
-            setInitialCustomers(updatedCustomers);
-            localStorage.setItem("customers", JSON.stringify(updatedCustomers));
-            setManagementModalOpen(false);
-            setName("");
-            setEmail("");
-            setAddress("");
-            setForceUpdate(prev => prev + 1);
-            setCurrentPage(1);
-        }
-    };
-
-    const handleConfirmDeleteOrRestore = (items) => {
-        if (managementType === "delete") {
-            const updatedCustomers = customers.map(customer => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === customer.id)) {
-                        return { ...customer, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === customer.id) {
-                        return { ...customer, isArchived: true, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return customer;
-            });
-            setCustomers(updatedCustomers);
-            setInitialCustomers(updatedCustomers);
-            setActiveCheckedRows({});
-            setActiveIsSelectAll(false);
-            if (tableRef.current && viewType === "active") {
-                tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            setForceUpdate(prev => prev + 1);
-            localStorage.setItem("customers", JSON.stringify(updatedCustomers));
-        } else if (managementType === "restore") {
-            const updatedCustomers = customers.map(customer => {
-                if (Array.isArray(items)) {
-                    if (items.some(item => item.id === customer.id)) {
-                        return { ...customer, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                } else {
-                    if (items.id === customer.id) {
-                        return { ...customer, isArchived: false, updatedAt: new Date().toLocaleDateString('en-US', { month: '2-digit', day: '2-digit', year: '2-digit' }) };
-                    }
-                }
-                return customer;
-            });
-            setCustomers(updatedCustomers);
-            setInitialCustomers(updatedCustomers);
-            setArchivedCheckedRows({});
-            setArchivedIsSelectAll(false);
-            if (tableRef.current && viewType === "archived") {
-                tableRef.current.querySelectorAll('.customer-checkbox').forEach(checkbox => checkbox.checked = false);
-            }
-            setManagementModalOpen(false);
-            if (currentData.length === 0) {
-                setCurrentPage(1);
-            }
-            setForceUpdate(prev => prev + 1);
-            localStorage.setItem("customers", JSON.stringify(updatedCustomers));
-        }
-    };
-
-    const handleCloseManagement = () => {
-        setManagementModalOpen(false);
-        setManagementType("");
-        setSelectedCustomer(null);
-        setName("");
-        setEmail("");
-        setAddress("");
-        setError("");
-    };
-
-    const getSelectedCustomers = () => {
-        const selectedIndices = viewType === "active" ? Object.keys(activeCheckedRows)
-            .filter(index => activeCheckedRows[index])
-            .map(index => parseInt(index, 10)) : Object.keys(archivedCheckedRows)
-            .filter(index => archivedCheckedRows[index])
-            .map(index => parseInt(index, 10));
-        return selectedIndices.map(index => currentItems[index]);
-    };
-
-    const isSelectAll = viewType === "active" ? activeIsSelectAll : archivedIsSelectAll;
-    const checkedCount = viewType === "active" ? Object.keys(activeCheckedRows).filter(index => activeCheckedRows[index]).length : Object.keys(archivedCheckedRows).filter(index => archivedCheckedRows[index]).length;
+    const checkedCount = getSelectedCustomerIds().length;
 
     return (
         <div className="customers-container">
             <h2 className="customers-header">{viewType === "active" ? "Customers" : "Archived Customers"}</h2>
+            {fetchError && !isLoading && <p className="error-message" style={{ color: 'red', margin: '10px 0' }}>{fetchError}</p>}
+
             <div className="table-container">
                 <div className="table-header-actions">
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            placeholder="Search"
-                            className="search-input"
-                        />
-                    </div>
+                    <div className="search-bar"> <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search Name, Email, Address..." className="search-input" disabled={isLoading} /> </div>
                     <div className="button-group" style={{ marginLeft: 'auto' }}>
-                        {viewType === "active" && (
-                            <>
-                                <button className="add-button" onClick={handleAdd}>Add</button>
-                                <button
-                                    className="delete-button"
-                                    onClick={() => handleDelete()}
-                                    disabled={checkedCount < 2}
-                                >
-                                    Delete
-                                </button>
-                            </>
-                        )}
-                        {viewType === "archived" && (
-                            <button
-                                className="restore-button"
-                                onClick={() => handleRestore()}
-                                disabled={checkedCount < 2}
-                            >
-                                Restore
-                            </button>
-                        )}
+                        {viewType === "active" && ( <button className="delete-button" onClick={() => handleArchiveAction()} disabled={checkedCount === 0 || isLoading} title="Archive selected customers"> Archive </button> )}
+                        {viewType === "archived" && ( <button className="restore-button" onClick={() => handleRestoreAction()} disabled={checkedCount === 0 || isLoading}> Restore </button> )}
                     </div>
-                    <div className="view-toggle">
-                        <button
-                            className={`view-button ${viewType === "active" ? "active" : ""}`}
-                            onClick={() => setViewType("active")}
-                        >
-                            Active Customers
-                        </button>
-                        <button
-                            className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                            onClick={() => setViewType("archived")}
-                        >
-                            Archived Customers
-                        </button>
-                    </div>
+                    <div className="view-toggle"> <button className={`view-button ${viewType === "active" ? "active" : ""}`} onClick={() => { setViewType("active"); setCurrentPage(1); }} disabled={isLoading}> Active Customers </button> <button className={`view-button ${viewType === "archived" ? "active" : ""}`} onClick={() => { setViewType("archived"); setCurrentPage(1); }} disabled={isLoading}> Archived Customers </button> </div>
                 </div>
-                <table ref={tableRef} className={`customers-table ${viewType === "archived" ? 'view-type="archived"' : 'view-type="active"'}`}>
-                    <thead>
-                        <tr className="table-header-row">
-                            <th className="table-header">
-                                <input type="checkbox" className="customer-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
-                            </th>
-                            <th className="table-header customers-action-column">Action</th>
-                            <th className="table-header">Customer Name</th>
-                            <th className="table-header">Email</th>
-                            <th className="table-header">Address</th>
-                            <th className="table-header">Status</th>
-                            <th className="table-header">Created At</th>
-                            <th className="table-header">Updated At</th>
-                        </tr>
-                    </thead>
+
+                <table ref={tableRef} className={`customers-table ${viewType}`}>
+                     <thead> <tr className="table-header-row"> <th className="table-header"> <input type="checkbox" className="customer-checkbox" checked={isSelectAll} onChange={handleSelectAll} disabled={isLoading || customers.length === 0}/> </th> <th className="table-header customers-action-column">Action</th> <th className="table-header">Customer Name</th> <th className="table-header">Email</th> <th className="table-header">Address</th> <th className="table-header">Status</th> <th className="table-header">Created At</th> <th className="table-header">Updated At</th> </tr> </thead>
                     <tbody>
-                        {currentItems.length > 0 ? (
-                            currentItems.map((customer, index) => (
-                                <tr className={`table-row ${viewType === "archived" ? 'view-type="archived"' : ''}`} key={customer.id + index + forceUpdate}>
-                                    <td className="table-cell">
-                                        <input type="checkbox" className="customer-checkbox" onChange={(e) => handleRowCheckbox((currentPage - 1) * itemsPerPage + index, e)} />
-                                    </td>
-                                    <td className="table-cell customers-action-column">
-                                        <div className="action-buttons">
-                                            {viewType === "active" ? (
-                                                <>
-                                                    <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(customer)} />
-                                                    <FaTrash className="delete-icon" size={20} onClick={() => handleDelete(customer)} />
-                                                </>
-                                            ) : (
-                                                <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(customer)} />
-                                            )}
-                                        </div>
-                                    </td>
+                        {isLoading ? ( <tr><td colSpan="8" style={{ textAlign: 'center', padding: '20px', fontStyle: 'italic' }}><FaSpinner className="spinner" /> Loading...</td></tr> )
+                        : fetchError ? ( <tr><td colSpan="8" style={{ textAlign: 'center', padding: '20px', color: 'red' }}>Error: {fetchError}</td></tr> )
+                        : customers.length === 0 ? ( <tr className="table-row"> <td colSpan="8" className="table-cell" style={{ textAlign: "center", padding: "20px" }}> {searchQuery ? "No customers match." : "No customers available."} </td> </tr> )
+                        : ( customers.map((customer) => (
+                                <tr className={`table-row ${viewType === "archived" ? 'view-type="archived"' : ''}`} key={customer.id}>
+                                    <td className="table-cell"> <input type="checkbox" className="customer-checkbox" checked={!!checkedRows[customer.id]} onChange={(e) => handleRowCheckbox(customer.id, e)} disabled={isLoading}/> </td>
+                                    <td className="table-cell customers-action-column"> <div className="action-buttons"> {viewType === "active" ? ( <FaTrash className="delete-icon" title="Archive Customer" size={20} onClick={() => handleArchiveAction(customer)} /> ) : ( <FaUndo className="restore-icon" title="Restore Customer" size={20} onClick={() => handleRestoreAction(customer)} /> )} </div> </td>
                                     <td className="table-cell">{customer.name}</td>
-                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '190px' }}>{customer.email}</td>
-                                    <td className="table-cell" style={{ overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '350px' }}>{customer.address}</td>
-                                    <td className={`table-cell status-${customer.isArchived ? "inactive" : "active"}`}>
-                                        {customer.isArchived ? "Inactive" : "Active"}
-                                    </td>
-                                    <td className="table-cell">{customer.createdAt}</td>
-                                    <td className="table-cell">{customer.updatedAt}</td>
+                                    <td className="table-cell" title={customer.email}>{customer.email}</td>
+                                    <td className="table-cell" title={customer.address}>{customer.address}</td>
+                                    <td className={`table-cell status-${customer.isArchived ? "inactive" : "active"}`}> {customer.isArchived ? "Inactive" : "Active"} </td>
+                                    <td className="table-cell">{customer.createdAtDate}<br/><span style={{fontSize:'0.8em', color:'#666'}}>at {customer.createdAtTime}</span></td>
+                                    <td className="table-cell">{customer.updatedAtDate}<br/><span style={{fontSize:'0.8em', color:'#666'}}>at {customer.updatedAtTime}</span></td>
                                 </tr>
                             ))
-                        ) : (
-                            <tr className="table-row">
-                                <td colSpan="8" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                    {customers.length === 0
-                                        ? "No customers available. Please check your data or refresh the page."
-                                        : viewType === "active"
-                                        ? "No active customers match your search."
-                                        : "No archived customers match your search."}
-                                </td>
-                            </tr>
                         )}
                     </tbody>
                 </table>
-                <div className="table-pagination">
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-                        disabled={currentPage === 1}
-                        className="table-pagination-button"
-                    >
-                        Previous
-                    </button>
-                    {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                            key={page}
-                            onClick={() => setCurrentPage(page)}
-                            className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
-                        >
-                            {page}
-                        </button>
-                    ))}
-                    <button
-                        onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
-                        disabled={currentPage === totalPages}
-                        className="table-pagination-button"
-                    >
-                        Next
-                    </button>
-                </div>
+
+                {!isLoading && !fetchError && totalPages > 1 && (
+                    <div className="table-pagination">
+                        <button onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))} disabled={currentPage === 1 || isLoading} className="table-pagination-button"> Previous </button>
+                        {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => ( <button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"} disabled={isLoading}> {page} </button> ))}
+                        <button onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages || isLoading} className="table-pagination-button"> Next </button>
+                    </div>
+                )}
             </div>
-            {managementModalOpen && (
+
+            {managementModalOpen && (managementType === 'archive' || managementType === 'restore') && (
                 <CustomerManagement
                     type={managementType}
-                    customer={managementType === "edit" || managementType === "add" ? selectedCustomer : (managementType === "restore" && !Array.isArray(selectedCustomer) ? selectedCustomer : null)}
-                    selectedCustomers={managementType === "delete" || (managementType === "restore" && Array.isArray(selectedCustomer)) ? (selectedCustomer || getSelectedCustomers()) : []}
-                    name={name}
-                    email={email}
-                    address={address}
+                    selectedCustomers={selectedCustomers}
                     onClose={handleCloseManagement}
-                    onConfirm={handleConfirmDeleteOrRestore}
-                    onSave={handleSaveEditOrAdd}
+                    onConfirm={handleConfirmArchiveOrRestore}
+                    externalError={actionError}
                 />
             )}
         </div>

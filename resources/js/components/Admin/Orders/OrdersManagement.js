@@ -6,9 +6,6 @@ const OrdersManagement = ({ type, orderId, orderDetails, viewType, onClose, ship
         onClose();
     };
 
-    // REMOVED Restore Confirmation Modal Logic block
-
-    // Order Details Modal Logic (this is now the only view)
     return (
         <div className="OrdersManagement">
             <div className="modal-overlay" onClick={onClose}>
@@ -52,11 +49,7 @@ const OrdersManagement = ({ type, orderId, orderDetails, viewType, onClose, ship
                          <p><strong>Tracking:</strong> {shippingDetails.trackingNumber || "N/A"}</p>
                          <p><strong>Shipping Status:</strong> {shippingDetails.shippingStatus || "N/A"}</p>
                     </div>
-
-                     {/* Action buttons within the details modal */}
                      <div className="button-group">
-                        {/* --- MODIFICATION: Removed Restore button entirely --- */}
-                        {/* No buttons needed here anymore besides Close */}
                          <button className="cancel-button" onClick={onClose}>Close</button>
                       </div>
 

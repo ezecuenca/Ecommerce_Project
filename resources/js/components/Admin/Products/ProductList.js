@@ -1,7 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
-import { FaEdit, FaTrash, FaUndo } from "react-icons/fa";
+import React, { useState, useEffect, useRef, useCallback } from "react";
+import { FaEdit, FaTrash, FaUndo, FaSpinner } from "react-icons/fa";
 import ProductManagement from "./ProductManagement";
 import Axios from 'axios';
+
+const API_BASE_URL = "http://localhost:8000/api";
+
+const makeAuthenticatedRequest = async (method, url, data = null, config = {}) => {
+    const token = localStorage.getItem("access_token");
+    if (!token) {
+        console.error("Authentication token not found.");
+        throw new Error("Unauthenticated: No token found.");
+    }
+    const headers = {
+        'Authorization': `Bearer ${token}`,
+        'Accept': 'application/json',
+        ...(method.toLowerCase() !== 'get' && data && !(data instanceof FormData) ? { 'Content-Type': 'application/json' } : {}),
+        ...(config.headers || {}),
+    };
+    if (data instanceof FormData) {
+        delete headers['Content-Type'];
+    }
+    const fullConfig = { ...config, headers };
+    try {
+        switch (method.toLowerCase()) {
+            case 'get': return await Axios.get(url, fullConfig);
+            case 'post': return await Axios.post(url, data, fullConfig);
+            case 'put': return await Axios.put(url, data, fullConfig);
+            case 'patch': return await Axios.patch(url, data, fullConfig);
+            case 'delete': return await Axios.delete(url, fullConfig);
+            default: throw new Error(`Unsupported Axios method: ${method}`);
+        }
+    } catch (error) {
+         console.error(`Axios Error: ${method.toUpperCase()} ${url}`, error.response?.data || error.message, error);
+         throw error;
+    }
+};
 
 const ProductList = () => {
     const [checkedRows, setCheckedRows] = useState({});
@@ -11,6 +44,7 @@ const ProductList = () => {
     const [managementType, setManagementType] = useState("");
     const [selectedProduct, setSelectedProduct] = useState(null);
     const [error, setError] = useState("");
+    const [fetchError, setFetchError] = useState("");
     const [forceUpdate, setForceUpdate] = useState(0);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchQuery, setSearchQuery] = useState("");
@@ -22,252 +56,207 @@ const ProductList = () => {
 
     const formatDate = (dateString) => {
         if (!dateString) return "N/A";
-        try {
-            const date = new Date(dateString);
-            return date.toLocaleDateString("en-US", {
-                year: 'numeric',
-                month: 'long',
-                day: 'numeric',
-            });
-        } catch (e) {
-            console.error("Error formatting date:", dateString, e);
-            return "Invalid Date";
-        }
+        try { const date = new Date(dateString); return date.toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' }); }
+        catch (e) { console.error("Error formatting date:", dateString, e); return "Invalid Date"; }
     };
-
     const formatTime = (dateString) => {
         if (!dateString) return "N/A";
-        try {
-            const date = new Date(dateString);
-            return date.toLocaleTimeString("en-US", {
-                hour: 'numeric',
-                minute: 'numeric',
-                hour12: true,
-            });
-        } catch (e) {
-            console.error("Error formatting time:", dateString, e);
-            return "Invalid Time";
-        }
+        try { const date = new Date(dateString); return date.toLocaleTimeString("en-US", { hour: 'numeric', minute: 'numeric', hour12: true }); }
+        catch (e) { console.error("Error formatting time:", dateString, e); return "Invalid Time"; }
     };
 
-    useEffect(() => {
-        console.log("ProductList component mounted");
-    }, []);
+    const fetchProducts = useCallback(async () => {
+        setIsLoading(true);
+        setFetchError("");
+        setCheckedRows({});
+        setIsSelectAll(false);
+        try {
+            console.log(`[ProductList] Fetching products: page=${currentPage}, status=${viewType}, per_page=${itemsPerPage}`);
+            const response = await makeAuthenticatedRequest('get', `${API_BASE_URL}/products`, null, {
+                params: { page: currentPage, per_page: itemsPerPage, status: viewType }
+            });
+            console.log("[ProductList] API Response received:", response.data);
 
-    useEffect(() => {
-        console.log("State changed:", {
-            managementModalOpen,
-            managementType,
-            selectedProduct,
-        });
-    }, [managementModalOpen, managementType, selectedProduct]);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                console.log("Fetching products from /api/products...", {
-                    page: currentPage,
-                    per_page: itemsPerPage,
-                    status: viewType,
-                });
-                const response = await Axios.get('/api/products', {
-                    params: {
-                        page: currentPage,
-                        per_page: itemsPerPage,
-                        status: viewType,
-                    },
-                });
-                console.log("API Response:", response.data);
-
-                const formattedProducts = (response.data.data || []).map(product => ({
+            if (response.data?.data && Array.isArray(response.data.data)) {
+                const formattedProducts = response.data.data.map(product => ({
                     ...product,
                     createdAtDate: formatDate(product.created_at),
                     createdAtTime: formatTime(product.created_at),
                     updatedAtDate: formatDate(product.updated_at),
                     updatedAtTime: formatTime(product.updated_at),
                 }));
-
-                console.log("Setting products:", formattedProducts);
+                console.log("[ProductList] Setting products state:", formattedProducts);
                 setProducts(formattedProducts);
                 setTotalPages(response.data.last_page || 1);
-            } catch (error) {
-                console.error("Error fetching products:", error);
-                console.error("Error response:", error.response?.data);
-                console.error("Error status:", error.response?.status);
-                setError(`Failed to load products: ${error.response?.data?.message || error.message}`);
-                setProducts([]);
-            } finally {
-                setIsLoading(false);
+
+                if (response.data.current_page > response.data.last_page && response.data.last_page > 0) {
+                    setCurrentPage(response.data.last_page);
+                } else if (response.data.total === 0 && currentPage > 1) {
+                     setCurrentPage(1);
+                }
+
+            } else {
+                 console.warn("[ProductList] Invalid data structure:", response.data);
+                 setFetchError("Invalid data format received.");
+                 setProducts([]); setTotalPages(1);
             }
-        };
+        } catch (fetchErr) {
+            console.error("[ProductList] Error during fetchProducts:", fetchErr);
+            const errorMessage = fetchErr.message?.startsWith("Unauthenticated")
+                ? "Authentication error. Please log in again."
+                : (fetchErr.response?.data?.message || fetchErr.message || 'Failed to load products.');
+            setFetchError(errorMessage);
+            setProducts([]); setTotalPages(1);
+        } finally {
+            setIsLoading(false);
+        }
+    }, [viewType, currentPage, itemsPerPage]);
+
+    useEffect(() => {
+        console.log("[ProductList] useEffect triggered: Fetching products.");
         fetchProducts();
-    }, [viewType, currentPage, forceUpdate]);
+    }, [fetchProducts, forceUpdate]);
 
     const getCurrentData = () => {
-        console.log("products:", products);
-        console.log("viewType:", viewType);
-        console.log("searchQuery:", searchQuery);
-
-        if (!products || products.length === 0) {
-            console.warn("No products data available, returning empty array.");
-            return [];
-        }
-
+        if (!Array.isArray(products)) return [];
         let filteredProducts = products;
-
         if (searchQuery.trim()) {
-            filteredProducts = filteredProducts.filter(product =>
-                product.product_name.toLowerCase().includes(searchQuery.toLowerCase())
+            const lowerCaseQuery = searchQuery.toLowerCase();
+            filteredProducts = products.filter(product =>
+                (product.product_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                (product.description || '').toLowerCase().includes(lowerCaseQuery) ||
+                (product.category?.category_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                (product.color?.color_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                (product.wristMeasurement?.measurement || '').toLowerCase().includes(lowerCaseQuery)
             );
         }
-
-        console.log("filteredProducts:", filteredProducts);
         return filteredProducts;
     };
-
     const currentData = getCurrentData();
 
     const handleSelectAll = (e) => {
         const isChecked = e.target.checked;
         setIsSelectAll(isChecked);
         const newCheckedRows = {};
-        currentData.forEach(product => {
-            newCheckedRows[product.id] = isChecked;
-        });
+        currentData.forEach(product => { newCheckedRows[product.id] = isChecked; });
         setCheckedRows(newCheckedRows);
-        if (tableRef.current) {
-            tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => {
-                checkbox.checked = isChecked;
-            });
-        }
     };
-
     const handleRowCheckbox = (product, e) => {
-        setCheckedRows(prev => ({
-            ...prev,
-            [product.id]: e.target.checked
-        }));
-        setIsSelectAll(currentData.every(item => checkedRows[item.id] || (item.id === product.id && e.target.checked)));
+        const isChecked = e.target.checked;
+        setCheckedRows(prev => {
+            const updated = { ...prev, [product.id]: isChecked };
+            const allVisibleChecked = currentData.length > 0 && currentData.every(item => updated[item.id]);
+            setIsSelectAll(allVisibleChecked);
+            return updated;
+        });
     };
 
     const getSelectedItems = (singleItem = null) => {
         if (singleItem) return [singleItem];
-        return currentData.filter(product => checkedRows[product.id]);
-    };
-
-    const handleArchive = (productToArchive = null) => {
-        console.log("Attempting to archive - viewType:", viewType, "productToArchive:", productToArchive, "checkedRows:", checkedRows);
-        const selectedItems = getSelectedItems(productToArchive);
-        if (viewType !== "active") {
-            alert("You can only archive from Active Products.");
-            return;
-        }
-        if (!selectedItems.length) {
-            alert("Please select at least one product to archive.");
-            return;
-        }
-        setManagementType("archive");
-        setSelectedProduct(selectedItems);
-        setManagementModalOpen(true);
-    };
-
-    const handleRestore = (productToRestore = null) => {
-        console.log("Attempting to restore - viewType:", viewType, "productToRestore:", productToRestore, "checkedRows:", checkedRows);
-        const selectedItems = getSelectedItems(productToRestore);
-        if (viewType !== "archived") {
-            alert("You can only restore from Archived Products.");
-            return;
-        }
-        if (!selectedItems.length) {
-            alert("Please select at least one product to restore.");
-            return;
-        }
-        setManagementType("restore");
-        setSelectedProduct(selectedItems);
-        setManagementModalOpen(true);
-    };
-
-    const handleAdd = (e) => {
-        e.stopPropagation();
-        console.log("Add button clicked!");
-        console.log("Current viewType:", viewType, "Opening Add modal");
-        setManagementType("add");
-        setSelectedProduct(null);
-        setManagementModalOpen(true);
-        console.log("State updated:", {
-            managementType: "add",
-            selectedProduct: null,
-            managementModalOpen: true,
-        });
-    };
-
-    const handleEdit = (product) => {
-        console.log("Opening edit for product:", product);
-        setSelectedProduct(product);
-        setManagementType("edit");
-        setManagementModalOpen(true);
-    };
-
-    const handleSearchChange = (e) => {
-        setSearchQuery(e.target.value);
-        setCurrentPage(1);
+        const selectedIds = Object.keys(checkedRows).filter(id => checkedRows[id]);
+        return products.filter(product => selectedIds.includes(String(product.id)));
     };
 
     const handleConfirmDeleteOrRestore = async (items) => {
-        console.log("Confirming action - managementType:", managementType, "items:", items);
-        if (!items?.length) {
-            setError(`Please select at least one product to ${managementType}.`);
+        setError("");
+        if (!items || items.length === 0) {
+            setError(`No products selected to ${managementType}.`);
             return;
         }
-        try {
-            const productIds = items.map(item => parseInt(item.id, 10));
-            console.log("productIds after mapping:", productIds);
-            console.log(`${managementType} payload:`, { ids: productIds });
+        const productIds = items.map(item => item.id);
+        const action = managementType === "archive" ? "archive" : "restore";
+        const url = `${API_BASE_URL}/products/${action}`;
 
-            if (managementType === "archive") {
-                const response = await Axios.put('/api/products/archive', { ids: productIds }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                console.log("Archive response:", response.data);
-            } else if (managementType === "restore") {
-                const response = await Axios.put('/api/products/restore', { ids: productIds }, {
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                console.log("Restore response:", response.data);
-            }
+        try {
+            console.log(`[ProductList] Attempting to ${action} products:`, productIds);
+            await makeAuthenticatedRequest('put', url, { ids: productIds });
+            alert(`Products ${action}d successfully.`);
             setForceUpdate(prev => prev + 1);
-            setCheckedRows({});
-            setIsSelectAll(false);
-            if (tableRef.current) {
-                tableRef.current.querySelectorAll('.product-checkbox').forEach(checkbox => checkbox.checked = false);
+            setCheckedRows({}); setIsSelectAll(false); handleCloseManagement();
+
+            if (currentData.length === productIds.length && currentPage > 1) {
+                 setCurrentPage(1);
             }
-            setManagementModalOpen(false);
-            if (currentData.length <= itemsPerPage) setCurrentPage(1);
-        } catch (error) {
-            console.error(`Error ${managementType}ing products:`, error);
-            console.error("Error response data:", error.response?.data);
-            console.error("Error status:", error.response?.status);
-            setError(`Failed to ${managementType} products: ${JSON.stringify(error.response?.data) || error.message}`);
+        } catch (confirmError) {
+            console.error(`[ProductList] Error ${action}ing products:`, confirmError);
+            const errorMessage = confirmError.message?.startsWith("Unauthenticated")
+                 ? `Authentication error.` : (confirmError.response?.data?.message || confirmError.message || `Failed to ${action}.`);
+            setError(errorMessage);
         }
     };
 
+    const handleArchive = (productToArchive = null) => {
+        const selectedItems = getSelectedItems(productToArchive);
+        if (viewType !== "active") { alert("Can only archive active products."); return; }
+        if (selectedItems.length === 0) { alert("Please select one or more products to archive."); return; }
+        setManagementType("archive"); setSelectedProduct(selectedItems);
+        setError(""); setManagementModalOpen(true);
+    };
+    const handleRestore = (productToRestore = null) => {
+        const selectedItems = getSelectedItems(productToRestore);
+        if (viewType !== "archived") { alert("Can only restore archived products."); return; }
+        if (selectedItems.length === 0) { alert("Please select one or more products to restore."); return; }
+        setManagementType("restore"); setSelectedProduct(selectedItems);
+        setError(""); setManagementModalOpen(true);
+    };
+    const handleAdd = (e) => {
+        e.stopPropagation();
+        setManagementType("add"); setSelectedProduct(null); setError(""); setManagementModalOpen(true);
+    };
+    const handleEdit = (product) => {
+        if (viewType !== "active") { alert("Can only edit active products."); return; }
+        setSelectedProduct(product); setManagementType("edit"); setError(""); setManagementModalOpen(true);
+    };
+    const handleSearchChange = (e) => {
+        setSearchQuery(e.target.value);
+    };
+    const handleViewTypeChange = (newType) => {
+         if (viewType !== newType) {
+             setViewType(newType);
+             setCurrentPage(1);
+             setSearchQuery("");
+             setForceUpdate(prev => prev + 1);
+         }
+    };
     const handleCloseManagement = () => {
-        setManagementModalOpen(false);
-        setManagementType("");
-        setSelectedProduct(null);
-        setError("");
+        setManagementModalOpen(false); setManagementType(""); setSelectedProduct(null); setError("");
     };
 
-    const handleSaveEditOrAdd = () => {
-        console.log("Saving product, re-fetching products...");
-        setForceUpdate(prev => prev + 1);
-        setManagementModalOpen(false);
-        setManagementType("");
-        setSelectedProduct(null);
+    const handleSaveEditOrAdd = (savedProductData) => {
+        console.log("[ProductList] handleSaveEditOrAdd received:", savedProductData);
+
+        if (!savedProductData || typeof savedProductData.id === 'undefined') {
+            console.error("[ProductList] Invalid data from onSave. Triggering refetch.");
+            setForceUpdate(prev => prev + 1);
+            handleCloseManagement();
+            return;
+        }
+
+        const formattedSavedProduct = {
+            ...savedProductData,
+            category: savedProductData.category || null,
+            color: savedProductData.color || null,
+            wristMeasurement: savedProductData.wristMeasurement || null,
+            createdAtDate: formatDate(savedProductData.created_at),
+            createdAtTime: formatTime(savedProductData.created_at),
+            updatedAtDate: formatDate(savedProductData.updated_at),
+            updatedAtTime: formatTime(savedProductData.updated_at),
+        };
+
+        setProducts(prevProducts => {
+            const existingIndex = prevProducts.findIndex(p => p.id === formattedSavedProduct.id);
+            if (existingIndex > -1) {
+                console.log(`[ProductList] Updating local state for product ID ${formattedSavedProduct.id}.`);
+                const updatedProducts = [...prevProducts];
+                updatedProducts[existingIndex] = formattedSavedProduct;
+                return updatedProducts;
+            } else {
+                console.log(`[ProductList] Adding new product ID ${formattedSavedProduct.id} to local state.`);
+                return [formattedSavedProduct, ...prevProducts].slice(0, itemsPerPage);
+            }
+        });
+
+        handleCloseManagement();
     };
 
     const checkedCount = Object.values(checkedRows).filter(Boolean).length;
@@ -275,64 +264,43 @@ const ProductList = () => {
     return (
         <div className="ProductList">
             <h2 className="products-header">{viewType === "active" ? "Active Products" : "Archived Products"}</h2>
-            {error && <p className="error-message">{error}</p>}
-            {isLoading ? (
-                <p>Loading products...</p>
+
+            {fetchError && (
+                <p className="error-message fetch-error" style={{ color: 'red', margin: '10px 0', border: '1px solid red', padding: '10px' }}>
+                    Error: {fetchError} <button onClick={() => setForceUpdate(f => f + 1)} disabled={isLoading}>Retry</button>
+                </p>
+            )}
+
+            {isLoading && products.length === 0 && !fetchError ? (
+                <p style={{ padding: '20px', textAlign: 'center' }}>Loading products... <FaSpinner className="spinner" /></p>
             ) : (
                 <div className="table-container">
                     <div className="table-header-actions">
                         <div className="search-bar">
-                            <input
-                                type="text"
-                                value={searchQuery}
-                                onChange={handleSearchChange}
-                                placeholder="Search"
-                                className="search-input"
-                            />
+                            <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search Products..." className="search-input" disabled={isLoading}/>
                         </div>
                         <div className="button-group" style={{ marginLeft: 'auto' }}>
                             {viewType === "active" && (
                                 <>
-                                    <button className="add-button" onClick={handleAdd}>Add</button>
-                                    <button
-                                        className="delete-button"
-                                        onClick={() => handleArchive()}
-                                        disabled={checkedCount < 1}
-                                    >
-                                        Delete
-                                    </button>
+                                    <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add Product</button>
+                                    <button className="delete-button archive-button" onClick={() => handleArchive()} disabled={checkedCount < 1 || isLoading}>Archive</button>
                                 </>
                             )}
                             {viewType === "archived" && (
-                                <button
-                                    className="restore-button"
-                                    onClick={() => handleRestore()}
-                                    disabled={checkedCount < 1}
-                                >
-                                    Restore
-                                </button>
+                                <button className="restore-button" onClick={() => handleRestore()} disabled={checkedCount < 1 || isLoading}>Restore</button>
                             )}
                         </div>
                         <div className="view-toggle">
-                            <button
-                                className={`view-button ${viewType === "active" ? "active" : ""}`}
-                                onClick={() => setViewType("active")}
-                            >
-                                Active Products
-                            </button>
-                            <button
-                                className={`view-button ${viewType === "archived" ? "active" : ""}`}
-                                onClick={() => setViewType("archived")}
-                            >
-                                Archived Products
-                            </button>
+                            <button className={`view-button ${viewType === "active" ? "active" : ""}`} onClick={() => handleViewTypeChange("active")} disabled={isLoading}>Active Products</button>
+                            <button className={`view-button ${viewType === "archived" ? "active" : ""}`} onClick={() => handleViewTypeChange("archived")} disabled={isLoading}>Archived Products</button>
                         </div>
                     </div>
+
                     <table ref={tableRef} className="products-table">
                         <thead>
                             <tr className="table-header-row">
-                                <th className="table-header">
-                                    <input type="checkbox" className="product-checkbox" checked={isSelectAll} onChange={handleSelectAll} />
+                                <th className="table-header checkbox-column">
+                                    <input type="checkbox" className="product-checkbox header-checkbox" checked={isSelectAll} onChange={handleSelectAll} disabled={currentData.length === 0 || isLoading}/>
                                 </th>
                                 <th className="table-header products-action-column">Action</th>
                                 <th className="table-header product-image-column">Image</th>
@@ -347,110 +315,73 @@ const ProductList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {currentData.length > 0 ? (
+                            {isLoading && products.length > 0 ? (
+                                <tr><td colSpan="11" style={{ textAlign: "center", padding: "20px", fontStyle: 'italic', color: '#555' }}>Updating data... <FaSpinner className="spinner"/></td></tr>
+                            ) : currentData.length > 0 ? (
                                 currentData.map(product => (
                                     <tr className="table-row" key={product.id}>
-                                        <td className="table-cell">
-                                            <input
-                                                type="checkbox"
-                                                className="product-checkbox"
-                                                checked={!!checkedRows[product.id]}
-                                                onChange={e => handleRowCheckbox(product, e)}
-                                            />
+                                        <td className="table-cell checkbox-column">
+                                            <input type="checkbox" className="product-checkbox row-checkbox" checked={!!checkedRows[product.id]} onChange={e => handleRowCheckbox(product, e)} disabled={isLoading}/>
                                         </td>
                                         <td className="table-cell products-action-column">
                                             <div className="action-buttons">
                                                 {viewType === "active" ? (
                                                     <>
-                                                        <FaEdit className="edit-icon" size={20} onClick={() => handleEdit(product)} />
-                                                        <FaTrash className="delete-icon" size={20} onClick={() => handleArchive(product)} />
+                                                        <FaEdit className="edit-icon action-icon" title="Edit Product" size={18} onClick={() => handleEdit(product)}/>
+                                                        <FaTrash className="delete-icon action-icon" title="Archive Product" size={18} onClick={() => handleArchive(product)}/>
                                                     </>
                                                 ) : (
-                                                    <FaUndo className="restore-icon" size={20} onClick={() => handleRestore(product)} />
+                                                    <FaUndo className="restore-icon action-icon" title="Restore Product" size={18} onClick={() => handleRestore(product)}/>
                                                 )}
                                             </div>
                                         </td>
                                         <td className="table-cell product-image-column">
                                             {product.image_url ? (
-                                                <img
-                                                    src={product.image_url}
-                                                    alt={product.product_name}
-                                                    style={{ width: '50px', height: '50px', objectFit: 'cover' }}
-                                                    onError={(e) => (e.target.src = '/path/to/fallback-image.jpg')}
-                                                />
-                                            ) : (
-                                                '-'
-                                            )}
+                                                <img src={product.image_url} alt={product.product_name || 'Product'} style={{ width: '50px', height: 'auto', maxHeight: '50px', objectFit: 'contain', borderRadius: '4px' }} onError={(e) => { console.warn(`Failed to load image: ${product.image_url}`); e.target.style.display='none'; }}/>
+                                            ) : ('No Image')}
                                         </td>
-                                        <td className="table-cell product-name-column">{product.product_name}</td>
-                                        <td className="table-cell description-column">{product.description || '-'}</td>
-                                        {/*  the below line is where i will place the Peso Sign*/}
-                                        <td className="table-cell product-price-column">₱ {product.price}</td>
-                                        <td className="table-cell product-category-column">{product.category || '-'}</td>
-                                        <td className="table-cell product-color-column">{product.color || '-'}</td>
-                                        <td className="table-cell product-wrist-column">{product.wrist_measurement || '-'}</td>
-                                        <td className="table-cell product-created-column">
-                                           {product.createdAtDate}<br />
-                                          at {product.createdAtTime}
-                                        </td>
-                                        <td className="table-cell product-updated-column">
-                                            {product.updatedAtDate}<br />
-                                            at {product.updatedAtTime}
-                                        </td>
+                                        <td className="table-cell product-name-column">{product.product_name || '-'}</td>
+                                        <td className="table-cell description-column" title={product.description}>{product.description || '-'}</td>
+                                        <td className="table-cell product-price-column">₱ {parseFloat(product.price || 0).toFixed(2)}</td>
+                                        <td className="table-cell product-category-column">{product.category?.category_name || '-'}</td>
+                                        <td className="table-cell product-color-column">{product.color?.color_name || '-'}</td>
+                                        <td className="table-cell product-wrist-column">{product.wristMeasurement?.measurement || '-'}</td>
+                                        <td className="table-cell product-created-column">{product.createdAtDate}<br /><span style={{fontSize: '0.8em', color: '#666'}}>at {product.createdAtTime}</span></td>
+                                        <td className="table-cell product-updated-column">{product.updatedAtDate}<br /><span style={{fontSize: '0.8em', color: '#666'}}>at {product.updatedAtTime}</span></td>
                                     </tr>
                                 ))
                             ) : (
                                 <tr className="table-row">
-                                    <td colSpan="11" className="table-cell" style={{ textAlign: "center", padding: "20px", backgroundColor: "#f9f9f9" }}>
-                                        {products.length === 0
-                                            ? "No products available."
-                                            : viewType === "active"
-                                            ? "No active products match your search."
-                                            : "No archived products match your search."}
+                                    <td colSpan="11" className="table-cell" style={{ textAlign: "center", padding: "20px" }}>
+                                        {searchQuery ? "No products match your search." : (fetchError ? "Could not load products." : "No products available in this view.")}
                                     </td>
                                 </tr>
                             )}
                         </tbody>
                     </table>
-                    <div className="table-pagination">
-                        <button
-                            onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
-                            disabled={currentPage === 1}
-                            className="table-pagination-button"
-                        >
-                            Previous
-                        </button>
-                        {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
-                            <button
-                                key={page}
-                                onClick={() => setCurrentPage(page)}
-                                className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"}
-                            >
-                                {page}
-                            </button>
-                        ))}
-                        <button
-                            onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
-                            disabled={currentPage === totalPages}
-                            className="table-pagination-button"
-                        >
-                            Next
-                        </button>
-                    </div>
+
+                    {totalPages > 1 && !fetchError && (
+                        <div className="table-pagination">
+                            <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1 || isLoading} className="table-pagination-button">Previous</button>
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (<button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"} disabled={isLoading}>{page}</button>))}
+                            <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages || isLoading} className="table-pagination-button">Next</button>
+                        </div>
+                    )}
                 </div>
             )}
+
             {managementModalOpen && (
-                <div>
-                    {console.log("Rendering ProductManagement modal with type:", managementType)}
-                    <ProductManagement
-                        type={managementType}
-                        product={managementType === "edit" || managementType === "add" ? selectedProduct : null}
-                        selectedProducts={managementType === "restore" || managementType === "archive" ? selectedProduct : []}
-                        onClose={handleCloseManagement}
-                        onConfirm={handleConfirmDeleteOrRestore}
-                        onSave={handleSaveEditOrAdd}
-                    />
-                </div>
+                <ProductManagement
+                    type={managementType}
+                    product={managementType === "edit" ? selectedProduct : null}
+                    selectedProducts={(managementType === "restore" || managementType === "archive") && Array.isArray(selectedProduct) ? selectedProduct : []}
+                    onClose={handleCloseManagement}
+                    onConfirm={handleConfirmDeleteOrRestore}
+                    onSave={handleSaveEditOrAdd}
+                    makeAuthenticatedRequest={makeAuthenticatedRequest}
+                    apiBaseUrl={API_BASE_URL}
+                    externalError={error}
+                />
             )}
         </div>
     );
