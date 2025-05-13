@@ -248,6 +248,52 @@
         }
     }
 
+         .product-options-row {
+                display: flex; // Make the row a flex container
+                justify-content: space-between; // Distribute space between items (or use 'flex-start' and gap)
+                gap: 20px; // Add space between the two groups
+                margin-bottom: 20px; // Add some margin below the options row
+
+                .product-option-group {
+                    flex: 1; // Allow each group to take up equal space
+                    display: flex;
+                    flex-direction: column; // Stack label and select vertically within each group
+
+                    label {
+                        font-size: 14px; // Consistent label styling
+                        color: #333;
+                        margin-bottom: 5px;
+                        font-weight: 500;
+                    }
+
+                    select {
+                        padding: 8px 10px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                        font-size: 14px;
+                        background-color: #fff;
+                        width: 100%; // Make select take full width of its group
+                        box-sizing: border-box;
+
+                        &:disabled {
+                            background-color: #f3f4f6;
+                            cursor: not-allowed;
+                        }
+                    }
+
+                    p { // For "N/A" text or error messages within the group
+                        font-size: 14px;
+                        color: #6b7280;
+                        margin-top: 5px;
+                    }
+                    .error-text { // For specific error styling under options
+                        color: #f44336;
+                        font-size: 0.85em;
+                        margin-top: 3px;
+                    }
+                }
+            }
+
     .reviews-section {
         margin-bottom: 40px;
 

@@ -12047,12 +12047,42 @@ label {
   color: #555;
 }
 
+/* Styling for general error text */
+.error-text-general {
+  color: #e53e3e;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
+}
+
 /* Input Fields */
 .login-input-group,
 .login-password-group {
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
+}
+
+.login-password-group {
+  position: relative;
+}
+
+/* Added: Wrapper for the password input and eye toggle */
+.input-wrapper {
+  position: relative;
+  display: block;
+}
+
+/* Added: Styling for the eye toggle */
+.eye-toggle {
+  position: absolute;
+  top: 40%;
+  right: 4px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9CA3AF;
 }
 
 input {
@@ -12065,6 +12095,11 @@ input {
   border-radius: 6px;
 }
 
+/* Add padding to the password input to make space for the eye toggle */
+.login-password-input {
+  padding-right: 40px; /* Moved from inline style */
+}
+
 /* Forgot Password */
 .login-options {
   display: flex;
@@ -12072,8 +12107,8 @@ input {
   width: 100%;
   max-width: 400px;
   font-size: 14px;
-  margin-top: -28px;
-  margin-bottom: 5px;
+  margin-top: -10px;
+  margin-bottom: 15px;
   align-items: center;
 }
 
@@ -12082,6 +12117,8 @@ input {
   text-decoration: none;
   margin: 0;
   padding: 0;
+  margin-top: -4%;
+  margin-right: -5%;
 }
 .login-forgot-link:hover {
   text-decoration: underline;
@@ -12233,7 +12270,7 @@ label {
 }
 
 input, select {
-  width: 424px; /* Set a fixed width */
+  width: 424px;
   padding: 12px;
   margin-bottom: 12px;
   border: 1px solid #d1d3e2;
@@ -12263,11 +12300,11 @@ select {
 }
 
 .register-submit-btn {
-  background: #141416; /* Solid dark color */
+  background: #141416;
   color: white;
   padding: 12px;
   border: none;
-  border-radius: 30px; /* Rounded edges */
+  border-radius: 30px;
   cursor: pointer;
   font-weight: none;
   font-size: 14px;
@@ -12597,7 +12634,6 @@ select {
   background-color: #f7fafc;
   position: relative;
 }
-
 .content header {
   position: sticky;
   top: 0;
@@ -12610,21 +12646,26 @@ select {
   width: 100%;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
-.user-icon-container {
+.content .border-b {
+  border-bottom: 1px solid #e5e7eb;
+  width: 100%;
+}
+.content > div {
+  padding: 20px;
+}
+.content .user-icon-container {
   position: relative;
   display: inline-block;
 }
-.user-icon-container .text-gray-500 {
+.content .user-icon-container .text-gray-500 {
   color: #777E90;
   transition: color 0.3s ease;
   cursor: pointer;
 }
-.user-icon-container .text-gray-500:hover {
+.content .user-icon-container .text-gray-500:hover {
   color: #4a5568;
 }
-
-.dropdown-menu {
+.content .dropdown-menu {
   position: absolute;
   top: 120%;
   right: 0;
@@ -12639,8 +12680,7 @@ select {
   padding: 5px 0;
   margin: 0;
 }
-
-button.dropdown-item {
+.content button.dropdown-item {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -12654,17 +12694,8 @@ button.dropdown-item {
   color: #333;
   transition: background-color 0.15s ease-in-out;
 }
-button.dropdown-item:hover {
+.content button.dropdown-item:hover {
   background-color: #f0f0f0;
-}
-
-.content .border-b {
-  border-bottom: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
-  width: 100%;
-}
-
-.content > div {
-  padding: 20px;
 }
 
 /* Existing Dashboard Styles */
@@ -12672,27 +12703,24 @@ button.dropdown-item:hover {
   padding: 24px;
   background-color: white;
 }
-
 .dashboard-container .h2 {
   font-size: 24px;
   font-weight: bold;
   color: #000000;
   margin-bottom: 24px;
 }
-
-.analytics-cards {
+.dashboard-container .analytics-cards {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 16px;
   margin-bottom: 24px;
 }
 @media (min-width: 768px) {
-  .analytics-cards {
+  .dashboard-container .analytics-cards {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-.analytics-card {
+.dashboard-container .analytics-card {
   border: 1px solid #d1d5db;
   padding: 16px;
   border-radius: 8px;
@@ -12704,56 +12732,48 @@ button.dropdown-item:hover {
   background-color: white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
-
-.analytics-card .text-gray-600 {
+.dashboard-container .analytics-card .text-gray-600 {
   color: #4b5563;
   margin-bottom: 8px;
 }
-
-.analytics-card .label {
+.dashboard-container .analytics-card .label {
   font-size: 14px;
   color: #6b7280;
   margin-bottom: 8px;
 }
-
-.analytics-card .value {
+.dashboard-container .analytics-card .value {
   font-size: 24px;
   font-weight: bold;
   color: #000000;
   margin-top: 8px;
 }
-
-.dashboard-recently-sold {
+.dashboard-container .dashboard-recently-sold {
   width: 100%;
   margin-bottom: 24px;
   border-collapse: collapse;
 }
-
-.dashboard-recently-sold thead tr {
+.dashboard-container .dashboard-recently-sold thead tr {
   background-color: #e5e7eb;
   color: #4a5568;
   font-size: 16px;
   font-weight: 600;
 }
-
-.dashboard-recently-sold th,
-.dashboard-recently-sold td {
+.dashboard-container .dashboard-recently-sold th,
+.dashboard-container .dashboard-recently-sold td {
   padding: 12px;
   text-align: left;
   border: 1px solid #e5e7eb;
   font-size: 16px;
   vertical-align: middle;
 }
-
-.dashboard-recently-sold tbody tr {
+.dashboard-container .dashboard-recently-sold tbody tr {
   border-bottom: 1px solid #e5e7eb;
   min-height: 40px;
 }
-.dashboard-recently-sold tbody tr:hover {
+.dashboard-container .dashboard-recently-sold tbody tr:hover {
   background-color: #f9fafb;
 }
-
-.dashboard-recently-sold .product-icon {
+.dashboard-container .dashboard-recently-sold .product-icon {
   width: 36px;
   height: 36px;
   -o-object-fit: cover;
@@ -12761,34 +12781,13 @@ button.dropdown-item:hover {
   vertical-align: middle;
   border-radius: 4px;
 }
-
-@media (max-width: 767px) {
-  .analytics-cards {
-    grid-template-columns: 1fr;
-  }
-  .dashboard-container {
-    padding: 16px;
-  }
-  .dashboard-recently-sold th,
-  .dashboard-recently-sold td {
-    padding: 8px;
-    font-size: 14px;
-  }
-  .dashboard-recently-sold thead tr {
-    font-size: 14px;
-  }
-  .dashboard-recently-sold tbody tr {
-    min-height: 32px;
-  }
-}
-.pagination {
+.dashboard-container .pagination {
   display: flex;
   justify-content: flex-start;
   margin-top: 16px;
   gap: 8px;
 }
-
-.pagination button {
+.dashboard-container .pagination button {
   background-color: #e5e7eb;
   color: #000000;
   border: 1px solid #e5e7eb;
@@ -12799,20 +12798,67 @@ button.dropdown-item:hover {
   cursor: pointer;
   transition: background-color 0.2s;
 }
-
-.pagination button:hover:not(:disabled) {
+.dashboard-container .pagination button:hover:not(:disabled) {
   background-color: #d1d5db;
 }
-
-.pagination button.active {
+.dashboard-container .pagination button.active {
   background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
-
-.pagination button:disabled {
+.dashboard-container .pagination button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+@media (max-width: 767px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+  .dashboard-container .analytics-cards {
+    grid-template-columns: 1fr;
+  }
+  .dashboard-container .dashboard-recently-sold th,
+  .dashboard-container .dashboard-recently-sold td {
+    padding: 8px;
+    font-size: 14px;
+  }
+  .dashboard-container .dashboard-recently-sold thead tr {
+    font-size: 14px;
+  }
+  .dashboard-container .dashboard-recently-sold tbody tr {
+    min-height: 32px;
+  }
+}
+/* Inline Styles from JSX (Converted to SCSS) */
+.dashboard-container div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.dashboard-container div:first-child h2, .dashboard-container div:first-child .h2 {
+  margin: 0;
+}
+.dashboard-container div:first-child button {
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f9fa;
+  font-size: 0.9em;
+}
+.dashboard-container div:first-child button svg {
+  margin-right: 5px;
+}
+.dashboard-container .error-message {
+  color: red;
+}
+.dashboard-container .table-container table td[colSpan="5"] {
+  text-align: center;
+  padding: 20px;
 }
 
 .Orders .orders-container {
@@ -13140,9 +13186,8 @@ button.dropdown-item:hover {
     box-shadow: 0 0 0 2px #3b82f6;
   }
 }
-/* ReviewsStyles.scss */
 .reviews-container {
-  padding: 8px; /* Further reduced padding to move content up */
+  padding: 8px;
   background-color: white;
   position: relative;
   margin: 0;
@@ -13152,7 +13197,7 @@ button.dropdown-item:hover {
   font-size: 24px;
   font-weight: bold;
   color: #000000;
-  margin-bottom: 4px; /* Further reduced margin to move table up */
+  margin-bottom: 4px;
   margin-top: 0;
 }
 
@@ -13160,14 +13205,14 @@ button.dropdown-item:hover {
   position: relative;
   min-height: 200px;
   overflow-x: auto;
-  margin-top: 0; /* Removed margin to move table up */
+  margin-top: 0;
   padding-top: 0;
 }
 
 .table-header-actions {
   display: flex;
   flex-direction: column;
-  gap: 4px; /* Further reduced gap to move content up */
+  gap: 4px;
   margin-bottom: 0;
 }
 
@@ -13201,16 +13246,39 @@ button.dropdown-item:hover {
   background-color: white;
 }
 
-.reviews-container .button-group { /* Scoped to reviews-container to prevent global impact */
-  display: flex;
-  gap: 8px;
-  align-items: center; /* Ensure vertical alignment with filter icon */
+.search-button {
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-left: 8px;
+}
+.search-button:hover {
+  background-color: #d1d5db;
+}
+.search-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.search-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
-.reviews-container .button-group .add-button { /* Scoped to reviews-container */
-  background-color: #2A363B; /* Blue for Add button */
+.reviews-container .button-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.reviews-container .button-group .add-button {
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* Match Orders.js button padding for consistency */
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
   border: none;
@@ -13218,80 +13286,83 @@ button.dropdown-item:hover {
   transition: background-color 0.3s ease;
 }
 .reviews-container .button-group .add-button:hover {
-  background-color: #4169e1; /* Darker blue on hover */
+  background-color: #4169e1;
 }
 .reviews-container .button-group .add-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6;
 }
-.reviews-container .button-group .add-button:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+.reviews-container .button-group .add-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.reviews-container .button-group .add-button:disabled { /* Match Orders.js "Completed" button */
+.reviews-container .button-group .add-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
   background-color: #4CAF50 !important;
   border-color: #4CAF50 !important;
 }
 
-.reviews-container .button-group .delete-button { /* Scoped to reviews-container */
-  background-color: #ef4444; /* Red for Delete button */
+.reviews-container .button-group .archive-button {
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* Match Orders.js button padding for consistency */
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  min-width: 80px; /* Ensure button has enough space */
+  text-align: center; /* Center the text */
 }
-.reviews-container .button-group .delete-button:hover {
-  background-color: #dc2626; /* Darker red on hover */
+.reviews-container .button-group .archive-button:hover {
+  background-color: #dc2626;
 }
-.reviews-container .button-group .delete-button:focus {
+.reviews-container .button-group .archive-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6;
 }
-.reviews-container .button-group .delete-button:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+.reviews-container .button-group .archive-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.reviews-container .button-group .delete-button:disabled { /* Updated to light reddish for Delete button */
+.reviews-container .button-group .archive-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
-  background-color: #ffcccc !important; /* Light reddish color (e.g., pastel red) */
+  background-color: #ffcccc !important;
   border-color: #ffcccc !important;
 }
 
-.reviews-container .button-group .restore-button { /* Scoped to reviews-container */
-  background-color: #1e90ff; /* Blue for Restore button, matching Add button */
+.reviews-container .button-group .restore-button {
+  background-color: #1e90ff;
   color: white;
-  padding: 8px 16px; /* Match Orders.js button padding for consistency */
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  min-width: 80px; /* Ensure button has enough space */
+  text-align: center; /* Center the text */
 }
 .reviews-container .button-group .restore-button:hover {
-  background-color: #4169e1; /* Darker blue on hover, matching Add button */
+  background-color: #4169e1;
 }
 .reviews-container .button-group .restore-button:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6;
 }
-.reviews-container .button-group .restore-button:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+.reviews-container .button-group .restore-button:hover:not(:disabled) {
   background-color: #45a049 !important;
   border-color: #45a049 !important;
 }
-.reviews-container .button-group .restore-button:disabled { /* Updated to light bluish for Restore button */
+.reviews-container .button-group .restore-button:disabled {
   opacity: 0.5 !important;
   cursor: not-allowed !important;
-  background-color: #cce5ff !important; /* Light bluish color (e.g., pastel blue) */
+  background-color: #cce5ff !important;
   border-color: #cce5ff !important;
 }
 
-/* Filter Icon and Dropdown Styling */
 .filter-icon {
   cursor: pointer;
   margin-right: 8px;
@@ -13353,8 +13424,7 @@ button.dropdown-item:hover {
   box-shadow: 0 0 0 2px #3b82f6;
 }
 
-/* Remove or scope any default button styles that could affect Orders.js */
-button { /* Override any global button styles specific to Reviews */
+button {
   margin: 0;
   padding: 0;
   border: none;
@@ -13363,7 +13433,6 @@ button { /* Override any global button styles specific to Reviews */
   cursor: default;
 }
 
-/* Ensure buttons within reviews-table or action-buttons are scoped */
 .reviews-table button,
 .action-buttons button {
   margin: 0;
@@ -13379,8 +13448,8 @@ button { /* Override any global button styles specific to Reviews */
   width: 100%;
   margin-bottom: 24px;
   border-collapse: collapse;
-  table-layout: fixed;
-  margin-top: 0; /* Removed margin to move table up */
+  table-layout: auto;
+  margin-top: 0;
   padding-top: 0;
 }
 
@@ -13393,11 +13462,28 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .table-header,
-.table-cell {
+.table-header.checkbox-col,
+.table-header.action-col,
+.table-header.product-col,
+.table-header.user-col,
+.table-header.rating-col,
+.table-header.review-text-col,
+.table-header.date-col,
+.table-cell,
+.table-cell.checkbox-col,
+.table-cell.action-col,
+.table-cell.product-col,
+.table-cell.user-col,
+.table-cell.rating-col,
+.table-cell.review-text-col,
+.table-cell.date-col {
   padding: 12px;
   text-align: left;
   border: 1px solid #e5e7eb;
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .table-row {
@@ -13409,10 +13495,10 @@ button { /* Override any global button styles specific to Reviews */
   color: #000000;
 }
 
-.reviews-table tbody td[colspan="7"] {
+.reviews-table tbody td[colspan="8"] {
   text-align: center;
   padding: 20px;
-  background-color: #f9f9f9; /* Light gray for empty state */
+  background-color: #f9f9f9;
 }
 
 .review-checkbox {
@@ -13438,18 +13524,18 @@ button { /* Override any global button styles specific to Reviews */
   box-shadow: 0 0 0 2px #3b82f6;
 }
 
-.delete-icon {
-  color: #6b7280;
+.archive-icon {
+  color: red; /* Changed to red for the trash icon */
   cursor: pointer;
   transition: color 0.3s ease;
   vertical-align: middle;
   display: inline-block;
   text-align: center;
 }
-.delete-icon:hover {
+.archive-icon:hover {
   color: #4a5568;
 }
-.delete-icon:focus {
+.archive-icon:focus {
   outline: none;
   box-shadow: 0 0 0 2px #3b82f6;
 }
@@ -13488,7 +13574,7 @@ button { /* Override any global button styles specific to Reviews */
   background-color: #e5e7eb;
   color: #000000;
   border: 1px solid #e5e7eb;
-  padding: 8px 16px; /* Match Orders.js button padding for consistency */
+  padding: 8px 16px;
   margin-right: 0;
   border-radius: 4px;
   font-size: 14px;
@@ -13510,14 +13596,14 @@ button { /* Override any global button styles specific to Reviews */
 
 .view-toggle {
   display: flex;
-  gap: 4px; /* Further reduced gap to move content up */
-  margin-top: 4px; /* Further reduced margin to move content up */
+  gap: 4px;
+  margin-top: 4px;
 }
 
 .view-button {
   background-color: #e5e7eb;
   color: #4a5568;
-  padding: 8px 16px; /* Match Orders.js button padding for consistency */
+  padding: 8px 16px;
   border-radius: 4px;
   font-size: 14px;
   border: none;
@@ -13537,52 +13623,46 @@ button { /* Override any global button styles specific to Reviews */
   border-color: #4a5568;
 }
 
-/* Set fixed widths for table columns, scoped to Reviews */
-.reviews-table .table-header:first-child,
-.reviews-table .table-cell:first-child {
-  width: 50px;
+.reviews-table .checkbox-col {
+  width: 5%;
   text-align: center;
 }
 
-.reviews-table .table-header.reviews-action-column,
-.reviews-table .table-cell.reviews-action-column {
-  width: 60px; /* Increased width for Action column to fully display "Action" header, scoped to Reviews */
+.reviews-table .action-col {
+  width: 10%;
   text-align: center;
 }
 
-/* Override for archived view to accommodate Restore button, scoped to Reviews */
-.reviews-table .table-row[view-type=archived] .table-header.reviews-action-column,
-.reviews-table .table-row[view-type=archived] .table-cell.reviews-action-column,
-.reviews-table .table-row.view-type-archived .reviews-action-column {
-  width: 140px; /* Increased width for Restore button in archived view, matching active view, scoped to Reviews */
+.reviews-table .product-col {
+  width: 15%;
 }
 
-.reviews-table .table-header:nth-child(3),
-.reviews-table .table-cell:nth-child(3) {
-  width: 200px; /* Product Name */
+.reviews-table .user-col {
+  width: 12%;
 }
 
-.reviews-table .table-header:nth-child(4),
-.reviews-table .table-cell:nth-child(4) {
-  width: 100px; /* Rating */
+.reviews-table .rating-col {
+  width: 7%; /* Increased from 5% to 7% */
+  min-width: 50px; /* Adjusted min-width to support new width */
 }
 
-.reviews-table .table-header:nth-child(5),
-.reviews-table .table-cell:nth-child(5) {
-  width: 200px; /* Review */
+.reviews-table .review-text-col {
+  width: 31%; /* Decreased from 33% to 31% */
+  min-width: 150px; /* Kept the same to ensure readability */
+  white-space: normal; /* Allow text wrapping */
+  word-wrap: break-word; /* Break long words */
+  overflow: hidden; /* Hide overflow if still too long */
 }
 
-.reviews-table .table-header:nth-child(6),
-.reviews-table .table-cell:nth-child(6) {
-  width: 120px; /* Created at */
+.reviews-table .date-col {
+  width: 10%;
 }
 
-.reviews-table .table-header:nth-child(7),
-.reviews-table .table-cell:nth-child(7) {
-  width: 120px; /* Updated at */
+.table-responsive {
+  overflow-x: auto;
+  width: 100%;
 }
 
-/* Modal overlay and modal styling for edit */
 .edit-modal-overlay {
   position: fixed;
   top: 0;
@@ -13613,7 +13693,7 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .error-message {
-  color: #ef4444; /* Red for errors */
+  color: #ef4444;
   margin-bottom: 12px;
   font-size: 14px;
 }
@@ -13642,11 +13722,11 @@ button { /* Override any global button styles specific to Reviews */
   box-sizing: border-box;
   background-color: #f3f4f6;
   color: #4a5568;
-  cursor: text; /* Ensure cursor indicates editable */
-  pointer-events: auto; /* Ensure inputs are clickable */
+  cursor: text;
+  pointer-events: auto;
   -webkit-user-select: text;
      -moz-user-select: text;
-          user-select: text; /* Allow text selection for editing */
+          user-select: text;
 }
 .rating-input::-moz-placeholder {
   color: #6b7280;
@@ -13672,11 +13752,11 @@ button { /* Override any global button styles specific to Reviews */
   box-sizing: border-box;
   background-color: #f3f4f6;
   color: #4a5568;
-  cursor: text; /* Ensure cursor indicates editable */
-  pointer-events: auto; /* Ensure inputs are clickable */
+  cursor: text;
+  pointer-events: auto;
   -webkit-user-select: text;
      -moz-user-select: text;
-          user-select: text; /* Allow text selection for editing */
+          user-select: text;
 }
 .review-input::-moz-placeholder {
   color: #6b7280;
@@ -13692,14 +13772,14 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .reviews-container {
-    padding: 4px; /* Further reduced padding for mobile to move content up */
+    padding: 4px;
   }
   .reviews-header {
-    margin-bottom: 2px; /* Further reduced margin for mobile to move table up */
+    margin-bottom: 2px;
   }
   .table-header-actions {
     flex-direction: column;
-    gap: 2px; /* Further reduced gap for mobile to move content up */
+    gap: 2px;
     align-items: flex-end;
   }
   .search-bar .search-input {
@@ -13729,7 +13809,7 @@ button { /* Override any global button styles specific to Reviews */
     margin-left: 4px;
     size: 16px;
   }
-  .delete-icon {
+  .archive-icon {
     margin-left: 4px;
     size: 16px;
   }
@@ -13739,21 +13819,37 @@ button { /* Override any global button styles specific to Reviews */
   }
   .view-toggle {
     flex-direction: column;
-    gap: 2px; /* Further reduced gap for mobile to move content up */
+    gap: 2px;
   }
   .view-button {
     width: 100%;
     text-align: center;
   }
-  /* Adjust Action column widths on mobile, scoped to Reviews */
-  .reviews-table .table-header.reviews-action-column,
-  .reviews-table .table-cell.reviews-action-column {
-    width: 100px; /* Wider on mobile for Action column to fit "Action" header fully, scoped to Reviews */
+  .reviews-table .checkbox-col {
+    width: 10%;
   }
-  .reviews-table .table-row[view-type=archived] .table-header.reviews-action-column,
-  .reviews-table .table-row[view-type=archived] .table-cell.reviews-action-column,
-  .reviews-table .table-row.view-type-archived .reviews-action-column {
-    width: 100px; /* Wider on mobile for Restore button, matching active view, scoped to Reviews */
+  .reviews-table .action-col {
+    width: 15%;
+  }
+  .reviews-table .product-col {
+    width: 15%;
+  }
+  .reviews-table .user-col {
+    width: 12%;
+  }
+  .reviews-table .rating-col {
+    width: 7%;
+    min-width: 40px;
+  }
+  .reviews-table .review-text-col {
+    width: 28%; /* Adjusted from 31% to 28% to fit mobile layout */
+    min-width: 100px; /* Kept the same for readability */
+    white-space: normal;
+    word-wrap: break-word;
+    overflow: hidden;
+  }
+  .reviews-table .date-col {
+    width: 7.5%;
   }
 }
 .Inventory .inventory-container {
@@ -14686,9 +14782,12 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .product-image {
-  max-width: 60px;
-  max-height: 60px;
+  width: 60px; /* Fixed width */
+  height: 60px; /* Fixed height */
+  -o-object-fit: cover;
+     object-fit: cover; /* Ensures the image fills the space, cropping if needed */
   vertical-align: middle;
+  border-radius: 4px; /* Consistent with ProductManagement */
 }
 
 .products-table tbody td[colspan="12"] {
@@ -14770,8 +14869,8 @@ button { /* Override any global button styles specific to Reviews */
     margin-left: 4px;
   }
   .product-image {
-    max-width: 40px;
-    max-height: 40px;
+    width: 40px; /* Fixed width for smaller screens */
+    height: 40px; /* Fixed height for smaller screens */
   }
   .products-table {
     table-layout: auto;
@@ -14813,6 +14912,338 @@ button { /* Override any global button styles specific to Reviews */
   .table-header.product-updated-column,
   .table-cell.product-updated-column {
     width: 100px;
+  }
+}
+.pm-ProductManagement .pm-edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+}
+.pm-ProductManagement .pm-edit-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  max-height: 90vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0 20px;
+  position: relative;
+}
+.pm-ProductManagement h2, .pm-ProductManagement .h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 16px;
+  text-align: center;
+}
+.pm-ProductManagement .pm-error-message {
+  color: #ef4444;
+  margin-bottom: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+.pm-ProductManagement .pm-edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.pm-ProductManagement .pm-form-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.pm-ProductManagement .pm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex: 1;
+  min-width: 200px;
+  box-sizing: border-box;
+}
+.pm-ProductManagement .pm-form-group.pm-full-width {
+  flex: 100%;
+}
+.pm-ProductManagement .pm-form-group label {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 4px;
+}
+.pm-ProductManagement .pm-form-group input,
+.pm-ProductManagement .pm-form-group select {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 14px;
+  height: 38px;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #f3f4f6;
+  color: #4a5568;
+  cursor: text;
+  pointer-events: auto;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+  overflow: hidden;
+}
+.pm-ProductManagement .pm-form-group input::-moz-placeholder, .pm-ProductManagement .pm-form-group select::-moz-placeholder {
+  color: #6b7280;
+}
+.pm-ProductManagement .pm-form-group input::placeholder,
+.pm-ProductManagement .pm-form-group select::placeholder {
+  color: #6b7280;
+}
+.pm-ProductManagement .pm-form-group input:focus,
+.pm-ProductManagement .pm-form-group select:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  background-color: white;
+}
+.pm-ProductManagement .pm-form-group textarea {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8px 10px;
+  width: 100%;
+  font-size: 14px;
+  height: 80px;
+  min-height: 80px;
+  max-height: 120px;
+  outline: none;
+  box-sizing: border-box;
+  background-color: #f3f4f6;
+  color: #4a5568;
+  cursor: text;
+  pointer-events: auto;
+  -webkit-user-select: text;
+     -moz-user-select: text;
+          user-select: text;
+  resize: vertical;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.pm-ProductManagement .pm-form-group textarea::-moz-placeholder {
+  color: #6b7280;
+}
+.pm-ProductManagement .pm-form-group textarea::placeholder {
+  color: #6b7280;
+}
+.pm-ProductManagement .pm-form-group textarea:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+  background-color: white;
+}
+.pm-ProductManagement .pm-file-info {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+.pm-ProductManagement .pm-product-image-wrapper {
+  margin-bottom: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.pm-ProductManagement .pm-product-image-preview {
+  width: 150px; /* Fixed width */
+  height: 150px; /* Fixed height */
+  border-radius: 4px;
+  border: 1px solid #d1d5db;
+  -o-object-fit: cover;
+     object-fit: cover; /* Ensures the image fills the space, cropping if needed */
+}
+.pm-ProductManagement .pm-validation-error {
+  color: #ef4444;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.pm-ProductManagement .pm-input-error {
+  border-color: #ef4444 !important;
+}
+.pm-ProductManagement .pm-form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: flex-end;
+  width: 100%;
+  box-sizing: border-box;
+}
+.pm-ProductManagement .pm-cancel-button {
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.pm-ProductManagement .pm-cancel-button:hover {
+  background-color: #d1d5db;
+}
+.pm-ProductManagement .pm-cancel-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.pm-ProductManagement .pm-save-button,
+.pm-ProductManagement .pm-confirm-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.pm-ProductManagement .pm-save-button:hover,
+.pm-ProductManagement .pm-confirm-button:hover {
+  background-color: #2563eb;
+}
+.pm-ProductManagement .pm-save-button:focus,
+.pm-ProductManagement .pm-confirm-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.pm-ProductManagement .pm-archive-modal-overlay,
+.pm-ProductManagement .pm-restore-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+}
+.pm-ProductManagement .pm-archive-modal,
+.pm-ProductManagement .pm-restore-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 320px;
+  max-width: 90%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  position: relative;
+  margin: 0 20px;
+}
+.pm-ProductManagement .pm-archive-modal h3, .pm-ProductManagement .pm-archive-modal .h3,
+.pm-ProductManagement .pm-restore-modal h3,
+.pm-ProductManagement .pm-restore-modal .h3 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.pm-ProductManagement .pm-archive-modal p,
+.pm-ProductManagement .pm-restore-modal p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+  text-align: center;
+}
+.pm-ProductManagement .pm-button-group {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+.pm-ProductManagement .pm-archive-modal .pm-confirm-button {
+  background-color: #3b82f6;
+}
+.pm-ProductManagement .pm-archive-modal .pm-confirm-button:hover {
+  background-color: #2563eb;
+}
+
+@media (max-width: 768px) {
+  .pm-ProductManagement .pm-edit-modal {
+    max-width: 90%;
+  }
+  .pm-ProductManagement .pm-form-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  .pm-ProductManagement .pm-form-group {
+    min-width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .pm-ProductManagement .pm-edit-modal {
+    padding: 16px;
+    margin: 0 10px;
+  }
+  .pm-ProductManagement h2, .pm-ProductManagement .h2 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .pm-ProductManagement .pm-form-group {
+    gap: 6px;
+    margin-bottom: 12px;
+  }
+  .pm-ProductManagement .pm-form-group label {
+    font-size: 13px;
+  }
+  .pm-ProductManagement .pm-form-group input,
+  .pm-ProductManagement .pm-form-group select,
+  .pm-ProductManagement .pm-form-group textarea {
+    height: 36px;
+    font-size: 13px;
+    padding: 6px 8px;
+  }
+  .pm-ProductManagement .pm-form-group textarea {
+    height: 70px;
+    min-height: 70px;
+    max-height: 100px;
+  }
+  .pm-ProductManagement .pm-form-actions {
+    margin-top: 12px;
+    gap: 6px;
+  }
+  .pm-ProductManagement .pm-cancel-button,
+  .pm-ProductManagement .pm-save-button,
+  .pm-ProductManagement .pm-confirm-button {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+  .pm-ProductManagement .pm-product-image-preview {
+    width: 120px; /* Fixed width for smaller screens */
+    height: 120px; /* Fixed height for smaller screens */
+  }
+  .pm-ProductManagement .pm-archive-modal,
+  .pm-ProductManagement .pm-restore-modal {
+    width: 90%;
+    padding: 16px;
+    margin: 0 10px;
+  }
+  .pm-ProductManagement .pm-archive-modal h3, .pm-ProductManagement .pm-archive-modal .h3,
+  .pm-ProductManagement .pm-restore-modal h3,
+  .pm-ProductManagement .pm-restore-modal .h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  .pm-ProductManagement .pm-archive-modal p,
+  .pm-ProductManagement .pm-restore-modal p {
+    font-size: 13px;
+    margin-bottom: 10px;
   }
 }
 .users-container {
@@ -15673,20 +16104,18 @@ button { /* Override any global button styles specific to Reviews */
     width: 100px;
   }
 }
-/* src/components/admin/CategoryList.scss */
-/* Scope all styles to prevent conflicts with CustomerList or other files */
 .CategoryList .categories-container {
-  padding: 24px; /* 1.5rem = 24px */
+  padding: 24px;
   background-color: white;
   position: relative;
   margin: 0;
   display: block;
 }
 .CategoryList .categories-header {
-  font-size: 24px; /* 1.5rem = 24px */
+  font-size: 24px;
   font-weight: bold;
-  color: #000000; /* Black text */
-  margin-bottom: 16px; /* 1rem = 16px */
+  color: #000000;
+  margin-bottom: 16px;
   margin-top: 0;
 }
 .CategoryList .table-container {
@@ -15701,7 +16130,7 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 0; /* Removed margin to align with screenshot */
+  margin-bottom: 0;
   visibility: visible;
 }
 .CategoryList .search-bar {
@@ -15709,71 +16138,98 @@ button { /* Override any global button styles specific to Reviews */
   align-items: center;
 }
 .CategoryList .search-bar .search-input {
-  border: 1px solid #d1d5db; /* Gray-300 */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  padding: 8px 12px; /* 0.5rem vertical, 0.75rem horizontal */
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8px 12px;
   width: 100%;
-  max-width: 240px; /* Match screenshot width */
-  font-size: 14px; /* 0.875rem = 14px */
+  max-width: 240px;
+  font-size: 14px;
   outline: none;
-  background-color: #f3f4f6; /* Light gray background */
-  color: #4a5568; /* Gray-700 for text */
+  background-color: #f3f4f6;
+  color: #4a5568;
 }
 .CategoryList .search-bar .search-input::-moz-placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .CategoryList .search-bar .search-input::placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .CategoryList .search-bar .search-input:focus {
-  border-color: transparent; /* Remove border on focus */
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
-  background-color: white; /* White background on focus */
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6;
+  background-color: white;
 }
 .CategoryList .button-group {
   display: flex;
-  gap: 8px; /* 0.5rem = 8px */
+  gap: 8px;
   align-items: center;
   margin-left: auto;
   visibility: visible;
 }
 .CategoryList .button-group .add-button {
-  background-color: #2A363B; /* Blue-500, matching screenshot */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .CategoryList .button-group .add-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .CategoryList .button-group .add-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
-.CategoryList .button-group .delete-button {
-  background-color: #ef4444; /* Red-500, matching screenshot */
+.CategoryList .button-group .archive-button {
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 70px;
+  text-align: center;
+  visibility: visible;
+}
+.CategoryList .button-group .archive-button:hover {
+  background-color: #d1d5db;
+}
+.CategoryList .button-group .archive-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.CategoryList .button-group .archive-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cce5ff;
+  border-color: #cce5ff;
+}
+.CategoryList .button-group .restore-button {
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
-.CategoryList .button-group .delete-button:hover {
-  background-color: #dc2626; /* Red-600 on hover */
+.CategoryList .button-group .restore-button:hover {
+  background-color: #dc2626;
 }
-.CategoryList .button-group .delete-button:focus {
+.CategoryList .button-group .restore-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
-.CategoryList .button-group .delete-button:disabled {
+.CategoryList .button-group .restore-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   background-color: #ffcccc;
@@ -15782,35 +16238,35 @@ button { /* Override any global button styles specific to Reviews */
 .CategoryList .view-toggle {
   display: flex;
   gap: 4px;
-  margin-top: 4px; /* Small margin to align with screenshot */
+  margin-top: 4px;
   visibility: visible;
 }
 .CategoryList .view-button {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700 */
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   visibility: visible;
 }
 .CategoryList .view-button:hover {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .CategoryList .view-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .CategoryList .view-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
 .CategoryList .categories-table {
   width: 100%;
-  margin-bottom: 24px; /* 1.5rem = 24px */
+  margin-bottom: 24px;
   border-collapse: collapse;
   table-layout: fixed;
   margin-top: 0;
@@ -15819,39 +16275,39 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .CategoryList .table-header-row {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  font-size: 14px;
   font-weight: 600;
   padding: 8px;
 }
 .CategoryList .table-header,
 .CategoryList .table-cell {
-  padding: 12px; /* 0.75rem = 12px, matching CustomerList */
+  padding: 12px;
   text-align: left;
-  border: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
   visibility: visible;
 }
 .CategoryList .table-row {
-  border-bottom: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
+  border-bottom: 1px solid #e5e7eb;
   min-height: 40px;
   visibility: visible;
 }
 .CategoryList .table-header:first-child,
 .CategoryList .table-cell:first-child {
-  width: 40px; /* Narrow width for checkbox-only column in header */
+  width: 40px;
   text-align: center;
 }
 .CategoryList .table-header.categories-action-column,
 .CategoryList .table-cell.categories-action-column {
-  width: 50px; /* Fixed width for action column (Edit/Delete icons) */
+  width: 50px;
   text-align: center;
   visibility: visible;
 }
 .CategoryList .table-header:nth-child(3),
 .CategoryList .table-cell:nth-child(3) {
-  width: 200px; /* Category name column width */
+  width: 200px;
   text-align: left;
   visibility: visible;
 }
@@ -15859,55 +16315,55 @@ button { /* Override any global button styles specific to Reviews */
 .CategoryList .table-cell:nth-child(4),
 .CategoryList .table-header:nth-child(5),
 .CategoryList .table-cell:nth-child(5) {
-  width: 120px; /* Created At and Updated At column width */
+  width: 120px;
   text-align: left;
   visibility: visible;
 }
 .CategoryList .category-checkbox {
-  width: 16px; /* 1rem = 16px */
-  height: 16px; /* 1rem = 16px */
-  border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
-  border-radius: 4px; /* 0.25rem = 4px */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
-  margin-right: 8px; /* Add spacing between checkbox and action icons, matching screenshot */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
+  margin-right: 8px;
 }
 .CategoryList .edit-icon {
-  color: #6b7280; /* Gray-500, matching screenshot */
+  color: #6b7280;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .CategoryList .edit-icon:hover {
-  color: #4a5568; /* Gray-700 on hover */
+  color: #4a5568;
 }
 .CategoryList .edit-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .CategoryList .delete-icon {
-  color: #ef4444; /* Red-500, matching screenshot */
+  color: #ef4444;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .CategoryList .delete-icon:hover {
-  color: #dc2626; /* Red-600 on hover */
+  color: #dc2626;
 }
 .CategoryList .delete-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .CategoryList .action-buttons {
   display: flex;
-  gap: 16px; /* 1rem = 16px */
+  gap: 16px;
   align-items: center;
   justify-content: center;
   visibility: visible;
@@ -15921,27 +16377,27 @@ button { /* Override any global button styles specific to Reviews */
 .CategoryList .table-pagination {
   display: flex;
   justify-content: flex-start;
-  margin-top: 16px; /* 1rem = 16px */
+  margin-top: 16px;
   gap: 8px;
   visibility: visible;
 }
 .CategoryList .table-pagination-button {
-  background-color: #e5e7eb; /* Gray-200 */
+  background-color: #e5e7eb;
   color: #000000;
   border: 1px solid #e5e7eb;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+  padding: 8px 16px;
   margin-right: 0;
-  border-radius: 4px; /* Rounded corners */
-  font-size: 14px; /* 0.875rem = 14px */
+  border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
   visibility: visible;
 }
 .CategoryList .table-pagination-button:hover:not(:disabled) {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .CategoryList .table-pagination-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
@@ -15952,14 +16408,14 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .CategoryList .categories-container {
-    padding: 16px; /* 1rem = 16px (reduce padding on small screens) */
+    padding: 16px;
   }
   .CategoryList .categories-header {
-    margin-bottom: 8px; /* 0.5rem = 8px */
+    margin-bottom: 8px;
   }
   .CategoryList .table-header-actions {
     flex-direction: column;
-    gap: 2px; /* Reduced gap for tighter mobile layout */
+    gap: 2px;
     align-items: flex-end;
   }
   .CategoryList .button-group {
@@ -15967,50 +16423,48 @@ button { /* Override any global button styles specific to Reviews */
     justify-content: flex-end;
   }
   .CategoryList .view-toggle {
-    flex-direction: column; /* Stack buttons vertically on mobile */
+    flex-direction: column;
     gap: 4px;
   }
   .CategoryList .view-button {
-    width: 100%; /* Full width on mobile */
-    padding: 6px 12px; /* Reduced padding on mobile */
-    font-size: 12px; /* 0.75rem = 12px */
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
   }
   .CategoryList .categories-table .table-header,
   .CategoryList .categories-table .table-cell {
-    padding: 8px; /* 0.5rem = 8px */
-    font-size: 12px; /* 0.75rem = 12px */
+    padding: 8px;
+    font-size: 12px;
   }
   .CategoryList .table-header-row {
-    font-size: 12px; /* 0.75rem = 12px */
+    font-size: 12px;
     padding: 6px;
   }
   .CategoryList .table-row {
     min-height: 32px;
   }
   .CategoryList .category-checkbox {
-    width: 14px; /* Slightly smaller on mobile */
-    height: 14px; /* Slightly smaller on mobile */
+    width: 14px;
+    height: 14px;
   }
   .CategoryList .edit-icon,
   .CategoryList .delete-icon {
-    size: 16px; /* Maintain icon size for mobile */
+    size: 16px;
     margin-left: 4px;
   }
 }
-/* resources/js/components/Admin/WristMeasurement.scss */
-/* Scope all styles to prevent conflicts with CategoryList, WatchColor, or other files */
 .WristMeasurement .measurements-container {
-  padding: 24px; /* 1.5rem = 24px */
+  padding: 24px;
   background-color: white;
   position: relative;
   margin: 0;
   display: block;
 }
 .WristMeasurement .measurements-header {
-  font-size: 24px; /* 1.5rem = 24px */
+  font-size: 24px;
   font-weight: bold;
-  color: #000000; /* Black text */
-  margin-bottom: 16px; /* 1rem = 16px */
+  color: #000000;
+  margin-bottom: 16px;
   margin-top: 0;
 }
 .WristMeasurement .table-container {
@@ -16025,7 +16479,7 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 0; /* Removed margin to align with CategoryList */
+  margin-bottom: 0;
   visibility: visible;
 }
 .WristMeasurement .search-bar {
@@ -16033,69 +16487,96 @@ button { /* Override any global button styles specific to Reviews */
   align-items: center;
 }
 .WristMeasurement .search-bar .search-input {
-  border: 1px solid #d1d5db; /* Gray-300 */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  padding: 8px 12px; /* 0.5rem vertical, 0.75rem horizontal */
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8px 12px;
   width: 100%;
-  max-width: 240px; /* Match screenshot width */
-  font-size: 14px; /* 0.875rem = 14px */
+  max-width: 240px;
+  font-size: 14px;
   outline: none;
-  background-color: #f3f4f6; /* Light gray background */
-  color: #4a5568; /* Gray-700 for text */
+  background-color: #f3f4f6;
+  color: #4a5568;
 }
 .WristMeasurement .search-bar .search-input::-moz-placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .WristMeasurement .search-bar .search-input::placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .WristMeasurement .search-bar .search-input:focus {
-  border-color: transparent; /* Remove border on focus */
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
-  background-color: white; /* White background on focus */
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6;
+  background-color: white;
 }
 .WristMeasurement .button-group {
   display: flex;
-  gap: 8px; /* 0.5rem = 8px */
+  gap: 8px;
   align-items: center;
   margin-left: auto;
   visibility: visible;
 }
 .WristMeasurement .button-group .add-button {
-  background-color: #2A363B; /* Blue-500, matching screenshot */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .WristMeasurement .button-group .add-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .WristMeasurement .button-group .add-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.WristMeasurement .button-group .archive-button {
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 70px;
+  text-align: center;
+  visibility: visible;
+}
+.WristMeasurement .button-group .archive-button:hover {
+  background-color: #d1d5db;
+}
+.WristMeasurement .button-group .archive-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.WristMeasurement .button-group .archive-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cce5ff;
+  border-color: #cce5ff;
 }
 .WristMeasurement .button-group .delete-button {
-  background-color: #ef4444; /* Red-500, matching screenshot */
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .WristMeasurement .button-group .delete-button:hover {
-  background-color: #dc2626; /* Red-600 on hover */
+  background-color: #dc2626;
 }
 .WristMeasurement .button-group .delete-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .button-group .delete-button:disabled {
   opacity: 0.5;
@@ -16104,22 +16585,22 @@ button { /* Override any global button styles specific to Reviews */
   border-color: #ffcccc;
 }
 .WristMeasurement .button-group .restore-button {
-  background-color: #2A363B; /* Blue-500, matching screenshot */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .WristMeasurement .button-group .restore-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .WristMeasurement .button-group .restore-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .button-group .restore-button:disabled {
   opacity: 0.5;
@@ -16130,35 +16611,35 @@ button { /* Override any global button styles specific to Reviews */
 .WristMeasurement .view-toggle {
   display: flex;
   gap: 4px;
-  margin-top: 4px; /* Small margin to align with CategoryList */
+  margin-top: 4px;
   visibility: visible;
 }
 .WristMeasurement .view-button {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700 */
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   visibility: visible;
 }
 .WristMeasurement .view-button:hover {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .WristMeasurement .view-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .view-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
 .WristMeasurement .measurements-table {
   width: 100%;
-  margin-bottom: 24px; /* 1.5rem = 24px */
+  margin-bottom: 24px;
   border-collapse: collapse;
   table-layout: fixed;
   margin-top: 0;
@@ -16167,39 +16648,39 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .WristMeasurement .table-header-row {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  font-size: 14px;
   font-weight: 600;
   padding: 8px;
 }
 .WristMeasurement .table-header,
 .WristMeasurement .table-cell {
-  padding: 12px; /* 0.75rem = 12px, matching CategoryList */
+  padding: 12px;
   text-align: left;
-  border: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
   visibility: visible;
 }
 .WristMeasurement .table-row {
-  border-bottom: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
+  border-bottom: 1px solid #e5e7eb;
   min-height: 40px;
   visibility: visible;
 }
 .WristMeasurement .table-header:first-child,
 .WristMeasurement .table-cell:first-child {
-  width: 40px; /* Narrow width for checkbox-only column in header */
+  width: 40px;
   text-align: center;
 }
 .WristMeasurement .table-header.measurements-action-column,
 .WristMeasurement .table-cell.measurements-action-column {
-  width: 50px; /* Fixed width for action column (Edit/Delete/Restore icons) */
+  width: 50px;
   text-align: center;
   visibility: visible;
 }
 .WristMeasurement .table-header:nth-child(3),
 .WristMeasurement .table-cell:nth-child(3) {
-  width: 200px; /* Wrist Measurement column width */
+  width: 200px;
   text-align: left;
   visibility: visible;
 }
@@ -16207,70 +16688,70 @@ button { /* Override any global button styles specific to Reviews */
 .WristMeasurement .table-cell:nth-child(4),
 .WristMeasurement .table-header:nth-child(5),
 .WristMeasurement .table-cell:nth-child(5) {
-  width: 120px; /* Created At and Updated At column width */
+  width: 120px;
   text-align: left;
   visibility: visible;
 }
 .WristMeasurement .measurement-checkbox {
-  width: 16px; /* 1rem = 16px */
-  height: 16px; /* 1rem = 16px */
-  border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
-  border-radius: 4px; /* 0.25rem = 4px */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
-  margin-right: 8px; /* Add spacing between checkbox and action icons, matching screenshot */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
+  margin-right: 8px;
 }
 .WristMeasurement .edit-icon {
-  color: #6b7280; /* Gray-500, matching screenshot */
+  color: #6b7280;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .WristMeasurement .edit-icon:hover {
-  color: #4a5568; /* Gray-700 on hover */
+  color: #4a5568;
 }
 .WristMeasurement .edit-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .delete-icon {
-  color: #ef4444; /* Red-500, matching screenshot */
+  color: #ef4444;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .WristMeasurement .delete-icon:hover {
-  color: #dc2626; /* Red-600 on hover */
+  color: #dc2626;
 }
 .WristMeasurement .delete-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .restore-icon {
-  color: #2A363B; /* Blue-500, matching screenshot */
+  color: #2A363B;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .WristMeasurement .restore-icon:hover {
-  color: #2563eb; /* Blue-600 on hover */
+  color: #2563eb;
 }
 .WristMeasurement .restore-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .WristMeasurement .action-buttons {
   display: flex;
-  gap: 16px; /* 1rem = 16px */
+  gap: 16px;
   align-items: center;
   justify-content: center;
   visibility: visible;
@@ -16284,27 +16765,27 @@ button { /* Override any global button styles specific to Reviews */
 .WristMeasurement .table-pagination {
   display: flex;
   justify-content: flex-start;
-  margin-top: 16px; /* 1rem = 16px */
+  margin-top: 16px;
   gap: 8px;
   visibility: visible;
 }
 .WristMeasurement .table-pagination-button {
-  background-color: #e5e7eb; /* Gray-200 */
+  background-color: #e5e7eb;
   color: #000000;
   border: 1px solid #e5e7eb;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+  padding: 8px 16px;
   margin-right: 0;
-  border-radius: 4px; /* Rounded corners */
-  font-size: 14px; /* 0.875rem = 14px */
+  border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
   visibility: visible;
 }
 .WristMeasurement .table-pagination-button:hover:not(:disabled) {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .WristMeasurement .table-pagination-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
@@ -16315,14 +16796,14 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .WristMeasurement .measurements-container {
-    padding: 16px; /* 1rem = 16px (reduce padding on small screens) */
+    padding: 16px;
   }
   .WristMeasurement .measurements-header {
-    margin-bottom: 8px; /* 0.5rem = 8px */
+    margin-bottom: 8px;
   }
   .WristMeasurement .table-header-actions {
     flex-direction: column;
-    gap: 2px; /* Reduced gap for tighter mobile layout */
+    gap: 2px;
     align-items: flex-end;
   }
   .WristMeasurement .button-group {
@@ -16330,51 +16811,49 @@ button { /* Override any global button styles specific to Reviews */
     justify-content: flex-end;
   }
   .WristMeasurement .view-toggle {
-    flex-direction: column; /* Stack buttons vertically on mobile */
+    flex-direction: column;
     gap: 4px;
   }
   .WristMeasurement .view-button {
-    width: 100%; /* Full width on mobile */
-    padding: 6px 12px; /* Reduced padding on mobile */
-    font-size: 12px; /* 0.75rem = 12px */
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
   }
   .WristMeasurement .measurements-table .table-header,
   .WristMeasurement .measurements-table .table-cell {
-    padding: 8px; /* 0.5rem = 8px */
-    font-size: 12px; /* 0.75rem = 12px */
+    padding: 8px;
+    font-size: 12px;
   }
   .WristMeasurement .table-header-row {
-    font-size: 12px; /* 0.75rem = 12px */
+    font-size: 12px;
     padding: 6px;
   }
   .WristMeasurement .table-row {
     min-height: 32px;
   }
   .WristMeasurement .measurement-checkbox {
-    width: 14px; /* Slightly smaller on mobile */
-    height: 14px; /* Slightly smaller on mobile */
+    width: 14px;
+    height: 14px;
   }
   .WristMeasurement .edit-icon,
   .WristMeasurement .delete-icon,
   .WristMeasurement .restore-icon {
-    size: 16px; /* Maintain icon size for mobile */
+    size: 16px;
     margin-left: 4px;
   }
 }
-/* resources/js/components/Admin/Roles.scss */
-/* Scope all styles to prevent conflicts with CategoryList, WatchColor, WristMeasurement, or other files */
 .Roles .roles-container {
-  padding: 24px; /* 1.5rem = 24px */
+  padding: 24px;
   background-color: white;
   position: relative;
   margin: 0;
   display: block;
 }
 .Roles .roles-header {
-  font-size: 24px; /* 1.5rem = 24px */
+  font-size: 24px;
   font-weight: bold;
-  color: #000000; /* Black text */
-  margin-bottom: 16px; /* 1rem = 16px */
+  color: #000000;
+  margin-bottom: 16px;
   margin-top: 0;
 }
 .Roles .table-container {
@@ -16389,7 +16868,7 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-bottom: 0; /* Removed margin to align with CategoryList */
+  margin-bottom: 0;
   visibility: visible;
 }
 .Roles .search-bar {
@@ -16397,69 +16876,96 @@ button { /* Override any global button styles specific to Reviews */
   align-items: center;
 }
 .Roles .search-bar .search-input {
-  border: 1px solid #d1d5db; /* Gray-300 */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  padding: 8px 12px; /* 0.5rem vertical, 0.75rem horizontal */
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 8px 12px;
   width: 100%;
-  max-width: 240px; /* Match screenshot width */
-  font-size: 14px; /* 0.875rem = 14px */
+  max-width: 240px;
+  font-size: 14px;
   outline: none;
-  background-color: #f3f4f6; /* Light gray background */
-  color: #4a5568; /* Gray-700 for text */
+  background-color: #f3f4f6;
+  color: #4a5568;
 }
 .Roles .search-bar .search-input::-moz-placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .Roles .search-bar .search-input::placeholder {
-  color: #6b7280; /* Gray-500 for placeholder text */
+  color: #6b7280;
 }
 .Roles .search-bar .search-input:focus {
-  border-color: transparent; /* Remove border on focus */
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
-  background-color: white; /* White background on focus */
+  border-color: transparent;
+  box-shadow: 0 0 0 2px #3b82f6;
+  background-color: white;
 }
 .Roles .button-group {
   display: flex;
-  gap: 8px; /* 0.5rem = 8px */
+  gap: 8px;
   align-items: center;
   margin-left: auto;
   visibility: visible;
 }
 .Roles .button-group .add-button {
-  background-color: #2A363B; /* Blue-500, matching screenshot */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .Roles .button-group .add-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .Roles .button-group .add-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.Roles .button-group .archive-button {
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 10px 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: normal;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 70px;
+  text-align: center;
+  visibility: visible;
+}
+.Roles .button-group .archive-button:hover {
+  background-color: #d1d5db;
+}
+.Roles .button-group .archive-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6;
+}
+.Roles .button-group .archive-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: #cce5ff;
+  border-color: #cce5ff;
 }
 .Roles .button-group .delete-button {
-  background-color: #ef4444; /* Red-500, matching screenshot */
+  background-color: #ef4444;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .Roles .button-group .delete-button:hover {
-  background-color: #dc2626; /* Red-600 on hover */
+  background-color: #dc2626;
 }
 .Roles .button-group .delete-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .button-group .delete-button:disabled {
   opacity: 0.5;
@@ -16468,22 +16974,22 @@ button { /* Override any global button styles specific to Reviews */
   border-color: #ffcccc;
 }
 .Roles .button-group .restore-button {
-  background-color: #2A363B; /* Blue-500, matching screenshot */
+  background-color: #2A363B;
   color: white;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
   visibility: visible;
 }
 .Roles .button-group .restore-button:hover {
-  background-color: #2563eb; /* Blue-600 on hover */
+  background-color: #2563eb;
 }
 .Roles .button-group .restore-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .button-group .restore-button:disabled {
   opacity: 0.5;
@@ -16494,35 +17000,35 @@ button { /* Override any global button styles specific to Reviews */
 .Roles .view-toggle {
   display: flex;
   gap: 4px;
-  margin-top: 4px; /* Small margin to align with CategoryList */
+  margin-top: 4px;
   visibility: visible;
 }
 .Roles .view-button {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700 */
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
-  border-radius: 4px; /* Rounded corners, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-size: 14px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease, color 0.3s ease;
   visibility: visible;
 }
 .Roles .view-button:hover {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .Roles .view-button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .view-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
 .Roles .roles-table {
   width: 100%;
-  margin-bottom: 24px; /* 1.5rem = 24px */
+  margin-bottom: 24px;
   border-collapse: collapse;
   table-layout: fixed;
   margin-top: 0;
@@ -16531,39 +17037,39 @@ button { /* Override any global button styles specific to Reviews */
   visibility: visible;
 }
 .Roles .table-header-row {
-  background-color: #e5e7eb; /* Gray-200, matching screenshot */
-  color: #4a5568; /* Gray-700, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  background-color: #e5e7eb;
+  color: #4a5568;
+  font-size: 14px;
   font-weight: 600;
   padding: 8px;
 }
 .Roles .table-header,
 .Roles .table-cell {
-  padding: 12px; /* 0.75rem = 12px, matching CategoryList */
+  padding: 12px;
   text-align: left;
-  border: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
-  font-size: 14px; /* 0.875rem = 14px */
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
   visibility: visible;
 }
 .Roles .table-row {
-  border-bottom: 1px solid #e5e7eb; /* Gray-200, matching screenshot */
+  border-bottom: 1px solid #e5e7eb;
   min-height: 40px;
   visibility: visible;
 }
 .Roles .table-header:first-child,
 .Roles .table-cell:first-child {
-  width: 40px; /* Narrow width for checkbox-only column in header */
+  width: 40px;
   text-align: center;
 }
 .Roles .table-header.roles-action-column,
 .Roles .table-cell.roles-action-column {
-  width: 120px; /* Fixed width for action column (Edit/Delete/Restore icons) */
+  width: 120px;
   text-align: center;
   visibility: visible;
 }
 .Roles .table-header:nth-child(3),
 .Roles .table-cell:nth-child(3) {
-  width: 200px; /* Role name column width */
+  width: 200px;
   text-align: left;
   visibility: visible;
 }
@@ -16571,70 +17077,70 @@ button { /* Override any global button styles specific to Reviews */
 .Roles .table-cell:nth-child(4),
 .Roles .table-header:nth-child(5),
 .Roles .table-cell:nth-child(5) {
-  width: 120px; /* Created At and Updated At column width */
+  width: 120px;
   text-align: left;
   visibility: visible;
 }
 .Roles .role-checkbox {
-  width: 16px; /* 1rem = 16px */
-  height: 16px; /* 1rem = 16px */
-  border: 1px solid #d1d5db; /* Gray-300, matching screenshot */
-  border-radius: 4px; /* 0.25rem = 4px */
+  width: 16px;
+  height: 16px;
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
   cursor: pointer;
   background-color: white;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
-  margin-right: 8px; /* Add spacing between checkbox and action icons, matching screenshot */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
+  margin-right: 8px;
 }
 .Roles .edit-icon {
-  color: #6b7280; /* Gray-500, matching screenshot */
+  color: #6b7280;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .Roles .edit-icon:hover {
-  color: #4a5568; /* Gray-700 on hover */
+  color: #4a5568;
 }
 .Roles .edit-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .delete-icon {
-  color: #ef4444; /* Red-500, matching screenshot */
+  color: #ef4444;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .Roles .delete-icon:hover {
-  color: #dc2626; /* Red-600 on hover */
+  color: #dc2626;
 }
 .Roles .delete-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .restore-icon {
-  color: #2A363B; /* Blue-500, matching screenshot */
+  color: #2A363B;
   cursor: pointer;
   transition: color 0.3s ease;
-  vertical-align: middle; /* Ensure vertical alignment */
-  margin: 0; /* Remove default margin for precise control */
-  display: inline-block; /* Use inline-block for side-by-side positioning */
+  vertical-align: middle;
+  margin: 0;
+  display: inline-block;
 }
 .Roles .restore-icon:hover {
-  color: #2563eb; /* Blue-600 on hover */
+  color: #2563eb;
 }
 .Roles .restore-icon:focus {
   outline: none;
-  box-shadow: 0 0 0 2px #3b82f6; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6;
 }
 .Roles .action-buttons {
   display: flex;
-  gap: 16px; /* 1rem = 16px */
+  gap: 16px;
   align-items: center;
   justify-content: center;
   visibility: visible;
@@ -16648,27 +17154,27 @@ button { /* Override any global button styles specific to Reviews */
 .Roles .table-pagination {
   display: flex;
   justify-content: flex-start;
-  margin-top: 16px; /* 1rem = 16px */
+  margin-top: 16px;
   gap: 8px;
   visibility: visible;
 }
 .Roles .table-pagination-button {
-  background-color: #e5e7eb; /* Gray-200 */
+  background-color: #e5e7eb;
   color: #000000;
   border: 1px solid #e5e7eb;
-  padding: 8px 16px; /* 0.5rem vertical, 1rem horizontal */
+  padding: 8px 16px;
   margin-right: 0;
-  border-radius: 4px; /* Rounded corners */
-  font-size: 14px; /* 0.875rem = 14px */
+  border-radius: 4px;
+  font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s;
   visibility: visible;
 }
 .Roles .table-pagination-button:hover:not(:disabled) {
-  background-color: #d1d5db; /* Gray-300 on hover */
+  background-color: #d1d5db;
 }
 .Roles .table-pagination-button.active {
-  background-color: #4a5568; /* Gray-700 for active state */
+  background-color: #4a5568;
   color: white;
   border-color: #4a5568;
 }
@@ -16679,14 +17185,14 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
   .Roles .roles-container {
-    padding: 16px; /* 1rem = 16px (reduce padding on small screens) */
+    padding: 16px;
   }
   .Roles .roles-header {
-    margin-bottom: 8px; /* 0.5rem = 8px */
+    margin-bottom: 8px;
   }
   .Roles .table-header-actions {
     flex-direction: column;
-    gap: 2px; /* Reduced gap for tighter mobile layout */
+    gap: 2px;
     align-items: flex-end;
   }
   .Roles .button-group {
@@ -16694,34 +17200,34 @@ button { /* Override any global button styles specific to Reviews */
     justify-content: flex-end;
   }
   .Roles .view-toggle {
-    flex-direction: column; /* Stack buttons vertically on mobile */
+    flex-direction: column;
     gap: 4px;
   }
   .Roles .view-button {
-    width: 100%; /* Full width on mobile */
-    padding: 6px 12px; /* Reduced padding on mobile */
-    font-size: 12px; /* 0.75rem = 12px */
+    width: 100%;
+    padding: 6px 12px;
+    font-size: 12px;
   }
   .Roles .roles-table .table-header,
   .Roles .roles-table .table-cell {
-    padding: 8px; /* 0.5rem = 8px */
-    font-size: 12px; /* 0.75rem = 12px */
+    padding: 8px;
+    font-size: 12px;
   }
   .Roles .table-header-row {
-    font-size: 12px; /* 0.75rem = 12px */
+    font-size: 12px;
     padding: 6px;
   }
   .Roles .table-row {
     min-height: 32px;
   }
   .Roles .role-checkbox {
-    width: 14px; /* Slightly smaller on mobile */
-    height: 14px; /* Slightly smaller on mobile */
+    width: 14px;
+    height: 14px;
   }
   .Roles .edit-icon,
   .Roles .delete-icon,
   .Roles .restore-icon {
-    size: 16px; /* Maintain icon size for mobile */
+    size: 16px;
     margin-left: 4px;
   }
 }
@@ -17702,14 +18208,13 @@ button { /* Override any global button styles specific to Reviews */
   margin-bottom: 16px;
 }
 
-/* Button Group (Shared for all modals) */
 .button-group {
   display: flex;
   gap: 8px;
 }
 
 .save-button {
-  background-color: #ef4444; /* Red for delete and restore confirmation */
+  background-color: #ef4444;
   color: white;
   padding: 8px 16px;
   border-radius: 4px;
@@ -18200,24 +18705,20 @@ button { /* Override any global button styles specific to Reviews */
     font-size: 12px !important;
   }
 }
-/* src/components/admin/CategoryManagement.scss */
-/* Scope all styles to prevent conflicts with CustomerManagement or other files */
 .CategoryManagement .edit-modal-overlay {
   position: fixed !important;
   top: 0 !important;
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+  background-color: rgba(0, 0, 0, 0.5) !important;
   display: flex !important;
-  justify-content: center !important; /* Center horizontally */
-  align-items: center !important; /* Center vertically */
+  justify-content: center !important;
+  align-items: center !important;
   z-index: 1000 !important;
   isolation: isolate !important;
-  /* Fallback for older browsers or conflicts */
   -webkit-align-items: center !important;
   -webkit-justify-content: center !important;
-  /* Prevent parent interference */
   transform: none !important;
   will-change: transform, opacity !important;
   margin: 0 !important;
@@ -18266,7 +18767,7 @@ button { /* Override any global button styles specific to Reviews */
   border: 1px solid #d1d5db !important;
   border-radius: 4px !important;
   padding: 8px 12px !important;
-  width: 100% !important;
+  width: 100 !important;
   max-width: 380px !important;
   font-size: 14px !important;
   height: 32px !important;
@@ -18339,7 +18840,7 @@ button { /* Override any global button styles specific to Reviews */
   justify-content: center !important;
 }
 .CategoryManagement .save-button {
-  background-color: #2A363B !important; /* Blue-500 for "Yes, Delete" */
+  background-color: #2A363B !important;
   color: white !important;
   padding: 8px 16px !important;
   border-radius: 4px !important;
@@ -18349,14 +18850,41 @@ button { /* Override any global button styles specific to Reviews */
   transition: background-color 0.3s ease !important;
 }
 .CategoryManagement .save-button:hover {
-  background-color: #2563eb !important; /* Blue-600 on hover */
+  background-color: #2563eb !important;
 }
 .CategoryManagement .save-button:focus {
   outline: none !important;
-  box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6 !important;
+}
+.CategoryManagement .confirm-button {
+  background-color: #ff4d4d !important;
+  color: white !important;
+  padding: 8px 16px !important;
+  border-radius: 4px !important;
+  font-size: 14px !important;
+  border: 2px solid #cc0000 !important;
+  cursor: pointer !important;
+  transition: background-color 0.3s ease, transform 0.1s ease !important;
+  font-weight: 600 !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+}
+.CategoryManagement .confirm-button:hover {
+  background-color: #cc0000 !important;
+  transform: scale(1.05) !important;
+}
+.CategoryManagement .confirm-button:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.4) !important;
+}
+.CategoryManagement .confirm-button:disabled {
+  background-color: #d1d5db !important;
+  border-color: #b0b0b0 !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+  transform: none !important;
 }
 .CategoryManagement .cancel-button {
-  background-color: #e5e7eb !important; /* Gray-200 for "Cancel" */
+  background-color: #e5e7eb !important;
   color: #4a5568 !important;
   padding: 8px 16px !important;
   border-radius: 4px !important;
@@ -18366,11 +18894,11 @@ button { /* Override any global button styles specific to Reviews */
   transition: background-color 0.3s ease !important;
 }
 .CategoryManagement .cancel-button:hover {
-  background-color: #d1d5db !important; /* Gray-300 on hover */
+  background-color: #d1d5db !important;
 }
 .CategoryManagement .cancel-button:focus {
   outline: none !important;
-  box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+  box-shadow: 0 0 0 2px #3b82f6 !important;
 }
 
 @media (max-width: 767px) {
@@ -18386,14 +18914,15 @@ button { /* Override any global button styles specific to Reviews */
     margin-bottom: 12px !important;
   }
   .CategoryManagement .category-input {
-    width: 100% !important;
+    width: 100 !important;
     max-width: 340px !important;
     font-size: 12px !important;
     padding: 6px 10px !important;
     height: 28px !important;
   }
   .CategoryManagement .save-button,
-  .CategoryManagement .cancel-button {
+  .CategoryManagement .cancel-button,
+  .CategoryManagement .confirm-button {
     padding: 6px 12px !important;
     font-size: 12px !important;
   }
@@ -19079,17 +19608,18 @@ button { /* Override any global button styles specific to Reviews */
 }
 .homepage-content .hero-section .hero-text .discover-button {
   display: inline-block;
-  padding: 8px 56px;
+  padding: 8px 56px; /* Reverted to original size */
   background-color: #141416;
   color: #FCFCFD;
   text-decoration: none;
   border-radius: 90px;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
+  font-size: 16px; /* Reverted to original size */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Kept transform transition */
   font-weight: bold;
 }
 .homepage-content .hero-section .hero-text .discover-button:hover {
   background-color: #333333;
+  transform: translateY(-2px); /* Kept hover lift effect */
 }
 .homepage-content .hero-section::before {
   content: "";
@@ -19098,7 +19628,7 @@ button { /* Override any global button styles specific to Reviews */
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.4); /* Kept darker overlay for contrast */
 }
 .homepage-content .placeholder-section {
   text-align: center;
@@ -19141,7 +19671,7 @@ button { /* Override any global button styles specific to Reviews */
   color: #ffffff;
   text-align: center;
   margin: 0;
-  padding: 0;
+  padding: 20px;
 }
 .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card .h2 {
   color: #FCFCFD;
@@ -19153,6 +19683,7 @@ button { /* Override any global button styles specific to Reviews */
   color: #FCFCFD;
   font-size: 20px;
   margin: 0;
+  max-width: 600px;
   opacity: 1;
 }
 .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card::before {
@@ -19162,7 +19693,7 @@ button { /* Override any global button styles specific to Reviews */
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 0;
   z-index: 1;
 }
@@ -19172,7 +19703,7 @@ button { /* Override any global button styles specific to Reviews */
 }
 .homepage-content .placeholder-section .carousel-dots {
   position: absolute;
-  bottom: 20px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 3;
@@ -19180,16 +19711,16 @@ button { /* Override any global button styles specific to Reviews */
   text-align: center;
 }
 .homepage-content .placeholder-section .carousel-dots .dot {
-  height: 10px;
-  width: 10px;
+  height: 12px;
+  width: 12px;
   background-color: transparent;
   border: 2px solid #ffffff;
   border-radius: 50%;
   display: inline-block;
-  margin: 0 5px;
+  margin: 0 8px;
   cursor: pointer;
   opacity: 0.7;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, background-color 0.3s ease;
 }
 .homepage-content .placeholder-section .carousel-dots .dot:hover {
   opacity: 1;
@@ -19199,7 +19730,7 @@ button { /* Override any global button styles specific to Reviews */
   opacity: 1;
 }
 .homepage-content .popular-section {
-  padding: 60px 20px;
+  padding: 80px 20px;
   background-color: #ffffff;
 }
 .homepage-content .popular-section h2, .homepage-content .popular-section .h2 {
@@ -19215,7 +19746,7 @@ button { /* Override any global button styles specific to Reviews */
   font-size: 36px;
   color: #141416;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   font-weight: 700;
   font-family: "Helvetica", sans-serif;
 }
@@ -19224,9 +19755,12 @@ button { /* Override any global button styles specific to Reviews */
   justify-content: center;
   gap: 30px;
   flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 .homepage-content .popular-section .popular-products .product-card {
-  width: 352px;
+  width: 100%;
+  max-width: 240px;
   height: 400px;
   background-color: #ffffff;
   border: 1px solid #B1B5C3;
@@ -19235,8 +19769,12 @@ button { /* Override any global button styles specific to Reviews */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  text-align: left;
+}
+.homepage-content .popular-section .popular-products .product-card.hidden {
+  display: none;
 }
 .homepage-content .popular-section .popular-products .product-card:hover {
   transform: translateY(-5px);
@@ -19244,27 +19782,26 @@ button { /* Override any global button styles specific to Reviews */
 }
 .homepage-content .popular-section .popular-products .product-card .product-image-wrapper {
   width: 100%;
-  height: 250px;
+  height: 240px;
   margin: 0;
   margin-bottom: 15px;
   background-color: #f5f5f5;
-  border-radius: 4px 4px 0 0;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
 }
 .homepage-content .popular-section .popular-products .product-card .product-image {
   width: 100%;
   height: 100%;
-  min-width: 100%;
-  min-height: 100%;
   -o-object-fit: cover;
      object-fit: cover;
-  border-radius: 4px;
+  border-radius: 8px 8px 0 0;
   display: block;
 }
 .homepage-content .popular-section .popular-products .product-card .product-image-placeholder {
   width: 100%;
   height: 100%;
   background-color: #f0f0f0;
-  border-radius: 4px;
+  border-radius: 8px 8px 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -19275,48 +19812,45 @@ button { /* Override any global button styles specific to Reviews */
 }
 .homepage-content .popular-section .popular-products .product-card .product-info {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
+  margin-bottom: 15px;
+  padding: 0 15px;
   width: 100%;
 }
 .homepage-content .popular-section .popular-products .product-card .product-info span:first-child {
-  font-size: 16px;
+  font-size: 14px;
   color: #141416;
   font-weight: bold;
   text-align: left;
+  max-width: 60%;
 }
 .homepage-content .popular-section .popular-products .product-card .product-info .price-box {
-  font-size: 16px;
+  font-size: 14px;
   color: #141416;
   border: 2px solid #141416;
   padding: 5px 10px;
-  border-radius: 4px;
-  display: inline-block;
+  border-radius: 6px;
   line-height: 1;
-  margin-left: auto;
 }
 .homepage-content .popular-section .popular-products .product-card .order-button {
-  padding: 12px 10px;
+  padding: 10px 10px;
   background-color: #141416;
   color: #ffffff;
   border: none;
   border-radius: 90px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  display: block;
-  width: 150px;
-  margin-top: auto;
-  margin-left: 20px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 120px;
+  margin: 0 auto;
   text-align: center;
   text-decoration: none;
 }
 .homepage-content .popular-section .popular-products .product-card .order-button:hover {
   background-color: #333333;
+  transform: translateY(-2px);
 }
 .homepage-content .popular-section .popular-products a.product-card {
   text-decoration: none;
@@ -19347,7 +19881,7 @@ button { /* Override any global button styles specific to Reviews */
   font-size: 36px;
   color: #141416;
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 40px; /* Reverted to original */
   font-family: "Helvetica", sans-serif;
   font-weight: 700;
 }
@@ -19365,28 +19899,28 @@ button { /* Override any global button styles specific to Reviews */
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 50%;
-  width: 40px;
+  width: 40px; /* Reverted to original */
   height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 24px;
+  font-size: 24px; /* Reverted to original */
   color: #141416;
   cursor: pointer;
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
   z-index: 2;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease; /* Reverted to original */
 }
 .homepage-content .reviews-section .review-carousel .review-arrow:hover {
-  background-color: #f1f6f9;
+  background-color: #f1f6f9; /* Reverted to original */
 }
 .homepage-content .reviews-section .review-carousel .review-arrow.left-arrow {
-  left: 0;
+  left: 0; /* Reverted to original */
 }
 .homepage-content .reviews-section .review-carousel .review-arrow.right-arrow {
-  right: 0;
+  right: 0; /* Reverted to original */
 }
 .homepage-content .reviews-section .review-carousel .review-slides {
   display: flex;
@@ -19407,7 +19941,7 @@ button { /* Override any global button styles specific to Reviews */
   border-radius: 12px;
   padding: 25px;
   text-align: left;
-  box-shadow: none;
+  box-shadow: none; /* Reverted to original */
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -19422,7 +19956,7 @@ button { /* Override any global button styles specific to Reviews */
 .homepage-content .reviews-section .review-carousel .review-slides .review-slide .review-card .review-author {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 10px; /* Reverted to original */
 }
 .homepage-content .reviews-section .review-carousel .review-slides .review-slide .review-card .review-author .profile-icon {
   font-size: 40px;
@@ -19447,7 +19981,7 @@ button { /* Override any global button styles specific to Reviews */
   font-family: "Helvetica", sans-serif;
 }
 .homepage-content .image-gallery-section {
-  padding: 60px 0 0;
+  padding: 80px 0 0;
   background-color: #ffffff;
   margin-bottom: 0;
   width: 100%;
@@ -19458,15 +19992,14 @@ button { /* Override any global button styles specific to Reviews */
   justify-content: center;
   gap: 0;
   flex-wrap: nowrap;
-  width: 100vw;
+  width: 100%;
   margin: 0;
   padding: 0;
-  transform: translateX(calc((100% - 100vw) / 2));
 }
 .homepage-content .image-gallery-section .image-gallery .image-card {
   flex: 1;
   width: 25%;
-  height: 200px;
+  height: 250px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19503,16 +20036,17 @@ button { /* Override any global button styles specific to Reviews */
 }
 @media (max-width: 767px) {
   .homepage-content .hero-section {
-    height: 250px;
+    height: 300px;
     padding-left: 20px;
   }
   .homepage-content .hero-section .hero-text h1, .homepage-content .hero-section .hero-text .h1 {
     font-size: 32px;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    margin-top: 20px;
   }
   .homepage-content .hero-section .hero-text .discover-button {
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 8px 16px; /* Adjusted for mobile, based on original mobile styles */
+    font-size: 14px; /* Adjusted for mobile, based on original mobile styles */
   }
   .homepage-content .placeholder-section {
     padding: 0;
@@ -19521,88 +20055,146 @@ button { /* Override any global button styles specific to Reviews */
     max-width: 100%;
   }
   .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card {
-    height: 250px;
-    padding-left: 20px;
+    height: 300px;
+    padding: 20px;
   }
   .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card h2, .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card .h2 {
     font-size: 24px;
   }
   .homepage-content .placeholder-section .carousel-slides .carousel-slide .placeholder-card p {
     font-size: 16px;
+    max-width: 90%;
   }
   .homepage-content .placeholder-section .carousel-dots {
-    bottom: 10px;
+    bottom: 15px;
   }
   .homepage-content .placeholder-section .carousel-dots .dot {
-    height: 8px;
-    width: 8px;
+    height: 10px;
+    width: 10px;
+    margin: 0 6px;
   }
   .homepage-content .popular-section {
-    padding: 30px 10px;
+    padding: 80px 20px;
+    background-color: #ffffff;
   }
   .homepage-content .popular-section h2, .homepage-content .popular-section .h2 {
-    font-size: 20px;
+    font-size: 24px;
+    color: #141416;
+    text-align: center;
+    margin-bottom: 15px;
+    font-family: "Helvetica", sans-serif;
+    font-weight: normal;
+    line-height: 1.5;
   }
   .homepage-content .popular-section .popular-subtitle {
-    font-size: 24px;
-    margin-bottom: 20px;
+    font-size: 36px;
+    color: #141416;
+    text-align: center;
+    margin-bottom: 50px;
+    font-weight: 700;
+    font-family: "Helvetica", sans-serif;
   }
   .homepage-content .popular-section .popular-products {
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
   }
   .homepage-content .popular-section .popular-products .product-card {
     width: 100%;
-    max-width: 250px;
-    padding: 0 0 10px;
+    max-width: 240px;
+    height: 400px;
+    background-color: #ffffff;
+    border: 1px solid #B1B5C3;
+    border-radius: 8px;
+    padding: 0 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    text-align: left;
+  }
+  .homepage-content .popular-section .popular-products .product-card.hidden {
+    display: none;
+  }
+  .homepage-content .popular-section .popular-products .product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   .homepage-content .popular-section .popular-products .product-card .product-image-wrapper {
     width: 100%;
-    height: 200px;
+    height: 240px;
     margin: 0;
     margin-bottom: 15px;
     background-color: #f5f5f5;
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
   }
   .homepage-content .popular-section .popular-products .product-card .product-image {
     width: 100%;
     height: 100%;
-    min-width: 100%;
-    min-height: 100%;
     -o-object-fit: cover;
        object-fit: cover;
-    border-radius: 4px;
+    border-radius: 8px 8px 0 0;
     display: block;
   }
+  .homepage-content .popular-section .popular-products .product-card .product-image-placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    font-size: 16px;
+    font-weight: normal;
+    text-align: center;
+  }
   .homepage-content .popular-section .popular-products .product-card .product-info {
-    margin-bottom: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
+    display: flex;
+    flex-direction: column; /* Changed to column to stack product name and price */
+    align-items: flex-start; /* Align items to the left */
+    margin-bottom: 15px;
+    padding: 0 15px;
+    width: 100%;
   }
   .homepage-content .popular-section .popular-products .product-card .product-info span:first-child {
     font-size: 14px;
+    color: #141416;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px; /* Add space between product name and price */
   }
   .homepage-content .popular-section .popular-products .product-card .product-info .price-box {
     font-size: 14px;
-    padding: 4px 8px;
-    margin-left: auto;
+    color: #141416;
+    border: 2px solid #141416;
+    padding: 5px 10px;
+    border-radius: 6px;
+    line-height: 1;
   }
   .homepage-content .popular-section .popular-products .product-card .order-button {
-    width: 120px;
-    margin-top: auto;
-    text-decoration: none;
-    padding: 12px 16px;
+    padding: 10px 10px;
     background-color: #141416;
     color: #ffffff;
     border: none;
     border-radius: 90px;
-    font-size: 14px;
+    font-size: 13px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 120px;
+    margin: 0 0 0 15px; /* Align to the left with padding-left equivalent */
+    text-align: center;
+    text-decoration: none;
   }
   .homepage-content .popular-section .popular-products .product-card .order-button:hover {
     background-color: #333333;
+    transform: translateY(-2px);
   }
   .homepage-content .popular-section .popular-products a.product-card {
     text-decoration: none;
@@ -19618,7 +20210,7 @@ button { /* Override any global button styles specific to Reviews */
     color: #141416;
   }
   .homepage-content .reviews-section {
-    padding: 30px 10px;
+    padding: 30px 10px; /* Reverted to original */
   }
   .homepage-content .reviews-section h3.reviews-subtitle, .homepage-content .reviews-section .reviews-subtitle.h3 {
     font-size: 20px;
@@ -19626,21 +20218,22 @@ button { /* Override any global button styles specific to Reviews */
   }
   .homepage-content .reviews-section h2, .homepage-content .reviews-section .h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Reverted to original */
   }
   .homepage-content .reviews-section .review-carousel {
-    padding: 0;
+    padding: 0; /* Reverted to original */
   }
   .homepage-content .reviews-section .review-carousel .review-arrow {
-    display: none;
+    display: none; /* Reverted to original */
   }
   .homepage-content .reviews-section .review-carousel .review-slides .review-slide {
     flex-direction: column;
     padding: 0;
+    gap: 15px; /* Added for consistency with original mobile layout */
   }
   .homepage-content .reviews-section .review-carousel .review-slides .review-slide .review-card {
     width: 100%;
-    max-width: 300px;
+    max-width: 300px; /* Reverted to original */
     padding: 15px;
     margin-bottom: 15px;
   }
@@ -19650,12 +20243,12 @@ button { /* Override any global button styles specific to Reviews */
   .homepage-content .image-gallery-section .image-gallery {
     flex-direction: column;
     gap: 0;
-    width: 100vw;
+    width: 100%;
     transform: translateX(0);
   }
   .homepage-content .image-gallery-section .image-gallery .image-card {
     width: 100%;
-    height: 150px;
+    height: 110px;
     border-right: none;
     border-bottom: 1px solid #e5e7eb;
   }
@@ -19738,22 +20331,147 @@ button { /* Override any global button styles specific to Reviews */
 }
 .customer-layout .customer-header .header-right .notification-icon .notification-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 10px);
   right: 0;
   background-color: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  width: 350px;
-  z-index: 10;
-  padding: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 340px;
+  max-height: 380px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
 }
-.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .no-notifications {
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-dropdown-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #fafafa;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: left;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f1f3f5;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item:last-child {
+  border-bottom: none;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.clickable:hover {
+  background-color: #f9fafb;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.unread-frontend {
+  background-color: #eff6ff;
+  position: relative;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.unread-frontend .notification-message {
+  color: #1f2937;
+  font-weight: 500;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.unread-frontend .notification-time {
+  color: #1e40af;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.unread-frontend::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #3b82f6;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.read {
+  background-color: transparent;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.loading {
+  color: #6b7280;
+  font-style: italic;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.loading .spinner {
+  animation: spin 1s linear infinite;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item.error {
+  color: #ef4444;
+  font-style: italic;
+  text-align: center;
+  padding: 16px;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item .notification-message {
+  flex: 1;
+  font-size: 14px;
+  color: #4b5563;
+  margin: 0;
+  line-height: 1.5;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2; /* Standard property for compatibility */
+  box-orient: vertical; /* Standard property for compatibility */
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item .notification-time {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 12px;
+  flex-shrink: 0;
+  line-height: 1.5;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container .notification-item .no-notifications {
   font-size: 14px;
   color: #6b7280;
   text-align: center;
   margin: 0;
+  padding: 20px 16px;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-dropdown-footer {
+  padding: 10px 16px;
+  border-top: 1px solid #e5e7eb;
+  background-color: #fafafa;
+  text-align: center;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-dropdown-footer a {
+  font-size: 13px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-dropdown-footer a:hover {
+  color: #1e40af;
+  text-decoration: underline;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container::-webkit-scrollbar {
+  width: 6px;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container::-webkit-scrollbar-track {
+  background: #f1f3f5;
+  border-radius: 8px;
+  margin: 4px 0;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 8px;
+}
+.customer-layout .customer-header .header-right .notification-icon .notification-dropdown .notification-items-container::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
 }
 .customer-layout .customer-header .header-right .cart-icon {
   position: relative;
@@ -19837,8 +20555,8 @@ button { /* Override any global button styles specific to Reviews */
   margin-top: 20px;
 }
 .customer-layout .main-content .content h1, .customer-layout .main-content .content .h1 {
-  color: #333;
   font-size: 24px;
+  color: #333;
   margin-bottom: 16px;
 }
 .customer-layout .main-content .content p {
@@ -19958,6 +20676,8 @@ button { /* Override any global button styles specific to Reviews */
   .customer-header .header-right .notification-icon .notification-dropdown {
     right: auto;
     left: 0;
+    width: 280px;
+    max-height: 340px;
   }
   .customer-header .header-right .profile-icon .profile-dropdown {
     right: auto;
@@ -20015,6 +20735,14 @@ button { /* Override any global button styles specific to Reviews */
   }
   .profile-content {
     max-width: 100%;
+  }
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
 .product-info {
@@ -20232,6 +20960,46 @@ button { /* Override any global button styles specific to Reviews */
 }
 .product-info .product-content .product-details .product-actions .cart-button:hover {
   background-color: #f3f4f6;
+}
+.product-info .product-options-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+.product-info .product-options-row .product-option-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.product-info .product-options-row .product-option-group label {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+.product-info .product-options-row .product-option-group select {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  width: 100%;
+  box-sizing: border-box;
+}
+.product-info .product-options-row .product-option-group select:disabled {
+  background-color: #f3f4f6;
+  cursor: not-allowed;
+}
+.product-info .product-options-row .product-option-group p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 5px;
+}
+.product-info .product-options-row .product-option-group .error-text {
+  color: #f44336;
+  font-size: 0.85em;
+  margin-top: 3px;
 }
 .product-info .reviews-section {
   margin-bottom: 40px;
@@ -20946,8 +21714,8 @@ button { /* Override any global button styles specific to Reviews */
 }
 .products-content .category-section .product-grid .product-card {
   width: 100%;
-  max-width: 280px;
-  height: 460px;
+  max-width: 240px; /* Reduced from 280px */
+  height: 400px; /* Reduced from 460px */
   background-color: #ffffff;
   border: 1px solid #B1B5C3;
   border-radius: 8px;
@@ -20967,7 +21735,7 @@ button { /* Override any global button styles specific to Reviews */
 }
 .products-content .category-section .product-grid .product-card .product-image-wrapper {
   width: 100%;
-  height: 250px;
+  height: 200px; /* Reduced from 250px */
   overflow: hidden;
   border-radius: 8px 8px 0 0;
 }
@@ -21138,14 +21906,14 @@ button { /* Override any global button styles specific to Reviews */
 }
 @media (max-width: 767px) {
   .product-grid .product-card {
-    max-width: 200px;
-    height: 320px;
+    max-width: 180px; /* Reduced from 200px */
+    height: 280px; /* Reduced from 320px */
   }
   .product-grid .product-card .product-image {
-    height: 150px;
+    height: 120px; /* Reduced from 150px */
   }
   .product-grid .product-card .placeholder {
-    height: 150px;
+    height: 120px; /* Reduced from 150px */
   }
   .products-content {
     padding: 10px;
@@ -22199,40 +22967,77 @@ p {
   color: #4a5568;
   margin-bottom: 15px;
 }
-.payment-confirmation .price-details .price-item .item-info {
+.payment-confirmation .price-details .price-item .item-main-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
-.payment-confirmation .price-details .price-item .item-info .item-name {
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .name-and-price-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .name-and-price-row .item-name {
   font-weight: bold;
   color: #000000;
-  margin-bottom: 4px;
   font-size: 14px;
 }
-.payment-confirmation .price-details .price-item .item-info .item-price-calc {
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .name-and-price-row .item-price-calc {
   font-size: 13px;
   color: #4a5568;
 }
-.payment-confirmation .price-details .price-item .item-total-price {
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .name-and-price-row .item-total-price {
   font-weight: bold;
   color: #000000;
   font-size: 14px;
-  margin-left: 10px;
   white-space: nowrap;
 }
-.payment-confirmation .price-details .price-item:not(:has(.item-info)) {
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .item-options-details {
+  font-size: 0.85em;
+  color: #666;
+  padding-left: 0;
+  margin-top: 2px;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .item-options-details span:not(:first-child) {
+  margin-left: 10px;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .price-calc-and-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 4px;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .price-calc-and-total .item-price-calc {
+  font-size: 13px;
+  color: #4a5568;
+}
+.payment-confirmation .price-details .price-item .item-main-info .item-name-and-price-calc .price-calc-and-total .item-total-price {
+  font-weight: bold;
+  color: #000000;
+  font-size: 14px;
+  white-space: nowrap;
+  margin-left: 10px;
+}
+.payment-confirmation .price-details .price-item .item-main-info:not(:has(.item-main-info)) {
   align-items: center;
   margin-bottom: 10px;
 }
-.payment-confirmation .price-details .price-item:not(:has(.item-info)) span:first-child {
+.payment-confirmation .price-details .price-item .item-main-info:not(:has(.item-main-info)) span:first-child {
   font-weight: normal;
 }
-.payment-confirmation .price-details .price-item:not(:has(.item-info)) span:last-child {
-  font-weight: bold;
-  color: #000000;
+.payment-confirmation .price-details .price-item .item-main-info:not(:has(.item-main-info)) span:last-child {
+  font-weight: normal;
 }
-.payment-confirmation .price-details .price-total {
+.payment-confirmation .price-details .price-item .price-total {
   display: flex;
   justify-content: space-between;
   font-size: 16px;
@@ -22240,10 +23045,10 @@ p {
   padding-top: 10px;
   margin-top: 10px;
 }
-.payment-confirmation .price-details .price-total span:first-child {
+.payment-confirmation .price-details .price-item .price-total span:first-child {
   font-weight: normal;
 }
-.payment-confirmation .price-details .price-total span:last-child {
+.payment-confirmation .price-details .price-item .price-total span:last-child {
   font-weight: bold;
   color: #000000;
 }
@@ -22594,6 +23399,19 @@ p {
   color: #23262F;
   margin-bottom: 20px;
 }
+.personal-info-content h3, .personal-info-content .h3 {
+  font-size: 16px;
+  color: #23262F;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.account-info-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
 
 .info-form {
   display: flex;
@@ -22622,10 +23440,10 @@ p {
 }
 .form-row .form-group input {
   width: 100%;
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #e2e8f0;
   border-radius: 4px;
-  font-size: 16px;
+  font-size: 14px;
   color: #23262F;
   box-sizing: border-box;
 }
@@ -22633,23 +23451,74 @@ p {
   outline: none;
   border-color: #23262F;
 }
+.form-row .form-group select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #23262F;
+  background-color: #fff;
+  box-sizing: border-box;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%3E%3Cpath%20fill%3D%22%234a5568%22%20d%3D%22M8%2012l-6-6h12z%22%2F%3E%3C%2Fsvg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 12px;
+}
+.form-row .form-group select:focus {
+  outline: none;
+  border-color: #23262F;
+}
+.form-row .form-group select:disabled {
+  background-color: #f7fafc;
+  cursor: not-allowed;
+}
+.form-row .form-group .phone-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+.form-row .form-group .phone-input-wrapper .phone-prefix {
+  padding: 8px 8px 8px 8px;
+  background-color: #f7fafc;
+  color: #4a5568;
+  font-size: 14px;
+  border-right: 1px solid #e2e8f0;
+  white-space: nowrap;
+}
+.form-row .form-group .phone-input-wrapper input {
+  border: none;
+  flex: 1;
+  padding: 8px;
+  padding-left: 12px;
+  font-size: 14px;
+  color: #23262F;
+}
+.form-row .form-group .phone-input-wrapper input:focus {
+  outline: none;
+  border: none;
+}
 
 .form-actions {
   display: flex;
-  gap: 20px;
-  justify-content: flex-start;
-  margin-top: 20px;
+  gap: 15px;
+  justify-content: flex-end;
 }
 .form-actions .update-btn {
   background-color: #2A363B;
   color: #ffffff;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: none;
   border-radius: 42px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  min-width: 120px;
+  min-width: 100px;
 }
 .form-actions .update-btn:hover {
   background-color: #333333;
@@ -22657,21 +23526,185 @@ p {
 .form-actions .clear-btn {
   background-color: transparent;
   color: #4a5568;
-  padding: 10px 20px;
+  padding: 8px 16px;
   border: 1px solid #e2e8f0;
   border-radius: 42px;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: bold;
   cursor: pointer;
-  min-width: 120px;
+  min-width: 100px;
 }
 .form-actions .clear-btn:hover {
   background-color: #f3f4f6;
 }
 
+.address-section-wrapper {
+  border-top: 1px solid #d1d5db;
+  border-bottom: 1px solid #d1d5db;
+  padding: 12px 0;
+}
+
+.address-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.address-divider {
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+  margin: 12px 0;
+}
+
+.address-card {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  padding: 12px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.address-details {
+  flex: 1;
+}
+
+.address-header {
+  margin-bottom: 4px;
+}
+
+.address-phone {
+  font-size: 14px;
+  color: #4a5568;
+}
+
+.address-text {
+  font-size: 16px;
+  color: #23262F;
+  line-height: 1.5;
+}
+
+.address-actions {
+  margin-left: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.edit-link {
+  font-size: 14px;
+  color: #4a5568;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.edit-link:hover {
+  color: #2d3748;
+}
+
+.remove-btn {
+  background-color: transparent;
+  color: #4a5568;
+  padding: 6px 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 42px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.remove-btn:hover {
+  background-color: #f3f4f6;
+}
+
+/* Toggle Switch Styles */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e2e8f0;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4a5568;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.add-address {
+  margin-top: 12px;
+}
+
+.add-address-link {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #4a5568;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+.add-address-link:hover {
+  color: #2d3748;
+}
+
+.plus-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
 @media (max-width: 768px) {
   .personal-info-content {
     padding: 10px;
+  }
+  .account-info-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    align-items: stretch;
+  }
+  .form-actions .update-btn,
+  .form-actions .clear-btn {
+    width: 100%;
   }
   .form-row {
     flex-direction: column;
@@ -22680,14 +23713,189 @@ p {
   .form-row.single-field .form-group {
     max-width: 100%;
   }
-  .form-actions {
+  .address-card {
     flex-direction: column;
-    gap: 10px;
-    align-items: stretch;
+    align-items: flex-start;
+    padding: 8px;
   }
-  .form-actions .update-btn,
-  .form-actions .clear-btn {
-    width: 100%;
+  .address-radio {
+    margin-bottom: 8px;
+  }
+  .address-actions {
+    margin-left: 0;
+    margin-top: 8px;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .address-text {
+    font-size: 14px;
+  }
+}
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+.modal-header h2, .modal-header .h2 {
+  font-size: 18px;
+  color: #23262F;
+  margin: 0;
+}
+
+.modal-close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 24px;
+  color: #4a5568;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 14px;
+  color: #B1B5C3;
+  margin-bottom: 5px;
+}
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #23262F;
+  box-sizing: border-box;
+}
+.form-group input:focus {
+  outline: none;
+  border-color: #23262F;
+}
+
+.default-toggle {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.default-toggle label {
+  color: #23262F;
+  font-size: 14px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #e2e8f0;
+  transition: 0.3s;
+  border-radius: 20px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4a5568;
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.submit-btn {
+  background-color: #2A363B;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+  border-radius: 42px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+}
+.submit-btn:hover {
+  background-color: #333333;
+}
+
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    padding: 15px;
+  }
+  .modal-header h2, .modal-header .h2 {
+    font-size: 16px;
+  }
+  .modal-close {
+    font-size: 20px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
   }
 }
 .login-security {
@@ -24008,4 +25216,796 @@ p {
   .modal-content.order-details-modal .order-items-list .order-item-detail .item-detail-total {
     font-size: 13px;
   }
+}
+.chat-modal {
+  position: fixed;
+  top: 225px;
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.chat-container {
+  width: 110%;
+  height: 100%;
+  background: #777E90;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  padding: 10px;
+  background: #C4C4C4;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.chat-header span {
+  font-weight: bold;
+  font-size: 16px;
+  color: #182135;
+}
+.chat-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  margin-top: -3%;
+}
+.chat-header button svg {
+  width: 100%;
+  height: 100%;
+  fill: #182135;
+}
+.chat-header button svg:hover {
+  fill: #ddd;
+}
+
+.chat-messages {
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-messages .message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.chat-messages .message.admin {
+  align-items: flex-start;
+}
+.chat-messages .message.admin .message-content {
+  background: #141416;
+  color: #000;
+}
+.chat-messages .message.admin .message-content:before {
+  left: -10px;
+  border-right-color: #141416;
+  border-left: 0;
+}
+.chat-messages .message.admin .message-time {
+  align-self: flex-start;
+}
+.chat-messages .message.user .message-content {
+  background: #F7F7F7;
+  color: #fff;
+}
+.chat-messages .message.user .message-content:before {
+  right: -10px;
+  border-left-color: #F7F7F7;
+  border-right: 0;
+}
+.chat-messages .message .message-content {
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 70%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.chat-messages .message .message-content:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  top: 0;
+  transform: translateY(50%);
+}
+.chat-messages .message .message-content p {
+  margin: 0;
+  font-size: 14px;
+}
+.chat-messages .message .message-content .attached-image {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.chat-messages .message .message-time {
+  font-size: 12px;
+  color: #F7F7F7;
+  margin-top: 5px;
+  align-self: flex-end;
+}
+.chat-messages .date-separator {
+  text-align: center;
+  font-size: 12px;
+  color: #182135;
+  margin: 10px 0;
+}
+.chat-messages .date-separator span {
+  background: #777E90;
+  padding: 0 10px;
+}
+
+.chat-input {
+  padding: 10px;
+  background: #fff;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-input .image-preview-container {
+  position: relative;
+  display: inline-block;
+}
+.chat-input .image-preview-container .image-preview {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+}
+.chat-input .image-preview-container .remove-preview-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4444;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.chat-input .image-preview-container .remove-preview-button svg {
+  fill: #fff;
+  width: 10px;
+  height: 10px;
+}
+.chat-input input[type=file] {
+  display: none;
+}
+.chat-input .attach-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1%;
+}
+.chat-input .attach-button svg {
+  width: 100%;
+  height: 100%;
+  fill: #141416;
+}
+.chat-input .attach-button svg:hover {
+  fill: #C4C4C4;
+}
+.chat-input .message-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 3%;
+}
+.chat-input .send-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1%;
+}
+.chat-input .send-button svg {
+  width: 100%;
+  height: 100%;
+  fill: #141416;
+}
+.chat-input .send-button svg:hover {
+  fill: #C4C4C4;
+}
+
+.chat-modal {
+  position: fixed;
+  top: 225px;
+  right: 30px;
+  width: 350px;
+  height: 500px;
+  background: transparent;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  z-index: 1000;
+}
+
+.chat-container {
+  width: 110%;
+  height: 100%;
+  background: #8A9BA8;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  padding: 10px;
+  background: #D3D3D3;
+  color: #182135;
+  display: flex;
+  align-items: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.chat-header .avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.chat-header span {
+  font-weight: bold;
+  font-size: 16px;
+}
+.chat-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 16px;
+  height: 16px;
+  margin-left: auto;
+}
+.chat-header button:hover {
+  color: #ddd;
+}
+
+.chat-messages {
+  padding: 10px;
+  flex-grow: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.chat-messages .message {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.chat-messages .message.sent .message-content {
+  background: #141416;
+  color: #fff;
+}
+.chat-messages .message.sent .message-content:before {
+  right: -10px;
+  border-left-color: #141416;
+  border-right: 0;
+}
+.chat-messages .message.received {
+  align-items: flex-start;
+}
+.chat-messages .message.received .message-content {
+  background: #E8ECEF;
+  color: #333;
+}
+.chat-messages .message.received .message-content:before {
+  left: -10px;
+  border-right-color: #E8ECEF;
+  border-left: 0;
+}
+.chat-messages .message.received .message-time {
+  align-self: flex-start;
+}
+.chat-messages .message .message-content {
+  position: relative;
+  padding: 10px 15px;
+  border-radius: 10px;
+  max-width: 70%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.chat-messages .message .message-content:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  top: 0;
+  transform: translateY(50%);
+}
+.chat-messages .message .message-content p {
+  margin: 0;
+  font-size: 14px;
+}
+.chat-messages .message .message-content .attached-image {
+  max-width: 200px;
+  max-height: 200px;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+.chat-messages .message .message-time {
+  font-size: 12px;
+  color: #333;
+  margin-top: 5px;
+  align-self: flex-end;
+}
+.chat-messages .date-separator {
+  text-align: center;
+  font-size: 12px;
+  color: #182135;
+  margin: 10px 0;
+}
+.chat-messages .date-separator span {
+  background: #A3B1B8;
+  padding: 0 10px;
+}
+.chat-messages .loading-indicator,
+.chat-messages .error-message,
+.chat-messages .no-messages {
+  text-align: center;
+  color: #666;
+  padding: 10px;
+  font-style: italic;
+  font-size: 14px;
+}
+.chat-messages .error-message {
+  color: #ff6b6b;
+}
+
+.chat-input {
+  padding: 10px;
+  background: #D3D3D3;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.chat-input .image-preview-container {
+  position: relative;
+  display: inline-block;
+}
+.chat-input .image-preview-container .image-preview {
+  max-width: 100px;
+  max-height: 100px;
+  border-radius: 5px;
+}
+.chat-input .image-preview-container .remove-preview-button {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4444;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+.chat-input .image-preview-container .remove-preview-button svg {
+  fill: #fff;
+  width: 10px;
+  height: 10px;
+}
+.chat-input .attach-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1%;
+}
+.chat-input .attach-button svg {
+  width: 100%;
+  height: 100%;
+  fill: #141416;
+}
+.chat-input .attach-button svg:hover {
+  fill: #C4C4C4;
+}
+.chat-input .message-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-top: 3%;
+}
+.chat-input .send-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: -1%;
+}
+.chat-input .send-button svg {
+  width: 100%;
+  height: 100%;
+  fill: #141416;
+}
+.chat-input .send-button svg:hover {
+  fill: #C4C4C4;
+}
+
+.chat-inbox-list {
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  height: 500px;
+  width: 350px;
+}
+
+.chat-inbox-empty {
+  padding: 16px;
+  text-align: center;
+  color: #6c757d;
+  font-style: italic;
+}
+
+.chat-inbox-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #dee2e6;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+}
+.chat-inbox-item:last-child {
+  border-bottom: none;
+}
+.chat-inbox-item:hover {
+  background-color: #f1f3f5;
+}
+.chat-inbox-item.active {
+  background-color: #e9ecef;
+}
+.chat-inbox-item .inbox-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  margin-right: 12px;
+  flex-shrink: 0;
+  background-color: #eee;
+}
+.chat-inbox-item .inbox-details {
+  flex-grow: 1;
+  overflow: hidden;
+}
+.chat-inbox-item .inbox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+.chat-inbox-item .inbox-header .inbox-name {
+  font-weight: 600;
+  color: #212529;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-right: 8px;
+}
+.chat-inbox-item .inbox-header .inbox-time {
+  font-size: 0.75rem;
+  color: #6c757d;
+  flex-shrink: 0;
+}
+.chat-inbox-item .inbox-message-preview {
+  display: flex;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #6c757d;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.chat-inbox-item .inbox-message-preview .inbox-unread-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #007bff;
+  border-radius: 50%;
+  margin-right: 6px;
+  flex-shrink: 0;
+}
+.chat-inbox-item .inbox-unread-count {
+  background-color: #007bff;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: 8px;
+  flex-shrink: 0;
+  min-width: 18px;
+  text-align: center;
+}
+
+.chatbox-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 60px;
+  height: 60px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px #141416;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+.chatbox-bubble:hover {
+  background-color: #C4C4C4;
+}
+.chatbox-bubble svg {
+  width: 30px;
+  height: 30px;
+  fill: #D9D9D9;
+}
+
+.chatbox-bubble {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #4B5157;
+  color: #D9DADB;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition: background 0.3s ease;
+}
+.chatbox-bubble:hover {
+  background: rgb(161.3046875, 165.5, 169.6953125);
+}
+.chatbox-bubble .notification-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  background: #ff4444;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.chat-inbox-container {
+  position: fixed;
+  bottom: 80px;
+  right: 30px;
+  width: 350px;
+  max-height: 450px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+}
+.chat-inbox-container .inbox-header {
+  padding: 10px 15px;
+  border-bottom: 1px solid #eee;
+  font-weight: bold;
+  flex-shrink: 0;
+  background: none;
+  color: #333;
+}
+.chat-inbox-container .inbox-loading,
+.chat-inbox-container .inbox-error {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+}
+.chat-inbox-container .inbox-error {
+  color: red;
+}
+
+.set-new-password-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  padding: 20px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.set-new-password-card {
+  background: #fff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  max-width: 400px;
+  width: 100%;
+  text-align: left;
+}
+.set-new-password-card h2, .set-new-password-card .h2 {
+  margin-bottom: 8px;
+  color: #212529;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
+.set-new-password-card .subtitle {
+  margin-bottom: 30px;
+  color: #6c757d;
+  font-size: 15px;
+  text-align: center;
+}
+.set-new-password-card .set-password-form {
+  display: flex;
+  flex-direction: column;
+}
+.set-new-password-card .input-group {
+  margin-bottom: 25px;
+  text-align: left;
+}
+.set-new-password-card .input-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  color: #425466;
+}
+.set-new-password-card .password-input-group .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.set-new-password-card .password-input-group .eye-toggle {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  color: #6c757d;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+.set-new-password-card .form-input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #d1d3e2;
+  border-radius: 6px;
+  font-size: 14px;
+  background-color: #EDF2F7;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease-in-out;
+}
+.set-new-password-card .form-input::-moz-placeholder {
+  color: #adb5bd;
+}
+.set-new-password-card .form-input::placeholder {
+  color: #adb5bd;
+}
+.set-new-password-card .form-input:focus {
+  outline: none;
+  border-color: #111;
+  background-color: #EDF2F7;
+}
+.set-new-password-card .form-input.input-error {
+  border-color: #721c24;
+}
+.set-new-password-card .validation-error {
+  color: #721c24;
+  font-size: 12px;
+  margin-top: 4px;
+  text-align: left;
+}
+.set-new-password-card .submit-button {
+  padding: 12px;
+  background-color: #141416;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: none;
+  transition: 0.3s ease;
+  margin-top: 20px;
+}
+.set-new-password-card .submit-button:hover {
+  background-color: #2A363B;
+}
+.set-new-password-card .submit-button:disabled {
+  background-color: #b0c4de;
+  cursor: not-allowed;
+}
+.set-new-password-card .success-message {
+  color: #155724;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+.set-new-password-card .error-message {
+  color: #721c24;
+  background: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.back-link-container {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  margin-top: 0;
+  text-align: left;
+}
+
+.back-link {
+  color: #718096;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: bold;
+}
+.back-link:hover {
+  color: #718096;
+  text-decoration: underline;
 }

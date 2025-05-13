@@ -122,7 +122,6 @@
     &:hover:not(:disabled) {
         background-color: #45a049 !important;
         border-color: #45a049 !important;
-;
     }
 
     &:disabled {
@@ -394,9 +393,11 @@
 }
 
 .product-image {
-    max-width: 60px;
-    max-height: 60px;
+    width: 60px; /* Fixed width */
+    height: 60px; /* Fixed height */
+    object-fit: cover; /* Ensures the image fills the space, cropping if needed */
     vertical-align: middle;
+    border-radius: 4px; /* Consistent with ProductManagement */
 }
 
 .products-table tbody td[colspan="12"] {
@@ -491,8 +492,8 @@
     }
 
     .product-image {
-        max-width: 40px;
-        max-height: 40px;
+        width: 40px; /* Fixed width for smaller screens */
+        height: 40px; /* Fixed height for smaller screens */
     }
 
     .products-table {

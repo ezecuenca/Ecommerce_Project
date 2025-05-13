@@ -73,11 +73,20 @@ label {
   margin-bottom: 5px; 
 }
 
-
 .login-subtitle {
   font-size: 16px;
   margin-bottom: 25px;
   color: #555;
+}
+
+/* Styling for general error text */
+.error-text-general {
+  color: #e53e3e;
+  font-size: 14px;
+  margin-bottom: 15px;
+  text-align: left;
+  width: 100%;
+  max-width: 400px;
 }
 
 /* Input Fields */
@@ -86,6 +95,26 @@ label {
   width: 100%;
   max-width: 400px;
   margin-bottom: 20px;
+}
+
+.login-password-group {
+  position: relative;
+}
+
+/* Added: Wrapper for the password input and eye toggle */
+.input-wrapper {
+  position: relative;
+  display: block;
+}
+
+/* Added: Styling for the eye toggle */
+.eye-toggle {
+  position: absolute;
+  top: 40%;
+  right: 4px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #9CA3AF;
 }
 
 input {
@@ -98,6 +127,10 @@ input {
   border-radius: 6px;
 }
 
+/* Add padding to the password input to make space for the eye toggle */
+.login-password-input {
+  padding-right: 40px; /* Moved from inline style */
+}
 
 /* Forgot Password */
 .login-options {
@@ -106,8 +139,8 @@ input {
   width: 100%;
   max-width: 400px;
   font-size: 14px;
-  margin-top: -28px;
-  margin-bottom: 5px;
+  margin-top: -10px;
+  margin-bottom: 15px;
   align-items: center;
 }
 
@@ -116,6 +149,8 @@ input {
   text-decoration: none;
   margin: 0;
   padding: 0;
+  margin-top: -4%;
+  margin-right:-5%;
 
   &:hover {
     text-decoration: underline;
@@ -140,7 +175,6 @@ input {
   }
 }
 
-
 /* Sign-up Link */
 .login-signup {
   color: #777E90;
@@ -158,8 +192,6 @@ input {
     }
   }
 }
-
-
 
 /* Responsive Design */
 @media (max-width: 1024px) {

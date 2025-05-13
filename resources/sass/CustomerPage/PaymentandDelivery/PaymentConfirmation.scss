@@ -148,21 +148,120 @@
     }
 
 
-    .price-details {
-        .price-item {
-            display: flex; justify-content: space-between; align-items: flex-start; font-size: 14px; color: #4a5568; margin-bottom: 15px;
-            .item-info { display: flex; flex-direction: column; align-items: flex-start;
-                .item-name { font-weight: bold; color: #000000; margin-bottom: 4px; font-size: 14px; }
-                .item-price-calc { font-size: 13px; color: #4a5568; }
+   .price-details {
+    .price-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        font-size: 14px;
+        color: #4a5568;
+        margin-bottom: 15px;
+
+        .item-main-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+
+            .item-name-and-price-calc {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                width: 100%;
+
+                .name-and-price-row {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    width: 100%; 
+
+                    .item-name {
+                        font-weight: bold;
+                        color: #000000;
+                        font-size: 14px;
+                    }
+
+                    .item-price-calc {
+                        font-size: 13px;
+                        color: #4a5568;
+                    }
+
+                    .item-total-price {
+                        font-weight: bold;
+                        color: #000000;
+                        font-size: 14px;
+                        white-space: nowrap;
+                    }
+                }
+
+                .item-options-details {
+                    font-size: 0.85em;
+                    color: #666;
+                    padding-left: 0;
+                    margin-top: 2px;
+
+                    span {
+                        &:not(:first-child) {
+                            margin-left: 10px;
+                        }
+                    }
+                }
+
+                .price-calc-and-total {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    width: 100%;
+                    margin-top: 4px;
+
+                    .item-price-calc {
+                        font-size: 13px;
+                        color: #4a5568;
+                    }
+
+                    .item-total-price {
+                        font-weight: bold;
+                        color: #000000;
+                        font-size: 14px;
+                        white-space: nowrap;
+                        margin-left: 10px;
+                    }
+                }
             }
-            .item-total-price { font-weight: bold; color: #000000; font-size: 14px; margin-left: 10px; white-space: nowrap; }
-             &:not(:has(.item-info)) { align-items: center; margin-bottom: 10px; span:first-child { font-weight: normal; } span:last-child { font-weight: bold; color: #000000; } }
+
+            &:not(:has(.item-main-info)) {
+                align-items: center;
+                margin-bottom: 10px;
+
+                span:first-child {
+                    font-weight: normal;
+                }
+
+                span:last-child {
+                    font-weight: normal;
+                }
+            }
         }
+
         .price-total {
-            display: flex; justify-content: space-between; font-size: 16px; border-top: 1px solid #e5e7eb; padding-top: 10px; margin-top: 10px;
-             span:first-child { font-weight: normal; } span:last-child { font-weight: bold; color: #000000; }
+            display: flex;
+            justify-content: space-between;
+            font-size: 16px;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 10px;
+            margin-top: 10px;
+
+            span:first-child {
+                font-weight: normal;
+            }
+
+            span:last-child {
+                font-weight: bold;
+                color: #000000;
+            }
         }
     }
+}
 
 
     .delivery-form {

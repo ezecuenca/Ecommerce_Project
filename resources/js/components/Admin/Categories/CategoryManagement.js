@@ -80,7 +80,7 @@ const CategoryManagement = ({ type, category, selectedCategories, name, onClose,
     }
 
     else if (type === "archive" || type === "restore") {
-        const action = type === "archive" ? "Archive" : "Restore";
+        const action = type === "archive" ? "Delete" : "Restore";
         const count = Array.isArray(selectedCategories) ? selectedCategories.length : 0;
         const categoryNoun = count === 1 ? "category" : "categories";
         const message = `Are you sure you want to ${action.toLowerCase()} ${count} ${categoryNoun}?`;

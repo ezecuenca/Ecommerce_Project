@@ -8,15 +8,17 @@ const API_BASE_URL = "http://127.0.0.1:8000/api";
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [token, setTokenState] = useState(localStorage.getItem("access_token")); // <-- ADDED STATE FOR TOKEN
 
   useEffect(() => {
     const loadUser = async () => {
-      const token = localStorage.getItem("access_token");
-      if (token) {
+      const storedToken = localStorage.getItem("access_token");
+      if (storedToken) {
+        setTokenState(storedToken); // <-- SET TOKEN STATE
         try {
           const response = await axios.get(`${API_BASE_URL}/user/me`, {
             headers: {
-              'Authorization': `Bearer ${token}`,
+              'Authorization': `Bearer ${storedToken}`, // Use storedToken here
               'Accept': 'application/json'
             },
           });
@@ -24,21 +26,27 @@ export const AuthProvider = ({ children }) => {
              setUser(response.data.user);
           } else {
              console.error("Invalid user data structure received from /user/me:", response.data);
+             localStorage.removeItem("access_token"); // Clear inconsistent state
+             setTokenState(null);
+             setUser(null);
           }
         } catch (err) {
           console.error("Failed to load user via /user/me", err);
           if (err.response && (err.response.status === 401 || err.response.status === 403)) {
             console.log("Removing token due to 401/403 error on /user/me");
             localStorage.removeItem("access_token");
+            setTokenState(null); // <-- CLEAR TOKEN STATE
           }
           setUser(null);
         }
+      } else {
+        setTokenState(null); // Ensure token state is null if not in localStorage
       }
       setLoading(false);
     };
 
     loadUser();
-  }, []);
+  }, []); // Empty dependency array: runs once on mount
 
   const login = async (email, password) => {
     const response = await axios.post(`${API_BASE_URL}/login`, {
@@ -47,6 +55,7 @@ export const AuthProvider = ({ children }) => {
     });
     if (response.data && response.data.access_token && response.data.user) {
         localStorage.setItem("access_token", response.data.access_token);
+        setTokenState(response.data.access_token); // <-- SET TOKEN STATE ON LOGIN
         setUser(response.data.user);
         return response.data.user.role_id;
     } else {
@@ -56,12 +65,12 @@ export const AuthProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    const token = localStorage.getItem("access_token");
+    const currentToken = localStorage.getItem("access_token"); // Or use token from state
     try {
-      if (token) {
+      if (currentToken) { // Use currentToken
           await axios.post(`${API_BASE_URL}/logout`, null, {
             headers: {
-              'Authorization': `Bearer ${token}`,
+              'Authorization': `Bearer ${currentToken}`, // Use currentToken
               'Accept': 'application/json'
             },
           });
@@ -70,12 +79,14 @@ export const AuthProvider = ({ children }) => {
       console.error("Logout API call failed (token might be invalid):", err);
     } finally {
        localStorage.removeItem("access_token");
+       setTokenState(null); // <-- CLEAR TOKEN STATE ON LOGOUT
        setUser(null);
     }
   };
 
   return (
-    <AuthContext.Provider value={{ user, loading, login, logout, setUser }}>
+    // --- EXPOSE TOKEN IN CONTEXT VALUE ---
+    <AuthContext.Provider value={{ user, token, loading, login, logout, setUser, setTokenState }}>
       {children}
     </AuthContext.Provider>
   );

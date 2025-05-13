@@ -4,9 +4,11 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo; // Import BelongsTo for clarity
+use Illuminate\Database\Eloquent\Relations\HasOne;   // Import HasOne for clarity
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\HasApiTokens; // Using Passport based on your use statement
 
 // Import related models
 use App\Models\Profile;
@@ -14,6 +16,7 @@ use App\Models\Role; // Import the Role model
 
 class User extends Authenticatable
 {
+    // Use HasApiTokens if using Passport, HasApiTokens from Sanctum if using Sanctum
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -25,8 +28,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
-        'status',   // Correctly added
-        'role_id',  // Correctly added
+        'status',
+        'role_id',
     ];
 
     /**
@@ -46,25 +49,37 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        // Cast status to boolean since it's 0 or 1
         'status' => 'boolean',
+        // 'role_id' => 'integer', // Optional cast
     ];
 
     /**
      * Get the profile associated with the user.
      */
-    public function profile()
+    public function profile(): HasOne
     {
-        // Assumes profiles table has user_id and Profile model exists at App\Models\Profile
-        return $this->hasOne(Profile::class); // Correct: hasOne relationship
+        return $this->hasOne(Profile::class, 'user_id', 'id');
     }
 
     /**
      * Get the role associated with the user.
      */
-    public function role()
+    public function role(): BelongsTo
     {
-        // Assumes users table has role_id foreign key and Role model exists at App\Models\Role
-        return $this->belongsTo(Role::class); // Correct: belongsTo relationship
+        return $this->belongsTo(Role::class, 'role_id', 'id');
+    }
+
+    /**
+     * Check if the user has the 'admin' role.
+     * Compares against the 'role_name' column in the roles table.
+     *
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        // --- MODIFIED THIS LINE ---
+        // Check the 'role_name' attribute instead of 'name'
+        return strtolower($this->role?->role_name) === 'admin';
+        // --- END MODIFICATION ---
     }
 }

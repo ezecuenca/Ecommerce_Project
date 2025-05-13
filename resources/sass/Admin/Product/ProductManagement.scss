@@ -1,28 +1,32 @@
-.ProductManagement {
-    .edit-modal-overlay {
+.pm-ProductManagement {
+    .pm-edit-modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1000;
+        width: 100vw;
+        height: 100vh;
     }
 
-    .edit-modal {
+    .pm-edit-modal {
         background-color: white;
         padding: 20px;
         border-radius: 8px;
         width: 100%;
-        max-width: 360px; /* Reduced width to fit smaller screens */
+        max-width: 600px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         box-sizing: border-box;
-        max-height: 90vh; /* Increased to allow more content */
+        max-height: 90vh;
         overflow-y: auto;
         overflow-x: hidden;
+        margin: 0 20px;
+        position: relative;
     }
 
     h2 {
@@ -30,107 +34,50 @@
         font-weight: bold;
         color: #000000;
         margin-bottom: 16px;
-        text-align: center; /* Center the title */
+        text-align: center;
     }
 
-    .error-message {
+    .pm-error-message {
         color: #ef4444;
         margin-bottom: 8px;
         font-size: 14px;
         text-align: center;
     }
 
-    .form-group {
+    .pm-edit-form {
         display: flex;
         flex-direction: column;
         gap: 8px;
-        margin-bottom: 16px; /* Reduced margin for better spacing */
-        width: 100%;
+    }
+
+    .pm-form-row {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+    }
+
+    .pm-form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 16px;
+        flex: 1;
+        min-width: 200px;
         box-sizing: border-box;
     }
 
-    .form-group label {
-        font-size: 14px; /* Slightly smaller for better fit */
+    .pm-form-group.pm-full-width {
+        flex: 100%;
+    }
+
+    .pm-form-group label {
+        font-size: 14px;
         color: #4a5568;
         margin-bottom: 4px;
     }
 
-    .form-group input,
-    .form-group select {
-        border: 1px solid #d1d5db;
-        border-radius: 4px;
-        padding: 8px 10px;
-        width: 100%;
-        font-size: 14px;
-        height: 38px; /* Slightly smaller height */
-        outline: none;
-        box-sizing: border-box;
-        background-color: #f3f4f6;
-        color: #4a5568;
-        cursor: text;
-        pointer-events: auto;
-        user-select: text;
-        overflow: hidden;
-    }
-
-    .form-group input::placeholder,
-    .form-group select::placeholder {
-        color: #6b7280;
-    }
-
-    .form-group input:focus,
-    .form-group select:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        background-color: white;
-    }
-
-    .form-group textarea {
-        border: 1px solid #d1d5db;
-        border-radius: 4px;
-        padding: 8px 10px;
-        width: 100%;
-        font-size: 14px;
-        height: 80px; /* Increased height for better usability */
-        min-height: 80px;
-        max-height: 120px; /* Allow some resizing */
-        outline: none;
-        box-sizing: border-box;
-        background-color: #f3f4f6;
-        color: #4a5568;
-        cursor: text;
-        pointer-events: auto;
-        user-select: text;
-        resize: vertical; /* Allow vertical resizing */
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    .form-group textarea::placeholder {
-        color: #6b7280;
-    }
-
-    .form-group textarea:focus {
-        border-color: #3b82f6;
-        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
-        background-color: white;
-    }
-
-    .form-group .file-input-wrapper {
-        position: relative;
-        width: 100%;
-        box-sizing: border-box;
-        max-width: 100%;
-        overflow: hidden;
-        display: flex;
-        margin-bottom: 8px;
-    }
-
-    .form-group .product-file-input {
-        display: none;
-    }
-
-    .form-group .file-input-label {
+    .pm-form-group input,
+    .pm-form-group select {
         border: 1px solid #d1d5db;
         border-radius: 4px;
         padding: 8px 10px;
@@ -141,58 +88,87 @@
         box-sizing: border-box;
         background-color: #f3f4f6;
         color: #4a5568;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        max-width: 100%;
+        cursor: text;
+        pointer-events: auto;
+        user-select: text;
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
     }
 
-    .form-group .file-input-label:hover {
-        background-color: #e5e7eb;
+    .pm-form-group input::placeholder,
+    .pm-form-group select::placeholder {
+        color: #6b7280;
     }
 
-    .form-group .file-input-label:focus {
+    .pm-form-group input:focus,
+    .pm-form-group select:focus {
         border-color: #3b82f6;
         box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
         background-color: white;
     }
 
-    .form-group .file-input-label::after {
-        content: "Choose File";
-        background-color: #e5e7eb;
-        color: #4a5568;
-        padding: 6px 12px;
+    .pm-form-group textarea {
+        border: 1px solid #d1d5db;
         border-radius: 4px;
-        margin-left: 8px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 100px; /* Reduced width to fit better */
-        box-sizing: border-box;
-    }
-
-    .form-group .image-preview {
-        margin-top: 8px;
+        padding: 8px 10px;
         width: 100%;
-        max-width: 100%;
-        overflow: hidden;
+        font-size: 14px;
+        height: 80px;
+        min-height: 80px;
+        max-height: 120px;
+        outline: none;
+        box-sizing: border-box;
+        background-color: #f3f4f6;
+        color: #4a5568;
+        cursor: text;
+        pointer-events: auto;
+        user-select: text;
+        resize: vertical;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 
-    .form-group .image-preview .preview-image {
-        max-width: 100%;
-        max-height: 150px; /* Reduced height to fit better */
+    .pm-form-group textarea::placeholder {
+        color: #6b7280;
+    }
+
+    .pm-form-group textarea:focus {
+        border-color: #3b82f6;
+        box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+        background-color: white;
+    }
+
+    .pm-file-info {
+        font-size: 12px;
+        color: #6b7280;
+        margin-top: 4px;
+    }
+
+    .pm-product-image-wrapper {
+        margin-bottom: 12px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .pm-product-image-preview {
+        width: 150px; /* Fixed width */
+        height: 150px; /* Fixed height */
         border-radius: 4px;
         border: 1px solid #d1d5db;
-        object-fit: cover;
+        object-fit: cover; /* Ensures the image fills the space, cropping if needed */
     }
 
-    .form-actions {
+    .pm-validation-error {
+        color: #ef4444;
+        font-size: 12px;
+        margin-top: 4px;
+    }
+
+    .pm-input-error {
+        border-color: #ef4444 !important;
+    }
+
+    .pm-form-actions {
         display: flex;
         gap: 8px;
         margin-top: 16px;
@@ -201,7 +177,7 @@
         box-sizing: border-box;
     }
 
-    .cancel-button {
+    .pm-cancel-button {
         background-color: #e5e7eb;
         color: #4a5568;
         padding: 8px 16px;
@@ -212,17 +188,17 @@
         transition: background-color 0.3s ease;
     }
 
-    .cancel-button:hover {
+    .pm-cancel-button:hover {
         background-color: #d1d5db;
     }
 
-    .cancel-button:focus {
+    .pm-cancel-button:focus {
         outline: none;
         box-shadow: 0 0 0 2px #3b82f6;
     }
 
-    .save-button,
-    .confirm-button {
+    .pm-save-button,
+    .pm-confirm-button {
         background-color: #3b82f6;
         color: white;
         padding: 8px 16px;
@@ -233,45 +209,48 @@
         transition: background-color 0.3s ease;
     }
 
-    .save-button:hover,
-    .confirm-button:hover {
+    .pm-save-button:hover,
+    .pm-confirm-button:hover {
         background-color: #2563eb;
     }
 
-    .save-button:focus,
-    .confirm-button:focus {
+    .pm-save-button:focus,
+    .pm-confirm-button:focus {
         outline: none;
         box-shadow: 0 0 0 2px #3b82f6;
     }
 
-    .archive-modal-overlay,
-    .restore-modal-overlay {
+    .pm-archive-modal-overlay,
+    .pm-restore-modal-overlay {
         position: fixed;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
+        background-color: rgba(0, 0, 0, 0.7);
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 1000;
+        width: 100vw;
+        height: 100vh;
     }
 
-    .archive-modal,
-    .restore-modal {
+    .pm-archive-modal,
+    .pm-restore-modal {
         background-color: white;
         padding: 20px;
         border-radius: 8px;
-        width: 320px; /* Reduced width to fit smaller screens */
+        width: 320px;
         max-width: 90%;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         text-align: left;
         position: relative;
+        margin: 0 20px;
     }
 
-    .archive-modal h3,
-    .restore-modal h3 {
+    .pm-archive-modal h3,
+    .pm-restore-modal h3 {
         font-size: 18px;
         font-weight: bold;
         color: #000000;
@@ -279,35 +258,51 @@
         text-align: center;
     }
 
-    .archive-modal p,
-    .restore-modal p {
+    .pm-archive-modal p,
+    .pm-restore-modal p {
         font-size: 14px;
         color: #6b7280;
         margin-bottom: 12px;
         text-align: center;
     }
 
-    .button-group {
+    .pm-button-group {
         display: flex;
         gap: 8px;
         justify-content: flex-end;
     }
 
-    .archive-modal .confirm-button {
+    .pm-archive-modal .pm-confirm-button {
         background-color: #3b82f6;
     }
 
-    .archive-modal .confirm-button:hover {
+    .pm-archive-modal .pm-confirm-button:hover {
         background-color: #2563eb;
     }
 }
 
+@media (max-width: 768px) {
+    .pm-ProductManagement {
+        .pm-edit-modal {
+            max-width: 90%;
+        }
+
+        .pm-form-row {
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .pm-form-group {
+            min-width: 100%;
+        }
+    }
+}
+
 @media (max-width: 480px) {
-    .ProductManagement {
-        .edit-modal {
+    .pm-ProductManagement {
+        .pm-edit-modal {
             padding: 16px;
-            max-width: 100%;
-            margin: 0 10px; /* Add small margin on sides */
+            margin: 0 10px;
         }
 
         h2 {
@@ -315,65 +310,61 @@
             margin-bottom: 12px;
         }
 
-        .form-group {
+        .pm-form-group {
             gap: 6px;
             margin-bottom: 12px;
         }
 
-        .form-group label {
+        .pm-form-group label {
             font-size: 13px;
         }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea,
-        .form-group .file-input-label {
+        .pm-form-group input,
+        .pm-form-group select,
+        .pm-form-group textarea {
             height: 36px;
             font-size: 13px;
             padding: 6px 8px;
         }
 
-        .form-group textarea {
+        .pm-form-group textarea {
             height: 70px;
             min-height: 70px;
             max-height: 100px;
         }
 
-        .form-actions {
+        .pm-form-actions {
             margin-top: 12px;
             gap: 6px;
         }
 
-        .cancel-button,
-        .save-button,
-        .confirm-button {
+        .pm-cancel-button,
+        .pm-save-button,
+        .pm-confirm-button {
             padding: 6px 12px;
             font-size: 13px;
         }
 
-        .form-group .file-input-label::after {
-            padding: 4px 8px;
-            max-width: 80px;
+        .pm-product-image-preview {
+            width: 120px; /* Fixed width for smaller screens */
+            height: 120px; /* Fixed height for smaller screens */
         }
 
-        .form-group .image-preview .preview-image {
-            max-height: 120px;
-        }
-
-        .archive-modal,
-        .restore-modal {
+        .pm-archive-modal,
+        .pm-restore-modal {
             width: 90%;
             padding: 16px;
+            margin: 0 10px;
         }
 
-        .archive-modal h3,
-        .restore-modal h3 {
+        .pm-archive-modal h3,
+        .pm-restore-modal h3 {
             font-size: 16px;
             margin-bottom: 10px;
         }
 
-        .archive-modal p,
-        .restore-modal p {
+        .pm-archive-modal p,
+        .pm-restore-modal p {
             font-size: 13px;
             margin-bottom: 10px;
         }

@@ -1,0 +1,26 @@
+.chatbox-bubble {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 60px;
+    height: 60px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px #141416;
+    z-index: 1000;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #C4C4C4;
+    }
+
+    svg {
+        width: 30px;
+        height: 30px;
+        fill: #D9D9D9;
+    }
+}

@@ -1,5 +1,6 @@
 // MyOrders.js (Corrected with Authentication)
 import React, { useState, useEffect, useCallback, useContext } from "react"; // Added useContext
+import { Link } from 'react-router-dom'; // Import Link for login prompt
 import MyOrdersModal from "./MyOrdersModal"; // Assuming path is correct
 import Axios from 'axios';
 import moment from 'moment';
@@ -13,20 +14,22 @@ const LoadingIndicator = ({ message = "Loading..." }) => (
     </div>
 );
 
-// Updated getStatusInfo (remains the same)
+// VVVVVV MODIFIED getStatusInfo VVVVVV
 const getStatusInfo = (status) => {
     const lowerCaseStatus = status?.toLowerCase();
     switch (lowerCaseStatus) {
         case 'pending': return { text: 'Pending', className: 'pending', icon: <FaClock /> };
         case 'processing': return { text: 'Processing', className: 'processing', icon: <FaSpinner className="spinner"/> };
         case 'shipped': return { text: 'Shipped', className: 'on-delivery', icon: <FaShippingFast /> };
-        case 'delivered': return { text: 'Delivered', className: 'delivered-action', icon: <FaThumbsUp /> };
+        // Change display text for 'delivered' status
+        case 'delivered': return { text: 'On Delivery', className: 'delivered-action', icon: <FaShippingFast /> }; // Changed text to 'On Delivery', kept className/icon for button logic
         case 'completed': return { text: 'Completed', className: 'completed', icon: <FaCheckCircle /> };
         case 'cancelled': return { text: 'Cancelled', className: 'canceled', icon: <FaTimesCircle /> };
         case 'return_requested': return { text: 'Return Requested', className: 'processing', icon: <FaUndo /> };
         default: return { text: status || 'Unknown', className: 'unknown', icon: <FaClock /> };
     }
 };
+// ^^^^^^ MODIFIED getStatusInfo ^^^^^^
 
 const MyOrders = () => {
     // --- State ---
@@ -129,8 +132,10 @@ const MyOrders = () => {
         try {
             const headers = getAuthHeaders(); // Get token/headers
             await Axios.put(`${API_BASE_URL}/orders/${selectedOrder.id}/cancel`, {}, { headers }); // Pass headers
+            // Optimistic UI update
             setOrders(prevOrders => prevOrders.map(o => o.id === selectedOrder.id ? { ...o, status: 'cancelled' } : o ));
             setIsModalOpen(false); setSelectedOrder(null); setModalType('');
+            // Optionally re-fetch for consistency: await fetchOrders();
         } catch (err) {
             console.error(`Error cancelling order ${selectedOrder.id}:`, err.response || err.message || err);
             setError(`Failed to cancel order. ${err.response?.data?.message || err.message}`);
@@ -142,7 +147,9 @@ const MyOrders = () => {
         try {
             const headers = getAuthHeaders(); // Get token/headers
              await Axios.put(`${API_BASE_URL}/orders/${order.id}/mark-completed`, {}, { headers }); // Pass headers
+             // Optimistic UI update
              setOrders(prevOrders => prevOrders.map(o => o.id === order.id ? { ...o, status: 'completed' } : o ));
+             // Optionally re-fetch for consistency: await fetchOrders();
         } catch (err) {
              console.error(`Error marking order ${order.id} as completed:`, err.response || err.message || err);
              setError(`Failed mark as received. ${err.response?.data?.message || err.message}`);
@@ -155,7 +162,9 @@ const MyOrders = () => {
         try {
             const headers = getAuthHeaders(); // Get token/headers
              await Axios.put(`${API_BASE_URL}/orders/${order.id}/request-return`, {}, { headers }); // Pass headers
+             // Optimistic UI update
              setOrders(prevOrders => prevOrders.map(o => o.id === order.id ? { ...o, status: 'return_requested' } : o ));
+             // Optionally re-fetch for consistency: await fetchOrders();
         } catch (err) {
              console.error(`Error requesting return for order ${order.id}:`, err.response || err.message || err);
              setError(`Failed request return. ${err.response?.data?.message || err.message}`);
@@ -165,12 +174,23 @@ const MyOrders = () => {
     const handleCloseModal = () => { setIsModalOpen(false); setSelectedOrder(null); setModalType(''); setError(null); };
 
     // --- Filtering Logic (remains the same) ---
-    const upcomingOrders = Array.isArray(orders) ? orders.filter(order => { const status = order.status?.toLowerCase(); return ['pending', 'processing', 'shipped', 'delivered'].includes(status); }) : [];
-    const previousOrders = Array.isArray(orders) ? orders.filter(order => { const status = order.status?.toLowerCase(); return ['completed', 'cancelled', 'return_requested'].includes(status); }) : [];
+    const upcomingOrders = Array.isArray(orders) ? orders.filter(order => {
+        const status = order.status?.toLowerCase();
+        // 'delivered' items still show buttons, so they are considered "upcoming" actions for the user
+        return ['pending', 'processing', 'shipped', 'delivered'].includes(status);
+    }) : [];
+    const previousOrders = Array.isArray(orders) ? orders.filter(order => {
+        const status = order.status?.toLowerCase();
+        // Only truly finished/inactive orders go here
+        return ['completed', 'cancelled', 'return_requested'].includes(status);
+    }) : [];
 
-    // --- Render Order Card (remains the same structure) ---
+
+    // --- Render Order Card (uses updated getStatusInfo) ---
     const renderOrderCard = (order) => {
+        // getStatusInfo now returns { text: 'On Delivery', ... } for 'delivered' status
         const statusInfo = getStatusInfo(order.status);
+        // This condition remains the same - triggers buttons when backend status is 'delivered'
         const isDelivered = order.status?.toLowerCase() === 'delivered';
         const canCancel = order.status?.toLowerCase() === 'pending' || order.status?.toLowerCase() === 'processing';
         const isLoadingAction = actionLoading === order.id;
@@ -186,6 +206,7 @@ const MyOrders = () => {
                          </div>
                          <div className="order-status-wrapper">
                              <span className="clock-icon">{statusInfo.icon}</span>
+                             {/* Displays 'On Delivery' text when status is 'delivered' */}
                              <span className={`order-status ${statusInfo.className}`}>{statusInfo.text}</span>
                          </div>
                      </div>
@@ -197,6 +218,7 @@ const MyOrders = () => {
                  <div className="order-card-actions">
                       <button className="view-details-btn" onClick={() => handleViewDetailsClick(order)} disabled={isLoadingAction}> <FaEye style={{ marginRight: '5px'}} /> View </button>
                      {canCancel && ( <button className="cancel-btn" onClick={() => handleCancelClick(order)} disabled={isLoadingAction}>Cancel Order</button> )}
+                     {/* Buttons appear based on isDelivered which still checks for backend 'delivered' status */}
                      {isDelivered && (
                          <>
                              <button className="confirm-received-btn" onClick={() => handleMarkReceivedClick(order)} disabled={isLoadingAction}> {isLoadingAction ? <FaSpinner className="spinner"/> : <><FaCheck style={{ marginRight: '5px'}} /> Received</>} </button>
@@ -215,8 +237,8 @@ const MyOrders = () => {
 
     // Handle not logged in (after auth check)
      if (!user) return (
-          <div className="my-orders">
-              <p style={{textAlign: 'center', padding: '20px'}}>Please <Link to="/login">log in</Link> to view your orders.</p>
+          <div className="my-orders" style={{textAlign: 'center', padding: '20px'}}>
+              <p>Please <Link to="/login">log in</Link> to view your orders.</p>
           </div>
      );
 

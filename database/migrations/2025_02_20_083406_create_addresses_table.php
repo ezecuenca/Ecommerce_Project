@@ -21,6 +21,7 @@ class CreateAddressesTable extends Migration
             $table->string('city');
             $table->string('region')->nullable(); // Region can be optional
             $table->string('contact_no')->nullable(); // Contact number can be optional
+            $table->boolean('is_default')->default(false);
             $table->timestamps(); // created_at and updated_at
             $table->unsignedBigInteger('profile_id')->nullable();
 

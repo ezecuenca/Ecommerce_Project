@@ -162,14 +162,14 @@
     margin-bottom: 16px;
 }
 
-/* Button Group (Shared for all modals) */
+
 .button-group {
     display: flex;
     gap: 8px;
 }
 
 .save-button {
-    background-color: #ef4444; /* Red for delete and restore confirmation */
+    background-color: #ef4444; 
     color: white;
     padding: 8px 16px;
     border-radius: 4px;

@@ -294,14 +294,14 @@ const Roles = () => {
                     <div className="button-group" style={{ marginLeft: 'auto' }}>
                         {viewType === "active" && (
                             <>
-                                <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add Role</button>
+                                <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add</button>
                                 <button
                                     className="archive-button"
                                     onClick={() => handleArchive()}
                                     disabled={checkedCount === 0 || isLoading}
                                     title="Archive selected roles"
                                 >
-                                    Archive ({checkedCount})
+                                    Delete
                                 </button>
                             </>
                         )}
@@ -322,14 +322,14 @@ const Roles = () => {
                             onClick={() => handleViewChange("active")}
                             disabled={isLoading}
                         >
-                            Active
+                            Active Roles
                         </button>
                         <button
                             className={`view-button ${viewType === "archived" ? "active" : ""}`}
                             onClick={() => handleViewChange("archived")}
                             disabled={isLoading}
                         >
-                            Archived
+                            Archived Roles
                         </button>
                     </div>
                 </div>

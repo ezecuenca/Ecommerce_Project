@@ -5,6 +5,7 @@ import { AuthProvider } from "./AuthContext";
 import ProtectedRoute from "./ProtectedRoutes";
 import Login from "./Admin/login";
 import Register from "./Admin/register";
+import SetNewPassword from "./Admin/SetNewPassword"; // Renamed ResetPassword to SetNewPassword here for consistency
 import AdminDashboard from "./Admin/AdminDashboard";
 import CustomerLayout from "./CustomerPage/CustomerLayout";
 import CustomerPage from "./CustomerPage/Homepage/Homepage";
@@ -31,6 +32,7 @@ export default function Routers() {
                         <Route path="/login" element={<Login />} />
                         <Route path="/register" element={<Register />} />
                         <Route path="/" element={<Navigate replace to="/login" />} />
+                        <Route path="/set-new-password" element={<SetNewPassword />} />
 
                         <Route
                             path="/admin"
@@ -40,7 +42,6 @@ export default function Routers() {
                                 </ProtectedRoute>
                             }
                         />
-
                         <Route
                             path="/customer"
                             element={
@@ -61,16 +62,12 @@ export default function Routers() {
                             <Route path="order-complete" element={<OrderComplete />} />
                             <Route path="my-orders" element={<MyOrders />} />
                             <Route path="login-security" element={<LoginSecurity />} />
-
                             <Route path="personal-info" element={<PersonalInfo />} />
-
                             <Route path="profile">
                                 <Route index element={<Navigate replace to="/customer/personal-info" />} />
                                 <Route path="*" element={<Navigate replace to="/customer/personal-info" />} />
                             </Route>
-
                         </Route>
-
                     </Routes>
                 </Router>
             </CartProvider>

@@ -1,13 +1,87 @@
-import React from "react";
+import React, { useState, useEffect } from "react"; // Import useState and useEffect
+import axios from 'axios'; // Import axios
 import { FaStar } from "react-icons/fa";
 
+const API_BASE_URL = "http://localhost:8000/api"; // Define your API base URL
+
 const About = () => {
+    // --- NEW STATE FOR REVIEWS DATA ---
+    const [reviewStats, setReviewStats] = useState({
+        average_rating: 0,
+        total_reviews: 0,
+        rating_counts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+    });
+    const [isLoadingReviews, setIsLoadingReviews] = useState(true);
+    const [reviewError, setReviewError] = useState(null);
+
+    // --- USEEFFECT TO FETCH REVIEW STATS ---
+    useEffect(() => {
+        const fetchReviewStats = async () => {
+            setIsLoadingReviews(true);
+            setReviewError(null);
+            try {
+                // Adjust this endpoint to your actual API endpoint for review statistics
+                const response = await axios.get(`${API_BASE_URL}/reviews/stats`);
+                if (response.data) {
+                    setReviewStats({
+                        average_rating: parseFloat(response.data.average_rating) || 0,
+                        total_reviews: parseInt(response.data.total_reviews) || 0,
+                        rating_counts: response.data.rating_counts || { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+                    });
+                }
+            } catch (error) {
+                console.error("Error fetching review stats:", error);
+                setReviewError("Could not load customer review data.");
+                // Keep default/empty stats on error
+                setReviewStats({
+                    average_rating: 0,
+                    total_reviews: 0,
+                    rating_counts: { 5: 0, 4: 0, 3: 0, 2: 0, 1: 0 },
+                });
+            } finally {
+                setIsLoadingReviews(false);
+            }
+        };
+
+        fetchReviewStats();
+    }, []); // Empty dependency array means this runs once on component mount
+
+    // --- Helper to calculate percentage for rating bars ---
+    const getRatingPercentage = (ratingValue) => {
+        if (reviewStats.total_reviews === 0) return "0%";
+        const count = reviewStats.rating_counts[ratingValue] || 0;
+        const percentage = (count / reviewStats.total_reviews) * 100;
+        return `${Math.round(percentage)}%`;
+    };
+
+    // --- Helper to render stars based on average rating ---
+    const renderAverageStars = (average) => {
+        const fullStars = Math.floor(average);
+        const halfStar = average % 1 >= 0.5; // Adjust threshold if needed (e.g. 0.25 for quarter, 0.75 for three-quarter)
+        const starsArray = [];
+
+        for (let i = 0; i < 5; i++) {
+            if (i < fullStars) {
+                starsArray.push(<FaStar key={`star-${i}`} className="star-filled" size={20} />);
+            } else if (i === fullStars && halfStar) {
+                // For simplicity, we'll treat a half star as a filled star for now
+                // or you can use a different icon for half stars (e.g., FaStarHalfAlt)
+                starsArray.push(<FaStar key={`star-${i}`} className="star-filled" size={20} />); // Or your half-star logic
+            } else {
+                starsArray.push(<FaStar key={`star-${i}`} className="star-empty" size={20} />);
+            }
+        }
+        return starsArray;
+    };
+
+
     return (
         <div className="about-page">
             <h1 className="about-title">About Us</h1>
 
             {/* Our Story Section */}
             <section className="our-story-section">
+                {/* ... (content remains the same) ... */}
                 <div className="image-placeholder"></div>
                 <div className="text-content">
                     <h2>Our Story</h2>
@@ -19,6 +93,7 @@ const About = () => {
 
             {/* Our Mission Section */}
             <section className="our-mission-section">
+                {/* ... (content remains the same) ... */}
                 <div className="text-content">
                     <h2>Our Mission</h2>
                     <p>
@@ -28,65 +103,48 @@ const About = () => {
                 <div className="image-placeholder"></div>
             </section>
 
-            {/* Customer Reviews Section */}
+            {/* Customer Reviews Section - MODIFIED */}
             <section className="customer-reviews-section">
                 <h2>Customers reviews</h2>
-                <div className="overall-rating">
-                    <div className="rating-score">
-                        <span className="score">4.7</span>
-                        <div className="stars">
-                            {Array.from({ length: 5 }, (_, i) => (
-                                <FaStar
-                                    key={i}
-                                    className={i < 4 ? "star-filled" : "star-empty"}
-                                    size={20}
-                                />
+                {isLoadingReviews && <p>Loading reviews...</p>}
+                {reviewError && <p style={{ color: 'red' }}>{reviewError}</p>}
+                {!isLoadingReviews && !reviewError && (
+                    <div className="overall-rating">
+                        <div className="rating-score">
+                            <span className="score">
+                                {reviewStats.average_rating > 0 ? reviewStats.average_rating.toFixed(1) : 'N/A'}
+                            </span>
+                            <div className="stars">
+                                {renderAverageStars(reviewStats.average_rating)}
+                            </div>
+                            <p>
+                                {reviewStats.total_reviews > 0
+                                    ? `Based on ${reviewStats.total_reviews} review${reviewStats.total_reviews === 1 ? '' : 's'}`
+                                    : "No reviews yet"}
+                            </p>
+                        </div>
+                        <div className="rating-breakdown">
+                            {/* Iterate for 5 to 1 star ratings */}
+                            {[5, 4, 3, 2, 1].map((starValue) => (
+                                <div className="rating-bar" key={starValue}>
+                                    <span>{starValue}</span>
+                                    <div className="bar">
+                                        <div
+                                            className="filled"
+                                            style={{ width: getRatingPercentage(starValue) }}
+                                        ></div>
+                                    </div>
+                                    <span>{getRatingPercentage(starValue)}</span>
+                                </div>
                             ))}
                         </div>
-                        <p>Everest Peak and 1000+ More</p>
                     </div>
-                    <div className="rating-breakdown">
-                        <div className="rating-bar">
-                            <span>5</span>
-                            <div className="bar">
-                                <div className="filled" style={{ width: "70%" }}></div>
-                            </div>
-                            <span>70%</span>
-                        </div>
-                        <div className="rating-bar">
-                            <span>4</span>
-                            <div className="bar">
-                                <div className="filled" style={{ width: "20%" }}></div>
-                            </div>
-                            <span>20%</span>
-                        </div>
-                        <div className="rating-bar">
-                            <span>3</span>
-                            <div className="bar">
-                                <div className="filled" style={{ width: "5%" }}></div>
-                            </div>
-                            <span>5%</span>
-                        </div>
-                        <div className="rating-bar">
-                            <span>2</span>
-                            <div className="bar">
-                                <div className="filled" style={{ width: "3%" }}></div>
-                            </div>
-                            <span>3%</span>
-                        </div>
-                        <div className="rating-bar">
-                            <span>1</span>
-                            <div className="bar">
-                                <div className="filled" style={{ width: "2%" }}></div>
-                            </div>
-                            <span>2%</span>
-                        </div>
-                    </div>
-                </div>
+                )}
             </section>
 
             {/* Testimonials Section */}
             <section className="testimonials-section">
+                {/* ... (content remains the same) ... */}
                 <h2>Testimonials</h2>
                 <div className="testimonials-grid">
                     <div className="testimonial-card">
@@ -127,6 +185,7 @@ const About = () => {
 
             {/* Image Gallery Section */}
             <section className="image-gallery-section">
+                {/* ... (content remains the same) ... */}
                 <div className="image-gallery">
                     <div className="image-card">
                         <img src="/images/Wrapper1.jpg" alt="Wrapper 1" className="gallery-image" />

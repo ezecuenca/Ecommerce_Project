@@ -1,170 +1,144 @@
-import React, { useState, useEffect } from "react";
+// src/components/Admin/ReviewManagement.js (or appropriate path)
 
-const ReviewManagement = ({ type, reviewData, existingProducts = [], onClose, onSave, onConfirmDelete, externalError }) => {
+import React, { useState, useEffect } from "react";
+import { FaSpinner } from "react-icons/fa";
+
+const ReviewManagement = ({
+    type, 
+    reviewData, 
+    selectedReviews = [], 
+    onClose,
+    onSave, 
+    onConfirm, 
+    externalError,
+    isSubmitting: parentIsSubmitting 
+}) => {
     const [localRating, setLocalRating] = useState(0);
     const [localReviewText, setLocalReviewText] = useState("");
-    const [localProductId, setLocalProductId] = useState('');
-    const [error, setError] = useState("");
+    const [internalError, setInternalError] = useState("");
 
-     const uniqueProducts = Array.isArray(existingProducts) ? Array.from(new Map(existingProducts.map(item => [item.id, item])).values()) : [];
-
+   
+    const productNameForDisplay = (type === "edit" && reviewData)
+        ? (reviewData.productName || 'Product N/A') 
+        : 'Product';
 
     useEffect(() => {
-        setError(externalError || "");
-    }, [externalError]);
+        if (externalError) { setInternalError(externalError); }
+        else { setInternalError(""); }
+    }, [externalError, type]);
 
     useEffect(() => {
         if (type === "edit" && reviewData) {
-            setLocalRating(reviewData.rating || 0);
+            setLocalRating(reviewData.rating !== null && reviewData.rating !== undefined ? reviewData.rating : 0);
             setLocalReviewText(reviewData.review_text || "");
-            setLocalProductId(reviewData.product_id || '');
-            setError("");
-        } else if (type === "add") {
-            setLocalRating(0);
-            setLocalReviewText("");
-            setLocalProductId('');
-            setError("");
+            if (!externalError) setInternalError("");
         } else {
             setLocalRating(0);
             setLocalReviewText("");
-            setLocalProductId('');
-            setError("");
+            if (!externalError && (type === "archiveConfirm" || type === "restoreConfirm")) {
+                 setInternalError("");
+            }
         }
-    }, [type, reviewData]);
-
+    }, [type, reviewData, externalError]);
 
     const validateRating = (value) => {
         const numValue = parseFloat(value);
-        if (isNaN(numValue) || value === null || value === undefined || value === '') return false;
+        if (isNaN(numValue) || value === null || value === undefined || String(value).trim() === '') return false;
         if (numValue < 0 || numValue > 5) return false;
         const decimalPart = Math.abs(numValue % 1);
         return decimalPart === 0 || decimalPart === 0.5;
     };
 
     const handleRatingChange = (e) => {
-        const value = e.target.value;
-         setLocalRating(value);
-         if (value === "" || validateRating(value)) {
-             setError("");
-         } else {
-             setError("Rating must be a number from 0.0 to 5.0 in 0.5 increments.");
-         }
+        setLocalRating(e.target.value);
+        if (internalError.includes("Rating")) setInternalError("");
     };
 
     const handleReviewChange = (e) => {
         const value = e.target.value;
         setLocalReviewText(value);
         if (value.length <= 1000) {
-             setError(prev => prev.includes("Review text") ? "" : prev);
-        } else {
-             setError("Review text cannot exceed 1000 characters.");
-        }
+            if (internalError.includes("Review text cannot exceed")) setInternalError("");
+        } else { setInternalError("Review text cannot exceed 1000 characters."); }
+        if (internalError.includes("Review text cannot be empty") && value.trim()) setInternalError("");
     };
-
-     const handleProductChange = (e) => {
-         setLocalProductId(e.target.value);
-         if(e.target.value) {
-             setError(prev => prev.includes("Product") ? "" : prev);
-         }
-     };
-
 
     const handleInternalSave = () => {
-        setError("");
+        setInternalError("");
         let currentError = "";
+        if (!validateRating(localRating)) { currentError += "Rating must be 0.0-5.0 in 0.5 increments. "; }
+        if (!localReviewText.trim()) { currentError += "Review text cannot be empty. "; }
+        else if (localReviewText.length > 1000) { currentError += "Review text > 1000 characters. "; }
 
-        if (type === 'add' && !localProductId) {
-             currentError = "Please select a product. ";
-        }
-        if (!validateRating(localRating)) {
-            currentError += "Rating must be a number from 0.0 to 5.0 in 0.5 increments. ";
-        }
-        if (!localReviewText.trim()) {
-            currentError += "Review text cannot be empty. ";
-        } else if (localReviewText.length > 1000) {
-            currentError += "Review text cannot exceed 1000 characters. ";
-        }
-
-        if (currentError) {
-            setError(currentError.trim());
-            return;
-        }
-
-        const dataToSave = {
-            rating: parseFloat(localRating), 
-            reviewText: localReviewText.trim(),
-            productId: localProductId,
-        };
-        onSave(dataToSave);
+        if (currentError) { setInternalError(currentError.trim()); return; }
+        if (onSave) onSave({ rating: parseFloat(localRating), reviewText: localReviewText.trim() });
     };
 
-    const handleInternalConfirm = () => {
-        onConfirmDelete(reviewData);
+    const handleInternalConfirm = () => { 
+        if (onConfirm && Array.isArray(selectedReviews) && selectedReviews.length > 0) {
+            onConfirm(selectedReviews);
+        } else { setInternalError("Cannot confirm action: Invalid selection or handler missing."); }
     };
 
-
-    if (type === "edit" || type === "add") {
-        const title = type === "edit" ? `Edit Review for ${reviewData?.productName || 'Product'}` : "Add New Review";
+    if (type === "edit") {
+        const title = `Edit Review for ${productNameForDisplay}`;
         return (
-            <div className="edit-modal-overlay" onClick={onClose}>
+            <div className="edit-modal-overlay" onClick={parentIsSubmitting ? undefined : onClose}>
                 <div className="edit-modal" onClick={e => e.stopPropagation()}>
                     <h3 className="edit-modal-header">{title}</h3>
-                    {error && <p className="error-message">{error}</p>}
+                    {internalError && <p className="error-message modal-error" style={{color: 'red', textAlign: 'center', marginBottom: '10px'}}>{internalError}</p>}
                     <div className="edit-form">
-                        {type === 'add' && (
-                            <>
-                                <label className="edit-form-label">Product:</label>
-                                <select value={localProductId} onChange={handleProductChange} className="review-input">
-                                     <option value="" disabled>-- Select Product --</option>
-                                     {uniqueProducts.map(product => (<option key={product.id} value={product.id}>{product.name} (ID: {product.id})</option>))}
-                                </select>
-                            </>
-                        )}
-                         {type === 'edit' && (
-                             <>
-                                 <label className="edit-form-label">Product:</label>
-                                 <input type="text" value={reviewData?.productName || ''} className="review-input" readOnly disabled/>
-                             </>
-                         )}
-                        <label className="edit-form-label">Rating (0.0–5.0):</label>
-                        <input type="number" step="0.5" min="0" max="5" value={localRating} onChange={handleRatingChange} className="review-input" placeholder="e.g., 4.5"/>
-                        <label className="edit-form-label">Review:</label>
-                        <textarea value={localReviewText} onChange={handleReviewChange} className="review-input" placeholder="Enter review text" rows="4" maxLength="1000"/>
-                        <div className="button-group">
-                            <button className="save-button" onClick={handleInternalSave}>Save</button>
-                            <button className="cancel-button" onClick={onClose}>Cancel</button>
-                        </div>
+                         <div className="form-group">
+                            <label className="edit-form-label">Product:</label>
+                            <input type="text" value={productNameForDisplay} className="review-input" readOnly disabled/>
+                         </div>
+                         <div className="form-group">
+                             <label className="edit-form-label">Rating (0.0–5.0):</label>
+                             <input type="number" step="0.5" min="0" max="5" value={localRating} onChange={handleRatingChange} className="review-input" placeholder="e.g., 4.5" disabled={parentIsSubmitting}/>
+                         </div>
+                         <div className="form-group">
+                            <label className="edit-form-label">Review:</label>
+                            <textarea value={localReviewText} onChange={handleReviewChange} className="review-input" placeholder="Enter review text" rows="4" maxLength="1000" disabled={parentIsSubmitting}/>
+                         </div>
+                         <div className="button-group modal-actions">
+                            <button className="save-button" onClick={handleInternalSave} disabled={parentIsSubmitting}>
+                                {parentIsSubmitting ? <FaSpinner className="spinner-btn"/> : 'Save Changes'}
+                            </button>
+                            <button className="cancel-button" onClick={onClose} disabled={parentIsSubmitting}>Cancel</button>
+                         </div>
                     </div>
                 </div>
             </div>
         );
-    } else if (type === "delete") {
-        const itemsArray = Array.isArray(reviewData) ? reviewData : [reviewData].filter(Boolean); // Ensure array and filter null/undefined
+    } else if (type === "archiveConfirm" || type === "restoreConfirm") {
+        const itemsArray = Array.isArray(selectedReviews) ? selectedReviews : [];
         const count = itemsArray.length;
-        const title = `Confirm Delete`;
-        const message = `Are you sure you want to delete ${count} review(s)? This action cannot be undone.`;
+        const actionVerb = type === 'archiveConfirm' ? 'archive' : 'restore';
+        const title = `Confirm ${actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}`;
+        const message = `Are you sure you want to ${actionVerb} ${count} review(s)?`;
 
         return (
-            <div className="delete-modal-overlay" onClick={onClose}>
-                <div className="delete-modal" onClick={e => e.stopPropagation()}>
-                    <h3>{title}</h3>
-                    {error && <p className="error-message">{error}</p>}
+            <div className="modal-overlay confirm-modal-overlay" onClick={parentIsSubmitting ? undefined : onClose}>
+                <div className="modal-content confirm-modal" onClick={e => e.stopPropagation()}>
+                    <h3 className="modal-header">{title}</h3>
+                    {internalError && <p className="error-message modal-error" style={{color: 'red', textAlign: 'center', marginBottom: '10px'}}>{internalError}</p>}
                     <p>{message}</p>
-                     {count > 0 && count <= 5 && (
-                        <ul>
-                             {itemsArray.map(item => item ? <li key={item.id}>{item.review_text?.substring(0, 50)}... (Product: {item.productName})</li> : null)}
-                        </ul>
-                     )}
-                    <div className="button-group">
-                        <button className="save-button confirm-delete-button" onClick={handleInternalConfirm}>Delete</button>
-                        <button className="cancel-button" onClick={onClose}>Cancel</button>
+            
+                    <div className="button-group modal-actions">
+                        <button
+                            className={`save-button ${actionVerb}-button`}
+                            onClick={handleInternalConfirm}
+                            disabled={parentIsSubmitting || count === 0}
+                        >
+                            {parentIsSubmitting ? <FaSpinner className="spinner-btn"/> : actionVerb.charAt(0).toUpperCase() + actionVerb.slice(1)}
+                        </button>
+                        <button className="cancel-button" onClick={onClose} disabled={parentIsSubmitting}>Cancel</button>
                     </div>
                 </div>
             </div>
         );
     }
-
-    return null;
+    return null; 
 };
 
 export default ReviewManagement;

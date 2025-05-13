@@ -59,28 +59,43 @@ const Homepage = () => {
         fetchPopularProducts();
     }, []); // Fetch only on mount
 
-    // --- Fetch Reviews ---
-    const fetchReviews = useCallback(async () => {
-        setLoadingReviews(true); setErrorReviews(null);
-        try {
-            // Fetch reviews (assuming GET /api/reviews returns active reviews)
-            const response = await axios.get(`${API_BASE_URL}/reviews`);
-            console.log("Fetched Reviews Data:", response.data); // DEBUG
+// --- Fetch Reviews --- (Corrected Version)
+const fetchReviews = useCallback(async (limit = 6) => { // Added limit parameter
+    setLoadingReviews(true); setErrorReviews(null);
+    try {
+        const response = await axios.get(`${API_BASE_URL}/reviews`, {
+            params: { status: 'active', page: 1, per_page: limit } // Fetch specific page/limit
+        });
+        console.log("Fetched Reviews Data:", response.data); // DEBUG
 
-            // Assuming the controller returns the formatted array directly now
-            if (Array.isArray(response.data)) {
-                 // Limit the number displayed on the homepage if desired
-                 setFetchedReviews(response.data.slice(0, 6)); // Example: Show up to 6 reviews
-            } else {
-                console.error("Reviews API did not return an array:", response.data);
-                throw new Error("Unexpected review data format");
-            }
-        } catch (err) {
-            console.error("Error fetching reviews:", err);
-            setErrorReviews(`Failed to load reviews: ${err.message || 'Please try again later.'}`);
-            setFetchedReviews([]);
-        } finally { setLoadingReviews(false); }
-    }, []); // Empty dependencies - fetch on mount
+        let reviewsArray = []; // Variable to hold the actual array
+
+        // --- VVVVVV THIS IS THE MODIFIED/CORRECTED BLOCK VVVVVV ---
+        // Check for the Laravel Paginator Object Structure FIRST
+        if (response.data && Array.isArray(response.data.data)) {
+             console.log("Processing paginated reviews structure on homepage.");
+             reviewsArray = response.data.data; // Assign the array from the 'data' property
+        }
+        // Fallback check for a Direct Array Structure
+        else if (Array.isArray(response.data)) {
+             console.warn("Processing direct array reviews structure on homepage (fallback).");
+             reviewsArray = response.data; // Assign the response data directly if it's an array
+        } else {
+            // If NEITHER structure matches, THEN it's an error
+            console.error("Reviews API did not return an array or paginated data:", response.data);
+            throw new Error("Unexpected review data format");
+        }
+        // --- ^^^^^^ END OF MODIFIED/CORRECTED BLOCK ^^^^^^ ---
+
+         // Use the extracted array (already transformed by backend)
+        setFetchedReviews(reviewsArray.slice(0, limit)); // Apply limit to the extracted array
+
+    } catch (err) {
+        console.error("Error fetching reviews:", err);
+        setErrorReviews(`Failed to load reviews. ${err.message || 'Please try again later.'}`);
+        setFetchedReviews([]); // Clear on error
+    } finally { setLoadingReviews(false); }
+}, []); // Dependencies only needed if they ch
 
     useEffect(() => {
         fetchReviews();
@@ -184,7 +199,7 @@ const Homepage = () => {
                                                      <span className="profile-icon">👤</span>
                                                      <div className="author-info">
                                                           {/* Access formatted name from profile object */}
-                                                         <p className="author-name">{review.profile?.name || 'Anonymous'}</p>
+                                                          <p className="author-name">{review.userName || 'Anonymous'}</p>
                                                          {/* Subtitle is not typically in review data, remove or adapt */}
                                                          {/* <p className="author-subtitle">{review.subtitle}</p> */}
                                                      </div>

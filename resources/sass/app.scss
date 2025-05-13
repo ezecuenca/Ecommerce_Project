@@ -15,6 +15,7 @@
 @import './Admin/Inventory/Inventory.scss';
 @import './Admin/Inventory/InventoryManagement.scss';
 @import './Admin/Product/ProductList.scss';
+@import './Admin/Product/ProductManagement.scss';
 @import './Admin/User/UserList.scss';
 @import './Admin/Customer/CustomerList.scss';
 @import './Admin/Categories/Categories.scss';
@@ -43,8 +44,15 @@
 @import './CustomerPage/PaymentandDelivery/OrderComplete.scss';
 @import './CustomerPage/ProfileSidebar/ProfileSidebar.scss';
 @import './CustomerPage/ProfileSidebar/PersonalInfo.scss';
+@import './CustomerPage/ProfileSidebar/AddressModal.scss';
 @import './CustomerPage/ProfileSidebar/LoginSecurity.scss';
 @import './CustomerPage/ProfileSidebar/MyPayments.scss';
 @import './CustomerPage/ProfileSidebar/MyOrders.scss';
 @import './CustomerPage/ProfileSidebar/LoginSecurityModal.scss';
 @import './CustomerPage/ProfileSidebar/MyOrdersModal.scss';
+@import './CustomerPage/Chatbox/Chatbox.scss';
+@import './Admin/Chatbox/AdminChatbox.scss';
+@import './Admin/Chatbox/ChatInboxList.scss';
+@import './CustomerPage/Chatbox/Chatbubble.scss';
+@import'./Admin/Chatbox/Adminchatbubble.scss';
+@import './Admin/SetNewPassword.scss';

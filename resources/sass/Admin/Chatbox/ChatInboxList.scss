@@ -1,0 +1,122 @@
+// Variables (can import from a central file or define here)
+$inbox-bg: #ffffff;
+$inbox-hover-bg: #f1f3f5;
+$inbox-active-bg: #e9ecef;
+$inbox-border-color: #dee2e6;
+$text-primary: #212529;
+$text-secondary: #6c757d;
+$text-unread: #007bff;
+$unread-dot-color: #007bff;
+$avatar-size: 40px;
+$spacing-unit: 8px;
+
+.chat-inbox-list {
+    border: 1px solid $inbox-border-color;
+    border-radius: 4px;
+    background-color: $inbox-bg;
+    overflow-y: auto; 
+    height: 500px; 
+    width: 350px;
+}
+
+.chat-inbox-empty {
+    padding: $spacing-unit * 2;
+    text-align: center;
+    color: $text-secondary;
+    font-style: italic;
+}
+
+.chat-inbox-item {
+    display: flex;
+    align-items: center;
+    padding: $spacing-unit * 1.5;
+    border-bottom: 1px solid $inbox-border-color;
+    cursor: pointer;
+    transition: background-color 0.15s ease-in-out;
+
+    &:last-child {
+        border-bottom: none;
+    }
+
+    &:hover {
+        background-color: $inbox-hover-bg;
+    }
+
+    &.active {
+        background-color: $inbox-active-bg;
+    }
+
+    .inbox-avatar {
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: $spacing-unit * 1.5;
+        flex-shrink: 0;
+        background-color: #eee; // Fallback
+    }
+
+    .inbox-details {
+        flex-grow: 1;
+        overflow: hidden; // Prevent text overflow
+    }
+
+    .inbox-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: $spacing-unit * 0.5;
+
+        .inbox-name {
+            font-weight: 600;
+            color: $text-primary;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-right: $spacing-unit;
+        }
+
+        .inbox-time {
+            font-size: 0.75rem;
+            color: $text-secondary;
+            flex-shrink: 0;
+        }
+    }
+
+    .inbox-message-preview {
+        display: flex;
+        align-items: center;
+        font-size: 0.85rem;
+        color: $text-secondary;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        .inbox-unread-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: $unread-dot-color;
+            border-radius: 50%;
+            margin-right: $spacing-unit * 0.75;
+            flex-shrink: 0;
+        }
+
+        // .inbox-snippet {} <<-- REMOVED THIS EMPTY RULESET
+
+    } // end .inbox-message-preview
+
+    .inbox-unread-count {
+        background-color: $text-unread;
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 2px 6px;
+        border-radius: 10px;
+        margin-left: $spacing-unit;
+        flex-shrink: 0;
+        min-width: 18px; // Ensure circle shape for single digit
+        text-align: center;
+    }
+} // end .chat-inbox-item

@@ -1,6 +1,3 @@
-/* src/components/admin/CategoryManagement.scss */
-
-/* Scope all styles to prevent conflicts with CustomerManagement or other files */
 .CategoryManagement {
     .edit-modal-overlay {
         position: fixed !important;
@@ -8,16 +5,14 @@
         left: 0 !important;
         right: 0 !important;
         bottom: 0 !important;
-        background-color: rgba(0, 0, 0, 0.5) !important; /* Grayish overlay background */
+        background-color: rgba(0, 0, 0, 0.5) !important;
         display: flex !important;
-        justify-content: center !important; /* Center horizontally */
-        align-items: center !important; /* Center vertically */
+        justify-content: center !important;
+        align-items: center !important;
         z-index: 1000 !important;
         isolation: isolate !important;
-        /* Fallback for older browsers or conflicts */
         -webkit-align-items: center !important;
         -webkit-justify-content: center !important;
-        /* Prevent parent interference */
         transform: none !important;
         will-change: transform, opacity !important;
         margin: 0 !important;
@@ -72,7 +67,7 @@
         border: 1px solid #d1d5db !important;
         border-radius: 4px !important;
         padding: 8px 12px !important;
-        width: 100% !important;
+        width: 100 !important;
         max-width: 380px !important;
         font-size: 14px !important;
         height: 32px !important;
@@ -148,7 +143,7 @@
     }
 
     .save-button {
-        background-color: #2A363B !important; /* Blue-500 for "Yes, Delete" */
+        background-color: #2A363B !important;
         color: white !important;
         padding: 8px 16px !important;
         border-radius: 4px !important;
@@ -158,17 +153,48 @@
         transition: background-color 0.3s ease !important;
 
         &:hover {
-            background-color: #2563eb !important; /* Blue-600 on hover */
+            background-color: #2563eb !important;
         }
 
         &:focus {
             outline: none !important;
-            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6 !important;
+        }
+    }
+
+    .confirm-button {
+        background-color: #ff4d4d !important;
+        color: white !important;
+        padding: 8px 16px !important;
+        border-radius: 4px !important;
+        font-size: 14px !important;
+        border: 2px solid #cc0000 !important;
+        cursor: pointer !important;
+        transition: background-color 0.3s ease, transform 0.1s ease !important;
+        font-weight: 600 !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2) !important;
+
+        &:hover {
+            background-color: #cc0000 !important;
+            transform: scale(1.05) !important;
+        }
+
+        &:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.4) !important;
+        }
+
+        &:disabled {
+            background-color: #d1d5db !important;
+            border-color: #b0b0b0 !important;
+            cursor: not-allowed !important;
+            opacity: 0.6 !important;
+            transform: none !important;
         }
     }
 
     .cancel-button {
-        background-color: #e5e7eb !important; /* Gray-200 for "Cancel" */
+        background-color: #e5e7eb !important;
         color: #4a5568 !important;
         padding: 8px 16px !important;
         border-radius: 4px !important;
@@ -178,12 +204,12 @@
         transition: background-color 0.3s ease !important;
 
         &:hover {
-            background-color: #d1d5db !important; /* Gray-300 on hover */
+            background-color: #d1d5db !important;
         }
 
         &:focus {
             outline: none !important;
-            box-shadow: 0 0 0 2px #3b82f6 !important; /* Blue ring (Tailwind's blue-500) */
+            box-shadow: 0 0 0 2px #3b82f6 !important;
         }
     }
 }
@@ -203,7 +229,7 @@
         }
 
         .category-input {
-            width: 100% !important;
+            width: 100 !important;
             max-width: 340px !important;
             font-size: 12px !important;
             padding: 6px 10px !important;
@@ -211,7 +237,8 @@
         }
 
         .save-button,
-        .cancel-button {
+        .cancel-button,
+        .confirm-button {
             padding: 6px 12px !important;
             font-size: 12px !important;
         }

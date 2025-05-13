@@ -138,14 +138,14 @@ const CustomerList = () => {
                 <div className="table-header-actions">
                     <div className="search-bar"> <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search Name, Email, Address..." className="search-input" disabled={isLoading} /> </div>
                     <div className="button-group" style={{ marginLeft: 'auto' }}>
-                        {viewType === "active" && ( <button className="delete-button" onClick={() => handleArchiveAction()} disabled={checkedCount === 0 || isLoading} title="Archive selected customers"> Archive </button> )}
+                        {viewType === "active" && ( <button className="delete-button" onClick={() => handleArchiveAction()} disabled={checkedCount === 0 || isLoading} title="Archive selected customers"> Delete </button> )}
                         {viewType === "archived" && ( <button className="restore-button" onClick={() => handleRestoreAction()} disabled={checkedCount === 0 || isLoading}> Restore </button> )}
                     </div>
                     <div className="view-toggle"> <button className={`view-button ${viewType === "active" ? "active" : ""}`} onClick={() => { setViewType("active"); setCurrentPage(1); }} disabled={isLoading}> Active Customers </button> <button className={`view-button ${viewType === "archived" ? "active" : ""}`} onClick={() => { setViewType("archived"); setCurrentPage(1); }} disabled={isLoading}> Archived Customers </button> </div>
                 </div>
 
                 <table ref={tableRef} className={`customers-table ${viewType}`}>
-                     <thead> <tr className="table-header-row"> <th className="table-header"> <input type="checkbox" className="customer-checkbox" checked={isSelectAll} onChange={handleSelectAll} disabled={isLoading || customers.length === 0}/> </th> <th className="table-header customers-action-column">Action</th> <th className="table-header">Customer Name</th> <th className="table-header">Email</th> <th className="table-header">Address</th> <th className="table-header">Status</th> <th className="table-header">Created At</th> <th className="table-header">Updated At</th> </tr> </thead>
+                     <thead> <tr className="table-header-row"> <th className="table-header"> <input type="checkbox" className="customer-checkbox" checked={isSelectAll} onChange={handleSelectAll} disabled={isLoading || customers.length === 0}/> </th> <th className="table-header customers-action-column">Action</th> <th className="table-header">Customer Name</th> <th className="table-header">Email</th> <th className="table-header">Status</th> <th className="table-header">Created At</th> <th className="table-header">Updated At</th> </tr> </thead>
                     <tbody>
                         {isLoading ? ( <tr><td colSpan="8" style={{ textAlign: 'center', padding: '20px', fontStyle: 'italic' }}><FaSpinner className="spinner" /> Loading...</td></tr> )
                         : fetchError ? ( <tr><td colSpan="8" style={{ textAlign: 'center', padding: '20px', color: 'red' }}>Error: {fetchError}</td></tr> )
@@ -156,7 +156,6 @@ const CustomerList = () => {
                                     <td className="table-cell customers-action-column"> <div className="action-buttons"> {viewType === "active" ? ( <FaTrash className="delete-icon" title="Archive Customer" size={20} onClick={() => handleArchiveAction(customer)} /> ) : ( <FaUndo className="restore-icon" title="Restore Customer" size={20} onClick={() => handleRestoreAction(customer)} /> )} </div> </td>
                                     <td className="table-cell">{customer.name}</td>
                                     <td className="table-cell" title={customer.email}>{customer.email}</td>
-                                    <td className="table-cell" title={customer.address}>{customer.address}</td>
                                     <td className={`table-cell status-${customer.isArchived ? "inactive" : "active"}`}> {customer.isArchived ? "Inactive" : "Active"} </td>
                                     <td className="table-cell">{customer.createdAtDate}<br/><span style={{fontSize:'0.8em', color:'#666'}}>at {customer.createdAtTime}</span></td>
                                     <td className="table-cell">{customer.updatedAtDate}<br/><span style={{fontSize:'0.8em', color:'#666'}}>at {customer.updatedAtTime}</span></td>

@@ -78,13 +78,26 @@ const ProductList = () => {
             console.log("[ProductList] API Response received:", response.data);
 
             if (response.data?.data && Array.isArray(response.data.data)) {
-                const formattedProducts = response.data.data.map(product => ({
-                    ...product,
-                    createdAtDate: formatDate(product.created_at),
-                    createdAtTime: formatTime(product.created_at),
-                    updatedAtDate: formatDate(product.updated_at),
-                    updatedAtTime: formatTime(product.updated_at),
-                }));
+                const formattedProducts = response.data.data.map(product => {
+                    console.log(`[ProductList] Processing product:`, product);
+                    // VVVVVV MODIFIED NORMALIZATION LOGIC VVVVVV
+                    const wristObject = product.wristMeasurement || product.wrist_measurement; // Get object regardless of key name
+                    const normalizedWristMeasurement = wristObject?.measurement || null; // Safely access 'measurement' property
+                    // ^^^^^^ MODIFIED NORMALIZATION LOGIC ^^^^^^
+                    return {
+                        ...product,
+                        // Keep original potentially differently cased object if needed elsewhere
+                        category: product.category || null,
+                        color: product.color || null,
+                        wristMeasurementData: wristObject || null, // Store the object itself if needed for editing
+                        // Value used for display
+                        wristMeasurementValue: normalizedWristMeasurement,
+                        createdAtDate: formatDate(product.created_at),
+                        createdAtTime: formatTime(product.created_at),
+                        updatedAtDate: formatDate(product.updated_at),
+                        updatedAtTime: formatTime(product.updated_at),
+                    };
+                });
                 console.log("[ProductList] Setting products state:", formattedProducts);
                 setProducts(formattedProducts);
                 setTotalPages(response.data.last_page || 1);
@@ -94,7 +107,6 @@ const ProductList = () => {
                 } else if (response.data.total === 0 && currentPage > 1) {
                      setCurrentPage(1);
                 }
-
             } else {
                  console.warn("[ProductList] Invalid data structure:", response.data);
                  setFetchError("Invalid data format received.");
@@ -110,25 +122,28 @@ const ProductList = () => {
         } finally {
             setIsLoading(false);
         }
-    }, [viewType, currentPage, itemsPerPage]);
+    }, [viewType, currentPage, itemsPerPage]); // Removed makeAuthenticatedRequest if not needed inside directly
 
     useEffect(() => {
         console.log("[ProductList] useEffect triggered: Fetching products.");
         fetchProducts();
-    }, [fetchProducts, forceUpdate]);
+    }, [fetchProducts, forceUpdate]); // Depend on fetchProducts callback
 
     const getCurrentData = () => {
         if (!Array.isArray(products)) return [];
         let filteredProducts = products;
         if (searchQuery.trim()) {
             const lowerCaseQuery = searchQuery.toLowerCase();
-            filteredProducts = products.filter(product =>
-                (product.product_name || '').toLowerCase().includes(lowerCaseQuery) ||
-                (product.description || '').toLowerCase().includes(lowerCaseQuery) ||
-                (product.category?.category_name || '').toLowerCase().includes(lowerCaseQuery) ||
-                (product.color?.color_name || '').toLowerCase().includes(lowerCaseQuery) ||
-                (product.wristMeasurement?.measurement || '').toLowerCase().includes(lowerCaseQuery)
-            );
+            filteredProducts = products.filter(product => {
+                const wristMeasurementValue = product.wristMeasurementValue || ''; // Use the pre-processed string
+                return (
+                    (product.product_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                    (product.description || '').toLowerCase().includes(lowerCaseQuery) ||
+                    (product.category?.category_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                    (product.color?.color_name || '').toLowerCase().includes(lowerCaseQuery) ||
+                    wristMeasurementValue.toLowerCase().includes(lowerCaseQuery) // Search the string value
+                );
+            });
         }
         return filteredProducts;
     };
@@ -209,13 +224,14 @@ const ProductList = () => {
     };
     const handleSearchChange = (e) => {
         setSearchQuery(e.target.value);
+        setCurrentPage(1); // Reset page on search change
     };
     const handleViewTypeChange = (newType) => {
          if (viewType !== newType) {
              setViewType(newType);
              setCurrentPage(1);
              setSearchQuery("");
-             setForceUpdate(prev => prev + 1);
+             setForceUpdate(prev => prev + 1); // Trigger fetch for new view
          }
     };
     const handleCloseManagement = () => {
@@ -232,11 +248,17 @@ const ProductList = () => {
             return;
         }
 
+        // VVVVVV MODIFIED NORMALIZATION LOGIC VVVVVV
+        const wristObject = savedProductData.wristMeasurement || savedProductData.wrist_measurement; // Get object regardless of key name
+        const normalizedWristMeasurement = wristObject?.measurement || null; // Safely access 'measurement' property
+        // ^^^^^^ MODIFIED NORMALIZATION LOGIC ^^^^^^
+
         const formattedSavedProduct = {
             ...savedProductData,
             category: savedProductData.category || null,
             color: savedProductData.color || null,
-            wristMeasurement: savedProductData.wristMeasurement || null,
+            wristMeasurementData: wristObject || null, // Store object if needed
+            wristMeasurementValue: normalizedWristMeasurement, // Store the string value for rendering
             createdAtDate: formatDate(savedProductData.created_at),
             createdAtTime: formatTime(savedProductData.created_at),
             updatedAtDate: formatDate(savedProductData.updated_at),
@@ -252,15 +274,131 @@ const ProductList = () => {
                 return updatedProducts;
             } else {
                 console.log(`[ProductList] Adding new product ID ${formattedSavedProduct.id} to local state.`);
+                // Add to start for visibility, consider sorting/placing based on actual list order if needed
                 return [formattedSavedProduct, ...prevProducts].slice(0, itemsPerPage);
             }
         });
 
         handleCloseManagement();
+        // Optional: Force refetch if optimistic update isn't sufficient (e.g., depends on backend sorting)
+        // setForceUpdate(prev => prev + 1);
     };
 
     const checkedCount = Object.values(checkedRows).filter(Boolean).length;
 
+    // --- Table Body Rendering ---
+    const renderTableBody = () => {
+        if (isLoading && products.length > 0) {
+            return (
+                <tr>
+                    <td colSpan="11" style={{ textAlign: "center", padding: "20px", fontStyle: 'italic', color: '#555' }}>
+                        Updating data... <FaSpinner className="spinner" />
+                    </td>
+                </tr>
+            );
+        }
+
+        if (currentData.length > 0) {
+            return currentData.map(product => (
+                <tr className="table-row" key={product.id}>
+                    <td className="table-cell checkbox-column">
+                        <input
+                            type="checkbox"
+                            className="product-checkbox row-checkbox"
+                            checked={!!checkedRows[product.id]}
+                            onChange={(e) => handleRowCheckbox(product, e)}
+                            disabled={isLoading}
+                        />
+                    </td>
+                    <td className="table-cell products-action-column">
+                        <div className="action-buttons">
+                            {viewType === "active" ? (
+                                <>
+                                    <FaEdit
+                                        className="edit-icon action-icon"
+                                        title="Edit Product"
+                                        size={18}
+                                        onClick={() => handleEdit(product)}
+                                    />
+                                    <FaTrash
+                                        className="delete-icon action-icon"
+                                        title="Archive Product"
+                                        size={18}
+                                        onClick={() => handleArchive(product)}
+                                    />
+                                </>
+                            ) : (
+                                <FaUndo
+                                    className="restore-icon action-icon"
+                                    title="Restore Product"
+                                    size={18}
+                                    onClick={() => handleRestore(product)}
+                                />
+                            )}
+                        </div>
+                    </td>
+                    <td className="table-cell product-image-column">
+                        {product.image_url ? (
+                            <img
+                                src={product.image_url}
+                                alt={product.product_name || 'Product'}
+                                className="product-image" // Use the CSS class instead of inline styles
+                                onError={(e) => {
+                                    console.warn(`Failed to load image: ${product.image_url}`);
+                                    e.target.style.display = 'none';
+                                }}
+                            />
+                        ) : (
+                            'No Image'
+                        )}
+                    </td>
+                    <td className="table-cell product-name-column">{product.product_name || '-'}</td>
+                    <td className="table-cell description-column" title={product.description}>
+                        {product.description || '-'}
+                    </td>
+                    <td className="table-cell product-price-column">
+                        ₱ {parseFloat(product.price || 0).toFixed(2)}
+                    </td>
+                    <td className="table-cell product-category-column">
+                        {product.category?.category_name || '-'}
+                    </td>
+                    <td className="table-cell product-color-column">
+                        {product.color?.color_name || '-'}
+                    </td>
+                    {/* VVVVV Render the pre-processed string value VVVVV */}
+                    <td className="table-cell product-wrist-column">
+                        {product.wristMeasurementValue || '-'}
+                    </td>
+                    {/* ^^^^^ Render the pre-processed string value ^^^^^ */}
+                    <td className="table-cell product-created-column">
+                        {product.createdAtDate}
+                        <br />
+                        <span style={{ fontSize: '0.8em', color: '#666' }}>
+                            at {product.createdAtTime}
+                        </span>
+                    </td>
+                    <td className="table-cell product-updated-column">
+                        {product.updatedAtDate}
+                        <br />
+                        <span style={{ fontSize: '0.8em', color: '#666' }}>
+                            at {product.updatedAtTime}
+                        </span>
+                    </td>
+                </tr>
+            ));
+        }
+
+        // Message when no data matches search or view
+        return (
+            <tr className="table-row">
+                <td colSpan="11" className="table-cell" style={{ textAlign: "center", padding: "20px" }}>
+                    {searchQuery ? "No products match your search." : (fetchError ? "Could not load products." : "No products available in this view.")}
+                </td>
+            </tr>
+        );
+    };
+
+    // --- Main Render ---
     return (
         <div className="ProductList">
             <h2 className="products-header">{viewType === "active" ? "Active Products" : "Archived Products"}</h2>
@@ -272,30 +410,41 @@ const ProductList = () => {
             )}
 
             {isLoading && products.length === 0 && !fetchError ? (
-                <p style={{ padding: '20px', textAlign: 'center' }}>Loading products... <FaSpinner className="spinner" /></p>
+                <p style={{ padding: '20px', textAlign: 'center' }}>
+                    Loading products... <FaSpinner className="spinner" />
+                </p>
             ) : (
                 <div className="table-container">
+                    {/* Header Actions */}
                     <div className="table-header-actions">
                         <div className="search-bar">
-                            <input type="text" value={searchQuery} onChange={handleSearchChange} placeholder="Search Products..." className="search-input" disabled={isLoading}/>
+                            <input
+                                type="text"
+                                value={searchQuery}
+                                onChange={handleSearchChange}
+                                placeholder="Search Products..."
+                                className="search-input"
+                                disabled={isLoading}
+                            />
                         </div>
                         <div className="button-group" style={{ marginLeft: 'auto' }}>
                             {viewType === "active" && (
                                 <>
-                                    <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add Product</button>
-                                    <button className="delete-button archive-button" onClick={() => handleArchive()} disabled={checkedCount < 1 || isLoading}>Archive</button>
+                                    <button className="add-button" onClick={handleAdd} disabled={isLoading}> Add </button> {/* Shortened Label */}
+                                    <button className="delete-button archive-button" onClick={() => handleArchive()} disabled={checkedCount < 1 || isLoading}> Delete </button>
                                 </>
                             )}
                             {viewType === "archived" && (
-                                <button className="restore-button" onClick={() => handleRestore()} disabled={checkedCount < 1 || isLoading}>Restore</button>
+                                <button className="restore-button" onClick={() => handleRestore()} disabled={checkedCount < 1 || isLoading}> Restore </button>
                             )}
                         </div>
                         <div className="view-toggle">
-                            <button className={`view-button ${viewType === "active" ? "active" : ""}`} onClick={() => handleViewTypeChange("active")} disabled={isLoading}>Active Products</button>
-                            <button className={`view-button ${viewType === "archived" ? "active" : ""}`} onClick={() => handleViewTypeChange("archived")} disabled={isLoading}>Archived Products</button>
+                            <button className={`view-button ${viewType === "active" ? "active" : ""}`} onClick={() => handleViewTypeChange("active")} disabled={isLoading}> Active Products </button>
+                            <button className={`view-button ${viewType === "archived" ? "active" : ""}`} onClick={() => handleViewTypeChange("archived")} disabled={isLoading}> Archived Products </button>
                         </div>
                     </div>
 
+                    {/* Table */}
                     <table ref={tableRef} className="products-table">
                         <thead>
                             <tr className="table-header-row">
@@ -315,56 +464,18 @@ const ProductList = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {isLoading && products.length > 0 ? (
-                                <tr><td colSpan="11" style={{ textAlign: "center", padding: "20px", fontStyle: 'italic', color: '#555' }}>Updating data... <FaSpinner className="spinner"/></td></tr>
-                            ) : currentData.length > 0 ? (
-                                currentData.map(product => (
-                                    <tr className="table-row" key={product.id}>
-                                        <td className="table-cell checkbox-column">
-                                            <input type="checkbox" className="product-checkbox row-checkbox" checked={!!checkedRows[product.id]} onChange={e => handleRowCheckbox(product, e)} disabled={isLoading}/>
-                                        </td>
-                                        <td className="table-cell products-action-column">
-                                            <div className="action-buttons">
-                                                {viewType === "active" ? (
-                                                    <>
-                                                        <FaEdit className="edit-icon action-icon" title="Edit Product" size={18} onClick={() => handleEdit(product)}/>
-                                                        <FaTrash className="delete-icon action-icon" title="Archive Product" size={18} onClick={() => handleArchive(product)}/>
-                                                    </>
-                                                ) : (
-                                                    <FaUndo className="restore-icon action-icon" title="Restore Product" size={18} onClick={() => handleRestore(product)}/>
-                                                )}
-                                            </div>
-                                        </td>
-                                        <td className="table-cell product-image-column">
-                                            {product.image_url ? (
-                                                <img src={product.image_url} alt={product.product_name || 'Product'} style={{ width: '50px', height: 'auto', maxHeight: '50px', objectFit: 'contain', borderRadius: '4px' }} onError={(e) => { console.warn(`Failed to load image: ${product.image_url}`); e.target.style.display='none'; }}/>
-                                            ) : ('No Image')}
-                                        </td>
-                                        <td className="table-cell product-name-column">{product.product_name || '-'}</td>
-                                        <td className="table-cell description-column" title={product.description}>{product.description || '-'}</td>
-                                        <td className="table-cell product-price-column">₱ {parseFloat(product.price || 0).toFixed(2)}</td>
-                                        <td className="table-cell product-category-column">{product.category?.category_name || '-'}</td>
-                                        <td className="table-cell product-color-column">{product.color?.color_name || '-'}</td>
-                                        <td className="table-cell product-wrist-column">{product.wristMeasurement?.measurement || '-'}</td>
-                                        <td className="table-cell product-created-column">{product.createdAtDate}<br /><span style={{fontSize: '0.8em', color: '#666'}}>at {product.createdAtTime}</span></td>
-                                        <td className="table-cell product-updated-column">{product.updatedAtDate}<br /><span style={{fontSize: '0.8em', color: '#666'}}>at {product.updatedAtTime}</span></td>
-                                    </tr>
-                                ))
-                            ) : (
-                                <tr className="table-row">
-                                    <td colSpan="11" className="table-cell" style={{ textAlign: "center", padding: "20px" }}>
-                                        {searchQuery ? "No products match your search." : (fetchError ? "Could not load products." : "No products available in this view.")}
-                                    </td>
-                                </tr>
-                            )}
+                            {renderTableBody()} {/* Call the function to render body */}
                         </tbody>
                     </table>
 
+                    {/* Pagination */}
                     {totalPages > 1 && !fetchError && (
                         <div className="table-pagination">
-                            <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1 || isLoading} className="table-pagination-button">Previous</button>
-                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (<button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"} disabled={isLoading}>{page}</button>))}
-                            <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages || isLoading} className="table-pagination-button">Next</button>
+                            <button onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1 || isLoading} className="table-pagination-button"> Previous </button>
+                            {Array.from({ length: totalPages }, (_, i) => i + 1).map(page => (
+                                <button key={page} onClick={() => setCurrentPage(page)} className={currentPage === page ? "table-pagination-button active" : "table-pagination-button"} disabled={isLoading}> {page} </button>
+                            ))}
+                            <button onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))} disabled={currentPage === totalPages || isLoading} className="table-pagination-button"> Next </button>
                         </div>
                     )}
                 </div>

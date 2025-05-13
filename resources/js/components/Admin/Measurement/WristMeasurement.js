@@ -281,14 +281,14 @@ const WristMeasurement = () => {
                     <div className="button-group" style={{ marginLeft: 'auto' }}>
                         {viewType === "active" && (
                             <>
-                                <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add Measurement</button>
+                                <button className="add-button" onClick={handleAdd} disabled={isLoading}>Add</button>
                                 <button
                                     className="archive-button"
                                     onClick={() => handleArchive()}
                                     disabled={checkedCount === 0 || isLoading}
                                     title="Archive selected measurements"
                                 >
-                                    Archive 
+                                    Delete 
                                 </button>
                             </>
                         )}

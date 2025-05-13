@@ -1,6 +1,5 @@
-/* ReviewsStyles.scss */
 .reviews-container {
-    padding: 8px; /* Further reduced padding to move content up */
+    padding: 8px;
     background-color: white;
     position: relative;
     margin: 0;
@@ -10,7 +9,7 @@
     font-size: 24px;
     font-weight: bold;
     color: #000000;
-    margin-bottom: 4px; /* Further reduced margin to move table up */
+    margin-bottom: 4px;
     margin-top: 0;
 }
 
@@ -18,14 +17,14 @@
     position: relative;
     min-height: 200px;
     overflow-x: auto;
-    margin-top: 0; /* Removed margin to move table up */
+    margin-top: 0;
     padding-top: 0;
 }
 
 .table-header-actions {
     display: flex;
     flex-direction: column;
-    gap: 4px; /* Further reduced gap to move content up */
+    gap: 4px;
     margin-bottom: 0;
 }
 
@@ -58,24 +57,19 @@
     }
 }
 
-.reviews-container .button-group { /* Scoped to reviews-container to prevent global impact */
-    display: flex;
-    gap: 8px;
-    align-items: center; /* Ensure vertical alignment with filter icon */
-}
-
-.reviews-container .button-group .add-button { /* Scoped to reviews-container */
-    background-color: #2A363B; /* Blue for Add button */
-    color: white;
-    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+.search-button {
+    background-color: #e5e7eb;
+    color: #4a5568;
+    padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-left: 8px;
 
     &:hover {
-        background-color: #4169e1; /* Darker blue on hover */
+        background-color: #d1d5db;
     }
 
     &:focus {
@@ -83,12 +77,43 @@
         box-shadow: 0 0 0 2px #3b82f6;
     }
 
-    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+}
+
+.reviews-container .button-group {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.reviews-container .button-group .add-button {
+    background-color: #2A363B;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: #4169e1;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    &:hover:not(:disabled) {
         background-color: #45a049 !important;
         border-color: #45a049 !important;
     }
 
-    &:disabled { /* Match Orders.js "Completed" button */
+    &:disabled {
         opacity: 0.5 !important;
         cursor: not-allowed !important;
         background-color: #4CAF50 !important;
@@ -96,18 +121,20 @@
     }
 }
 
-.reviews-container .button-group .delete-button { /* Scoped to reviews-container */
-    background-color: #ef4444; /* Red for Delete button */
+.reviews-container .button-group .archive-button {
+    background-color: #ef4444;
     color: white;
-    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    min-width: 80px; /* Ensure button has enough space */
+    text-align: center; /* Center the text */
 
     &:hover {
-        background-color: #dc2626; /* Darker red on hover */
+        background-color: #dc2626;
     }
 
     &:focus {
@@ -115,31 +142,33 @@
         box-shadow: 0 0 0 2px #3b82f6;
     }
 
-    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+    &:hover:not(:disabled) {
         background-color: #45a049 !important;
         border-color: #45a049 !important;
     }
 
-    &:disabled { /* Updated to light reddish for Delete button */
+    &:disabled {
         opacity: 0.5 !important;
         cursor: not-allowed !important;
-        background-color: #ffcccc !important; /* Light reddish color (e.g., pastel red) */
+        background-color: #ffcccc !important;
         border-color: #ffcccc !important;
     }
 }
 
-.reviews-container .button-group .restore-button { /* Scoped to reviews-container */
-    background-color: #1e90ff; /* Blue for Restore button, matching Add button */
+.reviews-container .button-group .restore-button {
+    background-color: #1e90ff;
     color: white;
-    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
     border: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    min-width: 80px; /* Ensure button has enough space */
+    text-align: center; /* Center the text */
 
     &:hover {
-        background-color: #4169e1; /* Darker blue on hover, matching Add button */
+        background-color: #4169e1;
     }
 
     &:focus {
@@ -147,48 +176,47 @@
         box-shadow: 0 0 0 2px #3b82f6;
     }
 
-    &:hover:not(:disabled) { /* Match Orders.js "Completed" button */
+    &:hover:not(:disabled) {
         background-color: #45a049 !important;
         border-color: #45a049 !important;
     }
 
-    &:disabled { /* Updated to light bluish for Restore button */
+    &:disabled {
         opacity: 0.5 !important;
         cursor: not-allowed !important;
-        background-color: #cce5ff !important; /* Light bluish color (e.g., pastel blue) */
+        background-color: #cce5ff !important;
         border-color: #cce5ff !important;
     }
 }
 
-/* Filter Icon and Dropdown Styling */
 .filter-icon {
     cursor: pointer;
-    margin-right: 8px; // Space between filter icon and buttons
+    margin-right: 8px;
     position: relative;
-    color: #6b7280; // Default gray, matching other icons
-    transition: color 0.3s ease; // Smooth color transition
-    border: 1px solid #d1d5db; // Add border matching buttons and inputs
-    border-radius: 4px; // Match button and input border radius
-    padding: 4px; // Add padding to accommodate the border and improve click area
-    display: flex; // Ensure icon and label align properly
-    align-items: center; // Vertically center icon and label
-    background-color: white; // Match button background for consistency
+    color: #6b7280;
+    transition: color 0.3s ease;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    background-color: white;
 
     &:hover {
-        color: #4169e1; // Hover effect to match add-button blue
+        color: #4169e1;
     }
 
     &:focus {
         outline: none;
-        box-shadow: 0 0 0 2px #3b82f6; // Focus ring to match other interactive elements
+        box-shadow: 0 0 0 2px #3b82f6;
     }
 }
 
 .filter-label {
-    margin-left: 8px; // Space between icon and text
-    color: #4a5568; // Match table header color
-    font-size: 14px; // Match button/icon text size
-    vertical-align: middle; // Align with the icon
+    margin-left: 8px;
+    color: #4a5568;
+    font-size: 14px;
+    vertical-align: middle;
 }
 
 .filter-dropdown {
@@ -198,7 +226,7 @@
     background-color: white;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
-    z-index: 1001; // Above other elements, below modals (z-index: 1000)
+    z-index: 1001;
     min-width: 150px;
 
     button {
@@ -211,25 +239,24 @@
         font-size: 14px;
         cursor: pointer;
         border-bottom: 1px solid #e5e7eb;
-        color: #4a5568; // Match table header color
+        color: #4a5568;
 
         &:last-child {
             border-bottom: none;
         }
 
         &:hover {
-            background-color: #f3f4f6; // Light gray hover, matching button hover
+            background-color: #f3f4f6;
         }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #3b82f6; // Focus ring to match other interactive elements
+            box-shadow: 0 0 0 2px #3b82f6;
         }
     }
 }
 
-/* Remove or scope any default button styles that could affect Orders.js */
-button { /* Override any global button styles specific to Reviews */
+button {
     margin: 0;
     padding: 0;
     border: none;
@@ -238,7 +265,6 @@ button { /* Override any global button styles specific to Reviews */
     cursor: default;
 }
 
-/* Ensure buttons within reviews-table or action-buttons are scoped */
 .reviews-table button,
 .action-buttons button {
     margin: 0;
@@ -254,8 +280,8 @@ button { /* Override any global button styles specific to Reviews */
     width: 100%;
     margin-bottom: 24px;
     border-collapse: collapse;
-    table-layout: fixed;
-    margin-top: 0; /* Removed margin to move table up */
+    table-layout: auto;
+    margin-top: 0;
     padding-top: 0;
 }
 
@@ -268,11 +294,28 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .table-header,
-.table-cell {
+.table-header.checkbox-col,
+.table-header.action-col,
+.table-header.product-col,
+.table-header.user-col,
+.table-header.rating-col,
+.table-header.review-text-col,
+.table-header.date-col,
+.table-cell,
+.table-cell.checkbox-col,
+.table-cell.action-col,
+.table-cell.product-col,
+.table-cell.user-col,
+.table-cell.rating-col,
+.table-cell.review-text-col,
+.table-cell.date-col {
     padding: 12px;
     text-align: left;
     border: 1px solid #e5e7eb;
     font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .table-row {
@@ -284,10 +327,10 @@ button { /* Override any global button styles specific to Reviews */
     color: #000000;
 }
 
-.reviews-table tbody td[colspan="7"] {
+.reviews-table tbody td[colspan="8"] {
     text-align: center;
     padding: 20px;
-    background-color: #f9f9f9; /* Light gray for empty state */
+    background-color: #f9f9f9;
 }
 
 .review-checkbox {
@@ -315,8 +358,8 @@ button { /* Override any global button styles specific to Reviews */
     }
 }
 
-.delete-icon {
-    color: #6b7280;
+.archive-icon {
+    color: red; /* Changed to red for the trash icon */
     cursor: pointer;
     transition: color 0.3s ease;
     vertical-align: middle;
@@ -369,7 +412,7 @@ button { /* Override any global button styles specific to Reviews */
     background-color: #e5e7eb;
     color: #000000;
     border: 1px solid #e5e7eb;
-    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    padding: 8px 16px;
     margin-right: 0;
     border-radius: 4px;
     font-size: 14px;
@@ -394,14 +437,14 @@ button { /* Override any global button styles specific to Reviews */
 
 .view-toggle {
     display: flex;
-    gap: 4px; /* Further reduced gap to move content up */
-    margin-top: 4px; /* Further reduced margin to move content up */
+    gap: 4px;
+    margin-top: 4px;
 }
 
 .view-button {
     background-color: #e5e7eb;
     color: #4a5568;
-    padding: 8px 16px; /* Match Orders.js button padding for consistency */
+    padding: 8px 16px;
     border-radius: 4px;
     font-size: 14px;
     border: none;
@@ -424,52 +467,46 @@ button { /* Override any global button styles specific to Reviews */
     }
 }
 
-/* Set fixed widths for table columns, scoped to Reviews */
-.reviews-table .table-header:first-child,
-.reviews-table .table-cell:first-child {
-    width: 50px;
+.reviews-table .checkbox-col {
+    width: 5%;
     text-align: center;
 }
 
-.reviews-table .table-header.reviews-action-column,
-.reviews-table .table-cell.reviews-action-column {
-    width: 60px; /* Increased width for Action column to fully display "Action" header, scoped to Reviews */
+.reviews-table .action-col {
+    width: 10%;
     text-align: center;
 }
 
-/* Override for archived view to accommodate Restore button, scoped to Reviews */
-.reviews-table .table-row[view-type="archived"] .table-header.reviews-action-column,
-.reviews-table .table-row[view-type="archived"] .table-cell.reviews-action-column,
-.reviews-table .table-row.view-type-archived .reviews-action-column {
-    width: 140px; /* Increased width for Restore button in archived view, matching active view, scoped to Reviews */
+.reviews-table .product-col {
+    width: 15%;
 }
 
-.reviews-table .table-header:nth-child(3),
-.reviews-table .table-cell:nth-child(3) {
-    width: 200px; /* Product Name */
+.reviews-table .user-col {
+    width: 12%;
 }
 
-.reviews-table .table-header:nth-child(4),
-.reviews-table .table-cell:nth-child(4) {
-    width: 100px; /* Rating */
+.reviews-table .rating-col {
+    width: 7%; /* Increased from 5% to 7% */
+    min-width: 50px; /* Adjusted min-width to support new width */
 }
 
-.reviews-table .table-header:nth-child(5),
-.reviews-table .table-cell:nth-child(5) {
-    width: 200px; /* Review */
+.reviews-table .review-text-col {
+    width: 31%; /* Decreased from 33% to 31% */
+    min-width: 150px; /* Kept the same to ensure readability */
+    white-space: normal; /* Allow text wrapping */
+    word-wrap: break-word; /* Break long words */
+    overflow: hidden; /* Hide overflow if still too long */
 }
 
-.reviews-table .table-header:nth-child(6),
-.reviews-table .table-cell:nth-child(6) {
-    width: 120px; /* Created at */
+.reviews-table .date-col {
+    width: 10%;
 }
 
-.reviews-table .table-header:nth-child(7),
-.reviews-table .table-cell:nth-child(7) {
-    width: 120px; /* Updated at */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
 }
 
-/* Modal overlay and modal styling for edit */
 .edit-modal-overlay {
     position: fixed;
     top: 0;
@@ -500,7 +537,7 @@ button { /* Override any global button styles specific to Reviews */
 }
 
 .error-message {
-    color: #ef4444; /* Red for errors */
+    color: #ef4444;
     margin-bottom: 12px;
     font-size: 14px;
 }
@@ -529,9 +566,9 @@ button { /* Override any global button styles specific to Reviews */
     box-sizing: border-box;
     background-color: #f3f4f6;
     color: #4a5568;
-    cursor: text; /* Ensure cursor indicates editable */
-    pointer-events: auto; /* Ensure inputs are clickable */
-    user-select: text; /* Allow text selection for editing */
+    cursor: text;
+    pointer-events: auto;
+    user-select: text;
 
     &::placeholder {
         color: #6b7280;
@@ -556,9 +593,9 @@ button { /* Override any global button styles specific to Reviews */
     box-sizing: border-box;
     background-color: #f3f4f6;
     color: #4a5568;
-    cursor: text; /* Ensure cursor indicates editable */
-    pointer-events: auto; /* Ensure inputs are clickable */
-    user-select: text; /* Allow text selection for editing */
+    cursor: text;
+    pointer-events: auto;
+    user-select: text;
 
     &::placeholder {
         color: #6b7280;
@@ -573,16 +610,16 @@ button { /* Override any global button styles specific to Reviews */
 
 @media (max-width: 767px) {
     .reviews-container {
-        padding: 4px; /* Further reduced padding for mobile to move content up */
+        padding: 4px;
     }
 
     .reviews-header {
-        margin-bottom: 2px; /* Further reduced margin for mobile to move table up */
+        margin-bottom: 2px;
     }
 
     .table-header-actions {
         flex-direction: column;
-        gap: 2px; /* Further reduced gap for mobile to move content up */
+        gap: 2px;
         align-items: flex-end;
     }
 
@@ -620,7 +657,7 @@ button { /* Override any global button styles specific to Reviews */
         size: 16px;
     }
 
-    .delete-icon {
+    .archive-icon {
         margin-left: 4px;
         size: 16px;
     }
@@ -632,7 +669,7 @@ button { /* Override any global button styles specific to Reviews */
 
     .view-toggle {
         flex-direction: column;
-        gap: 2px; /* Further reduced gap for mobile to move content up */
+        gap: 2px;
     }
 
     .view-button {
@@ -640,15 +677,36 @@ button { /* Override any global button styles specific to Reviews */
         text-align: center;
     }
 
-    /* Adjust Action column widths on mobile, scoped to Reviews */
-    .reviews-table .table-header.reviews-action-column,
-    .reviews-table .table-cell.reviews-action-column {
-        width: 100px; /* Wider on mobile for Action column to fit "Action" header fully, scoped to Reviews */
+    .reviews-table .checkbox-col {
+        width: 10%;
     }
 
-    .reviews-table .table-row[view-type="archived"] .table-header.reviews-action-column,
-    .reviews-table .table-row[view-type="archived"] .table-cell.reviews-action-column,
-    .reviews-table .table-row.view-type-archived .reviews-action-column {
-        width: 100px; /* Wider on mobile for Restore button, matching active view, scoped to Reviews */
+    .reviews-table .action-col {
+        width: 15%;
+    }
+
+    .reviews-table .product-col {
+        width: 15%;
+    }
+
+    .reviews-table .user-col {
+        width: 12%;
+    }
+
+    .reviews-table .rating-col {
+        width: 7%; 
+        min-width: 40px; 
+    }
+
+    .reviews-table .review-text-col {
+        width: 28%; /* Adjusted from 31% to 28% to fit mobile layout */
+        min-width: 100px; /* Kept the same for readability */
+        white-space: normal;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+
+    .reviews-table .date-col {
+        width: 7.5%;
     }
 }

@@ -1,236 +1,273 @@
 /* Header Styles (scoped to .content header) */
 .content {
-    margin-left: 250px; // Adjust if your AdminNav width changes
+    margin-left: 250px;
     min-height: 100vh;
     background-color: #f7fafc;
-    position: relative; // Needed for potential absolute positioned elements inside
-}
+    position: relative;
 
-.content header {
-    position: sticky;
-    top: 0;
-    z-index: 20; // Keep header above content but below dropdown
-    background-color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: flex-end; // Pushes icon container to the right
-    align-items: center;
-    width: 100%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background-color: white;
+        padding: 1rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-// Container specifically for the user icon and its dropdown
-.user-icon-container {
-    position: relative; // Crucial for absolute positioning of dropdown
-    display: inline-block; // Or 'flex' depending on inner content alignment needed
+    .border-b {
+        border-bottom: 1px solid #e5e7eb;
+        width: 100%;
+    }
 
-    .text-gray-500 { // Styling for the user icon itself within the container
-        color: #777E90;
-        transition: color 0.3s ease;
-        cursor: pointer;
-        &:hover {
-            color: #4a5568;
+    > div {
+        padding: 20px;
+    }
+
+    .user-icon-container {
+        position: relative;
+        display: inline-block;
+
+        .text-gray-500 {
+            color: #777E90;
+            transition: color 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                color: #4a5568;
+            }
         }
     }
-}
 
-// Dropdown menu styles
-.dropdown-menu {
-    position: absolute;
-    top: 120%; // Position below the container
-    right: 0; // Align to the right edge of the container
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    margin-top: 5px;
-    min-width: 130px;
-    z-index: 1001; // Ensure it's above header and other content
-    list-style: none;
-    padding: 5px 0;
-    margin: 0;
-    // display: none; // Controlled by JS
-}
-
-// Style for items (buttons) within the dropdown
-button.dropdown-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    width: 100%;
-    padding: 10px 15px;
-    border: none;
-    background-color: transparent;
-    text-align: left;
-    cursor: pointer;
-    font-size: 14px;
-    color: #333;
-    transition: background-color 0.15s ease-in-out;
-
-    &:hover {
-        background-color: #f0f0f0; // Hover effect
+    .dropdown-menu {
+        position: absolute;
+        top: 120%;
+        right: 0;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        margin-top: 5px;
+        min-width: 130px;
+        z-index: 1001;
+        list-style: none;
+        padding: 5px 0;
+        margin: 0;
     }
 
-    // --- EMPTY .dropdown-icon RULESET REMOVED ---
-}
+    button.dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        padding: 10px 15px;
+        border: none;
+        background-color: transparent;
+        text-align: left;
+        cursor: pointer;
+        font-size: 14px;
+        color: #333;
+        transition: background-color 0.15s ease-in-out;
 
-
-.content .border-b {
-    border-bottom: 1px solid #e5e7eb; /* Tailwind's border-gray-200 */
-    width: 100%;
-}
-
-.content > div { // Padding for the main content area below the header
-    padding: 20px;
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
 }
 
 /* Existing Dashboard Styles */
 .dashboard-container {
     padding: 24px;
     background-color: white;
-}
 
-.dashboard-container .h2 {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-    margin-bottom: 24px;
-}
-
-.analytics-cards {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 16px;
-    margin-bottom: 24px;
-
-    @media (min-width: 768px) {
-        grid-template-columns: repeat(4, 1fr);
+    .h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #000000;
+        margin-bottom: 24px;
     }
-}
 
-.analytics-card {
-    border: 1px solid #d1d5db;
-    padding: 16px;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
+    .analytics-cards {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 16px;
+        margin-bottom: 24px;
 
-.analytics-card .text-gray-600 { // Icon color
-    color: #4b5563;
-    margin-bottom: 8px;
-}
-
-.analytics-card .label {
-    font-size: 14px;
-    color: #6b7280;
-    margin-bottom: 8px;
-}
-
-.analytics-card .value {
-    font-size: 24px;
-    font-weight: bold;
-    color: #000000;
-    margin-top: 8px;
-}
-
-.dashboard-recently-sold {
-    width: 100%;
-    margin-bottom: 24px;
-    border-collapse: collapse;
-}
-
-.dashboard-recently-sold thead tr {
-    background-color: #e5e7eb;
-    color: #4a5568;
-    font-size: 16px;
-    font-weight: 600;
-}
-
-.dashboard-recently-sold th,
-.dashboard-recently-sold td {
-    padding: 12px;
-    text-align: left;
-    border: 1px solid #e5e7eb;
-    font-size: 16px;
-    vertical-align: middle;
-}
-
-.dashboard-recently-sold tbody tr {
-    border-bottom: 1px solid #e5e7eb;
-    min-height: 40px;
-    &:hover {
-        background-color: #f9fafb;
+        @media (min-width: 768px) {
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
-}
 
-.dashboard-recently-sold .product-icon {
-    width: 36px;
-    height: 36px;
-    object-fit: cover;
-    vertical-align: middle;
-    border-radius: 4px;
+    .analytics-card {
+        border: 1px solid #d1d5db;
+        padding: 16px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        background-color: white;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+
+        .text-gray-600 {
+            color: #4b5563;
+            margin-bottom: 8px;
+        }
+
+        .label {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 8px;
+        }
+
+        .value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #000000;
+            margin-top: 8px;
+        }
+    }
+
+    .dashboard-recently-sold {
+        width: 100%;
+        margin-bottom: 24px;
+        border-collapse: collapse;
+
+        thead tr {
+            background-color: #e5e7eb;
+            color: #4a5568;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #e5e7eb;
+            font-size: 16px;
+            vertical-align: middle;
+        }
+
+        tbody tr {
+            border-bottom: 1px solid #e5e7eb;
+            min-height: 40px;
+
+            &:hover {
+                background-color: #f9fafb;
+            }
+        }
+
+        .product-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+            vertical-align: middle;
+            border-radius: 4px;
+        }
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: flex-start;
+        margin-top: 16px;
+        gap: 8px;
+
+        button {
+            background-color: #e5e7eb;
+            color: #000000;
+            border: 1px solid #e5e7eb;
+            padding: 4px 8px;
+            margin-right: 0;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover:not(:disabled) {
+                background-color: #d1d5db;
+            }
+
+            &.active {
+                background-color: #4a5568;
+                color: white;
+                border-color: #4a5568;
+            }
+
+            &:disabled {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+        }
+    }
 }
 
 @media (max-width: 767px) {
-    .analytics-cards {
-        grid-template-columns: 1fr;
-    }
-
     .dashboard-container {
         padding: 16px;
+
+        .analytics-cards {
+            grid-template-columns: 1fr;
+        }
+
+        .dashboard-recently-sold th,
+        .dashboard-recently-sold td {
+            padding: 8px;
+            font-size: 14px;
+        }
+
+        .dashboard-recently-sold thead tr {
+            font-size: 14px;
+        }
+
+        .dashboard-recently-sold tbody tr {
+            min-height: 32px;
+        }
+    }
+}
+
+/* Inline Styles from JSX (Converted to SCSS) */
+.dashboard-container {
+    div:first-child {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h2 {
+            margin: 0;
+        }
+
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f8f9fa;
+            font-size: 0.9em;
+
+            svg {
+                margin-right: 5px;
+            }
+        }
     }
 
-    .dashboard-recently-sold th,
-    .dashboard-recently-sold td {
-        padding: 8px;
-        font-size: 14px;
+    .error-message {
+        color: red;
     }
 
-    .dashboard-recently-sold thead tr {
-        font-size: 14px;
+    .table-container {
+        table {
+            td[colSpan="5"] {
+                text-align: center;
+                padding: 20px;
+            }
+        }
     }
-
-    .dashboard-recently-sold tbody tr {
-        min-height: 32px;
-    }
-}
-
-.pagination {
-    display: flex;
-    justify-content: flex-start;
-    margin-top: 16px;
-    gap: 8px;
-}
-
-.pagination button {
-    background-color: #e5e7eb;
-    color: #000000;
-    border: 1px solid #e5e7eb;
-    padding: 4px 8px;
-    margin-right: 0;
-    border-radius: 4px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.pagination button:hover:not(:disabled) {
-    background-color: #d1d5db;
-}
-
-.pagination button.active {
-    background-color: #4a5568;
-    color: white;
-    border-color: #4a5568;
-}
-
-.pagination button:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
 }
